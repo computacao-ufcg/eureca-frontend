@@ -1,0 +1,13 @@
+.container {
+  height: 70px;
+  padding: 0 30px;
+  background: #82DDF0;
+  color: #000;
+
+  display: flex;
+  align-items: center;
+}
+
+.title-page {
+  font-size: 25px;
+}
