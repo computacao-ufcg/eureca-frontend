@@ -27,21 +27,22 @@ const TablePanel = (props) => {
       return (
         <>
           <td key={index+1}>{ object.cpf }</td>
-          <td key={index+2}>{ object.id_situacao }</td>
-          <td key={index+3}>{ object.semestre_situacao }</td>
-          <td key={index+4}>{ object.id_ingresso }</td>
-          <td key={index+5}>{ object.semestre_ingresso }</td>
-          <td key={index+6}>{ object.ano_nascimento }</td>
-          <td key={index+7}>{ object.id_cota }</td>
-          <td key={index+8}>{ object.id_tipo_escola }</td>
-          <td key={index+9}>{ object.ano_conclusao_ensino_medio }</td>
-          <td key={index+10}>{ object.email }</td>
-          <td key={index+11}>{ object.id_genero }</td>
-          <td key={index+12}>{ object.id_estado_civil }</td>
-          <td key={index+13}>{ object.id_nacionalidade }</td>
-          <td key={index+14}>{ object.id_pais_origem }</td>
-          <td key={index+15}>{ object.id_naturalidade }</td>
-          <td key={index+16}>{ object.id_raca }</td>
+          <td key={index+2}>{ object.nome }</td>
+          <td key={index+3}>{ object.id_situacao }</td>
+          <td key={index+4}>{ object.semestre_situacao }</td>
+          <td key={index+5}>{ object.id_ingresso }</td>
+          <td key={index+6}>{ object.semestre_ingresso }</td>
+          <td key={index+7}>{ object.ano_nascimento }</td>
+          <td key={index+8}>{ object.id_cota }</td>
+          <td key={index+9}>{ object.id_tipo_escola }</td>
+          <td key={index+10}>{ object.ano_conclusao_ensino_medio }</td>
+          <td key={index+11}>{ object.email }</td>
+          <td key={index+12}>{ object.id_genero }</td>
+          <td key={index+13}>{ object.id_estado_civil }</td>
+          <td key={index+14}>{ object.id_nacionalidade }</td>
+          <td key={index+15}>{ object.id_pais_origem }</td>
+          <td key={index+16}>{ object.id_naturalidade }</td>
+          <td key={index+17}>{ object.id_raca }</td>
         </>
       )
     } 
@@ -75,7 +76,7 @@ const TablePanel = (props) => {
     else if (tableName === 'Curso') {
       return (
         <>
-          <td key={index+1}>{ object.codigo_curso }</td>
+          <td key={index+1}>{ object.id }</td>
           <td key={index+2}>{ object.nome_curso }</td>
         </>
       )
