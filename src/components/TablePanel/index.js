@@ -90,6 +90,27 @@ const TablePanel = (props) => {
         </>
       )
     }
+    else if (tableName === 'DiscenteDisciplina') {
+      return (
+        <>
+          <td key={index+1}>{ object.matricula }</td>
+          <td key={index+2}>{ object.id_turma }</td>
+          <td key={index+3}>{ object.num_faltas }</td>
+          <td key={index+4}>{ object.nota1 }</td>
+          <td key={index+5}>{ object.nota2 }</td>
+          <td key={index+6}>{ object.nota3 }</td>
+          <td key={index+7}>{ object.nota4 }</td>
+          <td key={index+8}>{ object.nota5 }</td>
+          <td key={index+9}>{ object.nota6 }</td>
+          <td key={index+10}>{ object.nota7 }</td>
+          <td key={index+11}>{ object.nota8}</td>
+          <td key={index+12}>{ object.media_parcial }</td>
+          <td key={index+13}>{ object.prova_final }</td>
+          <td key={index+14}>{ object.media_final }</td>
+          <td key={index+15}>{ object.id_situacao }</td>
+        </>
+      )
+    }
     else if (tableName === 'DiscenteVinculo') {
       return (
         <>
@@ -101,12 +122,59 @@ const TablePanel = (props) => {
         </>
       )
     }
+    else if (tableName === 'Disciplina') {
+      return (
+        <>
+          <td key={index+1}>{ object.id }</td>
+          <td key={index+2}>{ object.codigo }</td>
+          <td key={index+3}>{ object.creditos }</td>
+          <td key={index+4}>{ object.horas }</td>
+          <td key={index+5}>{ object.nome }</td>
+        </>
+      )
+    }
+    else if (tableName === 'Falta') {
+      return (
+        <>
+          <td key={index+1}>{ object.matricula }</td>
+          <td key={index+2}>{ object.id_turma }</td>
+          <td key={index+3}>{ object.num_aula }</td>
+        </>
+      )
+    }
     else if (tableName === 'Naturalidade') {
       return (
         <>
           <td key={index+1}>{ object.id }</td>
           <td key={index+2}>{ object.municipio }</td>
-          <td key={index+1}>{ object.estado }</td>
+          <td key={index+3}>{ object.estado }</td>
+        </>
+      )
+    }
+    else if (tableName === 'Professor') {
+      return (
+        <>
+          <td key={index+1}>{ object.siape }</td>
+        </>
+      )
+    }
+    else if (tableName === 'Turma') {
+      return (
+        <>
+          <td key={index+1}>{ object.id }</td>
+          <td key={index+2}>{ object.id_disciplina }</td>
+          <td key={index+3}>{ object.turma }</td>
+          <td key={index+4}>{ object.periodo }</td>
+          <td key={index+5}>{ object.id_horario }</td>
+          <td key={index+6}>{ object.id_sala }</td>
+        </>
+      )
+    }
+    else if (tableName === 'TurmaProfessor') {
+      return (
+        <>
+          <td key={index+1}>{ object.id_turma }</td>
+          <td key={index+2}>{ object.siape }</td>
         </>
       )
     }
