@@ -10,7 +10,7 @@ const TablePanel = (props) => {
   const [keysTable, setKeysTable] = useState([]);
 
   useEffect(() => {
-    api.get('/alunos', {
+    api.get('/list-table', {
       headers: {
         table_name: tableName
       }
@@ -22,8 +22,44 @@ const TablePanel = (props) => {
     }
   }, [data, tableName]);
 
+  // verifica se a tabela selecionada contém o campo "descricao".
+  function hasFieldDescription() {
+    if (tableName === 'Cor' || tableName === 'Cota' || tableName === 'Deficiencia'
+    || tableName === 'Escola' || tableName === 'EstadoCivil' || tableName === 'Genero'
+    || tableName === 'Horario' || tableName === 'Ingresso' || tableName === 'Nacionalidade'
+    || tableName === 'SituacaoDiscente' || tableName === 'SituacaoDisciplina'
+    || tableName === 'SituacaoVinculo') {
+      return true;
+    }
+    return false;
+  }
+
+  // verifica se a tabela selecionada contém o campo "nome".
+  function hasFieldName() {
+    if (tableName === 'Curso' || tableName === 'Pais' || tableName === 'Sala') {
+      return true;
+    }
+    return false;
+  }
+
   function checkFields(object, index) {
-    if (tableName === 'Aluno') {
+    if (hasFieldDescription()) {
+      return (
+        <>
+          <td key={index+1}>{ object.id }</td>
+          <td key={index+2}>{ object.descricao }</td>
+        </>
+      )
+    }
+    else if (hasFieldName()) {
+      return (
+        <>
+          <td key={index+1}>{ object.id }</td>
+          <td key={index+2}>{ object.nome }</td>
+        </>
+      )
+    }
+    else if (tableName === 'Discente') {
       return (
         <>
           <td key={index+1}>{ object.cpf }</td>
@@ -42,131 +78,35 @@ const TablePanel = (props) => {
           <td key={index+14}>{ object.id_nacionalidade }</td>
           <td key={index+15}>{ object.id_pais_origem }</td>
           <td key={index+16}>{ object.id_naturalidade }</td>
-          <td key={index+17}>{ object.id_raca }</td>
+          <td key={index+17}>{ object.id_cor }</td>
         </>
       )
     } 
-    else if (tableName === 'AlunoDeficiencia') {
-      return (
-        <>
-          <td key={index+1}>{ object.cpf_aluno }</td>
-          <td key={index+2}>{ object.codigo_deficiencia }</td>
-        </>
-      )
-    }
-    else if (tableName === 'AlunoVinculo') {
+    else if (tableName === 'DiscenteDeficiencia') {
       return (
         <>
           <td key={index+1}>{ object.cpf }</td>
-          <td key={index+2}>{ object.matricula_vinculo }</td>
+          <td key={index+2}>{ object.id_deficiencia }</td>
+        </>
+      )
+    }
+    else if (tableName === 'DiscenteVinculo') {
+      return (
+        <>
+          <td key={index+1}>{ object.cpf }</td>
+          <td key={index+2}>{ object.matricula }</td>
           <td key={index+3}>{ object.id_curso }</td>
           <td key={index+4}>{ object.id_situacao_vinculo }</td>
-          <td key={index+5}>{ object.periodo_evasao }</td>
+          <td key={index+5}>{ object.semestre_vinculo }</td>
         </>
       )
     }
-    else if (tableName === 'Cota') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.descricao_cota }</td>
-        </>
-      )
-    }
-    else if (tableName === 'Curso') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.nome_curso }</td>
-        </>
-      )
-    } 
-    else if (tableName === 'Deficiencia') {
-      return (
-        <>
-          <td key={index+1}>{ object.codigo_deficiencia }</td>
-          <td key={index+2}>{ object.descricao_deficiencia }</td>
-        </>
-      )
-    }
-    else if (tableName === 'Escola') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.tipo_escola }</td>
-        </>
-      )
-    }
-    else if (tableName === 'EstadoCivil') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.estado_civil }</td>
-        </>
-      )
-    }
-    else if (tableName === 'Genero') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.genero }</td>
-        </>
-      )
-    }
-    else if (tableName === 'Ingresso') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.descricao_ingresso }</td>
-        </>
-      )
-    }
-    else if (tableName === 'Municipio') {
+    else if (tableName === 'Naturalidade') {
       return (
         <>
           <td key={index+1}>{ object.id }</td>
           <td key={index+2}>{ object.municipio }</td>
           <td key={index+1}>{ object.estado }</td>
-        </>
-      )
-    }
-    else if (tableName === 'Nacionalidade') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.nacionalidade }</td>
-        </>
-      )
-    }
-    else if (tableName === 'PaisOrigem') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.país_origem }</td>
-        </>
-      )
-    }
-    else if (tableName === 'Raca') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.raça }</td>
-        </>
-      )
-    }
-    else if (tableName === 'SituacaoAluno') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.descricao_situacao }</td>
-        </>
-      )
-    }
-    else if (tableName === 'SituacaoVinculo') {
-      return (
-        <>
-          <td key={index+1}>{ object.id }</td>
-          <td key={index+2}>{ object.descricao_situacao }</td>
         </>
       )
     }
