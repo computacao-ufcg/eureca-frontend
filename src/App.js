@@ -4,12 +4,13 @@ import Routes from './routes';
 
 import './global.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Routes />
     </div>
   );
 }
+
 
 export default App;
