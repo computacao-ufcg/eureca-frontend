@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 
 import Header from '../../components/Header'
 
-import NavBar from '../../components/StatisticsComponents/NavBar'
-import SideBar from '../../components/StatisticsComponents/SideBar'
+import NavBar from '../../components/StatisticsComponents/navBar/NavBar'
+import SideBar from '../../components/StatisticsComponents/sideBar/SideBar'
+import Slider from '../../components/StatisticsComponents/slider/Slider'
+import Graphs from './Graphs'
+import Title from '../../components/General/Title/Title'
 
-import statisticsEnum from './util'
+import {statisticsEnum, labels} from './util'
+
+import './style.css'
 
 const Statistics = () => {
 
@@ -15,16 +20,23 @@ const Statistics = () => {
         console.log(statisticsEnum[newOption])
         setOption(statisticsEnum[newOption])
     }
-
+    
     return(
         <React.Fragment>
             <Header></Header>
-            <div>
-                Estatísticas
-                <div>
+            <div className={'mainStatistics'}>
+                <Title name={"Estatísticas"}/>
+                <div className={'contentStatistics'}>
                     <NavBar changeOption={handleOption} listEnum={statisticsEnum}/>
-                    <div>
-                        <SideBar listOption={option}/>
+                    <div className={'modelStatistics'}>
+                        <div className={'listStatistics'}>
+                            <SideBar listOption={option}/>
+                            <div className={'compStatistics'}>
+                                <Slider labels ={labels}/>
+                                <Graphs/>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
