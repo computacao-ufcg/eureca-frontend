@@ -17,16 +17,20 @@ import LogoServices from '../../assets/home_images/services.png';
 import Header from '../../components/Header';
 import CardHome from '../../components/homeComponents/CardHome';
 
-export default function Home(){
+const Home = () => {
     return (
-        <div className="home-container">
+        <>
             <Header />
-            <main> 
-                <CardHome letter={letterM} logo={LogoThermometer} >Monitoramento</CardHome>
-                <CardHome letter={letterE} logo={LogoBoxplot} >Estatística</CardHome>
-                <CardHome letter={letterS} logo={LogoServices} >Serviços</CardHome>
-                <CardHome letter={letterC} logo={LogoComunication} >Comunicação</CardHome>
-            </main>
-        </div>
+            <div className="home-container">
+                <main> 
+                    <CardHome letter={letterM} logo={LogoThermometer} >Monitoramento</CardHome>
+                    <CardHome letter={letterE} logo={LogoBoxplot} to="/statistics" >Estatística</CardHome>
+                    <CardHome letter={letterS} logo={LogoServices} >Serviços</CardHome>
+                    <CardHome letter={letterC} logo={LogoComunication} >Comunicação</CardHome>
+                </main>
+            </div>
+        </>
     );
 }
+
+export default Home;
