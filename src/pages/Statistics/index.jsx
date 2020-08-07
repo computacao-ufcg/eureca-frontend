@@ -7,8 +7,9 @@ import SideBar from '../../components/StatisticsComponents/sideBar/SideBar'
 import Slider from '../../components/StatisticsComponents/slider/Slider'
 import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
+import Text from './Text'
 
-import {statisticsEnum, labels} from './util'
+import {statisticsEnum, labels, egressos} from './util'
 
 import './style.css'
 
@@ -16,9 +17,19 @@ const Statistics = () => {
 
     const [option, setOption] = useState(statisticsEnum.Discentes)
 
+    const [min, setMin] = useState(0)
+    const [max, setMax] = useState(17)
+    const [data, setData] = useState(egressos.periodos);
+
     const handleOption = (newOption) => {
         console.log(statisticsEnum[newOption])
         setOption(statisticsEnum[newOption])
+    }
+
+    const handleSlider = (min, max) => {
+        setMin(min);
+        setMax(max);
+        setData(egressos.periodos.slice(min, max+1))
     }
     
     return(
@@ -32,8 +43,11 @@ const Statistics = () => {
                         <div className={'listStatistics'}>
                             <SideBar listOption={option}/>
                             <div className={'compStatistics'}>
-                                <Slider labels ={labels}/>
-                                <Graphs/>
+                                <Slider min={min} max={max} changeSlider={handleSlider} labels ={labels}/>
+                                <Graphs min={min} max={max} data={data}/>
+                                <Text min={labels[min]} max={labels[max]} data={egressos}/>
+                                <br/>
+                                <br/>
                             </div>
                             
                         </div>

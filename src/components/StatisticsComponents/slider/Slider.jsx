@@ -7,8 +7,8 @@ import './style.css'
 
 const CustomSlider = (props) => {
 
-    const [value1, setValue1] = useState(3)
-    const [value2, setValue2] = useState(12)
+    const [value1, setValue1] = useState(props.min);
+    const [value2, setValue2] = useState(props.max);
 
     const labels = props.labels
     const handleStyle = {
@@ -31,9 +31,10 @@ const CustomSlider = (props) => {
                 tooltip={false}
                 handleTitle={labels[value1]}
                 onChange={v => {
-                console.log(v);
-                setValue1(v[0]);
-                setValue2(v[1]);
+                    console.log(v);
+                    setValue1(v[0]);
+                    setValue2(v[1]);
+                    props.changeSlider(v[0], v[1]);
                 }}
                 renderMark={mark => {
                     return <span>{labels[mark]}</span>;

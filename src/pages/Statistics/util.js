@@ -27,7 +27,7 @@ const statisticsEnum = {
     ]
 }
 
-const labels = ['12.1', '12.2', '13.1', '13.2', '14.1', '14.2', '15.1', '15.2', '15.1', '15.2', '16.1', '16.2', '17.1', '17.2', '18.1', '18.2', '19.1', '19.2', '20.1', '20.2'];
+const labels = ['12.1', '12.2', '13.1', '13.2', '14.1', '14.2', '15.1', '15.2', '16.1', '16.2', '17.1', '17.2', '18.1', '18.2', '19.1', '19.2', '20.1', '20.2'];
 
 const egressos = {
     "graduados": "250",
@@ -70,6 +70,30 @@ const egressos = {
         },
         {
             periodo: '16.2', cra: 7.5, egressos: 40,
+        },
+        {
+            periodo: '17.1', cra: 7.4, egressos: 43,
+        },
+        {
+            periodo: '17.2', cra: 6.8, egressos: 28,
+        },
+        {
+            periodo: '18.1', cra: 7.5, egressos: 34,
+        },
+        {
+            periodo: '18.2', cra: 6.9, egressos: 35,
+        },
+        {
+            periodo: '19.1', cra: 8.2, egressos: 51,
+        },
+        {
+            periodo: '19.2', cra: 7.7, egressos: 43,
+        },
+        {
+            periodo: '20.1', cra: 8.4, egressos: 34,
+        },
+        {
+            periodo: '20.2', cra: 6.6, egressos: 44,
         },
     ]
 }
