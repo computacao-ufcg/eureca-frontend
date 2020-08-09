@@ -5,6 +5,7 @@ import Header from '../../components/Header'
 import NavBar from '../../components/StatisticsComponents/navBar/NavBar'
 import SideBar from '../../components/StatisticsComponents/sideBar/SideBar'
 import Slider from '../../components/StatisticsComponents/slider/Slider'
+import Export from '../../components/StatisticsComponents/export'
 import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
 import Text from './Text'
@@ -46,6 +47,7 @@ const Statistics = () => {
                                 <Slider min={min} max={max} changeSlider={handleSlider} labels ={labels}/>
                                 <Graphs min={min} max={max} data={data}/>
                                 <Text min={labels[min]} max={labels[max]} data={egressos}/>
+                                <Export data={data}/>
                                 <br/>
                                 <br/>
                             </div>
