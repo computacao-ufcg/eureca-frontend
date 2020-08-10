@@ -8,11 +8,11 @@ const CardHome = (props) => {
     const toLink = props.to? props.to : "/";
 
     return (
-        <Link className="card" to={toLink}>
+        <Link className="cardHome" to={toLink}>
             <img src={props.letter} alt="letra" />
-            <div className="info">
+            <div className="infoHome">
                 <img src={props.logo} alt="logo" />
-                <h1>{props.children}</h1>
+                <div className={"titleCard"}>{props.children}</div>
             </div>
         </Link>
     );
