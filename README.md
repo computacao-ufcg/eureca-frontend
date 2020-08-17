@@ -13,9 +13,9 @@
 <p>Uma vez montada, agora podemos criar o container da aplicação:</p>
 
 <code>docker run -itd --name pdc-front-container \
-    -p 3000:3000
-    -v ${pwd}:/app
-    -v /app/node_modules
+    -p 3000:3000 \
+    -v ${pwd}:/app \
+    -v /app/node_modules \
     pdc-front:dev
 </code>
 
@@ -24,4 +24,4 @@
 - <b>-v</b> são os volumes criados para o hot reloading.
 - <b>pdc-front:dev</b> é o nome da imagem.
 
-<p>Caso não aconteça nenhum error é possível observar a aplicação rodando no seu localhost:3000</p>
+<p>Caso não ocorra nenhum error é possível observar a aplicação no seu localhost:3000</p>
