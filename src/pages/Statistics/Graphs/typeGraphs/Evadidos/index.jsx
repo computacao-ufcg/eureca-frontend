@@ -92,7 +92,7 @@ const Egressos = (props) => {
                 <YAxis yAxisId="right" orientation="right" />
                 <Tooltip />
                 <Legend />
-                <Line activeDot={false} yAxisId="left" type="monotone" dataKey={tag1} stroke="#885d41" activeDot={{ r: 8 }} />
+                <Line yAxisId="left" type="monotone" dataKey={tag1} stroke="#885d41" activeDot={{ r: 8 }} />
                 <Line yAxisId="right" type="monotone" dataKey={tag2} stroke="#0073e5" />
                 <Line yAxisId="right" type="monotone" dataKey={tag3} stroke="#CE4760" />
                 <Line yAxisId="right" type="monotone" dataKey={tag4} stroke="#2A252D" />
