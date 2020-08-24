@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Header from '../../components/Header'
 
@@ -14,6 +14,11 @@ import {statisticsEnum, labels, egressos, evadidos, labelTags} from './util'
 
 import './style.css'
 
+import {api, url} from '../../services/api'
+import axios from 'axios';
+
+const urlApi = url;
+
 const Statistics = () => {
 
     const [option, setOption] = useState(statisticsEnum.Discentes);
@@ -23,6 +28,7 @@ const Statistics = () => {
     const [max, setMax] = useState(17);
     const [data, setData] = useState(egressos.periodos);
     const [dataMaster, setDataMaster] = useState(egressos.periodos);
+    const [type, setType] = useState("egressos")
 
     const handleOption = (newOption) => {
         setOption(statisticsEnum[newOption])
@@ -31,13 +37,17 @@ const Statistics = () => {
 
     const handleOptionSide = (newOption) => {
         setOptionSide(newOption);
-        if(newOption == 'Egressos'){
+        if(newOption === 'Egressos'){
             setData(egressos.periodos.slice(min, max+1))
             setDataMaster(egressos.periodos)
+            setType("egressos")
+            setCategoria("egressos", min, max)
         }
-        else if(newOption == 'Evadidos'){
+        else if(newOption === 'Evadidos'){
             setData(evadidos.periodos.slice(min, max+1))
             setDataMaster(evadidos.periodos)
+            setType("evadidos")
+            setCategoria("evadidos", min, max)
         }
     }
 
@@ -45,7 +55,33 @@ const Statistics = () => {
         setMin(min);
         setMax(max);
         setData(dataMaster.slice(min, max+1))
+        setCategoria(type, min, max);
     }
+
+    useEffect(() => {
+        let query = type + "?" + "MIN=" + labels[min] + "&" + "MAX=" + labels[max];
+        console.log(query);
+        axios.get(urlApi + query, {})
+        .then(res => {
+            console.log(res)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    },[])
+
+    const setCategoria = (categoria, min, max) => {
+        let query = categoria + "?" + "MIN=" + labels[min] + "&" + "MAX=" + labels[max];
+        console.log(query);
+        axios.get(urlApi + categoria, {})
+        .then(res => {
+            console.log(res)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     
     return(
         <React.Fragment>
@@ -61,7 +97,7 @@ const Statistics = () => {
                                 <Slider min={min} max={max} changeSlider={handleSlider} labels ={labels}/>
                                 <Graphs min={min} max={max} data={data} option={optionSide} labels={labelTags}/>
                                 <Text min={labels[min]} max={labels[max]} data={egressos}/>
-                                <Export data={data}/>
+                                <Export data={egressos.periodos}/>
                                 <br/>
                                 <br/>
                             </div>

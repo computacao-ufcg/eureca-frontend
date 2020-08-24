@@ -37,7 +37,7 @@ const CustomSlider = (props) => {
                     props.changeSlider(v[0], v[1]);
                 }}
                 renderMark={mark => {
-                    return <span>{labels[mark]}</span>;
+                    return <span className={'legendSlider'}>{labels[mark]}</span>;
                 }}
             />
         </div>
