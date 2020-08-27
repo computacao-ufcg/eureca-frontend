@@ -18,7 +18,7 @@ const NavBar = (props) => {
     return (
         <div className={"mainNavBar"}>
             <div className={"buttonsNavBar"}>
-                {options.options.map((e, index) => <button id={"button" + index} className={index == 0 ? "selectedButton" : "customButton"} value={e} onClick={sendOption}>{e}</button>)}
+                {options.options.map((e, index) => <button key={"button" + index} id={"button" + index} className={index == 0 ? "selectedButton" : "customButton"} value={e} onClick={sendOption}>{e}</button>)}
             </div> 
         </div>
     )
