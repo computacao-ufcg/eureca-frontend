@@ -15,7 +15,7 @@ const SideBar = (props) => {
     return (
         <div className={"mainSideBar"}>
             <div className={"optionsSideBar"}>
-                {props.listOption.map((e, index) => <button id={"buttonSide" + index} className={"customOption"} value={e} onClick={sendOption}>{e}</button>)}  
+                {props.listOption.map((e, index) => <button key={"buttonSide" + index} className={"customOption"} value={e} onClick={sendOption}>{e}</button>)}  
             </div>
         </div>
     )

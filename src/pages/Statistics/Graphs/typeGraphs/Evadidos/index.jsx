@@ -103,7 +103,7 @@ const Egressos = (props) => {
                 <Line yAxisId="right" type="monotone" dataKey={tag9} stroke="#ED6827" />
             </LineChart>
             <div className={"optionsEvadidos"}>
-                {props.labels.map((e, index) => <label><Checkbox name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + e}</label>)}
+                {props.labels.map((e, index) => <label key={"label" + index}><Checkbox name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + e}</label>)}
             </div>
         </div>
     )
