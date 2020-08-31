@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Egressos from './typeGraphs/Egressos';
 import Evadidos from './typeGraphs/Evadidos';
+import Ativos from './typeGraphs/Ativos';
 
 import './style.css'
 
@@ -12,6 +13,8 @@ const Graphs = (props) => {
         content = <Egressos min={props.min} max={props.max} data={props.data}></Egressos>
     } else if(props.option === 'Evadidos') {
         content = <Evadidos min={props.min} max={props.max} data={props.data} labels={props.labels}></Evadidos>
+    } else if(props.option === 'Ativos') {
+        content = <Ativos min={props.min} max={props.max} data={props.data} labels={props.labels}></Ativos>
     }
     return(
         <div>

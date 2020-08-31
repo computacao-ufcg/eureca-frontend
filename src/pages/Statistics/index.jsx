@@ -10,7 +10,7 @@ import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
 import Text from './Text'
 
-import {statisticsEnum, labels, egressos, evadidos, labelTags} from './util'
+import {statisticsEnum, labels, egressos, evadidos, labelTags, ativosExemplo} from './util'
 
 import api from '../../services/api.js';
 
@@ -23,8 +23,8 @@ const Statistics = () => {
 
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(17);
-    const [data, setData] = useState(egressos.periodos);
-    const [dataMaster, setDataMaster] = useState(egressos.periodos);
+    const [data, setData] = useState(ativosExemplo);
+    const [dataMaster, setDataMaster] = useState(ativosExemplo);
     const [type, setType] = useState("egressos")
 
     const handleOption = (newOption) => {
@@ -45,6 +45,10 @@ const Statistics = () => {
             setDataMaster(evadidos.periodos)
             setType("evadidos")
             setCategoria("evadidos", min, max)
+        }
+        else if(newOption === 'Ativos'){
+            setDataMaster(ativosExemplo)
+            setType("ativos")
         }
     }
 

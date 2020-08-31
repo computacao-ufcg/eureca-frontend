@@ -1,0 +1,18 @@
+.mainGraphs {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.custom-tooltip{
+    background-color: white;
+    padding: 10px;
+}
+
+.title-tooltip{
+    font-weight: 600;
+}
+
+.scatter-cell {
+    cursor: pointer;
+}
