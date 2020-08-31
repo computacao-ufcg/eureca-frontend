@@ -48,6 +48,7 @@ const Statistics = () => {
         }
         else if(newOption === 'Ativos'){
             setDataMaster(ativosExemplo)
+            setData(ativosExemplo)
             setType("ativos")
         }
     }
