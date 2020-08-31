@@ -12,12 +12,9 @@ import Text from './Text'
 
 import {statisticsEnum, labels, egressos, evadidos, labelTags, ativosExemplo} from './util'
 
+import api from '../../services/api.js';
+
 import './style.css'
-
-import {api, url} from '../../services/api'
-import axios from 'axios';
-
-const urlApi = url;
 
 const Statistics = () => {
 
@@ -63,9 +60,9 @@ const Statistics = () => {
     }
 
     useEffect(() => {
-        let query = type + "?" + "MIN=" + labels[min] + "&" + "MAX=" + labels[max];
+        let query = type + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
         console.log(query);
-        axios.get(urlApi + query, {})
+        api.get('api/estatisticas/' + query, {})
         .then(res => {
             console.log(res)
         })
@@ -75,9 +72,9 @@ const Statistics = () => {
     },[])
 
     const setCategoria = (categoria, min, max) => {
-        let query = categoria + "?" + "MIN=" + labels[min] + "&" + "MAX=" + labels[max];
+        let query = categoria + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
         console.log(query);
-        axios.get(urlApi + categoria, {})
+        api.get('api/estatisticas/' + categoria, {})
         .then(res => {
             console.log(res)
         })
