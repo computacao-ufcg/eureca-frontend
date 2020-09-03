@@ -41,114 +41,42 @@ const egressos = {
     "max_cra": "8.13",
     "mediana_cra": "7.83",
     "periodos": [
-        {
-            periodo: '12.1', cra: 6.4, egressos: 33,
-        },
-        {
-            periodo: '12.2', cra: 7.8, egressos: 28,
-        },
-        {
-            periodo: '13.1', cra: 7.7, egressos: 24,
-        },
-        {
-            periodo: '13.2', cra: 7.9, egressos: 35,
-        },
-        {
-            periodo: '14.1', cra: 7.2, egressos: 41,
-        },
-        {
-            periodo: '14.2', cra: 6.7, egressos: 23,
-        },
-        {
-            periodo: '15.1', cra: 7.4, egressos: 34,
-        },
-        {
-            periodo: '15.2', cra: 7.6, egressos: 24,
-        },
-        {
-            periodo: '16.1', cra: 7.3, egressos: 37,
-        },
-        {
-            periodo: '16.2', cra: 7.5, egressos: 40,
-        },
-        {
-            periodo: '17.1', cra: 7.4, egressos: 43,
-        },
-        {
-            periodo: '17.2', cra: 6.8, egressos: 28,
-        },
-        {
-            periodo: '18.1', cra: 7.5, egressos: 34,
-        },
-        {
-            periodo: '18.2', cra: 6.9, egressos: 35,
-        },
-        {
-            periodo: '19.1', cra: 8.2, egressos: 51,
-        },
-        {
-            periodo: '19.2', cra: 7.7, egressos: 43,
-        },
-        {
-            periodo: '20.1', cra: 8.4, egressos: 34,
-        },
-        {
-            periodo: '20.2', cra: 6.6, egressos: 44,
-        },
-        {
-            periodo: '12.1', cra: 6.4, egressos: 33,
-        },
-        {
-            periodo: '12.2', cra: 7.8, egressos: 28,
-        },
-        {
-            periodo: '13.1', cra: 7.7, egressos: 24,
-        },
-        {
-            periodo: '13.2', cra: 7.9, egressos: 35,
-        },
-        {
-            periodo: '14.1', cra: 7.2, egressos: 41,
-        },
-        {
-            periodo: '14.2', cra: 6.7, egressos: 23,
-        },
-        {
-            periodo: '15.1', cra: 7.4, egressos: 34,
-        },
-        {
-            periodo: '15.2', cra: 7.6, egressos: 24,
-        },
-        {
-            periodo: '16.1', cra: 7.3, egressos: 37,
-        },
-        {
-            periodo: '16.2', cra: 7.5, egressos: 40,
-        },
-        {
-            periodo: '17.1', cra: 7.4, egressos: 43,
-        },
-        {
-            periodo: '17.2', cra: 6.8, egressos: 28,
-        },
-        {
-            periodo: '18.1', cra: 7.5, egressos: 34,
-        },
-        {
-            periodo: '18.2', cra: 6.9, egressos: 35,
-        },
-        {
-            periodo: '19.1', cra: 8.2, egressos: 51,
-        },
-        {
-            periodo: '19.2', cra: 7.7, egressos: 43,
-        },
-        {
-            periodo: '20.1', cra: 8.4, egressos: 34,
-        },
-        {
-            periodo: '20.2', cra: 6.6, egressos: 44,
-        },
+        {periodo: "12.1", cra: 6.4, egressos: 33},
+        {periodo: "12.1", cra: 6.4, egressos: 33},
+        {periodo: "12.2", cra: 7.8, egressos: 28},
+        {periodo: "12.2", cra: 7.8, egressos: 28},
+        {periodo: "13.1", cra: 7.7, egressos: 24},
+        {periodo: "13.1", cra: 7.7, egressos: 24},
+        {periodo: "13.2", cra: 7.9, egressos: 35},
+        {periodo: "13.2", cra: 7.9, egressos: 35},
+        {periodo: "14.1", cra: 7.2, egressos: 41},
+        {periodo: "14.1", cra: 7.2, egressos: 41},
+        {periodo: "14.2", cra: 6.7, egressos: 23},
+        {periodo: "14.2", cra: 6.7, egressos: 23},
+        {periodo: "15.1", cra: 7.4, egressos: 34},
+        {periodo: "15.1", cra: 7.4, egressos: 34},
+        {periodo: "15.2", cra: 7.6, egressos: 24},
+        {periodo: "15.2", cra: 7.6, egressos: 24},
+        {periodo: "16.1", cra: 7.3, egressos: 37},
+        {periodo: "16.1", cra: 7.3, egressos: 37},
+        {periodo: "16.2", cra: 7.5, egressos: 40},
+        {periodo: "16.2", cra: 7.5, egressos: 40},
+        {periodo: "17.1", cra: 7.4, egressos: 43},
+        {periodo: "17.1", cra: 7.4, egressos: 43},
+        {periodo: "17.2", cra: 6.8, egressos: 28},
+        {periodo: "17.2", cra: 6.8, egressos: 28},
+        {periodo: "18.1", cra: 7.5, egressos: 34},
+        {periodo: "18.1", cra: 7.5, egressos: 34},
+        {periodo: "18.2", cra: 6.9, egressos: 35},
+        {periodo: "18.2", cra: 6.9, egressos: 35},
+        {periodo: "19.1", cra: 8.2, egressos: 51},
+        {periodo: "19.1", cra: 8.2, egressos: 51},
+        {periodo: "19.2", cra: 7.7, egressos: 43},
+        {periodo: "19.2", cra: 7.7, egressos: 43},
+        {periodo: "20.1", cra: 8.4, egressos: 34},
+        {periodo: "20.1", cra: 8.4, egressos: 34},
+        {periodo: "20.2", cra: 6.6, egressos: 44},
+        {periodo: "20.2", cra: 6.6, egressos: 44}
     ]
 }
 
@@ -338,56 +266,59 @@ const evadidosExemplo = {
     ]
 }
 
+const labelsAtivos = ['1','2','3','4', '5', '6', '7', '8','9','10','11', '12', '13', '14'];
+
 const ativosExemplo = {
-    alunos: [{id: '142412', x: 10, y: 75},
-            {id: '142413', x: 1, y: 10},
-            {id: '142414', x: 7, y: 67},
-            {id: '142415', x: 3, y: 32},
-            {id: '142416', x: 4, y: 48},
-            {id: '142417', x: 6, y: 54},
-            {id: '142418', x: 9, y: 73},
-            {id: '142419', x: 11, y: 88},
-            {id: '142420', x: 2, y: 15},
-            {id: '142421', x: 5, y: 45},
-            {id: '142422', x: 3, y: 28},
-            {id: '142423', x: 6, y: 62},
-            {id: '142424', x: 8, y: 74},
-            {id: '142425', x: 12, y: 92},
-            {id: '142426', x: 13, y: 94},
-            {id: '142427', x: 4, y: 41},
-            {id: '142428', x: 1, y: 8},
-            {id: '142429', x: 7, y: 77},
-            {id: '142430', x: 3, y: 33},
-            {id: '142431', x: 4, y: 42},
-            {id: '142432', x: 6, y: 59},
-            {id: '142433', x: 9, y: 87},
-            {id: '142434', x: 11, y: 98},
-            {id: '142435', x: 2, y: 20},
-            {id: '142436', x: 5, y: 51},
-            {id: '142437', x: 3, y: 34},
-            {id: '142438', x: 6, y: 65},
-            {id: '142439', x: 8, y: 79},
-            {id: '142440', x: 13, y: 82},
-            {id: '142441', x: 14, y: 99},
-            {id: '142442', x: 12, y: 82},
-            {id: '142443', x: 13, y: 95},
-            {id: '142444', x: 4, y: 51},
-            {id: '142445', x: 1, y: 20},
-            {id: '142446', x: 7, y: 57},
-            {id: '142447', x: 3, y: 42},
-            {id: '142448', x: 4, y: 22},
-            {id: '142449', x: 6, y: 49},
-            {id: '142450', x: 9, y: 96},
-            {id: '142451', x: 11, y: 78},
-            {id: '142452', x: 2, y: 27},
-            {id: '142453', x: 5, y: 31},
-            {id: '142454', x: 3, y: 36},
-            {id: '142455', x: 6, y: 69},
-            {id: '142456', x: 8, y: 80},
-            {id: '142457', x: 13, y: 81},
-            {id: '142458', x: 14, y: 67},
-            {id: '142459', x: 14, y: 67}
-        ],
+    alunos:[
+        {id: "142413", x: 1, y: 10},
+        {id: "142428", x: 1, y: 8},
+        {id: "142445", x: 1, y: 20},
+        {id: "142420", x: 2, y: 15},
+        {id: "142435", x: 2, y: 20},
+        {id: "142452", x: 2, y: 27},
+        {id: "142415", x: 3, y: 32},
+        {id: "142422", x: 3, y: 28},
+        {id: "142430", x: 3, y: 33},
+        {id: "142437", x: 3, y: 34},
+        {id: "142447", x: 3, y: 42},
+        {id: "142454", x: 3, y: 36},
+        {id: "142416", x: 4, y: 48},
+        {id: "142427", x: 4, y: 41},
+        {id: "142431", x: 4, y: 42},
+        {id: "142444", x: 4, y: 51},
+        {id: "142448", x: 4, y: 22},
+        {id: "142421", x: 5, y: 45},
+        {id: "142436", x: 5, y: 51},
+        {id: "142453", x: 5, y: 31},
+        {id: "142417", x: 6, y: 54},
+        {id: "142423", x: 6, y: 62},
+        {id: "142432", x: 6, y: 59},
+        {id: "142438", x: 6, y: 65},
+        {id: "142449", x: 6, y: 49},
+        {id: "142455", x: 6, y: 69},
+        {id: "142414", x: 7, y: 67},
+        {id: "142429", x: 7, y: 77},
+        {id: "142446", x: 7, y: 57},
+        {id: "142424", x: 8, y: 74},
+        {id: "142439", x: 8, y: 79},
+        {id: "142456", x: 8, y: 80},
+        {id: "142418", x: 9, y: 73},
+        {id: "142433", x: 9, y: 87},
+        {id: "142450", x: 9, y: 96},
+        {id: "142412", x: 10, y: 75},
+        {id: "142419", x: 11, y: 88},
+        {id: "142434", x: 11, y: 98},
+        {id: "142451", x: 11, y: 78},
+        {id: "142425", x: 12, y: 92},
+        {id: "142442", x: 12, y: 82},
+        {id: "142426", x: 13, y: 94},
+        {id: "142440", x: 13, y: 82},
+        {id: "142443", x: 13, y: 95},
+        {id: "142457", x: 13, y: 81},
+        {id: "142441", x: 14, y: 99},
+        {id: "142458", x: 14, y: 67},
+        {id: "142459", x: 14, y: 67}
+    ],
 
     medidas: [
         {x: 1, y: 11, ideal: 12},
@@ -424,4 +355,4 @@ const ativosExemplo = {
     ],
 }
 
-export {statisticsEnum, labels, egressos, evadidos, labelTags, ativosExemplo};
+export {statisticsEnum, labels, egressos, evadidos, labelTags, labelsAtivos, ativosExemplo};

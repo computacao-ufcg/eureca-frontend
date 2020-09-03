@@ -28,8 +28,6 @@ const Ativos = (props) => {
         }
     }
     const CustomTooltip = ({ active, payload, label }) => {
-        console.log(payload)
-        console.log(label)
         if (active) {
           const statusNode = status(payload[0].payload)
           return (

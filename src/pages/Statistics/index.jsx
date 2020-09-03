@@ -10,7 +10,7 @@ import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
 import Text from './Text'
 
-import {statisticsEnum, labels, egressos, evadidos, labelTags, ativosExemplo} from './util'
+import {statisticsEnum, labels, egressos, evadidos, labelTags,labelsAtivos, ativosExemplo} from './util'
 
 import api from '../../services/api.js';
 
@@ -25,7 +25,8 @@ const Statistics = () => {
     const [max, setMax] = useState(17);
     const [data, setData] = useState(ativosExemplo);
     const [dataMaster, setDataMaster] = useState(ativosExemplo);
-    const [type, setType] = useState("egressos")
+    const [type, setType] = useState("Ativos");
+    const [label, setLabel] = useState(labelsAtivos);
 
     const handleOption = (newOption) => {
         setOption(statisticsEnum[newOption])
@@ -35,18 +36,21 @@ const Statistics = () => {
     const handleOptionSide = (newOption) => {
         setOptionSide(newOption);
         if(newOption === 'Egressos'){
+            setLabel(labels);
             setData(egressos.periodos.slice(min, max+1))
             setDataMaster(egressos.periodos)
             setType("egressos")
             setCategoria("egressos", min, max)
         }
         else if(newOption === 'Evadidos'){
+            setLabel(labels);
             setData(evadidos.periodos.slice(min, max+1))
             setDataMaster(evadidos.periodos)
             setType("evadidos")
             setCategoria("evadidos", min, max)
         }
         else if(newOption === 'Ativos'){
+            setLabel(labelsAtivos);
             setDataMaster(ativosExemplo)
             setData(ativosExemplo)
             setType("ativos")
@@ -56,8 +60,30 @@ const Statistics = () => {
     const handleSlider = (min, max) => {
         setMin(min);
         setMax(max);
-        setData(dataMaster.slice(min, max+1))
         setCategoria(type, min, max);
+
+        if(type==='Ativos'){
+            setData(getDataAtivos(dataMaster, label[min], label[max]));
+        }else{
+            setData(dataMaster.slice(min, max+1))
+        }
+    }
+
+    const getDataAtivos = (dataMaster, start, end) => {
+        let alunos = [];
+        const medidas = dataMaster.medidas;
+        const ideal = dataMaster.ideal;
+
+        dataMaster.alunos.map(e =>{
+            if(e.x >= start && e.x <= end){
+                alunos.push(e);
+            }
+            return null;
+        });
+
+        const aux = {alunos, medidas, ideal};
+
+        return aux;
     }
 
     useEffect(() => {
@@ -96,7 +122,7 @@ const Statistics = () => {
                         <div className={'listStatistics'}>
                             <SideBar changeOption={handleOptionSide} listOption={option}/>
                             <div className={'compStatistics'}>
-                                <Slider min={min} max={max} changeSlider={handleSlider} labels ={labels}/>
+                                <Slider min={min} max={max} changeSlider={handleSlider} labels ={label}/>
                                 <Graphs min={min} max={max} data={data} option={optionSide} labels={labelTags}/>
                                 <Text min={labels[min]} max={labels[max]} data={egressos}/>
                                 <Export data={egressos.periodos}/>
