@@ -10,7 +10,7 @@ const statisticsEnum = {
         "Evadidos",
         "Retidos",
     ],
-    "Matriculas": [
+    "Matrículas": [
         "Exemplo",
         "Mais Exemplos",
         "Alguma coisa",
