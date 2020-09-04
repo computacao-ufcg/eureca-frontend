@@ -25,7 +25,7 @@ const Statistics = () => {
     const [max, setMax] = useState(17);
     const [data, setData] = useState(ativosExemplo);
     const [dataMaster, setDataMaster] = useState(ativosExemplo);
-    const [type, setType] = useState("Ativos");
+    const [type, setType] = useState("ativos");
     const [label, setLabel] = useState(labelsAtivos);
 
     const handleOption = (newOption) => {
@@ -62,7 +62,7 @@ const Statistics = () => {
         setMax(max);
         setCategoria(type, min, max);
 
-        if(type==='Ativos'){
+        if(type==='ativos'){
             setData(getDataAtivos(dataMaster, label[min], label[max]));
         }else{
             setData(dataMaster.slice(min, max+1))
