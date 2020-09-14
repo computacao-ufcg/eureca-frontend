@@ -5,7 +5,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 import './style.css'
 
 const Egressos = (props) => {
-
+    console.log(props.data)
     return (
         <div className={'mainGraphs'}>
             <LineChart
@@ -17,12 +17,12 @@ const Egressos = (props) => {
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="periodo" />
+                <XAxis dataKey="semestre_vinculo" />
                 <YAxis yAxisId="left" />
                 <YAxis yAxisId="right" orientation="right" />
                 <Tooltip />
-                <Legend />
-                <Line yAxisId="left" type="monotone" dataKey="egressos" stroke="#885d41" activeDot={{ r: 8 }} />
+                <Legend />    
+                <Line yAxisId="left" type="monotone" dataKey="qtd_egressos" stroke="#885d41" activeDot={{ r: 8 }} />
                 <Line yAxisId="right" type="monotone" dataKey="cra" stroke="#0073e5" />
             </LineChart>
         </div>
