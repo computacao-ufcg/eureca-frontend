@@ -335,6 +335,10 @@ const ativosExemplo = {
         {x: 12, y: 96, ideal: 100},
         {x: 13, y: 98, ideal: 100},
         {x: 14, y: 100, ideal: 100},
+        {x: 15, y: 100, ideal: 100},
+        {x: 16, y: 100, ideal: 100},
+        {x: 17, y: 100, ideal: 100},
+        {x: 18, y: 100, ideal: 100},
     ],
 
     ideal: [

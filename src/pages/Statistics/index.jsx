@@ -10,7 +10,7 @@ import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
 import Text from './Text'
 
-import {statisticsEnum, labels, egressos, evadidos, labelTags,labelsAtivos, ativosExemplo} from './util'
+import {statisticsEnum, labels, egressos, evadidos, labelTags, labelsAtivos, ativosExemplo} from './util'
 
 import api from '../../services/api.js';
 
@@ -23,7 +23,7 @@ const Statistics = () => {
 
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(17);
-    const [data, setData] = useState(ativosExemplo);
+    const [data, setData] = useState(ativosExemplo.alunos);
     const [dataMaster, setDataMaster] = useState(ativosExemplo);
     const [type, setType] = useState("ativos");
     const [label, setLabel] = useState(labelsAtivos);
@@ -34,37 +34,34 @@ const Statistics = () => {
     }
 
     const handleOptionSide = (newOption) => {
-        setOptionSide(newOption);
         if(newOption === 'Egressos'){
             setLabel(labels);
-            setData(egressos.periodos.slice(min, max+1))
-            setDataMaster(egressos.periodos)
             setType("egressos")
             setCategoria("egressos", min, max)
         }
         else if(newOption === 'Evadidos'){
             setLabel(labels);
-            setData(evadidos.periodos.slice(min, max+1))
-            setDataMaster(evadidos.periodos)
             setType("evadidos")
-            setCategoria("evadidos", min, max)
+            setDataMaster(evadidos.periodos)
+            setData(evadidos.periodos)
         }
         else if(newOption === 'Ativos'){
             setLabel(labelsAtivos);
-            setDataMaster(ativosExemplo)
-            setData(ativosExemplo)
+            setCategoria("ativos", min, max)
             setType("ativos")
         }
+        setOptionSide(newOption);
     }
 
     const handleSlider = (min, max) => {
         setMin(min);
         setMax(max);
-        setCategoria(type, min, max);
 
         if(type==='ativos'){
             setData(getDataAtivos(dataMaster, label[min], label[max]));
-        }else{
+        } else if(type === 'egressos'){
+            setCategoria(type, min, max)
+        } else if(type === 'evadidos'){
             setData(dataMaster.slice(min, max+1))
         }
     }
@@ -74,15 +71,9 @@ const Statistics = () => {
         const medidas = dataMaster.medidas;
         const ideal = dataMaster.ideal;
 
-        dataMaster.alunos.map(e =>{
-            if(e.x >= start && e.x <= end){
-                alunos.push(e);
-            }
-            return null;
-        });
+        dataMaster.map(e => e.periodos_ativos >= start && e.periodos_ativos <= end ? alunos.push(e) : null);
 
-        const aux = {alunos, medidas, ideal};
-
+        const aux = alunos;
         return aux;
     }
 
@@ -91,7 +82,9 @@ const Statistics = () => {
         console.log(query);
         api.get('api/estatisticas/' + query, {})
         .then(res => {
-            console.log(res)
+            setData(res.data)
+            setDataMaster(res.data)
+            console.log(res.data)
         })
         .catch(error => {
             console.log(error)
@@ -101,9 +94,11 @@ const Statistics = () => {
     const setCategoria = (categoria, min, max) => {
         let query = categoria + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
         console.log(query);
-        api.get('api/estatisticas/' + categoria, {})
+        api.get('api/estatisticas/' + query, {})
         .then(res => {
-            console.log(res)
+            setData(res.data)
+            setDataMaster(res.data)
+            console.log(res.data)
         })
         .catch(error => {
             console.log(error)
@@ -124,8 +119,8 @@ const Statistics = () => {
                             <div className={'compStatistics'}>
                                 <Slider min={min} max={max} changeSlider={handleSlider} labels ={label}/>
                                 <Graphs min={min} max={max} data={data} option={optionSide} labels={labelTags}/>
-                                <Text min={labels[min]} max={labels[max]} data={egressos}/>
-                                <Export data={egressos.periodos}/>
+                                <Text min={labels[min]} max={labels[max]} data={data}/>
+                                <Export type={type} data={data}/>
                                 <br/>
                                 <br/>
                             </div>
