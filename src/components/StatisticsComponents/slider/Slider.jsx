@@ -6,11 +6,10 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import './style.css'
 
 const CustomSlider = (props) => {
-
-    const [value1, setValue1] = useState(props.min);
-    const [value2, setValue2] = useState(props.max);
-
     const labels = props.labels
+    const [value1, setValue1] = useState(props.min);
+    const [value2, setValue2] = useState(props.type == "ativos" ? 16 : 68);
+    console.log(value1, value2)
     const handleStyle = {
         color: '#fff',
         fontSize: 1,
@@ -19,6 +18,7 @@ const CustomSlider = (props) => {
     };
 
     return (
+        labels ?
         <div className={'mainSlider'}>
             <RangeSlider
                 min={0}
@@ -37,10 +37,17 @@ const CustomSlider = (props) => {
                     props.changeSlider(v[0], v[1]);
                 }}
                 renderMark={mark => {
-                    return <span className={'legendSlider'}>{labels[mark]}</span>;
+                    if(props.type != 'ativos'){
+                        if ([value1, value2].includes(mark)) {
+                            return <span className={'legendSlider'}>{labels[mark]}</span>;
+                        }
+                    } else {
+                        return <span className={'legendSlider'}>{labels[mark]}</span>;
+                    }
                 }}
             />
         </div>
+        : null
     )
 }
 
