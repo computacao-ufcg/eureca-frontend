@@ -11,10 +11,10 @@ import { getMedidas } from '../../../utilAtivos';
 import './style.css'
 
 const Ativos = (props) => {
-    console.log( "data ativos",props.data)
+    console.log( "data ativos", props.data)
     console.log("props", props)
     const dataAtivos = props.data ;
-    const medidas = getMedidas(props.data);
+    const medidas = props.data[0] ? getMedidas(props.data) : null;
     const history = useHistory();
 
 
