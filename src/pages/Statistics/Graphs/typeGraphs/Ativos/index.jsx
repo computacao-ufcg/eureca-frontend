@@ -1,49 +1,53 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+import { XAxis, YAxis, CartesianGrid, Tooltip,
     Legend, Scatter, ScatterChart, Cell } from 'recharts';
 
 import {ativosExemplo} from '../../../util'
 
+import { getMedidas } from '../../../utilAtivos';
+
 import './style.css'
 
 const Ativos = (props) => {
-    console.log(props.data)
-    const dataAtivos = props.data 
-    const aux = ativosExemplo
+    console.log( "data ativos", props.data)
+    console.log("props", props)
+    const dataAtivos = props.data ;
+    const medidas = props.data[0] ? getMedidas(props.data) : null;
     const history = useHistory();
 
-    const handleColor = (node) => {
+
+    /**
+     * Metodo responsavel por retornar ["cor","descricao"] para cada aluno
+     * @param {Object} node representacao do aluno
+     */
+    const handleInfo = (node) => {
+        let result = ["red","aluno ruin"];
+
+        // Medida é um único elemento do conjunto Medidas
+        const [ medida ] = medidas.filter( e => e.x == node.periodos_integralizados);
+
         if(node.porcentagem_concluida > 100) {
-            return "brown"
-        } else if (node.porcentagem_concluida < aux.medidas[node.periodos_ativos - 1].y ){
-            return "red"
-        } else if (node.porcentagem_concluida >= aux.medidas[node.periodos_ativos - 1].y && node.porcentagem_concluida < aux.medidas[node.periodos_ativos - 1].ideal) {
-            return "green"
-        } else if (node.porcentagem_concluida >= aux.medidas[node.periodos_ativos - 1].ideal){
-            return "blue"
+            result = ["purple", "O aluno já deveria ter se formado"];
+        } else if (node.porcentagem_concluida < medida.y ){
+            result = ["red","O aluno apresenta dificuldades"];
+        } else if (node.porcentagem_concluida >= medida.y && node.porcentagem_concluida < medida.ideal) {
+            result = ["green","Está na média dos alunos"];
+        } else if (node.porcentagem_concluida >= medida.ideal){
+            result = ["blue","O aluno está na medida esperada"]
         } 
+
+        return result;
     }
 
-    const status = (node) => {
-        if(node.porcentagem_concluida > 100) {
-            return "O aluno já deveria ter se formado"
-        } else if (node.porcentagem_concluida < aux.medidas[node.periodos_ativos - 1].y ){
-            return "O aluno apresenta dificuldades"
-        } else if (node.porcentagem_concluida >= aux.medidas[node.periodos_ativos - 1].y && node.porcentagem_concluida < aux.medidas[node.periodos_ativos - 1].ideal) {
-            return "O aluno apresenta desempenho satisfatório"
-        } else if (node.porcentagem_concluida >= aux.medidas[node.periodos_ativos - 1].ideal){
-            return "O aluno está acima do esperado"
-        } 
-    }
     const CustomTooltip = ({ active, payload, label }) => {
         if (active) {
-          const statusNode = status(payload[0].payload)
+          const statusNode = handleInfo(payload[0].payload)[1];
           return (
             <div className="custom-tooltip">
               <p className="title-tooltip">{payload[0].payload.matricula}</p>
-              <p>Períodos ativos: {payload[0].payload.periodos_ativos}</p>
+              <p>Períodos Integralizados: {payload[0].payload.periodos_integralizados}</p>
               <p>Curso Concluído: {payload[0].payload.porcentagem_concluida}%</p>
               <p className="desc">{statusNode}</p>
             </div>
@@ -66,11 +70,11 @@ const Ativos = (props) => {
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />}/>
                 <Legend />
 
-                <XAxis dataKey="periodos_ativos" type="number" name='periodosAtivos' />
+                <XAxis dataKey="periodos_integralizados" type="number" name='periodosAtivos' />
                 <YAxis dataKey="porcentagem_concluida" type="number" name='cursoConcluido' unit='%' />
                 <Scatter name="aluno" data={dataAtivos} fill="black">
                     {
-                        dataAtivos[0] ? (dataAtivos.map((entry, index) => entry.porcentagem_concluida ? <Cell className="scatter-cell" key={`cell-${index}`} fill={handleColor(entry)} onClick={() => history.push("statistics/ativos/" + entry.matricula)}/> : null)) : null
+                        dataAtivos[0] ? (dataAtivos.map((entry, index) => entry.porcentagem_concluida ? <Cell className="scatter-cell" key={`cell-${index}`} fill={handleInfo(entry)[0]} onClick={() => history.push("statistics/ativos/" + entry.matricula)}/> : null)) : null
                     }
                 </Scatter>
                     

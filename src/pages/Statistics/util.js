@@ -266,7 +266,7 @@ const evadidosExemplo = {
     ]
 }
 
-const labelsAtivos = ['1','2','3','4', '5', '6', '7', '8','9','10','11', '12', '13', '14'];
+const labelsAtivos = ["13.1", "13.2", "14.1", "14.2", "15.1", "15.2", "16.1", "16.2", "17.1", "17.2", "18.1", "18.2"];
 
 const ativosExemplo = {
     alunos:[
