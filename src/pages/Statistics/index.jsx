@@ -10,7 +10,7 @@ import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
 import Text from './Text'
 
-import {statisticsEnum, labels, egressos, evadidos, labelTags, labelsAtivos, ativosExemplo} from './util'
+import {statisticsEnum, labels, egressos, evadidos, labelTags, labelsAtivos} from './util'
 
 import api from '../../services/api.js';
 
@@ -23,10 +23,10 @@ const Statistics = () => {
 
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(17);
-    const [data, setData] = useState(ativosExemplo.alunos);
-    const [dataMaster, setDataMaster] = useState(ativosExemplo);
+    const [data, setData] = useState([]);
+    const [dataMaster, setDataMaster] = useState([]);
     const [type, setType] = useState("ativos");
-    const [label, setLabel] = useState(labelsAtivos);
+    const [label, setLabel] = useState([]);
 
     const handleOption = (newOption) => {
         setOption(statisticsEnum[newOption])
@@ -53,7 +53,7 @@ const Statistics = () => {
         setOptionSide(newOption);
     }
 
-    const handleSlider = (min, max) => {
+    const handleSlider = (min, max) => {      
         setMin(min);
         setMax(max);
 
@@ -66,43 +66,74 @@ const Statistics = () => {
         }
     }
 
+    /**
+     * Método responsavel por pegar o conjunto de dados para Ativos de acordo com o parametro fornecido do slider.
+     * @param {Object} dataMaster
+     * @param {String} start 
+     * @param {String} end 
+     */
     const getDataAtivos = (dataMaster, start, end) => {
         let alunos = [];
-        const medidas = dataMaster.medidas;
-        const ideal = dataMaster.ideal;
-
-        dataMaster.map(e => e.periodos_ativos >= start && e.periodos_ativos <= end ? alunos.push(e) : null);
-
+        dataMaster.map(e => e.periodo_ingresso >= start && e.periodo_ingresso <= end ? alunos.push(e) : null);
         const aux = alunos;
+
         return aux;
     }
 
+    /**
+     * Metodo responsavel por pegar o label certo para cada gráfico
+     * @param {Object} data 
+     * @param {String} categoria - Pode ser ativos, egressos, evadidos ou retidos 
+     */
+    const getLabel = (data, categoria) => {
+        const aux = new Set();
+        const newLabel = [];
+
+        if( categoria == 'ativos'){
+            data.forEach(e => {
+                aux.add(e.periodo_ingresso); // montando o novo label com elementos unicos.
+            });
+        }else{
+            // modificar para quando tiver perssonalizando os labels dos outros campos (egressos, retidos ....)
+            return label
+        }
+        
+        // copiando os dados do Set para uma Lista
+        aux.forEach(e => newLabel.push(e));
+        console.log("aux label", aux);
+        console.log("Novo label:",newLabel);
+        return newLabel;
+    }
+
     useEffect(() => {
-        let query = type + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
+        // Operacao ternaria para gerenciar a query
+        let query = type=='ativos' ? type : type + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
         console.log(query);
         api.get('api/estatisticas/' + query, {})
         .then(res => {
-            setData(res.data)
-            setDataMaster(res.data)
-            console.log(res.data)
+            setData(res.data);
+            setDataMaster(res.data);
+            setLabel(getLabel(res.data, type));
+            console.log("aqui",label)
         })
         .catch(error => {
             console.log(error)
         })
     },[])
 
-    const setCategoria = (categoria, min, max) => {
-        let query = categoria + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
-        console.log(query);
-        api.get('api/estatisticas/' + query, {})
-        .then(res => {
-            setData(res.data)
-            setDataMaster(res.data)
-            console.log(res.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    const setCategoria = async (categoria, min, max) => {
+        // Operacao ternaria para gerenciar a query
+        let query = categoria == 'ativos' ? categoria : categoria + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
+
+        const res = await api.get('api/estatisticas/' + query, {});
+        
+        if(res){
+            setData(res.data);
+            setDataMaster(res.data);
+            setLabel(getLabel(res.data, categoria));
+        }else{
+            console.log(res.statusText)
+        }
     }
 
     
