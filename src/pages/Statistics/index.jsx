@@ -35,17 +35,21 @@ const Statistics = () => {
 
     const handleOptionSide = (newOption) => {
         if(newOption === 'Egressos'){
+            setMax(68)
             setLabel(labels);
             setType("egressos")
             setCategoria("egressos", min, max)
+            console.log(labels)
         }
         else if(newOption === 'Evadidos'){
+            setMax(68)
             setLabel(labels);
             setType("evadidos")
             setDataMaster(evadidos.periodos)
             setData(evadidos.periodos)
         }
         else if(newOption === 'Ativos'){
+            setMax(17)
             setLabel(labelsAtivos);
             setCategoria("ativos", min, max)
             setType("ativos")
@@ -86,6 +90,7 @@ const Statistics = () => {
      * @param {String} categoria - Pode ser ativos, egressos, evadidos ou retidos 
      */
     const getLabel = (data, categoria) => {
+        console.log(categoria)
         const aux = new Set();
         const newLabel = [];
 
@@ -130,7 +135,7 @@ const Statistics = () => {
         if(res){
             setData(res.data);
             setDataMaster(res.data);
-            setLabel(getLabel(res.data, categoria));
+            setLabel(categoria == 'ativos' ? getLabel(res.data, categoria) : labels);
         }else{
             console.log(res.statusText)
         }
@@ -148,7 +153,7 @@ const Statistics = () => {
                         <div className={'listStatistics'}>
                             <SideBar changeOption={handleOptionSide} listOption={option}/>
                             <div className={'compStatistics'}>
-                                <Slider min={min} max={max} changeSlider={handleSlider} labels ={label}/>
+                                <Slider min={min} max={max} changeSlider={handleSlider} labels={label} type={type}/>
                                 <Graphs min={min} max={max} data={data} option={optionSide} labels={labelTags}/>
                                 <Text min={labels[min]} max={labels[max]} data={data}/>
                                 <Export type={type} data={data}/>

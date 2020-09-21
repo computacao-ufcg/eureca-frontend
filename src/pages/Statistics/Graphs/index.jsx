@@ -9,7 +9,6 @@ import './style.css'
 const Graphs = (props) => {
     let content = null;
 
-
     console.log(props.data)
     if(props.option === 'Egressos'){
         content = <Egressos min={props.min} max={props.max} data={props.data.periodos} type={props.option}></Egressos>
