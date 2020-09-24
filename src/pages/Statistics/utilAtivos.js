@@ -47,4 +47,36 @@ const getMedidas = (data) => {
     return medidas;
 }
 
-export { getMedidas };
+/**
+ * Metodo responsavel por separar os dados dos alunos, de acordo com a porcentagem de cada, para ser usado no Scatter.
+ * @param {Object} data - Json com os dados dos alunos
+ */
+const getDataScatter = (data) => {
+    const medidas = data[0] ? getMedidas(data) : null;
+    
+    let red = []
+    let green = []
+    let blue = []
+    let purple = []
+
+    data.map( (entry, index) => {
+        const [ medida ] = medidas.filter( e => e.x == entry.periodos_integralizados);
+
+        if(entry.porcentagem_concluida >= 100) {
+            purple.push(entry);
+        } else if (entry.porcentagem_concluida < medida.y && entry.porcentagem_concluida < medida.ideal){
+            red.push(entry);
+        } else if (entry.porcentagem_concluida >= medida.y && entry.porcentagem_concluida < medida.ideal) {
+            green.push(entry);
+        } else if (entry.porcentagem_concluida >= medida.ideal){
+            blue.push(entry);
+        } 
+    });
+
+    const newData = [red, green, blue, purple];
+    return newData;
+}
+
+
+
+export { getDataScatter };

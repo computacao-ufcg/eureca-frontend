@@ -113,13 +113,11 @@ const Statistics = () => {
     useEffect(() => {
         // Operacao ternaria para gerenciar a query
         let query = type=='ativos' ? type : type + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
-        console.log(query);
         api.get('api/estatisticas/' + query, {})
         .then(res => {
             setData(res.data);
             setDataMaster(res.data);
             setLabel(getLabel(res.data, type));
-            console.log("aqui",label)
         })
         .catch(error => {
             console.log(error)
