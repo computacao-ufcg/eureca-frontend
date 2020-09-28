@@ -61,6 +61,8 @@ const Statistics = () => {
         setMax(max);
 
         if(type==='ativos'){
+            setMin(label[min]);
+            setMax(label[max]);
             setData(getDataAtivos(dataMaster, label[min], label[max]));
         } else if(type === 'egressos'){
             setCategoria(type, min, max)
