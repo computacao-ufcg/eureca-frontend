@@ -30,6 +30,8 @@ const Statistics = () => {
     const handleOption = (newOption) => {
         setOption(statisticsEnum[newOption])
         setOptionSide(statisticsEnum[newOption][0])
+        setType("ativos")
+        setCategoria("ativos", 0, 17)
     }
 
     const handleOptionSide = (newOption) => {
@@ -37,7 +39,7 @@ const Statistics = () => {
             setMax(68)
             setLabel(labels);
             setType("egressos")
-            setCategoria("egressos", min, max)
+            setCategoria("egressos", 0, 66)
             console.log(labels)
         }
         else if(newOption === 'Evadidos'){
@@ -157,8 +159,8 @@ const Statistics = () => {
                         <div className={'listStatistics'}>
                             <SideBar changeOption={handleOptionSide} listOption={option}/>
                             <div className={'compStatistics'}>
-                                <Slider min={min} max={max} changeSlider={handleSlider} labels={label} type={type}/>
-                                <Graphs min={min} max={max} data={data} option={optionSide} labels={labelTags}/>
+                                <Graphs min={min} max={max} data={data} option={optionSide} labels={labelTags} changeSlider={handleSlider} labelSlider={label}/>
+                                <Text min={labels[min]} max={labels[max]} data={data}/>
                                 <Export type={type} data={data}/>
                                 <br/>
                                 <br/>
