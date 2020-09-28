@@ -8,9 +8,8 @@ import Slider from '../../components/StatisticsComponents/slider/Slider'
 import Export from '../../components/StatisticsComponents/export'
 import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
-import Text from './Text'
 
-import {statisticsEnum, labels, egressos, evadidos, labelTags, labelsAtivos} from './util'
+import {statisticsEnum, labels, evadidos, labelTags, labelsAtivos} from './util'
 
 import api from '../../services/api.js';
 
@@ -64,6 +63,8 @@ const Statistics = () => {
         setMax(max);
 
         if(type==='ativos'){
+            setMin(label[min]);
+            setMax(label[max]);
             setData(getDataAtivos(dataMaster, label[min], label[max]));
         } else if(type === 'egressos'){
             setCategoria(type, min, max)
@@ -94,21 +95,26 @@ const Statistics = () => {
     const getLabel = (data, categoria) => {
         console.log(categoria)
         const aux = new Set();
-        const newLabel = [];
+        let newLabel = [];
 
         if( categoria == 'ativos'){
             data.forEach(e => {
                 aux.add(e.periodo_ingresso); // montando o novo label com elementos unicos.
             });
+
+            newLabel = Array.from(aux).sort( (a,b) => a-b); // Montando um array ordenado
+            setMin(newLabel[0]);
+            setMax(newLabel[newLabel.length - 1]);
         }else{
             // modificar para quando tiver perssonalizando os labels dos outros campos (egressos, retidos ....)
+            setMin(0);
+            setMax(17);
             return label
         }
         
-        // copiando os dados do Set para uma Lista
-        aux.forEach(e => newLabel.push(e));
         console.log("aux label", aux);
         console.log("Novo label:",newLabel);
+        
         return newLabel;
     }
 
@@ -159,7 +165,6 @@ const Statistics = () => {
                                 <br/>
                                 <br/>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
