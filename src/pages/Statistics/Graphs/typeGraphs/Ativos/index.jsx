@@ -1,66 +1,53 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
     XAxis, YAxis, CartesianGrid, Tooltip,
     Legend, Scatter, ScatterChart
 } from 'recharts';
 
-import { getDataScatter } from '../../../utilAtivos';
+import Loading from '../../../../../components/General/Loading';
+import Legenda from '../../../../../components/StatisticsComponents/ativos/Legenda';
+
+import { getDataScatter, getPercentagem, getPeriodDown } from './utilAtivos';
 
 import './style.css';
 
 const Ativos = (props) => {
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(0);
-    const [periodo, setPeriodo] = useState(["",0]);
-    
-    console.log("Props de Ativos:", props);
-    const dataAtivos = props.data[0] ? getDataScatter(props.data) : null;
+    const [load, setLoad] = useState(false);
 
-    const getPeriodDown= (data) => {
-        let myMap = new Map();
-        let periodo = "";
-        let maior  = 0;
-        let result = [periodo, maior];
+    const [red, setRed ] = useState([]);
+    const [green, setGreen ] = useState([]);
+    const [blue, setBlue ] = useState([]);
+    const [purple, setPurple ] = useState([]);
+    const [periodDown, setPeriodDown] = useState([]);
+    const [periodDownValue, setPeriodDownValue] = useState(0);
 
-        // criado um mapa com a quantidade de cada elemento.
-        data.forEach( e => {
-            let value = myMap.get(e.periodo_ingresso);
-            if(value){
-                myMap.set(e.periodo_ingresso, (value + 1));
-            }else{
-                myMap.set(e.periodo_ingresso, 1);
-            }
-        })
-        
-        // pegando o periodo que mais se repetiu.
-        for(let [key,value] of myMap){
-            if(maior < value){
-                periodo = key;
-                maior = value;
-            }
-        }
+    const carregaDados = () => {
+        setLoad(false);
 
-        return result;
-    }
+        const [red, green, blue, purple] = getDataScatter(props.data);
+        const [ period, percentagem ] = getPeriodDown(red);
 
-    const getPercentagem = (data) => {
-        const total = props.data.length;
-        let result = 0;
-
-        if(total !== 0){
-            result = parseFloat((data.length / total * 100).toFixed(2));
-        }
-        
-        return result;
-    }
-
-    useEffect ( () => {
         setMin(props.min);
         setMax(props.max);
-    });
+
+        setRed(red);
+        setGreen(green);
+        setBlue(blue);
+        setPurple(purple);
+
+        setPeriodDown(period);
+        setPeriodDownValue(percentagem);
+
+        setLoad(true);
+    }
+
+    useEffect(() => {
+        carregaDados();
+    },[props.data]);
 
     const CustomTooltip = ({ active, payload }) => {
         if (active) {
@@ -78,38 +65,47 @@ const Ativos = (props) => {
 
     return (
         <>
-            {dataAtivos ? 
-            <>
-                <div className={'mainGraphs'}>
-                    
+            {load ?
+                <div className="ativos-main">
+                    <div className={'mainGraphs'}>
                         <ScatterChart
                             width={800}
-                            height={600}
+                            height={700}
                             margin={{
                                 top: 20, right: 80, bottom: 20, left: 20,
                             }}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
-                            <Legend />
                             <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />} />
-                            <XAxis dataKey="periodos_integralizados" type="number" name='periodosAtivos' />
-                            <YAxis dataKey="porcentagem_concluida" type="number" name='cursoConcluido' unit='%' />
-                            <Scatter data={dataAtivos[0]} fill={"Red"} name={"Aluno com dificuldades"}></Scatter>
-                            <Scatter data={dataAtivos[1]} fill={"green"} name={"Aluno na media dos discentes"}></Scatter>
-                            <Scatter data={dataAtivos[2]} fill={"blue"} name={"Aluno na media ideal"}></Scatter>
-                            <Scatter data={dataAtivos[3]} fill={"purple"} name={"Aluno com créditos concluidos"}></Scatter>
-                        </ScatterChart> 
-                </div>
-                <div>
-                    {/* (setPeriodo(getPeriodDown(dataAtivos[0])), */}
-                        <p>Existem <strong>{props.data.length}</strong> discentes ativos com ingresso entre <strong>{min}</strong> e <strong>{max}</strong>. <strong>{dataAtivos[2].length}</strong> ({getPercentagem(dataAtivos[2])}%) 
-                        dos discentes ativos estão com a execução curricular no patamar ideal, <strong>{dataAtivos[1].length}</strong> ({getPercentagem(dataAtivos[1])}%) 
-                        estão dentro do esperado, <strong>{dataAtivos[3].length}</strong> ({getPercentagem(dataAtivos[3])}%) estão acima do esperado, 
-                        enquanto que <strong>{dataAtivos[0].length}</strong> ({getPercentagem(dataAtivos[0])}%) estão com a execução curricular abaixo do esperado. 
-                        <strong>{periodo[0]}</strong> é o semestre com mais discentes com execução curricular abaixo do esperado ({periodo[1]}).
-                        </p> 
-                </div>
-            </> : null }
+                            <XAxis 
+                                dataKey="periodos_integralizados" 
+                                type="number" 
+                                name='periodosAtivos' 
+                                label={{ value: "Periodos Integralizados", position: 'insideBottomRight', offset:0 }}
+                            />
+                            <YAxis 
+                                dataKey="porcentagem_concluida" 
+                                type="number" 
+                                name='cursoConcluido' 
+                                unit='%' 
+                                label={{ value: "Curso Concluido", angle: -90, position: 'insideLeft', offset:0 }}
+                            />
+                            <Scatter data={red} fill={"Red"} name={"Abaixo do esperado"}></Scatter>
+                            <Scatter data={green} fill={"green"} name={"Dentro do esperado"}></Scatter>
+                            <Scatter data={blue} fill={"blue"} name={"Ideal"}></Scatter>
+                            <Scatter data={purple} fill={"purple"} name={"Acima do esperado"}></Scatter>
+                        </ScatterChart>
+                    </div>
+                    <Legenda></Legenda>
+                    <div className="ativos-texto">
+                         <p>Existem <strong>{props.data.length}</strong> discentes ativos com ingresso entre <strong>{min}</strong> e <strong>{max}</strong>. <strong>{blue.length}</strong> ({getPercentagem(props, blue)}%)
+                        dos discentes ativos estão com a execução curricular no patamar ideal, <strong>{green.length}</strong> ({getPercentagem(props, green)}%)
+                        estão dentro do esperado, <strong>{purple.length}</strong> ({getPercentagem(props, purple)}%) estão acima do esperado,
+                        enquanto que <strong>{red.length}</strong> ({getPercentagem(props, red)}%) estão com a execução curricular abaixo do esperado.  
+                        <strong>{periodDown}</strong> é o semestre com mais discentes com execução curricular abaixo do esperado ({periodDownValue}).
+                        </p>
+                    </div>
+                </div> : <Loading />}
         </>
     )
 }
