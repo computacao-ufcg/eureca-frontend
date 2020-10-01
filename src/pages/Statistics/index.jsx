@@ -135,13 +135,15 @@ const Statistics = () => {
             console.log(res.statusText)
         }
     }
+     
+    
 
     
     return(
         <React.Fragment>
             <Header></Header>
             <div className={'mainStatistics'}>
-                <Title name={"Estatísticas"}/>
+                <Title name={"Estatísticas"}/> 
                 <div className={'contentStatistics'}>
                     <NavBar changeOption={handleOption} listEnum={statisticsEnum}/>
                     <div className={'modelStatistics'}>
