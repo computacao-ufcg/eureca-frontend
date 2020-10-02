@@ -4,7 +4,7 @@ import Header from '../../components/Header'
 
 import NavBar from '../../components/StatisticsComponents/navBar/NavBar'
 import SideBar from '../../components/StatisticsComponents/sideBar/SideBar'
-import Slider from '../../components/StatisticsComponents/slider/Slider'
+import Text from './Text';
 import Export from '../../components/StatisticsComponents/export'
 import Graphs from './Graphs'
 import Title from '../../components/General/Title/Title'
@@ -28,32 +28,32 @@ const Statistics = () => {
     const [label, setLabel] = useState([]);
 
     const handleOption = (newOption) => {
-        setOption(statisticsEnum[newOption])
-        setOptionSide(statisticsEnum[newOption][0])
-        setType("ativos")
-        setCategoria("ativos", 0, 17)
+        setOption(statisticsEnum[newOption]);
+        setOptionSide(statisticsEnum[newOption][0]);
+        setType("ativos");
+        setCategoria("ativos", 0, 17);
     }
 
     const handleOptionSide = (newOption) => {
         if(newOption === 'Egressos'){
-            setMax(68)
+            setMax(68);
             setLabel(labels);
-            setType("egressos")
-            setCategoria("egressos", 0, 66)
-            console.log(labels)
+            setType("egressos");
+            setCategoria("egressos", 0, 66);
+            console.log(labels);
         }
         else if(newOption === 'Evadidos'){
-            setMax(68)
+            setMax(68);
             setLabel(labels);
-            setType("evadidos")
-            setDataMaster(evadidos.periodos)
-            setData(evadidos.periodos)
+            setType("evadidos");
+            setDataMaster(evadidos.periodos);
+            setData(evadidos.periodos);
         }
         else if(newOption === 'Ativos'){
-            setMax(17)
+            setMax(17);
             setLabel(labelsAtivos);
-            setCategoria("ativos", min, max)
-            setType("ativos")
+            setType("ativos");
+            setCategoria("ativos", 0, 17);
         }
         setOptionSide(newOption);
     }
@@ -93,7 +93,6 @@ const Statistics = () => {
      * @param {String} categoria - Pode ser ativos, egressos, evadidos ou retidos 
      */
     const getLabel = (data, categoria) => {
-        console.log(categoria)
         const aux = new Set();
         let newLabel = [];
 
@@ -109,11 +108,8 @@ const Statistics = () => {
             // modificar para quando tiver perssonalizando os labels dos outros campos (egressos, retidos ....)
             setMin(0);
             setMax(17);
-            return label
+            return label;
         }
-        
-        console.log("aux label", aux);
-        console.log("Novo label:",newLabel);
         
         return newLabel;
     }
@@ -122,17 +118,18 @@ const Statistics = () => {
         // Operacao ternaria para gerenciar a query
         let query = type=='ativos' ? type : type + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
         api.get('api/estatisticas/' + query, {})
-        .then(res => {
-            setData(res.data);
-            setDataMaster(res.data);
-            setLabel(getLabel(res.data, type));
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    },[])
+            .then(res => {
+                setData(res.data);
+                setDataMaster(res.data);
+                setLabel(getLabel(res.data, type));
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    },[]);
 
     const setCategoria = async (categoria, min, max) => {
+        setData([]);
         // Operacao ternaria para gerenciar a query
         let query = categoria == 'ativos' ? categoria : categoria + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
 
@@ -143,7 +140,7 @@ const Statistics = () => {
             setDataMaster(res.data);
             setLabel(categoria == 'ativos' ? getLabel(res.data, categoria) : labels);
         }else{
-            console.log(res.statusText)
+            console.log(res.statusText);
         }
     }
      
@@ -162,7 +159,7 @@ const Statistics = () => {
                             <SideBar changeOption={handleOptionSide} listOption={option}/>
                             <div className={'compStatistics'}>
                                 <Graphs min={min} max={max} data={data} option={optionSide} labels={labelTags} changeSlider={handleSlider} labelSlider={label}/>
-                                <Text min={labels[min]} max={labels[max]} data={data}/>
+                                { type === 'ativos' ? null : <Text min={labels[min]} max={labels[max]} data={data}/>}
                                 <Export type={type} data={data}/>
                                 <br/>
                                 <br/>

@@ -5,12 +5,11 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 import './style.css'
 
 const Egressos = (props) => {
-    console.log(props.data)
     return (
         <div className={'mainGraphs'}>
             <LineChart
                 width={800}
-                height={300}
+                height={400}
                 data={props.data}
                 margin={{
                     top: 5, right: 30, left: 20, bottom: 5,
