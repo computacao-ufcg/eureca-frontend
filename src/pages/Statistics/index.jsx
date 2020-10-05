@@ -48,8 +48,7 @@ const Statistics = () => {
             setMax(68);
             setLabel(labels);
             setType("evadidos");
-            setDataMaster(evadidos.periodos);
-            setData(evadidos.periodos);
+            setCategoria("evadidos", 19, 66);
         }
         else if(newOption === 'Ativos'){
             setType("ativos");
@@ -69,7 +68,7 @@ const Statistics = () => {
         } else if(type === 'egressos'){
             setCategoria(type, min, max)
         } else if(type === 'evadidos'){
-            setData(dataMaster.slice(min, max+1))
+            setCategoria(type, min, max)
         }
     }
 
@@ -121,6 +120,7 @@ const Statistics = () => {
             setData(res.data);
             setDataMaster(res.data);
             setLabel(categoria === 'ativos' ? getLabel(res.data, categoria) : labels);
+            console.log(res.data)
         }else{
             console.log(res.statusText);
         }

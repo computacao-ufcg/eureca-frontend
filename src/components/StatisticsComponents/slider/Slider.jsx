@@ -8,8 +8,8 @@ import './style.css'
 const CustomSlider1 = (props) => {
     const labels = props.labels
 
-    const [value1, setValue1] = useState(0);
-    const [value2, setValue2] = useState(66);
+    const [value1, setValue1] = useState(props.min);
+    const [value2, setValue2] = useState(props.max);
     
     const handleStyle = {
         color: '#fff',
@@ -22,8 +22,8 @@ const CustomSlider1 = (props) => {
         labels ?
         <div className={'mainSlider'}>
             <RangeSlider
-                min={0}
-                max={66}
+                min={props.min}
+                max={props.max}
                 defaultValue={[value1, value2]}
                 value={[value1, value2]}
                 handleStyle={handleStyle}
@@ -103,7 +103,7 @@ const CustomSlider2 = (props) => {
 const CustomSlider3 = (props) => {
     const labels = props.labels
 
-    const [value1, setValue1] = useState(0);
+    const [value1, setValue1] = useState(19);
     const [value2, setValue2] = useState(66);
     
     const handleStyle = {
@@ -117,7 +117,7 @@ const CustomSlider3 = (props) => {
         labels ?
         <div className={'mainSlider'}>
             <RangeSlider
-                min={0}
+                min={19}
                 max={66}
                 defaultValue={[value1, value2]}
                 value={[value1, value2]}
