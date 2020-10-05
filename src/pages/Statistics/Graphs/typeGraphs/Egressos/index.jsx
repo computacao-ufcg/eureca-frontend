@@ -21,8 +21,8 @@ const Egressos = (props) => {
                 <YAxis yAxisId="right" orientation="right" />
                 <Tooltip />
                 <Legend />    
-                <Line yAxisId="left" type="monotone" dataKey="qtd_egressos" stroke="#885d41" activeDot={{ r: 8 }} />
-                <Line yAxisId="right" type="monotone" dataKey="cra" stroke="#0073e5" />
+                <Line name="Número de Egressos" yAxisId="left" type="monotone" dataKey="qtd_egressos" stroke="#885d41" activeDot={{ r: 8 }} />
+                <Line name="CRA Médio" yAxisId="right" type="monotone" dataKey="cra_medio" stroke="#0073e5" />
             </LineChart>
         </div>
     )
