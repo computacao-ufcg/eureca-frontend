@@ -27,6 +27,8 @@ const Statistics = () => {
     const [type, setType] = useState("ativos");
     const [label, setLabel] = useState([]);
 
+    const [load, setLoad] = useState(false);
+
     const handleOption = (newOption) => {
         setOption(statisticsEnum[newOption]);
         setOptionSide(statisticsEnum[newOption][0]);
@@ -50,10 +52,8 @@ const Statistics = () => {
             setData(evadidos.periodos);
         }
         else if(newOption === 'Ativos'){
-            setMax(17);
-            setLabel(labelsAtivos);
             setType("ativos");
-            setCategoria("ativos", 0, 17);
+            setCategoria("ativos", min, max);
         }
         setOptionSide(newOption);
     }
@@ -95,7 +95,6 @@ const Statistics = () => {
     const getLabel = (data, categoria) => {
         const aux = new Set();
         let newLabel = [];
-
         if( categoria == 'ativos'){
             data.forEach(e => {
                 aux.add(e.periodo_ingresso); // montando o novo label com elementos unicos.
@@ -114,42 +113,40 @@ const Statistics = () => {
         return newLabel;
     }
 
-    useEffect(() => {
-        // Operacao ternaria para gerenciar a query
-        let query = type=='ativos' ? type : type + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
-        api.get('api/estatisticas/' + query, {})
-            .then(res => {
-                setData(res.data);
-                setDataMaster(res.data);
-                setLabel(getLabel(res.data, type));
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    },[]);
-
-    const setCategoria = async (categoria, min, max) => {
-        setData([]);
-        // Operacao ternaria para gerenciar a query
-        let query = categoria == 'ativos' ? categoria : categoria + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
-
-        const res = await api.get('api/estatisticas/' + query, {});
+    const loading = async (url, categoria) => {
+        
+        const res = await api.get(url, {});
         
         if(res){
             setData(res.data);
             setDataMaster(res.data);
-            setLabel(categoria == 'ativos' ? getLabel(res.data, categoria) : labels);
+            setLabel(categoria === 'ativos' ? getLabel(res.data, categoria) : labels);
         }else{
             console.log(res.statusText);
         }
     }
-     
-    
 
-    
+    useEffect(() => {
+        setLoad(false);
+        // Operacao ternaria para gerenciar a query
+        let query = type=='ativos' ? type : type + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
+        loading(`api/estatisticas/${query}`, type);
+        setLoad(true);
+    },[]);
+
+    const setCategoria = async (categoria, min, max) => {
+        setLoad(false);
+        setData([]);
+        // Operacao ternaria para gerenciar a query
+        let query = categoria == 'ativos' ? categoria : categoria + "?" + "de=" + labels[min] + "&" + "ate=" + labels[max];
+        await loading(`api/estatisticas/${query}`, categoria);
+        setLoad(true);
+    }
+
     return(
         <React.Fragment>
             <Header></Header>
+            {load ? 
             <div className={'mainStatistics'}>
                 <Title name={"Estatísticas"}/> 
                 <div className={'contentStatistics'}>
@@ -163,11 +160,12 @@ const Statistics = () => {
                                 <Export type={type} data={data}/>
                                 <br/>
                                 <br/>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
             </div>
+            : null }
         </React.Fragment>
     )
 }
