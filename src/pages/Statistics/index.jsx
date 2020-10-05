@@ -16,7 +16,7 @@ import api from '../../services/api.js';
 import './style.css'
 
 const Statistics = () => {
-
+    
     const [option, setOption] = useState(statisticsEnum.Discentes);
     const [optionSide, setOptionSide] = useState(statisticsEnum.Discentes[0]);
 
