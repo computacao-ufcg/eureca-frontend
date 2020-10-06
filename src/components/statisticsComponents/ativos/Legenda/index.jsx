@@ -10,15 +10,9 @@ const Legenda = (props) =>{
             <ul>
                 <li>
                     <svg viewBox="0 0 32 32" version="1.1">
-                        <path fill="Red" transform="translate(16, 16)" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"></path>
+                        <path fill="purple" transform="translate(16, 16)" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"></path>
                     </svg>
-                    <span>Abaixo do esperado</span>
-                </li>
-                <li>
-                    <svg viewBox="0 0 32 32" version="1.1">
-                        <path fill="green" transform="translate(16, 16)" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"></path>
-                    </svg>
-                    <span>Dentro do esperado</span>
+                    <span>Acima do esperado</span>
                 </li>
                 <li>
                     <svg viewBox="0 0 32 32" version="1.1">
@@ -28,9 +22,16 @@ const Legenda = (props) =>{
                 </li>
                 <li>
                     <svg viewBox="0 0 32 32" version="1.1">
-                        <path fill="purple" transform="translate(16, 16)" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"></path>
+                        <path fill="green" transform="translate(16, 16)" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"></path>
                     </svg>
-                    <span>Acima do esperado</span></li>
+                    <span>Dentro do esperado</span>
+                </li>
+                <li>
+                    <svg viewBox="0 0 32 32" version="1.1">
+                        <path fill="Red" transform="translate(16, 16)" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0"></path>
+                    </svg>
+                    <span>Abaixo do esperado</span>
+                </li>
             </ul>
         </div>
     );

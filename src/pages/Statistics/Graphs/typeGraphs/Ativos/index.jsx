@@ -1,17 +1,13 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState }  from 'react';
 
-import {
-    XAxis, YAxis, CartesianGrid, Tooltip,
-    Legend, Scatter, ScatterChart
-} from 'recharts';
+import { XAxis, YAxis, CartesianGrid, Tooltip, Scatter, ScatterChart } from 'recharts';
 
-import Loading from '../../../../../components/General/Loading';
-import Legenda from '../../../../../components/StatisticsComponents/ativos/Legenda';
+import Loading from '../../../../../components/general/Loading';
+import Legenda from '../../../../../components/statisticsComponents/ativos/Legenda';
 
 import { getDataScatter, getPercentagem, getPeriodDown } from './utilAtivos';
 
-import './style.css';
+import './styles.css';
 
 const Ativos = (props) => {
     const [min, setMin] = useState(0);
@@ -81,7 +77,7 @@ const Ativos = (props) => {
                                 dataKey="periodos_integralizados" 
                                 type="number" 
                                 name='periodosAtivos' 
-                                label={{ value: "Periodos Integralizados", position: 'insideBottomRight', offset:0 }}
+                                label={{ value: "Periodos Integralizados", position: 'insideBottom', offset:0 }}
                             />
                             <YAxis 
                                 dataKey="porcentagem_concluida" 

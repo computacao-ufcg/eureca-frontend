@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 import Checkbox from 'rc-checkbox';
 
 import 'rc-checkbox/assets/index.css';
-import './style.css'
+import './styles.css'
 
 const Egressos = (props) => {
 

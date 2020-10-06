@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Egressos from './typeGraphs/Egressos';
 import Evadidos from './typeGraphs/Evadidos';
 import Ativos from './typeGraphs/Ativos';
 
-import {CustomSlider1, CustomSlider2, CustomSlider3} from '../../../components/StatisticsComponents/slider/Slider'
+import {CustomSlider1, CustomSlider2, CustomSlider3} from '../../../components/statisticsComponents/Slider';
 
-import './style.css'
+import './styles.css'
 
 const Graphs = (props) => {
     let content = null;
@@ -24,8 +24,8 @@ const Graphs = (props) => {
     }
     return(
         <div>
-            {slider}
             <div className={"titleGraph"}>{props.option}</div>
+            {slider}
             {content}
         </div>
     )

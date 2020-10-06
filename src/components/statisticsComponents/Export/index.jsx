@@ -4,7 +4,7 @@ import { CSVLink } from "react-csv";
 
 import api from '../../../services/api';
 
-import './style.css'
+import './styles.css'
 
 const ExportStatistics = (props) => {
     const [data, setData] = useState([]);
@@ -26,32 +26,32 @@ const ExportStatistics = (props) => {
     }
 
     const getData = async (type) => {
-        if(type === 'ativos'){
-            const res = await api.get('api/estatisticas/ativos/csv', {});
-
+        console.log("type no export: ", type)
+        const res = await api.get(`api/estatisticas/${type}/csv`, {});
+        if(res.status === 200){
             return res.data;
         }else{
-            let dataExport = props.data.periodos ? props.data.periodos : props.data
-            return dataExport;
+            return res.status;
         }
+        
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         carregaDados();
-    },[props.type]);
+    }, [props.type]);
 
-    
+
 
     return (
         <>
-            {load ? 
-            <div className={'mainExport'}>
-                <CSVLink data={data} filename={fileName}>
-                    <div className={'exportButton'}>
-                        Export CSV
+            {load ?
+                <div className={'mainExport'}>
+                    <CSVLink data={data} filename={fileName}>
+                        <div className={'exportButton'}>
+                            Export CSV
                     </div>
-                </CSVLink>
-            </div> : null }
+                    </CSVLink>
+                </div> : null}
         </>
     )
 }

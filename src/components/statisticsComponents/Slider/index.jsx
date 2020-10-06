@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Slider, RangeSlider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 
-import './style.css'
+import './styles.css'
 
 const CustomSlider1 = (props) => {
     const labels = props.labels
