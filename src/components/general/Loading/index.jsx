@@ -1,9 +1,11 @@
 import React from 'react';
 
+import './styles.css';
+
 const Loading = (props) => {
 
     return(
-        <span>Carregando Dados...</span>
+        <span className="span-loading">Carregando Dados...</span>
     );
 }
 

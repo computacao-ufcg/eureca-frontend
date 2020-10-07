@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
-import './style.css'
+import './styles.css'
 
 const Egressos = (props) => {
     return (

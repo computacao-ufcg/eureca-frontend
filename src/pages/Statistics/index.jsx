@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react'
 
-import Header from '../../components/Header'
-
-import NavBar from '../../components/StatisticsComponents/navBar/NavBar'
-import SideBar from '../../components/StatisticsComponents/sideBar/SideBar'
+//Import components
 import Text from './Text';
-import Export from '../../components/StatisticsComponents/export'
 import Graphs from './Graphs'
-import Title from '../../components/General/Title/Title'
+import Header from '../../components/general/Header'
+import NavBar from '../../components/statisticsComponents/NavBar'
+import SideBar from '../../components/statisticsComponents/SideBar'
+import Export from '../../components/statisticsComponents/Export'
+import Title from '../../components/general/Title/index.jsx'
 
-import {statisticsEnum, labels, evadidos, labelTags, labelsAtivos} from './util'
+// Import modules for utility
+import {statisticsEnum, labels, labelTags} from './util'
 
 import api from '../../services/api.js';
 
-import './style.css'
+import './styles.css'
 
 const Statistics = () => {
-
+    
     const [option, setOption] = useState(statisticsEnum.Discentes);
     const [optionSide, setOptionSide] = useState(statisticsEnum.Discentes[0]);
 

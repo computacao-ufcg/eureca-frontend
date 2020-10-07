@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Header from '../../components/Header'
+import Header from '../../components/general/Header'
 
-import Title from '../../components/General/Title/Title'
+import Title from '../../components/general/Title'
 
 
-import './style.css'
+import './styles.css'
 
 const Services = () => {
     
