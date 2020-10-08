@@ -14,7 +14,7 @@ import LogoComunication from '../../assets/home_images/comunication.png';
 import LogoServices from '../../assets/home_images/services.png';
 
 //component
-import Header from '../../components/Header';
+import Header from '../../components/General/Header';
 import CardHome from '../../components/homeComponents/CardHome';
 
 const Home = () => {

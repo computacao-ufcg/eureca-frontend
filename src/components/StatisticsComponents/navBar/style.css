@@ -6,7 +6,7 @@
 }
 
 .buttonsNavBar {
-    width: 75%;
+    width: 85%;
     display: flex;
     justify-content: space-between;
     padding: 0px 80px;
@@ -21,10 +21,11 @@
     background-color: transparent;
     border: none;
     color: black;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 800;
     cursor: pointer;
     outline: 0;
+    letter-spacing: 1px;
 }
 
 .customButton:hover {
@@ -36,10 +37,11 @@
     background-color: transparent;
     border: none;
     color: #0073e5;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 800;
     cursor: pointer;
     outline: 0;
+    letter-spacing: 1px;
 }
 
 .selectedButton:hover{
