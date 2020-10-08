@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import {Link} from 'react-router-dom'
 
@@ -9,7 +9,7 @@ const SideBar = (props) => {
     return (
         <div className={"mainSideBar"}>
             <div className={"optionsSideBar"}>
-                {props.listOption.map((e, index) => <Link to={props.navSelected + e}><button key={"buttonSide" + index} className={props.selectedOption == e ? "selectedOption" : "customOption"} value={e}>{e}</button></Link>)}  
+                {props.listOption.map((e, index) => <Link to={props.navSelected + e}><button key={"buttonSide" + index} className={props.selectedOption === e ? "selectedOption" : "customOption"} value={e}>{e}</button></Link>)}  
             </div>
         </div>
     )
