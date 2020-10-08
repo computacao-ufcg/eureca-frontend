@@ -8,7 +8,7 @@ import '../../styles.css'
 
 import Export from '../../../../components/StatisticsComponents/Export';
 
-import {tags} from './utilEvadidos';
+import {tags, motivos} from './utilEvadidos';
 
 const GraphEvadidos = (props) => {
 
@@ -107,18 +107,18 @@ const GraphEvadidos = (props) => {
                     <YAxis yAxisId="right" orientation="right" />
                     <Tooltip />
                     <Legend />
-                    <Line yAxisId="left" type="monotone" dataKey={tag1} stroke="#885d41" activeDot={{ r: 8 }} />
-                    <Line yAxisId="left" type="monotone" dataKey={tag2} stroke="#0073e5" />
-                    <Line yAxisId="left" type="monotone" dataKey={tag3} stroke="#CE4760" />
-                    <Line yAxisId="left" type="monotone" dataKey={tag4} stroke="#2A252D" />
-                    <Line yAxisId="left" type="monotone" dataKey={tag5} stroke="#E4D2A5" />
-                    <Line yAxisId="left" type="monotone" dataKey={tag6} stroke="#343937" />
-                    <Line yAxisId="left" type="monotone" dataKey={tag7} stroke="#D2E414" />
-                    <Line yAxisId="left" type="monotone" dataKey={tag8} stroke="#282838" />
-                    <Line yAxisId="left" type="monotone" dataKey={tag9} stroke="#ED6827" />
+                    <Line yAxisId="left" name={motivos[0]} type="monotone" dataKey={tag1} stroke="#885d41" activeDot={{ r: 8 }} />
+                    <Line yAxisId="left" name={motivos[1]} type="monotone" dataKey={tag2} stroke="#0073e5" />
+                    <Line yAxisId="left" name={motivos[2]} type="monotone" dataKey={tag3} stroke="#CE4760" />
+                    <Line yAxisId="left" name={motivos[3]} type="monotone" dataKey={tag4} stroke="#2A252D" />
+                    <Line yAxisId="left" name={motivos[4]} type="monotone" dataKey={tag5} stroke="#E4D2A5" />
+                    <Line yAxisId="left" name={motivos[5]} type="monotone" dataKey={tag6} stroke="#343937" />
+                    <Line yAxisId="left" name={motivos[6]} type="monotone" dataKey={tag7} stroke="#D2E414" />
+                    <Line yAxisId="left" name={motivos[7]} type="monotone" dataKey={tag8} stroke="#282838" />
+                    <Line yAxisId="left" name={motivos[8]} type="monotone" dataKey={tag9} stroke="#ED6827" />
                 </LineChart>
                 <div className={"optionsEvadidos"}>
-                    {tags.map((e, index) => <label key={"label" + index}><Checkbox key={"check" + index} name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + e}</label>)}
+                    {tags.map((e, index) => <label key={"label" + index}><Checkbox key={"check" + index} name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
                 </div>
             </div>
             <div className={'exportEgressos'}>
