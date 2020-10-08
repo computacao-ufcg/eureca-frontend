@@ -95,7 +95,7 @@ const GraphEvadidos = (props) => {
             <div className={'mainGraphEvadidos'}>
                 <LineChart
                     width={800}
-                    height={300}
+                    height={400}
                     data={props.data}
                     margin={{
                         top: 5, right: 30, left: 20, bottom: 5,
