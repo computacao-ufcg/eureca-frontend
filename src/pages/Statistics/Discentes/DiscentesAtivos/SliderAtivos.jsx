@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react';
 
-import { RangeSlider, Loader } from 'rsuite';
+import { RangeSlider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 
 import '../../styles.css'
 
 const SliderAtivos = (props) => {
 
-    // const [labels, setLabel] = useState(props.labels);
-
-    const labels = props.labels;
+    const [labels, setLabel] = useState([]);
     const [value1, setValue1] = useState(0);
-    const [value2, setValue2] = useState(15);
+    const [value2, setValue2] = useState(0);
+    const [labelLength, setLabelLength] = useState(0);
 
     const handleStyle = {
         color: '#fff',
@@ -20,12 +19,21 @@ const SliderAtivos = (props) => {
         height: 22
     };
 
+    useEffect(()=>{
+        const LL = props.labels.length === 0 ? 0 : props.labels.length - 1;
+        
+        setLabelLength(LL);
+        setLabel(props.labels);
+        setValue2(LL);
+
+    }, [props.labels])
+
     return (
         <div className={'mainSlider'}>
                 <RangeSlider
                     className="custom-slider"
-                    min={props.min}
-                    max={props.max}
+                    min={0}
+                    max={labelLength}
                     defaultValue={[value1, value2]}
                     value={[value1, value2]}
                     handleStyle={handleStyle}

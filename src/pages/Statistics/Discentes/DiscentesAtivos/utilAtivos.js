@@ -30,18 +30,20 @@ const getMedidas = (data) => {
     aux = Array.from(aux).sort((a, b) => a - b) // Transformando o set em array e ordenando do menor para o maior
 
     // Trabalhando em cima do Set para fazer o calculo da porcentagem media e criar o conjunto de Medidas
-    aux.forEach(p_integralizado => {
-        const filtro = data.filter(e => e.periodos_integralizados == p_integralizado);
+    aux.forEach( p_integralizado => {
+        const filtro = data.filter(e => e.periodos_integralizados === p_integralizado);
         let soma = 0;
-        filtro.map(e => { soma += e.porcentagem_concluida });
+        filtro.map(e => { soma += e.porcentagem_concluida; return null });
 
         const medida = {
             x: p_integralizado, // x é os periodos integralizados
-            y: parseFloat((soma == 0 ? 0 : soma / filtro.length).toFixed(2)), // y é a porcentagem media para aquele periodo integralizado com precisao 2
+            y: parseFloat((soma === 0 ? 0 : soma / filtro.length).toFixed(2)), // y é a porcentagem media para aquele periodo integralizado com precisao 2
             ideal: getIdeal(p_integralizado) // ideal, é o valor ideal para aquele periodo integralizado
         }
 
         medidas.push(medida);
+
+        return null;
     });
 
     return medidas;
@@ -62,7 +64,7 @@ const getDataScatter = (data) => {
     if (data) {
         data.map((entry, index) => {
 
-            const [medida] = medidas.filter(e => e.x == entry.periodos_integralizados);
+            const [medida] = medidas.filter(e => e.x === entry.periodos_integralizados);
 
             if (entry.porcentagem_concluida >= 100) {
                 purple.push(entry);
@@ -73,6 +75,8 @@ const getDataScatter = (data) => {
             } else if (entry.porcentagem_concluida >= medida.ideal) {
                 blue.push(entry);
             }
+
+            return null;
         });
     }
 
@@ -130,6 +134,5 @@ const getPeriodDown = (data) => {
     result = [periodo, maior];
     return result;
 }
-
 
 export { getDataScatter, getPercentagem, getPeriodDown };

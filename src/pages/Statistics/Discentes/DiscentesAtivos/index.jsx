@@ -11,14 +11,13 @@ import GraphAtivos from './GraphAtivos';
 import api from '../.././../../services/api';
 
 import '../../styles.css';
-import { Loader } from 'rsuite';
 
 const DiscentesAtivos = () => {
     const [dataAtivos, setDataAtivos] = useState([]);
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(0);
     const [label, setLabel] = useState([]);
-    const [load, setLoad] = useState(true);
+    // const [load, setLoad] = useState(true);
 
      /**
      * Metodo responsavel por pegar o label do gráfico.
@@ -47,25 +46,20 @@ const DiscentesAtivos = () => {
     }
 
     const fetchDataApiWithLabel = async (min, max) => {
-        setLoad(true);
-        
         const query = `ativos?de=${label[min]}&ate=${label[max]}`;
+        // const query = `ativos?de=${min}&ate=${max}`;
         const res = await api.get(`api/estatisticas/${query}`, {});
 
         if (res.statusText === 'OK') {
             setDataAtivos(res.data);
-            // setLabel(getLabel(res.data));
         } else {
             console.log("Error");
         }
-        setLoad(false);
     }
 
     useEffect(() => {
         const fetchDataApiWithoutLabel = async () => {
-            setLoad(true);
-            // console.log(arguments);
-            
+
             const query = 'ativos';
             const res = await api.get(`api/estatisticas/${query}`, {});
     
@@ -75,10 +69,8 @@ const DiscentesAtivos = () => {
             } else {
                 console.log("Error");
             }
-    
-            setLoad(false);
         }
-
+        
         fetchDataApiWithoutLabel();
     },[])
 
@@ -92,12 +84,12 @@ const DiscentesAtivos = () => {
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
                             <SideBar selectedOption={"Ativos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']} />
-                            { !load ?
+                            {/* { !load ? */}
                             <div className={'compStatistics'}>
                                 <SliderAtivos changeSlider={handleSlider} labels={label} min={min} max={max}></SliderAtivos>
                                 <GraphAtivos data={dataAtivos} periodoMin={label[min]} periodoMax={label[max]}></GraphAtivos>
                             </div>
-                            : <Loader content="Carregando..." vertical></Loader> }
+                            {/* : <Loader content="Carregando..." vertical></Loader> } */}
                         </div>
                     </div>
                 </div>
