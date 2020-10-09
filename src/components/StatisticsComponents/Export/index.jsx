@@ -10,7 +10,7 @@ const Export = (props) => {
     return (
         <>
             <div className={'mainExport'}>
-                <CSVLink data={props.data} filename={props.name}>
+                <CSVLink data={props.data} filename={props.name + '.csv'}>
                     <div className={'exportButton'}>
                         Export CSV
                     </div>

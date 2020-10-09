@@ -37,7 +37,7 @@ const GraphEgressos = (props) => {
                     </div>
 
                     <div className={'exportEgressos'}>
-                        <Export data={props.data.periodos} name={"dataEgressos.csv"}/>
+                        <Export data={props.data.periodos} name={"dataEgressos"}/>
                     </div>
 
                 </div>
