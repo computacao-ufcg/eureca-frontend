@@ -7,15 +7,15 @@ import SideBar from '../../../../components/StatisticsComponents/SideBar';
 import Title from '../../../../components/General/Title/';
 
 import SliderEgressos from './SliderEgressos';
+import GraphEgressos from './GraphEgressos';
 
 import '../../styles.css';
 
 import api from '../../../../services/api';
-import GraphEgressos from './GraphEgressos';
 
 const DiscentesEgressos = () => {
 
-    const [dataEgressos, setDataEgressos] = useState(null)
+    const [dataEgressos, setDataEgressos] = useState(null) 
 
     useEffect(() => {
         updateGraph('1981.1', '2019.2')
@@ -32,7 +32,6 @@ const DiscentesEgressos = () => {
         
         if(res){
             setDataEgressos(res.data);
-            console.log(res.data);
         } else{
             console.log(res.statusText);
         }
