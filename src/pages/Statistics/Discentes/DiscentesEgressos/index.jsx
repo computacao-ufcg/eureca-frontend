@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import Header from '../../../../components/General/Header';
-import NavBar from '../../../../components/StatisticsComponents/NavBar';
+import NavBar from '../../../../components/StatisticsComponents/NavBar/index.jsx';
 import SideBar from '../../../../components/StatisticsComponents/SideBar';
 
 import Title from '../../../../components/General/Title/';
