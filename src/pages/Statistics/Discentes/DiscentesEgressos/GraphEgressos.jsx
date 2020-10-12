@@ -20,7 +20,7 @@ const GraphEgressos = (props) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="semestre_vinculo" />
+                        <XAxis dataKey="semestre_ingresso" />
                         <YAxis yAxisId="left" />
                         <YAxis yAxisId="right" orientation="right" />
                         <Tooltip />
@@ -31,7 +31,7 @@ const GraphEgressos = (props) => {
                     
                     <div className={'textEgressos'}>
                         <p>
-                        Entre <strong>{props.data.periodos[0].semestre_vinculo}</strong> e <strong>{props.data.periodos[props.data.periodos.length - 1].semestre_vinculo}</strong> foram graduados <strong>{props.data.total_graduados}</strong> discentes, com uma média de <strong>{props.data.media_graduados}</strong> graduados por período. 
+                        Entre <strong>{props.data.periodos[0].semestre_ingresso}</strong> e <strong>{props.data.periodos[props.data.periodos.length - 1].semestre_ingresso}</strong> foram graduados <strong>{props.data.total_graduados}</strong> discentes, com uma média de <strong>{props.data.media_graduados}</strong> graduados por período. 
                         O período <strong>{props.data.periodo_max_graduados}</strong> foi o que mais teve egressos <strong>({props.data.max_graduados})</strong>, enquanto que o período <strong>{props.data.periodo_min_graduados}</strong> foi o que teve menos <strong>({props.data.min_graduados})</strong>. O CRA médio desse período foi de <strong>{props.data.cra_medio}</strong>.
                         </p>
                     </div>
