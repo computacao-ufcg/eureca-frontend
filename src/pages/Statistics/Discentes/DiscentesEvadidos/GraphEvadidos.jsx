@@ -128,7 +128,7 @@ const GraphEvadidos = (props) => {
                     </p>
                 </div>
                 <div className={'exportEgressos'}>
-                    <Export data={auxCSV ? auxCSV : []} name={"dataEvadidos.csv"}/>
+                    <Export data={auxCSV ? auxCSV : []} name={"dataEvadidos"}/>
                 </div>
             </div>
             : null}
