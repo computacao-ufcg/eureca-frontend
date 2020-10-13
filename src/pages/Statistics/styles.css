@@ -13,7 +13,7 @@
 }
 
 .listStatistics {
-    width: 85%;
+    width: 75%;
     display: flex;
     justify-content: space-between;
 }
@@ -22,43 +22,3 @@
     width: 75%;
     margin-right: 30px;
 }
-
-.mainSlider {
-    width: 100%;
-}
-  
-.legendSlider {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.mainGraphs {
-    margin-top: 50px;
-    margin-bottom: 20px;
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-}
-
-.textEgressos {
-    margin-top: 20px;
-}
-
-.exportEgressos {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-}
-
-.mainGraphEvadidos {
-    margin-top: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.optionsEvadidos {
-    height: 300px;
-    display: grid;
-}
-

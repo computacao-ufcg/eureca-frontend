@@ -1,0 +1,10 @@
+.mainGraphs {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.optionsEvadidos {
+    height: 300px;
+    display: grid;
+}

@@ -13,8 +13,8 @@ import LogoBoxplot from '../../assets/home_images/plot.png';
 import LogoComunication from '../../assets/home_images/comunication.png';
 import LogoServices from '../../assets/home_images/services.png';
 
-//component
-import Header from '../../components/General/Header';
+//components
+import Header from '../../components/general/Header';
 import CardHome from '../../components/homeComponents/CardHome';
 
 const Home = () => {
