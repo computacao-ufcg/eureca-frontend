@@ -10,7 +10,7 @@ import '../../styles.css'
 const SliderEvadidos = (props) => {
     
     const [value1, setValue1] = useState(0);
-    const [value2, setValue2] = useState(48);
+    const [value2, setValue2] = useState(47);
     
     const handleStyle = {
         color: '#fff',
@@ -24,7 +24,7 @@ const SliderEvadidos = (props) => {
         <div className={'mainSlider'}>
             <RangeSlider
                 min={0}
-                max={48}
+                max={47}
                 defaultValue={[value1, value2]}
                 value={[value1, value2]}
                 handleStyle={handleStyle}

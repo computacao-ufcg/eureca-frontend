@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import Checkbox from 'rc-checkbox';
 
 import 'rc-checkbox/assets/index.css';
@@ -91,40 +91,48 @@ const GraphEvadidos = (props) => {
     }
 
     return (
-        <div className={'rootGraphEvadidos'}>
-            <div className={'mainGraphEvadidos'}>
-                <LineChart
-                    width={800}
-                    height={400}
-                    data={props.data}
-                    margin={{
-                        top: 5, right: 30, left: 20, bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="periodo" />
-                    <YAxis yAxisId="left" />
-                    <YAxis yAxisId="right" orientation="right" />
-                    <Tooltip />
-                    <Legend />
-                    <Line yAxisId="left" name={motivos[0]} type="monotone" dataKey={tag1} stroke="#885d41" activeDot={{ r: 8 }} />
-                    <Line yAxisId="left" name={motivos[1]} type="monotone" dataKey={tag2} stroke="#0073e5" />
-                    <Line yAxisId="left" name={motivos[2]} type="monotone" dataKey={tag3} stroke="#CE4760" />
-                    <Line yAxisId="left" name={motivos[3]} type="monotone" dataKey={tag4} stroke="#2A252D" />
-                    <Line yAxisId="left" name={motivos[4]} type="monotone" dataKey={tag5} stroke="#E4D2A5" />
-                    <Line yAxisId="left" name={motivos[5]} type="monotone" dataKey={tag6} stroke="#343937" />
-                    <Line yAxisId="left" name={motivos[6]} type="monotone" dataKey={tag7} stroke="#D2E414" />
-                    <Line yAxisId="left" name={motivos[7]} type="monotone" dataKey={tag8} stroke="#282838" />
-                    <Line yAxisId="left" name={motivos[8]} type="monotone" dataKey={tag9} stroke="#ED6827" />
-                </LineChart>
-                <div className={"optionsEvadidos"}>
-                    {tags.map((e, index) => <label key={"label" + index}><Checkbox key={"check" + index} name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
+        <React.Fragment>
+            {props.data ? 
+            <div className={'rootGraphEvadidos'}>
+                <div className={'mainGraphEvadidos'}>
+                    <AreaChart
+                        width={800}
+                        height={400}
+                        data={props.data}
+                        margin={{
+                            top: 5, right: 30, left: 20, bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="periodo" />
+                        <YAxis yAxisId="left" />
+                        <Tooltip />
+                        <Legend />
+                        <Area yAxisId="left" name={motivos[0]} type="monotone" stackId="1" dataKey={tag1} stroke="#885d41" fill="#885d41" />
+                        <Area yAxisId="left" name={motivos[1]} type="monotone" stackId="1" dataKey={tag2} stroke="#0073e5" fill="#0073e5" />
+                        <Area yAxisId="left" name={motivos[2]} type="monotone" stackId="1" dataKey={tag3} stroke="#CE4760" fill="#CE4760" />
+                        <Area yAxisId="left" name={motivos[3]} type="monotone" stackId="1" dataKey={tag4} stroke="#2A252D" fill="#2A252D"/>
+                        <Area yAxisId="left" name={motivos[4]} type="monotone" stackId="1" dataKey={tag5} stroke="#E4D2A5" fill="#E4D2A5"/>
+                        <Area yAxisId="left" name={motivos[5]} type="monotone" stackId="1" dataKey={tag6} stroke="#343937" fill="#343937"/>
+                        <Area yAxisId="left" name={motivos[6]} type="monotone" stackId="1" dataKey={tag7} stroke="#D2E414" fill="#D2E414"/>
+                        <Area yAxisId="left" name={motivos[7]} type="monotone" stackId="1" dataKey={tag8} stroke="#282838" fill="#282838"/>
+                        <Area yAxisId="left" name={motivos[8]} type="monotone" stackId="1" dataKey={tag9} stroke="#ED6827" fill="#ED6827"/>
+                    </AreaChart>
+                    <div className={"optionsEvadidos"}>
+                        {tags.map((e, index) => <label key={"label" + index}><Checkbox key={"check" + index} name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
+                    </div>
+                </div>
+                <div className={'textEgressos'}>
+                    <p>
+                    Entre <strong>{props.data[0].periodo}</strong> e <strong>{props.data[props.data.length - 1].periodo}</strong>, <strong>AA</strong> discentes se desligaram definitivamente do curso, sem colar grau. Entretanto, o número total de desligamentos no período foi <strong>BB</strong>, considerando discentes que foram desligados e que reingressaram no curso. A relação entre evadidos e matriculados no período é <strong>CC.C</strong>, enquanto que a relação entre evadidos e egressos é <strong>DD.D</strong>.
+                    </p>
+                </div>
+                <div className={'exportEgressos'}>
+                    <Export data={auxCSV ? auxCSV : []} name={"dataEvadidos"}/>
                 </div>
             </div>
-            <div className={'exportEgressos'}>
-                <Export data={auxCSV ? auxCSV : []} name={"dataEvadidos.csv"}/>
-            </div>
-        </div>
+            : null}
+        </React.Fragment>
     )
 }
 
