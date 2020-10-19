@@ -27,7 +27,8 @@ const GraphAtivos = (props) => {
     useEffect(() => {
         const carregaDados = () => {
             setLoad(false);
-    
+            
+            console.log("dados do props: ", props.data);
             const [red, green, blue, purple] = getDataScatter(props.data);
             const [ period, percentagem ] = getPeriodDown(red);
     
