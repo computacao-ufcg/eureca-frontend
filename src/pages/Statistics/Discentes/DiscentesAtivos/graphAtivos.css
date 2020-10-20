@@ -30,6 +30,11 @@
     grid-column: 1 / 2;
 }
 
+/* .ativos-main .graph-main .scatter-red {
+    opacity: 0.3;
+    z-index: 1;
+} */
+
 .ativos-main .legenda{
     grid-row: 1 / 2;
     grid-column: 2 / 3;

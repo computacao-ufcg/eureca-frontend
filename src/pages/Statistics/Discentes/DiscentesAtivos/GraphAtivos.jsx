@@ -34,7 +34,8 @@ const GraphAtivos = (props) => {
     
             setMin(props.periodoMin);
             setMax(props.periodoMax);
-    
+            
+            console.log("vermelhos:", red);
             setRed(red);
             setGreen(green);
             setBlue(blue);
@@ -89,7 +90,7 @@ const GraphAtivos = (props) => {
                             unit='%' 
                             label={{ value: "Curso Concluido", angle: -90, position: 'insideLeft', offset:0 }}
                         />
-                        <Scatter data={red} fill={"Red"} name={"Abaixo do esperado"}></Scatter>
+                        <Scatter className="scatter-red" data={red} fill={"Red"} name={"Abaixo do esperado"}></Scatter>
                         <Scatter data={green} fill={"green"} name={"Dentro do esperado"}></Scatter>
                         <Scatter data={blue} fill={"blue"} name={"Ideal"}></Scatter>
                         <Scatter data={purple} fill={"purple"} name={"Acima do esperado"}></Scatter>
