@@ -78,7 +78,7 @@ const GraphAtivos = (props) => {
             return (
                 <div className="custom-tooltip">
                     <p>Períodos Integralizados: {payload[0].payload.periodos_integralizados}</p>
-                    <p>Créditos Integralizados: {payload[0].payload.porcentagem_concluida}%</p>
+                    <p>Créditos Integralizados (%): {payload[0].payload.porcentagem_concluida}%</p>
                 </div>
             );
         }
@@ -103,12 +103,12 @@ const GraphAtivos = (props) => {
                         <XAxis 
                             dataKey="periodos_integralizados" 
                             type="number" 
-                            label={{ value: "Periodos Integralizados", position: 'insideBottom', offset:0 }}
+                            label={{ value: "Períodos Integralizados", position: 'insideBottom', offset:0 }}
                         />
                         <YAxis 
                             dataKey="porcentagem_concluida" 
                             type="number" 
-                            label={{ value: "Créditos Integralizados", angle: -90, position: 'insideLeft', offset:0 }}
+                            label={{ value: "Créditos Integralizados (%)", angle: -90, position: 'insideLeft', offset:0 }}
                         />
                         <Scatter data={red}  onClick={ (e) => handleScatter(e, red)} fillOpacity={0.5} fill={"red"} name={"Abaixo do esperado"}></Scatter>
                         <Scatter data={green}  fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
@@ -146,12 +146,12 @@ const GraphAtivos = (props) => {
                             </Table.Column>
 
                             <Table.Column width={200} fixed>
-                              <Table.HeaderCell>Créditos Integralizados %</Table.HeaderCell>
+                              <Table.HeaderCell>Créditos Integralizados (%)</Table.HeaderCell>
                               <Table.Cell dataKey="porcentagem_concluida" />
                             </Table.Column>
 
                             <Table.Column width={200} fixed>
-                              <Table.HeaderCell>Periodo De Ingresso</Table.HeaderCell>
+                              <Table.HeaderCell>Periodo de Ingresso</Table.HeaderCell>
                               <Table.Cell dataKey="periodo_ingresso" />
                             </Table.Column>
                         </Table>
