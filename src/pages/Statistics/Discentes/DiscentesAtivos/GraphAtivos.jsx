@@ -108,12 +108,10 @@ const GraphAtivos = (props) => {
                             type="number" 
                             label={{ value: "Créditos Integralizados (%)", angle: -90, position: 'insideLeft', offset:0 }}
                         />
-
                         <Scatter data={red}  onClick={ (e) => handleScatter(e, red)} fillOpacity={0.5} fill={"red"} name={"Abaixo do esperado"}></Scatter>
-
-                        <Scatter data={green}  fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
-                        <Scatter data={blue} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
-                        <Scatter data={purple} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
+                        <Scatter data={green}  onClick={ (e) => handleScatter(e, green)} fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
+                        <Scatter data={blue} onClick={ (e) => handleScatter(e, blue)} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
+                        <Scatter data={purple} onClick={ (e) => handleScatter(e, purple)} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
                     </ScatterChart>
                 </div>
                 <Legenda></Legenda>
