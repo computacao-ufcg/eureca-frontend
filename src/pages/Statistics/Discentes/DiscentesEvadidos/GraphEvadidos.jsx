@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import Checkbox from 'rc-checkbox';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+
+import { Switch } from 'pretty-checkbox-react'
+import '@djthoms/pretty-checkbox';
 
 import 'rc-checkbox/assets/index.css';
 import '../../styles.css'
@@ -25,7 +27,16 @@ const GraphEvadidos = (props) => {
     const changeData = (data) => {
         let list = [];
         for (let index = 0; index < data.length; index++) {
-            let auxList = {"periodo": data[index].periodo, ...data[index].tags};
+            let auxList = {"periodo": data[index].periodo, 
+                        "3 reprovações na mesma disciplina" : data[index].tags.tag1,
+                        "Novo ingresso no mesmo curso": data[index].tags.tag2,
+                        "Novo ingresso em outro curso": data[index].tags.tag3,
+                        "Reprovado por falta em todas as disciplinas": data[index].tags.tag4,
+                        "Cancelamento da matrícula": data[index].tags.tag5,
+                        "Cancelamento p/ decisão judicial": data[index].tags.tag6,
+                        "Cancelamento p/ mudança de curso": data[index].tags.tag7,
+                        "Cancelamento p/ solicitação do aluno": data[index].tags.tag8,
+                        "Cancelamento por abandono": data[index].tags.tag9};
             list.push(auxList);
         }
         return list
@@ -104,22 +115,21 @@ const GraphEvadidos = (props) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="periodo" />
-                        <YAxis yAxisId="left" />
+                        <XAxis dataKey="periodo" label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset:-5 }} />
+                        <YAxis yAxisId="left" label={{ value: 'Evadidos', angle: -90, position: 'insideLeft'}} />
                         <Tooltip />
-                        <Legend />
-                        <Area yAxisId="left" name={motivos[0]} type="monotone" stackId="1" dataKey={tag1} stroke="#885d41" fill="#885d41" />
-                        <Area yAxisId="left" name={motivos[1]} type="monotone" stackId="1" dataKey={tag2} stroke="#0073e5" fill="#0073e5" />
-                        <Area yAxisId="left" name={motivos[2]} type="monotone" stackId="1" dataKey={tag3} stroke="#CE4760" fill="#CE4760" />
-                        <Area yAxisId="left" name={motivos[3]} type="monotone" stackId="1" dataKey={tag4} stroke="#2A252D" fill="#2A252D"/>
-                        <Area yAxisId="left" name={motivos[4]} type="monotone" stackId="1" dataKey={tag5} stroke="#E4D2A5" fill="#E4D2A5"/>
-                        <Area yAxisId="left" name={motivos[5]} type="monotone" stackId="1" dataKey={tag6} stroke="#343937" fill="#343937"/>
-                        <Area yAxisId="left" name={motivos[6]} type="monotone" stackId="1" dataKey={tag7} stroke="#D2E414" fill="#D2E414"/>
-                        <Area yAxisId="left" name={motivos[7]} type="monotone" stackId="1" dataKey={tag8} stroke="#282838" fill="#282838"/>
-                        <Area yAxisId="left" name={motivos[8]} type="monotone" stackId="1" dataKey={tag9} stroke="#ED6827" fill="#ED6827"/>
+                        <Area yAxisId="left" name={motivos[0]} type="monotone" stackId="1" dataKey={tag1} stroke="#B2EDD0" fill="#B2EDD0" />
+                        <Area yAxisId="left" name={motivos[1]} type="monotone" stackId="1" dataKey={tag2} stroke="#EFAB54" fill="#EFAB54" />
+                        <Area yAxisId="left" name={motivos[2]} type="monotone" stackId="1" dataKey={tag3} stroke="#24BDAF" fill="#24BDAF" />
+                        <Area yAxisId="left" name={motivos[3]} type="monotone" stackId="1" dataKey={tag4} stroke="#F64969" fill="#F64969"/>
+                        <Area yAxisId="left" name={motivos[4]} type="monotone" stackId="1" dataKey={tag5} stroke="#F6B545" fill="#24BDAF"/>
+                        <Area yAxisId="left" name={motivos[5]} type="monotone" stackId="1" dataKey={tag6} stroke="#E4D2A5" fill="#E4D2A5"/>
+                        <Area yAxisId="left" name={motivos[6]} type="monotone" stackId="1" dataKey={tag7} stroke="#C99192" fill="#C99192"/>
+                        <Area yAxisId="left" name={motivos[7]} type="monotone" stackId="1" dataKey={tag8} stroke="#3A3D3D" fill="#3A3D3D"/>
+                        <Area yAxisId="left" name={motivos[8]} type="monotone" stackId="1" dataKey={tag9} stroke="#C3D440" fill="#C3D440"/>
                     </AreaChart>
                     <div className={"optionsEvadidos"}>
-                        {tags.map((e, index) => <label key={"label" + index}><Checkbox key={"check" + index} name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
+                        {tags.map((e, index) => <label key={"label" + index}><Switch shape="fill" className={"checkbox" + index} key={"check" + index} name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
                     </div>
                 </div>
                 <div className={'textEgressos'}>
@@ -128,7 +138,7 @@ const GraphEvadidos = (props) => {
                     </p>
                 </div>
                 <div className={'exportEgressos'}>
-                    <Export data={auxCSV ? auxCSV : []} name={"dataEvadidos"}/>
+                    <Export data={auxCSV ? auxCSV : []} name={"evadidos"}/>
                 </div>
             </div>
             : null}
