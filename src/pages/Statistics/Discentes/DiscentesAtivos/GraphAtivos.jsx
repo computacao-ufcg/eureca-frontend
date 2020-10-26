@@ -52,14 +52,12 @@ const GraphAtivos = (props) => {
         const carregaDados = () => {
             setLoad(false);
             
-            console.log("dados do props: ", props.data);
             const [red, green, blue, purple] = getDataScatter(props.data);
             const [ period, percentagem ] = getPeriodDown(red);
     
             setMin(props.periodoMin);
             setMax(props.periodoMax);
             
-            console.log("vermelhos:", red);
             setRed(red);
             setGreen(green);
             setBlue(blue);
@@ -78,7 +76,7 @@ const GraphAtivos = (props) => {
             return (
                 <div className="custom-tooltip">
                     <p>Períodos Integralizados: {payload[0].payload.periodos_integralizados}</p>
-                    <p>Créditos Integralizados (%): {payload[0].payload.porcentagem_concluida}%</p>
+                    <p>Créditos Integralizados: {payload[0].payload.porcentagem_concluida}%</p>
                 </div>
             );
         }
@@ -125,7 +123,7 @@ const GraphAtivos = (props) => {
                     <strong>{periodDown}</strong> é o semestre com mais discentes com execução curricular abaixo do esperado ({periodDownValue}).
                     </p>
                 </div>
-                <Modal backdrop={true} show={show} onHide={handleCloseModal}>
+                <Modal backdrop={true} show={show} onHide={handleCloseModal} size="lg" >
                     <Modal.Body>
                         <Table
                             height={400}
