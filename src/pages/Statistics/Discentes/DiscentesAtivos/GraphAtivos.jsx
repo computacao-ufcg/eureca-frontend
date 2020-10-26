@@ -123,7 +123,7 @@ const GraphAtivos = (props) => {
                     <strong>{periodDown}</strong> é o semestre com mais discentes com execução curricular abaixo do esperado ({periodDownValue}).
                     </p>
                 </div>
-                <Modal backdrop={true} show={show} onHide={handleCloseModal} size="lg" >
+                <Modal backdrop={true} overflow={true} show={show} onHide={handleCloseModal} size="lg" >
                     <Modal.Body>
                         <Table
                             height={400}
@@ -138,17 +138,17 @@ const GraphAtivos = (props) => {
                               <Table.Cell dataKey="matricula" />
                             </Table.Column>
                   
-                            <Table.Column width={200} fixed>
+                            <Table.Column width={200} align="center" fixed>
                               <Table.HeaderCell>Períodos Integralizados</Table.HeaderCell>
                               <Table.Cell dataKey="periodos_integralizados" />
                             </Table.Column>
 
-                            <Table.Column width={200} fixed>
+                            <Table.Column width={200} align="center" fixed>
                               <Table.HeaderCell>Créditos Integralizados (%)</Table.HeaderCell>
                               <Table.Cell dataKey="porcentagem_concluida" />
                             </Table.Column>
 
-                            <Table.Column width={200} fixed>
+                            <Table.Column width={200} align="center" fixed>
                               <Table.HeaderCell>Periodo de Ingresso</Table.HeaderCell>
                               <Table.Cell dataKey="periodo_ingresso" />
                             </Table.Column>
