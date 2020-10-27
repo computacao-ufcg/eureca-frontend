@@ -52,14 +52,12 @@ const GraphAtivos = (props) => {
         const carregaDados = () => {
             setLoad(false);
             
-            console.log("dados do props: ", props.data);
             const [red, green, blue, purple] = getDataScatter(props.data);
             const [ period, percentagem ] = getPeriodDown(red);
     
             setMin(props.periodoMin);
             setMax(props.periodoMax);
             
-            console.log("vermelhos:", red);
             setRed(red);
             setGreen(green);
             setBlue(blue);
@@ -78,7 +76,7 @@ const GraphAtivos = (props) => {
             return (
                 <div className="custom-tooltip">
                     <p>Períodos Integralizados: {payload[0].payload.periodos_integralizados}</p>
-                    <p>Créditos Integralizados (%): {payload[0].payload.porcentagem_concluida}%</p>
+                    <p>Créditos Integralizados: {payload[0].payload.porcentagem_concluida}%</p>
                 </div>
             );
         }
@@ -110,12 +108,10 @@ const GraphAtivos = (props) => {
                             type="number" 
                             label={{ value: "Créditos Integralizados (%)", angle: -90, position: 'insideLeft', offset:0 }}
                         />
-
                         <Scatter data={red}  onClick={ (e) => handleScatter(e, red)} fillOpacity={0.5} fill={"red"} name={"Abaixo do esperado"}></Scatter>
-
-                        <Scatter data={green}  fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
-                        <Scatter data={blue} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
-                        <Scatter data={purple} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
+                        <Scatter data={green}  onClick={ (e) => handleScatter(e, green)} fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
+                        <Scatter data={blue} onClick={ (e) => handleScatter(e, blue)} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
+                        <Scatter data={purple} onClick={ (e) => handleScatter(e, purple)} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
                     </ScatterChart>
                 </div>
                 <Legenda></Legenda>
@@ -127,7 +123,7 @@ const GraphAtivos = (props) => {
                     <strong>{periodDown}</strong> é o semestre com mais discentes com execução curricular abaixo do esperado ({periodDownValue}).
                     </p>
                 </div>
-                <Modal backdrop={true} show={show} onHide={handleCloseModal}>
+                <Modal backdrop={true} overflow={true} show={show} onHide={handleCloseModal} size="lg" >
                     <Modal.Body>
                         <Table
                             height={400}
@@ -142,17 +138,17 @@ const GraphAtivos = (props) => {
                               <Table.Cell dataKey="matricula" />
                             </Table.Column>
                   
-                            <Table.Column width={200} fixed>
+                            <Table.Column width={200} align="center" fixed>
                               <Table.HeaderCell>Períodos Integralizados</Table.HeaderCell>
                               <Table.Cell dataKey="periodos_integralizados" />
                             </Table.Column>
 
-                            <Table.Column width={200} fixed>
+                            <Table.Column width={200} align="center" fixed>
                               <Table.HeaderCell>Créditos Integralizados (%)</Table.HeaderCell>
                               <Table.Cell dataKey="porcentagem_concluida" />
                             </Table.Column>
 
-                            <Table.Column width={200} fixed>
+                            <Table.Column width={200} align="center" fixed>
                               <Table.HeaderCell>Periodo de Ingresso</Table.HeaderCell>
                               <Table.Cell dataKey="periodo_ingresso" />
                             </Table.Column>
