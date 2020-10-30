@@ -57,7 +57,7 @@ const TableActives = ({ elementsEquals }) => {
                 </Table.Column>
 
                 <Table.Column width={200} align="center" fixed>
-                    <Table.HeaderCell>Periodo de Ingresso</Table.HeaderCell>
+                    <Table.HeaderCell>Período de Ingresso</Table.HeaderCell>
                     <Table.Cell dataKey="periodo_ingresso" />
                 </Table.Column>
             </Table>
