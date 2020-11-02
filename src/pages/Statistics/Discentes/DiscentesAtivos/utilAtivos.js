@@ -136,21 +136,21 @@ const getPeriodDown = (data) => {
 }
 
 const headersCSV = [
-    { label: "Matricula", key: "matricula" },
+    { label: "Matrícula", key: "matricula" },
     { label: "CRA", key: "cra" },
-    { label: "Periodos Integralizados", key: "periodos_integralizados" },
-    { label: "Creditos Complementares Integralizados", key: "cred_comp_int" },
-    { label: "Creditos Obrigatorios Integralizados", key: "cred_obrig_int" },
-    { label: "Creditos Optativos Integralizados", key: "cred_opt_int" },
-    { label: "Curriculo", key: "curriculo" },
+    { label: "Períodos Integralizados", key: "periodos_integralizados" },
+    { label: "Créditos Complementares Integralizados", key: "cred_comp_int" },
+    { label: "Créditos Obrigatórios Integralizados", key: "cred_obrig_int" },
+    { label: "Créditos Optativos Integralizados", key: "cred_opt_int" },
+    { label: "Currículo", key: "curriculo" },
     { label: "Estado Civil", key: "estado_civil" },
-    { label: "Genero", key: "genero" },
+    { label: "Gênero", key: "genero" },
     { label: "IEA", key: "iea" },
-    { label: "Matriculas Institucionais", key: "matriculas_institucionais" },
+    { label: "Matrículas Institucionais", key: "matriculas_institucionais" },
     { label: "MC", key: "mc" },
-    { label: "Media Geral Ingresso", key: "media_geral_ingresso" },
+    { label: "Média Geral Ingresso", key: "media_geral_ingresso" },
     { label: "Mobilidade Estudantil", key: "mobilidade_estudantil" },
-    { label: "Periodo de Ingresso", key: "periodo_ingresso" },
+    { label: "Período de Ingresso", key: "periodo_ingresso" },
     { label: "Trancamentos Totais", key: "trancamentos_totais" },
     { label: "Cota", key: "cota" }
 ];
