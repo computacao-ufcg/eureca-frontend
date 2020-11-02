@@ -4,6 +4,8 @@ import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar/index.jsx';
 import SideBar from '../../../../components/StatisticsComponents/SideBar';
 
+import { navOptions, studentsOptions } from '../../utilStatistics';
+
 import Title from '../../../../components/General/Title/';
 
 import SliderEgressos from './SliderEgressos';
@@ -44,10 +46,10 @@ const DiscentesEgressos = () => {
             <div className={'mainStatistics'}>
                 <Title name={"Estatísticas"}/>
                 <div className={'contentStatistics'}>
-                    <NavBar selectedOption={"Discentes"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']}/>
+                    <NavBar selectedOption={"Discentes"} listEnum={ navOptions }/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Egressos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']}/>
+                            <SideBar selectedOption={"Egressos"} navSelected={"discentes"} listOption={ studentsOptions }/>
                             <div className={'compStatistics'}>
                                 <SliderEgressos changeSlider={handleSlider}/>
                                 <GraphEgressos data={dataEgressos}/>

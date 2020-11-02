@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { RangeSlider } from 'rsuite';
-import 'rsuite/dist/styles/rsuite-default.css';
 
 import {labels} from './utilEgressos';
 
