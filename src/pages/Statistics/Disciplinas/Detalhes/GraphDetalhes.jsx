@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 import {data} from './utilDetalhes'
 
@@ -23,9 +23,9 @@ const GraphDetalhes = () => {
                 <YAxis label={{ value: 'Taxa de Sucesso (%)', angle: -90, position: 'insideLeft'}}/>
                 <Tooltip />
                 <Legend verticalAlign="top" />
-                <Bar dataKey="t1" fill="#8884d8" name="Turma 1" />
-                <Bar dataKey="t2" fill="#82ca9d" name="Turma 2"/>
-                <Bar dataKey="t3" fill="#85cef8" name="Turma 3"/>
+                <Bar dataKey="t1" fill="#8884d8" name="Professor(a) 1" />
+                <Bar dataKey="t2" fill="#82ca9d" name="Professor(a) 2"/>
+                <Bar dataKey="t3" fill="#85cef8" name="Professor(a) 3"/>
             </BarChart>
         </div>
     )
