@@ -20,8 +20,73 @@ const disciplinas = [
         "role": "Obrigatórias"
     },
     {
+        "label": "Análise e Técnica de Algoritmos",
+        "value": "atal",
+        "role": "Obrigatórias"
+    },
+    {
         "label": "Redes de Computadores",
         "value": "redes",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Programação 1",
+        "value": "p1",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Teoria dos Grafos",
+        "value": "grafos",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Estrutura de Dados e Algoritmos",
+        "value": "eda",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Laboratório de Estrutura de Dados",
+        "value": "leda",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Organização e Arquitetura de Computadores",
+        "value": "oac",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Laboratório de Organização e Arquitetura de Computadores",
+        "value": "loac",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Paradigmas de Linguagem de Programação",
+        "value": "plp",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Teoria da Computação",
+        "value": "tc",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Lógica para Computação",
+        "value": "logica",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Fundamentos Matemáticos para Ciência da Computação 1",
+        "value": "fmcc1",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Fundamentos Matemáticos para Ciência da Computação 2",
+        "value": "fmcc2",
+        "role": "Obrigatórias"
+    },
+    {
+        "label": "Programação Concorrente",
+        "value": "pc",
         "role": "Obrigatórias"
     },
     {
@@ -30,13 +95,58 @@ const disciplinas = [
         "role": "Optativas Expecíficas"
     },
     {
+        "label": "Algoritmos Avançados",
+        "value": "aa",
+        "role": "Optativas Expecíficas"
+    },
+    {
+        "label": "Programação Funcional",
+        "value": "funcional",
+        "role": "Optativas Expecíficas"
+    },
+    {
+        "label": "Administração de Sistemas",
+        "value": "sysadm",
+        "role": "Optativas Expecíficas"
+    },
+    {
+        "label": "Príncipios de Desenvolvimento Web",
+        "value": "devweb",
+        "role": "Optativas Expecíficas"
+    },
+    {
         "label": "Informática e Sociedade",
         "value": "infosoc",
         "role": "Optativas Gerais"
     },
     {
+        "label": "Língua Portuguesa",
+        "value": "portugues",
+        "role": "Optativas Gerais"
+    },
+    {
         "label": "Cáculo Diferencial 3",
         "value": "c3",
+        "role": "Extracurriculares"
+    },
+    {
+        "label": "Física Geral 1",
+        "value": "f1",
+        "role": "Extracurriculares"
+    },
+    {
+        "label": "Física Geral 2",
+        "value": "f2",
+        "role": "Extracurriculares"
+    },
+    {
+        "label": "Física Geral 3",
+        "value": "f3",
+        "role": "Extracurriculares"
+    },
+    {
+        "label": "Física Geral 4",
+        "value": "f4",
         "role": "Extracurriculares"
     },
 ];
@@ -53,9 +163,9 @@ const metricas = [
         "role": "metrica"
     },
     {
-        "label": "Taxa de Sucesso",
-        "value": "taxaSucesso",
-        "role": "tamanhoTurma"
+        "label": "Tamanho da turma",
+        "value": "tamanhoTurma",
+        "role": "metrica"
     }
 ];
 
