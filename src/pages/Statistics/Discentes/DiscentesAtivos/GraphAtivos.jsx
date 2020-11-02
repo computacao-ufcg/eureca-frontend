@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react';
 
-import  { Loader } from 'rsuite';
+import  { Loader, Modal, Button, Table } from 'rsuite';
 
 import { XAxis, YAxis, CartesianGrid, Tooltip, Scatter, ScatterChart } from 'recharts';
 
@@ -22,18 +22,42 @@ const GraphAtivos = (props) => {
     const [periodDown, setPeriodDown] = useState([]);
     const [periodDownValue, setPeriodDownValue] = useState(0);
 
+    //for modal
+    const [show, setShow] = useState(false);
+    const [elementsEquals, setElementsEquals] = useState([]);
+
+    const handleCloseModal = () => {
+        setShow(false);
+    }
+
+
+    const handleScatter = (event, data) => {
+        let percentagem = event.payload.porcentagem_concluida;
+        let elementsEquals = [];
+
+        // coletando todos os elementos com a mesma porcentagem
+        data.map( element => {
+            if(element.porcentagem_concluida === percentagem){
+                elementsEquals.push(element);
+            }
+        })
+
+        // debugger
+        setElementsEquals(elementsEquals);
+        setShow(true);
+    }
     
 
     useEffect(() => {
         const carregaDados = () => {
             setLoad(false);
-    
+            
             const [red, green, blue, purple] = getDataScatter(props.data);
             const [ period, percentagem ] = getPeriodDown(red);
     
             setMin(props.periodoMin);
             setMax(props.periodoMax);
-    
+            
             setRed(red);
             setGreen(green);
             setBlue(blue);
@@ -51,9 +75,8 @@ const GraphAtivos = (props) => {
         if (active) {
             return (
                 <div className="custom-tooltip">
-                    <p className="title-tooltip">{payload[0].payload.matricula}</p>
                     <p>Períodos Integralizados: {payload[0].payload.periodos_integralizados}</p>
-                    <p>Curso Concluído: {payload[0].payload.porcentagem_concluida}%</p>
+                    <p>Créditos Integralizados: {payload[0].payload.porcentagem_concluida}%</p>
                 </div>
             );
         }
@@ -74,24 +97,21 @@ const GraphAtivos = (props) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />} />
+                        <Tooltip cursor={{ strokeDasharray: '3 3' }} content={CustomTooltip} />
                         <XAxis 
                             dataKey="periodos_integralizados" 
                             type="number" 
-                            name='periodosAtivos' 
-                            label={{ value: "Periodos Integralizados", position: 'insideBottom', offset:0 }}
+                            label={{ value: "Períodos Integralizados", position: 'insideBottom', offset:0 }}
                         />
                         <YAxis 
                             dataKey="porcentagem_concluida" 
                             type="number" 
-                            name='cursoConcluido' 
-                            unit='%' 
-                            label={{ value: "Curso Concluido", angle: -90, position: 'insideLeft', offset:0 }}
+                            label={{ value: "Créditos Integralizados (%)", angle: -90, position: 'insideLeft', offset:0 }}
                         />
-                        <Scatter data={red} fill={"Red"} name={"Abaixo do esperado"}></Scatter>
-                        <Scatter data={green} fill={"green"} name={"Dentro do esperado"}></Scatter>
-                        <Scatter data={blue} fill={"blue"} name={"Ideal"}></Scatter>
-                        <Scatter data={purple} fill={"purple"} name={"Acima do esperado"}></Scatter>
+                        <Scatter data={red}  onClick={ (e) => handleScatter(e, red)} fillOpacity={0.5} fill={"red"} name={"Abaixo do esperado"}></Scatter>
+                        <Scatter data={green}  onClick={ (e) => handleScatter(e, green)} fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
+                        <Scatter data={blue} onClick={ (e) => handleScatter(e, blue)} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
+                        <Scatter data={purple} onClick={ (e) => handleScatter(e, purple)} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
                     </ScatterChart>
                 </div>
                 <Legenda></Legenda>
@@ -102,7 +122,44 @@ const GraphAtivos = (props) => {
                     enquanto que <strong>{red.length}</strong> ({getPercentagem(props, red)}%) estão com a execução curricular abaixo do esperado.  
                     <strong>{periodDown}</strong> é o semestre com mais discentes com execução curricular abaixo do esperado ({periodDownValue}).
                     </p>
-                </div> 
+                </div>
+                <Modal backdrop={true} overflow={true} show={show} onHide={handleCloseModal} size="lg" >
+                    <Modal.Body>
+                        <Table
+                            height={400}
+                            width={800}
+                            data={elementsEquals}
+                            onRowClick={data => {
+                              console.log(data);
+                            }}
+                          >
+                            <Table.Column width={200} align="center" fixed>
+                              <Table.HeaderCell>Matrícula</Table.HeaderCell>
+                              <Table.Cell dataKey="matricula" />
+                            </Table.Column>
+                  
+                            <Table.Column width={200} align="center" fixed>
+                              <Table.HeaderCell>Períodos Integralizados</Table.HeaderCell>
+                              <Table.Cell dataKey="periodos_integralizados" />
+                            </Table.Column>
+
+                            <Table.Column width={200} align="center" fixed>
+                              <Table.HeaderCell>Créditos Integralizados (%)</Table.HeaderCell>
+                              <Table.Cell dataKey="porcentagem_concluida" />
+                            </Table.Column>
+
+                            <Table.Column width={200} align="center" fixed>
+                              <Table.HeaderCell>Periodo de Ingresso</Table.HeaderCell>
+                              <Table.Cell dataKey="periodo_ingresso" />
+                            </Table.Column>
+                        </Table>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={handleCloseModal} appearance="primary">
+                        Ok
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </React.Fragment> : <Loader content="Carregando..." vertical></Loader>}
         </div>
     )
