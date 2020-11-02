@@ -2,12 +2,13 @@ import React from 'react';
 
 import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar';
+import SideBar from '../../../../components/StatisticsComponents/SideBar';
 
-import Title from '../../../../components/General/Title/';
+import Title from '../../../../components/General/Title';
 
 import '../../styles.css';
 
-const Atal = () => {
+const Insucesso = () => {
 
     return(
         <React.Fragment>
@@ -18,6 +19,7 @@ const Atal = () => {
                     <NavBar selectedOption={"Disciplinas"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']}/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
+                            <SideBar selectedOption={"Insucesso"} navSelected={"disciplinas"} listOption={['Sumário', 'Detalhes', 'Desempenho', 'Insucesso', 'Requisitos']} names={['Sumario', 'Detalhes', 'Desempenho', 'Insucesso', 'Requisitos']}/>
                         </div>
                     </div>
                 </div>
@@ -26,4 +28,4 @@ const Atal = () => {
     )
 }
 
-export default Atal;
+export default Insucesso;

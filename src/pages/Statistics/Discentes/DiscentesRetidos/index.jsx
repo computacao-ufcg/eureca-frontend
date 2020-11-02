@@ -19,7 +19,7 @@ const DiscentesRetidos = () => {
                     <NavBar selectedOption={"Discentes"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']}/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Retidos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']}/>
+                            <SideBar selectedOption={"Retidos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']} names={['Ativos', 'Egressos', 'Evadidos', 'Retidos']}/>
                         </div>
                     </div>
                 </div>

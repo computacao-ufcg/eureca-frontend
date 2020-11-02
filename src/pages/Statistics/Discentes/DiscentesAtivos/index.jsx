@@ -97,7 +97,7 @@ const DiscentesAtivos = () => {
                     <NavBar selectedOption={"Discentes"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']} />
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Ativos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']} />
+                            <SideBar selectedOption={"Ativos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']} names={['Ativos', 'Egressos', 'Evadidos', 'Retidos']}/>
                             <div className={'compStatistics'}>
                                 <SliderAtivos changeSlider={handleSlider} labels={label} min={min} max={max}></SliderAtivos>
                                 <GraphAtivos data={dataAtivos} periodoMin={label[min]} periodoMax={label[max]}></GraphAtivos>

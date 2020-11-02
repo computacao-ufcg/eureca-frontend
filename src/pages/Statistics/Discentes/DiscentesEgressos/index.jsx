@@ -47,7 +47,7 @@ const DiscentesEgressos = () => {
                     <NavBar selectedOption={"Discentes"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']}/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Egressos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']}/>
+                            <SideBar selectedOption={"Egressos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']} names={['Ativos', 'Egressos', 'Evadidos', 'Retidos']}/>
                             <div className={'compStatistics'}>
                                 <SliderEgressos changeSlider={handleSlider}/>
                                 <GraphEgressos data={dataEgressos}/>

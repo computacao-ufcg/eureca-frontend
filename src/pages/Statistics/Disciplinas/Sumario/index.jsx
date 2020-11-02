@@ -2,12 +2,13 @@ import React from 'react';
 
 import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar';
+import SideBar from '../../../../components/StatisticsComponents/SideBar';
 
-import Title from '../../../../components/General/Title/';
+import Title from '../../../../components/General/Title';
 
 import '../../styles.css';
 
-const Oac = () => {
+const Sumario = () => {
 
     return(
         <React.Fragment>
@@ -18,6 +19,7 @@ const Oac = () => {
                     <NavBar selectedOption={"Disciplinas"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']}/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
+                            <SideBar selectedOption={"Sumário"} navSelected={"disciplinas"} listOption={['Sumário', 'Detalhes', 'Desempenho', 'Insucesso', 'Requisitos']} names={['Sumario', 'Detalhes', 'Desempenho', 'Insucesso', 'Requisitos']}/>
                         </div>
                     </div>
                 </div>
@@ -26,4 +28,4 @@ const Oac = () => {
     )
 }
 
-export default Oac;
+export default Sumario;

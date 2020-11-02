@@ -14,6 +14,8 @@ import {tags, motivos} from './utilEvadidos';
 
 const GraphEvadidos = (props) => {
 
+    const data = props.data ? props.data.dados : null
+
     const [tag1, setTag1] = useState("tags.tag1");
     const [tag2, setTag2] = useState("tags.tag2");
     const [tag3, setTag3] = useState("tags.tag3");
@@ -41,7 +43,7 @@ const GraphEvadidos = (props) => {
         }
         return list
     }
-    let auxCSV = props.data ? changeData(props.data) : null;
+    let auxCSV = props.data ? changeData(props.data.dados) : null;
     
     const handleCheck = (e) => {
         if(e.target.name === 'tag1') {
@@ -100,16 +102,16 @@ const GraphEvadidos = (props) => {
             }
         }
     }
-
+    
     return (
         <React.Fragment>
-            {props.data ? 
+            {data ? 
             <div className={'rootGraphEvadidos'}>
                 <div className={'mainGraphEvadidos'}>
                     <AreaChart
                         width={800}
                         height={400}
-                        data={props.data}
+                        data={props.data.dados}
                         margin={{
                             top: 5, right: 30, left: 20, bottom: 5,
                         }}
@@ -132,16 +134,18 @@ const GraphEvadidos = (props) => {
                         {tags.map((e, index) => <label key={"label" + index}><Switch shape="fill" className={"checkbox" + index} key={"check" + index} name={e} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
                     </div>
                 </div>
+                
                 <div className={'textEgressos'}>
                     <p>
-                    Entre <strong>{props.data[0].periodo}</strong> e <strong>{props.data[props.data.length - 1].periodo}</strong>, <strong>AA</strong> discentes se desligaram definitivamente do curso, sem colar grau. Entretanto, o número total de desligamentos no período foi <strong>BB</strong>, considerando discentes que foram desligados e que reingressaram no curso. A relação entre evadidos e matriculados no período é <strong>CC.C</strong>, enquanto que a relação entre evadidos e egressos é <strong>DD.D</strong>.
-                    </p>
+                    Entre <strong>{data[0].periodo}</strong> e <strong>{data[data.length - 1].periodo}</strong>, <strong>{props.data.total_evadidos_liquido}</strong> discentes se desligaram definitivamente do curso, sem colar grau. Entretanto, o número total de desligamentos no período foi <strong>{props.data.total_evadidos_bruto}</strong>, considerando discentes que foram desligados e que reingressaram no curso. A relação entre evadidos e matriculados no período é <strong>{props.data.evadidos_ingressos}</strong>, enquanto que a relação entre evadidos e egressos é <strong>{props.data.evadidos_egressos}</strong>.
+                    </p> 
                 </div>
+
                 <div className={'exportEgressos'}>
                     <Export data={auxCSV ? auxCSV : []} name={"evadidos"}/>
                 </div>
             </div>
-            : null}
+            : <div></div>}
         </React.Fragment>
     )
 }

@@ -2,12 +2,16 @@ import React from 'react';
 
 import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar';
+import SideBar from '../../../../components/StatisticsComponents/SideBar';
 
-import Title from '../../../../components/General/Title/';
+import Title from '../../../../components/General/Title';
+
+import GraphDetalhes from './GraphDetalhes'
+import SelectDetalhes from './SelectDetalhes'
 
 import '../../styles.css';
 
-const SO = () => {
+const Detalhes = () => {
 
     return(
         <React.Fragment>
@@ -18,6 +22,11 @@ const SO = () => {
                     <NavBar selectedOption={"Disciplinas"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']}/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
+                            <SideBar selectedOption={"Detalhes"} navSelected={"disciplinas"} listOption={['Sumário', 'Detalhes', 'Desempenho', 'Insucesso', 'Requisitos']} names={['Sumario', 'Detalhes', 'Desempenho', 'Insucesso', 'Requisitos']}/>
+                            <div className={'compStatistics'}>
+                                <SelectDetalhes/>
+                                <GraphDetalhes/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -25,4 +34,4 @@ const SO = () => {
         </React.Fragment>    )
 }
 
-export default SO;
+export default Detalhes;
