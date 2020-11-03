@@ -4,7 +4,7 @@ import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar';
 import SideBar from '../../../../components/StatisticsComponents/SideBar';
 
-import { navOptions, studentsOptions } from '../../utilStatistics';
+import { nameStudents, navOptions, studentsOptions } from '../../utilStatistics';
 
 import Title from '../../../../components/General/Title/';
 
@@ -21,7 +21,7 @@ const DiscentesRetidos = () => {
                     <NavBar selectedOption={"Discentes"} listEnum={ navOptions }/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Retidos"} navSelected={"discentes"} listOption={ studentsOptions }/>
+                            <SideBar selectedOption={"Retidos"} navSelected={"discentes"} listOption={ studentsOptions } names={ nameStudents }/>
                         </div>
                     </div>
                 </div>

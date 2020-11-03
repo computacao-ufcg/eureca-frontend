@@ -4,7 +4,7 @@ import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar/index.jsx';
 import SideBar from '../../../../components/StatisticsComponents/SideBar';
 
-import { navOptions, studentsOptions } from '../../utilStatistics';
+import { navOptions, studentsOptions, nameStudents } from '../../utilStatistics';
 
 import Title from '../../../../components/General/Title/';
 
@@ -49,7 +49,7 @@ const DiscentesEgressos = () => {
                     <NavBar selectedOption={"Discentes"} listEnum={ navOptions }/>
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Egressos"} navSelected={"discentes"} listOption={ studentsOptions }/>
+                            <SideBar selectedOption={"Egressos"} navSelected={"discentes"} listOption={ studentsOptions } names={ nameStudents } />
                             <div className={'compStatistics'}>
                                 <SliderEgressos changeSlider={handleSlider}/>
                                 <GraphEgressos data={dataEgressos}/>

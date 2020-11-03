@@ -1,11 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 import  CanvasJSReact  from './canvas/canvasjs.react';
 
 const GraphSummary = (props) => {
-    
-    const [data, setData] = useState(props.data);
-    
     const options = {
         animationEnabled: true,
         theme: "light1",
@@ -28,7 +25,7 @@ const GraphSummary = (props) => {
 
     return(
         <React.Fragment>      
-			<CanvasJSReact.CanvasJSChart options = {options} />
+			<CanvasJSReact.CanvasJSChart options = {options} className="graph-summary" />
         </React.Fragment>
     );
 }

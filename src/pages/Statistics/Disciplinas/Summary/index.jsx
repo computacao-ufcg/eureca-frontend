@@ -6,7 +6,7 @@ import SideBar from '../../../../components/StatisticsComponents/SideBar';
 import Title from '../../../../components/General/Title';
 // import Export from '../../../../components/StatisticsComponents/Export';
 
-import { navOptions, subjectsOptions } from '../../utilStatistics';
+import { navOptions, subjectsOptions, nameSubjects } from '../../utilStatistics';
 
 import { dataSummary, labelSlider } from './utilSummary';
 
@@ -53,7 +53,7 @@ const Summary = () => {
                     <NavBar selectedOption={"Disciplinas"} listEnum={navOptions} />
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Ativos"} navSelected={"discentes"} listOption={subjectsOptions} />
+                            <SideBar selectedOption={"Sumário"} navSelected={"disciplinas"} listOption={subjectsOptions} names={ nameSubjects }/>
                             <div className={'compStatistics'}>
                                 <SliderSummary changeSlider={handleSlider} labels={labelSlider} period={period}></SliderSummary>
                                 <GraphSummary data={dataGraph}></GraphSummary>

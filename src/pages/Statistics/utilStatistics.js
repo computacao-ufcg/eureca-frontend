@@ -2,6 +2,10 @@ const navOptions = ['Discentes', 'Disciplinas', 'Matrículas'];
 
 const studentsOptions = ['Ativos', 'Egressos', 'Evadidos', 'Retidos'];
 
+const nameStudents = ['Ativos', 'Egressos', 'Evadidos', 'Retidos'];
+
 const subjectsOptions = ['Sumário', 'Métricas'];
 
-export { navOptions, studentsOptions, subjectsOptions };
+const nameSubjects = ['Sumario', 'Metricas'];
+
+export { navOptions, studentsOptions, subjectsOptions, nameStudents, nameSubjects };
