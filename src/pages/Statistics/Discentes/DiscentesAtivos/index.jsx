@@ -6,6 +6,8 @@ import SideBar from '../../../../components/StatisticsComponents/SideBar';
 import Title from '../../../../components/General/Title/';
 import Export from '../../../../components/StatisticsComponents/Export';
 
+import { navOptions, studentsOptions, nameStudents } from '../../utilStatistics';
+
 import SliderAtivos from './SliderAtivos';
 import GraphAtivos from './GraphAtivos';
 
@@ -94,10 +96,10 @@ const DiscentesAtivos = () => {
             <div className={'mainStatistics'}>
                 <Title name={"Estatísticas"} />
                 <div className={'contentStatistics'}>
-                    <NavBar selectedOption={"Discentes"} listEnum={['Discentes', 'Disciplinas', 'Matrículas']} />
+                    <NavBar selectedOption={"Discentes"} listEnum={ navOptions } />
                     <div className={'modelStatistics'}>
                         <div className={'listStatistics'}>
-                            <SideBar selectedOption={"Ativos"} navSelected={"discentes"} listOption={['Ativos', 'Egressos', 'Evadidos', 'Retidos']} />
+                            <SideBar selectedOption={"Ativos"} navSelected={"discentes"} listOption={ studentsOptions } names={ nameStudents } />
                             <div className={'compStatistics'}>
                                 <SliderAtivos changeSlider={handleSlider} labels={label} min={min} max={max}></SliderAtivos>
                                 <GraphAtivos data={dataAtivos} periodoMin={label[min]} periodoMax={label[max]}></GraphAtivos>

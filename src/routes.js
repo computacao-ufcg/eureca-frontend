@@ -9,7 +9,8 @@ import DiscentesEgressos from './pages/Statistics/Discentes/DiscentesEgressos'
 import DiscentesEvadidos from './pages/Statistics/Discentes/DiscentesEvadidos'
 import DiscentesRetidos from './pages/Statistics/Discentes/DiscentesRetidos'
 
-import Atal from './pages/Statistics/Disciplinas/ATAL'
+import SubjectsSummary from './pages/Statistics/Disciplinas/Summary';
+import SubjectsMetrics from './pages/Statistics/Disciplinas/Metrics';
 
 import Ajustar from './pages/Statistics/Matrículas/Ajustar'
 
@@ -20,7 +21,7 @@ const Routes = () => {
         <Route exact path="/" component = {() => <Home/> } />
         <Route exact path="/statistics" component = {() => <Redirect to='/statistics/discentesAtivos'/> }/>
         <Route exact path="/statistics/discentes" component = {() => <Redirect to='/statistics/discentesAtivos'/> }/>
-        <Route exact path="/statistics/disciplinas" component = {() => <Redirect to='/statistics/disciplinasATAL'/> }/>
+        <Route exact path="/statistics/disciplinas" component = {() => <Redirect to='/statistics/disciplinasSumario'/> }/>
         <Route exact path="/statistics/matriculas" component = {() => <Redirect to='/statistics/matriculasAjustar'/> }/>
 
         <Route exact path="/statistics/discentesAtivos" component = {() => <DiscentesAtivos/>}/>
@@ -28,7 +29,8 @@ const Routes = () => {
         <Route exact path="/statistics/discentesEvadidos" component = {() => <DiscentesEvadidos/>}/>
         <Route exact path="/statistics/discentesRetidos" component = {() => <DiscentesRetidos/>}/>
 
-        <Route exact path="/statistics/disciplinasATAL" component = {() => <Atal/>}/>
+        <Route exact path="/statistics/disciplinasSumario" component = {() => <SubjectsSummary/>}/>
+        <Route exact path="/statistics/disciplinasMetricas" component = {() => <SubjectsMetrics/>}/>
 
         <Route exact path="/statistics/matriculasAjustar" component = {() => <Ajustar/>}/>
 
