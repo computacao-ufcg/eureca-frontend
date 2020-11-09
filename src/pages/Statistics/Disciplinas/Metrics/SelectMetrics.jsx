@@ -5,13 +5,19 @@ import 'rsuite/dist/styles/rsuite-default.css';
 
 import {metricas, disciplinas} from './utilMetrics'
 
-const SelectedMetrics = () => {
-
+const SelectedMetrics = (props) => {
+    
+    const changeMetric = (value) => {
+        props.handleMetrics(value)
+    }
+    const changeSubject = (value) => {
+        props.handleSubject(value)
+    }
     return(
         <React.Fragment>
-            <SelectPicker placeholder={"Disciplinas"} data={disciplinas} groupBy="role" defaultValue={'lp2'} block />
+            <SelectPicker placeholder={"Disciplinas"} data={disciplinas} onChange={changeSubject} groupBy="role" defaultValue={'lp2'} block />
             <hr/>
-            <SelectPicker placeholder={"Métricas"} data={metricas} defaultValue={'taxaSucesso'} block />
+            <SelectPicker placeholder={"Métricas"} data={metricas} onChange={changeMetric} defaultValue={'taxaSucesso'} block />
             <hr/>
         </React.Fragment>
     )
