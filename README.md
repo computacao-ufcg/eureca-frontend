@@ -1,6 +1,16 @@
 # pdc-frontend
 
-## Inicializando a aplicação
+## Inicializando a aplicação localmente com NodeJs
+
+<p>Antes de mais nada, é necessário ter o NodeJs instalado em sua máquina.</p>
+<p>Com isto, na <strong>raiz</strong> do projeto, podemos executar os seguintes comandos, em ordem:</p>
+
+<code>sudo npm install</code>
+<code>sudo npm start</code>
+
+**OBS.**: Verificar se o arquivo "./src/services/api.js" está com a configuração adequada.
+
+## Inicializando a aplicação com Docker
 
 <p>É necessário adicionar o seu user ao grupo de usuários do docker, usando o seguinte comando e depois reiniciar a máquina.</p>
 
