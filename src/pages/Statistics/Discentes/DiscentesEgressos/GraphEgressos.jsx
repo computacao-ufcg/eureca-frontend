@@ -24,7 +24,7 @@ const GraphEgressos = (props) => {
 
                         <XAxis dataKey="periodo_conclusao"  allowDuplicatedCategory={false} label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset:-5 }}/>
                         <YAxis yAxisId="left" dataKey="qtd_egressos" label={{ value: 'Egressos', angle: -90, position: 'insideLeft'}} />
-                        <YAxis yAxisId="right" orientation="right" domain={[0, 10]} label={{ value: 'CRA', angle: -270, position: 'insideRight', textAnchor: 'center'}}/>
+                        <YAxis yAxisId="right" orientation="right" domain={[0, 10]} label={{ value: 'CRA', angle: -270, position: 'insideRight', textAnchor: 'middle'}}/>
 
                         <Tooltip />
                         <Legend verticalAlign="top" margin={{top: 10, left: 10, right: 0, bottom: 0 }} /> 

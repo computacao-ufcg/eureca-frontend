@@ -2,33 +2,33 @@ import React from 'react';
 
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
-import {data} from './utilMetrics'
+import {dataSize} from '../utilMetrics'
 
-import '../../styles.css'
+import '../../../styles.css'
 
-const GraphMetrics = () => {
+const GraphMetricsSize = () => {
 
-    return (
+    return(
         <div className={'mainGraphs'}>
             <BarChart
                 width={800}
                 height={400}
-                data={data["lp2"]}
+                data={dataSize["lp2"]}
                 margin={{
                 top: 5, right: 30, left: 20, bottom: 5,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset:-5 }} />
-                <YAxis label={{ value: 'Taxa de Sucesso (%)', angle: -90, position: 'insideLeft'}}/>
+                <YAxis label={{ value: 'Tamanho das Turmas', angle: -90, position: 'insideLeft'}}/>
                 <Tooltip />
                 <Legend verticalAlign="top" />
-                <Bar dataKey="t1" fill="#8884d8" name="Professor(a) 1" />
-                <Bar dataKey="t2" fill="#82ca9d" name="Professor(a) 2"/>
-                <Bar dataKey="t3" fill="#85cef8" name="Professor(a) 3"/>
+                <Bar dataKey="min" fill="#E3A11B" name="Mínimo" />
+                <Bar dataKey="medio" fill="#108FEE" name="Médio" />
+                <Bar dataKey="max" fill="#C2BBB0" name="Máximo" />
             </BarChart>
         </div>
     )
 }
 
-export default GraphMetrics;
+export default GraphMetricsSize;
