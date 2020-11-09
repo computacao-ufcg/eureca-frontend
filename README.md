@@ -5,7 +5,7 @@
 <p>Antes de mais nada, é necessário ter o NodeJs instalado em sua máquina.</p>
 <p>Com isto, na <strong>raiz</strong> do projeto, podemos executar os seguintes comandos, em ordem:</p>
 
-<code>sudo npm install</code>
+<code>sudo npm install</code><br>
 <code>sudo npm start</code>
 
 **OBS.**: Verificar se o arquivo "./src/services/api.js" está com a configuração adequada.
