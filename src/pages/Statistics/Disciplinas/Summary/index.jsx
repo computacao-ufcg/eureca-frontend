@@ -21,15 +21,12 @@ const Summary = () => {
     const [dataGraph, setDataGraph] = useState([]);
     const [label, setLabel] = useState(labelSlider)
 
-    const [load, setLoad] = useState(false);
-
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(0);
 
     const handleSlider = (min, max) => {      
         setMin(min);
-        setMax(max);
-        fetchDataApiWithLabel(min, max);
+        setMax(max);    
     }
 
     const fetchDataApiWithLabel = async (min, max) => {
@@ -46,8 +43,6 @@ const Summary = () => {
 
     const formatData = (data) => {
 
-        setLoad(true);
-
         const dados = data.map(e => {
             const  group = e.group;
             const { lim_inf, lim_sup, q1, q2, q3 } = e.data;
@@ -56,8 +51,6 @@ const Summary = () => {
         });
 
         setDataGraph(dados);
-
-        setLoad(false);
     }
 
     useEffect(() => { 
@@ -75,10 +68,10 @@ const Summary = () => {
                         <div className={'listStatistics'}>
                             <SideBar selectedOption={"Sumário"} navSelected={"disciplinas"} listOption={subjectsOptions} names={ nameSubjects }/>
                             <div className={'compStatistics'}>
-                                <SliderSummary changeSlider={handleSlider} labels={label} min={min} max={max}></SliderSummary>
-                                {/* {!load ? */}
+                                <div onMouseUp={ ()=> fetchDataApiWithLabel(min, max)}>
+                                    <SliderSummary changeSlider={handleSlider} labels={label} min={min} max={max}></SliderSummary>
+                                </div>
                                 <GraphSummary data={dataGraph}></GraphSummary>
-                                {/* : null} */}
                                 <br />
                                 <br />
                             </div>

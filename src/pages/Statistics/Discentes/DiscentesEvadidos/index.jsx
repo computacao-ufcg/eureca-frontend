@@ -17,14 +17,17 @@ import api from '../../../../services/api';
 
 const DiscentesEvadidos = () => {
 
-    const [dataEgressos, setDataEgressos] = useState(null) 
+    const [dataEgressos, setDataEgressos] = useState(null);
+    const [min, setMin] = useState('');
+    const [max, setMax] = useState('');
 
     useEffect(() => {
         updateGraph('1996.1', '2020.1')
     },[]);
 
     const handleSlider = (min, max) => {      
-        updateGraph(min, max);
+        setMin(min);
+        setMax(max);
     }
 
     const updateGraph = async (min, max) => {
@@ -51,7 +54,9 @@ const DiscentesEvadidos = () => {
                         <div className={'listStatistics'}>
                             <SideBar selectedOption={"Evadidos"} navSelected={"discentes"} listOption={ studentsOptions } names={ nameStudents } />
                             <div className={'compStatistics'}>
-                                <SliderEvadidos changeSlider={handleSlider}/>
+                                <div onMouseUp={ ()=> updateGraph(min, max)}>
+                                    <SliderEvadidos changeSlider={handleSlider}/>
+                                </div>
                                 <GraphEvadidos data={dataEgressos}/>
                             </div>
                         </div>
