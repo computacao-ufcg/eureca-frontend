@@ -42,7 +42,6 @@ const DiscentesAtivos = () => {
     const handleSlider = (min, max) => {      
         setMin(min);
         setMax(max);
-        fetchDataApiWithLabel(min, max);
     }
 
     const fetchDataApiWithLabel = async (min, max) => {
@@ -101,7 +100,9 @@ const DiscentesAtivos = () => {
                         <div className={'listStatistics'}>
                             <SideBar selectedOption={"Ativos"} navSelected={"discentes"} listOption={ studentsOptions } names={ nameStudents } />
                             <div className={'compStatistics'}>
-                                <SliderAtivos changeSlider={handleSlider} labels={label} min={min} max={max}></SliderAtivos>
+                                <div onMouseUp={ ()=> fetchDataApiWithLabel(min, max)}>
+                                    <SliderAtivos changeSlider={handleSlider} labels={label} min={min} max={max}></SliderAtivos>
+                                </div>
                                 <GraphAtivos data={dataAtivos} periodoMin={label[min]} periodoMax={label[max]}></GraphAtivos>
                                 <Export data={dataExport} name="ativos"></Export>
                                 <br/>
