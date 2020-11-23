@@ -1,32 +1,30 @@
 import React, {useEffect, useState} from 'react';
 
+// General Components 
 import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar';
 import SideBar from '../../../../components/StatisticsComponents/SideBar';
 import Title from '../../../../components/General/Title';
-// import Export from '../../../../components/StatisticsComponents/Export';
-
 import { navOptions, subjectsOptions, nameSubjects } from '../../statisticsUtil';
 
-import { dataSummary, labelSlider } from './summaryUtil';
-
+// Inter Components
 import SummarySlider from './SummarySlider';
 import SummaryGraph from './SummaryGraph';
 
+// Api
 import api from '../../../../services/api';
 
 const Summary = () => {
 
-    // const [dataMaster, setDataMaster] = useState(dataSummary);
     const [dataGraph, setDataGraph] = useState([]);
-    const [label, setLabel] = useState(labelSlider)
+    const [label, setLabel] = useState([]);
 
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(0);
 
     const handleSlider = (min, max) => {      
         setMin(min);
-        setMax(max);    
+        setMax(max);
     }
 
     const fetchDataApiWithLabel = async (min, max) => {
@@ -54,7 +52,21 @@ const Summary = () => {
     }
 
     useEffect(() => { 
-        fetchDataApiWithLabel(0, 39);
+        const fetchDataApiWithoutLabel = async () => {
+            const query = `disciplinas/sumario`;
+
+            const resSummary = await api.get(`api/estatisticas/${query}`, {});
+
+            if (resSummary.statusText === 'OK') {
+                formatData(resSummary.data.dados);
+                console.log(resSummary.data.periodos)
+                setLabel(resSummary.data.periodos);
+            } else {
+                console.log("Error Data Ativos");
+            }
+        }
+
+        fetchDataApiWithoutLabel();
     },[])
 
     return (
