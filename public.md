@@ -183,10 +183,10 @@ data = {
     "period": '2016.2', "min": 30, "avg": 40, "max": 50, 
     },
     {
-    "period": '2017.1', "min": 32, medio: 39, "max": 38, 
+    "period": '2017.1', "min": 32, "avg": 39, "max": 38, 
     },
     {
-    "period": '2017.2', "min": 34, medio: 38, "max": 43, 
+    "period": '2017.2', "min": 34, "avg": 38, "max": 43, 
     },
   ]
 }
