@@ -6,7 +6,7 @@
 
 ##### Active Students:
 
-- Request: **[GET]** `/active?from={initial_date}&to={final_date}`
+- Request: **[GET]** `api/statistics/students/active?from={initial_date}&to={final_date}`
 - Response:
 
 ```javascript
@@ -33,7 +33,7 @@ data = {
 
 ##### Graduated Students:
 
-- Request: **[GET]** `/graduated?from={initial_date}&to={final_date}`
+- Request: **[GET]** `api/statistics/students/graduated?from={initial_date}&to={final_date}`
 - Response:
 
 ```javascript
@@ -60,7 +60,7 @@ data = {
 
 ##### Evaded Students:
 
-- Request: **[GET]** `/evaded?from={initial_date}&to={final_date}`
+- Request: **[GET]** `api/statistics/students/evaded?from={initial_date}&to={final_date}`
 - Response:
 
 ```javascript
@@ -85,11 +85,43 @@ data = {
 #### Subjects
 
 ##### Summary
+- Request: **[GET]** `api/statistics/subjects/summary?from={initial_date}&to{final_date}`
+- Response: 
+```javascript
+data = {
+    "group": "Obrigatórias",
+    "content": {
+        "lim_inf": 50,
+        "q1": 54,
+        "q2": 59,
+        "q3": 63,
+        "lim_sup": 80,
+        "outliers": [85, 90, 91],
+    }
+}
+```
+
+- Request: **[GET]** `api/statistics/subjects/summary`
+- Response: 
+```javascript
+data = {
+    "group": "Obrigatórias",
+    "content": {
+        "lim_inf": 50,
+        "q1": 54,
+        "q2": 59,
+        "q3": 63,
+        "lim_sup": 80,
+        "outliers": [85, 90, 91],
+    }
+    "periods": []
+}
+```
 
 ##### Metrics
 
 ###### Class Overview:
-- Request: **[GET]** `/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="class_overview"`
+- Request: **[GET]** `api/statistics/subjects/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="class_overview"`
 - Response:
 
 ```javascript
@@ -126,7 +158,7 @@ data = {
 ```
 
 ###### Class Statistics:
-- Request: **[GET]** `/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="class_statistics"`
+- Request: **[GET]** `api/statistics/subjects/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="class_statistics"`
 - Response:
 
 ```javascript
@@ -161,7 +193,7 @@ data = {
 ```
 
 ###### Success Overview:
-- Request: **[GET]** `/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="success_overview"`
+- Request: **[GET]** `api/statistics/subjects/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="success_overview"`
 - Response:
 
 ```javascript
