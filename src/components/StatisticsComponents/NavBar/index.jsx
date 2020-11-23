@@ -8,14 +8,14 @@ const NavBar = (props) => {
     return (
         <div className={"mainNavBar"}>
             <div className={"buttonsNavBar"}>
-                <Link to={'discentes'}>
-                    <button id={"buttonDiscentes"} className={props.selectedOption === "Discentes" ? "selectedButton" : "customButton"} value={"Discentes"} >Discentes</button>
+                <Link to={'students'}>
+                    <button id={"buttonStudents"} className={props.selectedOption === "Students" ? "selectedButton" : "customButton"} value={"Students"} >Discentes</button>
                 </Link>
-                <Link to={'disciplinas'}>
-                    <button id={"buttonDisciplinas"} className={props.selectedOption === "Disciplinas" ? "selectedButton" : "customButton"} value={"Disciplinas"}>Disciplinas</button>
+                <Link to={'subjects'}>
+                    <button id={"buttonSubjects"} className={props.selectedOption === "Subjects" ? "selectedButton" : "customButton"} value={"Subjects"}>Disciplinas</button>
                 </Link>
-                <Link to={'matriculas'}>
-                    <button id={"buttonMatriculas"} className={props.selectedOption === "Matrículas" ? "selectedButton" : "customButton"} value={"Matrículas"} >Matrículas</button>
+                <Link to={'enrollments'}>
+                    <button id={"buttonEnrollments"} className={props.selectedOption === "Enrollments" ? "selectedButton" : "customButton"} value={"Enrollments"} >Matrículas</button>
                 </Link>
             </div>     
         </div>

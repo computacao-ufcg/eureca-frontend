@@ -15,7 +15,7 @@ import LogoServices from '../../assets/home_images/services.png';
 
 //component
 import Header from '../../components/General/Header';
-import CardHome from '../../components/homeComponents/CardHome';
+import CardHome from '../../components/HomeComponents/CardHome';
 
 const Home = () => {
     return (
