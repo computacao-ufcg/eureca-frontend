@@ -3,14 +3,14 @@ import React, {useState, useEffect} from 'react';
 import { RangeSlider } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 
-import {labelSlider} from './summaryUtil';
-
 import '../../styles.css'
 
 const SummarySlider = (props) => {
 
     const [value1, setValue1] = useState(0);
-    const [value2, setValue2] = useState(39);
+    const [value2, setValue2] = useState(0);
+    const [labelSlider, setLabelSlider] = useState([]);
+    const [labelLength, setLabelLength] = useState(0);
     
     const handleStyle = {
         color: '#fff',
@@ -19,12 +19,20 @@ const SummarySlider = (props) => {
         height: 22
     };
 
+    useEffect(()=>{
+        const LL = props.labels.length === 0 ? 0 : props.labels.length - 1;
+        
+        setLabelLength(LL);
+        setLabelSlider(props.labels);
+        setValue2(LL);
+
+    }, [props.labels])
+
     return (
-        labelSlider ?
         <div className={'mainSlider'}>
             <RangeSlider
                 min={0}
-                max={39}
+                max={labelLength}
                 defaultValue={[value1, value2]}
                 value={[value1, value2]}
                 handleStyle={handleStyle}
@@ -45,7 +53,6 @@ const SummarySlider = (props) => {
                 }}
             />
         </div>
-        : null
     )
 }
 
