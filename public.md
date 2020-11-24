@@ -65,6 +65,10 @@ data = {
 
 ```javascript
 data = {
+  "relationship_escaped_by_graduates": 1.05,
+  "relationship_escaped_by_begginers": 0.4,
+  "total_escaped": 1383,
+  "total_escaped_without_reentry": 1089,
   "content": [
     {"period":"1987.1","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
     {"period":"1987.2","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
@@ -127,32 +131,48 @@ data = {
 ```javascript
 data = {
     "teachers_of_subject": ["t1", "t2", "t3", "t4", "t5"],
-
-    {subject}: [
+    "name": {subject_name}
+    "content": [
     {
-      "period": '2014.1', "t1": 35, "t2": 40, "t3": 48, "total": 123
+      "period": '2014.1', 
+      "classes:{
+          "teachers":["t1", "t2", "t3"],
+          "amount":[52, 60, 48],
+          "total": 160
+      }
     },
     {
-      "period": '2014.2', "t1": 30, "t2": 45, "t3": 42, "total": 117
+      "period": '2014.2', 
+      "classes:{
+          "teachers":["t2", "t3", "t4"],
+          "amount":[52, 60, 58],
+          "total": 170
+      }
     },
     {
-      "period": '2015.1', "t2": 38, "t3": 32, "t4": 35, "total": 105
+      "period": '2015.1', 
+      "classes:{
+          "teachers":["t2", "t3", "t4"],
+          "amount":[52, 60, 38],
+          "total": 150
+      }
     },
     {
-      "period": '2015.2', "t2": 38, "t3": 36, "t4": 40, "total": 114
+      "period": '2015.2', 
+      "classes:{
+          "teachers":["t3", "t4", "t5"],
+          "amount":[52, 50, 48],
+          "total": 150
+      }
     },
     {
-      "period": '2016.1', "t2": 34, "t3": 40, "t4": 42, "total": 116
-    },
-    {
-      "period": '2016.2', "t3": 40, "t4": 40, "t5": 36, "total": 116
-    },
-    {
-      "period": '2017.1', "t3": 32, "t4": 40, "t5": 38, "total": 110
-    },
-    {
-      "period": '2017.2', "t3": 34, "t4": 38, "t5": 43, "total": 115
-    },
+      "period": '2016.1', 
+      "classes:{
+          "teachers":["t3", "t4", "t5"],
+          "amount":[62, 60, 48],
+          "total": 180
+      }
+    }
   ]
 }
 ```
