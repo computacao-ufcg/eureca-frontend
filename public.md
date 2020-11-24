@@ -4,9 +4,9 @@
 
 #### Students
 
-##### Active Students:
+##### Actives Students:
 
-- Request: **[GET]** `api/statistics/students/active?from={initial_date}&to={final_date}`
+- Request: **[GET]** `api/statistics/students/actives?from={initial_date}&to={final_date}`
 - Response:
 
 ```javascript
@@ -58,9 +58,9 @@ data = {
 }
 ```
 
-##### Evaded Students:
+##### Escaped Students:
 
-- Request: **[GET]** `api/statistics/students/evaded?from={initial_date}&to={final_date}`
+- Request: **[GET]** `api/statistics/students/escaped?from={initial_date}&to={final_date}`
 - Response:
 
 ```javascript
@@ -183,10 +183,10 @@ data = {
     "period": '2016.2', "min": 30, "avg": 40, "max": 50, 
     },
     {
-    "period": '2017.1', "min": 32, medio: 39, "max": 38, 
+    "period": '2017.1', "min": 32, "avg": 39, "max": 38, 
     },
     {
-    "period": '2017.2', "min": 34, medio: 38, "max": 43, 
+    "period": '2017.2', "min": 34, "avg": 38, "max": 43, 
     },
   ]
 }
@@ -198,34 +198,37 @@ data = {
 
 ```javascript
 data = {
-    "teachers_of_subject": ["t1", "t2", "t3", "t4", "t5"],
-
-    {subject}: [
-    {
-      "period": '2014.1', "t1": 75, "t2": 60, "t3": 48, 
-    },
-    {
-      "period": '2014.2', "t1": 70, "t2": 45, "t3": 62, 
-    },
-    {
-      "period": '2015.1', "t2": 78, "t3": 82, "t4": 65, 
-    },
-    {
-      "period": '2015.2', "t2": 88, "t3": 86, "t4": 80, 
-    },
-    {
-      "period": '2016.1', "t2": 94, "t3": 90, "t4": 82, 
-    },
-    {
-      "period": '2016.2', "t3": 90, "t4": 90, "t5": 86, 
-    },
-    {
-      "period": '2017.1', "t3": 92, "t4": 90, "t5": 88, 
-    },
-    {
-      "period": '2017.2', "t3": 94, "t4": 88, "t5": 93, 
-    },
-  ]
+    "name": {subject_name}
+    "content": [
+      {
+        "period": '2014.1', 
+        "classes:{
+            "teachers":["t1", "t2", "t3"],
+            "amount":[52, 60, 48]
+          }
+      },
+      {
+        "period": '2014.2', 
+        "classes:{
+            "teachers":["t1", "t2", "t3"],
+            "amount":[75, 62, 58]
+          }
+      },
+      {
+        "period": '2015.1', 
+        "classes:{
+            "teachers":["t2", "t3", "t4"],
+            "amount":[45, 50, 48]
+          }
+      },
+      {
+        "period": '2015.2', 
+        "classes:{
+            "teachers":["t3", "t4", "t5"],
+            "amount":[77, 62, 41]
+          }
+      },
+    ]
 }
 ```
 
