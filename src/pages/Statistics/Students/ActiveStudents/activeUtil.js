@@ -30,7 +30,7 @@ const getMedidas = (data) => {
     aux = Array.from(aux).sort((a, b) => a - b) // Transformando o set em array e ordenando do menor para o maior
 
     // Trabalhando em cima do Set para fazer o calculo da porcentagem media e criar o conjunto de Medidas
-    aux.forEach( p_integralizado => {
+    aux.forEach(p_integralizado => {
         const filtro = data.filter(e => e.periodos_integralizados === p_integralizado);
         let soma = 0;
         filtro.map(e => { soma += e.porcentagem_concluida; return null });
@@ -113,7 +113,7 @@ const getPeriodDown = (data) => {
     let maior = 0;
     let result = [periodo, maior];
 
-    if(!data){
+    if (!data) {
         return result;
     }
 
@@ -122,7 +122,7 @@ const getPeriodDown = (data) => {
         let value = myMap.get(e.periodo_ingresso);
         if (value) {
             myMap.set(e.periodo_ingresso, (value + 1));
-            if(maior < value + 1){
+            if (maior < value + 1) {
                 periodo = e.periodo_ingresso;
                 maior = value + 1;
             }
@@ -156,3 +156,57 @@ const headersCSV = [
 ];
 
 export { getDataScatter, getPercentagem, getPeriodDown, headersCSV };
+
+
+const data = {
+    "sliderPeriods": ["2013.2", "2014.1", "...", "2019.2"],
+    "content": [
+        {
+            "enrollment": "112240557",
+            "ingress_period": "2012.2",
+            "paid-in_periods": 3,
+            "percentage_completed": 40.02,
+            "situation": "ideal",
+        },
+        {
+            "enrollment": "113104033",
+            "ingress_period": "2013.1",
+            "paid-in_periods": 14,
+            "percentage_completed": 91.84, 
+            "situation": "bellow_expected",
+        },
+        {
+            "enrollment": "118254859",
+            "ingress_period": "2018.2",
+            "paid-in_periods": 3,
+            "percentage_completed": 66.33,
+            "situation": "above_expected",
+        },
+        {
+            "enrollment": "118254859",
+            "ingress_period": "2018.2",
+            "paid-in_periods": 3,
+            "percentage_completed": 15.33,
+            "situation": "expected",
+        }
+    ],
+    "text_data": {
+        "total_actives": 709,
+        "total_situation": {
+            "above_expected": 1,
+            "ideal": 42,
+            "expected": 281,
+            "bellow_expected": 385, 
+        },
+        "total_situation_percentage": {
+            "above_expected": 0.14,
+            "ideal": 4.94,
+            "expected": 39.63,
+            "bellow_expected": 54.3, 
+        },
+        "bellow_expected_period": {
+            "period": "2019.2",
+            "total": 79
+        }
+    }
+}
