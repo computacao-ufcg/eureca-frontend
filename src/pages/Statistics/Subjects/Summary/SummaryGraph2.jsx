@@ -37,10 +37,10 @@ const SummaryGraph2 = (props) => {
         .domain(["Obrigatórias", "Optativas gerais", "Optativas específicas"])
         .paddingInner(1)
         .paddingOuter(.5)
-      // .attr("class", "legenda")
   
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
+        .attr("class", "x-axis")
         .call(axisBottom(x))
   
       // Show the Y scale
@@ -123,8 +123,13 @@ const SummaryGraph2 = (props) => {
         .attr("y2", d => (y(d.data.lim_inf)))
         .attr("stroke", "black")
         .style("width", 80)
+      
+      // Aumentando apenas o x-axis
+      svg.select(".x-axis")
+        .selectAll(".tick")
+        .selectAll("text")
+        .style("font-size","20px");
 
-  
     }, [])
   
     return (
