@@ -2,21 +2,25 @@ import React, {useEffect, useState, useRef } from 'react';
 
 import { select, axisBottom, scaleLinear, scaleBand, axisLeft } from 'd3';
 
-// import {props.data} from './utilSummary';
+import {dataExample} from './utilSummary';
 
-const SummaryGraph = (props) => {
+import './SummaryGraph.css';
+
+const SummaryGraph2 = (props) => {
     const svgRef = useRef();
 
+    const widthGraph = 900;
+    const heightGraph = 600;
 
     // will be called initially and on every data change
     useEffect(() => {
 
-    console.log(props.data);
+    console.log(dataExample);
   
       // set the dimensions and margins of the graph
       const margin = { top: 10, right: 30, bottom: 30, left: 40 },
-        width = 400 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        width = widthGraph - margin.left - margin.right,
+        height = heightGraph - margin.top - margin.bottom;
   
       const svg = select(svgRef.current)
         .attr("width", width + margin.left + margin.right)
@@ -36,18 +40,19 @@ const SummaryGraph = (props) => {
   
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
+        .attr("class", "x-axis")
         .call(axisBottom(x))
   
       // Show the Y scale
       const y = scaleLinear()
-        .domain([0, 100])
+        .domain([3, 9])
         .range([height, 0])
       svg.append("g").call(axisLeft(y))
   
       // Show the main vertical line
       svg
         .selectAll("vertLines")
-        .data(props.data)
+        .data(dataExample)
         .enter()
         .append("line")
         .attr("x1", d => (x(d.group)))
@@ -61,7 +66,7 @@ const SummaryGraph = (props) => {
       const boxWidth = 100
       svg
         .selectAll("boxes")
-        .data(props.data)
+        .data(dataExample)
         .enter()
         .append("rect")
         .attr("x", d => (x(d.group) - boxWidth / 2))
@@ -74,7 +79,7 @@ const SummaryGraph = (props) => {
       // Show the median
       svg
         .selectAll("medianLines")
-        .data(props.data)
+        .data(dataExample)
         .enter()
         .append("line")
         .attr("x1", function (d) { 
@@ -91,7 +96,7 @@ const SummaryGraph = (props) => {
       // Show superior limit
       svg
         .selectAll("topLines")
-        .data(props.data)
+        .data(dataExample)
         .enter()
         .append("line")
         .attr("x1", function (d) { 
@@ -109,7 +114,7 @@ const SummaryGraph = (props) => {
       // Show inferior limit
       svg
         .selectAll("topLines")
-        .data(props.data)
+        .data(dataExample)
         .enter()
         .append("line")
         .attr("x1", d => (x(d.group) - (boxWidth / 2 - 20)))
@@ -118,8 +123,13 @@ const SummaryGraph = (props) => {
         .attr("y2", d => (y(d.data.lim_inf)))
         .attr("stroke", "black")
         .style("width", 80)
+      
+      // Aumentando apenas o x-axis
+      svg.select(".x-axis")
+        .selectAll(".tick")
+        .selectAll("text")
+        .style("font-size","20px");
 
-  
     }, [])
   
     return (
@@ -131,4 +141,4 @@ const SummaryGraph = (props) => {
     );
 }
 
-export default SummaryGraph;
+export default SummaryGraph2;

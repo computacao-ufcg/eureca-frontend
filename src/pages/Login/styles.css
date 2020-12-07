@@ -1,0 +1,108 @@
+
+.container-login p{
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-18)/var(--unnamed-line-spacing-27) var(--unnamed-font-family-poppins);
+    letter-spacing: var(--unnamed-character-spacing-0-11);
+    letter-spacing: 0.11px;
+    color: #5A607F;
+    opacity: 1;
+}
+
+.container-login{
+    /* max-width: 100vw; */
+    width: 100%;
+    height: 100vh;
+
+    background-color: black;
+
+    display: grid;
+
+    grid-template-columns: 59vw 41vw;
+}
+
+.login-1-2{
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    background-color: #E6DBD3;
+}
+
+.login-1-2 div{
+    margin: 30.7vh 20vw;
+}
+
+.login-1-2 p:nth-child(1){
+    text-transform: uppercase;
+    /* width: 320px; */
+    height: 30px;
+    
+    text-align: left;
+    font: normal normal bold 1.5rem Poppins;
+}
+
+.login-1-2 p:nth-child(2){
+    margin-left: 0;
+    width: 316px;
+    height: 52px;
+   
+    text-align: right;
+    font: normal normal normal 1.5rem Poppins;
+}
+
+.login-2-2{
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.login-2-2 .logo-group{
+    position: relative;
+    margin: 21vh 0 0 10vw;
+}
+
+.login-2-2 .login-form{
+    position: relative;
+    margin: 10vh 0 0 15vw;
+}
+
+.login-2-2 .login-form label{
+    display: block;
+    text-transform: uppercase;
+    margin: 1vh 0;
+
+    width: 43px;
+    height: 20px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-14)/21px var(--unnamed-font-family-poppins);
+    text-align: right;
+    font: normal normal bold 14px/21px Poppins;
+    letter-spacing: 0.09px;
+    color: #765547;
+    opacity: 1;
+}
+
+.login-2-2 .login-form input{
+    width: 234px;
+    height: 32px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    opacity: 1;
+
+    padding: 5px;
+}
+
+.login-2-2 .login-form button{
+    display: block;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    margin: 2vh 3.5vw;
+    
+    width: 5vw;
+    height: 32px;
+    background: #765547 0% 0% no-repeat padding-box;
+    border-radius: 16px;
+    opacity: 1;
+}
+
+
+
