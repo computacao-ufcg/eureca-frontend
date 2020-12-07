@@ -274,50 +274,35 @@ data = {
 
 ```javascript
 data = {
-    "teachers_of_subject": ["t1", "t2", "t3", "t4", "t5"],
-    "name": {subject_name}
-    "content": [
-    {
-      "period": '2014.1', 
-      "classes:{
-          "teachers":["t1", "t2", "t3"],
-          "amount":[52, 60, 48],
-          "total": 160
-      }
-    },
-    {
-      "period": '2014.2', 
-      "classes:{
-          "teachers":["t2", "t3", "t4"],
-          "amount":[52, 60, 58],
-          "total": 170
-      }
-    },
-    {
-      "period": '2015.1', 
-      "classes:{
-          "teachers":["t2", "t3", "t4"],
-          "amount":[52, 60, 38],
-          "total": 150
-      }
-    },
-    {
-      "period": '2015.2', 
-      "classes:{
-          "teachers":["t3", "t4", "t5"],
-          "amount":[52, 50, 48],
-          "total": 150
-      }
-    },
-    {
-      "period": '2016.1', 
-      "classes:{
-          "teachers":["t3", "t4", "t5"],
-          "amount":[62, 60, 48],
-          "total": 180
-      }
-    }
-  ]
+    "subject_code": "1411167"
+    "classes": [
+      {
+        "period": "2002.1",
+        "students": [
+          28,
+          12
+        ],
+        "teachers": [
+          "332903",
+          "337008"
+        ],
+        "total": 40
+      },
+      {
+        "period": "2002.2",
+        "students": [
+          25,
+          6
+        ],
+        "teachers": [
+          "332903",
+          "337008"
+        ],
+        "total": 31
+      },
+      {...},
+      {...}
+    ]
 }
 ```
 
@@ -327,32 +312,35 @@ data = {
 
 ```javascript
 data = {
-    {subject}: [
-    {
-    "period": '2014.1', "min": 35, "avg": 40, "max": 48, 
-    },
-    {
-    "period": '2014.2', "min": 30, "avg": 37, "max": 42, 
-    },
-    {
-    "period": '2015.1', "min": 33, "avg": 38, "max": 45, 
-    },
-    {
-    "period": '2015.2', "min": 30, "avg": 36, "max": 40, 
-    },
-    {
-    "period": '2016.1', "min": 34, "avg": 40, "max": 42, 
-    },
-    {
-    "period": '2016.2', "min": 30, "avg": 40, "max": 50, 
-    },
-    {
-    "period": '2017.1', "min": 32, "avg": 39, "max": 38, 
-    },
-    {
-    "period": '2017.2', "min": 34, "avg": 38, "max": 43, 
-    },
-  ]
+    "subject_code": "1411167",
+    "classes": [
+      {
+        "period": "2002.1",
+        "minimum": 12,
+        "maximum": 28,
+        "average": 20
+      },
+      {
+        "period": "2002.2",
+        "minimum": 6,
+        "maximum": 25,
+        "average": 15.5
+      },
+      {
+        "period": "2003.1",
+        "minimum": 46,
+        "maximum": 46,
+        "average": 46
+      },
+      {
+        "period": "2003.2",
+        "minimum": 37,
+        "maximum": 37,
+        "average": 37
+      },
+      {...},
+      {...}
+    ]
 }
 ```
 
@@ -362,36 +350,34 @@ data = {
 
 ```javascript
 data = {
-    "name": {subject_name}
-    "content": [
+    "subject_code": "1411167",
+    "classes": [
       {
-        "period": '2014.1', 
-        "classes:{
-            "teachers":["t1", "t2", "t3"],
-            "amount":[52, 60, 48]
-          }
+        "period": "2002.1",
+        "rates_by_class": {
+          "t1": 0.93,
+          "t2": 0.75
+        },
+        "teachers": [
+          "332903",
+          "337008"
+        ],
+        "total": 1.68
       },
       {
-        "period": '2014.2', 
-        "classes:{
-            "teachers":["t1", "t2", "t3"],
-            "amount":[75, 62, 58]
-          }
+        "period": "2002.2",
+        "rates_by_class": {
+          "t1": 0.8,
+          "t2": 0.33
+        },
+        "teachers": [
+          "332903",
+          "337008"
+        ],
+        "total": 1.13
       },
-      {
-        "period": '2015.1', 
-        "classes:{
-            "teachers":["t2", "t3", "t4"],
-            "amount":[45, 50, 48]
-          }
-      },
-      {
-        "period": '2015.2', 
-        "classes:{
-            "teachers":["t3", "t4", "t5"],
-            "amount":[77, 62, 41]
-          }
-      },
+      {...},
+      {...}
     ]
 }
 ```
