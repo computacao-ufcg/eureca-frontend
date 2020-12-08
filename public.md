@@ -172,25 +172,56 @@ Na rota abaixo não será necessário a chave Sliderlabel no json retornado, poi
 - Response:
 
 ```javascript
-data = {
-  "avg_cra":6.36,
-  "max_graduates":50,
-  "avg_graduates":17.16,
-  "min_graduates":2,
-  "top_period":"2019.2",
-  "bottom_period":"1984.1"
-  "content": [
-    {"avg_cra":6.36,"completion_period":"1981.1","amount_graduates":4},
-    {"avg_cra":6.83,"completion_period":"1982.1","amount_graduates":5},
-    {"avg_cra":5.8,"completion_period":"1982.2","amount_graduates":6},
-    {"avg_cra":6.05,"completion_period":"1983.1","amount_graduates":6},
-    {"avg_cra":6.36,"completion_period":"1983.2","amount_graduates":4},
-    {"avg_cra":5.74,"completion_period":"1984.1","amount_graduates":2},
-    {"avg_cra":6.36,"completion_period":"1984.2","amount_graduates":2},
-    {"avg_cra":6.85,"completion_period":"1985.1","amount_graduates":2},
-    {"avg_cra":5.92,"completion_period":"1985.2","amount_graduates":10}
-  ]
-}
+"avg_cra":6.36,
+"min_graduates":2,
+"max_graduates":50,
+"avg_graduates":17.16,
+"total_graduates": 1321,
+"top_period":"2019.2",
+"bottom_period":"1984.1"
+"content": [
+  { "avg_cra":6.36, "completion_period":"1981.1", "amount_graduates":4},
+  { "avg_cra":6.83, "completion_period":"1982.1", "amount_graduates":5},
+  { "avg_cra":5.8, "completion_period":"1982.2"," amount_graduates":6},
+  { "avg_cra":6.05, "completion_period":"1983.1", "amount_graduates":6},
+  { "avg_cra":6.36, "completion_period":"1983.2", "amount_graduates":4},
+  { "avg_cra":5.74, "completion_period":"1984.1", "amount_graduates":2},
+  { "avg_cra":6.36, "completion_period":"1984.2", "amount_graduates":2},
+  { "avg_cra":6.85, "completion_period":"1985.1", "amount_graduates":2},
+  { "avg_cra":5.92, "completion_period":"1985.2", "amount_graduates":10},
+  ...
+]
+```
+
+##### Graduated Students CSV:
+
+- Request: **[GET]** `api/statistics/students/graduated/csv`
+- Request: **[GET]** `api/statistics/students/graduated/csv?from={initial_date}&to={final_date}`
+- Response:
+
+```javascript
+[
+  {
+    "complementary_credits_paid-in": 69,
+    "completion_period": "1981.1",
+    "cra": 5.85,
+    "curriculum": "1990",
+    "enrollment": "177297679",
+    "genre": "Masculino",
+    "iea": 4.18,
+    "institutional_enrollments": 0,
+    "mandatory_credits_paid-in": 0,
+    "marital_status": "Casado(a)",
+    "mc": 6.7,
+    "optional_credits_paid-in": 25,
+    "overall_average_admission": 541.0,
+    "paid-in_periods": 9,
+    "quota": "Não registrada",
+    "student_mobility": 0,
+    "total_locks": 0
+  },
+  ...
+]
 ```
 
 ##### Escaped Students:
@@ -199,27 +230,63 @@ data = {
 - Response:
 
 ```javascript
-data = {
-  "relationship_escaped_by_graduates": 1.05,
-  "relationship_escaped_by_begginers": 0.4,
-  "total_escaped": 1383,
-  "total_escaped_without_reentry": 1089,
-  "content": [
-    {"period":"1987.1","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1987.2","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1988.1","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1988.2","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1989.1","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1989.2","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1990.1","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1990.2","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1991.1","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1991.2","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1992.1","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-    {"period":"1992.2","tags":{"tag1":0,"tag13":0,"tag2":0,"tag3":0,"tag4":0,"tag5":0,"tag6":0,"tag7":0,"tag8":0,"tag9":0}},
-  ]
-}
+"relationship_escaped_by_graduates": 1.05,
+"relationship_escaped_by_begginers": 0.4,
+"gross_total_dropouts": 1383,
+"net_total_dropouts": 1089,
+"content": [
+  {
+    "period": "1987.1",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  {
+    "period": "1987.2",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  {
+    "period": "1988.1",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  {
+    "period": "1988.2",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  ...
+]
 ```
+
+##### Escaped Students CSV:
+
+- Request: **[GET]** `api/statistics/students/escaped/csv`
+- Request: **[GET]** `api/statistics/students/escaped/csv?from={initial_date}&to={final_date}`
+- Response:
+
+```javascript
+[
+  {
+    "complementary_credits_paid-in": 180,
+    "cra": 5.03,
+    "curriculum": "1990",
+    "enrollment": "187171673",
+    "evasion_period": "1996.1",
+    "evasion_reason": "CANCELAMENTO POR ABANDONO",
+    "genre": "Masculino",
+    "iea": 1.44,
+    "institutional_enrollments": 0,
+    "mandatory_credits_paid-in": 0,
+    "marital_status": "Solteiro(a)",
+    "mc": 7.32,
+    "optional_credits_paid-in": 25,
+    "overall_average_admission": 633.0,
+    "paid-in_periods": 18,
+    "quota": "Não registrada",
+    "student_mobility": 0,
+    "total_locks": 0
+  },
+  ...
+]
+```
+
 
 #### Subjects
 
