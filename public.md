@@ -531,4 +531,79 @@ ou
 }
 ```
 
+##### Other metrics
 
+#### Average speed (Velocidade média)
+
+- Request: **[GET]** `api/statistics/average_speed`
+
+- Response:
+
+```javascript
+{
+  "actives_avg_speed": 19.7,
+  "amount_actives": 709,
+  "active_students": [
+    {
+      "avg_speed": 12.71,
+      "enrollment": "112240557"
+    },
+    {
+      "avg_speed": 13.14,
+      "enrollment": "113104033"
+    },
+    {
+      "avg_speed": 8.62,
+      "enrollment": "113181931"
+    },
+    ...
+  ]
+```
+
+#### Exequibility (Exequibilidade)
+
+- Request: **[GET]** `api/statistics/exequibility`
+
+- Response:
+
+```javascript
+[
+  {
+    "enrollment": "113181931",
+    "exequibility": 3.0
+  },
+  {
+    "enrollment": "113221987",
+    "exequibility": 1.43
+  },
+  {
+    "enrollment": "113296807",
+    "exequibility": 0.29
+  },
+  ...
+]
+```
+
+#### Success rate (Taxa de sucesso)
+
+- Request: **[GET]** `api/statistics/success_rate`
+
+- Response:
+
+```javascript
+[
+  {
+    "enrollment": "100100223",
+    "success_rate": 0.69
+  },
+  {
+    "enrollment": "100100334",
+    "success_rate": 0.73
+  },
+  {
+    "enrollment": "100100556",
+    "success_rate": 0.67
+  },
+  ...
+]
+```
