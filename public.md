@@ -11,7 +11,7 @@
 
 ```javascript
 [
-  "sliderLabel": ["2013.2", "2014.1", "...", "2019.2"],
+  "slider_label": ["2013.2", "2014.1", "...", "2019.2"],
   "content": [
     {
       "enrollment": "112240557",
@@ -168,6 +168,34 @@ Na rota abaixo não será necessário a chave Sliderlabel no json retornado, poi
 
 ##### Graduated Students:
 
+- Request: **[GET]** `api/statistics/students/graduated`
+- Response:
+
+```javascript
+"avg_cra":6.36,
+"min_graduates":2,
+"max_graduates":50,
+"avg_graduates":17.16,
+"total_graduates": 1321,
+"top_period":"2019.2",
+"bottom_period":"1984.1"
+"slider_label": ["2013.2", "2014.1", "...", "2019.2"],
+"content": [
+  { "avg_cra":6.36, "completion_period":"1981.1", "amount_graduates":4},
+  { "avg_cra":6.83, "completion_period":"1982.1", "amount_graduates":5},
+  { "avg_cra":5.8, "completion_period":"1982.2"," amount_graduates":6},
+  { "avg_cra":6.05, "completion_period":"1983.1", "amount_graduates":6},
+  { "avg_cra":6.36, "completion_period":"1983.2", "amount_graduates":4},
+  { "avg_cra":5.74, "completion_period":"1984.1", "amount_graduates":2},
+  { "avg_cra":6.36, "completion_period":"1984.2", "amount_graduates":2},
+  { "avg_cra":6.85, "completion_period":"1985.1", "amount_graduates":2},
+  { "avg_cra":5.92, "completion_period":"1985.2", "amount_graduates":10},
+  ...
+]
+```
+
+Rota de graduados com opções de seleção do intervalo de períodos, através dos filtros 'from' e 'to'.
+
 - Request: **[GET]** `api/statistics/students/graduated?from={initial_date}&to={final_date}`
 - Response:
 
@@ -225,6 +253,38 @@ Na rota abaixo não será necessário a chave Sliderlabel no json retornado, poi
 ```
 
 ##### Escaped Students:
+
+- Request: **[GET]** `api/statistics/students/escaped`
+- Response:
+
+```javascript
+"relationship_escaped_by_graduates": 1.05,
+"relationship_escaped_by_begginers": 0.4,
+"gross_total_dropouts": 1383,
+"net_total_dropouts": 1089,
+"slider_label": ["1987.1", "1987.2", "...", "2019.2"],
+"content": [
+  {
+    "period": "1987.1",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  {
+    "period": "1987.2",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  {
+    "period": "1988.1",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  {
+    "period": "1988.2",
+    "tags": { "tag1": 0, "tag13": 0, "tag2" :0, "tag3": 0, "tag4":0, "tag5": 0, "tag6": 0, "tag7": 0, "tag8": 0,  "tag9": 0 }
+  },
+  ...
+]
+```
+
+Rota de evadidos com opções de seleção do intervalo de períodos, através dos filtros 'from' e 'to'.
 
 - Request: **[GET]** `api/statistics/students/escaped?from={initial_date}&to={final_date}`
 - Response:
@@ -296,158 +356,178 @@ Na rota abaixo não será necessário a chave Sliderlabel no json retornado, poi
 - Response: 
 
 ```javascript
-data = {
+{
   "content": [
     {
-      "group": "Obrigatórias",
-        "content": {
-            "lim_inf": 50,
-            "q1": 54,
-            "q2": 59,
-            "q3": 63,
-            "lim_sup": 80,
-            "outliers": [85, 90, 91],
-        },
+      "data": {
+        "lim_inf": 13.38,
+        "lim_sup": 92.69,
+        "outliers": [
+          10.38
+        ],
+        "q1": 52.49,
+        "q2": 65.91,
+        "q3": 78.56
+      },
+      "group": "Obrigatórias"
     },
-  ],
-  "sliderLabel": ["2002.1","2002.2","2003.1","2003.2","2004.1","2004.2","2005.1","2005.2","2006.1","2006.2","2007.1","2007.2","2008.1","2008.2","2009.1","2009.2","2010.1","2010.2","2011.1","2011.2","2012.1","2012.2","2013.1","2013.2","2014.1","2014.2","2015.1","2015.2","2016.1","2016.2","2017.1","2017.2",]
+    { 
+      "data": {
+        "lim_inf": 0,
+        "lim_sup": 341.67,
+        "outliers": [
+          
+        ],
+        "q1": 1.71,
+        "q2": 50.46,
+        "q3": 188.24
+      },
+      "group": "Optativas gerais"
+    },
+    ...
+  ]
+  "slider_label": [
+    "2002.1","2002.2","2003.1","2003.2","2004.1","2004.2","2005.1","2005.2","2006.1","2006.2","2007.1","2007.2","2008.1","2008.2","2009.1","2009.2","2010.1","2010.2","2011.1","2011.2","2012.1","2012.2","2013.1","2013.2","2014.1","2014.2","2015.1","2015.2","2016.1","2016.2","2017.1","2017.2",
+  ]
 }
 ```
 
 - Request: **[GET]** `api/statistics/subjects/summary?from={initial_date}&to{final_date}`
 - Response: 
 ```javascript
-data = { 
-  "content":[
+{
+  "content": [
     {
-      "group": "Obrigatórias",
-      "content": {
-          "lim_inf": 50,
-          "q1": 54,
-          "q2": 59,
-          "q3": 63,
-          "lim_sup": 80,
-          "outliers": [85, 90, 91],
-      }
+      "data": {
+        "lim_inf": 13.38,
+        "lim_sup": 92.69,
+        "outliers": [
+          10.38
+        ],
+        "q1": 52.49,
+        "q2": 65.91,
+        "q3": 78.56
+      },
+      "group": "Obrigatórias"
     },
+    ...
   ]
 }
-
 ```
 
 ##### Metrics
 
 ###### Class Overview:
-- Request: **[GET]** `api/statistics/subjects/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="class_overview"`
+- Request: **[GET]** `api/statistics/subjects/metrics?subject={subject_value}&metric="class_overview"` 
+
+ou 
+
+- **[GET]** `api/statistics/subjects/metrics?subject={subject_value}&metric="class_overview"&from={initial_date}&to={final_date}`
+
 - Response:
 
 ```javascript
-data = {
-    "subject_code": "1411167"
-    "classes": [
-      {
-        "period": "2002.1",
-        "students": [
-          28,
-          12
-        ],
-        "teachers": [
-          "332903",
-          "337008"
-        ],
-        "total": 40
-      },
-      {
-        "period": "2002.2",
-        "students": [
-          25,
-          6
-        ],
-        "teachers": [
-          "332903",
-          "337008"
-        ],
-        "total": 31
-      },
-      {...},
-      {...}
-    ]
+{
+  "subject_code": "1411167",
+  "classes": [
+    {
+      "period": "2002.1",
+      "students": [
+        28,
+        12
+      ],
+      "teachers": [
+        "332903",
+        "337008"
+      ],
+      "total": 40
+    },
+    {
+      "period": "2002.2",
+      "students": [
+        25,
+        6
+      ],
+      "teachers": [
+        "332903",
+        "337008"
+      ],
+      "total": 31
+    },
+    ...
+  ]
 }
 ```
 
 ###### Class Statistics:
-- Request: **[GET]** `api/statistics/subjects/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="class_statistics"`
+- Request: **[GET]** `api/statistics/subjects/metrics?subject={subject_value}&metric="class_statistics"`
+
+ou
+
+- **[GET]** `api/statistics/subjects/metrics?subject={subject_value}&metric="class_statistics"&from={initial_date}&to={final_date}`
+
 - Response:
 
 ```javascript
-data = {
-    "subject_code": "1411167",
-    "classes": [
-      {
-        "period": "2002.1",
-        "minimum": 12,
-        "maximum": 28,
-        "average": 20
-      },
-      {
-        "period": "2002.2",
-        "minimum": 6,
-        "maximum": 25,
-        "average": 15.5
-      },
-      {
-        "period": "2003.1",
-        "minimum": 46,
-        "maximum": 46,
-        "average": 46
-      },
-      {
-        "period": "2003.2",
-        "minimum": 37,
-        "maximum": 37,
-        "average": 37
-      },
-      {...},
-      {...}
-    ]
+{
+  "subject_code": "1411167",
+  "classes": [
+    {
+      "average": 20.0,
+      "maximum": 28,
+      "minimum": 12,
+      "period": "2002.1"
+    },
+    {
+      "average": 15.5,
+      "maximum": 25,
+      "minimum": 6,
+      "period": "2002.2"
+    },
+    ...
+  ]
 }
 ```
 
 ###### Success Overview:
-- Request: **[GET]** `api/statistics/subjects/metrics?from={initial_date}&to={final_date}&subject={subject_value}&metric="success_overview"`
+- Request: **[GET]** `api/statistics/subjects/metrics?subject={subject_value}&metric="success_overview"&from={initial_date}&to={final_date}`
+
+ou 
+
+- **[GET]** `api/statistics/subjects/metrics?subject={subject_value}&metric="success_overview"`
+
 - Response:
 
 ```javascript
-data = {
-    "subject_code": "1411167",
-    "classes": [
-      {
-        "period": "2002.1",
-        "rates_by_class": {
-          "t1": 0.93,
-          "t2": 0.75
-        },
-        "teachers": [
-          "332903",
-          "337008"
-        ],
-        "total": 1.68
+{
+  "subject_code": "1411167",
+  "classes": [
+    {
+      "period": "2002.1",
+      "rates_by_class": {
+        "t1": 0.93,
+        "t2": 0.75
       },
-      {
-        "period": "2002.2",
-        "rates_by_class": {
-          "t1": 0.8,
-          "t2": 0.33
-        },
-        "teachers": [
-          "332903",
-          "337008"
-        ],
-        "total": 1.13
+      "teachers": [
+        "332903",
+        "337008"
+      ],
+      "total": 1.68
+    },
+    {
+      "period": "2002.2",
+      "rates_by_class": {
+        "t1": 0.8,
+        "t2": 0.33
       },
-      {...},
-      {...}
-    ]
+      "teachers": [
+        "332903",
+        "337008"
+      ],
+      "total": 1.13
+    },
+    ...
+  ]
 }
 ```
 
