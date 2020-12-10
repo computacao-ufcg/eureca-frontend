@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CSVLink } from "react-csv";
 
-import { headersCSV } from '../../../pages/Statistics/Discentes/DiscentesAtivos/utilAtivos';
+import { headersCSV } from '../../../pages/Statistics/Students/ActiveStudents/activeUtil';
 
 import './style.css'
 
