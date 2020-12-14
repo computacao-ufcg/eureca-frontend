@@ -6,5 +6,30 @@
     align-items: center;
 }
 
+.main-content-graph div{
+    position: relative;
+    display: flex;
+}
 
+.main-content-graph div p{
+    position: absolute;
+    display: block;
+    width: auto;
+    height: 50px;
+    transform: rotate(-90deg) translate(-60px, -80px);
+
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.main-content-graph p:nth-child(3){
+    align-self: flex-start;
+    margin-top: 3rem;
+}
+
+.main-content-graph p:nth-child(3) strong{
+    font-size: 1rem;
+    text-transform: capitalize;
+}
 

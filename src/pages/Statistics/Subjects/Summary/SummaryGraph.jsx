@@ -1,22 +1,29 @@
-import React, {useEffect, useState, useRef } from 'react';
+import React, {useEffect, useRef } from 'react';
 
 import { select, axisBottom, scaleLinear, scaleBand, axisLeft } from 'd3';
 
-// import {props.data} from './utilSummary';
+import './SummaryGraph.css';
 
 const SummaryGraph = (props) => {
     const svgRef = useRef();
+    
+    const widthGraph = 900;
+    const heightGraph = 600;
+    
+    const calcDomainY = Math.max(... props.data.map(e => e.data.lim_sup)); // Biggest value of 'lim_sup'.
+    const domainY = calcDomainY < 100 ?  100 : (calcDomainY + 50) // if 'calcDomainY' is greater than 100, add 50 for better visualization.
 
+    const domainX = ["Obrigatórias", "Optativas gerais", "Optativas específicas"];
 
     // will be called initially and on every data change
     useEffect(() => {
 
-    console.log(props.data);
+    console.log("meu props", props);
   
       // set the dimensions and margins of the graph
       const margin = { top: 10, right: 30, bottom: 30, left: 40 },
-        width = 400 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        width = widthGraph - margin.left - margin.right,
+        height = heightGraph - margin.top - margin.bottom;
   
       const svg = select(svgRef.current)
         .attr("width", width + margin.left + margin.right)
@@ -30,17 +37,19 @@ const SummaryGraph = (props) => {
       // Show the X scale
       const x = scaleBand()
         .range([0, width])
-        .domain(["Obrigatórias", "Optativas gerais", "Optativas específicas"])
+        .domain(domainX)
         .paddingInner(1)
         .paddingOuter(.5)
-  
+
+      // Appendding element 'x' in svg.
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
+        .attr("class", "x-axis")
         .call(axisBottom(x))
   
       // Show the Y scale
       const y = scaleLinear()
-        .domain([0, 100])
+        .domain([0, domainY])
         .range([height, 0])
       svg.append("g").call(axisLeft(y))
   
@@ -77,11 +86,7 @@ const SummaryGraph = (props) => {
         .data(props.data)
         .enter()
         .append("line")
-        .attr("x1", function (d) { 
-          console.log(d);
-          console.log(x(d.group));
-          return (x(d.group) - boxWidth / 2)
-         })
+        .attr("x1", d => (x(d.group) - boxWidth / 2))
         .attr("x2", d => (x(d.group) + boxWidth / 2))
         .attr("y1", d => (y(d.data.q2)))
         .attr("y2", d => (y(d.data.q2))) 
@@ -94,11 +99,7 @@ const SummaryGraph = (props) => {
         .data(props.data)
         .enter()
         .append("line")
-        .attr("x1", function (d) { 
-          console.log(d);
-          console.log(x(d.group));
-          return (x(d.group) - (boxWidth / 2 - 20))
-         })
+        .attr("x1", d => (x(d.group) - (boxWidth / 2 - 20)))
         .attr("x2", d => (x(d.group) + (boxWidth / 2) - 20))
         .attr("y1", d => (y(d.data.lim_sup)))
         .attr("y2", d => (y(d.data.lim_sup)))
@@ -119,7 +120,6 @@ const SummaryGraph = (props) => {
         .attr("stroke", "black")
         .style("width", 80)
 
-  
     }, [])
   
     return (
