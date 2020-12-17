@@ -3,10 +3,10 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from './pages/Login';
 
-import Header from './pages/newDesign/Header';
-
 import Home from './pages/Home';
 import Services from './pages/Services'
+
+import Actives from './pages/newDesign/Actives';
 
 import ActiveStudents from './pages/Statistics/Students/ActiveStudents'
 import GraduatedStudents from './pages/Statistics/Students/GraduatedStudents'
@@ -22,7 +22,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component = {() => <Header/> } />
+        <Route exact path="/" component = {() => <Actives/> } />
         <Route exact path="/home" component = {() => <Home/> } />
         <Route exact path="/statistics" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/students" component = {() => <Redirect to='/statistics/activestudents'/> }/>
