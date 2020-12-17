@@ -22,7 +22,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component = {() => <Actives/> } />
+        <Route exact path="/" component = {() => <Login/> } />
         <Route exact path="/home" component = {() => <Home/> } />
         <Route exact path="/statistics" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/students" component = {() => <Redirect to='/statistics/activestudents'/> }/>
@@ -40,6 +40,10 @@ const Routes = () => {
         <Route exact path="/statistics/updateenrollment" component = {() => <UpdateEnrollment/>}/>
 
         <Route exact path="/services" component = {() => <Services/> }/>
+
+        {/* New Design */}
+
+        <Route exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
 
       </Switch>
     </BrowserRouter>
