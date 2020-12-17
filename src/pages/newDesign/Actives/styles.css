@@ -178,6 +178,7 @@
 /* Aplicattion bordes for all childs */
 
 .main-actives .actives-input-box div{
+    background-color: #F5F6FA;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,6 +191,7 @@
 }
 
 .main-actives .actives-input-box input{
+    background-color: #F5F6FA;
     border: 1px solid #707070;
     border-left: 0;
 
@@ -199,4 +201,15 @@
 
 .main-actives .actives-input-box input:focus{
     outline: none;
+}
+
+/* ----------------------------------------- Actives Slider and Graph Box ----------------------------------------- */
+
+.actives-graph-box{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
 }

@@ -20,6 +20,19 @@ const Actives = () => {
     const [label, setLabel] = useState([]);
     // const [load, setLoad] = useState(true);
 
+    // For the Text info
+    const [redLength, setRedLength] = useState(0);
+    const [greenLength, setGreenLength] = useState(0);
+    const [blueLength, setBlueLength] = useState(0);
+    const [purpleLength, setPurpleLength] = useState(0);
+
+    const handleText = (lengthRed, lengthGreen, lengthBlue, lengthPurple) => {
+        setRedLength(lengthRed);
+        setGreenLength(lengthGreen);
+        setBlueLength(lengthBlue);
+        setPurpleLength(lengthPurple);
+    }
+
     const getLabel = (data) => {
         const aux = new Set();
         let newLabel = [];
@@ -94,22 +107,22 @@ const Actives = () => {
                 <div className="main-actives-resume">
                     <div className="resume-text">
                         <p>ATIVOS</p>
-                        <p>2012.2 a 2010.1</p>
-                        <p>709</p>
+                        <p>{label[min]} a {label[max]}</p>
+                        <p>{redLength+blueLength+greenLength+purpleLength}</p>
                         <p>DISCENTES</p>
                     </div>
                     <div className="resume-box">
                         <div>
-                            <p><span>42</span><br /> ideal</p>
+                            <p><span>{blueLength}</span><br /> ideal</p>
                         </div>
                         <div>
-                            <p><span>281</span><br />  esperado</p>
+                            <p><span>{greenLength}</span><br />  esperado</p>
                         </div>
                         <div>
-                            <p><span>1</span><br />  acima</p>
+                            <p><span>{purpleLength}</span><br />  acima</p>
                         </div>
                         <div>
-                            <p><span>385</span><br />  abaixo</p>
+                            <p><span>{redLength}</span><br />  abaixo</p>
                         </div>
                     </div>
                 </div>
@@ -125,7 +138,7 @@ const Actives = () => {
                     <div onMouseUp={() => fetchDataApiWithLabel(min, max)}>
                         <ActiveSlider changeSlider={handleSlider} labels={label} min={min} max={max}></ActiveSlider>
                     </div>
-                    <ActiveGraph data={dataAtivos} periodoMin={label[min]} periodoMax={label[max]}></ActiveGraph>
+                    <ActiveGraph data={dataAtivos} handleText={handleText} ></ActiveGraph>
                 </div>
             </div>
             <div>NotREMOVE</div>
