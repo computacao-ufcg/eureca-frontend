@@ -140,6 +140,10 @@ const Actives = () => {
                     </div>
                     <ActiveGraph data={dataAtivos} handleText={handleText} ></ActiveGraph>
                 </div>
+
+                <div >
+
+                </div>
             </div>
             <div>NotREMOVE</div>
         </div>
