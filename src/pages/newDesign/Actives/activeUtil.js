@@ -165,7 +165,7 @@ const dataSelectExample = [{
     subjects: 6
 },
 {
-    svgColor: 'red',
+    svgColor: 'green',
     matricula: '117210901',
     name: 'paulo Santos',
     email: 'pauloSantos@ccc.ufcg.edu',
@@ -173,7 +173,7 @@ const dataSelectExample = [{
     subjects: 9
 },
 {
-    svgColor: 'red',
+    svgColor: 'green',
     matricula: '117210902',
     name: 'matheus Silva',
     email: 'matheusSilva@ccc.ufcg.edu',
@@ -189,7 +189,7 @@ const dataSelectExample = [{
     subjects: 6
 },
 {
-    svgColor: 'red',
+    svgColor: 'blue',
     matricula: '117210904',
     name: 'joao Santos',
     email: 'joaoSantos@ccc.ufcg.edu',
@@ -197,7 +197,7 @@ const dataSelectExample = [{
     subjects: 2
 },
 {
-    svgColor: 'red',
+    svgColor: 'blue',
     matricula: '117210905',
     name: 'maria Rodrigues',
     email: 'mariaRodrigues@ccc.ufcg.edu',
@@ -213,7 +213,78 @@ const dataSelectExample = [{
     subjects: 5
 },
 {
+    svgColor: 'purple',
+    matricula: '117210907',
+    name: 'francisco Santos',
+    email: 'franciscoSantos@ccc.ufcg.edu',
+    credits: 96,
+    subjects: 2
+},
+{
     svgColor: 'red',
+    matricula: '117210908',
+    name: 'napoleão Silva',
+    email: 'napoleãoSilva@ccc.ufcg.edu',
+    credits: 47,
+    subjects: 6
+}, {
+    svgColor: 'red',
+    matricula: '117210900',
+    name: 'hercules Santos',
+    email: 'herculesSantos@ccc.ufcg.edu',
+    credits: 34,
+    subjects: 6
+},
+{
+    svgColor: 'green',
+    matricula: '117210901',
+    name: 'paulo Santos',
+    email: 'pauloSantos@ccc.ufcg.edu',
+    credits: 19,
+    subjects: 9
+},
+{
+    svgColor: 'green',
+    matricula: '117210902',
+    name: 'matheus Silva',
+    email: 'matheusSilva@ccc.ufcg.edu',
+    credits: 33,
+    subjects: 6
+},
+{
+    svgColor: 'red',
+    matricula: '117210903',
+    name: 'fubica Rodrigues',
+    email: 'fubicaRodrigues@ccc.ufcg.edu',
+    credits: 32,
+    subjects: 6
+},
+{
+    svgColor: 'blue',
+    matricula: '117210904',
+    name: 'joao Santos',
+    email: 'joaoSantos@ccc.ufcg.edu',
+    credits: 11,
+    subjects: 2
+},
+{
+    svgColor: 'blue',
+    matricula: '117210905',
+    name: 'maria Rodrigues',
+    email: 'mariaRodrigues@ccc.ufcg.edu',
+    credits: 80,
+    subjects: 1
+},
+{
+    svgColor: 'red',
+    matricula: '117210906',
+    name: 'jose Fernandes',
+    email: 'joseFernandes@ccc.ufcg.edu',
+    credits: 54,
+    subjects: 5
+},
+{
+    svgColor: 'purple',
     matricula: '117210907',
     name: 'francisco Santos',
     email: 'franciscoSantos@ccc.ufcg.edu',
@@ -230,4 +301,4 @@ const dataSelectExample = [{
 }
 ];
 
-export { getDataScatter, getPercentagem, getPeriodDown, headersCSV };
+export { getDataScatter, getPercentagem, getPeriodDown, headersCSV, dataSelectExample };

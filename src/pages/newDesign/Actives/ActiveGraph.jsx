@@ -81,7 +81,7 @@ const ActiveGraph = (props) => {
                 <React.Fragment>
                     <div className="graph-main">
                         <ScatterChart
-                            width={900}
+                            width={1000}
                             height={700}
                             margin={{
                                 top: 20, right: 80, bottom: 20, left: 20,

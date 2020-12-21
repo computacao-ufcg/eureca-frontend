@@ -11,7 +11,11 @@ import api from '../../../services/api';
 
 import './styles.css';
 
+import { dataSelectExample } from './activeUtil';
+
 const Actives = () => {
+
+    const [checkall, setCheckAll] = useState(false);
 
     const [dataAtivos, setDataAtivos] = useState([]);
     const [dataExport, setDataExport] = useState([]);
@@ -49,7 +53,7 @@ const Actives = () => {
         return newLabel;
     }
 
-    const handleSlider = (min, max) => {      
+    const handleSlider = (min, max) => {
         setMin(min);
         setMax(max);
     }
@@ -67,9 +71,9 @@ const Actives = () => {
             console.log("Error Data Ativos");
         }
 
-        if(resExport.statusText === 'OK'){
+        if (resExport.statusText === 'OK') {
             setDataExport(resExport.data);
-        }else {
+        } else {
             console.log("Error Data Export");
         }
     }
@@ -78,10 +82,10 @@ const Actives = () => {
         const fetchDataApiWithoutLabel = async () => {
             const query = 'ativos';
             const queryExport = 'ativos/csv';
-    
+
             const resAtivos = await api.get(`api/estatisticas/${query}`, {});
             const resExport = await api.get(`api/estatisticas/${queryExport}`, {});
-    
+
             if (resAtivos.statusText === 'OK') {
                 setDataAtivos(resAtivos.data);
                 setLabel(getLabel(resAtivos.data));
@@ -89,15 +93,15 @@ const Actives = () => {
                 console.log("Error Data Ativos");
             }
 
-            if(resExport.statusText === 'OK'){
+            if (resExport.statusText === 'OK') {
                 setDataExport(resExport.data);
-            }else {
+            } else {
                 console.log("Error Data Export");
             }
         }
-        
+
         fetchDataApiWithoutLabel();
-    },[])
+    }, [])
 
 
     return (
@@ -108,7 +112,7 @@ const Actives = () => {
                     <div className="resume-text">
                         <p>ATIVOS</p>
                         <p>{label[min]} a {label[max]}</p>
-                        <p>{redLength+blueLength+greenLength+purpleLength}</p>
+                        <p>{redLength + blueLength + greenLength + purpleLength}</p>
                         <p>DISCENTES</p>
                     </div>
                     <div className="resume-box">
@@ -141,11 +145,33 @@ const Actives = () => {
                     <ActiveGraph data={dataAtivos} handleText={handleText} ></ActiveGraph>
                 </div>
 
-                <div >
+                <div className="actives-select-group-box">
+                    <p>seleção</p>
+                    <div className="table-titles">
+                        {/* <input type="checkbox" value={checkall} onChange={setCheckAll(!checkall)} /> */}
+                        <input type="checkbox"/>
+                        <button>limpar seleção</button>
+                        <button>criar lista</button>
+                    </div>
+
+                    <div>
+                        <table>
+                            {dataSelectExample.map(e => (
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td><svg height={20} width={20}> <circle cx={10} cy={10} r={5} fill={e.svgColor}></circle></svg></td>
+                                    <td className="actives-td-enrollment">{e.matricula}</td>
+                                    <td className="actives-td-name">{e.name}</td>
+                                    <td className="actives-td-email">{e.email}</td>
+                                    <td className="actives-td-credits">{e.credits} créditos</td>
+                                    <td className="actives-td-subjects">{e.subjects} disciplinas</td>
+                                </tr>
+                            ))}
+                        </table>
+                    </div>
 
                 </div>
             </div>
-            <div>NotREMOVE</div>
         </div>
     );
 }
