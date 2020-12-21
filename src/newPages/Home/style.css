@@ -1,0 +1,11 @@
+.home-content{
+    height: auto;
+    width: 100%;
+    background-color: #E6DBD3;
+}
+
+.home-cards {
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

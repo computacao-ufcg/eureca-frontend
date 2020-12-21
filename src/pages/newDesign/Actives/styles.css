@@ -1,0 +1,215 @@
+.main-container{
+    background-color: #E6DBD3;
+    display: block;
+}
+
+.main-container .main-actives{
+    width: 80vw;
+
+    margin-left: 10vw;
+    margin-top: 2vh;
+    margin-bottom: 10vh;
+    
+    height: 1644px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 4px #15223214;
+    border-radius: 6px;
+    opacity: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.main-container .main-actives+div{
+    visibility: hidden;
+}
+
+/* -----------------------------------------  Main Actives Resume Box ----------------------------------------- */
+
+.main-actives-resume{
+    align-self: flex-start;
+}
+
+/* ----- Text ----- */
+
+.main-container .main-actives .main-actives-resume .resume-text{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+    padding-top: 2vh;
+}
+
+.main-actives-resume .resume-text p:nth-child(1){
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-25) var(--unnamed-font-family-poppins);
+    letter-spacing: var(--unnamed-character-spacing-0-1);
+    color: var(--unnamed-color-7e84a3);
+    font: normal normal normal 16px/25px Poppins;
+    letter-spacing: 0.1px;
+    color: #7E84A3;
+    opacity: 1;
+
+    font-size: 1.5rem;
+}
+
+.main-actives-resume .resume-text p:nth-child(2){
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 9px/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-7e84a3);
+    text-align: left;
+    font: normal normal normal 9px/20px Poppins;
+    letter-spacing: 0px;
+    color: #7E84A3;
+    opacity: 1;
+
+    font-size: 1rem;
+}
+
+.main-actives-resume .resume-text p:nth-child(3){
+    letter-spacing: var(--unnamed-character-spacing-0-12);
+    color: var(--unnamed-color-131523);
+    letter-spacing: 0.12px;
+    color: #131523;
+    opacity: 1;
+
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.main-actives-resume .resume-text p:nth-child(4){
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-12)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-7e84a3);
+    text-align: left;
+    font: normal normal normal 12px/20px Poppins;
+    letter-spacing: 0px;
+    color: #7E84A3;
+    opacity: 1;
+
+    font-size: 1.5rem;
+}
+
+/* ----- RESUME BOX ------ */
+
+.resume-box{
+    display: flex;
+}
+
+.resume-box div{
+    width: 108px;
+    height: 68px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    opacity: 1;
+}
+
+.resume-box>div:nth-child(1){
+    border-bottom: 8px solid #0000FF;
+}
+.resume-box>div:nth-child(2){
+    border-bottom: 8px solid #008000;
+}
+.resume-box>div:nth-child(3){
+    border-bottom: 8px solid #800080;
+}
+.resume-box>div:nth-child(4){
+    border-bottom: 8px solid #FF0000;
+}
+
+/* from the second child */
+.resume-box div:nth-child(n+2){
+    border-left: 0px;
+}
+
+/* NUMBER */
+.resume-box div span:nth-child(1){
+    letter-spacing: var(--unnamed-character-spacing-0-12);
+    color: var(--unnamed-color-7e84a3);
+    letter-spacing: 0.12px;
+    color: #7E84A3;
+    opacity: 1;
+    
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* DESCRIPTION */
+.resume-box div p:nth-child(1){
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-12)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-7e84a3);
+    text-align: center;
+    font: normal normal normal 12px/20px Poppins;
+    letter-spacing: 0px;
+    color: #7E84A3;
+    opacity: 1;
+
+    text-transform: uppercase;
+    box-sizing: border-box;
+
+    /* width: 70px; */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+/* ----------------------------------------- Actives Search Input Box ----------------------------------------- */
+
+.main-actives .actives-input-box{
+    margin-top: 5vh;
+    height: 5vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* Aplicattion bordes for all childs */
+
+.main-actives .actives-input-box div{
+    background-color: #F5F6FA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3vw;
+    height: 5vh;
+
+    border: 1px solid #707070;
+    border-right: 0;
+}
+
+.main-actives .actives-input-box input{
+    background-color: #F5F6FA;
+    border: 1px solid #707070;
+    border-left: 0;
+
+    width: 22vw;
+    height: 5vh;
+}
+
+.main-actives .actives-input-box input:focus{
+    outline: none;
+}
+
+/* ----------------------------------------- Actives Slider and Graph Box ----------------------------------------- */
+
+.actives-graph-box{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
