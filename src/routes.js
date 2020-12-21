@@ -22,6 +22,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
+
         <Route exact path="/login" component = {() => <Login/> } />
         <Route exact path="/" component = {() => <Home/> } />
         <Route exact path="/statistics" component = {() => <Redirect to='/statistics/activestudents'/> }/>
