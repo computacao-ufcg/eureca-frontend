@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Login from './pages/Login';
+import Login from './newPages/Login';
+import Home from './newPages/Home';
 
-import Home from './pages/Home';
 import Services from './pages/Services'
 
 import Actives from './pages/newDesign/Actives';
@@ -22,8 +22,9 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component = {() => <Login/> } />
-        <Route exact path="/home" component = {() => <Home/> } />
+
+        <Route exact path="/login" component = {() => <Login/> } />
+        <Route exact path="/" component = {() => <Home/> } />
         <Route exact path="/statistics" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/students" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/subjects" component = {() => <Redirect to='/statistics/summarysubjects'/> }/>
