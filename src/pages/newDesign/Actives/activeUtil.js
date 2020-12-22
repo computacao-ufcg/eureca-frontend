@@ -1,3 +1,8 @@
+// Constants 
+
+// Msg for modal
+const msgModal = "Aluno não encontrado.";
+
 
 /**
  * Responsavel por retornar a medida "ideal" de acordo com o periodo integralizado
@@ -301,4 +306,4 @@ const dataSelectExample = [{
 }
 ];
 
-export { getDataScatter, getPercentagem, getPeriodDown, headersCSV, dataSelectExample };
+export { getDataScatter, getPercentagem, getPeriodDown, headersCSV, dataSelectExample, msgModal };

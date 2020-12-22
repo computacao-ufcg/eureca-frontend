@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { FiSearch } from 'react-icons/fi';
 
+import { Loader, Modal, Button } from 'rsuite';
+
 import Header from '../Header';
 
 import ActiveSlider from './ActiveSlider';
 import ActiveGraph from './ActiveGraph';
+
+import TableDiscent from './TableDiscent';
 
 import api from '../../../services/api';
 
@@ -29,6 +33,21 @@ const Actives = () => {
     const [greenLength, setGreenLength] = useState(0);
     const [blueLength, setBlueLength] = useState(0);
     const [purpleLength, setPurpleLength] = useState(0);
+
+    // for modal
+    const [show, setShow] = useState(false);
+    const [search, setSearch] = useState('');
+
+    const handleCloseModal = () => {
+        setShow(false);
+    }
+
+    const handleSearch = (event) => {
+        if (event.keyCode === 13){
+            setSearch(event.target.value);
+            setShow(true)  
+        }    
+    }
 
     const handleText = (lengthRed, lengthGreen, lengthBlue, lengthPurple) => {
         setRedLength(lengthRed);
@@ -135,7 +154,7 @@ const Actives = () => {
                     <div>
                         <FiSearch size={25} />
                     </div>
-                    <input type="text" placeholder="Buscar por matrícula" />
+                    <input type="text" placeholder="Buscar por matrícula" onKeyUp={handleSearch}/>
                 </div>
 
                 <div className="actives-graph-box">
@@ -149,7 +168,7 @@ const Actives = () => {
                     <p>seleção</p>
                     <div className="table-titles">
                         {/* <input type="checkbox" value={checkall} onChange={setCheckAll(!checkall)} /> */}
-                        <input type="checkbox"/>
+                        <input type="checkbox" />
                         <button>limpar seleção</button>
                         <button>criar lista</button>
                     </div>
@@ -172,6 +191,16 @@ const Actives = () => {
 
                 </div>
             </div>
+            <Modal backdrop={true} overflow={true} show={show} onHide={handleCloseModal} size="lg" >
+                <Modal.Body>
+                    <TableDiscent enrollment={search} dataActives={dataAtivos} ></TableDiscent>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={handleCloseModal} appearance="primary">
+                        Ok
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }

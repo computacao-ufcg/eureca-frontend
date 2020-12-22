@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { Loader, Modal, Button } from 'rsuite';
+import { Loader } from 'rsuite';
 
 import { XAxis, YAxis, CartesianGrid, Tooltip, Scatter, ScatterChart } from 'recharts';
-
-import TableActives from '../../../components/StatisticsComponents/activeStudents/TableActives';
 
 import { getDataScatter } from './activeUtil';
 
@@ -18,32 +16,7 @@ const ActiveGraph = (props) => {
     const [green, setGreen] = useState([]);
     const [blue, setBlue] = useState([]);
     const [purple, setPurple] = useState([]);
-
-    // for modal
-    const [show, setShow] = useState(false);
-
-    // for table
-    const [elementsEquals, setElementsEquals] = useState([]);
-
-    const handleCloseModal = () => {
-        setShow(false);
-    }
-
-    const handleScatter = (event, data) => {
-        let percentagem = event.payload.porcentagem_concluida;
-        let elementsEquals = [];
-
-        // Collecting all elements where the percentage is equal
-        data.map(element => {
-            if (element.porcentagem_concluida === percentagem) {
-                elementsEquals.push(element);
-            }
-        })
-
-        setElementsEquals(elementsEquals);
-        setShow(true);
-    }
-
+    
     useEffect(() => {
         const carregaDados = () => {
             setLoad(false);
@@ -97,26 +70,15 @@ const ActiveGraph = (props) => {
                                 dataKey="porcentagem_concluida"
                                 type="number"
                             />
-                            <Scatter data={red} onClick={(e) => handleScatter(e, red)} fillOpacity={0.5} fill={"red"} name={"Abaixo do esperado"}></Scatter>
-                            <Scatter data={green} onClick={(e) => handleScatter(e, green)} fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
-                            <Scatter data={blue} onClick={(e) => handleScatter(e, blue)} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
-                            <Scatter data={purple} onClick={(e) => handleScatter(e, purple)} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
+                            <Scatter data={red} fillOpacity={0.5} fill={"red"} name={"Abaixo do esperado"}></Scatter>
+                            <Scatter data={green} fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
+                            <Scatter data={blue} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
+                            <Scatter data={purple} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
                         </ScatterChart>
 
                         <p className="graph-label-y">Créditos Integralizados</p>
                         <p className="graph-label-x">Períodos Integralizados</p>
-                    </div>
-                            
-                    <Modal backdrop={true} overflow={true} show={show} onHide={handleCloseModal} size="lg" >
-                        <Modal.Body>
-                            <TableActives elementsEquals={elementsEquals}></TableActives>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={handleCloseModal} appearance="primary">
-                                Ok
-                        </Button>
-                        </Modal.Footer>
-                    </Modal>                 
+                    </div>               
                 </React.Fragment> : <Loader content="Carregando..." vertical></Loader>}
         </div>
     )
