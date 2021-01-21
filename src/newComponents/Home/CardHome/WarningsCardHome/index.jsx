@@ -3,7 +3,7 @@ import React from 'react';
 import '../style.css';
 
 import TitleCardHome from '../TitleCardHome';
-import SummaryCardHome from '../SummaryCardHome';
+import WarningCards from './WarningsCards';
 
 import Mask3 from '../../../../assets/new_home_assets/mask_3.svg';
 
@@ -23,7 +23,7 @@ const WarningsCardHome = () => {
                             </div>
                         </div>
                         <div className={"summary-card-content2"}>
-                            <SummaryCardHome/>
+                            <WarningCards/>
                         </div>
                     </div>
                 </div>
