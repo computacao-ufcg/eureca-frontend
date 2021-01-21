@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
+import PrivateRoute from './newComponents/PrivateRoute';
+
 import Login from './newPages/Login';
 import Home from './newPages/Home';
 
@@ -44,7 +46,7 @@ const Routes = () => {
 
         {/* New Design */}
 
-        <Route exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
 
       </Switch>
     </BrowserRouter>

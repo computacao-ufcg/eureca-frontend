@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import './styles.css';
 
 import LogoGroup from '../../assets/login_assets/group_546.svg';
+import api from '../../services/api';
 
 const Login = () => {
 
@@ -13,8 +14,15 @@ const Login = () => {
 
     const history = useHistory();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
+
+        const query = "api/publicKey";
+
+        const res = await api.get(query);
+
+        debugger
+
 
         history.push('/home');
     }

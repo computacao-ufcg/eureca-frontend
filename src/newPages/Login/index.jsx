@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
+import axios from 'axios';
+
 import { useHistory } from 'react-router-dom';
 
 import './style.css';
 
 import LogoGroup from '../../assets/login_assets/group_546.svg';
 import LogoAbout from '../../assets/login_assets/group_545.svg';
+
+import api, {EURECA_AS} from '../../services/api';
 
 
 const Login = () => {
@@ -15,10 +19,34 @@ const Login = () => {
 
     const history = useHistory();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        history.push('/home');
+        const queryKey = "api/publicKey";
+
+        debugger
+
+        const { data } = await api.get(queryKey);
+
+        if(!!data){
+            const queryToken = EURECA_AS + 'api/as/tokens';
+            let publicKey = data.publicKey;
+
+            const body = {
+                credentials: {
+                    username: login,
+                    password: password,
+                },
+                publicKey: publicKey,
+            }  
+
+            const { token } = await axios.post(queryToken, body);
+
+            if(!!token){
+                localStorage.setItem('eureca-token', token);
+                history.push('/home');
+            }
+        }
     }
 
     return (
@@ -46,13 +74,13 @@ const Login = () => {
                     <div className="login-form">
 
                         <label className="login-label">LOGIN</label><br/>
-                        <input className="login-input" type="text" name="" id="" /><br/>
+                        <input className="login-input" type="text" onChange={e => setLogin(e.target.value)} /><br/>
 
                         <label className="login-label">SENHA</label><br/>
-                        <input className="login-input" type="text" name="" id="" /><br/>
+                        <input className="login-input" type="text" onChange={e => setPassword(e.target.value)} /><br/>
 
                         <div className="login-content-button">
-                            <button className="login-button" type="submit">ENTRAR</button>
+                            <button className="login-button" type="submit" onClick={handleLogin}>ENTRAR</button>
                         </div>
                     </div>
                 </div>
