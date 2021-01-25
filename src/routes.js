@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
+import PrivateRoute from './newComponents/PrivateRoute';
+
 import Login from './newPages/Login';
 import Home from './newPages/Home';
 
@@ -23,8 +25,13 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
 
+        {/* New Design */}
         <Route exact path="/login" component = {() => <Login/> } />
-        <Route exact path="/" component = {() => <Home/> } />
+        <PrivateRoute exact path="/" component = {() => <Home/> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
+
+        {/* Old Design */}
+
         <Route exact path="/statistics" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/students" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/subjects" component = {() => <Redirect to='/statistics/summarysubjects'/> }/>
@@ -41,10 +48,6 @@ const Routes = () => {
         <Route exact path="/statistics/updateenrollment" component = {() => <UpdateEnrollment/>}/>
 
         <Route exact path="/services" component = {() => <Services/> }/>
-
-        {/* New Design */}
-
-        <Route exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
 
       </Switch>
     </BrowserRouter>

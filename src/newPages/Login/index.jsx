@@ -7,6 +7,7 @@ import './style.css';
 import LogoGroup from '../../assets/login_assets/group_546.svg';
 import LogoAbout from '../../assets/login_assets/group_545.svg';
 
+import { api_EB, api_EAS } from '../../services/api';
 
 const Login = () => {
 
@@ -15,10 +16,36 @@ const Login = () => {
 
     const history = useHistory();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        history.push('/home');
+        const queryKey = "api/publicKey";
+
+        const { data } = await api_EB.get(queryKey);
+
+        if (!!data) {
+            const queryToken = 'as/tokens';
+            const publicKey = data.publicKey;
+
+            const body = {
+                credentials: {
+                    username: login,
+                    password: password,
+                },
+                publicKey: publicKey,
+            }
+
+            try {
+                const res_as = await api_EAS.post(queryToken, body);
+
+                if (!!res_as.data.token) {
+                    localStorage.setItem('eureca-token', res_as.data.token);
+                    history.push('/');
+                }
+            } catch (error) {
+                alert("Erro: Nome de usuário ou senha incorretos.");
+            }
+        }
     }
 
     return (
@@ -45,14 +72,14 @@ const Login = () => {
                 <div className="login-part-2-downsize">
                     <div className="login-form">
 
-                        <label className="login-label">LOGIN</label><br/>
-                        <input className="login-input" type="text" name="" id="" /><br/>
+                        <label className="login-label">LOGIN</label><br />
+                        <input className="login-input" type="text" onChange={e => setLogin(e.target.value)} /><br />
 
-                        <label className="login-label">SENHA</label><br/>
-                        <input className="login-input" type="text" name="" id="" /><br/>
+                        <label className="login-label">SENHA</label><br />
+                        <input className="login-input" type="password" onChange={e => setPassword(e.target.value)} /><br />
 
                         <div className="login-content-button">
-                            <button className="login-button" type="submit">ENTRAR</button>
+                            <button className="login-button" type="submit" onClick={handleLogin}>ENTRAR</button>
                         </div>
                     </div>
                 </div>
