@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import axios from 'axios';
-
 import { useHistory } from 'react-router-dom';
 
 import './style.css';
@@ -9,8 +7,7 @@ import './style.css';
 import LogoGroup from '../../assets/login_assets/group_546.svg';
 import LogoAbout from '../../assets/login_assets/group_545.svg';
 
-import api, {EURECA_AS} from '../../services/api';
-
+import { api_EB, api_EAS } from '../../services/api';
 
 const Login = () => {
 
@@ -24,13 +21,11 @@ const Login = () => {
 
         const queryKey = "api/publicKey";
 
-        debugger
+        const { data } = await api_EB.get(queryKey);
 
-        const { data } = await api.get(queryKey);
-
-        if(!!data){
-            const queryToken = EURECA_AS + 'api/as/tokens';
-            let publicKey = data.publicKey;
+        if (!!data) {
+            const queryToken = 'as/tokens';
+            const publicKey = data.publicKey;
 
             const body = {
                 credentials: {
@@ -38,13 +33,17 @@ const Login = () => {
                     password: password,
                 },
                 publicKey: publicKey,
-            }  
+            }
 
-            const { token } = await axios.post(queryToken, body);
+            try {
+                const res_as = await api_EAS.post(queryToken, body);
 
-            if(!!token){
-                localStorage.setItem('eureca-token', token);
-                history.push('/home');
+                if (!!res_as.data.token) {
+                    localStorage.setItem('eureca-token', res_as.data.token);
+                    history.push('/');
+                }
+            } catch (error) {
+                alert("Erro: Nome de usuário ou senha incorretos.");
             }
         }
     }
@@ -73,11 +72,11 @@ const Login = () => {
                 <div className="login-part-2-downsize">
                     <div className="login-form">
 
-                        <label className="login-label">LOGIN</label><br/>
-                        <input className="login-input" type="text" onChange={e => setLogin(e.target.value)} /><br/>
+                        <label className="login-label">LOGIN</label><br />
+                        <input className="login-input" type="text" onChange={e => setLogin(e.target.value)} /><br />
 
-                        <label className="login-label">SENHA</label><br/>
-                        <input className="login-input" type="text" onChange={e => setPassword(e.target.value)} /><br/>
+                        <label className="login-label">SENHA</label><br />
+                        <input className="login-input" type="password" onChange={e => setPassword(e.target.value)} /><br />
 
                         <div className="login-content-button">
                             <button className="login-button" type="submit" onClick={handleLogin}>ENTRAR</button>
