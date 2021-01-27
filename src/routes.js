@@ -8,7 +8,7 @@ import Home from './newPages/Home';
 
 import Services from './pages/Services'
 
-import Actives from './pages/newDesign/Actives';
+import Actives from './newPages/statistics/students/Actives';
 
 import ActiveStudents from './pages/Statistics/Students/ActiveStudents'
 import GraduatedStudents from './pages/Statistics/Students/GraduatedStudents'
