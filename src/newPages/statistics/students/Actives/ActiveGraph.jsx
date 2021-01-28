@@ -9,38 +9,41 @@ import { getDataScatter } from './activeUtil';
 import './activeGraph.css';
 
 const ActiveGraph = (props) => {
-    const [load, setLoad] = useState(false);
+    const [loadding, setLoadding] = useState(true);
 
     // for graph
-    const [red, setRed] = useState([]);
-    const [green, setGreen] = useState([]);
-    const [blue, setBlue] = useState([]);
-    const [purple, setPurple] = useState([]);
+    const [normal, setNormal] = useState([]);
+    const [late, setLate ]= useState([]);
+    const [advanced, setAdvanced] = useState([]);
+    const [critical, setCritical] = useState([]);
+    const [notApplicable, setNotApplicable] = useState([]);
+    const [unfeasible, setUnfeasible] = useState([]);
     
     useEffect(() => {
-        const carregaDados = () => {
-            setLoad(false);
+        const loaddingData = () => {
+            setLoadding(true);
 
-            const [red, green, blue, purple] = getDataScatter(props.data);
+            const [normal, late, advanced, critical, notApplicable, unfeasible] = getDataScatter(props.data);
 
-            props.handleText(red.length, green.length, blue.length, purple.length);
+            setNormal(normal);
+            setLate(late);
+            setAdvanced(advanced);
+            setCritical(critical);
+            setNotApplicable(notApplicable);
+            setUnfeasible(unfeasible);
 
-            setRed(red);
-            setGreen(green);
-            setBlue(blue);
-            setPurple(purple);
-
-            setLoad(true);
+            setLoadding(false);
         }
-        carregaDados();
+
+        loaddingData();
     }, [props]);
 
     const CustomTooltip = ({ active, payload }) => {
         if (active) {
             return (
                 <div className="custom-tooltip">
-                    <p>Períodos Integralizados: {payload[0].payload.periodos_integralizados}</p>
-                    <p>Créditos Integralizados: {payload[0].payload.porcentagem_concluida}%</p>
+                    <p>Períodos Integralizados: {payload[0].payload.completedTerms}</p>
+                    <p>Créditos Integralizados: {(payload[0].payload.progress * 100).toFixed(2)}%</p>
                 </div>
             );
         }
@@ -50,7 +53,7 @@ const ActiveGraph = (props) => {
 
     return (
         <div className="actives-graph-container">
-            {load ?
+            {loadding ? <Loader content="Carregando..." vertical></Loader> :
                 <React.Fragment>
                     <div className="graph-main">
                         <ScatterChart
@@ -63,23 +66,26 @@ const ActiveGraph = (props) => {
                             <CartesianGrid strokeDasharray="3 3" />
                             <Tooltip cursor={{ strokeDasharray: '3 3' }} content={CustomTooltip} />
                             <XAxis
-                                dataKey="periodos_integralizados"
+                                dataKey="completedTerms"
                                 type="number"
                             />
                             <YAxis
-                                dataKey="porcentagem_concluida"
+                                dataKey="progress"
                                 type="number"
                             />
-                            <Scatter data={red} fillOpacity={0.5} fill={"red"} name={"Abaixo do esperado"}></Scatter>
-                            <Scatter data={green} fillOpacity={0.5} fill={"green"} name={"Dentro do esperado"}></Scatter>
-                            <Scatter data={blue} fillOpacity={0.5} fill={"blue"} name={"Ideal"}></Scatter>
-                            <Scatter data={purple} fillOpacity={0.5} fill={"purple"} name={"Acima do esperado"}></Scatter>
+                            <Scatter data={normal} fillOpacity={0.5} fill={"blue"} name={"normal"}></Scatter>
+                            <Scatter data={late} fillOpacity={0.5} fill={"green"} name={"late"}></Scatter>
+                            <Scatter data={advanced} fillOpacity={0.5} fill={"purple"} name={"advanced"}></Scatter>
+                            <Scatter data={critical} fillOpacity={0.5} fill={"red"} name={"critical"}></Scatter>
+                            <Scatter data={notApplicable} fillOpacity={0.5} fill={"yellow"} name={"notApplicable"}></Scatter>
+                            <Scatter data={unfeasible} fillOpacity={0.5} fill={"black"} name={"unfeasible"}></Scatter>
                         </ScatterChart>
 
                         <p className="graph-label-y">Créditos Integralizados</p>
                         <p className="graph-label-x">Períodos Integralizados</p>
                     </div>               
-                </React.Fragment> : <Loader content="Carregando..." vertical></Loader>}
+                </React.Fragment>
+            }
         </div>
     )
 }

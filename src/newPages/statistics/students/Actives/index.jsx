@@ -30,12 +30,6 @@ const Actives = () => {
 
     const [loadding, setLoadding] = useState(true);
 
-    // For the Text info
-    const [redLength, setRedLength] = useState(0);
-    const [greenLength, setGreenLength] = useState(0);
-    const [blueLength, setBlueLength] = useState(0);
-    const [purpleLength, setPurpleLength] = useState(0);
-
     // for modal
     const [show, setShow] = useState(false);
     const [search, setSearch] = useState('');
@@ -49,13 +43,6 @@ const Actives = () => {
             setSearch(event.target.value);
             setShow(true)
         }
-    }
-
-    const handleText = (lengthRed, lengthGreen, lengthBlue, lengthPurple) => {
-        setRedLength(lengthRed);
-        setGreenLength(lengthGreen);
-        setBlueLength(lengthBlue);
-        setPurpleLength(lengthPurple);
     }
 
     const handleSlider = (min, max) => {
@@ -79,7 +66,7 @@ const Actives = () => {
         const resActivesCSV = await api_EB.get(queryActivesCSV, options);
 
         if (resActives.status === 200) {
-            setDataActives(resActives.data);
+            setDataActives(resActives.data.actives);
             setActivesSummary(resActives.data.summary);
         } else {
             console.log("Error Data Ativos");
@@ -97,7 +84,7 @@ const Actives = () => {
             setLoadding(true);
             const queryActives = 'api/statistics/students/actives?from=1950.0&to=2049.9';
             const queryActivesCSV = 'api/statistics/students/actives/csv?from=1950.0&to=2049.9';
-            debugger
+
             const token = localStorage.getItem('eureca-token');
 
             const options = {
@@ -174,9 +161,9 @@ const Actives = () => {
 
                         <div className="actives-graph-box">
                             <div onMouseUp={() => fetchDataApiWithLabel(min, max)}>
-                                <ActiveSlider changeSlider={handleSlider} labels={label} min={min} max={max}></ActiveSlider>
+                                <ActiveSlider changeSlider={handleSlider} labels={label} min={min} max={max} />
                             </div>
-                            <ActiveGraph data={dataActives} handleText={handleText} ></ActiveGraph>
+                            <ActiveGraph data={dataActives} />
                         </div>
 
                         <div className="actives-select-group-box">
@@ -190,17 +177,21 @@ const Actives = () => {
 
                             <div>
                                 <table>
-                                    {dataSelectExample.map(e => (
-                                        <tr>
-                                            <td><input type="checkbox" /></td>
-                                            <td><svg height={20} width={20}> <circle cx={10} cy={10} r={5} fill={e.svgColor}></circle></svg></td>
-                                            <td className="actives-td-enrollment">{e.matricula}</td>
-                                            <td className="actives-td-name">{e.name}</td>
-                                            <td className="actives-td-email">{e.email}</td>
-                                            <td className="actives-td-credits">{e.credits} créditos</td>
-                                            <td className="actives-td-subjects">{e.subjects} disciplinas</td>
-                                        </tr>
-                                    ))}
+                                    <tbody>
+
+                                        {dataSelectExample.map( (e, index) => (
+                                            <tr key={"tr" + index}>
+                                                <td><input type="checkbox" /></td>
+                                                <td><svg height={20} width={20}> <circle cx={10} cy={10} r={5} fill={e.svgColor}></circle></svg></td>
+                                                <td className="actives-td-enrollment">{e.matricula}</td>
+                                                <td className="actives-td-name">{e.name}</td>
+                                                <td className="actives-td-email">{e.email}</td>
+                                                <td className="actives-td-credits">{e.credits} créditos</td>
+                                                <td className="actives-td-subjects">{e.subjects} disciplinas</td>
+                                            </tr>
+                                        ))}
+
+                                    </tbody>
                                 </table>
                             </div>
 
