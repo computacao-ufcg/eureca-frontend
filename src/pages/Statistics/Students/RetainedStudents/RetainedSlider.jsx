@@ -9,7 +9,7 @@ import '../../styles.css'
 const RetainedSlider = (props) => {
 
     const [value1, setValue1] = useState(0);
-    const [value2, setValue2] = useState(77);
+    const [value2, setValue2] = useState(labels.length - 1);
 
     const handleStyle = {
         color: '#fff',
@@ -18,13 +18,15 @@ const RetainedSlider = (props) => {
         height: 22
     };
 
+    console.log(labels.length);
+
     
     return (
         labels ?
         <div className={'mainSlider'} >
             <RangeSlider
                 min={0}
-                max={78}
+                max={labels.length - 1}
                 defaultValue={[value1, value2]}
                 value={[value1, value2]}
                 handleStyle={handleStyle}
