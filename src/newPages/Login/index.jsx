@@ -39,7 +39,7 @@ const Login = () => {
                 const res_as = await api_EAS.post(queryToken, body);
 
                 if (!!res_as.data.token) {
-                    localStorage.setItem('eureca-token', res_as.data.token);
+                    sessionStorage.setItem('eureca-token', res_as.data.token);
                     history.push('/');
                 }
             } catch (error) {
