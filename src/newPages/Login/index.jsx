@@ -40,6 +40,7 @@ const Login = () => {
 
                 if (!!res_as.data.token) {
                     sessionStorage.setItem('eureca-token', res_as.data.token);
+                    sessionStorage.setItem('username', login);
                     history.push('/');
                 }
             } catch (error) {
