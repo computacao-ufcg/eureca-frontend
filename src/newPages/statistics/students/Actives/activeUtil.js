@@ -18,7 +18,6 @@ const getDataScatter = (data) => {
 
     if (data) {
 
-        console.log("meu data: ", data)
         data.map((entry, index) => {
 
             switch (entry.riskClass){

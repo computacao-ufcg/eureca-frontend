@@ -36,7 +36,7 @@ const ActiveGraph = (props) => {
         }
 
         loaddingData();
-    }, [props]);
+    }, [props.data]);
 
     const CustomTooltip = ({ active, payload }) => {
         if (active) {

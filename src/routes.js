@@ -9,6 +9,7 @@ import Home from './newPages/Home';
 import Services from './pages/Services'
 
 import Actives from './newPages/statistics/students/Actives';
+import Alumni from './newPages/statistics/students/Alumni';
 
 import ActiveStudents from './pages/Statistics/Students/ActiveStudents'
 import GraduatedStudents from './pages/Statistics/Students/GraduatedStudents'
@@ -29,6 +30,7 @@ const Routes = () => {
         <Route exact path="/login" component = {() => <Login/> } />
         <PrivateRoute exact path="/" component = {() => <Home/> } />
         <PrivateRoute exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/alumni" component={() => <Alumni /> } />
 
         {/* Old Design */}
 
