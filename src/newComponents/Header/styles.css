@@ -14,24 +14,25 @@
     align-items: center;
 }
 
-.header-container .header-1 p:nth-child(1){
+.header-1-user{
+    display: flex;
+}
+
+.header-1-user div{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    background-image: url('../../assets/header/default-avatar.png');
+    background-size: contain;
+
+    border-radius: 50%;
+}
+
+.header-1-user p{
     color: #765547;
-    font-size: 1.5rem;
-}
-
-.header-container .header-1 p:nth-child(2){
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    text-align: left;
-    font: normal normal normal 14px/20px Poppins;
-    letter-spacing: 0px;
-    color: #886859;
-    opacity: 1;
-
     text-transform: uppercase;
+    font-size: 1.1rem;
 }
-
-
 
 .header-container .header-2{
     background-color: #886859;
@@ -47,13 +48,9 @@
     position: relative;
     align-self: flex-end;
     margin: 2vh 0;
-
-    font: var(--unnamed-font-style-normal) normal 600 var(--unnamed-font-size-24)/var(--unnamed-line-spacing-36) var(--unnamed-font-family-poppins-semibold);
-    letter-spacing: var(--unnamed-character-spacing-0-1);
+    
+    color: #FFFFFF;
+    text-transform: capitalize;
     font: normal normal 600 24px/36px Poppins-SemiBold;
     letter-spacing: 0.1px;
-    color: #FFFFFF;
-    opacity: 1;
-
-    text-transform: capitalize;
 }
