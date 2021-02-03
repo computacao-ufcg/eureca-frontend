@@ -3,7 +3,9 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import PrivateRoute from './newComponents/PrivateRoute';
 
-import AlumniUFCG from './newPages/AlumniUFCG';
+import UpdateData from './newPages/alumniUFCG/UpdateData';
+import SeeMore from './newPages/alumniUFCG/SeeMore';
+
 import Home from './newPages/Home';
 import Login from './newPages/Login';
 
@@ -32,7 +34,8 @@ const Routes = () => {
         <PrivateRoute exact path="/" component = {() => <Home/> } />
         <PrivateRoute exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
         <PrivateRoute exact path="/newDesign/statistics/students/alumni" component={() => <Alumni /> } />
-        <PrivateRoute exact path="/newDesign/alumniufcg" component={() => <AlumniUFCG /> } />
+        <PrivateRoute exact path="/newDesign/alumniufcg/updatedata" component={() => <UpdateData /> } />
+        <PrivateRoute exact path="/newDesign/alumniufcg/seemore" component={() => <SeeMore /> } />
 
         {/* Old Design */}
 

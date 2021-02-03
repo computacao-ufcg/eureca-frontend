@@ -3,6 +3,7 @@ import axios from 'axios';
 // Starting points
 const EURECA_AS = 'http://localhost:8080/';
 const EURECA_BACKEND = 'http://localhost:8081/';
+const ALUMNI_AS = 'http://localhost:8082';
 
 // Default for tests
 const api = axios.create({
@@ -27,5 +28,13 @@ const api_EAS = axios.create({
   }
 });
 
+// For Alumnus Service API
+const api_AS = axios.create({
+  baseURL: ALUMNI_AS,
+  headers:{
+    'Content-type': 'application/json',
+  }
+});
+
 export default api;
-export { api_EB, api_EAS };
+export { api_EB, api_EAS, api_AS };

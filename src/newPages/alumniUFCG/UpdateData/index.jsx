@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Header from '../../newComponents/Header';
+import Header from '../../../newComponents/Header';
 
 import './styles.css';
 
-const AlumniUFCG = () => {
+const UpdateData = () => {
 
     return (
         <React.Fragment>
             <Header />
-            <h1>AlumniUFCG</h1>
+            <h1>UpdateData</h1>
         </React.Fragment>
     );
 }
 
-export default AlumniUFCG;
+export default UpdateData;
