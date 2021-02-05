@@ -1,0 +1,22 @@
+.mainDesclassificados{
+    display: flex; 
+}
+
+.inputEmpresa {
+    border:none;
+    width: 500px;
+    background-color: transparent
+}
+
+.inputEmpresa:focus {
+    outline: none;
+}
+
+.tabelaDesclassificados a{
+    color: #886859 ;
+}
+
+.paginacao .a {
+    color: #886859
+}
+
