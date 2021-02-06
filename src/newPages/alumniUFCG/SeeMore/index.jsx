@@ -4,7 +4,41 @@ import Header from '../../../newComponents/Header';
 
 import './styles.css';
 
-const SeeMore = () => {
+import {useState,useEffect} from 'react'
+import { api_AS } from './../../../services/api'
+import ListEgressos from '../SeeMore/listEgressos'
+import { Pagination } from 'rsuite';
+import './styles.css'
+
+const SeeMore = () =>{
+
+    const [data, setData] = useState([])
+    const [page, setPage] = useState(0)
+
+    useEffect(()=>{
+        handleProfile(page)
+
+    },[])
+
+    const handleProfile = async (page) =>{
+        let query = 'linkedin/entries/' + page
+        const res = await api_AS.get(query,{headers:{'Authentication-Token': sessionStorage.getItem('eureca-token')}})
+        .then(res => {
+            console.log(res)
+            setData(res.data)
+
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+     const handlePage = (eventKey) =>{
+        setPage(eventKey-1)
+        console.log(eventKey)
+        handleProfile(eventKey-1)
+     }
+
+
 
     return (
         <React.Fragment>
@@ -18,6 +52,23 @@ const SeeMore = () => {
                         <div className={'container-title-seemore'}>
                             <h1>VER MAIS</h1>
                         </div>
+
+                        <div className={'listEgressos'}>
+                            <ListEgressos listData={data.content ? data.content :[]}/>
+                            <hr></hr>
+                            <Pagination
+                            pages={data.totalPages ? data.totalPages :0}
+                            maxButtons={5}
+                            onSelect ={handlePage}
+                            activePage={page+1}
+                            prev
+                            next
+                            first
+                            last
+                            ellipsis
+                            boundaryLinks
+                            />
+                            </div>
                     </div>
                     
                     
@@ -28,4 +79,4 @@ const SeeMore = () => {
     );
 }
 
-export default SeeMore;
+export default SeeMore

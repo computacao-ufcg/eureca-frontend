@@ -38,3 +38,15 @@
 .container-title-seemore h1{
     font-size: 18px;
 }
+
+.listEgressos{
+    text-align: center;
+    justify-content: center;
+    color: #886859;
+    font-size: 1rem;
+}
+
+.tableEgressos{
+    justify-content: center;
+    display: flex;
+}
