@@ -26,6 +26,7 @@
     opacity: 1;
 
     display: grid;
+
 }
 .container-title-seemore{
 
@@ -49,4 +50,41 @@
 .tableEgressos{
     justify-content: center;
     display: flex;
+}
+
+.seemore-input-box{
+    margin-left: 450px;
+    height: 5vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.seemore-input-box div{
+    background-color: #F5F6FA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3vw;
+    height: 5vh;
+
+    border: 1px solid #707070;
+    border-right: 0;
+}
+
+.seemore-input-box input{
+    background-color: #F5F6FA;
+    border: 1px solid #707070;
+    border-left: 0;
+
+    width: 22vw;
+    height: 5vh;
+}
+
+.seemore-input-box input:focus{
+    outline: none;
 }

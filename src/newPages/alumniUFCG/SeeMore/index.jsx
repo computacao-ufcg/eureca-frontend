@@ -8,6 +8,7 @@ import {useState,useEffect} from 'react'
 import { api_AS } from './../../../services/api'
 import ListEgressos from '../SeeMore/listEgressos'
 import { Pagination } from 'rsuite';
+import { FiSearch } from 'react-icons/fi';
 import './styles.css'
 
 const SeeMore = () =>{
@@ -53,6 +54,13 @@ const SeeMore = () =>{
                             <h1>VER MAIS</h1>
                         </div>
 
+                        <div className="seemore-input-box">
+                            <div>
+                                <FiSearch size={25} />
+                            </div>
+                            <input type="text" placeholder="Buscar por matrícula" />  
+                        </div>
+                        
                         <div className={'listEgressos'}>
                             <ListEgressos listData={data.content ? data.content :[]}/>
                             <hr></hr>
@@ -68,7 +76,9 @@ const SeeMore = () =>{
                             ellipsis
                             boundaryLinks
                             />
-                            </div>
+                        </div>
+
+                       
                     </div>
                     
                     
