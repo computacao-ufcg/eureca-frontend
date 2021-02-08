@@ -22,24 +22,22 @@ const SeeMore = () =>{
     },[])
 
     const handleProfile = async (page) =>{
+        debugger
         let query = 'alumnus/' + page
         const res = await api_AS.get(query,{headers:{'Authentication-Token': sessionStorage.getItem('eureca-token')}})
-        .then(res => {
-            console.log(res)
-            setData(res.data)
-
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+        
+        if(res.status===200){
+            setData(res.data.content)
+        }
+        else{
+            console.error('error: response error')
+        }
     }
      const handlePage = (eventKey) =>{
         setPage(eventKey-1)
         console.log(eventKey)
         handleProfile(eventKey-1)
-     }
-
-
+    }
 
     return (
         <React.Fragment>
@@ -58,7 +56,7 @@ const SeeMore = () =>{
                             <div>
                                 <FiSearch size={25} />
                             </div>
-                            <input type="text" placeholder="Buscar por matrícula" />  
+                            <input type="text" placeholder="Buscar por período"  />  
                         </div>
                         
                         <div className={'listEgressos'}>
