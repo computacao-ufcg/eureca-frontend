@@ -27,12 +27,16 @@
 
     display: grid;
 
+    justify-items: center;
+    
+
 }
 .container-title-seemore{
 
     height: 62px;
     width: 200px;
     
+    justify-self: left;
     margin-left: 40px;
 }
 
@@ -53,7 +57,6 @@
 }
 
 .seemore-input-box{
-    margin-left: 450px;
     height: 5vh;
     width: 30vw;
     display: flex;
