@@ -9,7 +9,7 @@ const ListEgressos = (props) =>{
         <div className={'tableEgressos'}>
             <Table
             height={480}
-            width={800}
+            width={850}
             data={props.listData}
             onRowClick={data => {
                 console.log(data);
@@ -19,23 +19,13 @@ const ListEgressos = (props) =>{
                 <HeaderCell >Nome do Egresso</HeaderCell>
                 <Cell dataKey="fullName" />
             </Column>
-            <Column width={120} fixed="right">
-                <HeaderCell>Linkedin</HeaderCell>
-
-                <Cell>
-                {rowData => {
-                    function handleAction() {
-                        window.location.href = rowData.profileUrl
-                    }
-                    return (
-                    <span>
-                        {/**<a onClick={handleAction}>Link</a> */}
-                        <a target={'_blank'} href={rowData.profileUrl}>Link</a> 
-                        
-                    </span>
-                    );
-                }}
-                </Cell>
+            <Column>
+                <HeaderCell width={200}>Admissão</HeaderCell>
+                <Cell dataKey="admission"/>
+            </Column>
+            <Column>
+                <HeaderCell width={200}>Graduação</HeaderCell>
+                <Cell dataKey="graduation"/>
             </Column>
             </Table>
             

@@ -22,7 +22,7 @@ const SeeMore = () =>{
     },[])
 
     const handleProfile = async (page) =>{
-        let query = 'linkedin/entries/' + page
+        let query = 'alumnus/' + page
         const res = await api_AS.get(query,{headers:{'Authentication-Token': sessionStorage.getItem('eureca-token')}})
         .then(res => {
             console.log(res)
