@@ -20,7 +20,7 @@ const ListAlumnus = (props) => {
                 >
                     <Column width={300} >
                         <HeaderCell >Nome do Egresso</HeaderCell>
-                        <Cell dataKey={'fullName'} >
+                        <Cell dataKey={'fullName'} className="pointer">
                             {rowData => {
                                 return (
                                     <a index={rowData.index}>{rowData.alumnus.fullName}</a>

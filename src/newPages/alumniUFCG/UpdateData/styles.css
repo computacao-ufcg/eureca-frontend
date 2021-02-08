@@ -1,3 +1,8 @@
+.main-container-body h1{
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+
 /* Alternator Tabs */
 
 .alternator-tabs{
@@ -8,6 +13,16 @@
     justify-content: space-around;
 }
 
+.rs-nav-item a{
+    color: #886859 !important;
+}
+
+.rs-nav-item-active a{
+    background-color: #886859 !important;
+    color: white !important;
+}
+
+/* 
 .alternator-tabs button{
 
     background:#886859;
@@ -19,8 +34,4 @@
     font-size: 1.1rem; 
     cursor: pointer;
    
-}
-
-.alternator-content{
-    
-}
+} */

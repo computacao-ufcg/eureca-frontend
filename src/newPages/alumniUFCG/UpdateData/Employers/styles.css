@@ -1,0 +1,46 @@
+.selectBoxes{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.selectBoxes select{
+    background:#E6DBD3;
+    text-align: center;
+    padding: .7rem 4rem;
+    border: none;
+    border-radius: 5px;
+    
+    margin-top: 5rem;
+    margin-left: 30%;
+    margin-right: 30%;
+
+    color: #f1f1f1;
+    font-size: 1.1rem;
+    font-weight: 450;
+
+    cursor: pointer;
+
+}
+.employers-container{
+    text-align: center;
+
+}
+
+.employers-container button{
+    background:#886859;
+    color: #f1f1f1;
+    text-align: center;
+    padding: .7rem 4rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5rem;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-size: 1.1rem; 
+    cursor: pointer;
+}
+
+.employers-container button:hover{
+    background-color: #886859ea;
+}

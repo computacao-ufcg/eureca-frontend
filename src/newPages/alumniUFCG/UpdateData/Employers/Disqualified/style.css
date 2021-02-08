@@ -1,18 +1,19 @@
-.mainDesclassificados{
+.mainDisqualified{
     display: flex; 
+    justify-content: space-between;
 }
 
-.inputEmpresa {
+.inputCompany {
     border:none;
     width: 500px;
     background-color: transparent
 }
 
-.inputEmpresa:focus {
+.inputCompany:focus {
     outline: none;
 }
 
-.tabelaDesclassificados a{
+.tableDisqualified a{
     color: #886859 ;
 }
 
