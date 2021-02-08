@@ -1,0 +1,23 @@
+.mainDisqualified{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.inputCompany {
+    border:none;
+    width: 500px;
+    background-color: transparent
+}
+
+.inputCompany:focus {
+    outline: none;
+}
+
+.tableDisqualified a{
+    color: #886859 ;
+}
+
+.paginacao .a {
+    color: #886859
+}
+

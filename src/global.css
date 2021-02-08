@@ -46,3 +46,33 @@ cinza: #eeeeee
 white
 black
 */
+
+/* If using, delete the main file in "Actives". */
+
+.main-container{
+  background-color: #E6DBD3;
+  padding-bottom: 10vh;
+  display: block;
+}
+
+.main-container-body{
+  width: 80vw;
+
+  margin-left: 10vw;
+  margin-top: 2vh;
+  padding-bottom: 10vh;
+
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 4px #15223214;
+  border-radius: 6px;
+  opacity: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.pointer{
+  cursor: pointer;
+}
