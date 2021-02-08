@@ -1,0 +1,56 @@
+.alumnusPossibleMatches{
+    text-align: center;
+}
+
+.alumnusPossibleMatches p{
+    color: #886859;
+    font-size: 2rem;
+    font-weight: 650;
+    margin-top: 0;
+    margin-bottom: 5%;
+}
+
+.alumnusList{
+    display: flex;
+    color:#886859;
+    font-size: 1rem;
+}
+
+.alumnusList hr{
+    border-top: 1px solid white;
+}
+.listAlumnus {
+    width: 50%;
+}
+
+.alumnusSelect{
+    display: grid;
+    width: 50%;
+    max-height: 300px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.matchesPg{
+    display: flex;
+}
+
+.matchesContainer{
+    text-align: center;
+
+}
+
+.matchesContainer button{
+    width: 200px;
+    height: 50px;
+    background:#886859;
+    color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5rem;
+    font-size: 1rem; 
+    cursor: pointer;
+}
+.matchesContainer button:hover{
+    background-color: #886859ea;
+}
