@@ -1,12 +1,22 @@
 const dataCompany = [
     {
-        "label": "Acadêmico",
-        "value": "academico",
+        "label": "Academia",
+        "value": "academia",
         "role": "Master"
     },
     {
-        "label": "Indústria",
-        "value": "industria",
+        "label": "Empresa Privada",
+        "value": "empresa privada",
+        "role": "Master"
+    },
+    {
+        "label": "Empresa Pública",
+        "value": "empresa publica",
+        "role": "Master"
+    },
+    {
+        "label": "Empresa de Economia Mista",
+        "value": "empresa de economia mista",
         "role": "Master"
     },
     {
