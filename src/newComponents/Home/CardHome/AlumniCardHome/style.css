@@ -1,0 +1,21 @@
+.alumni-buttons{
+    height: 46px;
+    width: 150px;
+
+    justify-self: right;
+    margin-right: 2%;
+
+    background-color:#FFFFFF;
+    
+}
+
+.alumni-buttons .seemore-button a,
+.updatedata-button a, button {
+
+    background-color:#FFFFFF;
+    color: #7e84a3;
+}
+
+
+
+

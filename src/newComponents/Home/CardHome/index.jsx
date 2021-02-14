@@ -8,6 +8,7 @@ import PostItsCardHome from './PostItsCardHome'
 import SubjectsCardHome from './SubjectsCardHome'
 import StudentsCardHome from './StudentsCardHome'
 import WarningsCardHome from './WarningsCardHome'
+import AlumniCardHome from './AlumniCardHome'
 
 const CardHome = (props) => {
 
@@ -19,6 +20,7 @@ const CardHome = (props) => {
             <PostItsCardHome/>
             <WarningsCardHome/>
             <CoursesCardHome/>
+            <AlumniCardHome/>
         </React.Fragment>
     )
 }
