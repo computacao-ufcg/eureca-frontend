@@ -6,32 +6,32 @@ const dataCompany = [
     },
     {
         "label": "Empresa Privada",
-        "value": "empresa privada",
+        "value": "private_company",
         "role": "Master"
     },
     {
         "label": "Empresa Pública",
-        "value": "empresa publica",
+        "value": "public_company",
         "role": "Master"
     },
     {
         "label": "Empresa de Economia Mista",
-        "value": "empresa de economia mista",
+        "value": "mixed_capital_company",
         "role": "Master"
     },
     {
         "label": "Governo",
-        "value": "governo",
+        "value": "government",
         "role": "Master"
     },
     {
         "label": "ONG",
-        "value": "ong",
+        "value": "ngo",
         "role": "Master"
     },
     {
         "label": "Outros",
-        "value": "outros",
+        "value": "others",
         "role": "Master"
     }
 ];
