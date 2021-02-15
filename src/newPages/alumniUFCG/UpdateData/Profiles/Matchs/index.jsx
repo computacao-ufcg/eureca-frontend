@@ -38,9 +38,9 @@ const Matchs = () => {
                         console.log(data);
                     }}
                     >
-                    <Column width={300} >
+                    <Column width={400} >
                         <HeaderCell >Nome do Egresso</HeaderCell>
-                        <Cell dataKey="fullName">
+                        <Cell dataKey="name">
                     
                         </Cell>
                     </Column>
@@ -58,12 +58,12 @@ const Matchs = () => {
                         }}
                         </Cell>
                     </Column>
-                    <Column width={120} >
+                    {/*<Column width={120} >
                         <HeaderCell >Matricula</HeaderCell>
                         <Cell dataKey="registration">
                     
                         </Cell>
-                    </Column>
+                    </Column>**/}
                     </Table>
                 </div>
             </div>
