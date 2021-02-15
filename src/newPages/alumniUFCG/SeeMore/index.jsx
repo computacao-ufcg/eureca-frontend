@@ -15,6 +15,9 @@ const SeeMore = () =>{
 
     const [data, setData] = useState([])
     const [page, setPage] = useState(0)
+    const[admission,setAdmission] = useState("")
+    const[graduation,setGraduation] =useState("")
+    const[name,setName] =useState("")
 
     useEffect(()=>{
         handleProfile(page)
@@ -22,7 +25,7 @@ const SeeMore = () =>{
     },[])
 
     const handleProfile = async (page) =>{
-        let query = 'alumnus/' + page
+        let query = 'match/search/' + page +`?admission=${admission}&graduation=${graduation}&name=${name}`
         const res = await api_AS.get(query,{headers:{'Authentication-Token': sessionStorage.getItem('eureca-token')}})
         
       .then(res => {
