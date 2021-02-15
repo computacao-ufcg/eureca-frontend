@@ -1,7 +1,7 @@
 const dataCompany = [
     {
         "label": "Academia",
-        "value": "academia",
+        "value": "academy",
         "role": "Master"
     },
     {

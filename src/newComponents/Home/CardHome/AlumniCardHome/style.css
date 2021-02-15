@@ -1,11 +1,14 @@
+.summary-card-content-3{
+    margin-left: 40px;
+}
+
 .alumni-buttons{
     height: 46px;
     width: 150px;
-
-    justify-self: right;
-    margin-right: 2%;
-
+    
     background-color:#FFFFFF;
+    margin-left: 75%;
+    margin-top: 20px;
     
 }
 

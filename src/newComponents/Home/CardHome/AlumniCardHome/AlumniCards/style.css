@@ -1,0 +1,6 @@
+.alumni-cards-main{
+    height: 130px;
+    width: 418px;
+    display: flex;
+    flex-wrap: wrap;
+}
