@@ -1,0 +1,24 @@
+.summary-card-content-3{
+    margin-left: 40px;
+}
+
+.alumni-buttons{
+    height: 46px;
+    width: 150px;
+    
+    background-color:#FFFFFF;
+    margin-left: 75%;
+    margin-top: 20px;
+    
+}
+
+.alumni-buttons .seemore-button a,
+.updatedata-button a, button {
+
+    background-color:#FFFFFF;
+    color: #7e84a3;
+}
+
+
+
+

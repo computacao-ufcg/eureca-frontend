@@ -17,16 +17,22 @@ const ListEgressos = (props) =>{
             >
             <Column width={500} align="center" fixed>
                 <HeaderCell >Nome do Egresso</HeaderCell>
-                <Cell dataKey="fullName" />
+                <Cell dataKey="name" />
             </Column>
-            <Column>
-                <HeaderCell width={200}>Admissão</HeaderCell>
-                <Cell dataKey="admission"/>
-            </Column>
-            <Column>
-                <HeaderCell width={200}>Graduação</HeaderCell>
-                <Cell dataKey="graduation"/>
-            </Column>
+            <Column width={120} >
+                    <HeaderCell>Linkedin</HeaderCell>
+    
+                    <Cell>
+                        {rowData => {
+                            return (
+                            <span>
+                                <a target={'_blank'} href={"https://www.linkedin.com/in/" + rowData.linkedinId}>Link</a> 
+                            
+                            </span>
+                            );
+                        }}
+                        </Cell>
+                    </Column>
             </Table>
             
         </div>

@@ -14,7 +14,7 @@ const Disqualified = (props) => {
     const [data, setData] = useState([]);
     const [dataMaster, setDataMaster] = useState({});
     const [selectCompany, setSelectCompany] = useState('Selecione uma Empresa');
-    const [type, setType] = useState('academico');
+    const [type, setType] = useState('academia');
     const [linkedinID, setLinkedinID] = useState('');
 
     useEffect(()=>{

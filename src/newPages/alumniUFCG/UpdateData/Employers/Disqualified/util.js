@@ -1,27 +1,37 @@
 const dataCompany = [
     {
-        "label": "Acadêmico",
-        "value": "academico",
+        "label": "Academia",
+        "value": "academy",
         "role": "Master"
     },
     {
-        "label": "Indústria",
-        "value": "industria",
+        "label": "Empresa Privada",
+        "value": "private_company",
+        "role": "Master"
+    },
+    {
+        "label": "Empresa Pública",
+        "value": "public_company",
+        "role": "Master"
+    },
+    {
+        "label": "Empresa de Economia Mista",
+        "value": "mixed_capital_company",
         "role": "Master"
     },
     {
         "label": "Governo",
-        "value": "governo",
+        "value": "government",
         "role": "Master"
     },
     {
         "label": "ONG",
-        "value": "ong",
+        "value": "ngo",
         "role": "Master"
     },
     {
         "label": "Outros",
-        "value": "outros",
+        "value": "others",
         "role": "Master"
     }
 ];

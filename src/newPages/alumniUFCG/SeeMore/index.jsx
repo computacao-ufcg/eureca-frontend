@@ -15,6 +15,9 @@ const SeeMore = () =>{
 
     const [data, setData] = useState([])
     const [page, setPage] = useState(0)
+    const[admission,setAdmission] = useState("")
+    const[graduation,setGraduation] =useState("")
+    const[name,setName] =useState("")
 
     useEffect(()=>{
         handleProfile(page)
@@ -22,24 +25,27 @@ const SeeMore = () =>{
     },[])
 
     const handleProfile = async (page) =>{
-        debugger
-        let query = 'alumnus/' + page
+        let query = 'match/search/' + page +`?admission=${admission}&graduation=${graduation}&name=${name}`
         const res = await api_AS.get(query,{headers:{'Authentication-Token': sessionStorage.getItem('eureca-token')}})
         
-        if(res.status===200){
-            setData(res.data.content)
-        }
-        else{
-            console.error('error: response error')
-        }
+      .then(res => {
+            console.log(res)
+            setData(res.data)
+
+        })
+        .catch(err =>{
+            console.log(err)
+        })
     }
-     const handlePage = (eventKey) =>{
+
+    const handlePage = (eventKey) =>{
         setPage(eventKey-1)
         console.log(eventKey)
         handleProfile(eventKey-1)
     }
 
     return (
+        
         <React.Fragment>
             <div className ={'main-seemore'}>
                 <div className={'header-container'}>
@@ -76,12 +82,9 @@ const SeeMore = () =>{
                             />
                         </div>
 
-                       
-                    </div>
+                    </div>                      
                     
-                    
-                </div>
-                
+                </div>              
             </div>
         </React.Fragment>
     );
