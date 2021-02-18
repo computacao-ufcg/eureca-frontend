@@ -28,6 +28,7 @@ const ListAlumnus = (props) => {
                             }}
                         </Cell>
                     </Column>
+                    
                 </Table>
         </div>
     )

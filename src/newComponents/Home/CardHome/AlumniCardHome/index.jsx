@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import '../AlumniCardHome/style.css'
 
 import TitleCardHome from '../TitleCardHome';
-import SummaryCardHome from '../SummaryCardHome';
 import AlumniCards from './AlumniCards'
 
 import Mask3 from '../../../../assets/new_home_assets/mask_3.svg';
