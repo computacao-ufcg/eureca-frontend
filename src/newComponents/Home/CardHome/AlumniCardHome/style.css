@@ -3,13 +3,18 @@
 }
 
 .alumni-buttons{
+    display: flex;
     height: 46px;
-    width: 150px;
+    width: 300px;
     
     background-color:#FFFFFF;
-    margin-left: 75%;
-    margin-top: 20px;
+    margin-top: 50px;
     
+}
+
+.seemore-button{
+    margin-right: 20px;
+    margin-left: 40px;
 }
 
 .alumni-buttons .seemore-button a,
