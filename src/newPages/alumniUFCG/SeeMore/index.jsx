@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from '../../../newComponents/Header';
 
 import './styles.css';
 
-import { useState, useEffect } from 'react'
 import { api_AS } from './../../../services/api'
 import ListEgressos from '../SeeMore/listEgressos'
 import { Pagination } from 'rsuite';
