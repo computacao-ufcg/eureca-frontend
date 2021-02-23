@@ -2,3 +2,10 @@
     display: flex;
     justify-content: center;
 }
+
+.delete-button-div .delete-button-updatedata{
+    height: 0px;
+    color: #7e84a3;
+    margin:0;
+    background-color: #ffffff;
+}
