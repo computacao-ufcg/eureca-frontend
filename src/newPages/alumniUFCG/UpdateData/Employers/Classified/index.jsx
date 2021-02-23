@@ -28,6 +28,7 @@ const Classified = (props) => {
 
         try {
             const res = await api_AS.get(query, myHeaders);
+
             debugger
             if (res.status === 200) {
                 setData(res.data.content);

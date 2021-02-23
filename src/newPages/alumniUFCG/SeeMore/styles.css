@@ -58,12 +58,13 @@
 
 .seemore-input-box{
     height: 5vh;
-    width: 30vw;
+    width: 35vw;
     display: flex;
     flex-direction: row;
 
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .seemore-input-box div{
