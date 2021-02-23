@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+
 import { Pagination } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 
@@ -18,21 +19,21 @@ const PendingMatchs = (props) => {
 
     const [dataMaster, setDataMaster] = useState([]);
     const [dataContent, setDataContent] = useState([]);
-    const [page, setPage] = useState(0)
+    const [page, setPage] = useState(0);
 
-    const [possibleMatches, setPossibleMatches] = useState([])
-    const [selectedRegistration, setSelectedRegistration] = useState('')
-    const [selectedProfile, setSelectedProfile] = useState(null)
+    const [possibleMatches, setPossibleMatches] = useState([]);
+    const [selectedRegistration, setSelectedRegistration] = useState('');
+    const [selectedProfile, setSelectedProfile] = useState(null);
 
 
     useEffect(() => {
-        handleProfile(page)
-    }, [])
+        handleProfile(page);
+    }, []);
 
     const handleProfile = async (page) => {
         setLoading(true);
-        let query = 'match/pending/' + page
-        const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } })
+        let query = 'match/pending/' + page;
+        const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
             setDataMaster(res.data);
@@ -44,13 +45,13 @@ const PendingMatchs = (props) => {
     }
 
     const handlePage = (eventKey) => {
-        setPage(eventKey - 1)
-        handleProfile(eventKey - 1)
+        setPage(eventKey - 1);
+        handleProfile(eventKey - 1);
     }
 
     const handleAlumnus = (value) => {
-        setSelectedRegistration(value.alumnus.registration)
-        setPossibleMatches(value.possibleMatches)
+        setSelectedRegistration(value.alumnus.registration);
+        setPossibleMatches(value.possibleMatches);
     }
 
 
@@ -61,7 +62,7 @@ const PendingMatchs = (props) => {
                 'linkedinId': person.profile.linkedinId
             }
     
-            setSelectedProfile(match)
+            setSelectedProfile(match);
         }else{
             setSelectedProfile(null);
         }

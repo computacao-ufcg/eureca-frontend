@@ -6,7 +6,6 @@ import './styles.css';
 
 const ListPicker = (props) => {
     const data = props.data;
-
     const [selectedOption, setSelectedOption] = useState(null);
     const [selected, setSelected] = useState(null);
 
@@ -25,23 +24,25 @@ const ListPicker = (props) => {
     return (
         <div className="listpicker-container">
             {data.map((element, index) => {
-                return (
-                    <div
-                        key={`listpicker${index}`}
-                        onClick={() => {
-                            setSelectedOption(element);
-                            handleSelected(element);
-                        }}
-                    >
-                        {selectedOption === element ?
-                            <div className="listpicker-selected">
-                                <FiCheckCircle fill="#80AD9D" size={25} />
-                            </div>
-                            : null}
-                        <p>{element.profile.fullName}</p>
-                        <span>score: {element.score}</span>
-                    </div>
-                )
+                if(index < 5){
+                    return (
+                        <div
+                            key={`listpicker${index}`}
+                            onClick={() => {
+                                setSelectedOption(element);
+                                handleSelected(element);
+                            }}
+                        >
+                            {selectedOption === element ?
+                                <div className="listpicker-selected">
+                                    <FiCheckCircle fill="#80AD9D" size={25} />
+                                </div>
+                                : null}
+                            <p>{element.profile.fullName}</p>
+                            <span>score: {element.score}</span>
+                        </div>
+                    )
+                }     
             })}
         </div>
     )
