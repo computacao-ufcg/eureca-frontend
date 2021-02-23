@@ -1,125 +1,132 @@
-import React, {useEffect,useState} from 'react'
-import {Pagination, SelectPicker, Input } from 'rsuite';
+import React, { useEffect, useState } from 'react'
+import { Pagination } from 'rsuite';
 
 import ListDisqualified from './ListDisqualified';
+import ListOptions from './ListOptions';
 
 import { api_AS } from '../../../../../services/api';
 
-import { dataCompany } from './util.js';
-
-// import './styles.css';
+import './styles.css';
 
 const Disqualified = (props) => {
+    const msgAlertError = "Dados faltando";
     const [page, setPage] = useState(0);
     const [data, setData] = useState([]);
     const [dataMaster, setDataMaster] = useState({});
-    const [selectCompany, setSelectCompany] = useState('Selecione uma Empresa');
-    const [type, setType] = useState('academia');
+    const [selectCompany, setSelectCompany] = useState('');
+    const [type, setType] = useState('');
     const [linkedinID, setLinkedinID] = useState('');
+    const [dataCompanyType, setDataCompanyType] = useState('');
 
-    useEffect(()=>{
-        handleDisqualified(page)
-    },[])
+    const [loading, setLoading] = useState(true);
 
-    const handleDisqualified = async(page) =>{
+    useEffect(() => {
+        handleDisqualified(page);
+    }, [])
+
+    const handleDisqualified = async (page) => {
+        setLoading(true);
         const query = `employer/unclassified/${page}`;
+        const queryCompanyType = `employer/types`;
         const myHeaders = {
-            headers: {'Authentication-Token': sessionStorage.getItem('eureca-token')}
+            headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }
         };
 
-        try{
+        try {
             const res = await api_AS.get(query, myHeaders);
+            const resCompanyTypes = await api_AS.get(queryCompanyType, myHeaders);
 
-            if(res.status === 200){
-                setData(res.data.content);
+            if (res.status === 200 && resCompanyTypes.status === 200) {
+                 setData(res.data.content);
                 setDataMaster(res.data);
-            }else{
+                setDataCompanyType(resCompanyTypes.data);
+                setLoading(false);
+            } else {
                 console.error("Error: response error");
             }
-        }catch(e){
-            alert("Error: ", e);
-        }      
+        } catch (e) {
+            console.error("Error: ", e);
+        }
     }
 
-    const handlePage = (eventKey) =>{
-        setPage(eventKey-1)
-        console.log(eventKey)
-        handleDisqualified(eventKey-1)
+    const handlePage = (eventKey) => {
+        setPage(eventKey - 1);
+        handleDisqualified(eventKey - 1);
     }
 
-    const handleInput = (input, link) =>{
-        setSelectCompany(input)
-        setLinkedinID(link)
-    } 
-
-    const handleSelect = (value) =>{
-        setType(value)
+    const handleInput = (input, link) => {
+        setSelectCompany(input);
+        setLinkedinID(link);
     }
 
-    const handleSubmit = () =>{
+    const handleSelect = (value) => {
+        setType(value);
+    }
+
+    const handleSubmit = async () => {
+
+        if (selectCompany === '' || type === '') {
+            alert(msgAlertError);
+            return;
+        }
 
         const query = `employer`;
         const myHeaders = {
-            headers:{'Authentication-Token': sessionStorage.getItem('eureca-token')}
+            headers: { 
+                'Authentication-Token': sessionStorage.getItem('eureca-token'),
+                'Content-Type': 'application/json; charset=UTF-8'
+            }
         }
         const myBody = {
-            'type':type,
-            'linkedinID':linkedinID,
-            'name':selectCompany
+            'linkedinId': linkedinID,
+            'type': type,
         }
 
-        try{
-            const res = api_AS.put(query, myBody, myHeaders);
-
-            if(res.status === 200){
+        try {
+            const res = await api_AS.post(query, myBody, myHeaders);
+            if (res.status === 200) {
+                setData(data.filter( e => e.linkedinId !== linkedinID));
+                props.handleData(myBody);
                 alert("Empresa classificada.");
-            }else{
+            } else {
                 console.error("Error: response error");
             }
-        }catch(e){
-            alert("Error: ", e);
+        } catch (e) {
+            console.error("Error: ", e);
         }
-
-        let objeto ={
-            'type':type,
-            'linkedinID':linkedinID,
-            'name':selectCompany
-        }
-
-        props.handleData(objeto)
     }
-
-
 
     return (
         <div>
-            <div className={'mainDisqualified'}>
-                <div>
-                <ListDisqualified handleInput={handleInput} listData={data ? data :[]}/>
-                    <hr></hr>
-                </div>
-                <div className={'selectCompany'}>
-                    <Input style={{width:400}} disabled placeholder = {selectCompany}/>
-                    <hr></hr>
-                    <SelectPicker defaultValue={type} onSelect={handleSelect} data={dataCompany} style={{ width: 400 }} />
-                    <hr></hr>
-                    <button onClick={handleSubmit}>Associar</button>
-                </div>
-            </div>
-            <div className ={'paginacao'}>
-                <Pagination
-                    pages={dataMaster.totalPages ? dataMaster.totalPages :0}
-                    maxButtons={5}
-                    onSelect ={handlePage}
-                    activePage={page+1}
-                    prev
-                    next
-                    first
-                    last
-                    ellipsis
-                    boundaryLinks
-                />
-            </div>
+            { loading ? <h1>Carregando...</h1> :
+                <React.Fragment>
+                    <div className="mainDisqualified">
+                        <div>
+                            <ListDisqualified handleInput={handleInput} listData={data ? data : []} />
+                            <hr />
+                        </div>
+                        <div className="selectCompany">
+                            <h6>Selecione um tipo para a Empresa:</h6>
+                            <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
+                            <button onClick={handleSubmit}>Associar</button>
+                        </div>
+                    </div>
+                    <div className="pagination">
+                        <Pagination
+                            pages={dataMaster.totalPages ? dataMaster.totalPages : 0}
+                            maxButtons={5}
+                            onSelect={handlePage}
+                            activePage={page + 1}
+                            prev
+                            next
+                            first
+                            last
+                            ellipsis
+                            boundaryLinks
+                        />
+                    </div>
+                </React.Fragment>
+            }
         </div>
     )
 }

@@ -12,12 +12,14 @@ const Classified = (props) => {
     const [page, setPage] = useState(0);
     const [data, setData] = useState([]);
     const [dataMaster, setDataMaster] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         handleClassified()
     }, [])
 
     const handleClassified = async () => {
+        setLoading(true);
         const query = `employer/classified/${page}`;
 
         const myHeaders = {
@@ -27,9 +29,11 @@ const Classified = (props) => {
         try {
             const res = await api_AS.get(query, myHeaders);
 
+            debugger
             if (res.status === 200) {
                 setData(res.data.content);
                 setDataMaster(res.data);
+                setLoading(false);
             } else {
                 console.error("Error: response broken.");
             }
@@ -41,42 +45,43 @@ const Classified = (props) => {
 
     return (
         <div className={'classified'}>
-            <Table
-                height={480}
-                width={800}
-                // Quando o put do back estiver corrigido, substituir pelo dado vindo da API.
-                data={props.data}
-                onRowClick={data => {
-                    console.log(data);
-                }}
-            >
-                <Column width={300} >
-                    <HeaderCell >Nome da Empresa</HeaderCell>
-                    <Cell dataKey="name">
+            {loading ? <h1>Carregando...</h1> :
+                <Table
+                    height={480}
+                    width={800}
+                    data={data}
+                    onRowClick={data => {
+                        console.log(data);
+                    }}
+                >
+                    <Column width={300} >
+                        <HeaderCell >Nome da Empresa</HeaderCell>
+                        <Cell dataKey="name">
 
-                    </Cell>
-                </Column>
-                <Column width={300}>
-                    <HeaderCell>Tipo</HeaderCell>
-                    <Cell dataKey={'type'}>
+                        </Cell>
+                    </Column>
+                    <Column width={300}>
+                        <HeaderCell>Tipo</HeaderCell>
+                        <Cell dataKey={'type'}>
 
-                    </Cell>
-                </Column>
-                <Column width={120} >
-                    <HeaderCell>Linkedin</HeaderCell>
+                        </Cell>
+                    </Column>
+                    <Column width={120} >
+                        <HeaderCell>Linkedin</HeaderCell>
 
-                    <Cell>
-                        {rowData => {
-                            return (
-                                <span className="pointer">
-                                    <a target={'_blank'} href={rowData.linkedinID}>Link</a>
+                        <Cell>
+                            {rowData => {
+                                return (
+                                    <span className="pointer">
+                                        <a target={'_blank'} href={rowData.linkedinId}>Link</a>
 
-                                </span>
-                            );
-                        }}
-                    </Cell>
-                </Column>
-            </Table>
+                                    </span>
+                                );
+                            }}
+                        </Cell>
+                    </Column>
+                </Table>
+            }
         </div>
     )
 }
