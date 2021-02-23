@@ -6,27 +6,20 @@ import '../AlumniCardHome/style.css'
 import TitleCardHome from '../TitleCardHome';
 import AlumniCards from './AlumniCards'
 
-import Mask3 from '../../../../assets/new_home_assets/mask_3.svg';
+import Mask6 from '../../../../assets/new_home_assets/mask_6.svg';
+import Mask5 from '../../../../assets/new_home_assets/mask_5.svg';
 
 const AlumniCardHome = () => {
 
     return (
         <React.Fragment>
             <div className={'card-home-area1'}>
-
-                <div className={"card-home-content"}>
-                    <div className={"card-img-5"}>
-                        <div className={"card-img-5-up"}>
-                            <div className={"title-card-content"}>
-                                <TitleCardHome title={"EGRESSOS"} />
-                            </div>
-                            <div className={"mask3"}>
-                                <img src={Mask3} alt="mask3" />
-                            </div>
-                        </div>
-                        <div className={"summary-card-content-3"}>
-                            <AlumniCards />
-                        </div>
+                <div className={"alumni-card-home-content"}>
+                    <div className={"title-card-content"}>
+                        <TitleCardHome title={"EGRESSOS"} />
+                    </div>
+                    <div className={"alumni-card-content"}>
+                        <AlumniCards />
                         <div className={"alumni-buttons"}>
                             <div className={'seemore-button'}>
                                 <Link to={'newDesign/alumniufcg/seemore'}>
@@ -40,10 +33,17 @@ const AlumniCardHome = () => {
                             </div>
                         </div>
                     </div>
+                    <div className={"alumni-card-img-1"}>
+                        <div className={"mask6"}>
+                            <img src={Mask6} alt="mask6" />
+                        </div>
+                        <div className={"mask5"}>
+                            <img src={Mask5} alt="mask5" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </React.Fragment>
     )
 }
-
 export default AlumniCardHome;
