@@ -17,7 +17,10 @@
     color: #886859 ;
 }
 
-.paginacao .a {
+.pagination .a {
     color: #886859
 }
 
+.selectCompany h6{
+    margin-top: 20px;
+}

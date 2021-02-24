@@ -2,3 +2,9 @@
     display: flex;
     justify-content: center;
 }
+
+.delete-button-div svg:hover{
+    height: 25px; 
+    width:  25px;
+    cursor: pointer;
+}
