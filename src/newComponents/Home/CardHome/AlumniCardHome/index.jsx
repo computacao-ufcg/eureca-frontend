@@ -9,7 +9,7 @@ import AlumniCards from './AlumniCards'
 import Mask6 from '../../../../assets/new_home_assets/mask_6.svg';
 import Mask5 from '../../../../assets/new_home_assets/mask_5.svg';
 
-const AlumniCardHome = () => {
+const AlumniCardHome = (props) => {
 
     return (
         <React.Fragment>
@@ -19,7 +19,7 @@ const AlumniCardHome = () => {
                         <TitleCardHome title={"EGRESSOS"} />
                     </div>
                     <div className={"alumni-card-content"}>
-                        <AlumniCards />
+                        <AlumniCards data={props.data} />
                         <div className={"alumni-buttons"}>
                             <div className={'seemore-button'}>
                                 <Link to={'newDesign/alumniufcg/seemore'}>
