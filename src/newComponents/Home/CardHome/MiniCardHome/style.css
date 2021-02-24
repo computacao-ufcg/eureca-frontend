@@ -1,5 +1,5 @@
 .main-mini-card-home {
-    height: 65px;
+    height: 58px;
     width: 103px;
     border: 1px solid #707070;
     display: grid;
@@ -9,20 +9,20 @@
     border-right: 0;
     border-bottom: 0;
     grid-template-rows: 55fr 40fr;
-    padding: 5px 0px;
 }
 
 .main-mini-card-home-2 {
-    height: 65px;
+    height: 58px;
     width: 103px;
     border: 1px solid #707070;
     display: grid;
     justify-content: center;
     align-items:center;
     text-align: center;
+    border-top: 0;
     border-right: 0;
+    border-bottom: 0;
     grid-template-rows: 55fr 40fr;
-    padding: 5px 0px;
 }
 
 .main-mini-card-home-3 {

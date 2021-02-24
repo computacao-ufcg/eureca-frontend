@@ -5,8 +5,6 @@ import TitleHome from '../../newComponents/Home/Title'
 import CardHome from '../../newComponents/Home/CardHome'
 import './style.css'
 
-import Mask6 from '../../assets/new_home_assets/mask_6.svg';
-import Mask5 from '../../assets/new_home_assets/mask_5.svg';
 const Home = () => {
 
     return(
