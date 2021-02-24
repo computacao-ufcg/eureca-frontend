@@ -14,6 +14,10 @@
     align-items: center;
 }
 
+.header-1-eureca-logo{
+    cursor: pointer;
+}
+
 .header-1-user{
     display: flex;
 }

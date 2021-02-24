@@ -21,20 +21,17 @@
 
 .listOptions-container::-webkit-scrollbar{
     width: 8px;
-    transition: width .5s;
+    /* transition: width .5s; */
 }
 
-.listOptions-container::-webkit-scrollbar:hover{
+/* .listOptions-container::-webkit-scrollbar:hover{
     width: 10px;
-}
+} */
 
 .listOptions-container::-webkit-scrollbar-thumb {
     background: #9A9A9A 0% 0% no-repeat padding-box;
     border-radius: 9px;
 }
-
-
-/* 9A9A9A */
 
 .listOptions-container div{
     width: 80%;

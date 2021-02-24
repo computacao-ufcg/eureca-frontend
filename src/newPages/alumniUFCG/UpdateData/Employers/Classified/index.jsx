@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { Table } from 'rsuite';
 
+import Confirm from '../../../../../newComponents/Confirm';
+
+import { FiX } from 'react-icons/fi';
+
 import { api_AS } from '../../../../../services/api';
 
 import './style.css';
@@ -11,28 +15,27 @@ const { Column, HeaderCell, Cell } = Table;
 const Classified = (props) => {
     const [page, setPage] = useState(0);
     const [data, setData] = useState([]);
-    const [dataMaster, setDataMaster] = useState({});
+    const [cancelClassified, setCancelClassified] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    const myHeaders = {
+        headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }
+    }
+
     useEffect(() => {
-        handleClassified()
+        handleClassified();
     }, [])
 
     const handleClassified = async () => {
         setLoading(true);
         const query = `employer/classified/${page}`;
 
-        const myHeaders = {
-            headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }
-        }
-
         try {
             const res = await api_AS.get(query, myHeaders);
 
-            debugger
             if (res.status === 200) {
                 setData(res.data.content);
-                setDataMaster(res.data);
                 setLoading(false);
             } else {
                 console.error("Error: response broken.");
@@ -43,12 +46,24 @@ const Classified = (props) => {
         }
     }
 
+    const handleCancelClassified = async () => {
+        const query = `employer?linkedinId=${cancelClassified.linkedinId}`;
+
+        const res = await api_AS.delete(query,{ headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }});
+
+        if(res.status === 200){
+            setData(data.filter( e => e.linkedinId !== cancelClassified.linkedinId));
+        }else{
+            console.error("Response error");
+        }
+    }
+
     return (
         <div className={'classified'}>
             {loading ? <h1>Carregando...</h1> :
                 <Table
                     height={480}
-                    width={800}
+                    width={900}
                     data={data}
                     onRowClick={data => {
                         console.log(data);
@@ -66,7 +81,7 @@ const Classified = (props) => {
 
                         </Cell>
                     </Column>
-                    <Column width={120} >
+                    <Column width={100} >
                         <HeaderCell>Linkedin</HeaderCell>
 
                         <Cell>
@@ -80,8 +95,25 @@ const Classified = (props) => {
                             }}
                         </Cell>
                     </Column>
+                    <Column width={180} >
+                        <HeaderCell>Desfazer Classificação</HeaderCell>
+                        <Cell>
+                            {rowData => (
+                                <div className={"delete-button-div"} onClick={() => { setCancelClassified(rowData); setShowModal(true) }}>
+                                    <FiX fill='black' size={20} />
+                                </div>
+                            )}
+                        </Cell>
+                    </Column>
                 </Table>
             }
+            <Confirm
+                msg={"Deseja realmente desfazer a Classificação?"}
+                handleFunction={handleCancelClassified}
+                showModal={showModal}
+                hideModal={(option) => { setShowModal(option) }}
+            />
+
         </div>
     )
 }
