@@ -74,7 +74,7 @@ const Login = () => {
                     <div className="login-form">
 
                         <label className="login-label">LOGIN</label><br />
-                        <input className="login-input" type="text" onChange={e => setLogin(e.target.value)} /><br />
+                        <input className="login-input" type="text" onChange={e => setLogin(e.target.value.trim())} /><br />
 
                         <label className="login-label">SENHA</label><br />
                         <input className="login-input" type="password" onChange={e => setPassword(e.target.value)} /><br />
