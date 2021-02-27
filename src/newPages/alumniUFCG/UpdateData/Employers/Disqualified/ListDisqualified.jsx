@@ -6,7 +6,7 @@ const { Column, HeaderCell, Cell } = Table;
 
 const ListDisqualified = (props) => {
     return (
-        <div className={'tableDisqualified'}>
+        <div className={'table-disqualified'}>
             <Table
                 height={480}
                 width={500}

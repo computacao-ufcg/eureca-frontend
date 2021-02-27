@@ -7,8 +7,7 @@
 .main-content{
     height: 1040px;
     width: 100%;
-    background-color: #E6DBD3;
-    
+    background-color: #E6DBD3;    
 }
 
 .main-container-seemore{
@@ -28,11 +27,8 @@
     display: grid;
 
     justify-items: center;
-    
-
 }
 .container-title-seemore{
-
     height: 62px;
     width: 200px;
     
@@ -44,14 +40,14 @@
     font-size: 18px;
 }
 
-.listEgressos{
+.list-alumni{
     text-align: center;
     justify-content: center;
     color: #886859;
     font-size: 1rem;
 }
 
-.tableEgressos{
+.table-alumni{
     justify-content: center;
     display: flex;
 }

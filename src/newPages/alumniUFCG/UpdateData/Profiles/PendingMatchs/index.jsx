@@ -56,21 +56,21 @@ const PendingMatchs = (props) => {
 
 
     const handleSelectProfile = (person) => {
-        if(person){
+        if (person) {
             const match = {
                 'registration': selectedRegistration,
                 'linkedinId': person.profile.linkedinId
             }
-    
+
             setSelectedProfile(match);
-        }else{
+        } else {
             setSelectedProfile(null);
         }
     }
 
     const handleMatch = async () => {
 
-        if(!selectedProfile){
+        if (!selectedProfile) {
             alert(alertMsg);
             return;
         }
@@ -104,14 +104,14 @@ const PendingMatchs = (props) => {
         <div>
             {loading ? <h1>Carregando...</h1> :
                 <React.Fragment>
-                    <div className="mainMatches">
+                    <div className="main-matches">
                         <div>
                             <ListAlumnus handleAlumnus={handleAlumnus} listData={dataContent} />
                             <hr></hr>
                         </div>
-                        <div className="possibleMatch">
+                        <div className="possible-match">
                             <h6>Fazer Associação:</h6>
-                            <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile}/>
+                            <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
                             <button onClick={handleMatch}>Associar</button>
                         </div>
                     </div>

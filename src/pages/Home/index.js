@@ -22,7 +22,7 @@ const Home = () => {
         <>
             <Header />
             <div className="home-container">
-                <main> 
+                <main>
                     <CardHome letter={letterM} logo={LogoThermometer} >Monitoramento</CardHome>
                     <CardHome letter={letterE} logo={LogoBoxplot} to="/statistics" >Estatística</CardHome>
                     <CardHome letter={letterS} logo={LogoServices} to="/services" >Serviços</CardHome>

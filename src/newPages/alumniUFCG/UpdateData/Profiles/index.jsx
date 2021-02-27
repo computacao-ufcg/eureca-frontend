@@ -29,7 +29,7 @@ const Profiles = () => {
   }
 
   return (
-    <div className='matchesContainer'>
+    <div className='matches-container'>
       <Nav onSelect={handleNav} activeKey={activeNav} appearance={'tabs'}>
         <Nav.Item eventKey={'matchs'}>Associações</Nav.Item>
         <Nav.Item eventKey={'pendingMatchs'}>Associações Pendentes</Nav.Item>

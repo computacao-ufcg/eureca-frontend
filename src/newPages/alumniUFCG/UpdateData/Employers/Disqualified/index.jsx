@@ -37,7 +37,7 @@ const Disqualified = (props) => {
             const resCompanyTypes = await api_AS.get(queryCompanyType, myHeaders);
 
             if (res.status === 200 && resCompanyTypes.status === 200) {
-                 setData(res.data.content);
+                setData(res.data.content);
                 setDataMaster(res.data);
                 setDataCompanyType(resCompanyTypes.data);
                 setLoading(false);
@@ -72,7 +72,7 @@ const Disqualified = (props) => {
 
         const query = `employer`;
         const myHeaders = {
-            headers: { 
+            headers: {
                 'Authentication-Token': sessionStorage.getItem('eureca-token'),
                 'Content-Type': 'application/json; charset=UTF-8'
             }
@@ -85,7 +85,7 @@ const Disqualified = (props) => {
         try {
             const res = await api_AS.post(query, myBody, myHeaders);
             if (res.status === 200) {
-                setData(data.filter( e => e.linkedinId !== linkedinID));
+                setData(data.filter(e => e.linkedinId !== linkedinID));
                 props.handleData(myBody);
                 alert("Empresa classificada.");
             } else {
@@ -100,12 +100,12 @@ const Disqualified = (props) => {
         <div>
             { loading ? <h1>Carregando...</h1> :
                 <React.Fragment>
-                    <div className="mainDisqualified">
+                    <div className="main-disqualified">
                         <div>
                             <ListDisqualified handleInput={handleInput} listData={data ? data : []} />
                             <hr />
                         </div>
-                        <div className="selectCompany">
+                        <div className="select-company">
                             <h6>Selecione um tipo para a Empresa:</h6>
                             <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
                             <button onClick={handleSubmit}>Associar</button>

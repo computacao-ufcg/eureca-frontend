@@ -63,7 +63,7 @@ const Matchs = () => {
                         <HeaderCell></HeaderCell>
                         <Cell>
                             <div className={"delete-button-div"}>
-                            <button className={"delete-button-updatedata"}>Desfazer Associação</button>
+                                <button className={"delete-button-updatedata"}>Desfazer Associação</button>
                             </div>
                         </Cell>
                     </Column>

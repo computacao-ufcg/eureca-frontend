@@ -4,9 +4,9 @@ import './styles.css'
 
 const { Column, HeaderCell, Cell } = Table;
 
-const ListEgressos = (props) => {
+const ListAlumni = (props) => {
     return (
-        <div className={'tableEgressos'}>
+        <div className={'table-alumni'}>
             <Table
                 height={480}
                 width={850}
@@ -19,19 +19,19 @@ const ListEgressos = (props) => {
                     <HeaderCell >Nome do Egresso</HeaderCell>
                     <Cell dataKey="name" />
                 </Column>
-                
+
                 <Column width={120}>
                     <HeaderCell>Admissão</HeaderCell>
-                    <Cell dataKey="admission"/>
+                    <Cell dataKey="admission" />
                 </Column>
 
                 <Column width={120}>
                     <HeaderCell>Graduação</HeaderCell>
-                    <Cell dataKey="graduation"/>
+                    <Cell dataKey="graduation" />
                 </Column>
 
                 <Column width={120} >
-                    <HeaderCell>Linkedin</HeaderCell>
+                    <HeaderCell>LinkedIn</HeaderCell>
 
                     <Cell>
                         {rowData => {
@@ -45,11 +45,10 @@ const ListEgressos = (props) => {
                     </Cell>
 
                 </Column>
-
-
+                
             </Table>
 
         </div>
     )
 }
-export default ListEgressos
+export default ListAlumni;

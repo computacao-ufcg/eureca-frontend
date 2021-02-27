@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 import Header from '../../../newComponents/Header';
 
-import './styles.css';
-
 import { api_AS } from './../../../services/api'
-import ListEgressos from '../SeeMore/listEgressos'
+import ListAlumni from '../SeeMore/listAlumni'
 import { Pagination } from 'rsuite';
 import { FiSearch } from 'react-icons/fi';
-import './styles.css'
+
+import './styles.css';
+
 
 const SeeMore = () => {
 
@@ -78,8 +78,8 @@ const SeeMore = () => {
                             </div>
                         </div>
 
-                        <div className={'listEgressos'}>
-                            <ListEgressos listData={data.content ? data.content : []} />
+                        <div className={'list-alumni'}>
+                            <ListAlumni listData={data.content ? data.content : []} />
                             <hr></hr>
                             <Pagination
                                 pages={data.totalPages ? data.totalPages : 0}

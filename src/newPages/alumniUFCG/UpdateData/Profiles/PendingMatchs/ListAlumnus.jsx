@@ -34,7 +34,7 @@ const ListAlumnus = (props) => {
                 onRowClick={data => {
                     props.handleAlumnus(data)
                 }}
-                
+
                 sortColumn={sortColumn}
                 sortType={sortType}
                 onSortColumn={handleSortColumn}
