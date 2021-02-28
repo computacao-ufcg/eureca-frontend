@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
@@ -15,6 +15,19 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     const history = useHistory();
+
+    useEffect(() => {
+        const listener = event => {
+            if (event.code === "Enter" || event.code === "NumpadEnter") {
+                console.log(login,password)
+                handleLogin(event)
+            }
+        };
+        document.addEventListener("keydown", listener);
+        return () => {
+            document.removeEventListener("keydown", listener);
+        };
+    }, [login,password]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -48,6 +61,7 @@ const Login = () => {
             }
         }
     }
+
 
     return (
         <div className="container-login">
