@@ -4,7 +4,7 @@ import { api_AS } from '../../../../../services/api';
 
 import Confirm from '../../../../../newComponents/Confirm';
 
-import { FiX } from 'react-icons/fi';
+import { FiTrash2 } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -76,7 +76,7 @@ const Matchs = () => {
                         <Cell>
                             {rowData => (
                                 <div className={"delete-button-div"} onClick={() => { setCancelMatch(rowData); setShowModal(true) }}>
-                                    <FiX fill='black' size={20} />
+                                    <FiTrash2 size={20} />
                                 </div>
                             )}
                         </Cell>

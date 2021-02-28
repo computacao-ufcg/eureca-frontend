@@ -4,7 +4,7 @@ import { Table } from 'rsuite';
 
 import Confirm from '../../../../../newComponents/Confirm';
 
-import { FiX } from 'react-icons/fi';
+import { FiTrash2 } from 'react-icons/fi';
 
 import { api_AS } from '../../../../../services/api';
 
@@ -100,7 +100,7 @@ const Classified = (props) => {
                         <Cell>
                             {rowData => (
                                 <div className={"delete-button-div"} onClick={() => { setCancelClassified(rowData); setShowModal(true) }}>
-                                    <FiX fill='black' size={20} />
+                                    <FiTrash2 size={20} />
                                 </div>
                             )}
                         </Cell>

@@ -14,108 +14,99 @@ import './styles.css'
 const SeeMore = () => {
 
     const [data, setData] = useState([]);
-    const [dataMaster, setDataMaster] = useState([]);
+    // const [dataMaster, setDataMaster] = useState([]);
     const [page, setPage] = useState(0);
+    
+    const [name, setName] = useState("");
     const [admission, setAdmission] = useState("");
     const [graduation, setGraduation] = useState("");
-    const [name, setName] = useState("");
 
-    const [search, setSearch] = useState('');
     const [searchType, setSearchType] = useState('');
     const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState(true);
 
-    useEffect(() => {
-        handleProfile(page);
-    }, [])
 
-    const handleProfile = async (page) => {
+    const handleProfile = async (page, name, admission, graduation) => { 
         setLoading(true);
-        let query = 'match/search/' + page + `?admission=${admission}&graduation=${graduation}&name=${name}`
+        let query = `match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
-        if(res.status === 200){
-            setDataMaster(res.data.content);
+        if (res.status === 200) {
             setData(res.data.content);
             setLoading(false);
-        }else{
+            setSearch(false);
+        } else {
             console.error("Response error");
         }
     }
 
     const handlePage = (eventKey) => {
         setPage(eventKey - 1);
-        handleProfile(eventKey - 1);
+        handleProfile(eventKey - 1, name, admission, graduation);
     }
 
-    const handleSearch = (event) => {
-        if (event.keyCode === 13) {
-            setSearch(event.target.value);
-
-            if(searchType === "admission"){
-                setData(dataMaster.filter( e => e.admission === event.target.value));
-            }else if(searchType === "graduation") {
-                setData(dataMaster.filter( e => e.graduation === event.target.value));
-            }else if(searchType === "name"){
-                setData(dataMaster.filter( e => e.name.toLowerCase().includes(event.target.value.toLowerCase())));
-            }
-        }
+    const handleSearch = () => {
+        const $iptName = document.getElementById("ipt-name");
+        const $iptAdmission = document.getElementById("ipt-admission");
+        const $iptGraduation = document.getElementById("ipt-graduation");
+        setName($iptName.value);
+        setAdmission($iptAdmission.value);
+        setGraduation($iptGraduation.value);
+        handleProfile(page, $iptName.value, $iptAdmission.value, $iptGraduation.value);
     }
 
     return (
 
         <React.Fragment>
-            <div className={'main-seemore'}>
-                <div className={'header-container'}>
-                    <Header />
-                </div>
-                <div className={'main-content'}>
-                    <div className={'main-container-seemore'}>
-
+            <div className="main-content">
+                <Header></Header>
+                <div className="main-seemore">
                         <div className={'container-title-seemore'}>
                             <h1>VER MAIS</h1>
                         </div>
                         <div className="seemore-input-boxes">
-
                             <div className="seemore-input-box" onClick={() => setSearchType("name")}>
                                 <div>
                                     <FiSearch size={25} />
                                 </div>
-                                <input onKeyUp={handleSearch} type="text" placeholder="Buscar por nome" />
+                                <input id="ipt-name" type="text" placeholder="Buscar por nome" />
                             </div>
                             <div className="seemore-input-box" onClick={() => setSearchType("admission")}>
                                 <div>
                                     <FiSearch size={25} />
                                 </div>
-                                <input onKeyUp={handleSearch} type="text" placeholder="Buscar por período de admissão" />
+                                <input id="ipt-admission" type="text" placeholder="Buscar por período de admissão" />
                             </div>
                             <div className="seemore-input-box" onClick={() => setSearchType("graduation")}>
                                 <div>
                                     <FiSearch size={25} />
                                 </div>
-                                <input onKeyUp={handleSearch} type="text" placeholder="Buscar por período de graduação" />
+                                <input id="ipt-graduation" type="text" placeholder="Buscar por período de graduação" />
                             </div>
+                            <button onClick={handleSearch}>Buscar</button>
                         </div>
                         {
+                            search ? <React.Fragment /> :
+
                             loading ? <MyLoading /> :
-                            <div className={'listEgressos'}>
-                                <ListEgressos listData={data} />
-                                <hr></hr>
-                                <Pagination
-                                    pages={data.totalPages}
-                                    maxButtons={5}
-                                    onSelect={handlePage}
-                                    activePage={page + 1}
-                                    prev
-                                    next
-                                    first
-                                    last
-                                    ellipsis
-                                    boundaryLinks
-                                />
-                            </div>
+                                <div className={'listEgressos'}>
+                                    <ListEgressos listData={data} />
+                                    <hr></hr>
+                                    <Pagination
+                                        pages={data.totalPages}
+                                        maxButtons={5}
+                                        onSelect={handlePage}
+                                        activePage={page + 1}
+                                        prev
+                                        next
+                                        first
+                                        last
+                                        ellipsis
+                                        boundaryLinks
+                                    />
+                                </div>
                         }
                     </div>
-                </div>
             </div>
         </React.Fragment>
     );
