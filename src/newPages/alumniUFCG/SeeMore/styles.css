@@ -39,11 +39,6 @@
     font-size: 18px;
 }
 
-.tableEgressos{
-    justify-content: center;
-    display: flex;
-}
-
 .seemore-input-boxes{
     display: flex;
     flex-direction: column;
