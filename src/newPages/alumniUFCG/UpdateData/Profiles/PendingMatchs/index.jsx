@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import { Pagination } from 'rsuite';
+import { Pagination, Alert } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 
 import ListAlumnus from './ListAlumnus';
 import ListPicker from './ListPicker';
+import Informer from '../../Informer';
 
 import { api_AS } from '../../../../../services/api';
 
@@ -12,8 +13,9 @@ import './styles.css';
 
 const PendingMatchs = (props) => {
 
-    const alertMsg = "Por favor, selecione alguém para associar.";
+    const warningMsg = "Por favor, selecione alguém para associar.";
     const successMsg = "Associação realizada com sucesso!";
+    const timeMSG = 5000;
 
     const [loading, setLoading] = useState(true);
 
@@ -38,10 +40,10 @@ const PendingMatchs = (props) => {
         if (res.status === 200) {
             setDataMaster(res.data);
             setDataContent(res.data.content);
+            setLoading(false);
         } else {
             console.error("Response error");
         }
-        setLoading(false);
     }
 
     const handlePage = (eventKey) => {
@@ -54,24 +56,23 @@ const PendingMatchs = (props) => {
         setPossibleMatches(value.possibleMatches);
     }
 
-
     const handleSelectProfile = (person) => {
-        if(person){
+        if (person) {
             const match = {
                 'registration': selectedRegistration,
                 'linkedinId': person.profile.linkedinId
             }
-    
+
             setSelectedProfile(match);
-        }else{
+        } else {
             setSelectedProfile(null);
         }
     }
 
     const handleMatch = async () => {
 
-        if(!selectedProfile){
-            alert(alertMsg);
+        if (!selectedProfile) {
+            Alert.warning(warningMsg, timeMSG);
             return;
         }
 
@@ -93,7 +94,7 @@ const PendingMatchs = (props) => {
             const res = await api_AS.post(query, myBody, myHeaders);
 
             if (res.status === 200) {
-                alert(successMsg);
+                Alert.success(successMsg, timeMSG);
             }
         } catch (err) {
             console.error(err.response)
@@ -109,11 +110,14 @@ const PendingMatchs = (props) => {
                             <ListAlumnus handleAlumnus={handleAlumnus} listData={dataContent} />
                             <hr></hr>
                         </div>
-                        <div className="possibleMatch">
-                            <h6>Fazer Associação:</h6>
-                            <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile}/>
-                            <button onClick={handleMatch}>Associar</button>
-                        </div>
+                        {
+                            !selectedRegistration ? <Informer msg={"Por favor, selecione alguém para realizar possíveis associações."} /> :
+                                <div className="possibleMatch">
+                                    <h6>Fazer Associação:</h6>
+                                    <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
+                                    <button onClick={handleMatch}>Associar</button>
+                                </div>
+                        }
                     </div>
                     <div className="pagination">
                         <Pagination

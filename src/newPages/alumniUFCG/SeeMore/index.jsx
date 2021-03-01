@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Header from '../../../newComponents/Header';
 import MyLoading from '../../../newComponents/MyLoading';
@@ -14,7 +14,6 @@ import './styles.css'
 const SeeMore = () => {
 
     const [data, setData] = useState([]);
-    // const [dataMaster, setDataMaster] = useState([]);
     const [page, setPage] = useState(0);
     
     const [name, setName] = useState("");

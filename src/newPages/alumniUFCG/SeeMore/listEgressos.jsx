@@ -1,12 +1,11 @@
 import React from 'react'
 import { Table } from 'rsuite';
-import './styles.css'
 
 const { Column, HeaderCell, Cell } = Table;
 
 const ListEgressos = (props) => {
     return (
-        <div className={'tableEgressos'}>
+        <div className="table-egressos">
             <Table
                 height={480}
                 width={850}
