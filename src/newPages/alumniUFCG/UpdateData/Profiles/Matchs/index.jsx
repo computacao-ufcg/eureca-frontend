@@ -1,73 +1,96 @@
-import React, {useState,useEffect} from 'react'
-import './styles.css'
-import {Table} from 'rsuite'
+import React, { useState, useEffect } from 'react'
+import { Table } from 'rsuite';
 import { api_AS } from '../../../../../services/api';
+
+import Confirm from '../../../../../newComponents/Confirm';
+
+import { FiX } from 'react-icons/fi';
+
+import './styles.css';
 
 const { Column, HeaderCell, Cell } = Table;
 
-
 const Matchs = () => {
-    const [page, setPage] = useState(0)
-    const [data, setData] = useState([])
-    const [dataMaster, setDataMaster] = useState({})
-    
-    useEffect(()=>{
-        handleClassificados()
-    },[])
+    const [page, setPage] = useState(0);
+    const [data, setData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [cancelMatch, setCancelMatch] = useState('');
 
-    const handleClassificados = async() =>{
-        
-        const res = await api_AS.get('match/list/' + page, {headers:{'Authentication-Token': sessionStorage.getItem('eureca-token')}});
+    useEffect(() => {
+        handleClassificados();
+    }, [])
 
-        if(res.status === 200){
-            setDataMaster(res.data);
+    const handleClassificados = async () => {
+
+        const res = await api_AS.get('match/list/' + page, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
+
+        if (res.status === 200) {
             setData(res.data.content);
-        }else{
+        } else {
             console.error("Response error");
         }
     }
 
-        return (
-            <div>
-                <div className={'matches'}>
-                    <Table
+    const handleCancelMatch = async () => {
+        const query = `match?registration=${cancelMatch.registration}`;
+
+        const res = await api_AS.delete(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
+        if (res.status === 200) {
+            setData(data.filter(e => e.registration !== cancelMatch.registration));
+        }
+    }
+
+    return (
+        <div>
+            <div className={'matches'}>
+                <Table
                     height={480}
                     width={800}
                     data={data}
                     onRowClick={data => {
                         console.log(data);
                     }}
-                    >
-                    <Column width={300} >
+                >
+                    <Column width={400} >
                         <HeaderCell >Nome do Egresso</HeaderCell>
-                        <Cell dataKey="fullName">
-                    
+                        <Cell dataKey="name">
+
                         </Cell>
                     </Column>
                     <Column width={120} >
                         <HeaderCell>Linkedin</HeaderCell>
-    
+
                         <Cell>
-                        {rowData => {
-                            return (
-                            <span>
-                                <a target={'_blank'} href={rowData.linkedinId}>Link</a> 
-                            
-                            </span>
-                            );
-                        }}
+                            {rowData => {
+                                return (
+                                    <span>
+                                        <a target={'_blank'} href={"https://linkedin.com/in/" + rowData.linkedinId}>Link</a>
+
+                                    </span>
+                                );
+                            }}
                         </Cell>
                     </Column>
-                    <Column width={120} >
-                        <HeaderCell >Matricula</HeaderCell>
-                        <Cell dataKey="registration">
-                    
+                    <Column width={280}>
+                        <HeaderCell>Desfazer Associação</HeaderCell>
+                        <Cell>
+                            {rowData => (
+                                <div className={"delete-button-div"} onClick={() => { setCancelMatch(rowData); setShowModal(true) }}>
+                                    <FiX fill='black' size={20} />
+                                </div>
+                            )}
                         </Cell>
                     </Column>
-                    </Table>
-                </div>
+                </Table>
             </div>
-        ) 
+            <Confirm
+                msg={"Deseja realmente desfazer a Associação?"}
+                handleFunction={handleCancelMatch}
+                showModal={showModal}
+                hideModal={(option) => { setShowModal(option) }}
+            />
+        </div>
+    )
 
 }
 export default Matchs;

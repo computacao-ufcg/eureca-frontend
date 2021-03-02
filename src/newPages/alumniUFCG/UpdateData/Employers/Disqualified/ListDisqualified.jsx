@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table } from 'rsuite';
-import './style.css'
+import './styles.css'
 
 const { Column, HeaderCell, Cell } = Table;
 

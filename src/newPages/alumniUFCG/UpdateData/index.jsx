@@ -37,16 +37,6 @@ const UpdateData = () => {
                         </Nav>
                     </div>
                     {dataTab}
-
-                    {/* <div className="alternator-tabs">
-                        <button>Perfis</button>
-                        <button>Empregadores</button>
-                    </div>
-
-                    <section className="alternator-content">
-                        <Profiles />
-                        {/* <Employers /> */}
-                    {/* </section>  */}
                 </main>
             </div>
         </div>

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Pagination, SelectPicker, Input } from 'rsuite'
+import React, { useState, useEffect } from 'react';
+
+import { Pagination } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 
-import ListAlumnus from './ListAlumnus'
+import ListAlumnus from './ListAlumnus';
+import ListPicker from './ListPicker';
 
 import { api_AS } from '../../../../../services/api';
 
@@ -10,66 +12,69 @@ import './styles.css';
 
 const PendingMatchs = (props) => {
 
+    const alertMsg = "Por favor, selecione alguém para associar.";
     const successMsg = "Associação realizada com sucesso!";
 
-    const [dataAux, setDataAux] = useState([])
-    const [page, setPage] = useState(0)
-    const [dataSelect, setDataSelect] = useState([])
+    const [loading, setLoading] = useState(true);
 
-    const [possibleMatches, setPossibleMatches] = useState([])
-    const [selectedRegistration, setSelectedRegistration] = useState('')
-    const [selectedProfile, setSelectedProfile] = useState('')
+    const [dataMaster, setDataMaster] = useState([]);
+    const [dataContent, setDataContent] = useState([]);
+    const [page, setPage] = useState(0);
+
+    const [possibleMatches, setPossibleMatches] = useState([]);
+    const [selectedRegistration, setSelectedRegistration] = useState('');
+    const [selectedProfile, setSelectedProfile] = useState(null);
 
 
     useEffect(() => {
-        handleProfile(page)
-    }, [])
+        handleProfile(page);
+    }, []);
 
     const handleProfile = async (page) => {
-        let query = 'match/pending/' + page
-        const res =  await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } })
+        setLoading(true);
+        let query = 'match/pending/' + page;
+        const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
-            setDataAux(res.data);
+            setDataMaster(res.data);
+            setDataContent(res.data.content);
         } else {
             console.error("Response error");
         }
+        setLoading(false);
     }
 
     const handlePage = (eventKey) => {
-        setPage(eventKey - 1)
-        handleProfile(eventKey - 1)
+        setPage(eventKey - 1);
+        handleProfile(eventKey - 1);
     }
 
     const handleAlumnus = (value) => {
-        setSelectedRegistration(value.alumnus.registration)
-        setPossibleMatches(value.possibleMatches)
-        handleSelect(value.possibleMatches)
+        setSelectedRegistration(value.alumnus.registration);
+        setPossibleMatches(value.possibleMatches);
     }
 
-    const handleSelect = (data) => {
-        let listAux = []
-        data.forEach((e, index) => {
-            let item = {
-                'label': e.profile.fullName,
-                'value': index,
-                'role': 'default'
+
+    const handleSelectProfile = (person) => {
+        if(person){
+            const match = {
+                'registration': selectedRegistration,
+                'linkedinId': person.profile.linkedinId
             }
-            listAux.push(item)
-        })
-        setDataSelect(listAux)
-    }
-
-    const handleSelectProfile = (index) => {
-        const match = {
-            'registration': selectedRegistration,
-            'linkedinId': possibleMatches[index].profile.linkedinId
+    
+            setSelectedProfile(match);
+        }else{
+            setSelectedProfile(null);
         }
-
-        setSelectedProfile(match)
     }
 
     const handleMatch = async () => {
+
+        if(!selectedProfile){
+            alert(alertMsg);
+            return;
+        }
+
         const query = '/match';
 
         const myBody = {
@@ -87,7 +92,7 @@ const PendingMatchs = (props) => {
         try {
             const res = await api_AS.post(query, myBody, myHeaders);
 
-            if(res.status === 200){
+            if (res.status === 200) {
                 alert(successMsg);
             }
         } catch (err) {
@@ -97,33 +102,35 @@ const PendingMatchs = (props) => {
 
     return (
         <div>
-            <div className="mainMatches">
-                <div>
-                    <ListAlumnus handleAlumnus={handleAlumnus} listData={dataAux.content ? dataAux.content : []} />
-                    <hr></hr>
-                </div>
-                <div className="possibleMatch">
-                    <h6 >Fazer Associação:</h6>
-                    <hr></hr>
-                    <SelectPicker data={dataSelect} style={{ width: 500 }} onSelect={i => handleSelectProfile(i)} />
-                    <hr></hr>
-                    <button onClick={handleMatch}>Associar</button>
-                </div>
-            </div>
-            <div className="pagination">
-                <Pagination
-                    pages={dataAux.totalPages ? dataAux.totalPages : 0}
-                    maxButtons={5}
-                    onSelect={handlePage}
-                    activePage={page + 1}
-                    prev
-                    next
-                    first
-                    last
-                    ellipsis
-                    boundaryLinks
-                />
-            </div>
+            {loading ? <h1>Carregando...</h1> :
+                <React.Fragment>
+                    <div className="mainMatches">
+                        <div>
+                            <ListAlumnus handleAlumnus={handleAlumnus} listData={dataContent} />
+                            <hr></hr>
+                        </div>
+                        <div className="possibleMatch">
+                            <h6>Fazer Associação:</h6>
+                            <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile}/>
+                            <button onClick={handleMatch}>Associar</button>
+                        </div>
+                    </div>
+                    <div className="pagination">
+                        <Pagination
+                            pages={dataMaster.totalPages ? dataMaster.totalPages : 0}
+                            maxButtons={5}
+                            onSelect={handlePage}
+                            activePage={page + 1}
+                            prev
+                            next
+                            first
+                            last
+                            ellipsis
+                            boundaryLinks
+                        />
+                    </div>
+                </React.Fragment>
+            }
         </div>
     )
 }
