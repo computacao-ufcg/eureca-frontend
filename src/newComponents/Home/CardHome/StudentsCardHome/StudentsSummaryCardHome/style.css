@@ -9,6 +9,7 @@
 }
 
 .students-summary-card-title {
+    display: flex;
     
 }
 
@@ -19,8 +20,15 @@
     margin-top: -1px;
 }
 
+.students-summary-left-cards {
+    display: grid;
+    width: 30%;
+    justify-content: end;
+}
+
 .students-summary-card-info {
     padding: 15px 0px 0px 20px;
+    width: 70%;
 }
 
 .students-summary-card-type {
