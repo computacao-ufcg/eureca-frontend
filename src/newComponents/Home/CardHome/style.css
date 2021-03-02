@@ -1,6 +1,6 @@
 .card-home-content {
-    height: 311px;
-    width: 659px;
+    height: 351px;
+    width: 599px;
     background-color: #FFFFFF;
     border-radius: 6px;
     box-shadow: 0px 1px 4px #15223214;
@@ -32,6 +32,7 @@
     justify-content: space-between;
     height: 100%;
     display: flex;
+    position: relative;
 }
 
 .card-img-2 {
@@ -69,11 +70,13 @@
 .mask5 {
     display: flex;
     justify-content: flex-end;
-    
+    position: absolute;
+    right: 0;
 }
 
 .mask6 {
-    
+    position: absolute;
+    left: 0;
 }
 
 .mask7 {
@@ -93,7 +96,6 @@
 .summary-card-content {
     display: flex;
     padding-left: 40px;
-    margin-bottom: -24px;
 }
 
 .summary-card-content2 {
@@ -116,7 +118,7 @@
 
 .type-student-selected{
     font-size: 16px;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     margin-bottom: 8px;
     letter-spacing: 0.1px;
     padding: 0px 5px;
@@ -125,7 +127,7 @@
 
 .type-student:hover{
     background-color: #886859;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     transition: 0.3s;
 }
 
@@ -139,6 +141,11 @@
 }
 
 .students-see-more{
-    padding: 15px 0px 0px 29px;
-    font-size: 16px;
+    padding: 25px 15px 0px 40px;
+    font-size: 14px;
+}
+
+.see-more-students-button {
+    background-color: transparent;
+    color: #7e84a3;
 }

@@ -13,7 +13,7 @@ const AlumniCardHome = (props) => {
 
     return (
         <React.Fragment>
-            <div className='card-home-area1'>
+            <div className='card-home-area2'>
                 <div className="alumni-card-home-content">
                     <div className={"title-card-content"}>
                         <TitleCardHome title={"EGRESSOS"} />
@@ -23,12 +23,12 @@ const AlumniCardHome = (props) => {
                         <div className={"alumni-buttons"}>
                             <div className={'seemore-button'}>
                                 <Link to={'newDesign/alumniufcg/seemore'}>
-                                    <button type="submit">VER MAIS</button>
+                                    <button className='alumni-button' type="submit">VER MAIS</button>
                                 </Link>
                             </div>
                             <div className={"updatedata-button"}>
                                 <Link to={'newDesign/alumniufcg/updatedata'}>
-                                    <button type="submit">ATUALIZAR DADOS</button>
+                                    <button className='alumni-button' type="submit">ATUALIZAR DADOS</button>
                                 </Link>
                             </div>
                         </div>
