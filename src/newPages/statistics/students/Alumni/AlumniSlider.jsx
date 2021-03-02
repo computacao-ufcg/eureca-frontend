@@ -28,7 +28,7 @@ const AlumniSlider = (props) => {
     }, [props.label])
 
     return (
-        <div className={"mainSlider"}>
+        <div className="mainSlider">
             <RangeSlider
                 min={0}
                 max={labelLength}
@@ -46,7 +46,7 @@ const AlumniSlider = (props) => {
                 }}
                 renderMark={mark => {
                     if ([value1, value2].includes(mark)) {
-                        return <span className={'legendSlider'}>{label[mark]}</span>;
+                        return <span className="legendSlider">{label[mark]}</span>;
                     }
 
                 }}

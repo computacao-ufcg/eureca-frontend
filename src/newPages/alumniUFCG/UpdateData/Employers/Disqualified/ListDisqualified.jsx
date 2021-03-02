@@ -23,7 +23,7 @@ const ListDisqualified = (props) => {
                                 props.handleInput(event.target.value, event.target.getAttribute('name'))
                             }
                             return (
-                                <input className={"inputCompany pointer"} name={rowData.linkedinId} readOnly value={rowData.name} onClick={handleAction}>
+                                <input className="inputCompany pointer" name={rowData.linkedinId} readOnly value={rowData.name} onClick={handleAction}>
 
                                 </input >
                             );
