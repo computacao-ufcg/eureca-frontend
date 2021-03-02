@@ -64,7 +64,7 @@ const Dropout = () => {
                         <div className="dropout-title">Evadidos</div>
                         <DropoutSlider changeSlider={handleSlider}/>
                         <DropoutGraph data={dataEgressos}/>
-                        <Export data={dataCSV} name={'egressos'}/>
+                        <Export data={dataCSV} name={'dropout'}/>
                     </div>
                 </div>
             </div>

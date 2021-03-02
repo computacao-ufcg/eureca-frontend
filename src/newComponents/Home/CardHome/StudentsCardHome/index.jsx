@@ -58,12 +58,12 @@ const StudentsCardHome = () => {
         console.log(data)
         if(data){
             setPropsStudents([data.alumniSummary.totalDegreeCount, 
-                data.alumniSummary.averageDegreeCount.toFixed(2), 
-                data.alumniSummary.averageGpa.toFixed(2),
+                data.alumniSummary.minDegreeCountTerm,
                 data.alumniSummary.minDegreeCount,
-                data.alumniSummary.maxDegreeCount,
                 data.alumniSummary.maxDegreeCountTerm,
-                data.alumniSummary.minDegreeCountTerm])
+                data.alumniSummary.maxDegreeCount,
+                data.alumniSummary.averageDegreeCount.toFixed(2), 
+                data.alumniSummary.averageGpa.toFixed(2),])
         }
     }
 
@@ -143,11 +143,6 @@ const StudentsCardHome = () => {
                                         }
                                     }}>EGRESSOS</button>
                                 </div>
-                            </div>
-                            <div className="students-see-more">
-                                <Link to={"/newDesign/statistics/students/" + optionStudent}>
-                                    <button type="button">VER MAIS</button>
-                                </Link>
                             </div>
                         </div>
                     </div>
