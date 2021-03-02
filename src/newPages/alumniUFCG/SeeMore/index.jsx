@@ -64,9 +64,10 @@ const SeeMore = () => {
             <div className="main-content">
                 <Header></Header>
                 <div className="main-seemore">
-                        <div className={'container-title-seemore'}>
-                            <h1>VER MAIS</h1>
-                        </div>
+                    <div className={'container-title-seemore'}>
+                        <h1>VER MAIS</h1>
+                    </div>
+                    <div className="main-seemore-group">
                         <div className="seemore-input-boxes">
                             <div className="seemore-input-box" >
                                 <div>
@@ -86,29 +87,29 @@ const SeeMore = () => {
                                 </div>
                                 <input id="ipt-graduation" type="text" placeholder="Buscar por período de graduação" />
                             </div>
-                            <button onClick={handleSearch}>Buscar</button>
                         </div>
-
-                        {
-                            search ? <React.Fragment /> :
-                            loading ? <MyLoading /> :
-                            noData ? <NoDataFound msg={"Nenhum dado encontrado."} /> :
-                                <div className="list-alumni">
-                                    <ListAlumni listData={data} />
-                                    <hr></hr>
-                                    <Pagination
-                                        pages={data.totalPages}
-                                        maxButtons={5}
-                                        onSelect={handlePage}
-                                        activePage={page + 1}
-                                        prev
-                                        next
-                                        first
-                                        last
-                                        ellipsis
-                                        boundaryLinks
-                                    />
-                                </div>
+                        <button onClick={handleSearch}>Buscar</button>
+                    </div>
+                    {
+                        search ? <React.Fragment /> :
+                        loading ? <MyLoading /> :
+                        noData ? <NoDataFound msg={"Nenhum dado encontrado."} /> :
+                            <div className="list-alumni">
+                                <ListAlumni listData={data} />
+                                <hr></hr>
+                                <Pagination
+                                    pages={data.totalPages}
+                                    maxButtons={5}
+                                    onSelect={handlePage}
+                                    activePage={page + 1}
+                                    prev
+                                    next
+                                    first
+                                    last
+                                    ellipsis
+                                    boundaryLinks
+                                />
+                            </div>
                     }
                 </div>
             </div>

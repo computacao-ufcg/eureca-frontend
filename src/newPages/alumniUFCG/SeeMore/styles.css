@@ -39,10 +39,18 @@
     font-size: 18px;
 }
 
+
+.main-seemore-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .seemore-input-boxes{
     display: flex;
     flex-direction: column;
-    padding: 2em;
+    padding: 2em 0 2em 2em;
 }
 
 .seemore-input-box{
@@ -82,21 +90,18 @@
     outline: none;
 }
 
-.seemore-input-boxes button{
+.main-seemore-group button{
     width: 200px;
     height: 50px;
     background:#886859;
     color: #f1f1f1;
     border: none;
     border-radius: 5px;
-    margin-top: 2rem;
     font-size: 1rem; 
     cursor: pointer;
-
-    align-self: flex-end;
 }
 
-.seemore-input-boxes button:hover{
+.main-seemore-group button:hover{
     background-color: #886859ea;
 }
 
