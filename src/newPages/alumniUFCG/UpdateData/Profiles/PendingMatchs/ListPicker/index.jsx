@@ -38,7 +38,6 @@ const ListPicker = (props) => {
                                 </div>
                                 : null}
                             <p>{element.profile.fullName}</p>
-                            <span>score: {element.score}</span>
                         </div>
                     )
                 }
