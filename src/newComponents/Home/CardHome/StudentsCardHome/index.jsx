@@ -69,7 +69,7 @@ const StudentsCardHome = () => {
 
     const setPropsDelayed = (data) => {
         if(data){
-            setPropsStudents([0, 
+            setPropsStudents([data.delayedSummary.delayedCount, 
                 data.delayedSummary.averageAttemptedCredits.toFixed(2), 
                 data.delayedSummary.averageCost.toFixed(2),
                 data.delayedSummary.averageLoad.toFixed(2),
@@ -150,6 +150,11 @@ const StudentsCardHome = () => {
                                 </Link>
                             </div>
                         </div>
+                    </div>
+                    <div className='students-see-more'>
+                        <Link to={"/newDesign/statistics/students/" + optionStudent}>
+                            <button className='see-more-students-button' type="button">VER MAIS</button>
+                        </Link>
                     </div>
                     <div className="card-img-1">
                             <div className="mask6">
