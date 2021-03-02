@@ -36,6 +36,7 @@ const Routes = () => {
         <PrivateRoute exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
         <PrivateRoute exact path="/newDesign/statistics/students/alumni" component={() => <Alumni /> } />
         <PrivateRoute exact path="/newDesign/statistics/students/dropout" component={() => <Dropout /> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/delayed" component={() => <Redirect to='/' />} />
         <PrivateRoute exact path="/newDesign/alumniufcg/updatedata" component={() => <UpdateData /> } />
         <PrivateRoute exact path="/newDesign/alumniufcg/seemore" component={() => <SeeMore /> } />
 
