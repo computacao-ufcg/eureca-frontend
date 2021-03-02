@@ -51,12 +51,15 @@ black
 
 .main-container{
   background-color: #E6DBD3;
+  min-height: 100vh;
+
   padding-bottom: 10vh;
   display: block;
 }
 
 .main-container-body{
   width: 80vw;
+  min-height: 65vh;
 
   margin-left: 10vw;
   margin-top: 2vh;

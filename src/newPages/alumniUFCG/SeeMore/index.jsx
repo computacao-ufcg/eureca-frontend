@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Header from '../../../newComponents/Header';
 import MyLoading from '../../../newComponents/MyLoading';
+import NoDataFound from '../../../newComponents/NoDataFound';
 
 import './styles.css';
 
@@ -20,18 +21,21 @@ const SeeMore = () => {
     const [admission, setAdmission] = useState("");
     const [graduation, setGraduation] = useState("");
 
-    const [searchType, setSearchType] = useState('');
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState(true);
+    const [noData, setNoData] = useState(false);
 
 
     const handleProfile = async (page, name, admission, graduation) => { 
         setLoading(true);
+        debugger
+
         let query = `match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
             setData(res.data.content);
+            res.data.content.length === 0 ? setNoData(true) : setNoData(false);
             setLoading(false);
             setSearch(false);
         } else {
@@ -64,19 +68,19 @@ const SeeMore = () => {
                             <h1>VER MAIS</h1>
                         </div>
                         <div className="seemore-input-boxes">
-                            <div className="seemore-input-box" onClick={() => setSearchType("name")}>
+                            <div className="seemore-input-box" >
                                 <div>
                                     <FiSearch size={25} />
                                 </div>
                                 <input id="ipt-name" type="text" placeholder="Buscar por nome" />
                             </div>
-                            <div className="seemore-input-box" onClick={() => setSearchType("admission")}>
+                            <div className="seemore-input-box" >
                                 <div>
                                     <FiSearch size={25} />
                                 </div>
                                 <input id="ipt-admission" type="text" placeholder="Buscar por período de admissão" />
                             </div>
-                            <div className="seemore-input-box" onClick={() => setSearchType("graduation")}>
+                            <div className="seemore-input-box" >
                                 <div>
                                     <FiSearch size={25} />
                                 </div>
@@ -86,8 +90,8 @@ const SeeMore = () => {
                         </div>
                         {
                             search ? <React.Fragment /> :
-
                             loading ? <MyLoading /> :
+                            noData ? <NoDataFound msg={"Nenhum dado encontrado."} /> :
                                 <div className={'listEgressos'}>
                                     <ListEgressos listData={data} />
                                     <hr></hr>

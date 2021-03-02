@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'rsuite';
 
 import Confirm from '../../../../../newComponents/Confirm';
+import NoDataFound from '../../../../../newComponents/NoDataFound';
 
 import { FiTrash2 } from 'react-icons/fi';
 
@@ -17,7 +18,9 @@ const Classified = (props) => {
     const [data, setData] = useState([]);
     const [cancelClassified, setCancelClassified] = useState(null);
     const [showModal, setShowModal] = useState(false);
+
     const [loading, setLoading] = useState(true);
+    const [noData, setNoData] = useState(false);
 
     const myHeaders = {
         headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }
@@ -36,6 +39,7 @@ const Classified = (props) => {
 
             if (res.status === 200) {
                 setData(res.data.content);
+                res.data.content.length === 0 ? setNoData(true) : setNoData(false);
                 setLoading(false);
             } else {
                 console.error("Error: response broken.");
@@ -59,8 +63,10 @@ const Classified = (props) => {
     }
 
     return (
-        <div className={'classified'}>
-            {loading ? <h1>Carregando...</h1> :
+        <div className="classified">
+            {
+            loading ? <h1>Carregando...</h1> :
+            data.length === 0  ? <div className="classified-no-data-found"> <NoDataFound msg={"Nenhuma classificação feita até o momento."} /> </div>:
                 <Table
                     height={480}
                     width={900}

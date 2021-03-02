@@ -10,7 +10,6 @@ const Home = () => {
     return(
         <React.Fragment>
             <HeaderHome/>
-            <TitleHome/>
             <div className="home-content">
                 <div className="home-cards">
                     <CardHome>
