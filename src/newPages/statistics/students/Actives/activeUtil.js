@@ -8,7 +8,7 @@ const msgModal = "Aluno não encontrado.";
  * @param {Array of Object literals} data - Json with the students data.
  */
 const getDataScatter = (data) => {
-    
+
     let normal = [];
     let late = [];
     let advanced = [];
@@ -20,7 +20,7 @@ const getDataScatter = (data) => {
 
         data.map((entry, index) => {
 
-            switch (entry.riskClass){
+            switch (entry.riskClass) {
                 case 'NORMAL':
                     normal.push(entry);
                     break;

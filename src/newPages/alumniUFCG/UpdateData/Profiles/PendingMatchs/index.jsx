@@ -112,7 +112,7 @@ const PendingMatchs = (props) => {
                         </div>
                         {
                             !selectedRegistration ? <Informer msg={"Por favor, selecione alguém para realizar possíveis associações."} /> :
-                                <div className="possibleMatch">
+                                <div className="possible-match">
                                     <h6>Fazer Associação:</h6>
                                     <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
                                     <button onClick={handleMatch}>Associar</button>

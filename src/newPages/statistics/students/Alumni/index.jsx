@@ -76,7 +76,7 @@ const Alumni = () => {
                     'Authentication-Token': token,
                 },
             }
-            
+
             const resAlumni = await api_EB.get(queryAlumni, options);
             const resAlumniCSV = await api_EB.get(queryAlumniCSV, options);
 
@@ -103,14 +103,14 @@ const Alumni = () => {
     return (
         <React.Fragment>
             <Header />
-            <div className={'mainStatistics'}>
+            <div className={'main-statistics'}>
                 <Title name={"Estatísticas"} />
-                <div className={'contentStatistics'}>
+                <div className={'content-statistics'}>
                     <NavBar selectedOption={"Students"} listEnum={navOptions} />
-                    <div className={'modelStatistics'}>
-                        <div className={'listStatistics'}>
+                    <div className={'model-statistics'}>
+                        <div className={'list-statistics'}>
                             <SideBar selectedOption={"Egressos"} navSelected={"students"} listOption={studentsOptions} names={nameStudents} />
-                            <div className={'compStatistics'}>
+                            <div className={'comp-statistics'}>
                                 <div onMouseUp={() => fetchDataApiWithLabel(min, max)}>
                                     <AlumniSlider changeSlider={handleSlider} label={label} min={min} max={max} />
                                 </div>

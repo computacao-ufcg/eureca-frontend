@@ -19,7 +19,7 @@ const Login = () => {
     useEffect(() => {
         const listener = event => {
             if (event.code === "Enter" || event.code === "NumpadEnter") {
-                console.log(login,password)
+                console.log(login, password)
                 handleLogin(event)
             }
         };
@@ -27,7 +27,7 @@ const Login = () => {
         return () => {
             document.removeEventListener("keydown", listener);
         };
-    }, [login,password]);
+    }, [login, password]);
 
     const handleLogin = async (e) => {
         e.preventDefault();

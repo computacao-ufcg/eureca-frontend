@@ -13,8 +13,8 @@ const AlumniCardHome = (props) => {
 
     return (
         <React.Fragment>
-            <div className={'card-home-area1'}>
-                <div className={"alumni-card-home-content"}>
+            <div className='card-home-area1'>
+                <div className="alumni-card-home-content">
                     <div className={"title-card-content"}>
                         <TitleCardHome title={"EGRESSOS"} />
                     </div>
@@ -33,11 +33,11 @@ const AlumniCardHome = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className={"alumni-card-img-1"}>
-                        <div className={"mask6"}>
+                    <div className="alumni-card-img-1">
+                        <div className="mask6">
                             <img src={Mask6} alt="mask6" />
                         </div>
-                        <div className={"mask5"}>
+                        <div className="mask5">
                             <img src={Mask5} alt="mask5" />
                         </div>
                     </div>

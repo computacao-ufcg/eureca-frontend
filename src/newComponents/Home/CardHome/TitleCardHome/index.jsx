@@ -4,7 +4,7 @@ import './style.css'
 
 const TitleCardHome = (props) => {
 
-    return(
+    return (
         <div className="title-card-name">
             {props.title}
         </div>

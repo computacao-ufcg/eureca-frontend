@@ -107,13 +107,13 @@ const Disqualified = (props) => {
                             <hr />
                         </div>
                         {
-                            !selectCompany ? <Informer msg={"Por favor, selecione uma empresa."}/> :
+                            !selectCompany ? <Informer msg={"Por favor, selecione uma empresa."} /> :
 
-                            <div className="selectCompany">
-                                <h6>Selecione um tipo para a Empresa:</h6>
-                                <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
-                                <button onClick={handleSubmit}>Associar</button>
-                            </div>
+                                <div className="select-company">
+                                    <h6>Selecione um tipo para a Empresa:</h6>
+                                    <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
+                                    <button onClick={handleSubmit}>Associar</button>
+                                </div>
                         }
                     </div>
                     <div className="pagination">

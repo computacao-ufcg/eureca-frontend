@@ -44,7 +44,7 @@ const ListAlumni = (props) => {
                     </Cell>
 
                 </Column>
-                
+
             </Table>
 
         </div>
