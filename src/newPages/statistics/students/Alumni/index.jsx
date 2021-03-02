@@ -1,122 +1,70 @@
 import React, { useEffect, useState } from 'react';
 
-import Header from '../../../../components/General/Header';
-import NavBar from '../../../../components/StatisticsComponents/NavBar/index.jsx';
-import SideBar from '../../../../components/StatisticsComponents/SideBar';
-
-import { navOptions, studentsOptions, nameStudents } from '../../../../pages/Statistics/statisticsUtil';
-
-import Title from '../../../../components/General/Title/';
-
-import AlumniGraph from './AlumniGraph';
-import AlumniSlider from './AlumniSlider';
-
-import '../../../../pages/Statistics/styles.css';
+import Header from '../../../../newComponents/Header'
+import Title from '../../../../newComponents/Home/Title'
+import AlumniSlider from './AlumniSlider'
+import AlumniGraph from './AlumniGraph'
+import Export from '../../../../newComponents/Export'
 
 import { api_EB } from '../../../../services/api';
 
+import './style.css'
+
 const Alumni = () => {
-    const [loadding, setLoadding] = useState(true);
 
-    const [dataAlumni, setDataAlumni] = useState([]);
-    const [dataExport, setDataExport] = useState([]);
-    const [label, setLabel] = useState([]);
-    const [alumniSummary, setAlumniSummary] = useState([]);
-    const [min, setMin] = useState(0);
-    const [max, setMax] = useState(0);
-
-
-    const handleSlider = (min, max) => {
-        setMin(min);
-        setMax(max);
-    }
-
-    const fetchDataApiWithLabel = async (min, max) => {
-
-        setLoadding(true);
-        const queryAlumni = `api/statistics/students/alumni?from=${min}&to=${max}`;
-        const queryAlumniCSV = `api/statistics/students/alumni/csv?from=${min}&to=${max}`;
-
-        const token = sessionStorage.getItem('eureca-token');
-
-        const options = {
-            headers: {
-                'Authentication-Token': token,
-            },
-        }
-
-        const resAlumni = await api_EB.get(queryAlumni, options);
-        const resAlumniCSV = await api_EB.get(queryAlumniCSV, options);
-
-        if (resAlumni.status === 200) {
-            setDataAlumni(resAlumni.data.terms);
-            setAlumniSummary(resAlumni.data.summary);
-        } else {
-            console.error("Error Data Egressos");
-        }
-
-        if (resAlumniCSV.status === 200) {
-            setDataExport(resAlumniCSV.data);
-        } else {
-            console.error("Error Data Export");
-        }
-        setLoadding(false);
-    }
+    const [dataEgressos, setDataEgressos] = useState(null);
+    const [min, setMin] = useState('');
+    const [max, setMax] = useState('');
+    const [dataCSV, setDataCSV] = useState([]);
 
     useEffect(() => {
-        const fetchDataApiWithoutLabel = async () => {
-            setLoadding(true);
-            const queryAlumni = 'api/statistics/students/alumni?from=1950.0&to=2049.9';
-            const queryAlumniCSV = 'api/statistics/students/alumni/csv?from=1950.0&to=2049.9';
+        updateGraph('1966.1', '2020.1')
+        handleCSV('1966.1', '2020.1');
+    },[]);
 
-            const token = sessionStorage.getItem('eureca-token');
+    const handleSlider = (min, max) => {      
+        setMin(min);
+        setMax(max);
+        updateGraph(min, max);
+        handleCSV(min, max);
+    }
 
-            const options = {
-                headers: {
-                    'Authentication-Token': token,
-                },
-            }
+    const updateGraph = async (min, max) => {
+        let query = `api/statistics/students/alumni?from=${min}&to=${max}`;
 
-            const resAlumni = await api_EB.get(queryAlumni, options);
-            const resAlumniCSV = await api_EB.get(queryAlumniCSV, options);
-
-            if (resAlumni.status === 200) {
-                setDataAlumni(resAlumni.data.terms);
-                setLabel(resAlumni.data.sliderLabel);
-                setMax(resAlumni.data.sliderLabel.length - 1);
-                setAlumniSummary(resAlumni.data.summary);
-            } else {
-                console.error("Error Data Egressos");
-            }
-
-            if (resAlumniCSV.status === 200) {
-                setDataExport(resAlumniCSV.data);
-            } else {
-                console.error("Error Data Export");
-            }
-            setLoadding(false);
+        const res = await api_EB.get(query, {headers:{"Authentication-Token": sessionStorage.getItem('eureca-token')}});
+        
+        if(res){
+            console.log(res.data)
+            setDataEgressos(res.data);
+        } else{
+            console.log(res.statusText);
         }
+    }
 
-        fetchDataApiWithoutLabel();
-    }, []);
+    const handleCSV = async (min, max) => {
+        let query = `api/statistics/students/alumni/csv?from=${min}&to=${max}`;
 
-    return (
+        const res = await api_EB.get(query, {headers:{"Authentication-Token": sessionStorage.getItem('eureca-token')}});
+        
+        if(res){
+            console.log(res.data)
+            setDataCSV(res.data);
+        } else{
+            console.log(res.statusText);
+        }
+    }
+
+    return(
         <React.Fragment>
-            <Header />
-            <div className="main-statistics">
-                <Title name={"Estatísticas"} />
-                <div className="content-statistics">
-                    <NavBar selectedOption={"Students"} listEnum={navOptions} />
-                    <div className="model-statistics">
-                        <div className="list-statistics">
-                            <SideBar selectedOption={"Egressos"} navSelected={"students"} listOption={studentsOptions} names={nameStudents} />
-                            <div className="comp-statistics">
-                                <div onMouseUp={() => fetchDataApiWithLabel(min, max)}>
-                                    <AlumniSlider changeSlider={handleSlider} label={label} min={min} max={max} />
-                                </div>
-                                <AlumniGraph data={dataAlumni} />
-                            </div>
-                        </div>
+            <Header/>
+            <div className="alumni-main">
+                <div className="alumni-content">
+                    <div className="alumni-slider">
+                        <div className="alumni-title">Egressos</div>
+                        <AlumniSlider changeSlider={handleSlider}/>
+                        <AlumniGraph data={dataEgressos || {}}/>
+                        <Export data={dataCSV} name={'alumni'}/>
                     </div>
                 </div>
             </div>
@@ -125,3 +73,4 @@ const Alumni = () => {
 }
 
 export default Alumni;
+
