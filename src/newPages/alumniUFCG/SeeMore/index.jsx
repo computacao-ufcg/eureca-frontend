@@ -88,7 +88,7 @@ const SeeMore = () => {
                         search ? <React.Fragment /> :
 
                             loading ? <MyLoading /> :
-                                <div className={"list-alumni"}>
+                                <div className="list-alumni">
                                     <ListAlumni listData={data} />
                                     <hr></hr>
                                     <Pagination

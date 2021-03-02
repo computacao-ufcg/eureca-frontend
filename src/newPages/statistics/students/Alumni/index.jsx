@@ -103,14 +103,14 @@ const Alumni = () => {
     return (
         <React.Fragment>
             <Header />
-            <div className={'main-statistics'}>
+            <div className="main-statistics">
                 <Title name={"Estatísticas"} />
-                <div className={'content-statistics'}>
+                <div className="content-statistics">
                     <NavBar selectedOption={"Students"} listEnum={navOptions} />
-                    <div className={'model-statistics'}>
-                        <div className={'list-statistics'}>
+                    <div className="model-statistics">
+                        <div className="list-statistics">
                             <SideBar selectedOption={"Egressos"} navSelected={"students"} listOption={studentsOptions} names={nameStudents} />
-                            <div className={'comp-statistics'}>
+                            <div className="comp-statistics">
                                 <div onMouseUp={() => fetchDataApiWithLabel(min, max)}>
                                     <AlumniSlider changeSlider={handleSlider} label={label} min={min} max={max} />
                                 </div>

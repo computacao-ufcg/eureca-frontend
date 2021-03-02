@@ -94,7 +94,7 @@ const StudentsCardHome = () => {
 
     return(
         <React.Fragment>
-            <div className='card-home-area1'>
+            <div className="card-home-area1">
                 <div className="card-home-content">
                     <div className="title-card-content">
                         <TitleCardHome title={"DISCENTES"}/>
@@ -144,6 +144,11 @@ const StudentsCardHome = () => {
                                     }}>EGRESSOS</button>
                                 </div>
                             </div>
+                            <div className="students-see-more">
+                                <Link to={"/newDesign/statistics/students/" + optionStudent}>
+                                    <button type="button">VER MAIS</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className='students-see-more'>
@@ -155,7 +160,7 @@ const StudentsCardHome = () => {
                             <div className="mask6">
                                 <img src={Mask6} alt="mask6"/>
                             </div>
-                            <div className={"mask5"}>
+                            <div className="mask5">
                                 <img src={Mask5} alt="mask5"/>
                             </div>
                     </div>

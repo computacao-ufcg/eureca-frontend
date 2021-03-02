@@ -12,11 +12,11 @@ const AlumniCards = (props) => {
             <div className="alumni-summary-card-main">
                 <div className="alumni-summary-card-title">
                     <div className="alumni-summary-card-info">
-                        <div className={"alumni-summary-card-size"}>{data.numberAlumniCourse}</div>
+                        <div className="alumni-summary-card-size">{data.numberAlumniCourse}</div>
                         <div className="alumni-summary-card-legend">EGRESSOS</div>
                     </div>
                 </div>
-                <div className={"alumni-summary-card-cards"}>
+                <div className="alumni-summary-card-cards">
                     <MiniCardHome1 number={data.numberAcademyEmployedCourse} legend={"NA ACADEMIA"} />
                     <MiniCardHome1 number={data.numberGovernmentEmployedCourse} legend={"NO GOVERNO"} />
                     <MiniCardHome1 number={data.numberIndustryEmployedLevel} legend={"NA INDÚSTRIA"} />

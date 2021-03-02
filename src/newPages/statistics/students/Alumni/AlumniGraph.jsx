@@ -9,7 +9,7 @@ const AlumniGraph = (props) => {
     return (
         <React.Fragment>
             {props.data ?
-                <div className={"main-graphs"}>
+                <div className="main-graphs">
                     <LineChart
                         width={800}
                         height={400}
