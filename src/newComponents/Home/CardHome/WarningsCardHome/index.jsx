@@ -15,14 +15,14 @@ const WarningsCardHome = () => {
                 <div className="card-home-content">
                     <div className="card-img-5">
                         <div className="card-img-5-up">
-                            <div className={"title-card-content"}>
+                            <div className="title-card-content">
                                 <TitleCardHome title={"ALARMES"} />
                             </div>
                             <div className="mask3">
                                 <img src={Mask3} alt="mask3" />
                             </div>
                         </div>
-                        <div className={"summary-card-content2"}>
+                        <div className="summary-card-content2">
                             <WarningCards />
                         </div>
                     </div>

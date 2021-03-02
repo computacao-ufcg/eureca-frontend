@@ -59,7 +59,7 @@ const Classified = (props) => {
     }
 
     return (
-        <div className={"classified"}>
+        <div className="classified">
             {loading ? <h1>Carregando...</h1> :
                 <Table
                     height={480}
@@ -99,7 +99,7 @@ const Classified = (props) => {
                         <HeaderCell>Desfazer Classificação</HeaderCell>
                         <Cell>
                             {rowData => (
-                                <div className={"delete-button-div"} onClick={() => { setCancelClassified(rowData); setShowModal(true) }}>
+                                <div className="delete-button-div" onClick={() => { setCancelClassified(rowData); setShowModal(true) }}>
                                     <FiTrash2 size={20} />
                                 </div>
                             )}

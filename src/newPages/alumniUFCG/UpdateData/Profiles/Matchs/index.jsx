@@ -75,7 +75,7 @@ const Matchs = () => {
                         <HeaderCell>Desfazer Associação</HeaderCell>
                         <Cell>
                             {rowData => (
-                                <div className={"delete-button-div"} onClick={() => { setCancelMatch(rowData); setShowModal(true) }}>
+                                <div className="delete-button-div" onClick={() => { setCancelMatch(rowData); setShowModal(true) }}>
                                     <FiTrash2 size={20} />
                                 </div>
                             )}

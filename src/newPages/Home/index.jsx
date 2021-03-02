@@ -12,7 +12,7 @@ const Home = () => {
             <HeaderHome />
             <TitleHome />
             <div className="home-content">
-                <div className={"home-cards"}>
+                <div className="home-cards">
                     <CardHome>
                     </CardHome>
                 </div>

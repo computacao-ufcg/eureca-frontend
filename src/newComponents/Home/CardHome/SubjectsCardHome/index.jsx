@@ -17,10 +17,10 @@ const SubjectsCardHome = () => {
                         <div className="mask7">
                             <img src={Mask7} alt="mask7" />
                         </div>
-                        <div className={"title-card-content"}>
+                        <div className="title-card-content">
                             <TitleCardHome title={"DISCIPLINAS"} />
                         </div>
-                        <div className={"summary-card-content2"}>
+                        <div className="summary-card-content2">
                             <SummaryCardHome />
                         </div>
                     </div>

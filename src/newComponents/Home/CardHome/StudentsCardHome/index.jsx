@@ -14,15 +14,15 @@ const StudentsCardHome = () => {
         <React.Fragment>
             <div className="card-home-area1">
                 <div className="card-home-content">
-                    <div className={"title-card-content"}>
+                    <div className="title-card-content">
                         <TitleCardHome title={"DISCENTES"} />
                     </div>
-                    <div className={"summary-card-content"}>
+                    <div className="summary-card-content">
                         <StudentsSummaryCardHome />
-                        <div className={'type-students'}>
-                            <div className={'type-student'}>RETIDOS</div>
-                            <div className={'type-student'}>EVADIDOS</div>
-                            <div className={'type-student'}>EGRESSOS</div>
+                        <div className="type-students">
+                            <div className="type-student">RETIDOS</div>
+                            <div className="type-student">EVADIDOS</div>
+                            <div className="type-student">EGRESSOS</div>
                         </div>
                     </div>
                     <div className="card-img-1">
