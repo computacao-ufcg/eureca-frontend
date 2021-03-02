@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Pagination } from 'rsuite';
+import { Pagination, Alert } from 'rsuite';
 
 import ListDisqualified from './ListDisqualified';
 import ListOptions from './ListOptions';
+import Informer from '../../Informer';
 
 import { api_AS } from '../../../../../services/api';
 
@@ -66,7 +67,7 @@ const Disqualified = (props) => {
     const handleSubmit = async () => {
 
         if (selectCompany === '' || type === '') {
-            alert(msgAlertError);
+            Alert.warning(msgAlertError);
             return;
         }
 
@@ -87,7 +88,7 @@ const Disqualified = (props) => {
             if (res.status === 200) {
                 setData(data.filter(e => e.linkedinId !== linkedinID));
                 props.handleData(myBody);
-                alert("Empresa classificada.");
+                Alert.success("Empresa classificada.");
             } else {
                 console.error("Error: response error");
             }
@@ -105,11 +106,23 @@ const Disqualified = (props) => {
                             <ListDisqualified handleInput={handleInput} listData={data ? data : []} />
                             <hr />
                         </div>
+<<<<<<< HEAD
                         <div className="select-company">
                             <h6>Selecione um tipo para a Empresa:</h6>
                             <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
                             <button onClick={handleSubmit}>Associar</button>
                         </div>
+=======
+                        {
+                            !selectCompany ? <Informer msg={"Por favor, selecione uma empresa."}/> :
+
+                            <div className="selectCompany">
+                                <h6>Selecione um tipo para a Empresa:</h6>
+                                <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
+                                <button onClick={handleSubmit}>Associar</button>
+                            </div>
+                        }
+>>>>>>> 6747da836693827b3fddb9f9e100877465e8346e
                     </div>
                     <div className="pagination">
                         <Pagination
