@@ -14,14 +14,14 @@ const CoursesCardHome = () => {
 
     return(
         <React.Fragment>
-            <div className={'card-home-area2'}>
-                <div className={"card-home-nude"}>
+            <div className='card-home-area2'>
+                <div className="card-home-nude">
                     <div>
-                        <div className={"title-card-content"}>
+                        <div className="title-card-content">
                             <TitleCardHome title={"CURSOS"}/>
                             <div className="subtitle-courses">2020.1</div>
                         </div>
-                        <div className={"summary-card-content2"}>
+                        <div className="summary-card-content2">
                             <MiniCardHome2 number={"XX"} legend={"OFERTADAS"}/>
                             <MiniCardHome4 number={"XX"} legend={"TRANCADAS"}/>
                         </div>

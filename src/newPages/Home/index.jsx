@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeaderHome from '../../newComponents/Home/Header'
+import HeaderHome from '../../newComponents/Header'
 import TitleHome from '../../newComponents/Home/Title'
 import CardHome from '../../newComponents/Home/CardHome'
 import './style.css'
@@ -11,8 +11,8 @@ const Home = () => {
         <React.Fragment>
             <HeaderHome/>
             <TitleHome/>
-            <div className={"home-content"}>
-                <div className={"home-cards"}>
+            <div className="home-content">
+                <div className="home-cards">
                     <CardHome>
                     </CardHome>
                 </div>

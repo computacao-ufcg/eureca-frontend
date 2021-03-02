@@ -94,17 +94,17 @@ const StudentsCardHome = () => {
 
     return(
         <React.Fragment>
-            <div className={'card-home-area1'}>
-                <div className={"card-home-content"}>
-                    <div className={"title-card-content"}>
+            <div className='card-home-area1'>
+                <div className="card-home-content">
+                    <div className="title-card-content">
                         <TitleCardHome title={"DISCENTES"}/>
                     </div>
-                    <div className={"summary-card-content"}>
+                    <div className="summary-card-content">
                         <StudentsSummaryCardHome dataStudents={propStudents} data={labels} title={titleStudent}/>
-                        <div className={'type-students-grid'}>
-                            <div className={'type-students'}>
+                        <div className='type-students-grid'>
+                            <div className='type-students'>
                                 <div className={optionStudent === 'actives' ? 'type-student-selected' : 'type-student'}>
-                                    <button className={"type-button"} type="button" onClick={() => {
+                                    <button className="type-button" type="button" onClick={() => {
                                         if(optionStudent !== "actives"){
                                             setOptionStudent("actives");
                                             setTitleStudent("Ativos");
@@ -114,7 +114,7 @@ const StudentsCardHome = () => {
                                     }}>ATIVOS</button>
                                 </div>
                                 <div className={optionStudent === 'delayed' ? 'type-student-selected' : 'type-student'}>
-                                    <button className={"type-button"} type="button" onClick={() => {
+                                    <button className="type-button" type="button" onClick={() => {
                                         if(optionStudent !== "delayed"){
                                             setOptionStudent("delayed");
                                             setTitleStudent("Retidos");
@@ -124,7 +124,7 @@ const StudentsCardHome = () => {
                                     }}>RETIDOS</button>
                                 </div>
                                 <div className={optionStudent === 'dropout' ? 'type-student-selected' : 'type-student'}>
-                                    <button className={"type-button"} type="button" onClick={() => {
+                                    <button className="type-button" type="button" onClick={() => {
                                         if(optionStudent !== "dropout"){
                                             setOptionStudent("dropout");
                                             setTitleStudent("Evadidos");
@@ -134,7 +134,7 @@ const StudentsCardHome = () => {
                                     }}>EVADIDOS</button>
                                 </div>
                                 <div className={optionStudent === 'alumni' ? 'type-student-selected' : 'type-student'}>
-                                    <button className={"type-button"} type="button" onClick={() => {
+                                    <button className="type-button" type="button" onClick={() => {
                                         if(optionStudent !== "alumni"){
                                             setOptionStudent("alumni");
                                             setTitleStudent("Egressos");
@@ -144,15 +144,15 @@ const StudentsCardHome = () => {
                                     }}>EGRESSOS</button>
                                 </div>
                             </div>
-                            <div className={'students-see-more'}>
+                            <div className='students-see-more'>
                                 <Link to={"/newDesign/statistics/students/" + optionStudent}>
                                     <button type="button">VER MAIS</button>
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div className={"card-img-1"}>
-                            <div className={"mask6"}>
+                    <div className="card-img-1">
+                            <div className="mask6">
                                 <img src={Mask6} alt="mask6"/>
                             </div>
                             <div className={"mask5"}>

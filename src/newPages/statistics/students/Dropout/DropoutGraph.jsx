@@ -128,8 +128,8 @@ const EvadedGraph = (props) => {
     return (
         <React.Fragment>
             {data ? 
-            <div className={'rootGraphEvadidos'}>
-                <div className={'mainGraphEvadidos'}>
+            <div className='rootGraphEvadidos'>
+                <div className='mainGraphEvadidos'>
                     <ComposedChart
                         width={800}
                         height={400}
@@ -155,11 +155,11 @@ const EvadedGraph = (props) => {
                         <Area yAxisId="left" name={motivos[10]} type="monotone" stackId="1" dataKey={tag11} stroke="#FD577D" fill="#FD577D"/>
                         <Line yAxisId="left" name={"Total"} type="monotone" stackId="1" dataKey={total} stroke="#5F6081" fill="#5F6081"/>
                     </ComposedChart>
-                    <div className={"optionsEvadidos"}>
+                    <div className="optionsEvadidos">
                         {motivos.map((e, index) => <label key={"label" + index}><Switch shape="fill" className={"checkbox" + index} key={"check" + index} name={"tag" + index} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
                     </div>
                 </div>
-                <div className={'textEgressos'}>
+                <div className='textEgressos'>
                     <p>
                     Entre <strong>{data[0].term}</strong> e <strong>{data[data.length - 1].term}</strong>, <strong>{props.data.summary.netDropoutCount}</strong> discentes se desligaram definitivamente do curso, sem colar grau. Entretanto, o número total de desligamentos no período foi <strong>{props.data.summary.grossDropoutCount}</strong>, considerando discentes que foram desligados e que reingressaram no curso. A relação entre evadidos e matriculados no período é <strong>{props.data.summary.grossDropoutEnrolledRate.toFixed(2)}</strong>, enquanto que a relação entre evadidos e egressos é <strong>{props.data.summary.grossDropoutAlumnusRate.toFixed(2)}</strong>.
                     </p>

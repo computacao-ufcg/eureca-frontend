@@ -11,16 +11,16 @@ const EnrollmentsCardHome = () => {
 
     return(
         <React.Fragment>
-            <div className={'card-home-area1'}>
-                <div className={"card-home-content"}>
-                    <div className={"title-card-content"}>
+            <div className='card-home-area1'>
+                <div className="card-home-content">
+                    <div className="title-card-content">
                         <TitleCardHome title={"MATRÍCULAS"}/>
                     </div>
-                    <div className={"summary-card-content"}>
+                    <div className="summary-card-content">
                         <SummaryCardHome/>
                     </div>
-                    <div className={"card-img-3"}>
-                        <div className={"mask4"}>
+                    <div className="card-img-3">
+                        <div className="mask4">
                             <img src={Mask4} alt="mask4"/>
                         </div>
                     </div>

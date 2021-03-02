@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Header from '../../../../newComponents/Home/Header'
+import Header from '../../../../newComponents/Header'
 import Title from '../../../../newComponents/Home/Title'
 import DropoutSlider from './DropoutSlider'
 import DropoutGraph from './DropoutGraph'
@@ -43,10 +43,10 @@ const Dropout = () => {
         <React.Fragment>
             <Header/>
             <Title/>
-            <div className={"dropout-main"}>
-                <div className={"dropout-content"}>
-                    <div className={"dropout-slider"}>
-                        <div className={"dropout-title"}>Evadidos</div>
+            <div className="dropout-main">
+                <div className="dropout-content">
+                    <div className="dropout-slider">
+                        <div className="dropout-title">Evadidos</div>
                         <DropoutSlider changeSlider={handleSlider}/>
                         <DropoutGraph data={dataEgressos}/>
                     </div>

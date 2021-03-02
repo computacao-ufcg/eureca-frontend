@@ -21,7 +21,7 @@ const EvadedSlider = (props) => {
 
     return (
         labels ?
-        <div className={'mainSlider'}>
+        <div className='mainSlider'>
             <RangeSlider
                 min={0}
                 max={47}
