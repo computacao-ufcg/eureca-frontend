@@ -155,7 +155,7 @@ const StudentsCardHome = () => {
                             <div className="mask6">
                                 <img src={Mask6} alt="mask6"/>
                             </div>
-                            <div className={"mask5"}>
+                            <div className="mask5">
                                 <img src={Mask5} alt="mask5"/>
                             </div>
                     </div>
