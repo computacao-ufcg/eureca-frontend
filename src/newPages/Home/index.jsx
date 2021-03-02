@@ -7,7 +7,7 @@ import './style.css'
 
 const Home = () => {
 
-    return(
+    return (
         <React.Fragment>
             <HeaderHome/>
             <TitleHome/>

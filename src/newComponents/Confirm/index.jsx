@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Modal, Button, Icon} from 'rsuite';
+import { Modal, Button, Icon } from 'rsuite';
 
 const Confirm = (props) => {
 
     return (
-        
+
         <div className="classified-modal-container">
             <Modal backdrop="static" show={props.showModal} onHide={() => props.hideModal(!props.showModal)} size="xs">
                 <Modal.Body>
@@ -18,7 +18,7 @@ const Confirm = (props) => {
                     />
                     {'  '}
                     {props.msg}
-                    </Modal.Body>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={() => { props.handleFunction(); props.hideModal(!props.showModal) }} appearance="subtle">
                         Sim

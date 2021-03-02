@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MyLoading = (props) => {
-    return(
+    return (
         <h2>{props.msg || "Carregando..."}</h2>
     )
 }

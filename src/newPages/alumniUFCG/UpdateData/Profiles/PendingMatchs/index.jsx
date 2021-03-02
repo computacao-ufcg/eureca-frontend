@@ -105,14 +105,14 @@ const PendingMatchs = (props) => {
         <div>
             {loading ? <h1>Carregando...</h1> :
                 <React.Fragment>
-                    <div className="mainMatches">
+                    <div className="main-matches">
                         <div>
                             <ListAlumnus handleAlumnus={handleAlumnus} listData={dataContent} />
                             <hr></hr>
                         </div>
                         {
                             !selectedRegistration ? <Informer msg={"Por favor, selecione alguém para realizar possíveis associações."} /> :
-                                <div className="possibleMatch">
+                                <div className="possible-match">
                                     <h6>Fazer Associação:</h6>
                                     <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
                                     <button onClick={handleMatch}>Associar</button>

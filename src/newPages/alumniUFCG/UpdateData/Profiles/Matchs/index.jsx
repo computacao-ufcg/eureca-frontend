@@ -42,7 +42,7 @@ const Matchs = () => {
 
     return (
         <div>
-            <div className={'matches'}>
+            <div className="matches">
                 <Table
                     height={480}
                     width={800}

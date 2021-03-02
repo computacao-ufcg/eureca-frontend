@@ -8,12 +8,12 @@ import Title from '../../components/General/Title'
 import './style.css'
 
 const Services = () => {
-    
-    return(
+
+    return (
         <React.Fragment>
             <Header></Header>
             <div className={'mainServices'}>
-                <Title name={"Serviços"}/> 
+                <Title name={"Serviços"} />
             </div>
         </React.Fragment>
     )

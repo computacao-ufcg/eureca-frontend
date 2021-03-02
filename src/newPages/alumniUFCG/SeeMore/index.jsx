@@ -3,19 +3,19 @@ import React, { useState } from 'react';
 import Header from '../../../newComponents/Header';
 import MyLoading from '../../../newComponents/MyLoading';
 
-import './styles.css';
-
 import { api_AS } from './../../../services/api'
-import ListEgressos from '../SeeMore/listEgressos'
+import ListAlumni from '../SeeMore/listAlumni'
 import { Pagination } from 'rsuite';
 import { FiSearch } from 'react-icons/fi';
-import './styles.css'
+
+import './styles.css';
+
 
 const SeeMore = () => {
 
     const [data, setData] = useState([]);
     const [page, setPage] = useState(0);
-    
+
     const [name, setName] = useState("");
     const [admission, setAdmission] = useState("");
     const [graduation, setGraduation] = useState("");
@@ -25,7 +25,7 @@ const SeeMore = () => {
     const [search, setSearch] = useState(true);
 
 
-    const handleProfile = async (page, name, admission, graduation) => { 
+    const handleProfile = async (page, name, admission, graduation) => {
         setLoading(true);
         let query = `match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
@@ -60,36 +60,36 @@ const SeeMore = () => {
             <div className="main-content">
                 <Header></Header>
                 <div className="main-seemore">
-                        <div className={'container-title-seemore'}>
-                            <h1>VER MAIS</h1>
+                    <div className="container-title-seemore">
+                        <h1>VER MAIS</h1>
+                    </div>
+                    <div className="seemore-input-boxes">
+                        <div className="seemore-input-box" onClick={() => setSearchType("name")}>
+                            <div>
+                                <FiSearch size={25} />
+                            </div>
+                            <input id="ipt-name" type="text" placeholder="Buscar por nome" />
                         </div>
-                        <div className="seemore-input-boxes">
-                            <div className="seemore-input-box" onClick={() => setSearchType("name")}>
-                                <div>
-                                    <FiSearch size={25} />
-                                </div>
-                                <input id="ipt-name" type="text" placeholder="Buscar por nome" />
+                        <div className="seemore-input-box" onClick={() => setSearchType("admission")}>
+                            <div>
+                                <FiSearch size={25} />
                             </div>
-                            <div className="seemore-input-box" onClick={() => setSearchType("admission")}>
-                                <div>
-                                    <FiSearch size={25} />
-                                </div>
-                                <input id="ipt-admission" type="text" placeholder="Buscar por período de admissão" />
-                            </div>
-                            <div className="seemore-input-box" onClick={() => setSearchType("graduation")}>
-                                <div>
-                                    <FiSearch size={25} />
-                                </div>
-                                <input id="ipt-graduation" type="text" placeholder="Buscar por período de graduação" />
-                            </div>
-                            <button onClick={handleSearch}>Buscar</button>
+                            <input id="ipt-admission" type="text" placeholder="Buscar por período de admissão" />
                         </div>
-                        {
-                            search ? <React.Fragment /> :
+                        <div className="seemore-input-box" onClick={() => setSearchType("graduation")}>
+                            <div>
+                                <FiSearch size={25} />
+                            </div>
+                            <input id="ipt-graduation" type="text" placeholder="Buscar por período de graduação" />
+                        </div>
+                        <button onClick={handleSearch}>Buscar</button>
+                    </div>
+                    {
+                        search ? <React.Fragment /> :
 
                             loading ? <MyLoading /> :
-                                <div className={'listEgressos'}>
-                                    <ListEgressos listData={data} />
+                                <div className={"list-alumni"}>
+                                    <ListAlumni listData={data} />
                                     <hr></hr>
                                     <Pagination
                                         pages={data.totalPages}
@@ -104,8 +104,8 @@ const SeeMore = () => {
                                         boundaryLinks
                                     />
                                 </div>
-                        }
-                    </div>
+                    }
+                </div>
             </div>
         </React.Fragment>
     );

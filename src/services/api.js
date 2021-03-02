@@ -15,7 +15,7 @@ const api = axios.create({
 // for Eureca Backend
 const api_EB = axios.create({
   baseURL: EURECA_BACKEND,
-  headers:{
+  headers: {
     'Content-type': 'application/json',
   }
 });
@@ -23,7 +23,7 @@ const api_EB = axios.create({
 // for Eureca Authentication Service
 const api_EAS = axios.create({
   baseURL: EURECA_AS,
-  headers:{
+  headers: {
     'Content-type': 'application/json',
   }
 });
@@ -31,7 +31,7 @@ const api_EAS = axios.create({
 // For Alumnus Service API
 const api_AS = axios.create({
   baseURL: ALUMNI_AS,
-  headers:{
+  headers: {
     'Content-type': 'application/json',
   }
 });

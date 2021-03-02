@@ -1,4 +1,4 @@
-.mainDisqualified{
+.main-disqualified{
     display: flex; 
     justify-content: space-between;
 }
@@ -13,7 +13,7 @@
     outline: none;
 }
 
-.tableDisqualified a{
+.table-disqualified a{
     color: #886859 ;
 }
 
@@ -21,6 +21,6 @@
     color: #886859
 }
 
-.selectCompany h6{
+.select-company h6{
     margin-top: 20px;
 }

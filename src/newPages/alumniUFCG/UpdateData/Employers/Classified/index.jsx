@@ -49,17 +49,17 @@ const Classified = (props) => {
     const handleCancelClassified = async () => {
         const query = `employer?linkedinId=${cancelClassified.linkedinId}`;
 
-        const res = await api_AS.delete(query,{ headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }});
+        const res = await api_AS.delete(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
-        if(res.status === 200){
-            setData(data.filter( e => e.linkedinId !== cancelClassified.linkedinId));
-        }else{
+        if (res.status === 200) {
+            setData(data.filter(e => e.linkedinId !== cancelClassified.linkedinId));
+        } else {
             console.error("Response error");
         }
     }
 
     return (
-        <div className={'classified'}>
+        <div className={"classified"}>
             {loading ? <h1>Carregando...</h1> :
                 <Table
                     height={480}

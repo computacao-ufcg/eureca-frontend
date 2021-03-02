@@ -9,7 +9,7 @@ import Mask4 from '../../../../assets/new_home_assets/mask_4.svg';
 
 const EnrollmentsCardHome = () => {
 
-    return(
+    return (
         <React.Fragment>
             <div className='card-home-area1'>
                 <div className="card-home-content">

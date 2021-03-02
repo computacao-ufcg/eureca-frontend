@@ -11,10 +11,10 @@ const Header = () => {
 
     const history = useHistory();
 
-    return(
+    return (
         <div className="header-container">
             <div className="header-1">
-                <div onClick={() => history.push('/')} className="header-1-eureca-logo"><img src={eureca_logo} alt="eureca logo"/></div>
+                <div onClick={() => history.push('/')} className="header-1-eureca-logo"><img src={eureca_logo} alt="eureca logo" /></div>
                 <div className="header-1-user">
                     <div>
                     </div>

@@ -8,8 +8,8 @@ const AlumniGraph = (props) => {
 
     return (
         <React.Fragment>
-            {props.data ? 
-                <div className={'mainGraphs'}>
+            {props.data ?
+                <div className={"main-graphs"}>
                     <LineChart
                         width={800}
                         height={400}
@@ -19,17 +19,17 @@ const AlumniGraph = (props) => {
                     >
                         <CartesianGrid strokeDasharray="3 3" />
 
-                        <XAxis dataKey="graduationTerm"  allowDuplicatedCategory={false} label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset:-5 }}/>
-                        <YAxis yAxisId="left" dataKey="alumniCount" label={{ value: 'Egressos', angle: -90, position: 'insideLeft'}} />
-                        <YAxis yAxisId="right" orientation="right" domain={[0, 10]} label={{ value: 'CRA', angle: -270, position: 'insideRight', textAnchor: 'middle'}}/>
+                        <XAxis dataKey="graduationTerm" allowDuplicatedCategory={false} label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset: -5 }} />
+                        <YAxis yAxisId="left" dataKey="alumniCount" label={{ value: 'Egressos', angle: -90, position: 'insideLeft' }} />
+                        <YAxis yAxisId="right" orientation="right" domain={[0, 10]} label={{ value: 'CRA', angle: -270, position: 'insideRight', textAnchor: 'middle' }} />
 
                         <Tooltip />
-                        <Legend verticalAlign="top" margin={{top: 10, left: 10, right: 0, bottom: 0 }} /> 
-                        <Line dataKey="alumniCount" data={props.data}  name="Número de Egressos" yAxisId="left" stroke="#885d41" key="Número de Egressos" />
-                        <Line dataKey="averageGpa" data={props.data} name="CRA Médio" yAxisId="right" stroke="#0073e5" key="CRA Médio"/>
+                        <Legend verticalAlign="top" margin={{ top: 10, left: 10, right: 0, bottom: 0 }} />
+                        <Line dataKey="alumniCount" data={props.data} name="Número de Egressos" yAxisId="left" stroke="#885d41" key="Número de Egressos" />
+                        <Line dataKey="averageGpa" data={props.data} name="CRA Médio" yAxisId="right" stroke="#0073e5" key="CRA Médio" />
                     </LineChart>
                 </div>
-            : null}
+                : null}
         </React.Fragment>
     )
 }
