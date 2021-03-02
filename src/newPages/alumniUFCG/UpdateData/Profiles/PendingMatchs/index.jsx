@@ -72,11 +72,7 @@ const PendingMatchs = (props) => {
     const handleMatch = async () => {
 
         if (!selectedProfile) {
-<<<<<<< HEAD
-            alert(alertMsg);
-=======
             Alert.warning(warningMsg, timeMSG);
->>>>>>> 6747da836693827b3fddb9f9e100877465e8346e
             return;
         }
 
@@ -114,13 +110,6 @@ const PendingMatchs = (props) => {
                             <ListAlumnus handleAlumnus={handleAlumnus} listData={dataContent} />
                             <hr></hr>
                         </div>
-<<<<<<< HEAD
-                        <div className="possible-match">
-                            <h6>Fazer Associação:</h6>
-                            <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
-                            <button onClick={handleMatch}>Associar</button>
-                        </div>
-=======
                         {
                             !selectedRegistration ? <Informer msg={"Por favor, selecione alguém para realizar possíveis associações."} /> :
                                 <div className="possibleMatch">
@@ -129,7 +118,6 @@ const PendingMatchs = (props) => {
                                     <button onClick={handleMatch}>Associar</button>
                                 </div>
                         }
->>>>>>> 6747da836693827b3fddb9f9e100877465e8346e
                     </div>
                     <div className="pagination">
                         <Pagination

@@ -106,13 +106,6 @@ const Disqualified = (props) => {
                             <ListDisqualified handleInput={handleInput} listData={data ? data : []} />
                             <hr />
                         </div>
-<<<<<<< HEAD
-                        <div className="select-company">
-                            <h6>Selecione um tipo para a Empresa:</h6>
-                            <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
-                            <button onClick={handleSubmit}>Associar</button>
-                        </div>
-=======
                         {
                             !selectCompany ? <Informer msg={"Por favor, selecione uma empresa."}/> :
 
@@ -122,7 +115,6 @@ const Disqualified = (props) => {
                                 <button onClick={handleSubmit}>Associar</button>
                             </div>
                         }
->>>>>>> 6747da836693827b3fddb9f9e100877465e8346e
                     </div>
                     <div className="pagination">
                         <Pagination

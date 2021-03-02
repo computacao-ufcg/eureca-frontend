@@ -74,17 +74,11 @@ const Matchs = () => {
                     <Column width={280}>
                         <HeaderCell>Desfazer Associação</HeaderCell>
                         <Cell>
-<<<<<<< HEAD
-                            <div className={"delete-button-div"}>
-                                <button className={"delete-button-updatedata"}>Desfazer Associação</button>
-                            </div>
-=======
                             {rowData => (
                                 <div className={"delete-button-div"} onClick={() => { setCancelMatch(rowData); setShowModal(true) }}>
                                     <FiTrash2 size={20} />
                                 </div>
                             )}
->>>>>>> 6747da836693827b3fddb9f9e100877465e8346e
                         </Cell>
                     </Column>
                 </Table>
