@@ -37,13 +37,15 @@ const CardHome = (props) => {
 
     return (
         <React.Fragment>
-            <StudentsCardHome />
-            <SubjectsCardHome />
-            <EnrollmentsCardHome />
-            <PostItsCardHome />
-            <WarningsCardHome />
-            <CoursesCardHome />
-            <AlumniCardHome data={alumniData} />
+            <StudentsCardHome/>
+            {/** 
+            <SubjectsCardHome/>
+            <EnrollmentsCardHome/>
+            <PostItsCardHome/>
+            <WarningsCardHome/>
+            <CoursesCardHome/>
+            */}
+            <AlumniCardHome data={alumniData}/>
         </React.Fragment>
     )
 }

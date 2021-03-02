@@ -14,14 +14,14 @@ const EnrollmentsCardHome = () => {
             <div className='card-home-area1'>
                 <div className="card-home-content">
                     <div className="title-card-content">
-                        <TitleCardHome title={"MATRÍCULAS"} />
+                        <TitleCardHome title={"MATRÍCULAS"}/>
                     </div>
                     <div className="summary-card-content">
-                        <SummaryCardHome />
+                        <SummaryCardHome/>
                     </div>
                     <div className="card-img-3">
                         <div className="mask4">
-                            <img src={Mask4} alt="mask4" />
+                            <img src={Mask4} alt="mask4"/>
                         </div>
                     </div>
                 </div>
