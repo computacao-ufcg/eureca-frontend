@@ -51,12 +51,15 @@ const Classified = (props) => {
     }
 
     const handleCancelClassified = async () => {
+
+        // debugger
         const query = `employer?linkedinId=${cancelClassified.linkedinId}`;
 
         const res = await api_AS.delete(query,{ headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }});
 
         if(res.status === 200){
-            setData(data.filter( e => e.linkedinId !== cancelClassified.linkedinId));
+            // setData(data.filter( e => e.linkedinId !== cancelClassified.linkedinId));
+            handleClassified()
         }else{
             console.error("Response error");
         }

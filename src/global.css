@@ -37,6 +37,10 @@ code {
     monospace;
 }
 
+select:focus{
+  outline: none;
+}
+
 /*
 azul: #0073e5
 marfim: #ccccaa
