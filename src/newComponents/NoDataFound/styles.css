@@ -1,0 +1,22 @@
+.no-data-found{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    width: 100%;
+    max-width: 20vw;
+
+    height: 10vh;
+}
+
+.no-data-found svg{
+    margin-left: 20px;
+    height: 30px;
+    width: 30px;
+}
+
+.no-data-found p{
+    font-size: 14px;
+    color: #886859;
+}

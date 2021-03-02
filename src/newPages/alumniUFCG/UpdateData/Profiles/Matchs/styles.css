@@ -3,6 +3,10 @@
     justify-content: center;
 }
 
+.matchs-no-data-found{
+    margin-top: 10vh;
+}
+
 .delete-button-div svg:hover{
     height: 25px; 
     width:  25px;

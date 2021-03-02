@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Header from '../../../newComponents/Header';
 import MyLoading from '../../../newComponents/MyLoading';
+import NoDataFound from '../../../newComponents/NoDataFound';
 
 import { api_AS } from './../../../services/api'
 import ListAlumni from '../SeeMore/listAlumni'
@@ -20,18 +21,21 @@ const SeeMore = () => {
     const [admission, setAdmission] = useState("");
     const [graduation, setGraduation] = useState("");
 
-    const [searchType, setSearchType] = useState('');
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState(true);
+    const [noData, setNoData] = useState(false);
 
 
     const handleProfile = async (page, name, admission, graduation) => {
         setLoading(true);
+        debugger
+
         let query = `match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
             setData(res.data.content);
+            res.data.content.length === 0 ? setNoData(true) : setNoData(false);
             setLoading(false);
             setSearch(false);
         } else {
@@ -60,34 +64,35 @@ const SeeMore = () => {
             <div className="main-content">
                 <Header></Header>
                 <div className="main-seemore">
-                    <div className="container-title-seemore">
-                        <h1>VER MAIS</h1>
-                    </div>
-                    <div className="seemore-input-boxes">
-                        <div className="seemore-input-box" onClick={() => setSearchType("name")}>
-                            <div>
-                                <FiSearch size={25} />
-                            </div>
-                            <input id="ipt-name" type="text" placeholder="Buscar por nome" />
+                        <div className={'container-title-seemore'}>
+                            <h1>VER MAIS</h1>
                         </div>
-                        <div className="seemore-input-box" onClick={() => setSearchType("admission")}>
-                            <div>
-                                <FiSearch size={25} />
+                        <div className="seemore-input-boxes">
+                            <div className="seemore-input-box" >
+                                <div>
+                                    <FiSearch size={25} />
+                                </div>
+                                <input id="ipt-name" type="text" placeholder="Buscar por nome" />
                             </div>
-                            <input id="ipt-admission" type="text" placeholder="Buscar por período de admissão" />
-                        </div>
-                        <div className="seemore-input-box" onClick={() => setSearchType("graduation")}>
-                            <div>
-                                <FiSearch size={25} />
+                            <div className="seemore-input-box" >
+                                <div>
+                                    <FiSearch size={25} />
+                                </div>
+                                <input id="ipt-admission" type="text" placeholder="Buscar por período de admissão" />
                             </div>
-                            <input id="ipt-graduation" type="text" placeholder="Buscar por período de graduação" />
+                            <div className="seemore-input-box" >
+                                <div>
+                                    <FiSearch size={25} />
+                                </div>
+                                <input id="ipt-graduation" type="text" placeholder="Buscar por período de graduação" />
+                            </div>
+                            <button onClick={handleSearch}>Buscar</button>
                         </div>
-                        <button onClick={handleSearch}>Buscar</button>
-                    </div>
-                    {
-                        search ? <React.Fragment /> :
 
+                        {
+                            search ? <React.Fragment /> :
                             loading ? <MyLoading /> :
+                            noData ? <NoDataFound msg={"Nenhum dado encontrado."} /> :
                                 <div className="list-alumni">
                                     <ListAlumni listData={data} />
                                     <hr></hr>

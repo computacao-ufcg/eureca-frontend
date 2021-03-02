@@ -14,26 +14,24 @@ const AlumniCardHome = (props) => {
     return (
         <React.Fragment>
             <div className='card-home-area2'>
-                <div className="alumni-card-home-content">
+                <div className="card-home-content">
                     <div className="title-card-content">
                         <TitleCardHome title={"EGRESSOS"} />
                     </div>
-                    <div className="alumni-card-content">
+                    <div className="summary-card-content">
                         <AlumniCards data={props.data} />
-                        <div className="alumni-buttons">
-                            <div className="seemore-button">
-                                <Link to={'newDesign/alumniufcg/seemore'}>
-                                    <button className='alumni-button' type="submit">VER MAIS</button>
-                                </Link>
-                            </div>
-                            <div className="updatedata-button">
-                                <Link to={'newDesign/alumniufcg/updatedata'}>
-                                    <button className='alumni-button' type="submit">ATUALIZAR DADOS</button>
-                                </Link>
-                            </div>
-                        </div>
                     </div>
-                    <div className="alumni-card-img-1">
+                    <div className="card-home-content-footer">
+                        <div className="seemore-button">
+                            <Link to={'newDesign/alumniufcg/seemore'}>
+                                <button type="submit">VER MAIS</button>
+                            </Link>
+                        </div>
+                        <div className="updatedata-button">
+                            <Link to={'newDesign/alumniufcg/updatedata'}>
+                                <button type="submit">ATUALIZAR DADOS</button>
+                            </Link>
+                        </div>
                         <div className="mask6">
                             <img src={Mask6} alt="mask6" />
                         </div>

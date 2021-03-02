@@ -1,3 +1,26 @@
+const optionsSelect = [
+    {
+        value:"very-likely",
+        label: "Muito Provável"
+    },
+    {
+        value:"likely",
+        label: "Provável"
+    },
+    {
+        value:"average",
+        label: "Média"
+    },
+    {
+        value:"unlikely",
+        label: "Improvável"
+    },
+    {
+        value:"very-unlikely",
+        label: "Muito Improvável"
+    },
+]
+
 const sortData = (data, sortType) => {
 
     return data.sort((a, b) => {
@@ -17,4 +40,4 @@ const sortData = (data, sortType) => {
     });
 }
 
-export { sortData };
+export { optionsSelect, sortData };

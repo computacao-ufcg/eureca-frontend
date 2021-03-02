@@ -6,6 +6,7 @@ import 'rsuite/dist/styles/rsuite-default.css';
 import ListAlumnus from './ListAlumnus';
 import ListPicker from './ListPicker';
 import Informer from '../../Informer';
+import { optionsSelect } from './util';
 
 import { api_AS } from '../../../../../services/api';
 
@@ -113,7 +114,12 @@ const PendingMatchs = (props) => {
                         {
                             !selectedRegistration ? <Informer msg={"Por favor, selecione alguém para realizar possíveis associações."} /> :
                                 <div className="possible-match">
-                                    <h6>Fazer Associação:</h6>
+                                    <div className="possible-match-div">
+                                        <h6>Fazer Associação:</h6>  
+                                        <select className="possible-match-select" >
+                                            { optionsSelect.map( e => <option value={e.value}>{e.label}</option>) }
+                                        </select>
+                                    </div>
                                     <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
                                     <button onClick={handleMatch}>Associar</button>
                                 </div>

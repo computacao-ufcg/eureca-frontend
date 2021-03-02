@@ -8,7 +8,7 @@ const Informer = (props) => {
 
     return (
         <div className="informer-container">
-            <FaHandPointLeft />
+            <div><FaHandPointLeft /></div>
             <p>{props.msg || "Please, select a option."}</p>
         </div>
     );

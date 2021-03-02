@@ -31,10 +31,12 @@ const Employers = () => {
 
   return (
     <div className="employers-container">
-      <Nav onSelect={handleNav} activeKey={activeNav} appearance={'tabs'}>
-        <Nav.Item eventKey={'classified'}>Classificados</Nav.Item>
-        <Nav.Item eventKey={'desqualified'}>Não Classificados</Nav.Item>
-      </Nav>
+      <div className="employers-tab">
+        <Nav onSelect={handleNav} activeKey={activeNav} appearance={'tabs'}>
+          <Nav.Item eventKey={'classified'}>Classificados</Nav.Item>
+          <Nav.Item eventKey={'desqualified'}>Não Classificados</Nav.Item>
+        </Nav>
+      </div>
       {data}
     </div>
   )

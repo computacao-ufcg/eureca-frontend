@@ -23,7 +23,6 @@ const CardHome = (props) => {
     const fetch = async () => {
         let query = "statistics?courseName=computing-science&level=undergraduate"
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } })
-
         if (res.status === 200) {
             console.log(res)
             setAlumniData(res.data);

@@ -9,7 +9,6 @@ const ListPicker = (props) => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [selected, setSelected] = useState(null);
 
-
     const handleSelected = (element) => {
         if (selected === element) {
             setSelected(null);
