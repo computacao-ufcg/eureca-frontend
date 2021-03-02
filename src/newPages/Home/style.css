@@ -1,12 +1,13 @@
 .home-content{
-    height: auto;
-    width: 100%;
     background-color: #E6DBD3;
-    min-height: 100vh;
+    padding-bottom: 10vh;
+    min-height: 80vh;
 }
 
 .home-cards {
     padding-top: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    width: 80vw;
+    margin-left: 10vw;
 }

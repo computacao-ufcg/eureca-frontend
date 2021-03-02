@@ -179,7 +179,7 @@ const Actives = () => {
                                 <table>
                                     <tbody>
 
-                                        {dataSelectExample.map( (e, index) => (
+                                        {dataSelectExample.map((e, index) => (
                                             <tr key={"tr" + index}>
                                                 <td><input type="checkbox" /></td>
                                                 <td><svg height={20} width={20}> <circle cx={10} cy={10} r={5} fill={e.svgColor}></circle></svg></td>

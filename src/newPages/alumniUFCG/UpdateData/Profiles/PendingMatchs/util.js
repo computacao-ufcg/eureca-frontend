@@ -22,7 +22,7 @@ const optionsSelect = [
 ]
 
 const sortData = (data, sortType) => {
-    
+
     return data.sort((a, b) => {
         let x = a.alumnus.fullName;
         let y = b.alumnus.fullName;

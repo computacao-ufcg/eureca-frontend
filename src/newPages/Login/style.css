@@ -73,10 +73,6 @@
     margin-top: 60px;
 }
 
-.login-form {
-
-}
-
 .login-label {
     font-weight: bold;
     font-size: 14px;
@@ -103,6 +99,13 @@
     color: #FFFFFF;
     background-color: #765547;
     border-radius: 16px;
+    outline: 0;
+}
+
+.login-button:hover{
+    cursor: pointer;
+    background-color:#765547c2;
+
 }
 
 .div-page-login {

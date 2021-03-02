@@ -9,19 +9,19 @@ import Mask7 from '../../../../assets/new_home_assets/mask_7.svg';
 
 const SubjectsCardHome = () => {
 
-    return(
+    return (
         <React.Fragment>
-            <div className={'card-home-area2'}>
-                <div className={"card-home-content"}>
-                    <div className={"card-img-2"}>
-                        <div className={"mask7"}>
-                            <img src={Mask7} alt="mask7"/>
+            <div className="card-home-area2">
+                <div className="card-home-content">
+                    <div className="card-img-2">
+                        <div className="mask7">
+                            <img src={Mask7} alt="mask7" />
                         </div>
-                        <div className={"title-card-content"}>
-                            <TitleCardHome title={"DISCIPLINAS"}/>
+                        <div className="title-card-content">
+                            <TitleCardHome title={"DISCIPLINAS"} />
                         </div>
-                        <div className={"summary-card-content2"}>
-                            <SummaryCardHome/>
+                        <div className="summary-card-content2">
+                            <SummaryCardHome />
                         </div>
                     </div>
                 </div>

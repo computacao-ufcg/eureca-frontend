@@ -1,22 +1,25 @@
 .card-home-content {
-    height: 311px;
-    width: 659px;
+    height: 360px;
+    width: 700px;
     background-color: #FFFFFF;
     border-radius: 6px;
     box-shadow: 0px 1px 4px #15223214;
-    display: grid;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.card-home-nude {
+/* .card-home-nude {
     height: 311px;
     width: 659px;
     display: grid;
-}
+} */
 
 .card-home-area1 {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding-right: 19px;
     margin-bottom: 38px;
 }
@@ -26,12 +29,14 @@
     display: flex;
     padding-left: 19px;
     margin-bottom: 38px;
+    justify-content: flex-end;
 }
 .card-img-1 {
     align-items: flex-end;
     justify-content: space-between;
     height: 100%;
     display: flex;
+    position: relative;
 }
 
 .card-img-2 {
@@ -67,13 +72,15 @@
 }
 
 .mask5 {
-    display: flex;
-    justify-content: flex-end;
-    
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .mask6 {
-    
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .mask7 {
@@ -84,16 +91,20 @@
     position: absolute;
 }
 
+/* -------------------------------------------- HEADER CARD ------------------------------------------------------ */
+
 .title-card-content {
-    display: grid;
-    padding: 34px 0px 0px 39px;
-    height: 70px;
+    height: 50px;
+    padding: 25px 40px 0;
+    
 }
+
+/* -------------------------------------------- SUMMARY CARD ------------------------------------------------------ */
 
 .summary-card-content {
     display: flex;
     padding-left: 40px;
-    margin-bottom: -24px;
+    height: 210px;
 }
 
 .summary-card-content2 {
@@ -116,7 +127,7 @@
 
 .type-student-selected{
     font-size: 16px;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     margin-bottom: 8px;
     letter-spacing: 0.1px;
     padding: 0px 5px;
@@ -125,7 +136,7 @@
 
 .type-student:hover{
     background-color: #886859;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     transition: 0.3s;
 }
 
@@ -138,7 +149,39 @@
     display: grid;
 }
 
-.students-see-more{
-    padding: 15px 0px 0px 29px;
-    font-size: 16px;
+/* -------------------------------------------- FOOTER CARD ------------------------------------------------------ */
+
+.card-home-content-footer{
+    position: relative;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 40px 12px;
+    font-size: 14px;
 }
+
+.card-home-content-footer button{
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    color: #7e84a3;
+}
+
+.card-home-content-footer button:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #886859;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.card-home-content-footer button:hover:after{ 
+    transform: scaleX(1); 
+    transform-origin:  0% 50%;
+}
+
+.card-home-content-footer button:focus{
+    outline: none;
+}
+

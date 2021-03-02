@@ -3,7 +3,7 @@ import { Table } from 'rsuite';
 
 const { Column, HeaderCell, Cell } = Table;
 
-const ListEgressos = (props) => {
+const ListAlumni = (props) => {
     return (
         <div className="table-egressos">
             <Table
@@ -18,19 +18,19 @@ const ListEgressos = (props) => {
                     <HeaderCell >Nome do Egresso</HeaderCell>
                     <Cell dataKey="name" />
                 </Column>
-                
+
                 <Column width={120}>
                     <HeaderCell>Admissão</HeaderCell>
-                    <Cell dataKey="admission"/>
+                    <Cell dataKey="admission" />
                 </Column>
 
                 <Column width={120}>
                     <HeaderCell>Graduação</HeaderCell>
-                    <Cell dataKey="graduation"/>
+                    <Cell dataKey="graduation" />
                 </Column>
 
                 <Column width={120} >
-                    <HeaderCell>Linkedin</HeaderCell>
+                    <HeaderCell>LinkedIn</HeaderCell>
 
                     <Cell>
                         {rowData => {
@@ -45,10 +45,9 @@ const ListEgressos = (props) => {
 
                 </Column>
 
-
             </Table>
 
         </div>
     )
 }
-export default ListEgressos
+export default ListAlumni;

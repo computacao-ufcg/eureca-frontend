@@ -1,8 +1,8 @@
-.matchesContainer{
+.matches-container{
     text-align: center;
 }
 
-.matchesContainer button{
+.matches-container button{
     width: 200px;
     height: 50px;
     background:#886859;
@@ -14,6 +14,6 @@
     cursor: pointer;
 }
 
-.matchesContainer button:hover{
+.matches-container button:hover{
     background-color: #886859ea;
 }

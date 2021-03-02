@@ -6,7 +6,7 @@ const { Column, HeaderCell, Cell } = Table;
 
 const ListDisqualified = (props) => {
     return (
-        <div className={'tableDisqualified'}>
+        <div className="table-disqualified">
             <Table
                 height={480}
                 width={500}
@@ -23,7 +23,7 @@ const ListDisqualified = (props) => {
                                 props.handleInput(event.target.value, event.target.getAttribute('name'))
                             }
                             return (
-                                <input className={'inputCompany pointer'} name={rowData.linkedinId} readOnly value={rowData.name} onClick={handleAction}>
+                                <input className="inputCompany pointer" name={rowData.linkedinId} readOnly value={rowData.name} onClick={handleAction}>
 
                                 </input >
                             );

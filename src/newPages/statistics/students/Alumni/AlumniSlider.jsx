@@ -18,9 +18,9 @@ const AlumniSlider = (props) => {
         height: 22
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         const LL = props.label.length === 0 ? 0 : props.label.length - 1;
-        
+
         setLabelLength(LL);
         setLabel(props.label);
         setValue2(LL);
@@ -28,7 +28,7 @@ const AlumniSlider = (props) => {
     }, [props.label])
 
     return (
-        <div className={'mainSlider'}>
+        <div className="mainSlider">
             <RangeSlider
                 min={0}
                 max={labelLength}
@@ -46,9 +46,9 @@ const AlumniSlider = (props) => {
                 }}
                 renderMark={mark => {
                     if ([value1, value2].includes(mark)) {
-                        return <span className={'legendSlider'}>{label[mark]}</span>;
+                        return <span className="legendSlider">{label[mark]}</span>;
                     }
-                    
+
                 }}
             />
         </div>

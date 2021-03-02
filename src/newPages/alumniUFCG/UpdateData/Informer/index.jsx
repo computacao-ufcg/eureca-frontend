@@ -4,9 +4,9 @@ import { FaHandPointLeft } from 'react-icons/fa';
 
 import './styles.css';
 
-const Informer = (props)=>{
+const Informer = (props) => {
 
-    return(
+    return (
         <div className="informer-container">
             <div><FaHandPointLeft /></div>
             <p>{props.msg || "Please, select a option."}</p>

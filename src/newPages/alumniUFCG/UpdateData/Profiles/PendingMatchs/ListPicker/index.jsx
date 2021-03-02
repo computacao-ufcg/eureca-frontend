@@ -23,7 +23,7 @@ const ListPicker = (props) => {
     return (
         <div className="listpicker-container">
             {data.map((element, index) => {
-                if(index < 5){
+                if (index < 5) {
                     return (
                         <div
                             key={`listpicker${index}`}
@@ -41,7 +41,7 @@ const ListPicker = (props) => {
                             <span>score: {element.score}</span>
                         </div>
                     )
-                }     
+                }
             })}
         </div>
     )

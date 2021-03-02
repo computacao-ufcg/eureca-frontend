@@ -4,19 +4,19 @@ import Header from '../../../newComponents/Header';
 import MyLoading from '../../../newComponents/MyLoading';
 import NoDataFound from '../../../newComponents/NoDataFound';
 
-import './styles.css';
-
 import { api_AS } from './../../../services/api'
-import ListEgressos from '../SeeMore/listEgressos'
+import ListAlumni from '../SeeMore/listAlumni'
 import { Pagination } from 'rsuite';
 import { FiSearch } from 'react-icons/fi';
-import './styles.css'
+
+import './styles.css';
+
 
 const SeeMore = () => {
 
     const [data, setData] = useState([]);
     const [page, setPage] = useState(0);
-    
+
     const [name, setName] = useState("");
     const [admission, setAdmission] = useState("");
     const [graduation, setGraduation] = useState("");
@@ -26,7 +26,7 @@ const SeeMore = () => {
     const [noData, setNoData] = useState(false);
 
 
-    const handleProfile = async (page, name, admission, graduation) => { 
+    const handleProfile = async (page, name, admission, graduation) => {
         setLoading(true);
         debugger
 
@@ -88,12 +88,13 @@ const SeeMore = () => {
                             </div>
                             <button onClick={handleSearch}>Buscar</button>
                         </div>
+
                         {
                             search ? <React.Fragment /> :
                             loading ? <MyLoading /> :
                             noData ? <NoDataFound msg={"Nenhum dado encontrado."} /> :
-                                <div className={'listEgressos'}>
-                                    <ListEgressos listData={data} />
+                                <div className="list-alumni">
+                                    <ListAlumni listData={data} />
                                     <hr></hr>
                                     <Pagination
                                         pages={data.totalPages}
@@ -108,8 +109,8 @@ const SeeMore = () => {
                                         boundaryLinks
                                     />
                                 </div>
-                        }
-                    </div>
+                    }
+                </div>
             </div>
         </React.Fragment>
     );

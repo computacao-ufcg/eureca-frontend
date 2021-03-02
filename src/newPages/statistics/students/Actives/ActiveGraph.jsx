@@ -13,12 +13,12 @@ const ActiveGraph = (props) => {
 
     // for graph
     const [normal, setNormal] = useState([]);
-    const [late, setLate ]= useState([]);
+    const [late, setLate] = useState([]);
     const [advanced, setAdvanced] = useState([]);
     const [critical, setCritical] = useState([]);
     const [notApplicable, setNotApplicable] = useState([]);
     const [unfeasible, setUnfeasible] = useState([]);
-    
+
     useEffect(() => {
         const loaddingData = () => {
             setLoadding(true);
@@ -83,7 +83,7 @@ const ActiveGraph = (props) => {
 
                         <p className="graph-label-y">Créditos Integralizados</p>
                         <p className="graph-label-x">Períodos Integralizados</p>
-                    </div>               
+                    </div>
                 </React.Fragment>
             }
         </div>

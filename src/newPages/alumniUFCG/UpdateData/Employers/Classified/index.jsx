@@ -51,15 +51,12 @@ const Classified = (props) => {
     }
 
     const handleCancelClassified = async () => {
-
-        // debugger
         const query = `employer?linkedinId=${cancelClassified.linkedinId}`;
 
-        const res = await api_AS.delete(query,{ headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }});
+        const res = await api_AS.delete(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if(res.status === 200){
-            // setData(data.filter( e => e.linkedinId !== cancelClassified.linkedinId));
-            handleClassified()
+            setData(data.filter( e => e.linkedinId !== cancelClassified.linkedinId));
         }else{
             console.error("Response error");
         }
@@ -108,7 +105,7 @@ const Classified = (props) => {
                         <HeaderCell>Desfazer Classificação</HeaderCell>
                         <Cell>
                             {rowData => (
-                                <div className={"delete-button-div"} onClick={() => { setCancelClassified(rowData); setShowModal(true) }}>
+                                <div className="delete-button-div" onClick={() => { setCancelClassified(rowData); setShowModal(true) }}>
                                     <FiTrash2 size={20} />
                                 </div>
                             )}
