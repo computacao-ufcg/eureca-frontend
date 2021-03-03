@@ -11,6 +11,8 @@ import { api_EB, api_EAS } from '../../services/api';
 
 const Login = () => {
 
+    const text = "Eureca é uma plataforma de apoio à gestão acadêmica que visa auxiliar as coordenações de cursos de graduação da UFCG em suas diversas atividades. A plataforma disponibiliza variadas informações sobre os discentes dos cursos, bem como oferece um leque de serviços de apoio às coordenações.";
+
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
@@ -73,9 +75,7 @@ const Login = () => {
                             <p className="title-about">SOBRE</p>
                         </div>
                         <div className="login-about-2">
-                            <div className="login-about-text">
-                                <p>O eureca é uma plataforma onde coordenadores e outros....</p>
-                            </div>
+                            <p>{text}</p>
                         </div>
                     </div>
                 </div>
