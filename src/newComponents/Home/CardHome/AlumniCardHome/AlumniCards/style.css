@@ -1,0 +1,42 @@
+.alumni-summary-card-main {
+    border: 1px solid #707070;
+    box-shadow: 0px 1px 4px #15223214;
+    border-radius: 8px 8px 0px 0px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.alumni-summary-card-title {
+    height: 70px;
+    
+}
+
+.alumni-summary-card-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
+.alumni-summary-card-cards .legend-mini-card-home{
+    font-size: 12px;
+}
+
+.alumni-summary-card-info {
+    padding: 15px 0px 0px 20px;
+}
+
+
+.alumni-summary-card-size {
+    font-size: 28px;
+    letter-spacing: 0.12px;
+    color: #131523;
+    font-weight: 600;
+}
+
+.alumni-summary-card-legend {
+    font-size: 12px;
+    letter-spacing: 0.1px;
+    color: #7E84A3;
+    margin-top: -6px;
+}

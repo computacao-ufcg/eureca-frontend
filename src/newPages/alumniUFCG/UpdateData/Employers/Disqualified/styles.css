@@ -1,0 +1,26 @@
+.main-disqualified{
+    display: flex; 
+    justify-content: space-between;
+}
+
+.inputCompany {
+    border:none;
+    width: 500px;
+    background-color: transparent
+}
+
+.inputCompany:focus {
+    outline: none;
+}
+
+.table-disqualified a{
+    color: #886859 ;
+}
+
+.pagination .a {
+    color: #886859
+}
+
+.select-company h6{
+    margin-top: 20px;
+}

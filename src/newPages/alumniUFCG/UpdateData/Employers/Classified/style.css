@@ -1,0 +1,8 @@
+.classified{
+    display: flex;
+    justify-content: center;
+}
+
+.classified-no-data-found{
+    margin-top: 10vh;
+}

@@ -1,0 +1,23 @@
+.main-container-body h1{
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+
+/* Alternator Tabs */
+
+.alternator-tabs{
+    display: flex;
+    width: 50vw;
+    margin: 5vh 0;
+
+    justify-content: space-around;
+}
+
+.rs-nav-item a{
+    color: #886859 !important;
+}
+
+.rs-nav-item-active a{
+    background-color: #886859 !important;
+    color: white !important;
+}

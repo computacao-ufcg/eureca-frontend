@@ -1,0 +1,75 @@
+.listOptions-container{
+    min-height: 300px;
+    max-height: 400px; 
+    width: 400px;
+    max-width: 500px;
+
+    overflow: scroll;
+
+    margin: 20px 0;
+    padding: 15px 5px 5px 5px;
+
+    background-color: #ffffff;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.411);
+}
+
+
+.listOptions-container::-webkit-scrollbar{
+    width: 8px;
+    /* transition: width .5s; */
+}
+
+/* .listOptions-container::-webkit-scrollbar:hover{
+    width: 10px;
+} */
+
+.listOptions-container::-webkit-scrollbar-thumb {
+    background: #9A9A9A 0% 0% no-repeat padding-box;
+    border-radius: 9px;
+}
+
+.listOptions-container div{
+    width: 80%;
+    margin: 1vh auto;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.listOptions-container .listOptions-selected{
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 25px;
+    background-color: transparent;
+}
+
+.listOptions-container div p{
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5C5F5C;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+.listOptions-container div p:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #886859;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.listOptions-container div p:hover:after { 
+    transform: scaleX(1); 
+    transform-origin:  0% 50%;
+}

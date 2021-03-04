@@ -1,0 +1,13 @@
+.capitalize, th{
+    text-transform: capitalize;
+}
+
+.table-discent table,.table-discent th, .table-discent td{
+    border: 1px solid black;
+}
+
+.table-discent table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}

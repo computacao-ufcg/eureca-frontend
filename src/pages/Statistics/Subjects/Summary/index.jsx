@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+// RSuite components
+import { Loader } from 'rsuite';
+
 // General Components 
 import Header from '../../../../components/General/Header';
 import NavBar from '../../../../components/StatisticsComponents/NavBar';
@@ -10,7 +13,6 @@ import { navOptions, subjectsOptions, nameSubjects } from '../../statisticsUtil'
 // Inter Components
 import SummarySlider from './SummarySlider';
 import SummaryGraph from './SummaryGraph';
-import SummaryGraph2 from './SummaryGraph2';
 
 // Api
 import api from '../../../../services/api';
@@ -38,25 +40,12 @@ const Summary = () => {
         const resSummary = await api.get(`api/estatisticas/${query}`, {});
 
         if (resSummary.statusText === 'OK') {
-            // formatData(resSummary.data);
-            setDataGraph(resSummary.data.dados);
+            setDataGraph(resSummary.data);
         } else {
             console.log("Error Data Ativos");
         }
 
         setLoading(false);
-    }
-
-    const formatData = (data) => {
-
-        const dados = data.map(e => {
-            const group = e.group;
-            const { lim_inf, lim_sup, q1, q2, q3 } = e.data;
-
-            return { 'label': group, 'y': [lim_inf, q1, q3, lim_sup, q2] };
-        });
-
-        setDataGraph(dados);
     }
 
     useEffect(() => {
@@ -67,9 +56,7 @@ const Summary = () => {
             const resSummary = await api.get(`api/estatisticas/${query}`, {});
 
             if (resSummary.statusText === 'OK') {
-                // formatData(resSummary.data.dados);
                 setDataGraph(resSummary.data.dados);
-                console.log(resSummary.data.periodos)
                 setLabel(resSummary.data.periodos);
             } else {
                 console.log("Error Data Ativos");
@@ -95,12 +82,16 @@ const Summary = () => {
                                 <div onMouseUp={() => fetchDataApiWithLabel(min, max)}>
                                     <SummarySlider changeSlider={handleSlider} labels={label} min={min} max={max}></SummarySlider>
                                 </div>
-                                {/* {
-                                    loading ? null : <SummaryGraph data={dataGraph}></SummaryGraph>
-                                } */}
                                 <div className={'main-content-graph'}>
-                                    <h2>Sumário</h2>
-                                    <SummaryGraph2></SummaryGraph2>
+                                    {loading ? <Loader></Loader> :
+                                        <React.Fragment>
+                                            <h2>Sumário</h2>
+                                            <div>
+                                                <p>Taxa de Sucesso (%)</p>
+                                                <SummaryGraph data={dataGraph}></SummaryGraph>
+                                            </div>
+                                            <p><strong>taxa de sucesso</strong>: Percentual de aprovação para cada grupo disciplinar.</p>
+                                        </React.Fragment>}
                                 </div>
                                 <br />
                                 <br />

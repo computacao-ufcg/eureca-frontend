@@ -1,10 +1,19 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Login from './pages/Login';
+import PrivateRoute from './newComponents/PrivateRoute';
 
-import Home from './pages/Home';
+import UpdateData from './newPages/alumniUFCG/UpdateData';
+import SeeMore from './newPages/alumniUFCG/SeeMore';
+
+import Home from './newPages/Home';
+import Login from './newPages/Login';
+
 import Services from './pages/Services'
+
+import Actives from './newPages/statistics/students/Actives';
+import Alumni from './newPages/statistics/students/Alumni';
+import Dropout from './newPages/statistics/students/Dropout';
 
 import ActiveStudents from './pages/Statistics/Students/ActiveStudents'
 import GraduatedStudents from './pages/Statistics/Students/GraduatedStudents'
@@ -20,8 +29,19 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component = {() => <Login/> } />
-        <Route exact path="/home" component = {() => <Home/> } />
+
+        {/* New Design */}
+        <Route exact path="/login" component = {() => <Login/> } />
+        <PrivateRoute exact path="/" component = {() => <Home/> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/actives" component={() => <Actives /> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/alumni" component={() => <Alumni /> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/dropout" component={() => <Dropout /> } />
+        <PrivateRoute exact path="/newDesign/statistics/students/delayed" component={() => <Redirect to='/' />} />
+        <PrivateRoute exact path="/newDesign/alumniufcg/updatedata" component={() => <UpdateData /> } />
+        <PrivateRoute exact path="/newDesign/alumniufcg/seemore" component={() => <SeeMore /> } />
+
+        {/* Old Design */}
+
         <Route exact path="/statistics" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/students" component = {() => <Redirect to='/statistics/activestudents'/> }/>
         <Route exact path="/statistics/subjects" component = {() => <Redirect to='/statistics/summarysubjects'/> }/>

@@ -1,0 +1,61 @@
+.header-container{
+    height: 20vh;
+}
+
+.header-container .header-1{
+    background-color: #FFFFFF;
+    height: 8vh;
+
+    padding-left: 10vw;
+    padding-right: 10vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-1-eureca-logo{
+    cursor: pointer;
+}
+
+.header-1-user{
+    display: flex;
+}
+
+.header-1-user div{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    background-image: url('../../assets/header/default-avatar.png');
+    background-size: contain;
+
+    border-radius: 50%;
+}
+
+.header-1-user p{
+    color: #765547;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.header-container .header-2{
+    background-color: #886859;
+    height: 12vh;
+
+    padding-left: 10vw;
+    padding-right: 10vw;
+
+    display: flex;
+}
+
+.header-container .header-2 p{
+    position: relative;
+    align-self: flex-end;
+    margin: 2vh 0;
+    
+    color: #FFFFFF;
+    text-transform: capitalize;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+}
