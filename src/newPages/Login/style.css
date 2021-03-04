@@ -43,19 +43,15 @@
 }
 
 .login-about-2 {
-    height: 52px;
-    width: 310px;
+    height: auto;
+    width: 30vw;
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
-.login-about-text {
-    display: flex;
-    justify-content: end;
-}
-
-.login-about-text p {
-    text-align: end;
+.login-about-2 p {
+    text-align: justify;
+    text-indent: 1.5em;
     font-size: 18px;
     color: #5A607F;
     letter-spacing: 0.11px;
