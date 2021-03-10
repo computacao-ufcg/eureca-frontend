@@ -1,5 +1,9 @@
 const optionsSelect = [
     {
+        value:"all",
+        label: "Todos"
+    },
+    {
         value:"very-likely",
         label: "Muito Provável"
     },

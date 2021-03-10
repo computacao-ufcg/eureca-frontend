@@ -11,7 +11,7 @@ const ListAlumnus = (props) => {
     const [sortColumn, setSortColumn] = useState('');
     const [sortType, setSortType] = useState('asc');
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState(sortData(props.listData, sortType));
+    const [data, setData] = useState(props.listData);
 
     function handleSortColumn(sortColumn, sortType) {
         setLoading(true);
@@ -35,9 +35,6 @@ const ListAlumnus = (props) => {
                     props.handleAlumnus(data)
                 }}
 
-                sortColumn={sortColumn}
-                sortType={sortType}
-                onSortColumn={handleSortColumn}
                 loading={loading}
             >
                 <Column width={300} sortable>

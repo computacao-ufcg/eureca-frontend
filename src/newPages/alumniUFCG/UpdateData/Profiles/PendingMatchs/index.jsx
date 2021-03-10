@@ -28,19 +28,36 @@ const PendingMatchs = (props) => {
     const [selectedRegistration, setSelectedRegistration] = useState('');
     const [selectedProfile, setSelectedProfile] = useState(null);
 
+    const [filter, setFilter] = useState("all");
+
 
     useEffect(() => {
-        handleProfile(page);
+        handleProfile(page, filter, true);
     }, []);
 
-    const handleProfile = async (page) => {
-        setLoading(true);
-        let query = 'match/pending/' + page;
+    const handleProfile = async (page, filter, flag) => {
+        if(flag){
+            setLoading(true);
+        }
+        console.log(filter)
+        let query = ''
+        if (filter !== "all") {
+            query = 'match/pending/' + page + "?matchClassification=" + filter;
+        } else {
+            query = 'match/pending/' + page;
+        }
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
             setDataMaster(res.data);
             setDataContent(res.data.content);
+            if(!flag){
+                console.log(res.data.content)
+               var matches = res.data.content.filter(function(match){
+                   return match.alumnus.registration === selectedRegistration;
+               })
+               setPossibleMatches(matches[0] ? matches[0].possibleMatches : [])
+            }
             setLoading(false);
         } else {
             console.error("Response error");
@@ -49,10 +66,11 @@ const PendingMatchs = (props) => {
 
     const handlePage = (eventKey) => {
         setPage(eventKey - 1);
-        handleProfile(eventKey - 1);
+        handleProfile(eventKey - 1, filter, true);
     }
 
     const handleAlumnus = (value) => {
+        console.log(value)
         setSelectedRegistration(value.alumnus.registration);
         setPossibleMatches(value.possibleMatches);
     }
@@ -115,9 +133,12 @@ const PendingMatchs = (props) => {
                             !selectedRegistration ? <Informer msg={"Por favor, selecione alguém para realizar possíveis associações."} /> :
                                 <div className="possible-match">
                                     <div className="possible-match-div">
-                                        <h6>Fazer Associação:</h6>  
-                                        <select className="possible-match-select" >
-                                            { optionsSelect.map( e => <option value={e.value}>{e.label}</option>) }
+                                        <h6>Fazer Associação:</h6>
+                                        <select onChange={(event) => {
+                                            handleProfile(page, event.target.value, false)
+                                            setFilter(event.target.value)
+                                        }} className="possible-match-select" >
+                                            {optionsSelect.map(e => <option value={e.value}>{e.label}</option>)}
                                         </select>
                                     </div>
                                     <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />

@@ -32,8 +32,6 @@ const CardHome = (props) => {
         }
     }
 
-
-
     return (
         <React.Fragment>
             <StudentsCardHome/>
