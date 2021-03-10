@@ -1,0 +1,33 @@
+.actives-graph-container{
+    display: flex;    
+    flex-direction: column;
+
+}
+
+.custom-tooltip{
+    background-color: white;
+    padding: 10px;
+}
+
+.graph-main {
+    position: relative;
+}
+
+.graph-main .graph-label-y, .graph-label-x {
+    position: absolute;
+    color: #A1A7C4;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.graph-main .graph-label-y{
+    top: 0;
+    left: 0;
+
+    transform: rotate(-90deg) translate(-10vh, -7vh);
+}
+
+.graph-main .graph-label-x{
+    bottom: 0;
+    right: 4vw;
+}

@@ -1,0 +1,163 @@
+.container-1 {
+    display: grid;
+    margin: 0 auto;
+
+    
+    width: 84%;
+    height: 83%;
+
+    margin-top: 15px;
+    
+
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 4px #15223214;
+    border-radius: 6px;
+    opacity: 1;
+
+    align-items: center;
+}
+
+
+.titulo {
+    color: #131523;
+
+    font: 18px;
+
+    font-weight: bold;
+
+    height: 5px;
+
+    margin-top: 34px;
+    margin-left: 40px;
+
+    margin-bottom: 0;
+
+}
+
+.caminho {
+    display: flex;
+    height: 47px;
+    margin-top: 10px;
+
+    justify-content: center;
+
+}
+
+.matriculados {
+    display: inline-block;
+    align-self: flex-end;
+
+    width: 100px;
+    height: 37px;
+
+    margin-right: 10px;
+
+    border-style: solid;
+    border-color: #5A607F;
+    border-width: thin;
+
+    font-size: 10px;
+    color: #A1A7C4;
+    text-align: center;
+    font-weight:600;
+    
+    padding-top: 10px;
+    
+}
+
+
+.filtro1 {
+    display: inline-block;
+    align-self: flex-end;
+    height: 30px;
+    width: 100px;
+
+    margin-right: 10px;
+
+    border-style: solid;
+    border-color: #5A607F;
+    border-width: thin;
+
+    font-size: 10px;
+    color: #A1A7C4;
+    text-align: center;
+    font-weight:600;
+    
+    padding-top: 10px;
+}
+.filtro2 {
+    display: inline-block;
+    align-self: flex-end;
+    height: 30px;
+    width: 100px;
+
+    border-style: solid;
+    border-color: #5A607F;
+    border-width: thin;
+
+    font-size: 10px;
+    color: #A1A7C4;
+    text-align: center;
+    font-weight:600;
+    
+    padding-top: 10px;
+}
+
+
+
+.container-2 {
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+
+    align-items: flex-start;
+
+    row-gap: 15px;
+
+    margin-bottom: 150px; 
+
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+
+    width: 100%;
+    height: 600px;
+    padding: 25px;
+    padding-left: 60px;
+    padding-right: 60px;
+
+    background: #DDDDDD 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.columns {
+    display: grid;
+    grid-template-rows: repeat(7, auto);
+    grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
+    
+}
+
+@media screen and(max-width: 897px) {
+    .container-1 .container-2 {
+        width: 897px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

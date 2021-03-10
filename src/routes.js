@@ -5,6 +5,7 @@ import Login from './pages/Login';
 
 import Home from './pages/Home';
 import Services from './pages/Services'
+import Cursos from './pages/Services/Cursos'
 
 import ActiveStudents from './pages/Statistics/Students/ActiveStudents'
 import GraduatedStudents from './pages/Statistics/Students/GraduatedStudents'
@@ -38,6 +39,8 @@ const Routes = () => {
         <Route exact path="/statistics/updateenrollment" component = {() => <UpdateEnrollment/>}/>
 
         <Route exact path="/services" component = {() => <Services/> }/>
+        <Route exact path="/services/cursos" component = {() => <Cursos/>} />
+    
 
       </Switch>
     </BrowserRouter>

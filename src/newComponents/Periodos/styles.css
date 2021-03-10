@@ -1,0 +1,17 @@
+.caixa {
+    display: flex;
+    width: 130px;
+    height: 30px;
+    padding: 0;
+    background: #FFFFFF;
+    margin: 0 auto;
+    
+}
+
+.caixa p {
+    padding-left: 35px;
+    align-self: center;
+    font-weight: bold;
+    font-size: 11px;
+    
+}

@@ -1,0 +1,14 @@
+
+.possibleMatch{
+    display: block;
+}
+
+.possibleMatch h6{
+    width: 500px;
+    margin-top: 20px;
+}
+
+.mainMatches{
+    display: flex;
+    justify-content: space-between;
+}
