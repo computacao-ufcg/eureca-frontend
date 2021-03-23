@@ -7,12 +7,14 @@ import ListAlumnus from './ListAlumnus';
 import ListPicker from './ListPicker';
 import Informer from '../../Informer';
 import { optionsSelect } from './util';
+import { useClearCache } from 'react-clear-cache';
 
 import { api_AS } from '../../../../../services/api';
 
 import './styles.css';
 
 const PendingMatchs = (props) => {
+    const { isLatestVersion, emptyCacheStorage } = useClearCache();
 
     const warningMsg = "Por favor, selecione alguém para associar.";
     const successMsg = "Associação realizada com sucesso!";
@@ -28,7 +30,7 @@ const PendingMatchs = (props) => {
     const [selectedRegistration, setSelectedRegistration] = useState('');
     const [selectedProfile, setSelectedProfile] = useState(null);
 
-    const [filter, setFilter] = useState("all");
+    const [filter, setFilter] = useState("very-likely");
 
 
     useEffect(() => {
@@ -39,13 +41,8 @@ const PendingMatchs = (props) => {
         if(flag){
             setLoading(true);
         }
-        console.log(filter)
-        let query = ''
-        if (filter !== "all") {
-            query = 'match/pending/' + page + "?matchClassification=" + filter;
-        } else {
-            query = 'match/pending/' + page;
-        }
+
+        let query = 'match/pending/' + page;
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
@@ -135,13 +132,12 @@ const PendingMatchs = (props) => {
                                     <div className="possible-match-div">
                                         <h6>Fazer Associação:</h6>
                                         <select onChange={(event) => {
-                                            handleProfile(page, event.target.value, false)
                                             setFilter(event.target.value)
                                         }} className="possible-match-select" >
                                             {optionsSelect.map(e => <option value={e.value}>{e.label}</option>)}
                                         </select>
                                     </div>
-                                    <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
+                                    <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} filter={filter}/>
                                     <button onClick={handleMatch}>Associar</button>
                                 </div>
                         }
