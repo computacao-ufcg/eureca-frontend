@@ -84,7 +84,7 @@ const Disqualified = (props) => {
         }
 
         try {
-            const res = await api_AS.post(query, myBody, myHeaders);
+            const res = await api_AS.put(query, myBody, myHeaders);
             if (res.status === 200) {
                 setData(data.filter(e => e.linkedinId !== linkedinID));
                 props.handleData(myBody);

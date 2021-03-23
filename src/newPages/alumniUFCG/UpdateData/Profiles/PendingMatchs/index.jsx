@@ -7,12 +7,14 @@ import ListAlumnus from './ListAlumnus';
 import ListPicker from './ListPicker';
 import Informer from '../../Informer';
 import { optionsSelect } from './util';
+import { useClearCache } from 'react-clear-cache';
 
 import { api_AS } from '../../../../../services/api';
 
 import './styles.css';
 
 const PendingMatchs = (props) => {
+    const { isLatestVersion, emptyCacheStorage } = useClearCache();
 
     const warningMsg = "Por favor, selecione alguém para associar.";
     const successMsg = "Associação realizada com sucesso!";
@@ -28,19 +30,31 @@ const PendingMatchs = (props) => {
     const [selectedRegistration, setSelectedRegistration] = useState('');
     const [selectedProfile, setSelectedProfile] = useState(null);
 
+    const [filter, setFilter] = useState("very-likely");
+
 
     useEffect(() => {
-        handleProfile(page);
+        handleProfile(page, filter, true);
     }, []);
 
-    const handleProfile = async (page) => {
-        setLoading(true);
+    const handleProfile = async (page, filter, flag) => {
+        if(flag){
+            setLoading(true);
+        }
+
         let query = 'match/pending/' + page;
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
             setDataMaster(res.data);
             setDataContent(res.data.content);
+            if(!flag){
+                console.log(res.data.content)
+               var matches = res.data.content.filter(function(match){
+                   return match.alumnus.registration === selectedRegistration;
+               })
+               setPossibleMatches(matches[0] ? matches[0].possibleMatches : [])
+            }
             setLoading(false);
         } else {
             console.error("Response error");
@@ -49,10 +63,11 @@ const PendingMatchs = (props) => {
 
     const handlePage = (eventKey) => {
         setPage(eventKey - 1);
-        handleProfile(eventKey - 1);
+        handleProfile(eventKey - 1, filter, true);
     }
 
     const handleAlumnus = (value) => {
+        console.log(value)
         setSelectedRegistration(value.alumnus.registration);
         setPossibleMatches(value.possibleMatches);
     }
@@ -115,12 +130,14 @@ const PendingMatchs = (props) => {
                             !selectedRegistration ? <Informer msg={"Por favor, selecione alguém para realizar possíveis associações."} /> :
                                 <div className="possible-match">
                                     <div className="possible-match-div">
-                                        <h6>Fazer Associação:</h6>  
-                                        <select className="possible-match-select" >
-                                            { optionsSelect.map( e => <option value={e.value}>{e.label}</option>) }
+                                        <h6>Fazer Associação:</h6>
+                                        <select onChange={(event) => {
+                                            setFilter(event.target.value)
+                                        }} className="possible-match-select" >
+                                            {optionsSelect.map(e => <option value={e.value}>{e.label}</option>)}
                                         </select>
                                     </div>
-                                    <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} />
+                                    <ListPicker data={possibleMatches} onPickerOption={handleSelectProfile} filter={filter}/>
                                     <button onClick={handleMatch}>Associar</button>
                                 </div>
                         }

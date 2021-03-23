@@ -185,3 +185,21 @@
     outline: none;
 }
 
+@media (max-width: 1600px)
+{
+    .card-home-area1 {
+        width: 650px;
+        display: flex;
+        justify-content: flex-start;
+        padding-right: 19px;
+        margin-bottom: 38px;
+    }
+    
+    .card-home-area2 {
+        width: 650px;
+        display: flex;
+        padding-left: 19px;
+        margin-bottom: 38px;
+        justify-content: flex-end;
+    }
+}

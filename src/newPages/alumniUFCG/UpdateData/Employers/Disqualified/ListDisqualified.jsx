@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Table } from 'rsuite';
 import './styles.css'
 
 const { Column, HeaderCell, Cell } = Table;
 
 const ListDisqualified = (props) => {
+
+    const [optionSelected, setOptionSelected] = useState('')
+
     return (
         <div className="table-disqualified">
             <Table
@@ -21,9 +24,10 @@ const ListDisqualified = (props) => {
                         {rowData => {
                             function handleAction(event) {
                                 props.handleInput(event.target.value, event.target.getAttribute('name'))
+                                setOptionSelected(event.target.getAttribute('name'))
                             }
                             return (
-                                <input className="inputCompany pointer" name={rowData.linkedinId} readOnly value={rowData.name} onClick={handleAction}>
+                                <input className={optionSelected ===rowData.linkedinId ? "input-selected-disqualified": "inputCompany" } name={rowData.linkedinId} readOnly value={rowData.name} onClick={handleAction}>
 
                                 </input >
                             );

@@ -6,7 +6,8 @@
 .inputCompany {
     border:none;
     width: 500px;
-    background-color: transparent
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .inputCompany:focus {
@@ -23,4 +24,13 @@
 
 .select-company h6{
     margin-top: 20px;
+}
+.input-selected-disqualified{
+    border:none;
+    width: 500px;
+    background-color: transparent;
+    font-weight: 800;
+    outline: 0;
+    cursor: pointer;
+
 }
