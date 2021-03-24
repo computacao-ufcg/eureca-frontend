@@ -78,7 +78,7 @@ const StudentsCardHome = () => {
             } else if (data.delayedSummary.averageRisk.toFixed(2) > -0.6 && data.delayedSummary.averageRisk.toFixed(2) <= -0.2) {
                 risk = 'Baixo'
             } else if (data.delayedSummary.averageRisk.toFixed(2) > -0.2 && data.delayedSummary.averageRisk.toFixed(2) <= 0.2) {
-                risk = 'Média'
+                risk = 'Médio'
             } else if (data.delayedSummary.averageRisk.toFixed(2) > 0.2 && data.delayedSummary.averageRisk.toFixed(2) <= 0.6) {
                 risk = 'Alto'
             } else {
