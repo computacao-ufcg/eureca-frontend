@@ -10,7 +10,10 @@ import './styles.css';
 const Header = () => {
 
     const history = useHistory();
-
+    const handleLogOut =() =>{
+        sessionStorage.clear();
+        history.push('/login');
+    }
     return (
         <div className="header-container">
             <div className="header-1">
@@ -19,6 +22,9 @@ const Header = () => {
                     <div>
                     </div>
                     <p>{sessionStorage.getItem('username')}</p>
+                </div>
+                <div className="logout-button" >
+                    <button onClick={handleLogOut}>Sair</button>
                 </div>
             </div>
             <div className="header-2">

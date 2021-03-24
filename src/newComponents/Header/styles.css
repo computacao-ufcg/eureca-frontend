@@ -20,6 +20,14 @@
 
 .header-1-user{
     display: flex;
+    margin-left: 80%;
+}
+
+.logout-button{
+    margin-left: 50px;
+}
+.logout-button button{
+    background-color:transparent;
 }
 
 .header-1-user div{

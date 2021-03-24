@@ -62,6 +62,14 @@
 .number-mini-card-home-content {
 
 }
+.number-mini-card-home-delayed{
+    font-size: 14px;
+    font-weight: 600;
+    color: #7E84A3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
 
 .legend-mini-card-home {
     font-size: 12px;

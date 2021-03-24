@@ -5,7 +5,6 @@ import './style.css'
 
 const AlumniCards = (props) => {
     const data = props.data
-    debugger
     return (
         <React.Fragment>{data?
             <div className="alumni-summary-card-main">
