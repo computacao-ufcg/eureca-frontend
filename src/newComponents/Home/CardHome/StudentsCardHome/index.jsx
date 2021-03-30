@@ -20,7 +20,7 @@ const StudentsCardHome = () => {
     const [optionStudent, setOptionStudent] = useState("actives")
     const [titleStudent, setTitleStudent] = useState("Ativos")
     const [labels, setLabels] = useState(labelActives)
-    const [cards, setCards] = useState({card1:true,card2:true,card3:true,card4:true,card5:true,card6:true})
+    const [cards, setCards] = useState({card1:true,card2:true,card3:true,card4:true,card5:true,card6:true,card7:true})
 
     const [propStudents, setPropsStudents] = useState([])
 
@@ -46,13 +46,12 @@ const StudentsCardHome = () => {
     const setPropsActives = (data) => {
         if (data) {
             setPropsStudents([data.activesSummary.activesCount,
-            data.activesSummary.riskClassCount.normal,
-            data.activesSummary.riskClassCount.late,
-            data.activesSummary.riskClassCount.advanced,
-            data.activesSummary.riskClassCount.critical,
-            data.activesSummary.riskClassCount.notApplicable,
-            data.activesSummary.riskClassCount.unfeasible])
-            setCards({...cards,card4:true, card5:true,card6:true})
+                data.activesSummary.riskClassCount.advanced,
+                data.activesSummary.riskClassCount.normal,
+                data.activesSummary.riskClassCount.late,
+                data.activesSummary.riskClassCount.critical,
+                data.activesSummary.riskClassCount.unfeasible])
+            setCards({...cards,card4:true, card5:true,card6:true,card7:true})
         }
     }
 
@@ -62,7 +61,7 @@ const StudentsCardHome = () => {
             setPropsStudents([data.alumniSummary.totalDegreeCount,
             data.alumniSummary.averageDegreeCount.toFixed(2),
             data.alumniSummary.averageGpa.toFixed(2),])
-            setCards({...cards,card4:false,card5:false,card6:false})
+            setCards({...cards,card4:false,card5:false,card6:false,card7:false})
         }
     }
 
@@ -119,7 +118,7 @@ const StudentsCardHome = () => {
             pace + ' (' + data.delayedSummary.averagePace.toFixed(2) + ')',
             risk + ' (' + data.delayedSummary.averageRisk.toFixed(2) + ')',
             data.delayedSummary.averageSuccessRate.toFixed(2)])
-            setCards({...cards,card4:true, card5:true,card6:true})
+            setCards({...cards,card4:true, card5:true,card6:true,card7:false})
         }
     }
 
@@ -135,7 +134,7 @@ const setPropsDropout = (data) => {
         data.dropoutsSummary.grossDropoutCount,
        ])
 
-        setCards({...cards,card4:true, card5:false,card6:false})
+        setCards({...cards,card4:true, card5:false,card6:false,card7:false})
     }
 }
 
