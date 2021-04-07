@@ -87,6 +87,15 @@ layout ideal para resoluçâo do card de evadidos*/
     justify-content: center;
 }
 
+.number-mini-card-home-actives{
+    font-size: 14px;
+    font-weight: 600;
+    color: #7E84A3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
 .legend-mini-card-home {
     font-size: 11px;
     color: #7E84A3;

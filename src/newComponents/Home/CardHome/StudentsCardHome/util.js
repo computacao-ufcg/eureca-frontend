@@ -1,7 +1,7 @@
 {/**const labelActives = ['NORMAIS', 'ATRASADOS', 'AVANÇADOS', 'CRÍTICOS', 'CALOUROS', 'INVIÁVEIS'];*/}
-const labelActives = ['AVANÇADOS', 'NORMAIS', 'ATRASADOS','CRÍTICOS','TEMPO MÉDIO', 'CUSTO MÉDIO', 'INVIÁVEIS']
+const labelActives = ['RISCO MÉDIO', 'CARGA MÉDIA', 'TAXA DE SUCESSO','PREV. CONCLUSÃO','CUSTO MÉDIO', 'TEMPO MÉDIO']
 const labelAlumni = ['EGRESSOS/PERÍODO', 'CRA MÉDIO','ÚLTIMO ANO']
-const labelDelayed = ['MÉDIA CRÉDITOS', 'CUSTO MÉDIO', 'CARGA MÉDIA', 'RITMO MÉDIO', 'RISCO MÉDIO', 'TAXA DE SUCESSO']
+const labelDelayed = ['RISCO MÉDIO', 'CARGA MÉDIA', 'TAXA DE SUCESSO', 'PREV.CONCLUSÃO', 'CUSTO MÉDIO', 'TEMPO MÉDIO']
 const labelDropout = ['EVADIDOS/ EGRESSOS', 'EVADIDOS', 'EVADIDOS/ MATRICULADOS', 'REINGRESSOS']
 
 export {labelActives, labelDropout, labelDelayed, labelAlumni}
