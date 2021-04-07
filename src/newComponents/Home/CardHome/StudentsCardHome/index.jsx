@@ -47,6 +47,7 @@ const StudentsCardHome = () => {
         var risk = ''
         var cost = ''
         var pace = ''
+        var successRate = data.activesSummary.average.metrics.successRate * 100
 
         if (data) {
             if (data.activesSummary.average.costClass == "REGULAR") {
@@ -58,12 +59,12 @@ const StudentsCardHome = () => {
             }
 
             setPropsStudents([data.activesSummary.activesCount,
-            risk + ' (' + data.activesSummary.average.metrics.risk.toFixed(2) + ')',
-            data.activesSummary.average.metrics.averageLoad.toFixed(2),
-            data.activesSummary.average.metrics.successRate.toFixed(2) + '%',
-            data.activesSummary.average.metrics.courseDurationPrediction.toFixed(2),
-            cost + ' (' + data.activesSummary.average.metrics.cost.toFixed(2) + ')',
-            pace + data.activesSummary.average.metrics.pace.toFixed(2)
+            risk + ' ('+ data.activesSummary.average.metrics.risk.toFixed(2) + ')',
+            data.activesSummary.average.metrics.averageLoad.toFixed(1) + ' créditos',
+            successRate.toFixed(1) + '%',
+            data.activesSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
+            cost + ' (' + data.activesSummary.average.metrics.cost.toFixed(1) + ')',
+            data.activesSummary.average.termsCount.toFixed(1) + ' períodos'
 
             ])
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: true })
