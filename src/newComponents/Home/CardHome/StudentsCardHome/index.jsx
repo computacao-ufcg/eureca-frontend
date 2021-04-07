@@ -59,11 +59,11 @@ const StudentsCardHome = () => {
 
             setPropsStudents([data.activesSummary.activesCount,
             risk + ' (' + data.activesSummary.average.metrics.risk.toFixed(2) + ')',
-            data.activesSummary.average.metrics.averageLoad.toFixed(2) ,
-            data.activesSummary.average.metrics.successRate.toFixed(2) ,
-            data.activesSummary.average.metrics.courseDurationPrediction.toFixed(2) ,
-            cost + ' (' + data.activesSummary.average.metrics.cost.toFixed(2)  + ')',
-            pace + data.activesSummary.average.metrics.pace.toFixed(2) 
+            data.activesSummary.average.metrics.averageLoad.toFixed(2),
+            data.activesSummary.average.metrics.successRate.toFixed(2) + '%',
+            data.activesSummary.average.metrics.courseDurationPrediction.toFixed(2),
+            cost + ' (' + data.activesSummary.average.metrics.cost.toFixed(2) + ')',
+            pace + data.activesSummary.average.metrics.pace.toFixed(2)
 
             ])
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: true })
@@ -73,10 +73,16 @@ const StudentsCardHome = () => {
     const setPropsAlumni = (data) => {
         console.log(data)
         if (data) {
-            setPropsStudents([data.alumniSummary.totalDegreeCount,
+            setPropsStudents([data.alumniSummary.alumniCount,
+            data.alumniSummary.maxDegreeCount,
+            data.alumniSummary.minDegreeCount,
             data.alumniSummary.averageDegreeCount.toFixed(2),
-            data.alumniSummary.averageGpa.toFixed(2),])
-            setCards({ ...cards, card4: false, card5: false, card6: false, card7: false })
+            data.alumniSummary.averageGpa.toFixed(2),
+            data.alumniSummary.averageCost.toFixed(2),
+            data.alumniSummary.averageTermsCount.toFixed(1)
+        
+        ])
+            setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
         }
     }
 
@@ -128,12 +134,12 @@ const StudentsCardHome = () => {
             setPropsStudents([data.delayedSummary.delayedCount,
             risk + ' (' + data.delayedSummary.average.metrics.risk.toFixed(2) + ')',
             data.delayedSummary.average.metrics.averageLoad.toFixed(2),
-            data.delayedSummary.average.metrics.successRate.toFixed(2),
+            data.delayedSummary.average.metrics.successRate.toFixed(2) + '%',
             data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(2),
             cost + ' (' + data.delayedSummary.average.metrics.cost.toFixed(2) + ')',
-            
+
             pace + ' (' + data.delayedSummary.average.metrics.pace.toFixed(2) + ')',
-           
+
             ])
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
         }
@@ -142,16 +148,24 @@ const StudentsCardHome = () => {
     const setPropsDropout = (data) => {
         console.log(data)
         if (data) {
-            setPropsStudents([data.dropoutsSummary.reasons.totalDropouts,
-            data.dropoutsSummary.netDropoutAlumnusRate.toFixed(2),
-            data.dropoutsSummary.netDropoutCount,
-            data.dropoutsSummary.netDropoutEnrolledRate.toFixed(2),
-            data.dropoutsSummary.reasons.totalDropouts - data.dropoutsSummary.netDropoutCount,
-            data.dropoutsSummary.grossDropoutAlumnusRate.toFixed(2),
-            data.dropoutsSummary.grossDropoutCount,
+
+            var cancelamento = data.dropoutsSummary.dropouts.failed3Times + data.dropoutsSummary.dropouts.failedAll + data.dropoutsSummary.dropouts.cancelled + data.dropoutsSummary.dropouts.cancelledByDecree
+            var abandono = data.dropoutsSummary.dropouts.leftWithoutNotice + data.dropoutsSummary.dropouts.missedGraduation + data.dropoutsSummary.dropouts.cancelledUponRequest
+            var transferencia = data.dropoutsSummary.dropouts.reenterOtherCourse + data.dropoutsSummary.dropouts.cancelledCourseChange + data.dropoutsSummary.dropouts.transferred
+
+            setPropsStudents([data.dropoutsSummary.dropoutCount,
+                data.dropoutsSummary.dropouts.reenterSameCourse,
+                cancelamento,
+                abandono,
+                transferencia,
+                data.dropoutsSummary.averageCost.toFixed(2),
+                data.dropoutsSummary.averageTermsCount.toFixed(2),
+                
+
+          
             ])
 
-            setCards({ ...cards, card4: true, card5: false, card6: false, card7: false })
+            setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
         }
     }
 
