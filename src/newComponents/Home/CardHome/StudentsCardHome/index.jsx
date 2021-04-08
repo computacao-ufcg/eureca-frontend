@@ -50,12 +50,30 @@ const StudentsCardHome = () => {
         var successRate = data.activesSummary.average.metrics.successRate * 100
 
         if (data) {
-            if (data.activesSummary.average.costClass == "REGULAR") {
-                cost = "Adequado"
+            if (data.activesSummary.average.metrics.risk.toFixed(2) >= -1.0 && data.activesSummary.average.metrics.risk.toFixed(2) <= -0.6) {
+                risk = 'Muito Baixo'
+            } else if (data.activesSummary.average.metrics.risk.toFixed(2) > -0.6 && data.activesSummary.average.metrics.risk.toFixed(2) <= -0.2) {
+                risk = 'Baixo'
+            } else if (data.activesSummary.average.metrics.risk.toFixed(2) > -0.2 && data.activesSummary.average.metrics.risk.toFixed(2) <= 0.2) {
+                risk = 'Médio'
+            } else if (data.activesSummary.average.metrics.risk.toFixed(2) > 0.2 && data.activesSummary.average.metrics.risk.toFixed(2) <= 0.6) {
+                risk = 'Alto'
+            } else {
+                risk = 'Muito Alto'
             }
 
-            if (data.activesSummary.average.riskClass == "LOW") {
-                risk = "Baixo"
+            if (data.activesSummary.average.metrics.cost.toFixed(2) > 0 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1) {
+                cost = 'Inexato'
+            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1.36) {
+                cost = 'Adequado'
+            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1.36 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1.81) {
+                cost = 'Regular'
+            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1.81 && data.activesSummary.average.metrics.cost.toFixed(2) <= 2.26) {
+                cost = 'Alto'
+            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 2.26 && data.activesSummary.average.metrics.cost.toFixed(2) <= 2.72) {
+                cost = 'Muito Alto'
+            } else {
+                cost = 'Inaceitável'
             }
 
             setPropsStudents([data.activesSummary.activesCount,
@@ -74,12 +92,28 @@ const StudentsCardHome = () => {
     const setPropsAlumni = (data) => {
         console.log(data)
         if (data) {
+            var cost = ''
+
+            if (data.alumniSummary.averageCost.toFixed(2) > 0 && data.alumniSummary.averageCost.toFixed(2) <= 1) {
+                cost = 'Inexato'
+            } else if (data.alumniSummary.averageCost.toFixed(2) > 1 && data.alumniSummary.averageCost.toFixed(2) <= 1.36) {
+                cost = 'Adequado'
+            } else if (data.alumniSummary.averageCost.toFixed(2) > 1.36 && data.alumniSummary.averageCost.toFixed(2) <= 1.81) {
+                cost = 'Regular'
+            } else if (data.alumniSummary.averageCost.toFixed(2) > 1.81 && data.alumniSummary.averageCost.toFixed(2) <= 2.26) {
+                cost = 'Alto'
+            } else if (data.alumniSummary.averageCost.toFixed(2) > 2.26 && data.alumniSummary.averageCost.toFixed(2) <= 2.72) {
+                cost = 'Muito Alto'
+            } else {
+                cost = 'Inaceitável'
+            }
+
             setPropsStudents([data.alumniSummary.alumniCount,
             data.alumniSummary.minDegreeCount + ' (' + data.alumniSummary.minDegreeCountTerm + ')',
             data.alumniSummary.maxDegreeCount + ' (' + data.alumniSummary.maxDegreeCountTerm + ')',
             data.alumniSummary.averageDegreeCount.toFixed(1),
             data.alumniSummary.averageGpa.toFixed(2),
-            data.alumniSummary.averageCost.toFixed(2),
+            cost + ' (' + data.alumniSummary.averageCost.toFixed(2) + ')',
             data.alumniSummary.averageTermsCount.toFixed(1) + ' períodos'
         
         ])
@@ -154,16 +188,29 @@ const StudentsCardHome = () => {
             var cancelamento = data.dropoutsSummary.dropouts.failed3Times + data.dropoutsSummary.dropouts.failedAll + data.dropoutsSummary.dropouts.cancelled + data.dropoutsSummary.dropouts.cancelledByDecree
             var abandono = data.dropoutsSummary.dropouts.leftWithoutNotice + data.dropoutsSummary.dropouts.missedGraduation + data.dropoutsSummary.dropouts.cancelledUponRequest
             var transferencia = data.dropoutsSummary.dropouts.reenterOtherCourse + data.dropoutsSummary.dropouts.cancelledCourseChange + data.dropoutsSummary.dropouts.transferred
+            var cost = ''
+
+            if (data.dropoutsSummary.averageCost.toFixed(2) > 0 && data.dropoutsSummary.averageCost.toFixed(2) <= 1) {
+                cost = 'Inexato'
+            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1 && data.dropoutsSummary.averageCost.toFixed(2) <= 1.36) {
+                cost = 'Adequado'
+            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1.36 && data.dropoutsSummary.averageCost.toFixed(2) <= 1.81) {
+                cost = 'Regular'
+            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1.81 && data.dropoutsSummary.averageCost.toFixed(2) <= 2.26) {
+                cost = 'Alto'
+            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 2.26 && data.dropoutsSummary.averageCost.toFixed(2) <= 2.72) {
+                cost = 'Muito Alto'
+            } else {
+                cost = 'Inaceitável'
+            }
 
             setPropsStudents([data.dropoutsSummary.dropoutCount,
                 data.dropoutsSummary.dropouts.reenterSameCourse,
                 cancelamento,
                 abandono,
                 transferencia,
-                data.dropoutsSummary.averageCost.toFixed(2),
+                cost + ' (' + data.dropoutsSummary.averageCost.toFixed(2) + ')',
                 data.dropoutsSummary.averageTermsCount.toFixed(1) + ' períodos',
-                
-
           
             ])
 
