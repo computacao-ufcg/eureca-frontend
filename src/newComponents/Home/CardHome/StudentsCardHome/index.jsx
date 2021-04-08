@@ -75,12 +75,12 @@ const StudentsCardHome = () => {
         console.log(data)
         if (data) {
             setPropsStudents([data.alumniSummary.alumniCount,
-            data.alumniSummary.maxDegreeCount,
-            data.alumniSummary.minDegreeCount,
-            data.alumniSummary.averageDegreeCount.toFixed(2),
+            data.alumniSummary.minDegreeCount + ' (' + data.alumniSummary.minDegreeCountTerm + ')',
+            data.alumniSummary.maxDegreeCount + ' (' + data.alumniSummary.maxDegreeCountTerm + ')',
+            data.alumniSummary.averageDegreeCount.toFixed(1),
             data.alumniSummary.averageGpa.toFixed(2),
             data.alumniSummary.averageCost.toFixed(2),
-            data.alumniSummary.averageTermsCount.toFixed(1)
+            data.alumniSummary.averageTermsCount.toFixed(1) + ' períodos'
         
         ])
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
@@ -91,6 +91,8 @@ const StudentsCardHome = () => {
         var risk = ''
         var cost = ''
         var pace = ''
+        var successRate = data.delayedSummary.average.metrics.successRate * 100
+        
 
         if (data) {
 
@@ -134,12 +136,11 @@ const StudentsCardHome = () => {
 
             setPropsStudents([data.delayedSummary.delayedCount,
             risk + ' (' + data.delayedSummary.average.metrics.risk.toFixed(2) + ')',
-            data.delayedSummary.average.metrics.averageLoad.toFixed(2),
-            data.delayedSummary.average.metrics.successRate.toFixed(2) + '%',
-            data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(2),
+            data.delayedSummary.average.metrics.averageLoad.toFixed(1) + 'créditos',
+            successRate.toFixed(1) + '%',
+            data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
             cost + ' (' + data.delayedSummary.average.metrics.cost.toFixed(2) + ')',
-
-            pace + ' (' + data.delayedSummary.average.metrics.pace.toFixed(2) + ')',
+            data.delayedSummary.average.termsCount.toFixed(1) + ' períodos',
 
             ])
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
@@ -160,7 +161,7 @@ const StudentsCardHome = () => {
                 abandono,
                 transferencia,
                 data.dropoutsSummary.averageCost.toFixed(2),
-                data.dropoutsSummary.averageTermsCount.toFixed(2),
+                data.dropoutsSummary.averageTermsCount.toFixed(1) + ' períodos',
                 
 
           
