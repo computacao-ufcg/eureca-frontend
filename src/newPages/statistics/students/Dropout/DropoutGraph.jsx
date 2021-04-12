@@ -158,13 +158,7 @@ const EvadedGraph = (props) => {
                     <div className="optionsEvadidos">
                         {motivos.map((e, index) => <label key={"label" + index}><Switch shape="fill" className={"checkbox" + index} key={"check" + index} name={"tag" + index} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
                     </div>
-                </div>
-                <div className='textEgressos'>
-                    <p>
-                    Entre <strong>{data[0].term}</strong> e <strong>{data[data.length - 1].term}</strong>, <strong>{props.data.summary.netDropoutCount}</strong> discentes se desligaram definitivamente do curso, sem colar grau. Entretanto, o número total de desligamentos no período foi <strong>{props.data.summary.grossDropoutCount}</strong>, considerando discentes que foram desligados e que reingressaram no curso. A relação entre evadidos e matriculados no período é <strong>{props.data.summary.grossDropoutEnrolledRate.toFixed(2)}</strong>, enquanto que a relação entre evadidos e egressos é <strong>{props.data.summary.grossDropoutAlumnusRate.toFixed(2)}</strong>.
-                    </p>
-                </div>
-                
+                </div>              
             </div>
             : <div></div>}
         </React.Fragment>
