@@ -18,4 +18,14 @@ const prediction = [
     {"cra_medio":5.74,"periodo_conclusao":"2024.1","qtd_egressos":82},
 ]
 
-export { labels, prediction };
+// Mapeamento dos valores que estão no seletor, para as chaves correspondentes de acesso
+// aos objetos de egressos.
+const subtitles_translations = {
+    // "Período de graduação": "graduationTerm",
+    "Número de alunos": "alumniCount",
+    "Média dos CRAs": "averageGpa",
+    "Média de períodos": "averageTerms",
+    "Custo médio": "averageCost"
+}
+
+export { labels, prediction, subtitles_translations };
