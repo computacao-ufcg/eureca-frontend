@@ -1,21 +1,17 @@
 .actives-graph-container{
     display: flex;    
-    flex-direction: column;
-
-}
-
-.custom-tooltip{
-    background-color: white;
-    padding: 10px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .graph-main {
     position: relative;
+    margin-right: 2vw;
 }
 
 .graph-main .graph-label-y, .graph-label-x {
     position: absolute;
-    color: #A1A7C4;
+    color: #886859;
     font-size: 1rem;
     font-weight: 600;
 }
@@ -24,10 +20,53 @@
     top: 0;
     left: 0;
 
-    transform: rotate(-90deg) translate(-10vh, -7vh);
+    transform: rotate(-90deg) translate(-3vh, -2vh);
 }
 
 .graph-main .graph-label-x{
     bottom: 0;
-    right: 4vw;
+    right: 0;
+    transform: translateY(2vh);
+}
+
+.optionsActives {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.switch0.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #FFAE03;
+    background-color: #FFAE03 !important;
+}
+
+.switch1.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #9BC53D;
+    background-color: #9BC53D !important;
+}
+
+.switch2.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #932551;
+    background-color: #932551 !important;
+}
+
+.switch3.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #4DA852;
+    background-color: #4DA852 !important;
+}
+
+.switch4.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #4FC6E3;
+    background-color: #4FC6E3 !important;
+}
+
+.switch5.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #E71D36;
+    background-color: #E71D36 !important;
+}
+
+.switch6.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #001021;
+    background-color: #001021 !important;
 }
