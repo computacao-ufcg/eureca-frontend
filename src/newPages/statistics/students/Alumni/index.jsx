@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
 import Header from '../../../../newComponents/Header'
-import Title from '../../../../newComponents/Home/Title'
 import AlumniSlider from './AlumniSlider'
 import AlumniGraph from './AlumniGraph'
 import Export from '../../../../newComponents/Export'
 
+import { SelectPicker } from 'rsuite';
+import 'rsuite/dist/styles/rsuite-default.css'
+
 import { api_EB } from '../../../../services/api';
 
 import './style.css'
+
+import { select_items } from './util';
 
 const Alumni = () => {
 
@@ -16,6 +20,8 @@ const Alumni = () => {
     const [min, setMin] = useState('');
     const [max, setMax] = useState('');
     const [dataCSV, setDataCSV] = useState([]);
+
+    const [optionSelected, setOptionSelected] = useState('alumniCount');
 
     useEffect(() => {
         updateGraph('1966.1', '2020.1')
@@ -35,7 +41,6 @@ const Alumni = () => {
         const res = await api_EB.get(query, {headers:{"Authentication-Token": sessionStorage.getItem('eureca-token')}});
         
         if(res){
-            console.log(res.data)
             setDataEgressos(res.data);
         } else{
             console.log(res.statusText);
@@ -48,7 +53,6 @@ const Alumni = () => {
         const res = await api_EB.get(query, {headers:{"Authentication-Token": sessionStorage.getItem('eureca-token')}});
         
         if(res){
-            console.log(res.data)
             setDataCSV(res.data);
         } else{
             console.log(res.statusText);
@@ -63,7 +67,14 @@ const Alumni = () => {
                     <div className="alumni-slider">
                         <div className="alumni-title">Egressos</div>
                         <AlumniSlider changeSlider={handleSlider}/>
-                        <AlumniGraph data={dataEgressos || {}}/>
+                        <div className="graph">
+                            <AlumniGraph data={dataEgressos || {}} option={optionSelected} />
+                            <SelectPicker 
+                                onChange={ (value) => setOptionSelected(value) }
+                                data={select_items} 
+                                className="selector" 
+                                defaultValue={optionSelected} />
+                        </div>
                         <Export data={dataCSV} name={'alumni'}/>
                     </div>
                 </div>

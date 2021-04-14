@@ -29,6 +29,19 @@
     color: #886859;
 }
 
+.graph {
+    display: flex;
+    justify-content: left;
+}
+
+.selector {
+    width: 254px;
+    height: 40px; 
+    margin-left: 80px; 
+    margin-top: 80px; 
+    display: flex;
+    justify-content: right;
+}
 
 .mainStatistics {
     display: grid;
@@ -68,6 +81,7 @@
 .main-graphs-alumni {
     margin-top: 50px;
     margin-bottom: 20px;
+    margin-left: 25px;
     display: grid;
     justify-content: center;
     justify-items: center;
