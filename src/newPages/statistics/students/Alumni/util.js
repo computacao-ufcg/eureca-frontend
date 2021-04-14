@@ -18,4 +18,37 @@ const prediction = [
     {"cra_medio":5.74,"periodo_conclusao":"2024.1","qtd_egressos":82},
 ]
 
-export { labels, prediction };
+// Mapeamento das chaves de acesso ao json para os valores traduzidos que serão exibidos nas
+// legendas do gráfico.
+const subtitles_translations = {
+    // "Período de graduação": "graduationTerm",
+    "alumniCount": "Número de egressos",
+    "averageGpa": "CRA médio",
+    "averageTerms": "Média de períodos",
+    "averageCost": "Tempo médio"
+}
+
+const select_items = [
+    {
+        "label": "Número de egressos",
+        "value": "alumniCount",
+        "role": "Master"
+    },
+    {
+        "label": "CRA médio",
+        "value": "averageGpa",
+        "role": "Master"
+    },
+    {
+        "label": "Média de períodos",
+        "value": "averageTerms",
+        "role": "Master"
+    },
+    {
+        "label": "Tempo médio",
+        "value": "averageCost",
+        "role": "Master"
+    }
+]
+
+export { labels, prediction, subtitles_translations, select_items };
