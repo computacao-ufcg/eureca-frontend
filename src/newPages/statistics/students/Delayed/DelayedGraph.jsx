@@ -13,7 +13,7 @@ const DelayedGraph = (props) => {
     return (
         <React.Fragment>
             {props.data ?
-                <div className="main-graphs-Delayed">
+                <div className="main-graphs-alumni">
                     <LineChart
                         width={800}
                         height={400}
