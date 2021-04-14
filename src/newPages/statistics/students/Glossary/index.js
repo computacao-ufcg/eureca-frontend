@@ -11,7 +11,7 @@ const Glossary = () => {
                     <div className="container-title-glossary">
                         <h1>GLOSSÁRIO</h1>
                     </div>
-                    <div className="definitions-right">
+                    <div className="definitions">
                         <p>Ativos: Alunos que estão cursando no momento atual </p>
                         <p>Retidos: Alunos (???) </p>
                         <p>Evadidos: Alunos que abandonaram o curso </p>
