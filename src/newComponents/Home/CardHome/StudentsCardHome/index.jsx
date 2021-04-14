@@ -49,7 +49,14 @@ const StudentsCardHome = () => {
         var pace = ''
         var successRate = data.activesSummary.average.metrics.successRate * 100
 
-        if (data) {
+        if(data){
+           {/*} if(data.activesSummary.average.riskClass === "LOW"){
+                risk = 'Baixo'
+            }else{
+                risk = "n entrou"
+            }**/}
+        }
+         if (data) {
             if (data.activesSummary.average.metrics.risk.toFixed(2) >= -1.0 && data.activesSummary.average.metrics.risk.toFixed(2) <= -0.6) {
                 risk = 'Muito Baixo'
             } else if (data.activesSummary.average.metrics.risk.toFixed(2) > -0.6 && data.activesSummary.average.metrics.risk.toFixed(2) <= -0.2) {
@@ -75,6 +82,7 @@ const StudentsCardHome = () => {
             } else {
                 cost = 'Inaceitável'
             }
+        }
 
             setPropsStudents([data.activesSummary.activesCount,
             risk + ' ('+ data.activesSummary.average.metrics.risk.toFixed(2) + ')',
@@ -86,8 +94,8 @@ const StudentsCardHome = () => {
 
             ])
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: true })
-        }
     }
+    
 
     const setPropsAlumni = (data) => {
         console.log(data)
@@ -113,7 +121,7 @@ const StudentsCardHome = () => {
             data.alumniSummary.maxDegreeCount + ' (' + data.alumniSummary.maxDegreeCountTerm + ')',
             data.alumniSummary.averageDegreeCount.toFixed(1),
             data.alumniSummary.averageGpa.toFixed(2),
-            cost + ' (' + data.alumniSummary.averageCost.toFixed(2) + ')',
+            cost + ' (' + data.alumniSummary.averageCost.toFixed(1) + ')',
             data.alumniSummary.averageTermsCount.toFixed(1) + ' períodos'
         
         ])
@@ -124,7 +132,6 @@ const StudentsCardHome = () => {
     const setPropsDelayed = (data) => {
         var risk = ''
         var cost = ''
-        var pace = ''
         var successRate = data.delayedSummary.average.metrics.successRate * 100
         
 
@@ -156,24 +163,13 @@ const StudentsCardHome = () => {
                 cost = 'Inaceitável'
             }
 
-            if (data.delayedSummary.average.metrics.pace.toFixed(2) > 0 && data.delayedSummary.average.metrics.pace.toFixed(2) <= 14) {
-                pace = 'Inaceitável'
-            } else if (data.delayedSummary.average.metrics.pace.toFixed(2) > 14 && data.delayedSummary.average.metrics.pace.toFixed(2) < 15) {
-                pace = 'Muito Lento'
-            } else if (data.delayedSummary.average.metrics.pace.toFixed(2) >= 15 && data.delayedSummary.average.metrics.pace.toFixed(2) < 17.8) {
-                pace = 'Lento'
-            } else if (data.delayedSummary.average.metrics.pace.toFixed(2) >= 17.8 && data.delayedSummary.average.metrics.pace.toFixed(2) < 24) {
-                pace = 'Adequado'
-            } else {
-                pace = 'Inexato'
-            }
 
             setPropsStudents([data.delayedSummary.delayedCount,
             risk + ' (' + data.delayedSummary.average.metrics.risk.toFixed(2) + ')',
-            data.delayedSummary.average.metrics.averageLoad.toFixed(1) + 'créditos',
+            data.delayedSummary.average.metrics.averageLoad.toFixed(1) + ' créditos',
             successRate.toFixed(1) + '%',
             data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
-            cost + ' (' + data.delayedSummary.average.metrics.cost.toFixed(2) + ')',
+            cost + '\n (' + data.delayedSummary.average.metrics.cost.toFixed(1) + ')',
             data.delayedSummary.average.termsCount.toFixed(1) + ' períodos',
 
             ])
@@ -209,7 +205,7 @@ const StudentsCardHome = () => {
                 cancelamento,
                 abandono,
                 transferencia,
-                cost + ' (' + data.dropoutsSummary.averageCost.toFixed(2) + ')',
+                cost + ' (' + data.dropoutsSummary.averageCost.toFixed(1) + ')',
                 data.dropoutsSummary.averageTermsCount.toFixed(1) + ' períodos',
           
             ])
@@ -276,6 +272,9 @@ const StudentsCardHome = () => {
                     <div className="card-home-content-footer">
                         <Link to={"/newDesign/statistics/students/" + optionStudent}>
                             <button type="button">VER MAIS</button>
+                        </Link>
+                        <Link to={"/newDesign/statistics/students/glossary" }>
+                            <button type="button">GLOSSÁRIO</button>
                         </Link>
                         <div className="mask6">
                             <img src={Mask6} alt="mask6" />

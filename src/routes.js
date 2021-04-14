@@ -14,6 +14,7 @@ import Services from './pages/Services'
 import Actives from './newPages/statistics/students/Actives';
 import Alumni from './newPages/statistics/students/Alumni';
 import Dropout from './newPages/statistics/students/Dropout';
+import Glossary from './newPages/statistics/students/Glossary';
 
 import ActiveStudents from './pages/Statistics/Students/ActiveStudents'
 import GraduatedStudents from './pages/Statistics/Students/GraduatedStudents'
@@ -37,8 +38,10 @@ const Routes = () => {
         <PrivateRoute exact path="/newDesign/statistics/students/alumni" component={() => <Alumni /> } />
         <PrivateRoute exact path="/newDesign/statistics/students/dropout" component={() => <Dropout /> } />
         <PrivateRoute exact path="/newDesign/statistics/students/delayed" component={() => <Redirect to='/' />} />
+        <PrivateRoute exact path="/newDesign/statistics/students/glossary" component={() => <Glossary />} />
         <PrivateRoute exact path="/newDesign/alumniufcg/updatedata" component={() => <UpdateData /> } />
         <PrivateRoute exact path="/newDesign/alumniufcg/seemore" component={() => <SeeMore /> } />
+        
 
         {/* Old Design */}
 
