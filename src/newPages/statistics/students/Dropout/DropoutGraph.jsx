@@ -14,6 +14,9 @@ import {motivos} from './dropoutUtil';
 
 const EvadedGraph = (props) => {
 
+    if(props.data)
+        debugger
+
     const data = props.data ? props.data.terms : null
 
     const [tag1, setTag1] = useState("reasons.failed3Times");
@@ -54,7 +57,7 @@ const EvadedGraph = (props) => {
             if(e.target.checked){
                 setTag1("reasons.failed3Times");
             } else {
-                setTag1(null);
+                setTag1('null');
             }
         } else if(e.target.name === 'tag1') {
             if(e.target.checked){
@@ -72,7 +75,7 @@ const EvadedGraph = (props) => {
             if(e.target.checked){
                 setTag4("reasons.failedAll");
             } else {
-                setTag4(null);
+                setTag4('');
             }
         } else if(e.target.name === 'tag4') {
             if(e.target.checked){

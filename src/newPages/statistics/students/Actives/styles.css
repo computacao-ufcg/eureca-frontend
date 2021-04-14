@@ -9,6 +9,7 @@
 
     margin-left: 10vw;
     margin-top: 2vh;
+    padding-top: 5vh;
     padding-bottom: 10vh;
 
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -19,319 +20,43 @@
     display: flex;
     flex-direction: column;
 
+    justify-content: center;
     align-items: center;
+
+    position: relative;
 }
 
 .main-container .main-actives+div{
     visibility: hidden;
 }
 
-/* -----------------------------------------  Main Actives Resume Box ----------------------------------------- */
+/* -------------------------- Back page and Title ------------------------ */
 
-.main-actives-resume{
-    align-self: flex-start;
+.backdot{
+    padding: 2vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-/* ----- Text ----- */
-
-.main-container .main-actives .main-actives-resume .resume-text{
-    display: flex;
-    flex-direction: column;
-    margin-left: 1vw;
-    margin-bottom: 1vh;
-    padding-top: 2vh;
+.backdot>span{
+    cursor: pointer;
 }
 
-.main-actives-resume .resume-text p:nth-child(1){
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-25) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0-1);
-    color: var(--unnamed-color-7e84a3);
-    font: normal normal normal 16px/25px Poppins;
-    letter-spacing: 0.1px;
-    color: #7E84A3;
-    opacity: 1;
-
-    font-size: 1.5rem;
-}
-
-.main-actives-resume .resume-text p:nth-child(2){
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 9px/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-7e84a3);
-    text-align: left;
-    font: normal normal normal 9px/20px Poppins;
-    letter-spacing: 0px;
-    color: #7E84A3;
-    opacity: 1;
-
-    font-size: 1rem;
-}
-
-/* Total of students */
-.main-actives-resume .resume-text p:nth-child(3){
-    letter-spacing: var(--unnamed-character-spacing-0-12);
-    color: var(--unnamed-color-131523);
-    letter-spacing: 0.12px;
-    color: #131523;
-    opacity: 1;
-
-    font-family: Poppins, sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.main-actives-resume .resume-text p:nth-child(4){
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-12)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-7e84a3);
-    text-align: left;
-    font: normal normal normal 12px/20px Poppins;
-    letter-spacing: 0px;
-    color: #7E84A3;
-    opacity: 1;
-
-    font-size: 1.5rem;
-}
-
-/* ----- RESUME BOX ------ */
-
-.resume-box{
-    display: flex;
-}
-
-.resume-box div{
-    width: 108px;
-    height: 68px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: space-around;
-
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    opacity: 1;
-}
-
-.resume-box>div:nth-child(1){
-    border-bottom: 8px solid #0000FF;
-}
-.resume-box>div:nth-child(2){
-    border-bottom: 8px solid #008000;
-}
-.resume-box>div:nth-child(3){
-    border-bottom: 8px solid #800080;
-}
-.resume-box>div:nth-child(4){
-    border-bottom: 8px solid #FF0000;
-}
-.resume-box>div:nth-child(5){
-    border-bottom: 8px solid yellow;
-}
-.resume-box>div:nth-child(6){
-    border-bottom: 8px solid #000000;
-}
-
-/* from the second child */
-.resume-box div:nth-child(n+2){
-    border-left: 0px;
-}
-
-/* NUMBER */
-.resume-box div span:nth-child(1){
-    letter-spacing: var(--unnamed-character-spacing-0-12);
-    color: var(--unnamed-color-7e84a3);
-    letter-spacing: 0.12px;
-    color: #7E84A3;
-    opacity: 1;
-
-    font-size: 1.5rem;
+.actives-title {
+    font-size: 24px;
     font-weight: 600;
+    color: #886859;
 }
 
-/* DESCRIPTION */
-.resume-box div p:nth-child(1){
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-12)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-7e84a3);
-    text-align: center;
-    font: normal normal normal 12px/20px Poppins;
-    letter-spacing: 0px;
-    color: #7E84A3;
-    opacity: 1;
-
-    text-transform: uppercase;
-    box-sizing: border-box;
-
-    /* width: 70px; */
-    font-size: .8rem;
-    font-weight: 500;
-}
-
-
-/* ----------------------------------------- Actives Search Input Box ----------------------------------------- */
-
-.main-actives .actives-input-box{
-    margin-top: 5vh;
-    height: 5vh;
-    width: 30vw;
-    display: flex;
-    flex-direction: row;
-
-    justify-content: center;
-    align-items: center;
-}
-
-/* Aplicattion bordes for all childs */
-
-.main-actives .actives-input-box div{
-    background-color: #F5F6FA;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 3vw;
-    height: 5vh;
-
-    border: 1px solid #707070;
-    border-right: 0;
-}
-
-.main-actives .actives-input-box input{
-    background-color: #F5F6FA;
-    border: 1px solid #707070;
-    border-left: 0;
-
-    width: 22vw;
-    height: 5vh;
-}
-
-.main-actives .actives-input-box input:focus{
-    outline: none;
-}
 
 /* ----------------------------------------- Actives Slider and Graph Box ----------------------------------------- */
 
 .actives-graph-box{
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
 }
 
-
-/*----------------------------------------- Actives Select Group Box -----------------------------------------*/
-
-
-.actives-select-group-box{
-    background-color: #F5F6FA;
-    margin-top: 2vh;
-    width: 56vw;
-    height: 30.3vh;
-
-    border: 1px solid #707070;
-    overflow-y: scroll;
-    padding: 1vw 2vw;
-
-    
-}
-
-.actives-select-group-box::-webkit-scrollbar{
-    width: 17px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #A1A7C4 0% 0% no-repeat padding-box;
-    border-radius: 9px;
-  }
-
-.actives-select-group-box>p{
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-25) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0-1);
-    color: var(--unnamed-color-7e84a3);
-    text-align: left;
-    font: normal normal normal 16px/25px Poppins;
-    letter-spacing: 0.1px;
-    color: #7E84A3;
-    opacity: 1;
-
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-
-.actives-select-group-box>p + div{
-    margin: 10px 0;
-    display: flex;
-
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.actives-select-group-box>p + div button{
-    margin: 0 10px;
-    text-transform: uppercase;
-    color: #5A607F;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    border-radius: 13px;
-    font: normal normal normal 12px/20px Poppins;
-    padding: 2px 15px;
-}
-
-.actives-select-group-box div:nth-child(3){
-    display: flex;
-    flex-direction: column;
-}
-
-.actives-select-group-box div:nth-child(3) table{
-    border-collapse:separate; 
-    border-spacing: 0 1.5em;
-}
-
-.actives-select-group-box div:nth-child(3) table tr:hover{
-    background-color: #E6E9F4;
-}
-
-.actives-select-group-box div:nth-child(3) table tr td{
-    text-align: center;
-    /* vertical-align: top; */
-}
-
-.actives-select-group-box div:nth-child(3) table .actives-td-enrollment{
-    color: #A1A7C4;
-}
-
-.actives-select-group-box div:nth-child(3) table .actives-td-name{
-    /* text-align: left; */
-    text-transform: capitalize;
-}
-
-.actives-select-group-box div:nth-child(3) table .actives-td-credits, .actives-select-group-box div:nth-child(3) table .actives-td-subjects{
-    text-transform: uppercase;
-}
-
-.actives-select-group-box div:nth-child(3) table .actives-td-email{
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-12)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    text-align: center;
-    font: normal normal normal 12px/20px Poppins;
-    letter-spacing: 0px;
-    color: #A1A7C4;
-
-    font-size: 1.2rem;
-}
-
-.actives-select-group-box div:nth-child(3) table .actives-td-subjects{
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-12)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-poppins);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    text-align: right;
-    font: normal normal normal 12px/20px Poppins;
-    letter-spacing: 0px;
-    color: #A1A7C4;
-
-    font-size: 1rem;
-}
