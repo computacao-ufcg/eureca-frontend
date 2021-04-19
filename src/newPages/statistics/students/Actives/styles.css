@@ -30,18 +30,7 @@
     visibility: hidden;
 }
 
-/* -------------------------- Back page and Title ------------------------ */
-
-.backdot{
-    padding: 2vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.backdot>span{
-    cursor: pointer;
-}
+/* -------------------------- Title ------------------------ */
 
 .actives-title {
     font-size: 24px;

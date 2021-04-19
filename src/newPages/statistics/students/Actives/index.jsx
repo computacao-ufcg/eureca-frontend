@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
-import {FiArrowLeft} from 'react-icons/fi'
+import {FiArrowLeft} from 'react-icons/fi';
 
 import Header from '../../../../newComponents/Header';
 import ActiveSlider from './ActiveSlider';
