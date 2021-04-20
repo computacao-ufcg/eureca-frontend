@@ -60,23 +60,25 @@ const StudentsCardHome = () => {
             }else if (data.activesSummary.average.riskClass === "HIGH"){
                 risk = "Alto"
             }else if (data.activesSummary.average.riskClass === "UNFEASIBLE"){
-                risk = "Inaceitável"
+                risk = "Inviável"
             } else {
                 risk = "Não Aplicável"
             }
 
-            if (data.activesSummary.average.metrics.cost.toFixed(2) > 0 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1.36 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1.81 && data.activesSummary.average.metrics.cost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 2.26 && data.activesSummary.average.metrics.cost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.activesSummary.average.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.activesSummary.average.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.activesSummary.average.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.activesSummary.average.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.activesSummary.average.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.activesSummary.average.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
 
 
@@ -99,18 +101,20 @@ const StudentsCardHome = () => {
         if (data) {
             var cost = ''
 
-            if (data.alumniSummary.averageCost.toFixed(2) > 0 && data.alumniSummary.averageCost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 1 && data.alumniSummary.averageCost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 1.36 && data.alumniSummary.averageCost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 1.81 && data.alumniSummary.averageCost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 2.26 && data.alumniSummary.averageCost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.alumniSummary.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.alumniSummary.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.alumniSummary.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.alumniSummary.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.alumniSummary.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.alumniSummary.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
 
             setPropsStudents([data.alumniSummary.alumniCount,
@@ -145,25 +149,26 @@ const StudentsCardHome = () => {
             }else if (data.delayedSummary.average.riskClass === "HIGH"){
                 risk = "Alto"
             }else if (data.delayedSummary.average.riskClass === "UNFEASIBLE"){
-                risk = "Inaceitável"
+                risk = "Inaviável"
             } else {
                 risk = "Não Aplicável"
             }
+        
 
-          
-
-            if (data.delayedSummary.average.metrics.cost.toFixed(2) > 0 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 1 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 1.36 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 1.81 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 2.26 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.delayedSummary.average.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.delayedSummary.average.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.delayedSummary.average.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.delayedSummary.average.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.delayedSummary.average.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.delayedSummary.average.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
         }
 
@@ -192,18 +197,20 @@ const StudentsCardHome = () => {
             var transferencia = data.dropoutsSummary.dropouts.reenterOtherCourse + data.dropoutsSummary.dropouts.cancelledCourseChange + data.dropoutsSummary.dropouts.transferred
             var cost = ''
 
-            if (data.dropoutsSummary.averageCost.toFixed(2) > 0 && data.dropoutsSummary.averageCost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1 && data.dropoutsSummary.averageCost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1.36 && data.dropoutsSummary.averageCost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1.81 && data.dropoutsSummary.averageCost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 2.26 && data.dropoutsSummary.averageCost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.dropoutsSummary.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.dropoutsSummary.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.dropoutsSummary.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.dropoutsSummary.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.dropoutsSummary.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.dropoutsSummary.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
 
             setPropsStudents([data.dropoutsSummary.dropoutCount,
