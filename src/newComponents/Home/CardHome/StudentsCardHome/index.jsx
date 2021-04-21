@@ -47,7 +47,7 @@ const StudentsCardHome = () => {
         var risk = ''
         var cost = ''
         var pace = ''
-        var successRate = data.activesSummary.average.metrics.successRate * 100
+        var successRate = data ? data.activesSummary.average.metrics.successRate * 100 : 0
 
         if (data) {
             if (data.activesSummary.average.metrics.risk.toFixed(2) >= -1.0 && data.activesSummary.average.metrics.risk.toFixed(2) <= -0.6) {
@@ -125,7 +125,7 @@ const StudentsCardHome = () => {
         var risk = ''
         var cost = ''
         var pace = ''
-        var successRate = data.delayedSummary.average.metrics.successRate * 100
+        var successRate = data ? data.delayedSummary.average.metrics.successRate * 100 : 0
         
 
         if (data) {

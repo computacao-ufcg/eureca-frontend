@@ -31,6 +31,20 @@ const EvadedGraph = (props) => {
     const [tag10, setTag10] = useState("reasons.missedGraduation");
     const [tag11, setTag11] = useState("reasons.transferred");
     const [total, setTotal] = useState("reasons.totalDropouts");
+    const [reason1, setReason1] = useState(true);
+    const [reason2, setReason2] = useState(true);
+    const [reason3, setReason3] = useState(true);
+    const [reason4, setReason4] = useState(true);
+    const [reason5, setReason5] = useState(true);
+    const [reason6, setReason6] = useState(true);
+    const [reason7, setReason7] = useState(true);
+    const [reason8, setReason8] = useState(true);
+    const [reason9, setReason9] = useState(true);
+    const [reason10, setReason10] = useState(true);
+    const [reason11, setReason11] = useState(true);
+    const [showAll, setShowAll] =useState(true);
+
+    const reasons = [reason1, reason2, reason3, reason4, reason5, reason6, reason7, reason8, reason9, reason10, reason11, showAll];
     
     const changeData = (data) => {
         let list = [];
@@ -54,77 +68,95 @@ const EvadedGraph = (props) => {
     
     const handleCheck = (e) => {
         if(e.target.name === 'tag0') {
+            setReason1(e.target.checked)
             if(e.target.checked){
                 setTag1("reasons.failed3Times");
             } else {
                 setTag1('null');
             }
         } else if(e.target.name === 'tag1') {
+            setReason2(e.target.checked)
             if(e.target.checked){
                 setTag2("reasons.reenterSameCourse");
             } else {
                 setTag2(null);
             }
         } else if(e.target.name === 'tag2') {
+            setReason3(e.target.checked)
             if(e.target.checked){
                 setTag3("reasons.reenterOtherCourse");
             } else {
                 setTag3(null);
             }
         } else if(e.target.name === 'tag3') {
+            setReason4(e.target.checked)
             if(e.target.checked){
                 setTag4("reasons.failedAll");
             } else {
                 setTag4('');
             }
         } else if(e.target.name === 'tag4') {
+            setReason5(e.target.checked)
             if(e.target.checked){
                 setTag5("reasons.cancelled");
             } else {
                 setTag5(null);
             }
         } else if(e.target.name === 'tag5') {
+            setReason6(e.target.checked)
             if(e.target.checked){
                 setTag6("reasons.cancelledByDecree");
             } else {
                 setTag6(null);
             }
         } else if(e.target.name === 'tag6') {
+            setReason7(e.target.checked)
             if(e.target.checked){
                 setTag7("reasons.cancelledCourseChange");
             } else {
                 setTag7(null);
             }
         } else if(e.target.name === 'tag7') {
+            setReason8(e.target.checked)
             if(e.target.checked){
                 setTag8("reasons.cancelledUponRequest");
             } else {
                 setTag8(null);
             }
         } else if(e.target.name === 'tag8') {
+            setReason9(e.target.checked)
             if(e.target.checked){
                 setTag9("reasons.leftWithoutNotice");
             } else {
                 setTag9(null);
             }
         } else if(e.target.name === 'tag9') {
+            setReason10(e.target.checked)
             if(e.target.checked){
                 setTag10("reasons.missedGraduation");
             } else {
                 setTag10(null);
             }
         } else if(e.target.name === 'tag10') {
+            setReason11(e.target.checked)
             if(e.target.checked){
                 setTag11("reasons.transferred");
             } else {
                 setTag11(null);
             }
         } else if(e.target.name === 'tag11') {
-            if(e.target.checked){
-                setTotal("reasons.totalDropouts");
-            } else {
-                setTotal(null);
-            }
+            setReason1(e.target.checked)
+            setReason2(e.target.checked)
+            setReason3(e.target.checked)
+            setReason4(e.target.checked)
+            setReason5(e.target.checked)
+            setReason6(e.target.checked)
+            setReason7(e.target.checked)
+            setReason8(e.target.checked)
+            setReason9(e.target.checked)
+            setReason10(e.target.checked)
+            setReason11(e.target.checked)
+            setShowAll(e.target.checked)
         } 
     }
 
@@ -145,21 +177,19 @@ const EvadedGraph = (props) => {
                         <XAxis dataKey="term" label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset:-5 }} />
                         <YAxis yAxisId="left" label={{ value: 'Evadidos', angle: -90, position: 'insideLeft'}}/>
                         <Tooltip />
-                        <Area yAxisId="left" name={motivos[0]} type="monotone" stackId="1" dataKey={tag1} stroke="#B2EDD0" fill="#B2EDD0" />
-                        <Area yAxisId="left" name={motivos[1]} type="monotone" stackId="1" dataKey={tag2} stroke="#EFAB54" fill="#EFAB54" />
-                        <Area yAxisId="left" name={motivos[2]} type="monotone" stackId="1" dataKey={tag3} stroke="#24BDAF" fill="#24BDAF" />
-                        <Area yAxisId="left" name={motivos[3]} type="monotone" stackId="1" dataKey={tag4} stroke="#F64969" fill="#F64969"/>
-                        <Area yAxisId="left" name={motivos[4]} type="monotone" stackId="1" dataKey={tag5} stroke="#F6B545" fill="#24BDAF"/>
-                        <Area yAxisId="left" name={motivos[5]} type="monotone" stackId="1" dataKey={tag6} stroke="#E4D2A5" fill="#E4D2A5"/>
-                        <Area yAxisId="left" name={motivos[6]} type="monotone" stackId="1" dataKey={tag7} stroke="#C99192" fill="#C99192"/>
-                        <Area yAxisId="left" name={motivos[7]} type="monotone" stackId="1" dataKey={tag8} stroke="#3A3D3D" fill="#3A3D3D"/>
-                        <Area yAxisId="left" name={motivos[8]} type="monotone" stackId="1" dataKey={tag9} stroke="#C3D440" fill="#C3D440"/>
-                        <Area yAxisId="left" name={motivos[9]} type="monotone" stackId="1" dataKey={tag10} stroke="#6C7468" fill="#6C7468"/>
-                        <Area yAxisId="left" name={motivos[10]} type="monotone" stackId="1" dataKey={tag11} stroke="#FD577D" fill="#FD577D"/>
-                        <Line yAxisId="left" name={"Total"} type="monotone" stackId="1" dataKey={total} stroke="#5F6081" fill="#5F6081"/>
+                        <Area yAxisId="left" name={motivos[0]} type="monotone" stackId="1" dataKey={reason1 ? tag1 : null} stroke="#B2EDD0" fill="#B2EDD0" />
+                        <Area yAxisId="left" name={motivos[1]} type="monotone" stackId="1" dataKey={reason2 ? tag2 : null} stroke="#EFAB54" fill="#EFAB54" />
+                        <Area yAxisId="left" name={motivos[2]} type="monotone" stackId="1" dataKey={reason3 ? tag3 : null} stroke="#24BDAF" fill="#24BDAF" />
+                        <Area yAxisId="left" name={motivos[3]} type="monotone" stackId="1" dataKey={reason4 ? tag4 : null} stroke="#F64969" fill="#F64969"/>
+                        <Area yAxisId="left" name={motivos[4]} type="monotone" stackId="1" dataKey={reason5 ? tag5 : null} stroke="#F6B545" fill="#24BDAF"/>
+                        <Area yAxisId="left" name={motivos[5]} type="monotone" stackId="1" dataKey={reason6 ? tag6 : null} stroke="#E4D2A5" fill="#E4D2A5"/>
+                        <Area yAxisId="left" name={motivos[6]} type="monotone" stackId="1" dataKey={reason7 ? tag7 : null} stroke="#C99192" fill="#C99192"/>
+                        <Area yAxisId="left" name={motivos[7]} type="monotone" stackId="1" dataKey={reason8 ? tag8 : null} stroke="#3A3D3D" fill="#3A3D3D"/>
+                        <Area yAxisId="left" name={motivos[8]} type="monotone" stackId="1" dataKey={reason9 ? tag9 : null} stroke="#C3D440" fill="#C3D440"/>
+                        <Area yAxisId="left" name={motivos[9]} type="monotone" stackId="1" dataKey={reason10 ? tag10 : null} stroke="#6C7468" fill="#6C7468"/>
                     </ComposedChart>
                     <div className="optionsEvadidos">
-                        {motivos.map((e, index) => <label key={"label" + index}><Switch shape="fill" className={"checkbox" + index} key={"check" + index} name={"tag" + index} id={index} defaultChecked onChange={handleCheck}/>{" " + motivos[index]}</label>)}
+                        {motivos.map((e, index) => <label key={"label" + index}><Switch shape="fill" className={"checkbox" + index} key={"check" + index} name={"tag" + index} id={index} checked={reasons[index]} onChange={handleCheck}/>{" " + motivos[index]}</label>)}
                     </div>
                 </div>              
             </div>
