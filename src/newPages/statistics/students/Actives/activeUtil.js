@@ -1,31 +1,9 @@
-const headersCSV = [
-    { label: "Matrícula", key: "matricula" },
-    { label: "CRA", key: "cra" },
-    { label: "Períodos Integralizados", key: "periodos_integralizados" },
-    { label: "Créditos Complementares Integralizados", key: "cred_comp_int" },
-    { label: "Créditos Obrigatórios Integralizados", key: "cred_obrig_int" },
-    { label: "Créditos Optativos Integralizados", key: "cred_opt_int" },
-    { label: "Currículo", key: "curriculo" },
-    { label: "Estado Civil", key: "estado_civil" },
-    { label: "Gênero", key: "genero" },
-    { label: "IEA", key: "iea" },
-    { label: "Matrículas Institucionais", key: "matriculas_institucionais" },
-    { label: "MC", key: "mc" },
-    { label: "Média Geral Ingresso", key: "media_geral_ingresso" },
-    { label: "Mobilidade Estudantil", key: "mobilidade_estudantil" },
-    { label: "Período de Ingresso", key: "periodo_ingresso" },
-    { label: "Trancamentos Totais", key: "trancamentos_totais" },
-    { label: "Cota", key: "cota" }
+export const data = [
+    { name: 'tag0', value: 'riskClassCount.inaccurate', color: '#FFAE03', valueTranslate: 'Não confiável' },
+    { name: 'tag1', value: 'riskClassCount.safe', color: '#9BC53D', valueTranslate: 'Desprezível' },
+    { name: 'tag2', value: 'riskClassCount.low', color: '#932551', valueTranslate: 'Baixo' },
+    { name: 'tag3', value: 'riskClassCount.average', color: '#4DA852', valueTranslate: 'Médio' },
+    { name: 'tag4', value: 'riskClassCount.high', color: '#4FC6E3', valueTranslate: 'Alto' },
+    { name: 'tag5', value: 'riskClassCount.unfeasible', color: '#E71D36', valueTranslate: 'Inviável' },
+    { name: 'tag6', value: 'riskClassCount.notApplicable', color: '#001021', valueTranslate: 'Não Aplicável' },
 ];
-
-const optionsActives = [
-    'Não confiável',
-    'Desprezível',
-    'Baixo',
-    'Médio',
-    'Alto',
-    'Inviável',
-    'Não Aplicável',
-]
-
-export {headersCSV, optionsActives};

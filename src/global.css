@@ -41,15 +41,6 @@ select:focus{
   outline: none;
 }
 
-/*
-azul: #0073e5
-marfim: #ccccaa
-marrom: #885d41
-cinza lower: #f5f5f5
-cinza: #eeeeee
-white
-black
-*/
 
 /* If using, delete the main file in "Actives". */
 
@@ -81,5 +72,17 @@ black
 }
 
 .pointer{
+  cursor: pointer;
+}
+
+/* Back arrow button for the pages. */
+.backdot{
+  padding: 2vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.backdot>span{
   cursor: pointer;
 }

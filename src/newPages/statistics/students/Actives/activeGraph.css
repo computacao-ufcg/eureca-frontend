@@ -9,7 +9,9 @@
     margin-right: 2vw;
 }
 
-.graph-main .graph-label-y, .graph-label-x {
+/* LEGENDS */
+
+.graph-main .graph-label-y,.graph-main .graph-label-x {
     position: absolute;
     color: #886859;
     font-size: 1rem;
@@ -17,17 +19,17 @@
 }
 
 .graph-main .graph-label-y{
-    top: 0;
     left: 0;
-
-    transform: rotate(-90deg) translate(-3vh, -2vh);
+    transform: rotate(-90deg) translate(-20vh, -3vh);
 }
 
 .graph-main .graph-label-x{
     bottom: 0;
-    right: 0;
+    right: 50;
     transform: translateY(2vh);
 }
+
+/* Colors to switchs */
 
 .optionsActives {
     height: 30vh;

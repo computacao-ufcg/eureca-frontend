@@ -1,4 +1,5 @@
-# pdc-frontend
+# Eureca-frontend
+<p>Eureca é uma plataforma de apoio à gestão acadêmica que visa auxiliar as coordenações de cursos de graduação da UFCG em suas diversas atividades. A plataforma disponibiliza variadas informações sobre os discentes dos cursos, bem como oferece um leque de serviços de apoio às coordenações.</p>
 
 ## Inicializando a aplicação localmente com NodeJs
 

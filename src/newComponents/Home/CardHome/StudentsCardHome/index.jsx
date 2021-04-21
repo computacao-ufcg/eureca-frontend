@@ -50,34 +50,41 @@ const StudentsCardHome = () => {
         var successRate = data ? data.activesSummary.average.metrics.successRate * 100 : 0
 
         if (data) {
-            if (data.activesSummary.average.metrics.risk.toFixed(2) >= -1.0 && data.activesSummary.average.metrics.risk.toFixed(2) <= -0.6) {
-                risk = 'Muito Baixo'
-            } else if (data.activesSummary.average.metrics.risk.toFixed(2) > -0.6 && data.activesSummary.average.metrics.risk.toFixed(2) <= -0.2) {
-                risk = 'Baixo'
-            } else if (data.activesSummary.average.metrics.risk.toFixed(2) > -0.2 && data.activesSummary.average.metrics.risk.toFixed(2) <= 0.2) {
-                risk = 'Médio'
-            } else if (data.activesSummary.average.metrics.risk.toFixed(2) > 0.2 && data.activesSummary.average.metrics.risk.toFixed(2) <= 0.6) {
-                risk = 'Alto'
+            if (data.activesSummary.average.riskClass === "INACCURATE") {
+                risk = 'Inexato'
+            }else if (data.activesSummary.average.riskClass === "SAFE"){
+                risk = "Seguro"
+            }else if (data.activesSummary.average.riskClass === "LOW"){
+                risk = "Baixo"
+            }else if (data.activesSummary.average.riskClass === "AVERAGE"){
+                risk = "Médio"
+            }else if (data.activesSummary.average.riskClass === "HIGH"){
+                risk = "Alto"
+            }else if (data.activesSummary.average.riskClass === "UNFEASIBLE"){
+                risk = "Inviável"
             } else {
-                risk = 'Muito Alto'
+                risk = "Não Aplicável"
             }
 
-            if (data.activesSummary.average.metrics.cost.toFixed(2) > 0 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1.36 && data.activesSummary.average.metrics.cost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 1.81 && data.activesSummary.average.metrics.cost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.activesSummary.average.metrics.cost.toFixed(2) > 2.26 && data.activesSummary.average.metrics.cost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.activesSummary.average.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.activesSummary.average.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.activesSummary.average.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.activesSummary.average.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.activesSummary.average.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.activesSummary.average.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
+
 
             setPropsStudents([data.activesSummary.activesCount,
-            risk + ' ('+ data.activesSummary.average.metrics.risk.toFixed(2) + ')',
+            risk + ' (' + data.activesSummary.average.metrics.risk.toFixed(2) + ')',
             data.activesSummary.average.metrics.averageLoad.toFixed(1) + ' créditos',
             successRate.toFixed(1) + '%',
             data.activesSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
@@ -89,23 +96,26 @@ const StudentsCardHome = () => {
         }
     }
 
+
     const setPropsAlumni = (data) => {
         console.log(data)
         if (data) {
             var cost = ''
 
-            if (data.alumniSummary.averageCost.toFixed(2) > 0 && data.alumniSummary.averageCost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 1 && data.alumniSummary.averageCost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 1.36 && data.alumniSummary.averageCost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 1.81 && data.alumniSummary.averageCost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.alumniSummary.averageCost.toFixed(2) > 2.26 && data.alumniSummary.averageCost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.alumniSummary.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.alumniSummary.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.alumniSummary.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.alumniSummary.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.alumniSummary.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.alumniSummary.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
 
             setPropsStudents([data.alumniSummary.alumniCount,
@@ -113,10 +123,10 @@ const StudentsCardHome = () => {
             data.alumniSummary.maxDegreeCount + ' (' + data.alumniSummary.maxDegreeCountTerm + ')',
             data.alumniSummary.averageDegreeCount.toFixed(1),
             data.alumniSummary.averageGpa.toFixed(2),
-            cost + ' (' + data.alumniSummary.averageCost.toFixed(2) + ')',
+            cost + ' (' + data.alumniSummary.averageCost.toFixed(1) + ')',
             data.alumniSummary.averageTermsCount.toFixed(1) + ' períodos'
-        
-        ])
+
+            ])
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
         }
     }
@@ -126,60 +136,58 @@ const StudentsCardHome = () => {
         var cost = ''
         var pace = ''
         var successRate = data ? data.delayedSummary.average.metrics.successRate * 100 : 0
-        
 
         if (data) {
 
-            if (data.delayedSummary.average.metrics.risk.toFixed(2) >= -1.0 && data.delayedSummary.average.metrics.risk.toFixed(2) <= -0.6) {
-                risk = 'Muito Baixo'
-            } else if (data.delayedSummary.average.metrics.risk.toFixed(2) > -0.6 && data.delayedSummary.average.metrics.risk.toFixed(2) <= -0.2) {
-                risk = 'Baixo'
-            } else if (data.delayedSummary.average.metrics.risk.toFixed(2) > -0.2 && data.delayedSummary.average.metrics.risk.toFixed(2) <= 0.2) {
-                risk = 'Médio'
-            } else if (data.delayedSummary.average.metrics.risk.toFixed(2) > 0.2 && data.delayedSummary.average.metrics.risk.toFixed(2) <= 0.6) {
-                risk = 'Alto'
+            if (data.delayedSummary.average.riskClass === "INACCURATE") {
+                risk = 'Inexato'
+            }else if (data.delayedSummary.average.riskClass === "SAFE"){
+                risk = "Seguro"
+            }else if (data.delayedSummary.average.riskClass === "LOW"){
+                risk = "Baixo"
+            }else if (data.delayedSummary.average.riskClass === "AVERAGE"){
+                risk = "Médio"
+            }else if (data.delayedSummary.average.riskClass === "HIGH"){
+                risk = "Alto"
+            }else if (data.delayedSummary.average.riskClass === "UNFEASIBLE"){
+                risk = "Inaviável"
             } else {
-                risk = 'Muito Alto'
+                risk = "Não Aplicável"
             }
+        
 
-            if (data.delayedSummary.average.metrics.cost.toFixed(2) > 0 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 1 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 1.36 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 1.81 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.delayedSummary.average.metrics.cost.toFixed(2) > 2.26 && data.delayedSummary.average.metrics.cost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.delayedSummary.average.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.delayedSummary.average.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.delayedSummary.average.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.delayedSummary.average.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.delayedSummary.average.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.delayedSummary.average.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
-
-            if (data.delayedSummary.average.metrics.pace.toFixed(2) > 0 && data.delayedSummary.average.metrics.pace.toFixed(2) <= 14) {
-                pace = 'Inaceitável'
-            } else if (data.delayedSummary.average.metrics.pace.toFixed(2) > 14 && data.delayedSummary.average.metrics.pace.toFixed(2) < 15) {
-                pace = 'Muito Lento'
-            } else if (data.delayedSummary.average.metrics.pace.toFixed(2) >= 15 && data.delayedSummary.average.metrics.pace.toFixed(2) < 17.8) {
-                pace = 'Lento'
-            } else if (data.delayedSummary.average.metrics.pace.toFixed(2) >= 17.8 && data.delayedSummary.average.metrics.pace.toFixed(2) < 24) {
-                pace = 'Adequado'
-            } else {
-                pace = 'Inexato'
-            }
-
-            setPropsStudents([data.delayedSummary.delayedCount,
-            risk + ' (' + data.delayedSummary.average.metrics.risk.toFixed(2) + ')',
-            data.delayedSummary.average.metrics.averageLoad.toFixed(1) + 'créditos',
-            successRate.toFixed(1) + '%',
-            data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
-            cost + ' (' + data.delayedSummary.average.metrics.cost.toFixed(2) + ')',
-            data.delayedSummary.average.termsCount.toFixed(1) + ' períodos',
-
-            ])
-            setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
         }
+
+
+
+        setPropsStudents([data.delayedSummary.delayedCount,
+        risk + ' (' + data.delayedSummary.average.metrics.risk.toFixed(2) + ')',
+        data.delayedSummary.average.metrics.averageLoad.toFixed(1) + ' créditos',
+        successRate.toFixed(1) + '%',
+        data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
+        cost + '\n (' + data.delayedSummary.average.metrics.cost.toFixed(1) + ')',
+        data.delayedSummary.average.termsCount.toFixed(1) + ' períodos',
+
+        ])
+        setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
+
     }
+
 
     const setPropsDropout = (data) => {
         console.log(data)
@@ -190,33 +198,37 @@ const StudentsCardHome = () => {
             var transferencia = data.dropoutsSummary.dropouts.reenterOtherCourse + data.dropoutsSummary.dropouts.cancelledCourseChange + data.dropoutsSummary.dropouts.transferred
             var cost = ''
 
-            if (data.dropoutsSummary.averageCost.toFixed(2) > 0 && data.dropoutsSummary.averageCost.toFixed(2) <= 1) {
-                cost = 'Inexato'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1 && data.dropoutsSummary.averageCost.toFixed(2) <= 1.36) {
-                cost = 'Adequado'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1.36 && data.dropoutsSummary.averageCost.toFixed(2) <= 1.81) {
-                cost = 'Regular'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 1.81 && data.dropoutsSummary.averageCost.toFixed(2) <= 2.26) {
-                cost = 'Alto'
-            } else if (data.dropoutsSummary.averageCost.toFixed(2) > 2.26 && data.dropoutsSummary.averageCost.toFixed(2) <= 2.72) {
-                cost = 'Muito Alto'
-            } else {
-                cost = 'Inaceitável'
+            if (data.dropoutsSummary.costClass === "INACCURATE"){
+                cost = "Inexato"
+            }else if(data.dropoutsSummary.costClass === "ADEQUATE"){
+                cost = "Adequado"
+            }else if(data.dropoutsSummary.costClass === "REGULAR"){
+                cost = "Regular"
+            }else if(data.dropoutsSummary.costClass === "HIGH"){
+                cost = "Alto"
+            }else if(data.dropoutsSummary.costClass === "VERY_HIGH"){
+                cost = "Muito Alto"
+            }else if(data.dropoutsSummary.costClass === "UNACCEPTABLE"){
+                cost = "Inaceitável"
+            }else{
+                cost ="Não Aplicável"
             }
 
             setPropsStudents([data.dropoutsSummary.dropoutCount,
-                data.dropoutsSummary.dropouts.reenterSameCourse,
+            data.dropoutsSummary.dropouts.reenterSameCourse,
                 cancelamento,
                 abandono,
                 transferencia,
-                cost + ' (' + data.dropoutsSummary.averageCost.toFixed(2) + ')',
-                data.dropoutsSummary.averageTermsCount.toFixed(1) + ' períodos',
-          
+            cost + ' (' + data.dropoutsSummary.averageCost.toFixed(1) + ')',
+            data.dropoutsSummary.averageTermsCount.toFixed(1) + ' períodos',
+
             ])
 
             setCards({ ...cards, card4: true, card5: true, card6: true, card7: false })
         }
     }
+
+
 
 
     return (
@@ -277,6 +289,9 @@ const StudentsCardHome = () => {
                         <Link to={"/newDesign/statistics/students/" + optionStudent}>
                             <button type="button">VER MAIS</button>
                         </Link>
+                        <Link to={"/newDesign/statistics/students/glossary"}>
+                            <button type="button">GLOSSÁRIO</button>
+                        </Link>
                         <div className="mask6">
                             <img src={Mask6} alt="mask6" />
                         </div>
@@ -289,5 +304,6 @@ const StudentsCardHome = () => {
         </React.Fragment>
     )
 }
+
 
 export default StudentsCardHome;

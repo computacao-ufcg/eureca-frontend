@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
-import Header from '../../../../newComponents/Header'
-import DelayedSlider from './DelayedSlider'
-import DelayedGraph from './DelayedGraph'
-import Export from '../../../../newComponents/Export'
+import { useHistory } from 'react-router-dom';
+import {FiArrowLeft} from 'react-icons/fi';
+import Header from '../../../../newComponents/Header';
+import DelayedSlider from './DelayedSlider';
+import DelayedGraph from './DelayedGraph';
+import Export from '../../../../newComponents/Export';
 
 import { SelectPicker } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
@@ -23,12 +24,14 @@ const Delayed = () => {
 
     const [optionSelected, setOptionSelected] = useState('risk');
 
+    const history = useHistory();
+
     useEffect(() => {
         updateGraph('1966.1', '2020.1')
         handleCSV('1966.1', '2020.1');
-    },[]);
+    }, []);
 
-    const handleSlider = (min, max) => {      
+    const handleSlider = (min, max) => {
         setMin(min);
         setMax(max);
         updateGraph(min, max);
@@ -38,16 +41,16 @@ const Delayed = () => {
     const updateGraph = async (min, max) => {
         let query = `api/statistics/students/delayed?from=${min}&to=${max}`;
 
-        const res = await api_EB.get(query, {headers:{"Authentication-Token": sessionStorage.getItem('eureca-token')}});
-        
-        if(res){
+        const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
+
+        if (res) {
             let delayedAux = []
             res.data.terms.forEach(element => {
-                let delayedElement = {...element.metricsSummary.metrics, term: element.admissionTerm}
+                let delayedElement = { ...element.metricsSummary.metrics, term: element.admissionTerm }
                 delayedAux.push(delayedElement);
             });
             setDataEgressos(delayedAux);
-        } else{
+        } else {
             console.log(res.statusText);
         }
     }
@@ -56,32 +59,33 @@ const Delayed = () => {
     const handleCSV = async (min, max) => {
         let query = `api/statistics/students/alumni/csv?from=${min}&to=${max}`;
 
-        const res = await api_EB.get(query, {headers:{"Authentication-Token": sessionStorage.getItem('eureca-token')}});
-        
-        if(res){
+        const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
+
+        if (res) {
             setDataCSV(res.data);
-        } else{
+        } else {
             console.log(res.statusText);
         }
     }
 
-    return(
+    return (
         <React.Fragment>
-            <Header/>
+            <Header />
             <div className="alumni-main">
                 <div className="alumni-content">
+                    <div className="backdot"><span onClick={() => history.goBack()} ><FiArrowLeft size={25} /></span></div>
                     <div className="alumni-slider">
                         <div className="alumni-title">Retidos</div>
-                        <DelayedSlider changeSlider={handleSlider}/>
+                        <DelayedSlider changeSlider={handleSlider} />
                         <div className="graph">
                             <DelayedGraph data={dataEgressos || {}} option={optionSelected} />
-                            <SelectPicker 
-                                onChange={ (value) => setOptionSelected(value) }
-                                data={select_items} 
-                                className="selector" 
+                            <SelectPicker
+                                onChange={(value) => setOptionSelected(value)}
+                                data={select_items}
+                                className="selector"
                                 defaultValue={optionSelected} />
                         </div>
-                        <Export data={dataCSV} name={'alumni'}/>
+                        <Export data={dataCSV} name={'alumni'} />
                     </div>
                 </div>
             </div>
