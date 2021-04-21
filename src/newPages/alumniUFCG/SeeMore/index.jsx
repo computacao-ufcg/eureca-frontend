@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import Header from '../../../newComponents/Header';
 import MyLoading from '../../../newComponents/MyLoading';
@@ -24,6 +26,8 @@ const SeeMore = () => {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState(true);
     const [noData, setNoData] = useState(false);
+
+    const history = useHistory();
 
 
     const handleProfile = async (page, name, admission, graduation) => {
@@ -64,6 +68,7 @@ const SeeMore = () => {
             <div className="main-content">
                 <Header></Header>
                 <div className="main-seemore">
+                    <div className="backdot"><span onClick={() => history.goBack()} ><FiArrowLeft size={25} /></span></div>
                     <div className={'container-title-seemore'}>
                         <h1>VER MAIS</h1>
                     </div>
@@ -92,24 +97,24 @@ const SeeMore = () => {
                     </div>
                     {
                         search ? <React.Fragment /> :
-                        loading ? <MyLoading /> :
-                        noData ? <NoDataFound msg={"Nenhum dado encontrado."} /> :
-                            <div className="list-alumni">
-                                <ListAlumni listData={data} />
-                                <hr></hr>
-                                <Pagination
-                                    pages={data.totalPages}
-                                    maxButtons={5}
-                                    onSelect={handlePage}
-                                    activePage={page + 1}
-                                    prev
-                                    next
-                                    first
-                                    last
-                                    ellipsis
-                                    boundaryLinks
-                                />
-                            </div>
+                            loading ? <MyLoading /> :
+                                noData ? <NoDataFound msg={"Nenhum dado encontrado."} /> :
+                                    <div className="list-alumni">
+                                        <ListAlumni listData={data} />
+                                        <hr></hr>
+                                        <Pagination
+                                            pages={data.totalPages}
+                                            maxButtons={5}
+                                            onSelect={handlePage}
+                                            activePage={page + 1}
+                                            prev
+                                            next
+                                            first
+                                            last
+                                            ellipsis
+                                            boundaryLinks
+                                        />
+                                    </div>
                     }
                 </div>
             </div>
