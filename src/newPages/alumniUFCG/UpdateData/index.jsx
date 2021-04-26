@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
+import {FiArrowLeft} from 'react-icons/fi';
 import { Nav } from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css';
 
@@ -15,6 +17,8 @@ const UpdateData = () => {
     const [dataTab, setDataTab] = useState(<Profiles />);
     const [activeNav, setActiveNav] = useState('profiles');
 
+    const history = useHistory();
+
     const handleNav = (eventKey) => {
         if (eventKey === 'profiles') {
             setDataTab(<Profiles />);
@@ -28,6 +32,7 @@ const UpdateData = () => {
         <div className="main-container">
             <Header />
             <div className="main-container-body">
+            <div className="backdot"><span onClick={() => history.goBack()} ><FiArrowLeft size={25} /></span></div>
                 <h1>Atualizar Dados</h1>
                 <main>
                     <div className="alternator-tabs">

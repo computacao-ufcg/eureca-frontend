@@ -6,6 +6,7 @@
     background-color: #E6DBD3;
 
     overflow: auto;
+
 }
 
 .main-glossary{
@@ -25,14 +26,13 @@
     flex-direction: column;
 
     align-items: center;
+    position: relative;
 }
 
 .container-title-glossary{
-    height: 62px;
-    width: 200px;
-    margin-left: 20px;
-    
-    align-self: flex-start;
+    height: 8vh;
+    padding: 1vh 0;
+    align-self: center;
 }
 
 .container-title-glossary h1{

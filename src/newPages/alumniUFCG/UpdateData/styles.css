@@ -1,8 +1,10 @@
+.main-container-body{
+    position: relative;
+}
 .main-container-body h1{
     margin-top: 5vh;
     margin-bottom: 2vh;
 }
-
 /* Alternator Tabs */
 
 .alternator-tabs{

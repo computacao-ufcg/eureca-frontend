@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
-import {FiArrowLeft} from 'react-icons/fi'
+import {FiArrowLeft} from 'react-icons/fi';
 
 import Header from '../../../../newComponents/Header';
 import ActiveSlider from './ActiveSlider';
 import ActiveGraph from './ActiveGraph';
-
+import Export from '../../../../newComponents/Export';
 
 import { api_EB } from '../../../../services/api';
 
@@ -105,8 +104,10 @@ const Actives = () => {
                             <ActiveSlider changeSlider={handleSlider} labels={label} min={min} max={max} />
                         </div>
                         <ActiveGraph data={dataActives} />
+                        <div className="main-actives-export">
+                            <Export data={dataExport} name={'Actives'} />
+                        </div>
                     </div>
-
                 </div>
             }
         </div>
