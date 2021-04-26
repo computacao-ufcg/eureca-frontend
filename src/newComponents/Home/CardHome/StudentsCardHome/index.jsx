@@ -46,7 +46,8 @@ const StudentsCardHome = () => {
     const setPropsActives = (data) => {
         var risk = ''
         var cost = ''
-        var successRate = data.activesSummary.average.metrics.successRate * 100
+        var pace = ''
+        var successRate = data ? data.activesSummary.average.metrics.successRate * 100 : 0
 
         if (data) {
             if (data.activesSummary.average.riskClass === "INACCURATE") {
@@ -133,8 +134,8 @@ const StudentsCardHome = () => {
     const setPropsDelayed = (data) => {
         var risk = ''
         var cost = ''
-        var successRate = data.delayedSummary.average.metrics.successRate * 100
-
+        var pace = ''
+        var successRate = data ? data.delayedSummary.average.metrics.successRate * 100 : 0
 
         if (data) {
 

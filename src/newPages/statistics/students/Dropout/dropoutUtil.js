@@ -6,6 +6,6 @@ const labels = [
 
 const tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8', 'tag9']
 const motivos = ['3 reprovações na mesma disciplina', 'Novo ingresso no mesmo curso', 'Novo ingresso em outro curso', 'Reprovado por falta em todas as disciplinas', 'Cancelamento da matrícula', 'Cancelamento p/ decisão judicial', 'Cancelamento p/ mudança de curso',
-                'Cancelamento p/ solicitação do aluno', 'Cancelamento por abandono', 'Perda de graduação', 'Transferido', 'Total']
+                'Cancelamento p/ solicitação do aluno', 'Cancelamento por abandono', 'Perda de graduação', 'Transferido', 'Ligar/Desligar Todos']
 
 export { labels, tags, motivos };
