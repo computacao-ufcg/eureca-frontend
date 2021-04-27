@@ -25,7 +25,7 @@ const subtitles_translations = {
     "alumniCount": "Número de egressos",
     "averageGpa": "CRA médio",
     "averageTerms": "Média de períodos",
-    "averageCost": "Tempo médio"
+    "averageCost": "Custo médio"
 }
 
 const select_items = [
@@ -45,7 +45,7 @@ const select_items = [
         "role": "Master"
     },
     {
-        "label": "Tempo médio",
+        "label": "Custo médio",
         "value": "averageCost",
         "role": "Master"
     }
