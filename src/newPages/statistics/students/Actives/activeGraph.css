@@ -32,7 +32,7 @@
 /* Colors to switchs */
 
 .optionsActives {
-    height: 30vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -71,4 +71,34 @@
 .switch6.pretty.p-switch.p-fill input:checked~.state:before {
     border-color: #001021;
     background-color: #001021 !important;
+}
+
+.switch7.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #40809A;
+    background-color: #40809A !important;
+}
+
+.switch8.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #D9C8A2;
+    background-color: #D9C8A2 !important;
+}
+
+.switch9.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #B58B34;
+    background-color: #B58B34 !important;
+}
+
+.switch10.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #7B9D0A;
+    background-color: #7B9D0A !important;
+}
+
+.switch11.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #4FC6E3;
+    background-color: #4FC6E3 !important;
+}
+
+.switch12.pretty.p-switch.p-fill input:checked~.state:before {
+    border-color: #E71D36;
+    background-color: #E71D36 !important;
 }
