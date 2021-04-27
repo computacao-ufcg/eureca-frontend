@@ -9,7 +9,7 @@ import './style.css'
 const GraduatedSlider = (props) => {
     
     const [value1, setValue1] = useState(0);
-    const [value2, setValue2] = useState(78);
+    const [value2, setValue2] = useState(18);
     
     const handleStyle = {
         color: '#fff',
@@ -23,7 +23,7 @@ const GraduatedSlider = (props) => {
         <div className={'mainSlider'}>
             <RangeSlider
                 min={0}
-                max={78}
+                max={18}
                 defaultValue={[value1, value2]}
                 value={[value1, value2]}
                 handleStyle={handleStyle}

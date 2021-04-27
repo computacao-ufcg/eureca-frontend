@@ -1,7 +1,4 @@
 const labels = [
-    '1981.1', '1981.2','1982.1', '1982.2', '1983.1', '1983.2', '1984.1', '1984.2', '1985.1', '1985.2', '1986.1', '1986.2', '1987.1', '1987.2', '1988.1', '1988.2', '1989.1', '1989.2', '1990.1', '1990.2',
-    '1991.1', '1991.2','1992.1', '1992.2', '1993.1', '1993.2', '1994.1', '1994.2', '1995.1', '1995.2', '1996.1', '1996.2', '1997.1', '1997.2', '1998.1', '1998.2', '1999.1', '1999.2', '2000.1', '2000.2',
-    '2001.1', '2001.2','2002.1', '2002.2', '2003.1', '2003.2', '2004.1', '2004.2', '2005.1', '2005.2', '2006.1', '2006.2', '2007.1', '2007.2', '2008.1', '2008.2', '2009.1', '2009.2', '2010.1', '2010.2',
     '2011.1', '2011.2','2012.1', '2012.2', '2013.1', '2013.2', '2014.1', '2014.2', '2015.1', '2015.2', '2016.1', '2016.2', '2017.1', '2017.2', '2018.1', '2018.2', '2019.1', '2019.2', '2020.1'
 ];
 
@@ -23,19 +20,19 @@ const prediction = [
 const subtitles_translations = {
     // "Período de graduação": "graduationTerm",
     
-    "attemptedCredits": "Créditos Tentados",
-    "averageLoad": "Carga Média",
-    "cost": "Custo Médio",
-    "courseDurationPrediction": "Previsão de Conclusão",
-    "feasibility": "Viabilidade",
-    "pace": "Ritmo Médio",
-    "risk": "Risco Médio",
-    "successRate": "Taxa de Sucesso"
+    "attemptedCredits": {name: "Créditos Matriculados", value: [{x: '2016.1', y: 196}, {x: '2020.1', y: 20}]},
+    "averageLoad": {name: "Carga Média", value: 21.6},
+    "cost": {name: "Custo Médio", value: 1},
+    "courseDurationPrediction": {name: "Previsão Média de Conclusão", value: 10.25},
+    "feasibility": {name:"Viabilidade Média", value: 1},
+    "pace": {name: "Ritmo Médio", value: 21.6},
+    "risk": {name: "Risco Médio", value: 1},
+    "successRate": {name: "Taxa Média de Sucesso", value: 1}
 }
 
 const select_items = [
     {
-        "label": "Créditos Tentados",
+        "label": "Créditos Matriculados",
         "value": "attemptedCredits",
         "role": "Master"
     },
@@ -50,12 +47,12 @@ const select_items = [
         "role": "Master"
     },
     {
-        "label": "Previsão de Conclusão",
+        "label": "Previsão Média de Conclusão",
         "value": "courseDurationPrediction",
         "role": "Master"
     },
     {
-        "label": "Viabilidade",
+        "label": "Viabilidade Média",
         "value": "feasibility",
         "role": "Master"
     },
@@ -70,7 +67,7 @@ const select_items = [
         "role": "Master"
     },
     {
-        "label": "Taxa de Sucesso",
+        "label": "Taxa Média de Sucesso",
         "value": "successRate",
         "role": "Master"
     }

@@ -19,7 +19,7 @@
 }
 
 .dropout-slider {
-    width: 1200px;
+    width: 1280px;
     margin-top: 30px;
 }
 
@@ -27,10 +27,9 @@
     font-size: 24px;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0 45px 0;
     color: #886859;
 }
-
 
 .mainStatistics {
     display: grid;
@@ -95,68 +94,44 @@
 }
 
 .optionsEvadidos {
-    height: 360px;
-    display: grid;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.actives-graph-container{
+    display: flex;    
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.graph-main {
+    position: relative;
+    margin-right: 2vw;
+    padding-left: 10px;
+}
+
+/* LEGENDS */
+
+.graph-label-y, .graph-label-x {
+    position: absolute;
+    color: #886859;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.graph-label-y{
+    left: 0;
+    transform: rotate(-90deg) translate(-20vh, -3vh);
+}
+
+.graph-label-x{
+    bottom: 0;
+    right: 50;
+    transform: translateY(2vh);
 }
 
 
-.checkbox0.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #B2EDD0;
-    background-color: #B2EDD0 !important;
-}
 
-.checkbox1.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #EFAB54;
-    background-color: #EFAB54 !important;
-}
-
-.checkbox2.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #24BDAF;
-    background-color: #24BDAF !important;
-}
-
-.checkbox3.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #F64969;
-    background-color: #F64969 !important;
-}
-
-.checkbox4.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #F6B545;
-    background-color: #F6B545 !important;
-}
-
-.checkbox5.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #E4D2A5;
-    background-color: #E4D2A5 !important;
-}
-
-.checkbox6.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #C99192;
-    background-color: #C99192 !important;
-}
-
-.checkbox7.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #3A3D3D;
-    background-color: #3A3D3D !important;
-}
-
-.checkbox8.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #C3D440;
-    background-color: #C3D440 !important;
-}
-
-.checkbox9.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #6C7468;
-    background-color: #6C7468 !important;
-}
-
-.checkbox10.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #FD577D;
-    background-color: #FD577D !important;
-}
-
-.checkbox11.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #5F6081;
-    background-color: #5F6081 !important;
-}
 

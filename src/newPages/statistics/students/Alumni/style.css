@@ -19,7 +19,7 @@
 }
 
 .alumni-slider {
-    width: 1200px;
+    width: 1280px;
     margin-top: 30px;
 }
 
@@ -27,7 +27,7 @@
     font-size: 24px;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0 45px 0;
     color: #886859;
 }
 
@@ -81,12 +81,13 @@
 }
 
 .main-graphs-alumni {
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 20px;
-    margin-left: 25px;
+    margin-left: 45px;
     display: grid;
     justify-content: center;
     justify-items: center;
+    position: relative;
 }
 
 .textEgressos {
@@ -172,5 +173,25 @@
 .checkbox11.pretty.p-switch.p-fill input:checked~.state:before {
     border-color: #5F6081;
     background-color: #5F6081 !important;
+}
+
+/* LEGENDS */
+
+.graph-label-y, .graph-label-x {
+    position: absolute;
+    color: #886859;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.graph-label-y{
+    left: 0;
+    transform: rotate(-90deg) translate(-20vh, -3vh);
+}
+
+.graph-label-x{
+    bottom: 0;
+    right: 50;
+    transform: translateY(2vh);
 }
 
