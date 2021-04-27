@@ -99,7 +99,6 @@
     display: grid;
 }
 
-
 .checkbox0.pretty.p-switch.p-fill input:checked~.state:before {
     border-color: #B2EDD0;
     background-color: #B2EDD0 !important;

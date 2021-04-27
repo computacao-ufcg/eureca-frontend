@@ -174,7 +174,8 @@ const EvadedGraph = (props) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="term" label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset:-5 }} />
+                        
+                        <XAxis dataKey="term" label={{ value: 'Semestres', angle: 0, position: 'insideBottom', offset:-5}} />
                         <YAxis yAxisId="left" label={{ value: 'Evadidos', angle: -90, position: 'insideLeft'}}/>
                         <Tooltip />
                         <Area yAxisId="left" name={motivos[0]} type="monotone" stackId="1" dataKey={reason1 ? tag1 : null} stroke="#B2EDD0" fill="#B2EDD0" />
@@ -188,6 +189,7 @@ const EvadedGraph = (props) => {
                         <Area yAxisId="left" name={motivos[8]} type="monotone" stackId="1" dataKey={reason9 ? tag9 : null} stroke="#C3D440" fill="#C3D440"/>
                         <Area yAxisId="left" name={motivos[9]} type="monotone" stackId="1" dataKey={reason10 ? tag10 : null} stroke="#6C7468" fill="#6C7468"/>
                     </ComposedChart>
+                    
                     <div className="optionsEvadidos">
                         {motivos.map((e, index) => <label key={"label" + index}><Switch shape="fill" className={"checkbox" + index} key={"check" + index} name={"tag" + index} id={index} checked={reasons[index]} onChange={handleCheck}/>{" " + motivos[index]}</label>)}
                     </div>
