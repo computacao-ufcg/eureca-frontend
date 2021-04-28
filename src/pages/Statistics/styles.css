@@ -25,7 +25,6 @@
 
 .mainSlider {
     width: 100%;
-    margin-bottom: 50px;
 }
   
 .legendSlider {
@@ -49,13 +48,6 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-}
-
-.mainGraphEvadidos {
-    margin-top: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
 }
 
 .optionsEvadidos {
