@@ -50,6 +50,20 @@
     grid-template-rows: 55fr 40fr;
     padding: 5px 0px;
 }
+
+.main-mini-card-home-5 {
+    height: 58px;
+    width: auto;
+    min-width: 82.4px;
+    border: 1px solid #707070;
+    display: grid;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    border-right: 0;
+    border-bottom: 0;
+    grid-template-rows: 55fr 40fr;
+}
 /**
 .main-mini-card-home-5 {
     height: auto;
@@ -76,6 +90,8 @@ layout ideal para resoluçâo do card de evadidos*/
 }
 
 .number-mini-card-home-content {
+    font-weight: 600;
+    color: #7E84A3;
 
 }
 .number-mini-card-home-delayed{
