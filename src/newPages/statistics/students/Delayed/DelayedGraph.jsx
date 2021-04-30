@@ -34,7 +34,7 @@ const DelayedGraph = (props) => {
                         <ReferenceLine yAxisId='left' x={labelSelected == "Créditos Matriculados" ? '2016.1' : null} stroke="blue" label="" />
                         <ReferenceLine yAxisId='left' label="" stroke="red" strokeDasharray="3 3" segment={labelSelected == "Créditos Matriculados" ? [{x: '2012.2', y: 196}, {x: '2016.1', y: 196}] : []} />
                     </LineChart>
-                    <p className="graph-label-y">Retidos</p>
+                    <p className="graph-label-y">{labelSelected || 'Retidos'}</p>
                     <p className="graph-label-x">Período de Ingresso</p>
                 </div>     
                 : null}
