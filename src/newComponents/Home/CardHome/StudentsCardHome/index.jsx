@@ -46,7 +46,8 @@ const StudentsCardHome = () => {
     const setPropsActives = (data) => {
         var risk = ''
         var cost = ''
-        var successRate = data.activesSummary.average.metrics.successRate * 100
+        var pace = ''
+        var successRate = data ? data.activesSummary.average.metrics.successRate * 100 : 0
 
         if (data) {
             if (data.activesSummary.average.riskClass === "INACCURATE") {
@@ -87,7 +88,7 @@ const StudentsCardHome = () => {
             data.activesSummary.average.metrics.averageLoad.toFixed(1) + ' créditos',
             successRate.toFixed(1) + '%',
             data.activesSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
-            cost + ' (' + data.activesSummary.average.metrics.cost.toFixed(1) + ')',
+            {custo:cost,valor: ' (' + data.activesSummary.average.metrics.cost.toFixed(1) + ')'} ,
             data.activesSummary.average.termsCount.toFixed(1) + ' períodos'
 
             ])
@@ -122,7 +123,7 @@ const StudentsCardHome = () => {
             data.alumniSummary.maxDegreeCount + ' (' + data.alumniSummary.maxDegreeCountTerm + ')',
             data.alumniSummary.averageDegreeCount.toFixed(1),
             data.alumniSummary.averageGpa.toFixed(2),
-            cost + ' (' + data.alumniSummary.averageCost.toFixed(1) + ')',
+            {custo:cost, valor: '(' + data.alumniSummary.averageCost.toFixed(1) + ')'},
             data.alumniSummary.averageTermsCount.toFixed(1) + ' períodos'
 
             ])
@@ -133,8 +134,8 @@ const StudentsCardHome = () => {
     const setPropsDelayed = (data) => {
         var risk = ''
         var cost = ''
-        var successRate = data.delayedSummary.average.metrics.successRate * 100
-
+        var pace = ''
+        var successRate = data ? data.delayedSummary.average.metrics.successRate * 100 : 0
 
         if (data) {
 
@@ -179,7 +180,7 @@ const StudentsCardHome = () => {
         data.delayedSummary.average.metrics.averageLoad.toFixed(1) + ' créditos',
         successRate.toFixed(1) + '%',
         data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) + ' períodos',
-        cost + '\n (' + data.delayedSummary.average.metrics.cost.toFixed(1) + ')',
+        {custo:cost, valor: '(' + data.delayedSummary.average.metrics.cost.toFixed(1) + ')'},
         data.delayedSummary.average.termsCount.toFixed(1) + ' períodos',
 
         ])
@@ -218,7 +219,8 @@ const StudentsCardHome = () => {
                 cancelamento,
                 abandono,
                 transferencia,
-            cost + ' (' + data.dropoutsSummary.averageCost.toFixed(1) + ')',
+
+            {custo:cost ,valor: '(' + data.dropoutsSummary.averageCost.toFixed(1) + ')'},
             data.dropoutsSummary.averageTermsCount.toFixed(1) + ' períodos',
 
             ])

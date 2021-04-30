@@ -64,7 +64,7 @@ const Test = (props) => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="admissionTerm" />
-          <YAxis yAxisId="right" />
+          <YAxis yAxisId="right"/>
           <Tooltip />
           {tags.map(d => (
             <Area

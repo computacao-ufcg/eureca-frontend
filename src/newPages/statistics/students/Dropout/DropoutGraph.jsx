@@ -91,6 +91,7 @@ const EvadedGraph = (props) => {
                     </div>
                     <div className="optionsEvadidos">
                         <MySwitch tags={tags} handleCheck={handleCheck} />
+
                     </div>
                 </div>              
             </div>
