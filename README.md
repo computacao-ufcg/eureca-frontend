@@ -11,28 +11,31 @@
 
 **OBS.**: Verificar se o arquivo "./src/services/api.js" está com a configuração adequada.
 
-## Inicializando a aplicação com Docker
+## Enviando a aplicação para o DockerHub
 
-<p>É necessário adicionar o seu user ao grupo de usuários do docker, usando o seguinte comando e depois reiniciar a máquina.</p>
+<p>A partir da raiz do projeto, digite:</p>
 
-<code>sudo usermod -aG docker $USER</code>
+<code>docker build -t eureca-frontend:dev .</code>
 
-<p>Para inicializar a aplicação com Docker primeiro precisamos executar o build da imagem a partir da raiz do projeto:</p>
+<p>Após o sucesso do build, esteja logado com sua conta do DockerHub para enviar a imagem.</p>
 
-<code>docker build -t pdc-front:dev .</code>
+<p>Para se conectar ao Docker:</p>
 
-<p>Uma vez montada, agora podemos criar o container da aplicação:</p>
+<code>docker login</code>
 
-<code>docker run -itd --name pdc-front-container \
-    -p 3000:3000 \
-    -v ${pwd}:/app \
-    -v /app/node_modules \
-    pdc-front:dev
-</code>
+<p>Insira suas credenciais e faça o login.</p>
 
-- <b>-itd</b> inicia o container no modo iterativo do terminal e em background, é necessario para aplicações react.
-- <b>-p</b> são as portas -> host:container.
-- <b>-v</b> são os volumes criados para o hot reloading.
-- <b>pdc-front:dev</b> é o nome da imagem.
+**Criando a tag para a imagem.**
 
-<p>Caso não ocorra nenhum error é possível observar a aplicação no seu localhost:3000</p>
+<p>Com a imagem montada, e o login efetuado, execute:</p>
+
+<code>docker images</code>
+
+<p>Recupere o id da imagem eureca-frontend, pois iremos utilizar no próximo passo.</p>
+
+<code>docker tag "id_imagem" eureca/eureca-frontend:dev</code>
+
+<code>docker push eureca/eureca-frontend:dev</code>
+
+- <b>"eureca/"</b> é o nome da organização que o docker enviará/atualizará a imagem.
+- <b>eureca-frontend:dev</b> é o nome da imagem.
