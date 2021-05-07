@@ -35,14 +35,10 @@ const CardHome = (props) => {
     return (
         <React.Fragment>
             <StudentsCardHome/>
-            {/** 
-            <SubjectsCardHome/>
+            <AlumniCardHome data={alumniData}/>
             <EnrollmentsCardHome/>
             <PostItsCardHome/>
             <WarningsCardHome/>
-            <CoursesCardHome/>
-            */}
-            <AlumniCardHome data={alumniData}/>
         </React.Fragment>
     )
 }
