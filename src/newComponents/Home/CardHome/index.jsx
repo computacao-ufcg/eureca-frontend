@@ -12,6 +12,7 @@ import StudentsCardHome from './StudentsCardHome'
 import WarningsCardHome from './WarningsCardHome'
 import AlumniCardHome from './AlumniCardHome'
 
+
 const CardHome = (props) => {
 
     const [alumniData, setAlumniData] = useState({})
@@ -35,6 +36,7 @@ const CardHome = (props) => {
     return (
         <React.Fragment>
             <StudentsCardHome/>
+            
             {/** 
             <SubjectsCardHome/>
             <EnrollmentsCardHome/>
