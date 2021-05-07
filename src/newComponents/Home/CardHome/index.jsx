@@ -38,6 +38,7 @@ const CardHome = (props) => {
             <StudentsCardHome/>
             <AlumniCardHome data={alumniData}/>
             <EnrollmentsCardHome/>
+
             <SubjectsCardHome/>
             <TeachersCardHome/>
         </React.Fragment>
