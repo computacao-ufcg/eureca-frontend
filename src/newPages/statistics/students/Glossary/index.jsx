@@ -42,37 +42,41 @@ const Glossary = () => {
                             <br/>
                             <div><b>{data.glossary.active.name +": "}</b> {data.glossary.active.description}</div>
                             <br/>
-                            <div><b>{data.glossary.alumnus.name +": "}</b> {data.glossary.alumnus.description}</div>
+                            <div><b>{data.glossary.canceledCount.name +": "}</b>  {data.glossary.canceledCount.description}</div>
                             <br/>
-                            <div><b>{data.glossary.averageAlumni.name + ": "}</b> {data.glossary.averageAlumni.description}</div>
+                            <div><b>{data.glossary.averageLoad.name + ": "}</b> {data.glossary.averageLoad.description}</div>
+                            <br/>
+                            <div><b>{data.glossary.averageGpa.name +": "}</b> {data.glossary.averageGpa.description}</div>
                             <br/>
                             <div><b>{data.glossary.averageCost.name +": " }</b> {data.glossary.averageCost.description}</div>
                             <br/>
-                            <div><b>{data.glossary.averageGpa.name +": "}</b> {data.glossary.averageGpa.description}</div>
+                            
                         </div>
                         <div className="img-container">
                             <img src={GlossaryImg} height={400} />
                         </div>
                         <div className="right-container">
-                            <div><b>{data.glossary.averageLoad.name + ": "}</b> {data.glossary.averageLoad.description}</div>
-                            <br/>
-                            <div><b>{data.glossary.averageRisk.name + ": "}</b>  {data.glossary.averageRisk.description}</div>
-                            <br/>
-                            <div><b>{data.glossary.averageTime.name +": "}</b> {data.glossary.averageTime.description}</div>
-                            <br/>
-                            <div><b>{data.glossary.canceledCount.name +": "}</b>  {data.glossary.canceledCount.description}</div>
-                            <br/>
-                            <div><b>{data.glossary.delayed.name + ": "}</b> {data.glossary.delayed.description}</div>
+                            <div><b>{data.glossary.alumnus.name +": "}</b> {data.glossary.alumnus.description}</div>
                             <br/>
                             <div><b>{data.glossary.dropout.name +": "}</b> { data.glossary.dropout.description}</div>
+                            <br/>
+                            <div><b>{data.glossary.averageAlumni.name + ": "}</b> {data.glossary.averageAlumni.description}</div>
+                            <br/>
+                            <div><b>{data.glossary.maximumAlumni.name +": "}</b> { data.glossary.maximumAlumni.description}</div>
+                            <br/>
+                            <div><b>{data.glossary.minimumAlumni.name +": "}</b> {data.glossary.minimumAlumni.description}</div>
+                            <br/>
+                            <div><b>{data.glossary.predictedGraduation.name +": "}</b> {data.glossary.predictedGraduation.description}</div>
+                            <br/>
+                        
                         </div>
                     </div>
                     <div className="bottom-container">
-                        <div><b>{data.glossary.maximumAlumni.name +": "}</b> { data.glossary.maximumAlumni.description}</div>
-                        <div><b>{data.glossary.minimumAlumni.name +": "}</b> {data.glossary.minimumAlumni.description}</div>
-                        <div><b>{data.glossary.predictedGraduation.name +": "}</b> {data.glossary.predictedGraduation.description}</div>
                         <div><b>{data.glossary.rejoinCount.name +": "}</b> {data.glossary.rejoinCount.description}</div>
+                        <div><b>{data.glossary.delayed.name + ": "}</b> {data.glossary.delayed.description}</div>
+                        <div><b>{data.glossary.averageRisk.name + ": "}</b>  {data.glossary.averageRisk.description}</div> 
                         <div><b>{data.glossary.successRate.name + ": " }</b> {data.glossary.successRate.description}</div>
+                        <div><b>{data.glossary.averageTime.name +": "}</b> {data.glossary.averageTime.description}</div>    
                         <div><b>{data.glossary.transferCount.name + ": "}</b> {data.glossary.transferCount.description}</div>
 
                     </div>

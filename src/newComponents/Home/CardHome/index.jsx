@@ -11,6 +11,7 @@ import SubjectsCardHome from './SubjectsCardHome'
 import StudentsCardHome from './StudentsCardHome'
 import WarningsCardHome from './WarningsCardHome'
 import AlumniCardHome from './AlumniCardHome'
+import TeachersCardHome from './TeachersCardHome'
 
 const CardHome = (props) => {
 
@@ -37,8 +38,9 @@ const CardHome = (props) => {
             <StudentsCardHome/>
             <AlumniCardHome data={alumniData}/>
             <EnrollmentsCardHome/>
-            <PostItsCardHome/>
-            <WarningsCardHome/>
+
+            <SubjectsCardHome/>
+            <TeachersCardHome/>
         </React.Fragment>
     )
 }

@@ -18,7 +18,7 @@ const SubjectsCardHome = () => {
                             <img src={Mask7} alt="mask7" />
                         </div>
                         <div className="title-card-content">
-                            <TitleCardHome title={"DISCIPLINAS"} />
+                            <TitleCardHome title={"Disciplinas"} />
                         </div>
                         <div className="summary-card-content2">
                             <SummaryCardHome />
