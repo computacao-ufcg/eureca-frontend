@@ -42,7 +42,7 @@ const PendingMatchs = (props) => {
             setLoading(true);
         }
 
-        let query = 'match/pending/' + page;
+        let query = 'alumni/match/pending/' + page;
         const res = await api_AS.get(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
@@ -92,7 +92,7 @@ const PendingMatchs = (props) => {
             return;
         }
 
-        const query = '/match';
+        const query = 'alumni/match';
 
         const myBody = {
             'linkedinId': selectedProfile.linkedinId,

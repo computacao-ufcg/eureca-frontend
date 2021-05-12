@@ -32,7 +32,7 @@ const Classified = (props) => {
 
     const handleClassified = async () => {
         setLoading(true);
-        const query = `employer/classified/${page}`;
+        const query = `alumni/employer/classified/${page}`;
 
         try {
             const res = await api_AS.get(query, myHeaders);
@@ -51,7 +51,7 @@ const Classified = (props) => {
     }
 
     const handleCancelClassified = async () => {
-        const query = `employer?linkedinId=${cancelClassified.linkedinId}`;
+        const query = `alumni/employer?linkedinId=${cancelClassified.linkedinId}`;
 
         const res = await api_AS.delete(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 

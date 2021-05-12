@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# Intellij
+.idea
+
 # production
 /build
 

@@ -29,8 +29,8 @@ const Actives = () => {
     }
 
     const fetchDataApiWithLabel = async (min, max) => {
-        const queryActives = `api/statistics/students/actives?from=${label[min]}&to=${label[max]}`;
-        const queryActivesCSV = `api/statistics/students/actives/csv?from=${label[min]}&to=${label[max]}`;
+        const queryActives = `eureca/statistics/students/actives?from=${label[min]}&to=${label[max]}`;
+        const queryActivesCSV = `eureca/statistics/students/actives/csv?from=${label[min]}&to=${label[max]}`;
 
         const token = sessionStorage.getItem('eureca-token');
 
@@ -59,8 +59,8 @@ const Actives = () => {
     useEffect(() => {
         const fetchDataApiWithoutLabel = async () => {
             setLoadding(true);
-            const queryActives = 'api/statistics/students/actives?from=1950.0&to=2049.9';
-            const queryActivesCSV = 'api/statistics/students/actives/csv?from=1950.0&to=2049.9';
+            const queryActives = 'eureca/statistics/students/actives?from=1950.0&to=2049.9';
+            const queryActivesCSV = 'eureca/statistics/students/actives/csv?from=1950.0&to=2049.9';
 
             const token = sessionStorage.getItem('eureca-token');
 

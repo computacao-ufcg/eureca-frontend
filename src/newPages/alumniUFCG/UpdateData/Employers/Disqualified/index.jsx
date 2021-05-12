@@ -27,8 +27,8 @@ const Disqualified = (props) => {
 
     const handleDisqualified = async (page) => {
         setLoading(true);
-        const query = `employer/unclassified/${page}`;
-        const queryCompanyType = `employer/types`;
+        const query = `alumni/employer/unclassified/${page}`;
+        const queryCompanyType = `alumni/employer/types`;
         const myHeaders = {
             headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') }
         };
@@ -71,7 +71,7 @@ const Disqualified = (props) => {
             return;
         }
 
-        const query = `employer`;
+        const query = `alumni/employer`;
         const myHeaders = {
             headers: {
                 'Authentication-Token': sessionStorage.getItem('eureca-token'),

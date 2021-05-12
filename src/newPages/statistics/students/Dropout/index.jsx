@@ -34,7 +34,7 @@ const Dropout = () => {
     }
 
     const updateGraph = async (min, max) => {
-        let query = `api/statistics/students/dropouts?from=${min}&to=${max}`;
+        let query = `eureca/statistics/students/dropouts?from=${min}&to=${max}`;
 
         const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
 
@@ -47,7 +47,7 @@ const Dropout = () => {
     }
 
     const handleCSV = async (min, max) => {
-        let query = `api/statistics/students/dropouts/csv?from=${min}&to=${max}`;
+        let query = `eureca/statistics/students/dropouts/csv?from=${min}&to=${max}`;
 
         const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
 

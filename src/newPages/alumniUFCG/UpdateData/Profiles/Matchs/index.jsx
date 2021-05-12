@@ -24,7 +24,7 @@ const Matchs = () => {
 
     const handleClassificados = async () => {
         setLoading(true);
-        const res = await api_AS.get('match/list/' + page, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
+        const res = await api_AS.get('alumni/match/list/' + page, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
 
         if (res.status === 200) {
             setData(res.data.content);
@@ -35,7 +35,7 @@ const Matchs = () => {
     }
 
     const handleCancelMatch = async () => {
-        const query = `match?registration=${cancelMatch.registration}`;
+        const query = `alumni/match?registration=${cancelMatch.registration}`;
 
         const res = await api_AS.delete(query, { headers: { 'Authentication-Token': sessionStorage.getItem('eureca-token') } });
         if (res.status === 200) {

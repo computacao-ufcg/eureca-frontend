@@ -34,7 +34,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        const queryKey = "api/publicKey";
+        const queryKey = "eureca/publicKey";
 
         const { data } = await api_EB.get(queryKey);
 

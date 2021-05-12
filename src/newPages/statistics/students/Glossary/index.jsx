@@ -15,7 +15,7 @@ const Glossary = () => {
     }, []);
 
     const getGlossary = async () => {
-        let query = `api/statistics/students/summary`;
+        let query = `eureca/statistics/students/summary`;
 
         const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
 
