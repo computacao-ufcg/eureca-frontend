@@ -1,5 +1,5 @@
 import React from "react";
-import { MiniCardHome1, MiniCardHome2 } from "../../MiniCardHome";
+import { MiniCardHome1, MiniCardHome4 } from "../../MiniCardHome";
 
 import "./style.css";
 
@@ -15,7 +15,7 @@ const EnrollmentsSummaryCardHome = props => {
           </div>
         </div>
         <div className='enrollments-summary-left-cards'>
-          <MiniCardHome2
+          <MiniCardHome4
             option={"teste"}
             number={props.data.max.count}
             legend={"NUMERO MAXIMO"}
