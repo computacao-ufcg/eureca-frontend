@@ -67,7 +67,7 @@ const MiniCardHome5 = (props) => {
 const MiniCardHomeSubjects = (props) => {
 
   return (
-      <div className="main-mini-card-home-5">
+      <div className="main-mini-card-home">
           <div className="number-mini-card-home" >
               <div className="number-mini-card-home-content">{props.number}</div>
           </div>
