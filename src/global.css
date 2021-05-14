@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   margin: 0;
@@ -12,12 +12,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f5f5f5;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100%;
   width: 100%;
 }
 
-html{
+html {
   height: 100%;
   width: 100%;
 }
@@ -33,26 +33,25 @@ html{
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-select:focus{
+select:focus {
   outline: none;
 }
 
-
 /* If using, delete the main file in "Actives". */
 
-.main-container{
-  background-color: #E6DBD3;
+.main-container {
+  background-color: #e6dbd3;
   min-height: 100vh;
 
   padding-bottom: 10vh;
   display: block;
 }
 
-.main-container-body{
+.main-container-body {
   width: 80vw;
   min-height: 65vh;
 
@@ -60,7 +59,7 @@ select:focus{
   margin-top: 2vh;
   padding-bottom: 10vh;
 
-  background: #FFFFFF 0% 0% no-repeat padding-box;
+  background: #ffffff 0% 0% no-repeat padding-box;
   box-shadow: 0px 1px 4px #15223214;
   border-radius: 6px;
   opacity: 1;
@@ -71,18 +70,18 @@ select:focus{
   align-items: center;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
 /* Back arrow button for the pages. */
-.backdot{
+.backdot {
   padding: 2vh;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.backdot>span{
+.backdot > span {
   cursor: pointer;
 }

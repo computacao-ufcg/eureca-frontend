@@ -1,50 +1,49 @@
-.mainNavBar{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    
+.mainNavBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .buttonsNavBar {
-    width: 85%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 80px;
-    height: 60px;
-    background-color: white;
-    align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 15px;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 80px;
+  height: 60px;
+  background-color: white;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }
 
 .customButton {
-    background-color: transparent;
-    border: none;
-    color: black;
-    font-size: 1.1em;
-    font-weight: 800;
-    cursor: pointer;
-    outline: 0;
-    letter-spacing: 1px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 1.1em;
+  font-weight: 800;
+  cursor: pointer;
+  outline: 0;
+  letter-spacing: 1px;
 }
 
 .customButton:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
+  transform: scale(1.1);
+  transition: 0.3s;
 }
 
-.selectedButton{
-    background-color: transparent;
-    border: none;
-    color: #0073e5;
-    font-size: 1.1em;
-    font-weight: 800;
-    cursor: pointer;
-    outline: 0;
-    letter-spacing: 1px;
+.selectedButton {
+  background-color: transparent;
+  border: none;
+  color: #0073e5;
+  font-size: 1.1em;
+  font-weight: 800;
+  cursor: pointer;
+  outline: 0;
+  letter-spacing: 1px;
 }
 
-.selectedButton:hover{
-    transform: scale(1.1);
-    transition: 0.3s;
+.selectedButton:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
 }

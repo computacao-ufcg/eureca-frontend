@@ -1,19 +1,19 @@
-.matches-container{
-    text-align: center;
+.matches-container {
+  text-align: center;
 }
 
-.matches-container button{
-    width: 200px;
-    height: 50px;
-    background:#886859;
-    color: #f1f1f1;
-    border: none;
-    border-radius: 5px;
-    margin-top: 2rem;
-    font-size: 1rem; 
-    cursor: pointer;
+.matches-container button {
+  width: 200px;
+  height: 50px;
+  background: #886859;
+  color: #f1f1f1;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.matches-container button:hover{
-    background-color: #886859ea;
+.matches-container button:hover {
+  background-color: #886859ea;
 }

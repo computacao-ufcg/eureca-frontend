@@ -88,8 +88,9 @@ const SubjectsCardHome = () => {
                     </div>
                 </div>
             </div>
-        </React.Fragment>
-    )
-}
+      
+    </React.Fragment>
+  );
+};
 
 export default SubjectsCardHome;

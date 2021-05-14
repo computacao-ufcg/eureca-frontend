@@ -1,13 +1,13 @@
-.home-content{
-    background-color: #E6DBD3;
-    padding-bottom: 10vh;
-    min-height: 80vh;
+.home-content {
+  background-color: #e6dbd3;
+  padding-bottom: 10vh;
+  min-height: 80vh;
 }
 
 .home-cards {
-    padding-top: 15px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 80vw;
-    margin-left: 10vw;
+  padding-top: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 80vw;
+  margin-left: 10vw;
 }

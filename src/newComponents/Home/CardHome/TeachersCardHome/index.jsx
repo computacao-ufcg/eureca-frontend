@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import '../style.css';
+import "../style.css";
 
 import TitleCardHome from '../TitleCardHome';
-import SummaryCardHome from '../SummaryCardHome';
 import TeachersSummaryCardHome from './TeachersSummaryCardHome'
 import Mask6 from '../../../../assets/new_home_assets/mask_6.svg';
 import Mask5 from '../../../../assets/new_home_assets/mask_5.svg';
@@ -19,7 +18,7 @@ const TeachersCardHome = () => {
     const [optionTeachers, setOptionTeachers] = useState("UASC")
     const [titleTeachers, setTitleTeachers] = useState("UASC")
     const [labels, setLabels] = useState(labelTeachers)
-    const [cards, setCards] = useState({ card1: true, card2: true, card3: true, card4: true, card5: true, card6: true ,card7:true})
+    const [cards, setCards] = useState({ card1: true, card2: true, card3: true, card4: true, card5: true, card6: true, card7: true })
 
     const [propsTeachers, setPropsTeachers] = useState([])
 
@@ -94,7 +93,7 @@ const TeachersCardHome = () => {
         data.min.count + ' docentes' + '(' + data.min.term + ')',
         data.max.count + ' docentes' + '(' + data.max.term + ')'
         ])
-        setCards({ ...cards, card4: true, card5: true, card6: true, card7: true})
+        setCards({ ...cards, card4: true, card5: true, card6: true, card7: true })
 
     }
 
@@ -170,7 +169,7 @@ const TeachersCardHome = () => {
                 </div>
             </div>
         </React.Fragment>
-    )
-}
+    );
+};
 
 export default TeachersCardHome;

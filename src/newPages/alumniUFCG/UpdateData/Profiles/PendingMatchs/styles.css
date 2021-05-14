@@ -1,38 +1,38 @@
-.possible-match{
-    margin-top: 2vh;
+.possible-match {
+  margin-top: 2vh;
 }
 
-.possible-match-div{
-    display: flex;
-    flex-direction: row;
+.possible-match-div {
+  display: flex;
+  flex-direction: row;
 
-    justify-content: space-around;
-    align-items: baseline;
+  justify-content: space-around;
+  align-items: baseline;
 
-    width: 500px;
+  width: 500px;
 }
 
-.possible-match-div .possible-match-select{
-    font-size: 14px;
-    color: #5C5F5C;
+.possible-match-div .possible-match-select {
+  font-size: 14px;
+  color: #5c5f5c;
 
-    padding: 10px;
+  padding: 10px;
 
-    background-color: transparent;
-    border-style: none;
-    border-bottom: 1px solid #5C5F5C;
+  background-color: transparent;
+  border-style: none;
+  border-bottom: 1px solid #5c5f5c;
 }
 
-.possible-match-select option{
-    font-size: 18px;
-    color: #5C5F5C;
+.possible-match-select option {
+  font-size: 18px;
+  color: #5c5f5c;
 }
 
-.possible-match h6{
-    margin-top: 20px;
+.possible-match h6 {
+  margin-top: 20px;
 }
 
-.main-matches{
-    display: flex;
-    justify-content: space-between;
+.main-matches {
+  display: flex;
+  justify-content: space-between;
 }
