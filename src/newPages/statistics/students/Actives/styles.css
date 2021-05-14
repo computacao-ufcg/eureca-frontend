@@ -1,55 +1,54 @@
-.main-container{
-    background-color: #E6DBD3;
-    padding-bottom: 10vh;
-    display: block;
+.main-container {
+  background-color: #e6dbd3;
+  padding-bottom: 10vh;
+  display: block;
 }
 
-.main-container .main-actives{
-    width: 80vw;
+.main-container .main-actives {
+  width: 80vw;
 
-    margin-left: 10vw;
-    margin-top: 2vh;
-    padding-top: 5vh;
-    padding-bottom: 10vh;
+  margin-left: 10vw;
+  margin-top: 2vh;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
 
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 1px 4px #15223214;
-    border-radius: 6px;
-    opacity: 1;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 4px #15223214;
+  border-radius: 6px;
+  opacity: 1;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 
-    position: relative;
+  position: relative;
 }
 
-.main-container .main-actives+div{
-    visibility: hidden;
+.main-container .main-actives + div {
+  visibility: hidden;
 }
 
 /* -------------------------- Title ------------------------ */
 
 .actives-title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #886859;
+  font-size: 24px;
+  font-weight: 600;
+  color: #886859;
 }
-
 
 /* ----------------------------------------- Actives Slider and Graph Box ----------------------------------------- */
 
-.actives-graph-box{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.actives-graph-box {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.main-actives-export{
-    align-self: flex-end;
-    padding-right: 10vw;
+.main-actives-export {
+  align-self: flex-end;
+  padding-right: 10vw;
 }

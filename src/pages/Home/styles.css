@@ -1,15 +1,15 @@
 .home-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;   
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-container main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-	width: 90%;
-    margin: 48px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 90%;
+  margin: 48px auto 0;
 }

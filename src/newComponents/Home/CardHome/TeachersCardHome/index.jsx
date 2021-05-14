@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import '../style.css';
-
+import "../style.css";
 import TitleCardHome from '../TitleCardHome';
 import SummaryCardHome from '../SummaryCardHome';
 import TeachersSummaryCardHome from './TeachersSummaryCardHome'
@@ -168,9 +167,11 @@ const TeachersCardHome = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
-        </React.Fragment>
-    )
-}
+        
+    </React.Fragment>
+  );
+};
 
 export default TeachersCardHome;

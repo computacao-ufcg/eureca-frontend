@@ -1,8 +1,8 @@
-.classified{
-    display: flex;
-    justify-content: center;
+.classified {
+  display: flex;
+  justify-content: center;
 }
 
-.classified-no-data-found{
-    margin-top: 10vh;
+.classified-no-data-found {
+  margin-top: 10vh;
 }

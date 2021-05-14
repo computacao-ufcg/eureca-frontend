@@ -1,31 +1,28 @@
-.alumni-card-home-content{
-    height: 351px;
-    width: 599px;
-    background-color: #FFFFFF;
-    border-radius: 6px;
-    box-shadow: 0px 1px 4px #15223214;
-    display: grid;
+.alumni-card-home-content {
+  height: 351px;
+  width: 599px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0px 1px 4px #15223214;
+  display: grid;
 }
 
-.alumni-buttons{
-    display: flex;
-    height: 46px;
-    width: 300px;
-    
-    background-color:#FFFFFF;
-    margin-top: 30px;  
+.alumni-buttons {
+  display: flex;
+  height: 46px;
+  width: 300px;
+
+  background-color: #ffffff;
+  margin-top: 30px;
 }
 
-.seemore-button{
-   
+.seemore-button {
 }
 
-.alumni-card-img-1{
-    align-items: flex-end;
-    justify-content: space-between;
-    height: 5px;
-    display: flex;
-    position: relative;
+.alumni-card-img-1 {
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 5px;
+  display: flex;
+  position: relative;
 }
-
-
