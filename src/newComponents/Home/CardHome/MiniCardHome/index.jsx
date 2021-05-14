@@ -102,4 +102,3 @@ export {
   MiniCardHome5,
   MiniCardHomeSubjects
 };
-

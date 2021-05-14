@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import "../style.css";
-
 import TitleCardHome from '../TitleCardHome';
 import TeachersSummaryCardHome from './TeachersSummaryCardHome'
 import Mask6 from '../../../../assets/new_home_assets/mask_6.svg';

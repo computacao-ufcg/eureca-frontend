@@ -63,6 +63,10 @@
     text-align: center;
     grid-template-rows: 55fr 40fr;
     padding: 5px 0px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6078e2d06308956d7b4a846573d5ab6eb853084
 }
 */
 
@@ -114,8 +118,8 @@ layout ideal para resoluçâo do card de evadidos*/
 }
 
 .legend-mini-card-home {
-    font-size: 11px;
-    color: #7E84A3;
+   font-size: 11px;
+   color: #7E84A3;
 }
 
 .legend-mini-card-home-subjects {
