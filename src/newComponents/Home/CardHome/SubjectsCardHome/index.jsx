@@ -11,7 +11,7 @@ import '../style.css'
 const SubjectsCardHome = () => {
   const labelActives = ['REPROVAÇÕES POR NOTA', 'REPROVAÇÕES POR FALTA', 'TRANCAMENTOS','TAXA DE SUCESSO','RETENÇÃO ABSOLUTA', 'RETENÇÃO RELATIVA']
   const [optionSubject, setOptionSubject] = useState("obrigatórias")
-  const [titleSubject, setTitleSubject] = useState("obrigatórias")
+  const [titleSubject, setTitleSubject] = useState("OBRIGATÓRIAS")
   const [cards, setCards] = useState({ card1: true, card2: true, card3: true, card4: true, card5: true, card6: true, card7: true })
   const [propSubjects, setPropsSubjects] = useState([])
   const [labels, setLabels] = useState(labelActives)
@@ -25,7 +25,7 @@ const SubjectsCardHome = () => {
                             <img src={Mask7} alt="mask7" />
                         </div>
                         <div className="title-card-content">
-                            <TitleCardHome title={"Disciplinas"} />
+                            <TitleCardHome title={"DISCIPLINAS"} />
                         </div>
                         
                         <div className="summary-card-content2">
@@ -36,7 +36,7 @@ const SubjectsCardHome = () => {
                                   <button className="type-button" type="button" onClick={() => {
                                           if (optionSubject !== "obrigatórias") {
                                               setOptionSubject("obrigatórias");
-                                              setTitleSubject("obrigatórias");
+                                              setTitleSubject("OBRIGATÓRIAS");
                                           }
                                   }}>OBRIGATÓRIAS</button>
 
@@ -45,7 +45,7 @@ const SubjectsCardHome = () => {
                                   <button className="type-button" type="button" onClick={() => {
                                           if (optionSubject !== "optativas") {
                                               setOptionSubject("optativas");
-                                              setTitleSubject("optativas");
+                                              setTitleSubject("OPTATIVAS");
                                           }
                                   }}>OPTATIVAS</button>
 
@@ -54,7 +54,7 @@ const SubjectsCardHome = () => {
                                   <button className="type-button" type="button" onClick={() => {
                                           if (optionSubject !== "eletivas") {
                                               setOptionSubject("eletivas");
-                                              setTitleSubject("eletivas");
+                                              setTitleSubject("ELETIVAS");
                                           }
                                   }}>ELETIVAS</button>
 
@@ -63,7 +63,7 @@ const SubjectsCardHome = () => {
                                   <button className="type-button" type="button" onClick={() => {
                                           if (optionSubject !== "complementares") {
                                               setOptionSubject("complementares");
-                                              setTitleSubject("complementares");
+                                              setTitleSubject("COMPLEMENTARES");
                                           }
                                   }}>COMPLEMENTARES</button>
 
