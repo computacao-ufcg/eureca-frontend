@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import '../style.css';
+import "../style.css";
 
-import TitleCardHome from '../TitleCardHome';
-import { api_EB } from '../../../../services/api';
+import TitleCardHome from "../TitleCardHome";
+import { api_EB } from "../../../../services/api";
 
-import Mask5 from '../../../../assets/new_home_assets/mask_5.svg';
-import Mask6 from '../../../../assets/new_home_assets/mask_6.svg';
+import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
+import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 
-import EnrollmentsSummaryCardHome from './EnrollmentsSummaryCardHome';
+import EnrollmentsSummaryCardHome from "./EnrollmentsSummaryCardHome";
 
 const EnrollmentsCardHome = props => {
   const [data, setData] = useState();
-  const [optionEnrollment, setOptionEnrollment] = useState('obrigatorias');
-  const [title, setTitle] = useState('Obrigatórias');
+  const [optionEnrollment, setOptionEnrollment] = useState("obrigatorias");
+  const [title, setTitle] = useState("Obrigatórias");
   const [labels, setLabels] = useState();
 
   useEffect(() => {
@@ -23,9 +23,9 @@ const EnrollmentsCardHome = props => {
 
   const fetchData = async () => {
     try {
-      const res = await api_EB.get('api/statistics/enrollments/summary', {
+      const res = await api_EB.get("api/statistics/enrollments/summary", {
         headers: {
-          'Authentication-Token': sessionStorage.getItem('eureca-token'),
+          "Authentication-Token": sessionStorage.getItem("eureca-token"),
         },
       });
       setData(res.data);
@@ -38,29 +38,29 @@ const EnrollmentsCardHome = props => {
 
   return (
     <React.Fragment>
-      <div className="card-home-area1">
-        <div className="card-home-content">
-          <div className="title-card-content">
-            <TitleCardHome title={'MATRÍCULAS'} />
+      <div className='card-home-area1'>
+        <div className='card-home-content'>
+          <div className='title-card-content'>
+            <TitleCardHome title={"MATRÍCULAS"} />
           </div>
-          <div className="summary-card-content">
+          <div className='summary-card-content'>
             {data && <EnrollmentsSummaryCardHome data={data} title={title} />}
-            <div className="type-students-grid">
-              <div className="type-students">
+            <div className='type-students-grid'>
+              <div className='type-students'>
                 <div
                   className={
-                    optionEnrollment === 'obrigatorias'
-                      ? 'type-student-selected'
-                      : 'type-student'
+                    optionEnrollment === "obrigatorias"
+                      ? "type-student-selected"
+                      : "type-student"
                   }
                 >
                   <button
-                    className="type-button"
-                    type="button"
+                    className='type-button'
+                    type='button'
                     onClick={() => {
-                      if (optionEnrollment !== 'obrigatorias') {
-                        setOptionEnrollment('obrigatorias');
-                        setTitle('Obrigatórias');
+                      if (optionEnrollment !== "obrigatorias") {
+                        setOptionEnrollment("obrigatorias");
+                        setTitle("Obrigatórias");
                         setLabels([]);
                         setData(data);
                       }
@@ -71,18 +71,18 @@ const EnrollmentsCardHome = props => {
                 </div>
                 <div
                   className={
-                    optionEnrollment === 'optative'
-                      ? 'type-student-selected'
-                      : 'type-student'
+                    optionEnrollment === "optative"
+                      ? "type-student-selected"
+                      : "type-student"
                   }
                 >
                   <button
-                    className="type-button"
-                    type="button"
+                    className='type-button'
+                    type='button'
                     onClick={() => {
-                      if (optionEnrollment !== 'optative') {
-                        setOptionEnrollment('optative');
-                        setTitle('Optativas');
+                      if (optionEnrollment !== "optative") {
+                        setOptionEnrollment("optative");
+                        setTitle("Optativas");
                         setLabels([]);
                         setData(data);
                       }
@@ -93,18 +93,18 @@ const EnrollmentsCardHome = props => {
                 </div>
                 <div
                   className={
-                    optionEnrollment === 'eletivas'
-                      ? 'type-student-selected'
-                      : 'type-student'
+                    optionEnrollment === "eletivas"
+                      ? "type-student-selected"
+                      : "type-student"
                   }
                 >
                   <button
-                    className="type-button"
-                    type="button"
+                    className='type-button'
+                    type='button'
                     onClick={() => {
-                      if (optionEnrollment !== 'electives') {
-                        setOptionEnrollment('electives');
-                        setTitle('Eletivas');
+                      if (optionEnrollment !== "electives") {
+                        setOptionEnrollment("electives");
+                        setTitle("Eletivas");
                         setLabels([]);
                         setData(data);
                       }
@@ -115,18 +115,18 @@ const EnrollmentsCardHome = props => {
                 </div>
                 <div
                   className={
-                    optionEnrollment === 'complementares'
-                      ? 'type-student-selected'
-                      : 'type-student'
+                    optionEnrollment === "complementares"
+                      ? "type-student-selected"
+                      : "type-student"
                   }
                 >
                   <button
-                    className="type-button"
-                    type="button"
+                    className='type-button'
+                    type='button'
                     onClick={() => {
-                      if (optionEnrollment !== 'complementares') {
-                        setOptionEnrollment('complementares');
-                        setTitle('Complementares');
+                      if (optionEnrollment !== "complementares") {
+                        setOptionEnrollment("complementares");
+                        setTitle("Complementares");
                         setLabels([]);
                         setData(data);
                       }
@@ -138,18 +138,18 @@ const EnrollmentsCardHome = props => {
               </div>
             </div>
           </div>
-          <div className="card-home-content-footer">
-            <Link to={'/newDesign/statistics/students/' + optionEnrollment}>
-              <button type="button">VER MAIS</button>
+          <div className='card-home-content-footer'>
+            <Link to={"/newDesign/statistics/students/" + optionEnrollment}>
+              <button type='button'>VER MAIS</button>
             </Link>
-            <Link to={'/newDesign/statistics/students/glossary'}>
-              <button type="button">GLOSSÁRIO</button>
+            <Link to={"/newDesign/statistics/students/glossary"}>
+              <button type='button'>GLOSSÁRIO</button>
             </Link>
-            <div className="mask6">
-              <img src={Mask6} alt="mask6" />
+            <div className='mask6'>
+              <img src={Mask6} alt='mask6' />
             </div>
-            <div className="mask5">
-              <img src={Mask5} alt="mask5" />
+            <div className='mask5'>
+              <img src={Mask5} alt='mask5' />
             </div>
           </div>
         </div>

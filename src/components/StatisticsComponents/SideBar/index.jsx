@@ -1,18 +1,31 @@
-import React from 'react'
+import React from "react";
 
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import './style.css'
+import "./style.css";
 
-const SideBar = (props) => {
-    
-    return (
-        <div className={"mainSideBar"}>
-            <div className={"optionsSideBar"}>
-                {props.listOption.map((e, index) => <Link key={"linkInside" + index} to={props.names[index] + props.navSelected}><button  className={props.selectedOption === e ? "selectedOption" : "customOption"} value={e}>{e}</button></Link>)}  
-            </div>
-        </div>
-    )
-} 
+const SideBar = props => {
+  return (
+    <div className={"mainSideBar"}>
+      <div className={"optionsSideBar"}>
+        {props.listOption.map((e, index) => (
+          <Link
+            key={"linkInside" + index}
+            to={props.names[index] + props.navSelected}
+          >
+            <button
+              className={
+                props.selectedOption === e ? "selectedOption" : "customOption"
+              }
+              value={e}
+            >
+              {e}
+            </button>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default SideBar;

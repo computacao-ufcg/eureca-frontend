@@ -1,14 +1,9 @@
-import React from 'react'
+import React from "react";
 
-import './style.css'
+import "./style.css";
 
-const TitleCardHome = (props) => {
-
-    return (
-        <div className="title-card-name">
-            {props.title}
-        </div>
-    )
-}
+const TitleCardHome = props => {
+  return <div className='title-card-name'>{props.title}</div>;
+};
 
 export default TitleCardHome;

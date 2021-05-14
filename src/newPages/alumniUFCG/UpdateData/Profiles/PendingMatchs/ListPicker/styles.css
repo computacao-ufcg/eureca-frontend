@@ -1,68 +1,66 @@
-.listpicker-container{
-    min-height: 300px;
-    max-height: 400px; 
-    width: 500px;
-    max-width: 500px;
+.listpicker-container {
+  min-height: 300px;
+  max-height: 400px;
+  width: 500px;
+  max-width: 500px;
 
-    margin: 20px 0;
-    padding: 15px 5px;
+  margin: 20px 0;
+  padding: 15px 5px;
 
-    background-color: #ffffff;
-    border-radius: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.411);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.411);
 }
 
-.listpicker-container div{
-    width: 80%;
-    margin: 1vh auto;
+.listpicker-container div {
+  width: 80%;
+  margin: 1vh auto;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    position: relative;
+  position: relative;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.listpicker-container .listpicker-selected{
-    position: absolute;
-    top: 0;
-    left: -20px;
-    width: 25px;
-    background-color: transparent;
+.listpicker-container .listpicker-selected {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 25px;
+  background-color: transparent;
 }
 
-.listpicker-container div p{
-    text-align: left;
-    padding: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #5C5F5C;
-    cursor: pointer;
-    background-color: inherit;
+.listpicker-container div p {
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5c5f5c;
+  cursor: pointer;
+  background-color: inherit;
 }
 
 .listpicker-container div p:after {
-    display:block;
-    content: '';
-    border-bottom: solid 3px #886859;  
-    transform: scaleX(0);  
-    transition: transform 250ms ease-in-out;
+  display: block;
+  content: "";
+  border-bottom: solid 3px #886859;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
 }
 
-.listpicker-container div p:hover:after { 
-    transform: scaleX(1); 
-    transform-origin:  0% 50%;
+.listpicker-container div p:hover:after {
+  transform: scaleX(1);
+  transform-origin: 0% 50%;
 }
 
 /* .listpicker-container div span{
     color: #5C5F5C;
     padding-top: 10px;
 } */
-
-

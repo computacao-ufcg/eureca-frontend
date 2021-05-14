@@ -1,104 +1,105 @@
-.actives-graph-container{
-    display: flex;    
-    flex-direction: row;
-    justify-content: space-between;
+.actives-graph-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .graph-main {
-    position: relative;
-    margin-right: 2vw;
+  position: relative;
+  margin-right: 2vw;
 }
 
 /* LEGENDS */
 
-.graph-main .graph-label-y,.graph-main .graph-label-x {
-    position: absolute;
-    color: #886859;
-    font-size: 1rem;
-    font-weight: 600;
+.graph-main .graph-label-y,
+.graph-main .graph-label-x {
+  position: absolute;
+  color: #886859;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.graph-main .graph-label-y{
-    left: 0;
-    transform: rotate(-90deg) translate(-20vh, -3vh);
+.graph-main .graph-label-y {
+  left: 0;
+  transform: rotate(-90deg) translate(-20vh, -3vh);
 }
 
-.graph-main .graph-label-x{
-    bottom: 0;
-    right: 50;
-    transform: translateY(2vh);
+.graph-main .graph-label-x {
+  bottom: 0;
+  right: 50;
+  transform: translateY(2vh);
 }
 
 /* Colors to switchs */
 
 .optionsActives {
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.switch0.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #FFAE03;
-    background-color: #FFAE03 !important;
+.switch0.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #ffae03;
+  background-color: #ffae03 !important;
 }
 
-.switch1.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #9BC53D;
-    background-color: #9BC53D !important;
+.switch1.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #9bc53d;
+  background-color: #9bc53d !important;
 }
 
-.switch2.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #932551;
-    background-color: #932551 !important;
+.switch2.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #932551;
+  background-color: #932551 !important;
 }
 
-.switch3.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #4DA852;
-    background-color: #4DA852 !important;
+.switch3.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #4da852;
+  background-color: #4da852 !important;
 }
 
-.switch4.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #4FC6E3;
-    background-color: #4FC6E3 !important;
+.switch4.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #4fc6e3;
+  background-color: #4fc6e3 !important;
 }
 
-.switch5.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #E71D36;
-    background-color: #E71D36 !important;
+.switch5.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #e71d36;
+  background-color: #e71d36 !important;
 }
 
-.switch6.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #001021;
-    background-color: #001021 !important;
+.switch6.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #001021;
+  background-color: #001021 !important;
 }
 
-.switch7.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #40809A;
-    background-color: #40809A !important;
+.switch7.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #40809a;
+  background-color: #40809a !important;
 }
 
-.switch8.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #D9C8A2;
-    background-color: #D9C8A2 !important;
+.switch8.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #d9c8a2;
+  background-color: #d9c8a2 !important;
 }
 
-.switch9.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #B58B34;
-    background-color: #B58B34 !important;
+.switch9.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #b58b34;
+  background-color: #b58b34 !important;
 }
 
-.switch10.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #7B9D0A;
-    background-color: #7B9D0A !important;
+.switch10.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #7b9d0a;
+  background-color: #7b9d0a !important;
 }
 
-.switch11.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #4FC6E3;
-    background-color: #4FC6E3 !important;
+.switch11.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #4fc6e3;
+  background-color: #4fc6e3 !important;
 }
 
-.switch12.pretty.p-switch.p-fill input:checked~.state:before {
-    border-color: #E71D36;
-    background-color: #E71D36 !important;
+.switch12.pretty.p-switch.p-fill input:checked ~ .state:before {
+  border-color: #e71d36;
+  background-color: #e71d36 !important;
 }

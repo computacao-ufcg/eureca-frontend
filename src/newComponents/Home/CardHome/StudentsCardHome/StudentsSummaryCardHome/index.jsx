@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import './style.css';
+import "./style.css";
 
 import {
   MiniCardHome1,
   MiniCardHome2,
   MiniCardHome3,
-} from '../../MiniCardHome';
+} from "../../MiniCardHome";
 
 const StudentsSummaryCardHome = props => {
   // console.log(props.dataStudents);
@@ -14,15 +14,15 @@ const StudentsSummaryCardHome = props => {
   const data = props.dataStudents;
 
   return (
-    <div className="students-summary-card-main">
-      <div className="students-summary-card-title">
-        <div className="students-summary-card-info">
-          <div className="students-summary-card-type">{props.title}</div>
-          <div className="students-summary-card-age">1986.1 a 2019.2</div>
-          <div className="students-summary-card-size">{data[0] || 0}</div>
+    <div className='students-summary-card-main'>
+      <div className='students-summary-card-title'>
+        <div className='students-summary-card-info'>
+          <div className='students-summary-card-type'>{props.title}</div>
+          <div className='students-summary-card-age'>1986.1 a 2019.2</div>
+          <div className='students-summary-card-size'>{data[0] || 0}</div>
           {/**<div className='students-summary-card-legend'>DISCENTES</div>*/}
         </div>
-        <div className="students-summary-left-cards">
+        <div className='students-summary-left-cards'>
           {props.cards.card6 && (
             <MiniCardHome2
               option={props.option}
@@ -39,7 +39,7 @@ const StudentsSummaryCardHome = props => {
           )}
         </div>
       </div>
-      <div className={'students-summary-card-cards'}>
+      <div className={"students-summary-card-cards"}>
         <MiniCardHome1
           option={props.option}
           number={data[1] || 0}
