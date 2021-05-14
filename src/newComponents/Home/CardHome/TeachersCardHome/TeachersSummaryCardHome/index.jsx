@@ -2,7 +2,7 @@ import React from 'react';
 
 import './style.css'
 
-import {MiniCardHome1, MiniCardHome2, MiniCardHome3, MiniCardHome5} from '../../MiniCardHome';
+import {MiniCardHome1, MiniCardHome2, MiniCardHome3, MiniCardHome4, MiniCardHome5} from '../../MiniCardHome';
 
 const TeachersSummaryCardHome = (props) => {
 
@@ -20,7 +20,7 @@ const TeachersSummaryCardHome = (props) => {
                     
                 </div>
                 <div className='teachers-summary-left-cards'>
-                   {props.cards.card6 && <MiniCardHome2 option={props.option} number={data[5] || 0} legend={labels[4]}/>} 
+                   {props.cards.card6 && <MiniCardHome4 option={props.option} number={data[5] || 0} legend={labels[4]}/>} 
                    {props.cards.card5 &&<MiniCardHome1 option={props.option} number={data[6] || 0} legend={labels[5]}/>}
                 </div>
             </div>

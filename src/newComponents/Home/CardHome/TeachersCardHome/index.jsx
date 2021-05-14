@@ -117,7 +117,7 @@ const TeachersCardHome = () => {
                                             setLabels(labelTeachers)
                                             setPropsTeachersUASC(dataTeachers)
                                         }
-                                    }}>ATIVOS</button>
+                                    }}>UASC</button>
                                 </div>
                                 <div className={optionTeachers === 'UAMat' ? 'type-teacher-selected' : 'type-teacher'}>
                                     <button className="type-button" type="button" onClick={() => {
@@ -127,7 +127,7 @@ const TeachersCardHome = () => {
                                             setLabels(labelTeachers)
                                             setPropsTeachersUAMat(dataTeachers);
                                         }
-                                    }}>RETIDOS</button>
+                                    }}>UAMat</button>
                                 </div>
                                 <div className={optionTeachers === 'UAEst' ? 'type-teacher-selected' : 'type-teacher'}>
                                     <button className="type-button" type="button" onClick={() => {
@@ -137,7 +137,7 @@ const TeachersCardHome = () => {
                                             setLabels(labelTeachers);
                                             setPropsTeachersUAEst(dataTeachers);
                                         }
-                                    }}>EVADIDOS</button>
+                                    }}>UAEst</button>
                                 </div>
                                 <div className={optionTeachers === 'UAL' ? 'type-teacher-selected' : 'type-teacher'}>
                                     <button className="type-button" type="button" onClick={() => {
@@ -147,7 +147,7 @@ const TeachersCardHome = () => {
                                             setLabels(labelTeachers);
                                             setPropsTeachersUAL(dataTeachers);
                                         }
-                                    }}>EGRESSOS</button>
+                                    }}>UAL</button>
                                 </div>
                             </div>
                         </div>
