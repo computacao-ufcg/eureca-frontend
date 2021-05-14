@@ -39,31 +39,34 @@
   padding: 5px 0px;
 }
 
+.main-mini-card-home-4{
+    height: 58px;
+    width: 103px;
+    border: 1px solid #707070;
+    display: grid;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    grid-template-rows: 55fr 40fr;
+}
+/** original
 .main-mini-card-home-4 {
-  height: 65px;
-  width: 103px;
-  border: 1px solid #707070;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  grid-template-rows: 55fr 40fr;
-  padding: 5px 0px;
-}
+    height: 65px;
+    width: 103px;
+    border: 1px solid #707070;
+    display: grid;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    grid-template-rows: 55fr 40fr;
+    padding: 5px 0px;
 
-.main-mini-card-home-5 {
-  height: 58px;
-  width: auto;
-  min-width: 82.4px;
-  border: 1px solid #707070;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-right: 0;
-  border-bottom: 0;
-  grid-template-rows: 55fr 40fr;
 }
+*/
+
 /**
 .main-mini-card-home-5 {
     height: auto;
@@ -112,6 +115,12 @@ layout ideal para resoluçâo do card de evadidos*/
 }
 
 .legend-mini-card-home {
-  font-size: 11px;
-  color: #7e84a3;
+   font-size: 11px;
+   color: #7E84A3;
 }
+
+.legend-mini-card-home-subjects {
+  font-size: 10px;
+  color: #7E84A3;
+}
+
