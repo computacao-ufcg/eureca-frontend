@@ -87,6 +87,5 @@ const Dropout = () => {
     </React.Fragment>
   );
 };
->>>>>>> development
 
 export default Dropout;
