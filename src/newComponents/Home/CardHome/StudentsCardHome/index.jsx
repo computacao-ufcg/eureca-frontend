@@ -15,34 +15,6 @@ import { labelActives, labelDropout, labelDelayed, labelAlumni } from "./util";
 import { api_EB } from "../../../../services/api";
 
 const StudentsCardHome = () => {
-<<<<<<< HEAD
-
-    const [dataStudents, setDataStudents] = useState();
-    const [optionStudent, setOptionStudent] = useState("actives")
-    const [titleStudent, setTitleStudent] = useState("Ativos")
-    const [labels, setLabels] = useState(labelActives)
-    const [cards, setCards] = useState({ card1: true, card2: true, card3: true, card4: true, card5: true, card6: true, card7: true })
-
-    const [propStudents, setPropsStudents] = useState([])
-
-
-    useEffect(() => {
-        getSummary()
-    }, []);
-
-    const getSummary = async () => {
-        let query = `eureca/statistics/students/summary`;
-
-        const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
-
-        if (res) {
-            console.log(res.data)
-            setDataStudents(res.data);
-            setPropsActives(res.data);
-        } else {
-            console.log(res.statusText);
-        }
-=======
   const [dataStudents, setDataStudents] = useState();
   const [optionStudent, setOptionStudent] = useState("actives");
   const [titleStudent, setTitleStudent] = useState("Ativos");
@@ -78,7 +50,6 @@ const StudentsCardHome = () => {
       setPropsActives(res.data);
     } else {
       console.log(res.statusText);
->>>>>>> development
     }
   };
 
