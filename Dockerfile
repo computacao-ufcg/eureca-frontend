@@ -22,3 +22,4 @@ RUN \
 
 # start app
 CMD ["npm", "start"]
+

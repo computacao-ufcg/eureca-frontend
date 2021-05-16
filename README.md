@@ -21,8 +21,6 @@
 
 <p>Depois é só executar o <I>script</I> build_tag_push.sh:</p>
 
-<code>bash build_tag_push.sh <git-branch> <docker-tag></code>
-
 <p>Onde <git-branch> é o nome do branch que será usado para todos os repositórios e <docker-tag> é o rótulo
 que será colocado na imagem construída e armazenada no Docker Hub.</p>
 
