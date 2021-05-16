@@ -55,13 +55,8 @@ const Alumni = () => {
     }
   };
 
-<<<<<<< HEAD
-    const updateGraph = async (min, max) => {
-        let query = `eureca/statistics/students/alumni?from=${min}&to=${max}`;
-=======
   const handleCSV = async (min, max) => {
     let query = `api/statistics/students/alumni/csv?from=${min}&to=${max}`;
->>>>>>> development
 
     const res = await api_EB.get(query, {
       headers: {
@@ -74,41 +69,6 @@ const Alumni = () => {
     } else {
       console.log(res.statusText);
     }
-<<<<<<< HEAD
-
-    const handleCSV = async (min, max) => {
-        let query = `eureca/statistics/students/alumni/csv?from=${min}&to=${max}`;
-
-        const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
-
-        if (res) {
-            setDataCSV(res.data);
-        } else {
-            console.log(res.statusText);
-        }
-    }
-
-    return (
-        <React.Fragment>
-            <Header />
-            <div className="alumni-main">
-                <div className="alumni-content">
-                    <div className="backdot"><span onClick={() => history.goBack()} ><FiArrowLeft size={25} /></span></div>
-                    <div className="alumni-slider">
-                        <div className="alumni-title">Egressos</div>
-                        <AlumniSlider changeSlider={handleSlider} />
-                        <div className="graph">
-                            <AlumniGraph data={dataEgressos || {}} option={optionSelected} />
-                            <SelectPicker
-                                onChange={(value) => setOptionSelected(value)}
-                                data={select_items}
-                                className="selector"
-                                defaultValue={optionSelected} />
-                        </div>
-                        <Export data={dataCSV} name={'alumni'} />
-                    </div>
-                </div>
-=======
   };
 
   return (
@@ -132,7 +92,6 @@ const Alumni = () => {
                 className='selector'
                 defaultValue={optionSelected}
               />
->>>>>>> development
             </div>
             <Export data={dataCSV} name={"alumni"} />
           </div>

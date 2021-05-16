@@ -14,13 +14,8 @@ const Glossary = () => {
     getGlossary();
   }, []);
 
-<<<<<<< HEAD
-    const getGlossary = async () => {
-        let query = `eureca/statistics/students/summary`;
-=======
   const getGlossary = async () => {
     let query = `api/statistics/students/summary`;
->>>>>>> development
 
     const res = await api_EB.get(query, {
       headers: {

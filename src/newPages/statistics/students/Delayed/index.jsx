@@ -61,31 +61,8 @@ const Delayed = () => {
     }
   };
 
-<<<<<<< HEAD
-    const updateGraph = async (min, max) => {
-        let query = `eureca/statistics/students/delayed?from=${min}&to=${max}`;
-
-        const res = await api_EB.get(query, { headers: { "Authentication-Token": sessionStorage.getItem('eureca-token') } });
-
-        if (res) {
-            let delayedAux = []
-            res.data.terms.forEach(element => {
-                let delayedElement = { ...element.metricsSummary.metrics, term: element.admissionTerm }
-                delayedAux.push(delayedElement);
-            });
-            setDataEgressos(delayedAux);
-        } else {
-            console.log(res.statusText);
-        }
-    }
-
-
-    const handleCSV = async (min, max) => {
-        let query = `eureca/statistics/students/alumni/csv?from=${min}&to=${max}`;
-=======
   const handleCSV = async (min, max) => {
     let query = `api/statistics/students/alumni/csv?from=${min}&to=${max}`;
->>>>>>> development
 
     const res = await api_EB.get(query, {
       headers: {
