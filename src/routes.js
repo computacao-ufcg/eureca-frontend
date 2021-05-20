@@ -15,7 +15,7 @@ import Actives from "./newPages/statistics/students/Actives";
 import Alumni from "./newPages/statistics/students/Alumni";
 import Dropout from "./newPages/statistics/students/Dropout";
 
-import Glossary from "./newPages/statistics/students/Glossary";
+import StudentsGlossary from "./newPages/statistics/students/Glossary";
 import TeachersGlossary from './newPages/statistics/teachers/glossary';
 import EnrollmentsGlossary from './newPages/statistics/enrollments/glossary';
 import SubjectsGlossary from './newPages/statistics/subjects/glossary';
@@ -57,7 +57,7 @@ const Routes = () => {
         <PrivateRoute
           exact
           path='/newDesign/statistics/students/glossary'
-          component={() => <Glossary />}
+          component={() => <StudentsGlossary />}
         />
          <PrivateRoute
           exact
