@@ -16,6 +16,10 @@ import Alumni from "./newPages/statistics/students/Alumni";
 import Dropout from "./newPages/statistics/students/Dropout";
 
 import Glossary from "./newPages/statistics/students/Glossary";
+import TeachersGlossary from './newPages/statistics/teachers/glossary';
+import EnrollmentsGlossary from './newPages/statistics/enrollments/glossary';
+import SubjectsGlossary from './newPages/statistics/subjects/glossary';
+
 import Delayed from "./newPages/statistics/students/Delayed";
 
 import ActiveStudents from "./pages/Statistics/Students/ActiveStudents";
@@ -54,6 +58,21 @@ const Routes = () => {
           exact
           path='/newDesign/statistics/students/glossary'
           component={() => <Glossary />}
+        />
+         <PrivateRoute
+          exact
+          path='/newDesign/statistics/teachers/glossary'
+          component={() => <TeachersGlossary />}
+        />
+         <PrivateRoute
+          exact
+          path='/newDesign/statistics/enrollments/glossary'
+          component={() => <EnrollmentsGlossary />}
+        />
+        <PrivateRoute
+          exact
+          path='/newDesign/statistics/subjects/glossary'
+          component={() => <SubjectsGlossary />}
         />
         <PrivateRoute
           exact

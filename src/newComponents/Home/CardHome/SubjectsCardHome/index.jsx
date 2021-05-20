@@ -76,7 +76,7 @@ const SubjectsCardHome = () => {
                         <Link to={"/newDesign/statistics/students/" + optionSubject}>
                             <button type="button">VER MAIS</button>
                         </Link>
-                        <Link to={"/newDesign/statistics/students/glossary"}>
+                        <Link to={"/newDesign/statistics/subjects/glossary"}>
                             <button type="button">GLOSSÁRIO</button>
                         </Link>
                         <div className="mask6">
