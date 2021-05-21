@@ -9,7 +9,7 @@ import Mask7 from '../../../../assets/new_home_assets/mask_7.svg';
 import '../style.css'
 
 const SubjectsCardHome = () => {
-  const labelActives = ['REPROVAÇÕES POR NOTA', 'REPROVAÇÕES POR FALTA', 'TRANCAMENTOS','TAXA DE SUCESSO','RETENÇÃO ABSOLUTA', 'RETENÇÃO RELATIVA']
+  const labelActives = ['REPROVAÇÕES/NOTA', 'REPROVAÇÕES/FALTA', 'TRANCAMENTOS','TAXA DE SUCESSO','RETENÇÃO ABSOLUTA', 'RETENÇÃO RELATIVA']
   const [optionSubject, setOptionSubject] = useState("obrigatórias")
   const [titleSubject, setTitleSubject] = useState("OBRIGATÓRIAS")
   const [cards, setCards] = useState({ card1: true, card2: true, card3: true, card4: true, card5: true, card6: true, card7: true })
@@ -76,7 +76,7 @@ const SubjectsCardHome = () => {
                         <Link to={"/newDesign/statistics/students/" + optionSubject}>
                             <button type="button">VER MAIS</button>
                         </Link>
-                        <Link to={"/newDesign/statistics/students/glossary"}>
+                        <Link to={"/newDesign/statistics/subjects/glossary"}>
                             <button type="button">GLOSSÁRIO</button>
                         </Link>
                         <div className="mask6">

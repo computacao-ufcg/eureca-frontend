@@ -155,7 +155,7 @@ const TeachersCardHome = () => {
                         <Link to={"/"}>
                             <button type="button">VER MAIS</button>
                         </Link>
-                        <Link to={"/"}>
+                        <Link to={"/newDesign/statistics/teachers/glossary"}>
                             <button type="button">GLOSSÁRIO</button>
                         </Link>
                         <div className="mask6">

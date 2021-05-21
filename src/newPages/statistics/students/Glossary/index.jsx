@@ -6,7 +6,7 @@ import "./styles.css";
 import { api_EB } from "../../../../services/api";
 import GlossaryImg from "../../../../assets/new_glossary_images/Glossary_examples.png";
 
-const Glossary = () => {
+const StudentsGlossary = () => {
   const history = useHistory();
   const [data, setData] = useState([]);
 
@@ -149,4 +149,4 @@ const Glossary = () => {
   );
 };
 
-export default Glossary;
+export default StudentsGlossary;

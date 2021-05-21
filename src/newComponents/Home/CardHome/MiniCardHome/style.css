@@ -52,6 +52,32 @@
     border-bottom: 0;
     grid-template-rows: 55fr 40fr;
 }
+
+.main-mini-card-home-6{
+  height: 58px;
+  width: 103px;
+  border: 1px solid #707070;
+  display: grid;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+  border-right: 0;
+  border-bottom: 0;
+  grid-template-rows: 55fr 40fr;
+}
+
+.main-mini-card-home-teachers{
+  height: 58px;
+  width: 103px;
+  border: 1px solid #707070;
+  display: grid;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+  border-right: 0;
+  border-bottom: 0;
+  grid-template-rows: 55fr 40fr;
+}
 /** original
 .main-mini-card-home-4 {
     height: 65px;
@@ -63,10 +89,6 @@
     text-align: center;
     grid-template-rows: 55fr 40fr;
     padding: 5px 0px;
-<<<<<<< HEAD
-=======
-
->>>>>>> f6078e2d06308956d7b4a846573d5ab6eb853084
 }
 */
 
@@ -117,12 +139,73 @@ layout ideal para resoluçâo do card de evadidos*/
   justify-content: center;
 }
 
+.number-mini-card-home-teachers {
+  font-size: 10px;
+  font-weight: 600;
+  color: #7e84a3;
+  display: grid;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.number-mini-card-home-subjects {
+  font-size: 10px;
+  font-weight: 600;
+  color: #7e84a3;
+  display: grid;
+  align-items: flex-end;
+  justify-content: center;
+}
+.number-mini-card-home-enrollments{
+  font-size: 10px;
+  font-weight: 600;
+  color: #7e84a3;
+  display: grid;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.number-mini-card-home-content-title{
+  font-weight: 600;
+  color: #7e84a3;
+  font-size: 8px;
+  margin-bottom: 4px;
+}
+
+.number-mini-card-home-rigth-top{
+  font-size: 12px;
+  font-weight: 600;
+  color: #7e84a3;
+  display: grid;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.number-mini-card-home-rigth-bottom{
+  font-size: 12px;
+  font-weight: 600;
+  color: #7e84a3;
+  display: grid;
+  align-items: flex-end;
+  justify-content: center;
+}
+
 .legend-mini-card-home {
    font-size: 11px;
    color: #7E84A3;
 }
 
+.legend-mini-card-home-enrollments {
+  font-size: 9px;
+  color: #7E84A3;
+}
+
 .legend-mini-card-home-subjects {
-  font-size: 10px;
+  font-size: 9px;
+  color: #7E84A3;
+}
+
+.legend-mini-card-home-teachers {
+  font-size: 9px;
   color: #7E84A3;
 }

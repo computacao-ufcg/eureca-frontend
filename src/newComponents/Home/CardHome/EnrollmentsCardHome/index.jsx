@@ -14,7 +14,7 @@ import EnrollmentsSummaryCardHome from "./EnrollmentsSummaryCardHome";
 const EnrollmentsCardHome = props => {
   const [data, setData] = useState();
   const [optionEnrollment, setOptionEnrollment] = useState("obrigatorias");
-  const [title, setTitle] = useState("Obrigatórias");
+  const [title, setTitle] = useState("OBRIGATÓRIAS");
   const [labels, setLabels] = useState();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "obrigatorias") {
                         setOptionEnrollment("obrigatorias");
-                        setTitle("Obrigatórias");
+                        setTitle("OBRIGATÓRIAS");
                         setLabels([]);
                         setData(data);
                       }
@@ -82,7 +82,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "optative") {
                         setOptionEnrollment("optative");
-                        setTitle("Optativas");
+                        setTitle("OPTATIVAS");
                         setLabels([]);
                         setData(data);
                       }
@@ -104,7 +104,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "electives") {
                         setOptionEnrollment("electives");
-                        setTitle("Eletivas");
+                        setTitle("ELETIVAS");
                         setLabels([]);
                         setData(data);
                       }
@@ -126,7 +126,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "complementares") {
                         setOptionEnrollment("complementares");
-                        setTitle("Complementares");
+                        setTitle("COMPLEMENTARES");
                         setLabels([]);
                         setData(data);
                       }
@@ -142,7 +142,7 @@ const EnrollmentsCardHome = props => {
             <Link to={"/newDesign/statistics/enrollments/"}>
               <button type='button'>VER MAIS</button>
             </Link>
-            <Link to={"/newDesign/statistics/students/glossary"}>
+            <Link to={"/newDesign/statistics/enrollments/glossary"}>
               <button type='button'>GLOSSÁRIO</button>
             </Link>
             <div className='mask6'>
