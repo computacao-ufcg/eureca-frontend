@@ -1,5 +1,5 @@
 import React from "react";
-import { MiniCardHome1, MiniCardHome4 } from "../../MiniCardHome";
+import { MiniCardHome1, MiniCardHomeRightBottom, MiniCardHomeRightTop,MiniCardHomeEnrollments } from "../../MiniCardHome";
 
 import "./style.css";
 
@@ -15,12 +15,12 @@ const EnrollmentsSummaryCardHome = props => {
           </div>
         </div>
         <div className='enrollments-summary-left-cards'>
-          <MiniCardHome4
+          <MiniCardHomeRightTop
             option={"teste"}
             number={props.data.max.count}
             legend={"NUMERO MÁXIMO"}
           />
-          <MiniCardHome1
+          <MiniCardHomeRightBottom
             option={"teste"}
             number={props.data.min.count}
             legend={"NUMERO MÍNIMO"}
@@ -28,22 +28,22 @@ const EnrollmentsSummaryCardHome = props => {
         </div>
       </div>
       <div className='enrollments-summary-card-cards'>
-        <MiniCardHome1
+        <MiniCardHomeEnrollments
           option={"teste"}
           number={props.data.averageEnrollmentsPerPeriod}
           legend={"MÉDIA DE MATRÍCULAS/PERÍODO"}
         />
-        <MiniCardHome1
+        <MiniCardHomeEnrollments
           option={"teste"}
           number={props.data.averageEnrollmentsPerClass}
           legend={"MÉDIA DE MATRÍCULAS/TURMA"}
         />
-        <MiniCardHome1
+        <MiniCardHomeEnrollments
           option={"teste"}
           number={props.data.averageClassesPerPeriod}
           legend={"MÉDIA DE TURMAS/PERÍODO"}
         />
-        <MiniCardHome1
+        <MiniCardHomeEnrollments
           option={"teste"}
           number={props.data.averageClassesPerDiscipline}
           legend={"MÉDIA DE TURMAS/DISCIPLINA"}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styles.css'
 
-import { MiniCardHome4, MiniCardHomeSubjects} from '../../MiniCardHome';
+import {MiniCardHomeSubjects,MiniCardHomeSubjectsTop} from '../../MiniCardHome';
 
 const SubjectsSummaryCardHome = (props) => {
 
@@ -18,7 +18,7 @@ const SubjectsSummaryCardHome = (props) => {
                     <div className='subjects-summary-card-age'>MÍNIMO<br/>1980 horas<br/>132 créditos<br/>33 disciplinas</div>
                 </div>
                 <div className='subjects-summary-left-cards'>
-                   {props.cards.card6 && <MiniCardHome4 option={props.option} number={data[5] || 0} legend={labels[4]}/>} 
+                   {props.cards.card6 && <MiniCardHomeSubjectsTop option={props.option} number={data[5] || 0} legend={labels[4]}/>} 
                    {props.cards.card5 &&<MiniCardHomeSubjects option={props.option} number={data[6] || 0} legend={labels[5]}/>}
                 </div>
             </div>
