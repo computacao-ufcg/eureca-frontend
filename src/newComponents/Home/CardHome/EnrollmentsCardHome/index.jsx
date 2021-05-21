@@ -28,7 +28,9 @@ const EnrollmentsCardHome = props => {
           "Authentication-Token": sessionStorage.getItem("eureca-token"),
         },
       });
-      setData(res.data);
+      if (res) {
+        setData(res.data);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -139,7 +141,7 @@ const EnrollmentsCardHome = props => {
             </div>
           </div>
           <div className='card-home-content-footer'>
-            <Link to={"/newDesign/statistics/students/" + optionEnrollment}>
+            <Link to={"/newDesign/statistics/enrollments/"}>
               <button type='button'>VER MAIS</button>
             </Link>
             <Link to={"/newDesign/statistics/students/glossary"}>

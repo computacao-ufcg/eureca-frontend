@@ -1,0 +1,6 @@
+.selector-enrollments {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 84px;
+    padding: 24px;
+}
