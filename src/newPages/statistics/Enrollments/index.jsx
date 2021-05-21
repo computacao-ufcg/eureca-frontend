@@ -12,11 +12,41 @@ import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 import EnrollmentSlider from "./Slider";
 
+import { api_EB } from "../../../services/api";
+
 import "./style.css";
 
 const Enrollments = () => {
+  const [data, setData] = useState([]);
   const [disciplineOption, setDisciplineOption] = useState("Obrigatórias");
-  const [variable, setVariable] = useState("Total de matrículas");
+  const [variable, setVariable] = useState("totalEnrollments");
+  const [label, setLabel] = useState("Total de matrículas");
+
+  useEffect(() => {
+    (async function () {
+      const query = `/api/statistics/enrollments/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      try {
+        const res = await api_EB.get(query, {
+          headers: {
+            "Authentication-Token": sessionStorage.getItem("eureca-token"),
+          },
+        });
+
+        // console.log(res.data);
+        if (res) {
+          setData(res.data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [disciplineOption]);
+
+  const handleVariableChange = variable => {
+    setVariable(variable);
+    const proposedLabel = variables.find(item => item.value === variable);
+    setLabel(proposedLabel.label);
+  };
 
   const disciplineTypes = [
     {
@@ -75,7 +105,7 @@ const Enrollments = () => {
             <div className='alumni-title'>Matrículas</div>
             <EnrollmentSlider changeSlider={() => {}} />
             <div className='graph'>
-              <EnrollmentsGraph />
+              <EnrollmentsGraph variable={variable} data={data} label={label} />
               <div className='selectors'>
                 <SelectPicker
                   onChange={value => setDisciplineOption(value)}
@@ -84,7 +114,7 @@ const Enrollments = () => {
                   defaultValue={disciplineOption}
                 />
                 <SelectPicker
-                  onChange={value => setVariable(value)}
+                  onChange={value => handleVariableChange(value)}
                   data={variables}
                   className='selector-enrollments'
                   defaultValue={variable}

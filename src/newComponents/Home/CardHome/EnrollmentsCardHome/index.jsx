@@ -36,8 +36,6 @@ const EnrollmentsCardHome = props => {
     }
   };
 
-  console.log(data);
-
   return (
     <React.Fragment>
       <div className='card-home-area1'>

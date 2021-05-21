@@ -17,6 +17,7 @@ import "./style.css";
 const AlumniGraph = props => {
   // obtém a tradução correspondente do valor selecionado
   const labelSelected = subtitles_translations[props.option];
+  console.log(props);
 
   return (
     <React.Fragment>
