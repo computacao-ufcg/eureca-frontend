@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft, FiSearch } from "react-icons/fi";
 
 import Header from "../../../newComponents/Header";
 import MyLoading from "../../../newComponents/MyLoading";
@@ -9,7 +9,6 @@ import NoDataFound from "../../../newComponents/NoDataFound";
 import { api_AS } from "./../../../services/api";
 import ListAlumni from "../SeeMore/listAlumni";
 import { Pagination } from "rsuite";
-import { FiSearch } from "react-icons/fi";
 
 import "./styles.css";
 

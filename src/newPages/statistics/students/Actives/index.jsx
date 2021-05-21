@@ -57,37 +57,7 @@ const Actives = () => {
 
   useEffect(() => {
     const fetchDataApiWithoutLabel = async () => {
-      setLoadding(true);
-      const queryActives =
-        "api/statistics/students/actives?from=1950.0&to=2049.9";
-      const queryActivesCSV =
-        "api/statistics/students/actives/csv?from=1950.0&to=2049.9";
-
-      const token = sessionStorage.getItem("eureca-token");
-
-      const options = {
-        headers: {
-          "Authentication-Token": token,
-        },
-      };
-
-      const resActives = await api_EB.get(queryActives, options);
-      const resActivesCSV = await api_EB.get(queryActivesCSV, options);
-
-      if (resActives.status === 200) {
-        setDataActives(resActives.data.terms);
-        setLabel(resActives.data.sliderLabel);
-        setMax(resActives.data.sliderLabel.length - 1);
-      } else {
-        console.error("Error Data Ativos");
-      }
-
-      if (resActivesCSV.status === 200) {
-        setDataExport(resActivesCSV.data);
-      } else {
-        console.error("Error Data Export");
-      }
-      setLoadding(false);
+      await fetchDataApiWithLabel("1950.0", "2049.2");
     };
 
     fetchDataApiWithoutLabel();

@@ -22,6 +22,8 @@ import SubjectsGlossary from './newPages/statistics/subjects/glossary';
 
 import Delayed from "./newPages/statistics/students/Delayed";
 
+import Enrollments from "./newPages/statistics/enrollments";
+
 import ActiveStudents from "./pages/Statistics/Students/ActiveStudents";
 import GraduatedStudents from "./pages/Statistics/Students/GraduatedStudents";
 import EvadedStudents from "./pages/Statistics/Students/EvadedStudents";
@@ -78,6 +80,11 @@ const Routes = () => {
           exact
           path='/newDesign/statistics/students/delayed'
           component={() => <Delayed />}
+        />
+        <PrivateRoute
+          exact
+          path='/newDesign/statistics/enrollments'
+          component={() => <Enrollments />}
         />
         <PrivateRoute
           exact

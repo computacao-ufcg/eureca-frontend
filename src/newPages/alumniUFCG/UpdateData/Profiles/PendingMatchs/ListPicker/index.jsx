@@ -7,13 +7,12 @@ import "./styles.css";
 const ListPicker = props => {
   const filterData = (data, filter) => {
     console.log(data, filter);
-    let auxData = [];
     let unit = [];
 
     if (filter === "very-likely") {
       data.forEach(alumni => {
         console.log(alumni);
-        if (alumni.matchClassification == "VERY_LIKELY") {
+        if (alumni.matchClassification === "VERY_LIKELY") {
           unit.push(alumni);
         }
       });
@@ -21,8 +20,8 @@ const ListPicker = props => {
       data.forEach(alumni => {
         console.log(alumni);
         if (
-          alumni.matchClassification == "VERY_LIKELY" ||
-          alumni.matchClassification == "LIKELY"
+          alumni.matchClassification === "VERY_LIKELY" ||
+          alumni.matchClassification === "LIKELY"
         ) {
           unit.push(alumni);
         }
@@ -31,9 +30,9 @@ const ListPicker = props => {
       data.forEach(alumni => {
         console.log(alumni);
         if (
-          alumni.matchClassification == "VERY_LIKELY" ||
-          alumni.matchClassification == "LIKELY" ||
-          alumni.matchClassification == "AVERAGE"
+          alumni.matchClassification === "VERY_LIKELY" ||
+          alumni.matchClassification === "LIKELY" ||
+          alumni.matchClassification === "AVERAGE"
         ) {
           unit.push(alumni);
         }
@@ -42,10 +41,10 @@ const ListPicker = props => {
       data.forEach(alumni => {
         console.log(alumni);
         if (
-          alumni.matchClassification == "VERY_LIKELY" ||
-          alumni.matchClassification == "LIKELY" ||
-          alumni.matchClassification == "AVERAGE" ||
-          alumni.matchClassification == "UNLIKELY"
+          alumni.matchClassification === "VERY_LIKELY" ||
+          alumni.matchClassification === "LIKELY" ||
+          alumni.matchClassification === "AVERAGE" ||
+          alumni.matchClassification === "UNLIKELY"
         ) {
           unit.push(alumni);
         }
@@ -59,7 +58,7 @@ const ListPicker = props => {
   };
 
   const data =
-    props.filter == "all" ? props.data : filterData(props.data, props.filter);
+    props.filter === "all" ? props.data : filterData(props.data, props.filter);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selected, setSelected] = useState(null);
 
