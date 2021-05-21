@@ -1,18 +1,18 @@
 # pull official base image
 FROM node:16-alpine3.11
 
-ARG EURECA_FRONTEND_BRANCH="development"
+ARG EURECA_FRONTEND_BRANCH
 
 # set working directory
 WORKDIR /root
 
 RUN \
   apk update && apk upgrade && \
-  apk add --no-cache git 
+  apk add --no-cache git
 
 RUN \
   git clone https://github.com/computacao-ufcg/eureca-frontend.git && \
-  (cd eureca-frontend && git checkout $EURECA_FRONTEND_BRANCH) 
+  (cd eureca-frontend && git checkout $EURECA_FRONTEND_BRANCH)
 
 WORKDIR /root/eureca-frontend
 
@@ -22,3 +22,4 @@ RUN \
 
 # start app
 CMD ["npm", "start"]
+

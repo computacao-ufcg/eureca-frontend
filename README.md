@@ -11,31 +11,16 @@
 
 **OBS.**: Verificar se o arquivo "./src/services/api.js" está com a configuração adequada.
 
-## Enviando a aplicação para o DockerHub
+<p>Caso não ocorra nenhum error é possível observar a aplicação no seu localhost:3000</p>
 
-<p>A partir da raiz do projeto, digite:</p>
+## Criando um container Docker para deploy
 
-<code>docker build -t eureca-frontend:dev .</code>
+<p>É necessário adicionar o seu user ao grupo de usuários do docker, usando o seguinte comando e depois reiniciar a máquina.</p>
 
-<p>Após o sucesso do build, esteja logado com sua conta do DockerHub para enviar a imagem.</p>
+<code>sudo usermod -aG docker $USER</code>
 
-<p>Para se conectar ao Docker:</p>
+<p>Depois é só executar o <I>script</I> build_tag_push.sh:</p>
 
-<code>docker login</code>
+<p>Onde <git-branch> é o nome do branch que será usado para todos os repositórios e <docker-tag> é o rótulo
+que será colocado na imagem construída e armazenada no Docker Hub.</p>
 
-<p>Insira suas credenciais e faça o login.</p>
-
-**Criando a tag para a imagem.**
-
-<p>Com a imagem montada, e o login efetuado, execute:</p>
-
-<code>docker images</code>
-
-<p>Recupere o id da imagem eureca-frontend, pois iremos utilizar no próximo passo.</p>
-
-<code>docker tag "id_imagem" eureca/eureca-frontend:dev</code>
-
-<code>docker push eureca/eureca-frontend:dev</code>
-
-- <b>"eureca/"</b> é o nome da organização que o docker enviará/atualizará a imagem.
-- <b>eureca-frontend:dev</b> é o nome da imagem.

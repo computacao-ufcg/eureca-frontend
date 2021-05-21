@@ -6,8 +6,8 @@
 
 #### **Actives**
 
-- Request: **[GET]**:  `api/statistics/students/actives`
-- Request: **[GET]**: `/api/statistics/students/actives?from="initial_period"&to="final_period"`
+- Request: **[GET]**:  `eureca/statistics/students/actives`
+- Request: **[GET]**: `/eureca/statistics/students/actives?from="initial_period"&to="final_period"`
 
 - Response example:
 
@@ -57,8 +57,8 @@
 
 #### **Alumni**
 
-- Request: **[GET]**:  `api/statistics/students/alumni`
-- Request: **[GET]**: `/api/statistics/students/alumni?from="initial_period"&to="final_period"`
+- Request: **[GET]**:  `eureca/statistics/students/alumni`
+- Request: **[GET]**: `/eureca/statistics/students/alumni?from="initial_period"&to="final_period"`
 
 - Response example:
 
@@ -94,8 +94,8 @@
 
 #### **Dropouts**
 
-- Request: **[GET]**:  `api/statistics/students/dropouts`
-- Request: **[GET]**: `/api/statistics/students/dropouts?from="initial_period"&to="final_period"`
+- Request: **[GET]**:  `eureca/statistics/students/dropouts`
+- Request: **[GET]**: `/eureca/statistics/students/dropouts?from="initial_period"&to="final_period"`
 
 - Response example:
 
@@ -154,8 +154,8 @@
 
 students_type = ["actives", "alumni", "dropouts"]
 
-- Request: **[GET]**:  `api/statistics/students/{students_type}/csv`
-- Request: **[GET]**: `/api/statistics/students/{students_type}/csv?from="initial_period"&to="final_period"`
+- Request: **[GET]**:  `eureca/statistics/students/{students_type}/csv`
+- Request: **[GET]**: `/eureca/statistics/students/{students_type}/csv?from="initial_period"&to="final_period"`
 
 - Response example:
 
