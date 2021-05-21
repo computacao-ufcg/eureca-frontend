@@ -32,6 +32,7 @@ const EnrollmentsSummaryCardHome = props => {
           option={"teste"}
           number={props.data.averageEnrollmentsPerPeriod}
           legend={"MÉDIA DE MATRICULAS/PERIODO"}
+          id={"teste"}
         />
         <MiniCardHome1
           option={"teste"}

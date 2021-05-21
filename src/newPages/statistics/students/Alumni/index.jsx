@@ -19,8 +19,6 @@ import { select_items } from "./util";
 
 const Alumni = () => {
   const [dataEgressos, setDataEgressos] = useState(null);
-  const [min, setMin] = useState("");
-  const [max, setMax] = useState("");
   const [dataCSV, setDataCSV] = useState([]);
 
   const [optionSelected, setOptionSelected] = useState("alumniCount");
@@ -33,8 +31,6 @@ const Alumni = () => {
   }, []);
 
   const handleSlider = (min, max) => {
-    setMin(min);
-    setMax(max);
     updateGraph(min, max);
     handleCSV(min, max);
   };
