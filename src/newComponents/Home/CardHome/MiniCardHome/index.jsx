@@ -85,7 +85,7 @@ const MiniCardHomeEnrollments = props => {
   return (
     <div className='main-mini-card-home'>
       <div className='number-mini-card-home-enrollments'>
-      <div className='number-mini-card-home-content-title'>MÍNIMO MÉDIA MÁXIMO</div>
+        
         <div className='number-mini-card-home-content'>{props.number}</div>
       </div>
       <div className='legend-mini-card-home-enrollments'>{props.legend}</div>

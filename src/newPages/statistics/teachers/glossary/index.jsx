@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 import { api_EB } from "../../../../services/api";
-import GlossaryImg from "../../../../assets/new_glossary_images/Glossary_examples.png";
+import GlossaryTeachers from "../../../../assets/new_glossary_images/Screenshot_teachers.png";
 
 const TeachersGlossary = () => {
   const history = useHistory();
@@ -47,17 +47,45 @@ const TeachersGlossary = () => {
             </div>
             <div className='main-container-teachers-glossary'>
               <div className='left-container'>
-                
+                <div>
+                  <b>{data.glossary.max.name + ": "}</b>{" "}
+                  {data.glossary.max.description}
+                </div>
+                <br />
+                <div>
+                  <b>{data.glossary.min.name + ": "}</b>{" "}
+                  {data.glossary.min.description}
+                </div>
+                <br />
               </div>
               <div className='img-container'>
-                <img src={GlossaryImg} height={400} />
+                <img src={GlossaryTeachers} height={300} />
               </div>
               <div className='right-container'>
-                
+                <div>
+                  <b>{data.glossary.failedDueToAbsences.name + ": "}</b>{" "}
+                  {data.glossary.failedDueToAbsences.description}
+                </div>
+                <br />
+                <div>
+                  <b>{data.glossary.failedDueToGrade.name + ": "}</b>{" "}
+                  {data.glossary.failedDueToGrade.description}
+                </div>
+                <br />
               </div>
             </div>
             <div className='bottom-container'>
-              
+              <div>
+                <b>{data.glossary.failedDueToCanceling.name + ": "}</b>{" "}
+                {data.glossary.failedDueToCanceling.description}
+              </div>
+              <br />
+              <div>
+                <b>{data.glossary.success.name + ": "}</b>{" "}
+                {data.glossary.success.description}
+              </div>
+              <br />
+
             </div>
           </div>
         </div>
