@@ -85,7 +85,6 @@ const TeachersGlossary = () => {
                 {data.glossary.success.description}
               </div>
               <br />
-
             </div>
           </div>
         </div>

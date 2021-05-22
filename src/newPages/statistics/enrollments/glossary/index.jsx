@@ -47,7 +47,7 @@ const EnrollmentsGlossary = () => {
             </div>
             <div className='main-container-enrollments-glossary'>
               <div className='left-container'>
-              <div>
+                <div>
                   <b>{data.glossary.averageClassesPerDiscipline.name + ": "}</b>{" "}
                   {data.glossary.averageClassesPerDiscipline.description}
                 </div>
@@ -75,16 +75,16 @@ const EnrollmentsGlossary = () => {
               </div>
             </div>
             <div className='bottom-container'>
-            <div>
-                  <b>{data.glossary.max.name + ": "}</b>{" "}
-                  {data.glossary.max.description}
-                </div>
-                <br />
-                <div>
-                  <b>{data.glossary.min.name + ": "}</b>{" "}
-                  {data.glossary.min.description}
-                </div>
-                <br />
+              <div>
+                <b>{data.glossary.max.name + ": "}</b>{" "}
+                {data.glossary.max.description}
+              </div>
+              <br />
+              <div>
+                <b>{data.glossary.min.name + ": "}</b>{" "}
+                {data.glossary.min.description}
+              </div>
+              <br />
             </div>
           </div>
         </div>
