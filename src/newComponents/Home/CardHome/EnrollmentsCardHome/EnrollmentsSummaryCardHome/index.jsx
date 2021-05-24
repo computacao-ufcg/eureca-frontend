@@ -1,5 +1,10 @@
 import React from "react";
-import { MiniCardHome1, MiniCardHomeRightBottom, MiniCardHomeRightTop,MiniCardHomeEnrollments } from "../../MiniCardHome";
+import {
+  MiniCardHome1,
+  MiniCardHomeRightBottom,
+  MiniCardHomeRightTop,
+  MiniCardHomeEnrollments,
+} from "../../MiniCardHome";
 
 import "./style.css";
 

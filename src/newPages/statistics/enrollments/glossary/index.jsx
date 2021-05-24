@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 import { api_EB } from "../../../../services/api";
-import GlossaryImg from "../../../../assets/new_glossary_images/Glossary_examples.png";
+import EnrollmentGlossary from "../../../../assets/new_glossary_images/Screenshot_Enrollments.png";
 
 const EnrollmentsGlossary = () => {
   const history = useHistory();
@@ -47,17 +47,44 @@ const EnrollmentsGlossary = () => {
             </div>
             <div className='main-container-enrollments-glossary'>
               <div className='left-container'>
-                
+                <div>
+                  <b>{data.glossary.averageClassesPerDiscipline.name + ": "}</b>{" "}
+                  {data.glossary.averageClassesPerDiscipline.description}
+                </div>
+                <br />
+                <div>
+                  <b>{data.glossary.averageClassesPerPeriod.name + ": "}</b>{" "}
+                  {data.glossary.averageClassesPerPeriod.description}
+                </div>
+                <br />
               </div>
               <div className='img-container'>
-                <img src={GlossaryImg} height={400} />
+                <img src={EnrollmentGlossary} height={300} />
               </div>
               <div className='right-container'>
-                
+                <div>
+                  <b>{data.glossary.averageEnrollmentsPerPeriod.name + ": "}</b>{" "}
+                  {data.glossary.averageEnrollmentsPerPeriod.description}
+                </div>
+                <br />
+                <div>
+                  <b>{data.glossary.averageEnrollmentsPerClass.name + ": "}</b>{" "}
+                  {data.glossary.averageEnrollmentsPerClass.description}
+                </div>
+                <br />
               </div>
             </div>
             <div className='bottom-container'>
-              
+              <div>
+                <b>{data.glossary.max.name + ": "}</b>{" "}
+                {data.glossary.max.description}
+              </div>
+              <br />
+              <div>
+                <b>{data.glossary.min.name + ": "}</b>{" "}
+                {data.glossary.min.description}
+              </div>
+              <br />
             </div>
           </div>
         </div>

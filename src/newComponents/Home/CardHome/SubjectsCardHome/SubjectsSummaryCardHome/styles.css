@@ -10,7 +10,6 @@
 
 .subjects-summary-card-title {
   display: flex;
-  
 }
 
 .subjects-summary-card-cards-actives {
@@ -41,12 +40,12 @@
 .subjects-summary-card-type {
   font-size: 16px;
   letter-spacing: 0.1px;
-  color: #7E84A3;
+  color: #7e84a3;
 }
 
 .subjects-summary-card-age {
   font-size: 9px;
-  color: #7E84A3;
+  color: #7e84a3;
   margin-top: -4px;
 }
 
@@ -60,6 +59,6 @@
 .subjects-summary-card-legend {
   font-size: 12px;
   letter-spacing: 0.1px;
-  color: #7E84A3;
+  color: #7e84a3;
   margin-top: -6px;
 }

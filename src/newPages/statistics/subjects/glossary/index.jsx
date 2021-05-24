@@ -46,19 +46,13 @@ const SubjectsGlossary = () => {
               <h1>GLOSSÁRIO</h1>
             </div>
             <div className='main-container-subjects-glossary'>
-              <div className='left-container'>
-                
-              </div>
+              <div className='left-container'></div>
               <div className='img-container'>
                 <img src={GlossaryImg} height={400} />
               </div>
-              <div className='right-container'>
-                
-              </div>
+              <div className='right-container'></div>
             </div>
-            <div className='bottom-container'>
-              
-            </div>
+            <div className='bottom-container'></div>
           </div>
         </div>
       ) : (
