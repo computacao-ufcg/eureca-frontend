@@ -79,7 +79,7 @@ const StudentsGlossary = () => {
                 <br />
               </div>
               <div className='img-container'>
-                <img src={GlossaryImg} height={400} />
+                <img src={GlossaryImg} alt="" height={400} />
               </div>
               <div className='right-container'>
                 <div>

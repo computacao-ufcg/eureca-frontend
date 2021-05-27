@@ -23,6 +23,7 @@ import SubjectsGlossary from "./newPages/statistics/subjects/glossary";
 import Delayed from "./newPages/statistics/students/Delayed";
 
 import Enrollments from "./newPages/statistics/Enrollments";
+import Subjects from "./newPages/statistics/Subjects";
 
 import ActiveStudents from "./pages/Statistics/Students/ActiveStudents";
 import GraduatedStudents from "./pages/Statistics/Students/GraduatedStudents";
@@ -40,58 +41,63 @@ const Routes = () => {
       <Switch>
         {/* New Design */}
         <Route exact path='/login' component={() => <Login />} />
-        <PrivateRoute exact path='/' component={() => <Home />} />
-        <PrivateRoute
+        <Route exact path='/' component={() => <Home />} />
+        <Route
           exact
           path='/newDesign/statistics/students/actives'
           component={() => <Actives />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/students/alumni'
           component={() => <Alumni />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/students/dropout'
           component={() => <Dropout />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/students/glossary'
           component={() => <StudentsGlossary />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/teachers/glossary'
           component={() => <TeachersGlossary />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/enrollments/glossary'
           component={() => <EnrollmentsGlossary />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/subjects/glossary'
           component={() => <SubjectsGlossary />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/students/delayed'
           component={() => <Delayed />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/statistics/enrollments'
           component={() => <Enrollments />}
         />
-        <PrivateRoute
+        <Route
+          exact
+          path='/newDesign/statistics/subjects'
+          component={() => <Subjects />}
+        />
+        <Route
           exact
           path='/newDesign/alumniufcg/updatedata'
           component={() => <UpdateData />}
         />
-        <PrivateRoute
+        <Route
           exact
           path='/newDesign/alumniufcg/seemore'
           component={() => <SeeMore />}

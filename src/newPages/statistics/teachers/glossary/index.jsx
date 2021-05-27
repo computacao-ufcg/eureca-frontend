@@ -59,7 +59,7 @@ const TeachersGlossary = () => {
                 <br />
               </div>
               <div className='img-container'>
-                <img src={GlossaryTeachers} height={300} />
+                <img src={GlossaryTeachers} alt="" height={300} />
               </div>
               <div className='right-container'>
                 <div>
