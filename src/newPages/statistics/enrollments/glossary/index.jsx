@@ -15,7 +15,7 @@ const EnrollmentsGlossary = () => {
   }, []);
 
   const getGlossary = async () => {
-    let query = `api/statistics/enrollments/summary`;
+    let query = `/statistics/enrollments/summary`;
 
     const res = await api_EB.get(query, {
       headers: {

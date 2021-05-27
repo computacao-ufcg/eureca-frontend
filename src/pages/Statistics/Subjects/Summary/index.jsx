@@ -41,7 +41,7 @@ const Summary = () => {
     setLoading(true);
     const query = `disciplinas/sumario?de=${label[min]}&ate=${label[max]}`;
 
-    const resSummary = await api.get(`api/estatisticas/${query}`, {});
+    const resSummary = await api.get(`/estatisticas/${query}`, {});
 
     if (resSummary.statusText === "OK") {
       setDataGraph(resSummary.data);
@@ -57,7 +57,7 @@ const Summary = () => {
       setLoading(true);
       const query = `disciplinas/sumario`;
 
-      const resSummary = await api.get(`api/estatisticas/${query}`, {});
+      const resSummary = await api.get(`/estatisticas/${query}`, {});
 
       if (resSummary.statusText === "OK") {
         setDataGraph(resSummary.data.dados);

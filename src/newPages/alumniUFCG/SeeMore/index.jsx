@@ -30,7 +30,7 @@ const SeeMore = () => {
     setLoading(true);
     debugger;
 
-    let query = `match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
+    let query = `/match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
     const res = await api_AS.get(query, {
       headers: {
         "Authentication-Token": sessionStorage.getItem("eureca-token"),

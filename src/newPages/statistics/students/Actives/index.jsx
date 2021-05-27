@@ -28,8 +28,8 @@ const Actives = () => {
   };
 
   const fetchDataApiWithLabel = async (min, max) => {
-    const queryActives = `api/statistics/students/actives?from=${label[min]}&to=${label[max]}`;
-    const queryActivesCSV = `api/statistics/students/actives/csv?from=${label[min]}&to=${label[max]}`;
+    const queryActives = `/statistics/students/actives?from=${label[min]}&to=${label[max]}`;
+    const queryActivesCSV = `/statistics/students/actives/csv?from=${label[min]}&to=${label[max]}`;
 
     const token = sessionStorage.getItem("eureca-token");
 

@@ -34,7 +34,7 @@ const EvadedStudents = () => {
   };
 
   const updateGraph = async (min, max) => {
-    let query = `api/estatisticas/evadidos?de=${min}&ate=${max}`;
+    let query = `/estatisticas/evadidos?de=${min}&ate=${max}`;
 
     const res = await api.get(query, {});
 

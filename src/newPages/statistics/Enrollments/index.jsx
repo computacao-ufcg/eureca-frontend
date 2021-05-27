@@ -24,7 +24,7 @@ const Enrollments = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/api/statistics/enrollments/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const query = `/statistics/enrollments/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
       try {
         const res = await api_EB.get(query, {
           headers: {

@@ -52,8 +52,8 @@ const DiscentesAtivos = () => {
     const query = `ativos?de=${label[min]}&ate=${label[max]}`;
     const queryExport = `ativos/csv?de=${label[min]}&ate=${label[max]}`;
 
-    const resAtivos = await api.get(`api/estatisticas/${query}`, {});
-    const resExport = await api.get(`api/estatisticas/${queryExport}`, {});
+    const resAtivos = await api.get(`/estatisticas/${query}`, {});
+    const resExport = await api.get(`/estatisticas/${queryExport}`, {});
 
     if (resAtivos.statusText === "OK") {
       setDataAtivos(resAtivos.data);
@@ -73,8 +73,8 @@ const DiscentesAtivos = () => {
       const query = "ativos";
       const queryExport = "ativos/csv";
 
-      const resAtivos = await api.get(`api/estatisticas/${query}`, {});
-      const resExport = await api.get(`api/estatisticas/${queryExport}`, {});
+      const resAtivos = await api.get(`/estatisticas/${query}`, {});
+      const resExport = await api.get(`/estatisticas/${queryExport}`, {});
 
       if (resAtivos.statusText === "OK") {
         setDataAtivos(resAtivos.data);

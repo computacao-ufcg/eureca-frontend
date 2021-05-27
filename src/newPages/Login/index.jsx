@@ -34,12 +34,12 @@ const Login = () => {
   const handleLogin = async e => {
     e.preventDefault();
 
-    const queryKey = "api/publicKey";
+    const queryKey = "/publicKey";
 
     const { data } = await api_EB.get(queryKey);
 
     if (!!data) {
-      const queryToken = "as/tokens";
+      const queryToken = "/tokens";
       const publicKey = data.publicKey;
 
       const body = {

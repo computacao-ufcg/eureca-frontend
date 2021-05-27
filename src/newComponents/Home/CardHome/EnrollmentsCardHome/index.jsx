@@ -23,7 +23,7 @@ const EnrollmentsCardHome = props => {
 
   const fetchData = async () => {
     try {
-      const res = await api_EB.get("api/statistics/enrollments/summary", {
+      const res = await api_EB.get("/statistics/enrollments/summary", {
         headers: {
           "Authentication-Token": sessionStorage.getItem("eureca-token"),
         },
