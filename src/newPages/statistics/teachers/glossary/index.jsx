@@ -15,7 +15,7 @@ const TeachersGlossary = () => {
   }, []);
 
   const getGlossary = async () => {
-    let query = `api/statistics/teachers/summary`;
+    let query = `/statistics/teachers/summary`;
 
     const res = await api_EB.get(query, {
       headers: {

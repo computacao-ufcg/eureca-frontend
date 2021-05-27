@@ -38,7 +38,7 @@ const Delayed = () => {
   };
 
   const updateGraph = async (min, max) => {
-    let query = `api/statistics/students/delayed?from=${min}&to=${max}`;
+    let query = `/statistics/students/delayed?from=${min}&to=${max}`;
 
     const res = await api_EB.get(query, {
       headers: {
@@ -62,7 +62,7 @@ const Delayed = () => {
   };
 
   const handleCSV = async (min, max) => {
-    let query = `api/statistics/students/alumni/csv?from=${min}&to=${max}`;
+    let query = `/statistics/students/alumni/csv?from=${min}&to=${max}`;
 
     const res = await api_EB.get(query, {
       headers: {

@@ -34,7 +34,7 @@ const GraduatedStudents = () => {
   };
 
   const updateGraph = async (min, max) => {
-    let query = `api/estatisticas/egressos?de=${min}&ate=${max}`;
+    let query = `/estatisticas/egressos?de=${min}&ate=${max}`;
 
     const res = await api.get(query, {});
 

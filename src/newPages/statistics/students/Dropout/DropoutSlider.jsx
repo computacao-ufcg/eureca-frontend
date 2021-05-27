@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { FlexboxGrid, RangeSlider } from "rsuite";
+import { RangeSlider } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
 import { labels } from "./dropoutUtil";

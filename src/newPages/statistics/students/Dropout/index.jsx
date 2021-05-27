@@ -33,7 +33,7 @@ const Dropout = () => {
   };
 
   const updateGraph = async (min, max) => {
-    let query = `api/statistics/students/dropouts?from=${min}&to=${max}`;
+    let query = `/statistics/students/dropouts?from=${min}&to=${max}`;
 
     const res = await api_EB.get(query, {
       headers: {
@@ -50,7 +50,7 @@ const Dropout = () => {
   };
 
   const handleCSV = async (min, max) => {
-    let query = `api/statistics/students/dropouts/csv?from=${min}&to=${max}`;
+    let query = `/statistics/students/dropouts/csv?from=${min}&to=${max}`;
 
     const res = await api_EB.get(query, {
       headers: {

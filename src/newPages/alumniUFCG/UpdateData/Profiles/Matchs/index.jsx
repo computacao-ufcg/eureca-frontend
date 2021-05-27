@@ -24,7 +24,7 @@ const Matchs = () => {
 
   const handleClassificados = async () => {
     setLoading(true);
-    const res = await api_AS.get("match/list/" + page, {
+    const res = await api_AS.get("/match/list/" + page, {
       headers: {
         "Authentication-Token": sessionStorage.getItem("eureca-token"),
       },
@@ -39,7 +39,7 @@ const Matchs = () => {
   };
 
   const handleCancelMatch = async () => {
-    const query = `match?registration=${cancelMatch.registration}`;
+    const query = `/match?registration=${cancelMatch.registration}`;
 
     const res = await api_AS.delete(query, {
       headers: {

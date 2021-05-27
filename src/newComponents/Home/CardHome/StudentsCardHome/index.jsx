@@ -36,7 +36,7 @@ const StudentsCardHome = () => {
   }, []);
 
   const getSummary = async () => {
-    let query = `api/statistics/students/summary`;
+    let query = `/statistics/students/summary`;
 
     const res = await api_EB.get(query, {
       headers: {
