@@ -22,7 +22,7 @@ import SubjectsGlossary from "./newPages/statistics/subjects/glossary";
 
 import Delayed from "./newPages/statistics/students/Delayed";
 
-import Enrollments from "./newPages/statistics/enrollments";
+import Enrollments from "./newPages/statistics/Enrollments";
 
 import ActiveStudents from "./pages/Statistics/Students/ActiveStudents";
 import GraduatedStudents from "./pages/Statistics/Students/GraduatedStudents";
