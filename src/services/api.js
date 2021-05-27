@@ -1,9 +1,9 @@
 import axios from "axios";
 
 // Starting points
-const EURECA_AS = "http://localhost:8080/";
-const EURECA_BACKEND = "http://localhost:8081/";
-const ALUMNI_AS = "http://localhost:8082/";
+const EURECA_AS = "http://localhost:8080/as/";
+const EURECA_BACKEND = "http://localhost:8081/eureca/";
+const ALUMNI_AS = "http://localhost:8082/alumni/";
 
 // Default for tests
 const api = axios.create({
