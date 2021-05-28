@@ -42,7 +42,7 @@ const Routes = () => {
       <Switch>
         {/* New Design */}
         <Route exact path='/login' component={() => <Login />} />
-        <Route exact path='/' component={() => <Home />} />
+        <PrivateRoute exact path='/' component={() => <Home />} />
         <PrivateRoute
           exact
           path='/newDesign/statistics/students/actives'
