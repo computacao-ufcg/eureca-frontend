@@ -16,7 +16,7 @@ const api = axios.create({
 const api_EB = axios.create({
   baseURL: EURECA_BACKEND,
   headers: {
-    "Content-type": "application/json",
+    "Content-Type": "application/json",
   },
 });
 
@@ -24,7 +24,7 @@ const api_EB = axios.create({
 const api_EAS = axios.create({
   baseURL: EURECA_AS,
   headers: {
-    "Content-type": "application/json",
+    "Content-Type": "application/json",
   },
 });
 
@@ -32,7 +32,7 @@ const api_EAS = axios.create({
 const api_AS = axios.create({
   baseURL: ALUMNI_AS,
   headers: {
-    "Content-type": "application/json",
+    "Content-Type": "application/json",
   },
 });
 

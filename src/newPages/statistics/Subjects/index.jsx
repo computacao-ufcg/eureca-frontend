@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import SubjectsSlider from "./Slider";
 import SubjectsGraph from "./Graph";
 import Export from "../../../newComponents/Export";
@@ -10,8 +10,8 @@ import { api_EB } from "../../../services/api";
 
 const Subjects = () => {
   const [disciplineOption, setDisciplineOption] = useState("obrigatorias");
-  const [variable, setVariable] = useState("success");
-  const [label, setLabel] = useState("taxa de sucesso");
+  const [variable, setVariable] = useState("averageSuccess");
+  const [label, setLabel] = useState("Taxa de sucesso");
   const [data, setData] = useState([]);
 
   const handleVariableChange = variable => {
@@ -22,7 +22,7 @@ const Subjects = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/api/statistics/subjects/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const query = `/statistics/subjects/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
       try {
         const res = await api_EB.get(query, {
           headers: {
@@ -37,27 +37,27 @@ const Subjects = () => {
         console.error(err);
       }
     })();
-  }, [disciplineOption])
+  }, [disciplineOption]);
 
   const variables = [
     {
       label: "Taxa de sucesso",
-      value: "success",
+      value: "averageSuccess",
       role: "Master",
     },
     {
       label: "Taxa de reprovação por nota",
-      value: "failedDueToGrade",
+      value: "averageFailDueToGrade",
       role: "Master",
     },
     {
       label: "Taxa de reprovação por falta",
-      value: "failedDueToAbsences",
+      value: "averageFailDueToAbsences",
       role: "Master",
     },
     {
       label: "Taxa de trancamento",
-      value: "failedDueToCanceling",
+      value: "lockingRate",
       role: "Master",
     },
     {
@@ -69,7 +69,7 @@ const Subjects = () => {
       label: "Retenção relativa",
       value: "absoluteRetention",
       role: "Master",
-    }
+    },
   ];
 
   const disciplineTypes = [
@@ -95,7 +95,7 @@ const Subjects = () => {
     },
   ];
   const history = useHistory();
-  
+
   return (
     <React.Fragment>
       <Header />
@@ -107,10 +107,10 @@ const Subjects = () => {
             </span>
           </div>
           <div className='alumni-slider'>
-          <div className='alumni-title'>Disciplinas</div>
+            <div className='alumni-title'>Disciplinas</div>
             <SubjectsSlider changeSlider={() => {}} />
             <div className='graph'>
-              <SubjectsGraph variable={variable} data={data} label={label}/>
+              <SubjectsGraph variable={variable} data={data} label={label} />
               <div className='selectors'>
                 <h6>Disciplinas</h6>
                 <SelectPicker
@@ -134,10 +134,8 @@ const Subjects = () => {
           </div>
         </div>
       </div>
-      
     </React.Fragment>
-    
-  )
-}
+  );
+};
 
 export default Subjects;
