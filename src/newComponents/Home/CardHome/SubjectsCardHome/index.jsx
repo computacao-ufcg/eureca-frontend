@@ -5,7 +5,6 @@ import TitleCardHome from "../TitleCardHome";
 import SubjectsSummaryCardHome from "./SubjectsSummaryCardHome";
 import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
-import Mask7 from "../../../../assets/new_home_assets/mask_7.svg";
 import { api_EB } from "../../../../services/api";
 import "../style.css";
 
@@ -227,15 +226,11 @@ const SubjectsCardHome = () => {
     <React.Fragment>
       <div className='card-home-area2'>
         <div className='card-home-content'>
-          <div className='card-img-2'>
-            <div className='mask7'>
-              <img src={Mask7} alt='mask7' />
-            </div>
             <div className='title-card-content'>
               <TitleCardHome title={"DISCIPLINAS"} />
             </div>
 
-            <div className='summary-card-content2'>
+            <div className='summary-card-content'>
               <SubjectsSummaryCardHome
                 cards={cards}
                 option={optionSubject}
@@ -332,7 +327,7 @@ const SubjectsCardHome = () => {
                 </div>
               </div>
             </div>
-          </div>
+          
           <div className='card-home-content-footer'>
             <Link to={"/newDesign/statistics/subjects/"}>
               <button type='button'>VER MAIS</button>

@@ -13,7 +13,7 @@ const EnrollmentsSummaryCardHome = props => {
       <div className='enrollments-summary-card-title'>
         <div className='enrollments-summary-card-info'>
           <div className='enrollments-summary-card-type'>{props.title}</div>
-          <div className='enrollments-summary-card-range'>1950.1 a 2020.1</div>
+          <div className='enrollments-summary-card-range'>(Currículo: 2017, períodos 2018.1 a 2020.1)</div>
           <div className='enrollments-summary-card-size'>
             {props.data.subjects}
           </div>
