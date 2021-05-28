@@ -24,6 +24,7 @@ import Delayed from "./newPages/statistics/students/Delayed";
 
 import Enrollments from "./newPages/statistics/Enrollments";
 import Subjects from "./newPages/statistics/Subjects";
+import Teachers from "./newPages/statistics/Teachers";
 
 import ActiveStudents from "./pages/Statistics/Students/ActiveStudents";
 import GraduatedStudents from "./pages/Statistics/Students/GraduatedStudents";
@@ -91,6 +92,11 @@ const Routes = () => {
           exact
           path='/newDesign/statistics/subjects'
           component={() => <Subjects />}
+        />
+        <Route
+          exact
+          path='/newDesign/statistics/teachers'
+          component={() => <Teachers />}
         />
         <Route
           exact

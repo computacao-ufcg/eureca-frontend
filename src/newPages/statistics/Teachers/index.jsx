@@ -1,14 +1,14 @@
 import React, { useState }  from "react";
-import SubjectsSlider from "./Slider";
-import SubjectsGraph from "./Graph";
+import TeachersSlider from "./Slider";
+import TeachersGraph from "./Graph";
 import Export from "../../../newComponents/Export";
 import { SelectPicker } from "rsuite";
 import { useHistory } from "react-router";
 import Header from "../../../newComponents/Header";
 import { FiArrowLeft } from "react-icons/fi";
 
-const Subjects = () => {
-  const [disciplineOption, setDisciplineOption] = useState("obrigatorias");
+const Teachers = () => {
+  const [departmentOption, setDepartmentOption] = useState("uasc");
   const [variable, setVariable] = useState("success");
   const [label, setLabel] = useState("taxa de sucesso");
 
@@ -40,36 +40,31 @@ const Subjects = () => {
       role: "Master",
     },
     {
-      label: "Retenção absoluta",
-      value: "relativeRetention",
-      role: "Master",
-    },
-    {
-      label: "Retenção relativa",
-      value: "absoluteRetention",
+      label: "Número de matrículas",
+      value: "enrollments",
       role: "Master",
     }
   ];
 
-  const disciplineTypes = [
+  const departmentTypes = [
     {
-      label: "Obrigatórias",
-      value: "obrigatorias",
+      label: "UASC",
+      value: "uasc",
       role: "Master",
     },
     {
-      label: "Eletivas",
-      value: "eletivas",
+      label: "UAMaT",
+      value: "uamat",
       role: "Master",
     },
     {
-      label: "Optativas",
-      value: "optatives",
+      label: "UAEst",
+      value: "uest",
       role: "Master",
     },
     {
-      label: "Complementares",
-      value: "complementary",
+      label: "UAL",
+      value: "ual",
       role: "Master",
     },
   ];
@@ -86,17 +81,17 @@ const Subjects = () => {
             </span>
           </div>
           <div className='alumni-slider'>
-          <div className='alumni-title'>Disciplinas</div>
-            <SubjectsSlider changeSlider={() => {}} />
+          <div className='alumni-title'>Docentes</div>
+            <TeachersSlider changeSlider={() => {}} />
             <div className='graph'>
-              <SubjectsGraph variable={variable} label={label}/>
+              <TeachersGraph variable={variable} label={label}/>
               <div className='selectors'>
                 <h6>text</h6>
                 <SelectPicker
-                  onChange={value => setDisciplineOption(value)}
-                  data={disciplineTypes}
+                  onChange={value => setDepartmentOption(value)}
+                  data={departmentTypes}
                   className='selector-enrollments'
-                  defaultValue={disciplineOption}
+                  defaultValue={departmentOption}
                   searchable={false}
                 />
                 <h6>text</h6>
@@ -109,7 +104,7 @@ const Subjects = () => {
                 />
               </div>
             </div>
-            <Export data={[]} name={"subjects"} />
+            <Export data={[]} name={"teachers"} />
           </div>
         </div>
       </div>
@@ -119,4 +114,4 @@ const Subjects = () => {
   )
 }
 
-export default Subjects;
+export default Teachers;

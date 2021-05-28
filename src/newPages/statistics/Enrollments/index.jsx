@@ -18,7 +18,7 @@ import "./style.css";
 
 const Enrollments = () => {
   const [data, setData] = useState([]);
-  const [disciplineOption, setDisciplineOption] = useState("Obrigatórias");
+  const [disciplineOption, setDisciplineOption] = useState("obrigatorias");
   const [variable, setVariable] = useState("totalEnrollments");
   const [label, setLabel] = useState("Total de matrículas");
 
@@ -107,17 +107,21 @@ const Enrollments = () => {
             <div className='graph'>
               <EnrollmentsGraph variable={variable} data={data} label={label} />
               <div className='selectors'>
+                <h6>text</h6>
                 <SelectPicker
                   onChange={value => setDisciplineOption(value)}
                   data={disciplineTypes}
                   className='selector-enrollments'
                   defaultValue={disciplineOption}
+                  searchable={false}
                 />
+                <h6>text</h6>
                 <SelectPicker
                   onChange={value => handleVariableChange(value)}
                   data={variables}
                   className='selector-enrollments'
                   defaultValue={variable}
+                  searchable={false}
                 />
               </div>
             </div>
