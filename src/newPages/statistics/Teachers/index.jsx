@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState, useEffect }  from "react";
 import TeachersSlider from "./Slider";
 import TeachersGraph from "./Graph";
 import Export from "../../../newComponents/Export";
@@ -6,17 +6,38 @@ import { SelectPicker } from "rsuite";
 import { useHistory } from "react-router";
 import Header from "../../../newComponents/Header";
 import { FiArrowLeft } from "react-icons/fi";
+import { api_EB } from "../../../services/api";
 
 const Teachers = () => {
   const [departmentOption, setDepartmentOption] = useState("uasc");
   const [variable, setVariable] = useState("success");
   const [label, setLabel] = useState("taxa de sucesso");
+  const [data, setData] = useState([]);
 
   const handleVariableChange = variable => {
     setVariable(variable);
     const proposedLabel = variables.find(item => item.value === variable);
     setLabel(proposedLabel.label);
   };
+
+  useEffect(() => {
+    (async function () {
+      const query = `/api/statistics/teachers/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      try {
+        const res = await api_EB.get(query, {
+          headers: {
+            "Authentication-Token": sessionStorage.getItem("eureca-token"),
+          },
+        });
+
+        if (res) {
+          setData(res.data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [departmentOption])
 
   const variables = [
     {
@@ -84,9 +105,9 @@ const Teachers = () => {
           <div className='alumni-title'>Docentes</div>
             <TeachersSlider changeSlider={() => {}} />
             <div className='graph'>
-              <TeachersGraph variable={variable} label={label}/>
+              <TeachersGraph variable={variable} data={data} label={label}/>
               <div className='selectors'>
-                <h6>text</h6>
+                <h6>Unidade Acadêmica</h6>
                 <SelectPicker
                   onChange={value => setDepartmentOption(value)}
                   data={departmentTypes}
@@ -94,7 +115,7 @@ const Teachers = () => {
                   defaultValue={departmentOption}
                   searchable={false}
                 />
-                <h6>text</h6>
+                <h6>Variável</h6>
                 <SelectPicker
                   onChange={value => handleVariableChange(value)}
                   data={variables}

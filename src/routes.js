@@ -43,67 +43,67 @@ const Routes = () => {
         {/* New Design */}
         <Route exact path='/login' component={() => <Login />} />
         <Route exact path='/' component={() => <Home />} />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/students/actives'
           component={() => <Actives />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/students/alumni'
           component={() => <Alumni />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/students/dropout'
           component={() => <Dropout />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/students/glossary'
           component={() => <StudentsGlossary />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/teachers/glossary'
           component={() => <TeachersGlossary />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/enrollments/glossary'
           component={() => <EnrollmentsGlossary />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/subjects/glossary'
           component={() => <SubjectsGlossary />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/students/delayed'
           component={() => <Delayed />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/enrollments'
           component={() => <Enrollments />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/subjects'
           component={() => <Subjects />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/statistics/teachers'
           component={() => <Teachers />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/alumniufcg/updatedata'
           component={() => <UpdateData />}
         />
-        <Route
+        <PrivateRoute
           exact
           path='/newDesign/alumniufcg/seemore'
           component={() => <SeeMore />}

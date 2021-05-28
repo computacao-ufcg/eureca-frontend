@@ -107,7 +107,7 @@ const Enrollments = () => {
             <div className='graph'>
               <EnrollmentsGraph variable={variable} data={data} label={label} />
               <div className='selectors'>
-                <h6>text</h6>
+                <h6>Disciplinas</h6>
                 <SelectPicker
                   onChange={value => setDisciplineOption(value)}
                   data={disciplineTypes}
@@ -115,7 +115,7 @@ const Enrollments = () => {
                   defaultValue={disciplineOption}
                   searchable={false}
                 />
-                <h6>text</h6>
+                <h6>Variável</h6>
                 <SelectPicker
                   onChange={value => handleVariableChange(value)}
                   data={variables}
