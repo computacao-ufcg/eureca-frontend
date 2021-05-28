@@ -32,7 +32,6 @@ const Enrollments = () => {
           },
         });
 
-        // console.log(res.data);
         if (res) {
           setData(res.data);
         }
