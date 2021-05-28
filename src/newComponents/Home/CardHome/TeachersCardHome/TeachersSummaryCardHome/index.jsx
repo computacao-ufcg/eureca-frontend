@@ -19,7 +19,7 @@ const TeachersSummaryCardHome = props => {
       <div className='teachers-summary-card-title'>
         <div className='teachers-summary-card-info'>
           <div className='teachers-summary-card-type'>{props.title}</div>
-          <div className='teachers-summary-card-age'>1986.1 a 2019.2</div>
+          <div className='teachers-summary-card-age'>(1986.1 a 2019.2)</div>
           <div className='teachers-summary-card-size'>{data[0] || 0}</div>
         </div>
         <div className='teachers-summary-left-cards'>

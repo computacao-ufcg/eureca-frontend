@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 import { api_EB } from "../../../../services/api";
-import GlossaryImg from "../../../../assets/new_glossary_images/Glossary_examples.png";
+import GlossaryImg from "../../../../assets/new_glossary_images/Screenshot_Subjects.png";
 
 const SubjectsGlossary = () => {
   const history = useHistory();
@@ -46,13 +46,32 @@ const SubjectsGlossary = () => {
               <h1>GLOSSÁRIO</h1>
             </div>
             <div className='main-container-subjects-glossary'>
-              <div className='left-container'></div>
-              <div className='img-container'>
-                <img src={GlossaryImg} height={400} />
+              <div className='left-container'>
+                <div>
+                  <b>{data.glossary.complementary.name + ":"} </b>{" "}
+                  {data.glossary.complementary.description}
+                </div>
               </div>
-              <div className='right-container'></div>
+              <div className='img-container'>
+                <img src={GlossaryImg} height={300} />
+              </div>
+              <div className='right-container'>
+                <div>
+                  <b>{data.glossary.mandatory.name + ":"} </b>{" "}
+                  {data.glossary.mandatory.description}
+                </div>
+                <div>
+                  <b>{data.glossary.optional.name + ":"} </b>{" "}
+                  {data.glossary.optional.description}
+                </div>
+              </div>
             </div>
-            <div className='bottom-container'></div>
+            <div className='bottom-container'>
+              <div>
+                <b>{data.glossary.elective.name + ":"} </b>{" "}
+                {data.glossary.elective.description}
+              </div>
+            </div>
           </div>
         </div>
       ) : (

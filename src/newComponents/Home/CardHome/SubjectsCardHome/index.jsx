@@ -5,7 +5,6 @@ import TitleCardHome from "../TitleCardHome";
 import SubjectsSummaryCardHome from "./SubjectsSummaryCardHome";
 import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
-import Mask7 from "../../../../assets/new_home_assets/mask_7.svg";
 import { api_EB } from "../../../../services/api";
 import "../style.css";
 
