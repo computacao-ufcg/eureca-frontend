@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-
-import "./style.css";
-
 import { RangeSlider } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
-
 import { labels } from "../../students/Alumni/util";
 
-const EnrollmentSlider = props => {
+const TeachersSlider = props => {
   const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(77);
 
@@ -45,4 +41,4 @@ const EnrollmentSlider = props => {
   ) : null;
 };
 
-export default EnrollmentSlider;
+export default TeachersSlider;

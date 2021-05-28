@@ -3,7 +3,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import eureca_logo from "../../assets/header/eureca.svg";
-import default_avatar from "../../assets/header/default-avatar.png";
 
 import "./styles.css";
 

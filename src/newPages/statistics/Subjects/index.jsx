@@ -1,30 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
-
+import React, { useEffect, useState }  from "react";
+import SubjectsSlider from "./Slider";
+import SubjectsGraph from "./Graph";
 import Export from "../../../newComponents/Export";
-import Header from "../../../newComponents/Header";
-
-import EnrollmentsGraph from "./Graph";
-
-import { FiArrowLeft } from "react-icons/fi";
-
 import { SelectPicker } from "rsuite";
-import "rsuite/dist/styles/rsuite-default.css";
-import EnrollmentSlider from "./Slider";
-
+import { useHistory } from "react-router";
+import Header from "../../../newComponents/Header";
+import { FiArrowLeft } from "react-icons/fi";
 import { api_EB } from "../../../services/api";
 
-import "./style.css";
-
-const Enrollments = () => {
-  const [data, setData] = useState([]);
+const Subjects = () => {
   const [disciplineOption, setDisciplineOption] = useState("obrigatorias");
-  const [variable, setVariable] = useState("totalEnrollments");
-  const [label, setLabel] = useState("Total de matrículas");
+  const [variable, setVariable] = useState("success");
+  const [label, setLabel] = useState("taxa de sucesso");
+  const [data, setData] = useState([]);
+
+  const handleVariableChange = variable => {
+    setVariable(variable);
+    const proposedLabel = variables.find(item => item.value === variable);
+    setLabel(proposedLabel.label);
+  };
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/enrollments/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const query = `/api/statistics/subjects/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
       try {
         const res = await api_EB.get(query, {
           headers: {
@@ -32,7 +30,6 @@ const Enrollments = () => {
           },
         });
 
-        // console.log(res.data);
         if (res) {
           setData(res.data);
         }
@@ -40,13 +37,40 @@ const Enrollments = () => {
         console.error(err);
       }
     })();
-  }, [disciplineOption]);
+  }, [disciplineOption])
 
-  const handleVariableChange = variable => {
-    setVariable(variable);
-    const proposedLabel = variables.find(item => item.value === variable);
-    setLabel(proposedLabel.label);
-  };
+  const variables = [
+    {
+      label: "Taxa de sucesso",
+      value: "success",
+      role: "Master",
+    },
+    {
+      label: "Taxa de reprovação por nota",
+      value: "failedDueToGrade",
+      role: "Master",
+    },
+    {
+      label: "Taxa de reprovação por falta",
+      value: "failedDueToAbsences",
+      role: "Master",
+    },
+    {
+      label: "Taxa de trancamento",
+      value: "failedDueToCanceling",
+      role: "Master",
+    },
+    {
+      label: "Retenção absoluta",
+      value: "relativeRetention",
+      role: "Master",
+    },
+    {
+      label: "Retenção relativa",
+      value: "absoluteRetention",
+      role: "Master",
+    }
+  ];
 
   const disciplineTypes = [
     {
@@ -70,27 +94,8 @@ const Enrollments = () => {
       role: "Master",
     },
   ];
-
-  const variables = [
-    {
-      label: "Total de matrículas",
-      value: "totalEnrollments",
-      role: "Master",
-    },
-    {
-      label: "Média de matrículas por turma",
-      value: "averageEnrollmentsPerClass",
-      role: "Master",
-    },
-    {
-      label: "Número de turmas",
-      value: "totalClasses",
-      role: "Master",
-    },
-  ];
-
   const history = useHistory();
-
+  
   return (
     <React.Fragment>
       <Header />
@@ -102,10 +107,10 @@ const Enrollments = () => {
             </span>
           </div>
           <div className='alumni-slider'>
-            <div className='alumni-title'>Matrículas</div>
-            <EnrollmentSlider changeSlider={() => {}} />
+          <div className='alumni-title'>Disciplinas</div>
+            <SubjectsSlider changeSlider={() => {}} />
             <div className='graph'>
-              <EnrollmentsGraph variable={variable} data={data} label={label} />
+              <SubjectsGraph variable={variable} data={data} label={label}/>
               <div className='selectors'>
                 <h6>Disciplinas</h6>
                 <SelectPicker
@@ -125,12 +130,14 @@ const Enrollments = () => {
                 />
               </div>
             </div>
-            <Export data={[]} name={"enrollments"} />
+            <Export data={[]} name={"subjects"} />
           </div>
         </div>
       </div>
+      
     </React.Fragment>
-  );
-};
+    
+  )
+}
 
-export default Enrollments;
+export default Subjects;

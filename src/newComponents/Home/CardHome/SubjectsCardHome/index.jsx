@@ -329,7 +329,7 @@ const SubjectsCardHome = () => {
             </div>
           
           <div className='card-home-content-footer'>
-            <Link to={"/newDesign/statistics/students/" + optionSubject}>
+            <Link to={"/newDesign/statistics/subjects/"}>
               <button type='button'>VER MAIS</button>
             </Link>
             <Link to={"/newDesign/statistics/subjects/glossary"}>
