@@ -48,7 +48,7 @@ const SubjectsGlossary = () => {
             <div className='main-container-subjects-glossary'>
               <div className='left-container'></div>
               <div className='img-container'>
-                <img src={GlossaryImg} height={400} />
+                <img src={GlossaryImg} alt="" height={400} />
               </div>
               <div className='right-container'></div>
             </div>

@@ -59,7 +59,7 @@ const EnrollmentsGlossary = () => {
                 <br />
               </div>
               <div className='img-container'>
-                <img src={EnrollmentGlossary} height={300} />
+                <img src={EnrollmentGlossary} alt="" height={300} />
               </div>
               <div className='right-container'>
                 <div>
