@@ -227,15 +227,11 @@ const SubjectsCardHome = () => {
     <React.Fragment>
       <div className='card-home-area2'>
         <div className='card-home-content'>
-          <div className='card-img-2'>
-            <div className='mask7'>
-              <img src={Mask7} alt='mask7' />
-            </div>
             <div className='title-card-content'>
               <TitleCardHome title={"DISCIPLINAS"} />
             </div>
 
-            <div className='summary-card-content2'>
+            <div className='summary-card-content'>
               <SubjectsSummaryCardHome
                 cards={cards}
                 option={optionSubject}
@@ -332,7 +328,7 @@ const SubjectsCardHome = () => {
                 </div>
               </div>
             </div>
-          </div>
+          
           <div className='card-home-content-footer'>
             <Link to={"/newDesign/statistics/students/" + optionSubject}>
               <button type='button'>VER MAIS</button>
