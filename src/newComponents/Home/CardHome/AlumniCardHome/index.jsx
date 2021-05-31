@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "../AlumniCardHome/style.css";
@@ -9,7 +9,31 @@ import AlumniCards from "./AlumniCards";
 import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 
-const AlumniCardHome = props => {
+import { api_AS, api_EB } from "../../../../services/api";
+
+const AlumniCardHome = () => {
+  const [alumniData, setAlumniData] = useState([]);
+
+  useEffect(() => {
+    async function fetchAlumniData() {
+      try {
+        const res = await api_AS.get("/statistics", {
+          headers: {
+            "Authentication-Token": sessionStorage.getItem("eureca-token"),
+          },
+        });
+
+        if (res?.status === 200) {
+          console.log(res.data);
+          setAlumniData(res.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchAlumniData();
+  }, []);
+
   return (
     <React.Fragment>
       <div className='card-home-area2'>
@@ -18,7 +42,7 @@ const AlumniCardHome = props => {
             <TitleCardHome title={"EGRESSOS"} />
           </div>
           <div className='summary-card-content'>
-            <AlumniCards data={props.data} />
+            <AlumniCards data={alumniData} />
           </div>
           <div className='card-home-content-footer'>
             <div className='seemore-button'>
