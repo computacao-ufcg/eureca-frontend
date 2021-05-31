@@ -18,7 +18,7 @@ const Actives = () => {
   const [max, setMax] = useState(0);
   const [label, setLabel] = useState([]);
 
-  const [loadding, setLoadding] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
@@ -28,8 +28,12 @@ const Actives = () => {
   };
 
   const fetchDataApiWithLabel = async (min, max) => {
-    const queryActives = `/statistics/students/actives?from=${label[min]}&to=${label[max]}`;
-    const queryActivesCSV = `/statistics/students/actives/csv?from=${label[min]}&to=${label[max]}`;
+    const queryActives = `/statistics/students/actives?from=${
+      label[min] || min
+    }&to=${label[max] || max}`;
+    const queryActivesCSV = `/statistics/students/actives/csv?from=${
+      label[min] || min
+    }&to=${label[max] || max}`;
 
     const token = sessionStorage.getItem("eureca-token");
 
@@ -61,12 +65,15 @@ const Actives = () => {
     };
 
     fetchDataApiWithoutLabel();
+    if (dataActives) {
+      setLoading(false);
+    }
   }, []);
 
   return (
     <div className='main-container'>
       <Header></Header>
-      {loadding ? (
+      {loading ? (
         <h1>Carregando...</h1>
       ) : (
         <div className='main-actives'>

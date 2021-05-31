@@ -10,7 +10,7 @@ import {
 } from "../../MiniCardHome";
 
 const TeachersSummaryCardHome = props => {
-  console.log(props.dataTeachers);
+  console.log(props);
   const labels = props.data;
   const data = props.dataTeachers;
 
@@ -19,7 +19,10 @@ const TeachersSummaryCardHome = props => {
       <div className='teachers-summary-card-title'>
         <div className='teachers-summary-card-info'>
           <div className='teachers-summary-card-type'>{props.title}</div>
-          <div className='teachers-summary-card-age'>(1986.1 a 2019.2)</div>
+          <div className='teachers-summary-card-age'>
+            (Curriculo: {props.curriculum || "2017"}, períodos{" "}
+            {props.from || "1981.1"} a {props.to || "2020.1"})
+          </div>
           <div className='teachers-summary-card-size'>{data[0] || 0}</div>
         </div>
         <div className='teachers-summary-left-cards'>

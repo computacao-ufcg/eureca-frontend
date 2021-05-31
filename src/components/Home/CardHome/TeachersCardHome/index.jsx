@@ -30,6 +30,7 @@ const TeachersCardHome = () => {
 
   useEffect(() => {
     getSummary();
+    console.log(dataTeachers);
   }, []);
 
   const getSummary = async () => {
@@ -42,17 +43,14 @@ const TeachersCardHome = () => {
     });
 
     if (res) {
-      console.log(res.data);
       setDataTeachers(res.data);
       setPropsTeachersUASC(res.data);
-    } else {
-      console.log(res.statusText);
     }
   };
 
   const setPropsTeachersUASC = data => {
     setPropsTeachers([
-      data.total + " docentes",
+      data.total,
       data.failedDueToGrade.min.toFixed(1) +
         "% " +
         data.failedDueToGrade.average.toFixed(1) +

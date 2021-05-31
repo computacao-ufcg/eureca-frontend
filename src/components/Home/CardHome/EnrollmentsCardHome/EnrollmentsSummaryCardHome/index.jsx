@@ -8,7 +8,6 @@ import {
 import "./style.css";
 
 const EnrollmentsSummaryCardHome = props => {
-  console.log(props);
   return (
     <div className='enrollments-summary-card-main'>
       <div className='enrollments-summary-card-title'>
