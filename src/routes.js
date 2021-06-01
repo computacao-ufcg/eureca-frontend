@@ -25,7 +25,7 @@ import Teachers from "./pages/statistics/Teachers";
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/app'>
       <Switch>
         <Route exact path='/login' component={() => <Login />} />
         <PrivateRoute exact path='/' component={() => <Home />} />
