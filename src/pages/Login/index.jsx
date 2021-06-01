@@ -21,7 +21,6 @@ const Login = () => {
   useEffect(() => {
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
-        console.log(login, password);
         handleLogin(event);
       }
     };
@@ -56,7 +55,7 @@ const Login = () => {
         if (!!res_as.data.token) {
           sessionStorage.setItem("eureca-token", res_as.data.token);
           sessionStorage.setItem("username", login);
-          history.push("/");
+          history.push("/home");
         }
       } catch (error) {
         alert("Erro: Nome de usuário ou senha incorretos.");

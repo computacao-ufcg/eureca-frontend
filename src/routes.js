@@ -27,8 +27,8 @@ const Routes = () => {
   return (
     <BrowserRouter basename='/app'>
       <Switch>
-        <Route exact path='/login' component={() => <Login />} />
-        <PrivateRoute exact path='/' component={() => <Home />} />
+        <Route exact path='/' component={() => <Login />} />
+        <PrivateRoute exact path='/home' component={() => <Home />} />
         <PrivateRoute
           exact
           path='/statistics/students/actives'

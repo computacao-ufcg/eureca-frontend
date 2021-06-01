@@ -10,8 +10,9 @@ const Header = () => {
   const history = useHistory();
   const handleLogOut = () => {
     sessionStorage.clear();
-    history.push("/login");
+    history.push("/");
   };
+
   return (
     <div className='header-container'>
       <div className='header-1'>
