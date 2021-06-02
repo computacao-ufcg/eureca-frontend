@@ -16,18 +16,8 @@ const SubjectsSummaryCardHome = props => {
       <div className='subjects-summary-card-title'>
         <div className='subjects-summary-card-info'>
           <div className='subjects-summary-card-type'>{props.title}</div>
-          <div className='subjects-summary-card-age'>
-            (Currículo 2017, períodos 2018.1 a 2020.1)
-          </div>
-          <div className='subjects-summary-card-age'>
-            MÍNIMO
-            <br />
-            1980 horas
-            <br />
-            132 créditos
-            <br />
-            33 disciplinas
-          </div>
+          <div className='subjects-summary-card-age'>(Currículo 2017, períodos 2018.1 a 2020.1)</div>
+          <div className='subjects-summary-card-size'>33</div>
         </div>
         <div className='subjects-summary-left-cards'>
           {props.cards.card6 && (

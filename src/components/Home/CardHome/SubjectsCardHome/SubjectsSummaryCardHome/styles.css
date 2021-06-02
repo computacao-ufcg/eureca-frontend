@@ -62,3 +62,10 @@
   color: #7e84a3;
   margin-top: -6px;
 }
+
+.subjects-summary-card-size {
+  font-size: 28px;
+  letter-spacing: 0.12px;
+  color: #131523;
+  font-weight: 600;
+}
