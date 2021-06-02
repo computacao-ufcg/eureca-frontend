@@ -114,6 +114,7 @@ const Teachers = () => {
                   className='selector-enrollments'
                   defaultValue={departmentOption}
                   searchable={false}
+                  cleanable={false}
                 />
                 <h6>Variável</h6>
                 <SelectPicker
@@ -122,6 +123,7 @@ const Teachers = () => {
                   className='selector-enrollments'
                   defaultValue={variable}
                   searchable={false}
+                  cleanable={false}
                 />
               </div>
             </div>
