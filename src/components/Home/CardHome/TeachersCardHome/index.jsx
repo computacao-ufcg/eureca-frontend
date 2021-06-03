@@ -48,15 +48,15 @@ const TeachersCardHome = () => {
     }
   };
 
-  const formatProps = subject => {
+  const formatProps = department => {
     return [
-      subject.total,
-      subject.failedDueToGrade.average.toFixed(1) + "% ",
-      subject.failedDueToAbsences.average.toFixed(1) + "% ",
-      subject.failedDueToCanceling.average.toFixed(1) + "% ",
-      subject.success.average.toFixed(1) + "% ",
-      `${subject.min.count} docentes (${subject.min.term})`,
-      `${subject.max.count} docentes (${subject.max.term})`,
+      department.total,
+      department.failedDueToGrade.average.toFixed(1) + "% ",
+      department.failedDueToAbsences.average.toFixed(1) + "% ",
+      department.failedDueToCanceling.average.toFixed(1) + "% ",
+      department.success.average.toFixed(1) + "% ",
+      `${department.min.count} docentes (${department.min.term})`,
+      `${department.max.count} docentes (${department.max.term})`,
     ];
   };
 
