@@ -30,7 +30,6 @@ const TeachersCardHome = () => {
 
   useEffect(() => {
     getSummary();
-    console.log(dataTeachers);
   }, []);
 
   const getSummary = async () => {
@@ -48,58 +47,39 @@ const TeachersCardHome = () => {
     }
   };
 
+  const formatProps = department => {
+    return [
+      department.total,
+      department.failedDueToGrade.average.toFixed(1) + "% ",
+      department.failedDueToAbsences.average.toFixed(1) + "% ",
+      department.failedDueToCanceling.average.toFixed(1) + "% ",
+      department.success.average.toFixed(1) + "% ",
+      `${department.min.count} docentes (${department.min.term})`,
+      `${department.max.count} docentes (${department.max.term})`,
+    ];
+  };
+
   const setPropsTeachersUASC = data => {
-    setPropsTeachers([
-      data.total,
-      data.failedDueToGrade.average.toFixed(1) + "% ",
-      data.failedDueToAbsences.average.toFixed(1) + "% ",
-      data.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.success.average.toFixed(1) + "% ",
-      data.min.count + " docentes " + "(" + data.min.term + ")",
-      data.max.count + " docentes " + "(" + data.max.term + ")",
-    ]);
+    const props = formatProps(data);
+    setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
   const setPropsTeachersUAMat = data => {
-    setPropsTeachers([
-      data.total,
-      data.failedDueToGrade.average.toFixed(1) + "% ",
-      data.failedDueToAbsences.average.toFixed(1) + "% ",
-      data.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.success.average.toFixed(1) + "% ",
-      data.min.count + " docentes " + "(" + data.min.term + ")",
-      data.max.count + " docentes " + "(" + data.max.term + ")",
-    ]);
+    const props = formatProps(data);
+    setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
   const setPropsTeachersUAEst = data => {
-    setPropsTeachers([
-      data.total,
-
-      data.failedDueToGrade.average.toFixed(1) + "% ",
-      data.failedDueToAbsences.average.toFixed(1) + "% ",
-      data.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.success.average.toFixed(1) + "% ",
-      data.min.count + " docentes " + "(" + data.min.term + ")",
-      data.max.count + " docentes " + "(" + data.max.term + ")",
-    ]);
+    const props = formatProps(data);
+    setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
+
   const setPropsTeachersUAL = data => {
-    setPropsTeachers([
-      data.total,
-
-      data.failedDueToGrade.average.toFixed(1) + "% ",
-
-      data.failedDueToAbsences.average.toFixed(1) + "% ",
-
-      data.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.success.average.toFixed(1) + "% ",
-      data.min.count + " docentes " + "(" + data.min.term + ")",
-      data.max.count + " docentes " + "(" + data.max.term + ")",
-    ]);
+    const props = formatProps(data);
+    setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 

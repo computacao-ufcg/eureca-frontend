@@ -46,60 +46,43 @@ const SubjectsCardHome = () => {
     });
 
     if (res) {
-      console.log(res.data);
       setDataSubjects(res.data);
       setPropsSubjectsMandatory(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 
-  const setPropsSubjectsMandatory = data => {
-    setPropsSubjects([
+  const formatProps = subject => {
+    return [
       "",
-      data.mandatory.failedDueToGrade.average.toFixed(1) + "% ",
-      data.mandatory.failedDueToAbsences.average.toFixed(1) + "% ",
-      data.mandatory.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.mandatory.success.average.toFixed(1) + "% ",
-      data.mandatory.absoluteRetention.average.toFixed(1) + "% ",
-      data.mandatory.relativeRetention.average.toFixed(1) + "% ",
-    ]);
+      subject.failedDueToGrade.average.toFixed(1) + "% ",
+      subject.failedDueToAbsences.average.toFixed(1) + "% ",
+      subject.failedDueToCanceling.average.toFixed(1) + "% ",
+      subject.success.average.toFixed(1) + "% ",
+      subject.absoluteRetention.average.toFixed(1) + "% ",
+      subject.relativeRetention.average.toFixed(1) + "% ",
+    ];
+  };
+
+  const setPropsSubjectsMandatory = data => {
+    const props = formatProps(data.mandatory);
+    setPropsSubjects(props);
   };
 
   const setPropsSubjectsOptional = data => {
-    setPropsSubjects([
-      "",
-      data.optional.failedDueToGrade.average.toFixed(1) + "% ",
-      data.optional.failedDueToAbsences.average.toFixed(1) + "% ",
-      data.optional.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.optional.success.average.toFixed(1) + "% ",
-      data.optional.absoluteRetention.average.toFixed(1) + "% ",
-      data.optional.relativeRetention.average.toFixed(1) + "% ",
-    ]);
+    const props = formatProps(data.optional);
+    setPropsSubjects(props);
   };
 
   const setPropsSubjectsElective = data => {
-    setPropsSubjects([
-      "",
-      data.elective.failedDueToGrade.average.toFixed(1) + "% ",
-      data.elective.failedDueToAbsences.average.toFixed(1) + "% ",
-      data.elective.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.elective.success.average.toFixed(1) + "% ",
-      data.elective.absoluteRetention.average.toFixed(1) + "% ",
-      data.elective.relativeRetention.average.toFixed(1) + "% ",
-    ]);
+    const props = formatProps(data.elective);
+    setPropsSubjects(props);
   };
 
   const setPropsSubjectsComplementary = data => {
-    setPropsSubjects([
-      "",
-      data.complementary.failedDueToGrade.average.toFixed(1) + "% ",
-      data.complementary.failedDueToAbsences.average.toFixed(1) + "% ",
-      data.complementary.failedDueToCanceling.average.toFixed(1) + "% ",
-      data.complementary.success.average.toFixed(1) + "% ",
-      data.complementary.absoluteRetention.average.toFixed(1) + "% ",
-      data.complementary.relativeRetention.average.toFixed(1) + "% ",
-    ]);
+    const props = formatProps(data.complementary);
+    setPropsSubjects(props);
   };
 
   return (

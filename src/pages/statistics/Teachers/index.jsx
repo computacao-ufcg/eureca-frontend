@@ -34,7 +34,6 @@ const Teachers = () => {
         });
 
         if (res) {
-          console.log(res.data);
           setData(res.data);
         }
       } catch (err) {

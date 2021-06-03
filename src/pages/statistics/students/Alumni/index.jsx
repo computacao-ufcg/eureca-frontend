@@ -47,7 +47,7 @@ const Alumni = () => {
     if (res) {
       setDataEgressos(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 
@@ -63,7 +63,7 @@ const Alumni = () => {
     if (res) {
       setDataCSV(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 

@@ -42,10 +42,9 @@ const Dropout = () => {
     });
 
     if (res) {
-      console.log(res.data);
       setDataEgressos(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 
@@ -59,10 +58,9 @@ const Dropout = () => {
     });
 
     if (res) {
-      console.log(res.data);
       setDataCSV(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 

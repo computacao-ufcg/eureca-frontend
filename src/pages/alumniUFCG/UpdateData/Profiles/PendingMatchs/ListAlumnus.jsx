@@ -18,7 +18,6 @@ const ListAlumnus = props => {
     setTimeout(() => {
       setSortColumn(sortColumn);
       setSortType(sortType);
-      console.log("func");
       setData(sortData(data, sortType));
       setLoading(false);
     }, 500);

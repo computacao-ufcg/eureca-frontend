@@ -9,7 +9,6 @@ import {
 } from "../../MiniCardHome";
 
 const StudentsSummaryCardHome = props => {
-  // console.log(props.dataStudents);
   const labels = props.data;
   const data = props.dataStudents;
 

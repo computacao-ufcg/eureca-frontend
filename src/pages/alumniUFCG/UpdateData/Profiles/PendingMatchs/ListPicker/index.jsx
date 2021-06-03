@@ -53,7 +53,6 @@ const ListPicker = props => {
       return data;
     }
 
-    console.log(unit);
     return unit;
   };
 

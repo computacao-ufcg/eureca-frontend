@@ -24,10 +24,9 @@ const SubjectsGlossary = () => {
     });
 
     if (res) {
-      console.log(res.data);
       setData(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 
