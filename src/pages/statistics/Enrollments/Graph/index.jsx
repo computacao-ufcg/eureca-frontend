@@ -13,7 +13,6 @@ import {
 import "./style.css";
 
 const EnrollmentsGraph = props => {
-  console.log(props);
   return (
     <BarChart
       width={680}

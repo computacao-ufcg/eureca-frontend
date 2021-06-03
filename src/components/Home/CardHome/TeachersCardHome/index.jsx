@@ -30,7 +30,6 @@ const TeachersCardHome = () => {
 
   useEffect(() => {
     getSummary();
-    console.log(dataTeachers);
   }, []);
 
   const getSummary = async () => {

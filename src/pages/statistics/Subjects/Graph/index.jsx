@@ -11,7 +11,6 @@ import {
 } from "recharts";
 
 const SubjectsGraph = props => {
-  console.log(props);
   return (
     <BarChart
       width={680}

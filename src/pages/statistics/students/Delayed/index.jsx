@@ -58,7 +58,7 @@ const Delayed = () => {
       });
       setDataEgressos(delayedAux);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 
@@ -74,7 +74,7 @@ const Delayed = () => {
     if (res) {
       setDataCSV(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 

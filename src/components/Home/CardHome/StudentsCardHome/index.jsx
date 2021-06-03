@@ -48,7 +48,7 @@ const StudentsCardHome = () => {
       setDataStudents(res.data);
       setPropsActives(res.data);
     } else {
-      console.log(res.statusText);
+      console.error(res.statusText);
     }
   };
 
