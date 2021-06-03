@@ -26,7 +26,7 @@ const Matchs = () => {
     setLoading(true);
     const res = await api_AB.get("/match/list/" + page, {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
       },
     });
 
@@ -43,7 +43,7 @@ const Matchs = () => {
 
     const res = await api_AB.delete(query, {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
       },
     });
     if (res.status === 200) {

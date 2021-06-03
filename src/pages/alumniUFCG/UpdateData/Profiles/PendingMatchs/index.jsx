@@ -44,7 +44,7 @@ const PendingMatchs = props => {
     let query = "match/pending/" + page;
     const res = await api_AB.get(query, {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
       },
     });
 

@@ -8,6 +8,7 @@ import LogoGroup from "../../assets/login_assets/group_546.svg";
 import LogoAbout from "../../assets/login_assets/group_545.svg";
 
 import { api_EB, api_EAS, api_AB } from "../../services/api";
+import { Alert } from "rsuite";
 
 const Login = () => {
   const text =
@@ -67,7 +68,7 @@ const Login = () => {
           history.push("/home");
         }
       } catch (error) {
-        alert("Erro: Nome de usuário ou senha incorretos.");
+        Alert.error("Erro: Nome de usuário ou senha incorretos.");
       }
     }
   };
