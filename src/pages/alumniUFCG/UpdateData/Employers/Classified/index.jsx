@@ -7,7 +7,7 @@ import NoDataFound from "../../../../../components/NoDataFound";
 
 import { FiTrash2 } from "react-icons/fi";
 
-import { api_AS } from "../../../../../services/api";
+import { api_AB } from "../../../../../services/api";
 
 import "./style.css";
 
@@ -23,7 +23,7 @@ const Classified = props => {
   const [noData, setNoData] = useState(false);
 
   const myHeaders = {
-    headers: { "Authentication-Token": sessionStorage.getItem("eureca-token") },
+    headers: { "Authentication-Token": sessionStorage.getItem("alumni-token") },
   };
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Classified = props => {
     const query = `/employer/classified/${page}`;
 
     try {
-      const res = await api_AS.get(query, myHeaders);
+      const res = await api_AB.get(query, myHeaders);
 
       if (res.status === 200) {
         setData(res.data.content);
@@ -52,9 +52,9 @@ const Classified = props => {
   const handleCancelClassified = async () => {
     const query = `/employer?linkedinId=${cancelClassified.linkedinId}`;
 
-    const res = await api_AS.delete(query, {
+    const res = await api_AB.delete(query, {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
       },
     });
 

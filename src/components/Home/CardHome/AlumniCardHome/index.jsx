@@ -9,7 +9,7 @@ import AlumniCards from "./AlumniCards";
 import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 
-import { api_AS } from "../../../../services/api";
+import { api_AB } from "../../../../services/api";
 
 const AlumniCardHome = () => {
   const [alumniData, setAlumniData] = useState([]);
@@ -17,9 +17,9 @@ const AlumniCardHome = () => {
   useEffect(() => {
     async function fetchAlumniData() {
       try {
-        const res = await api_AS.get("/statistics", {
+        const res = await api_AB.get("/statistics", {
           headers: {
-            "Authentication-Token": sessionStorage.getItem("eureca-token"),
+            "Authentication-Token": sessionStorage.getItem("alumni-token"),
           },
         });
 

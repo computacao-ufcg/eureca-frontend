@@ -16,7 +16,10 @@ const Header = () => {
   return (
     <div className='header-container'>
       <div className='header-1'>
-        <div onClick={() => history.push("/")} className='header-1-eureca-logo'>
+        <div
+          onClick={() => history.push("/home")}
+          className='header-1-eureca-logo'
+        >
           <img src={eureca_logo} alt='eureca logo' />
         </div>
         <div className='header-1-user'>

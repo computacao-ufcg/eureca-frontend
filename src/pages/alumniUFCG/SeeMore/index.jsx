@@ -6,7 +6,7 @@ import Header from "../../../components/Header";
 import MyLoading from "../../../components/MyLoading";
 import NoDataFound from "../../../components/NoDataFound";
 
-import { api_AS } from "./../../../services/api";
+import { api_AB } from "./../../../services/api";
 import ListAlumni from "../SeeMore/listAlumni";
 import { Pagination } from "rsuite";
 
@@ -31,9 +31,9 @@ const SeeMore = () => {
     debugger;
 
     let query = `/match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
-    const res = await api_AS.get(query, {
+    const res = await api_AB.get(query, {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
       },
     });
 
