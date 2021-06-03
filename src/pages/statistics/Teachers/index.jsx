@@ -61,7 +61,7 @@ const Teachers = () => {
     },
     {
       label: "Taxa de trancamento",
-      value: "lockingRate",
+      value: "suspendedRate",
       role: "Master",
     },
     {
