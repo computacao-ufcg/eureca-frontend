@@ -51,14 +51,10 @@ const TeachersCardHome = () => {
   const setPropsTeachersUASC = data => {
     setPropsTeachers([
       data.total,
-        data.failedDueToGrade.average.toFixed(1) +
-        "% " , 
-        data.failedDueToAbsences.average.toFixed(1) +
-        "% " ,
-        data.failedDueToCanceling.average.toFixed(1) +
-        "% " ,
-        data.success.average.toFixed(1) +
-        "% " ,
+      data.failedDueToGrade.average.toFixed(1) + "% ",
+      data.failedDueToAbsences.average.toFixed(1) + "% ",
+      data.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.success.average.toFixed(1) + "% ",
       data.min.count + " docentes " + "(" + data.min.term + ")",
       data.max.count + " docentes " + "(" + data.max.term + ")",
     ]);
@@ -67,15 +63,11 @@ const TeachersCardHome = () => {
 
   const setPropsTeachersUAMat = data => {
     setPropsTeachers([
-      data.total ,
-        data.failedDueToGrade.average.toFixed(1) +
-        "% " ,
-        data.failedDueToAbsences.average.toFixed(1) +
-        "% " ,
-        data.failedDueToCanceling.average.toFixed(1) +
-        "% " ,
-        data.success.average.toFixed(1) +
-        "% ",
+      data.total,
+      data.failedDueToGrade.average.toFixed(1) + "% ",
+      data.failedDueToAbsences.average.toFixed(1) + "% ",
+      data.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.success.average.toFixed(1) + "% ",
       data.min.count + " docentes " + "(" + data.min.term + ")",
       data.max.count + " docentes " + "(" + data.max.term + ")",
     ]);
@@ -84,16 +76,12 @@ const TeachersCardHome = () => {
 
   const setPropsTeachersUAEst = data => {
     setPropsTeachers([
-      data.total ,
-      
-        data.failedDueToGrade.average.toFixed(1) +
-        "% " ,
-        data.failedDueToAbsences.average.toFixed(1) +
-        "% " ,
-        data.failedDueToCanceling.average.toFixed(1) +
-        "% ",
-        data.success.average.toFixed(1) +
-        "% " ,
+      data.total,
+
+      data.failedDueToGrade.average.toFixed(1) + "% ",
+      data.failedDueToAbsences.average.toFixed(1) + "% ",
+      data.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.success.average.toFixed(1) + "% ",
       data.min.count + " docentes " + "(" + data.min.term + ")",
       data.max.count + " docentes " + "(" + data.max.term + ")",
     ]);
@@ -102,17 +90,13 @@ const TeachersCardHome = () => {
   const setPropsTeachersUAL = data => {
     setPropsTeachers([
       data.total,
-     
-        data.failedDueToGrade.average.toFixed(1) +
-        "% " ,
-     
-        data.failedDueToAbsences.average.toFixed(1) +
-        "% " ,
-     
-        data.failedDueToCanceling.average.toFixed(1) +
-        "% ",
-        data.success.average.toFixed(1) +
-        "% ",
+
+      data.failedDueToGrade.average.toFixed(1) + "% ",
+
+      data.failedDueToAbsences.average.toFixed(1) + "% ",
+
+      data.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.success.average.toFixed(1) + "% ",
       data.min.count + " docentes " + "(" + data.min.term + ")",
       data.max.count + " docentes " + "(" + data.max.term + ")",
     ]);
