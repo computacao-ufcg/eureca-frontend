@@ -18,7 +18,7 @@ const SubjectsCardHome = () => {
     "RETENÇÃO RELATIVA",
   ];
   const [optionSubject, setOptionSubject] = useState("obrigatórias");
-  const [titleSubject, setTitleSubject] = useState("OBRIGATÓRIAS");
+  const [titleSubject, setTitleSubject] = useState("Obrigatórias");
   const [cards, setCards] = useState({
     card1: true,
     card2: true,
@@ -57,168 +57,48 @@ const SubjectsCardHome = () => {
   const setPropsSubjectsMandatory = data => {
     setPropsSubjects([
       "",
-      data.mandatory.failedDueToGrade.min.toFixed(1) +
-        "% " +
-        data.mandatory.failedDueToGrade.average.toFixed(1) +
-        "% " +
-        data.mandatory.failedDueToGrade.max.toFixed(1) +
-        "% ",
-      data.mandatory.failedDueToAbsences.min.toFixed(1) +
-        "% " +
-        data.mandatory.failedDueToAbsences.average.toFixed(1) +
-        "% " +
-        data.mandatory.failedDueToAbsences.max.toFixed(1) +
-        "% ",
-      data.mandatory.failedDueToCanceling.min.toFixed(1) +
-        "% " +
-        data.mandatory.failedDueToCanceling.average.toFixed(1) +
-        "% " +
-        data.mandatory.failedDueToCanceling.max.toFixed(1) +
-        "% ",
-      data.mandatory.success.min.toFixed(1) +
-        "% " +
-        data.mandatory.success.average.toFixed(1) +
-        "% " +
-        data.mandatory.success.max.toFixed(1) +
-        "% ",
-      data.mandatory.absoluteRetention.min.toFixed(1) +
-        "% " +
-        data.mandatory.absoluteRetention.average.toFixed(1) +
-        "% " +
-        data.mandatory.absoluteRetention.max.toFixed(1) +
-        "% ",
-      data.mandatory.relativeRetention.min.toFixed(1) +
-        "% " +
-        data.mandatory.relativeRetention.average.toFixed(1) +
-        "% " +
-        data.mandatory.relativeRetention.max.toFixed(1) +
-        "% ",
+      data.mandatory.failedDueToGrade.average.toFixed(1) + "% ",
+      data.mandatory.failedDueToAbsences.average.toFixed(1) + "% ",
+      data.mandatory.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.mandatory.success.average.toFixed(1) + "% ",
+      data.mandatory.absoluteRetention.average.toFixed(1) + "% ",
+      data.mandatory.relativeRetention.average.toFixed(1) + "% ",
     ]);
   };
 
   const setPropsSubjectsOptional = data => {
     setPropsSubjects([
       "",
-      data.optional.failedDueToGrade.min.toFixed(1) +
-        "% " +
-        data.optional.failedDueToGrade.average.toFixed(1) +
-        "% " +
-        data.optional.failedDueToGrade.max.toFixed(1) +
-        "% ",
-      data.optional.failedDueToAbsences.min.toFixed(1) +
-        "% " +
-        data.optional.failedDueToAbsences.average.toFixed(1) +
-        "% " +
-        data.optional.failedDueToAbsences.max.toFixed(1) +
-        "% ",
-      data.optional.failedDueToCanceling.min.toFixed(1) +
-        "% " +
-        data.optional.failedDueToCanceling.average.toFixed(1) +
-        "% " +
-        data.optional.failedDueToCanceling.max.toFixed(1) +
-        "% ",
-      data.optional.success.min.toFixed(1) +
-        "% " +
-        data.optional.success.average.toFixed(1) +
-        "% " +
-        data.optional.success.max.toFixed(1) +
-        "% ",
-      data.optional.absoluteRetention.min.toFixed(1) +
-        "% " +
-        data.optional.absoluteRetention.average.toFixed(1) +
-        "% " +
-        data.optional.absoluteRetention.max.toFixed(1) +
-        "% ",
-      data.optional.relativeRetention.min.toFixed(1) +
-        "% " +
-        data.optional.relativeRetention.average.toFixed(1) +
-        "% " +
-        data.optional.relativeRetention.max.toFixed(1) +
-        "% ",
+      data.optional.failedDueToGrade.average.toFixed(1) + "% ",
+      data.optional.failedDueToAbsences.average.toFixed(1) + "% ",
+      data.optional.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.optional.success.average.toFixed(1) + "% ",
+      data.optional.absoluteRetention.average.toFixed(1) + "% ",
+      data.optional.relativeRetention.average.toFixed(1) + "% ",
     ]);
   };
 
   const setPropsSubjectsElective = data => {
     setPropsSubjects([
       "",
-      data.elective.failedDueToGrade.min.toFixed(1) +
-        "% " +
-        data.elective.failedDueToGrade.average.toFixed(1) +
-        "% " +
-        data.elective.failedDueToGrade.max.toFixed(1) +
-        "% ",
-      data.elective.failedDueToAbsences.min.toFixed(1) +
-        "% " +
-        data.elective.failedDueToAbsences.average.toFixed(1) +
-        "% " +
-        data.elective.failedDueToAbsences.max.toFixed(1) +
-        "% ",
-      data.elective.failedDueToCanceling.min.toFixed(1) +
-        "% " +
-        data.elective.failedDueToCanceling.average.toFixed(1) +
-        "% " +
-        data.elective.failedDueToCanceling.max.toFixed(1) +
-        "% ",
-      data.elective.success.min.toFixed(1) +
-        "% " +
-        data.elective.success.average.toFixed(1) +
-        "% " +
-        data.elective.success.max.toFixed(1) +
-        "% ",
-      data.elective.absoluteRetention.min.toFixed(1) +
-        "% " +
-        data.elective.absoluteRetention.average.toFixed(1) +
-        "% " +
-        data.elective.absoluteRetention.max.toFixed(1) +
-        "% ",
-      data.elective.relativeRetention.min.toFixed(1) +
-        "% " +
-        data.elective.relativeRetention.average.toFixed(1) +
-        "% " +
-        data.elective.relativeRetention.max.toFixed(1) +
-        "% ",
+      data.elective.failedDueToGrade.average.toFixed(1) + "% ",
+      data.elective.failedDueToAbsences.average.toFixed(1) + "% ",
+      data.elective.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.elective.success.average.toFixed(1) + "% ",
+      data.elective.absoluteRetention.average.toFixed(1) + "% ",
+      data.elective.relativeRetention.average.toFixed(1) + "% ",
     ]);
   };
 
   const setPropsSubjectsComplementary = data => {
     setPropsSubjects([
       "",
-      data.complementary.failedDueToGrade.min.toFixed(1) +
-        "% " +
-        data.complementary.failedDueToGrade.average.toFixed(1) +
-        "% " +
-        data.complementary.failedDueToGrade.max.toFixed(1) +
-        "% ",
-      data.complementary.failedDueToAbsences.min.toFixed(1) +
-        "% " +
-        data.complementary.failedDueToAbsences.average.toFixed(1) +
-        "% " +
-        data.complementary.failedDueToAbsences.max.toFixed(1) +
-        "% ",
-      data.complementary.failedDueToCanceling.min.toFixed(1) +
-        "% " +
-        data.complementary.failedDueToCanceling.average.toFixed(1) +
-        "% " +
-        data.complementary.failedDueToCanceling.max.toFixed(1) +
-        "% ",
-      data.complementary.success.min.toFixed(1) +
-        "% " +
-        data.complementary.success.average.toFixed(1) +
-        "% " +
-        data.complementary.success.max.toFixed(1) +
-        "% ",
-      data.complementary.absoluteRetention.min.toFixed(1) +
-        "% " +
-        data.complementary.absoluteRetention.average.toFixed(1) +
-        "% " +
-        data.complementary.absoluteRetention.max.toFixed(1) +
-        "% ",
-      data.complementary.relativeRetention.min.toFixed(1) +
-        "% " +
-        data.complementary.relativeRetention.average.toFixed(1) +
-        "% " +
-        data.elective.relativeRetention.max.toFixed(1) +
-        "% ",
+      data.complementary.failedDueToGrade.average.toFixed(1) + "% ",
+      data.complementary.failedDueToAbsences.average.toFixed(1) + "% ",
+      data.complementary.failedDueToCanceling.average.toFixed(1) + "% ",
+      data.complementary.success.average.toFixed(1) + "% ",
+      data.complementary.absoluteRetention.average.toFixed(1) + "% ",
+      data.complementary.relativeRetention.average.toFixed(1) + "% ",
     ]);
   };
 
@@ -253,7 +133,7 @@ const SubjectsCardHome = () => {
                     onClick={() => {
                       if (optionSubject !== "obrigatórias") {
                         setOptionSubject("obrigatórias");
-                        setTitleSubject("OBRIGATÓRIAS");
+                        setTitleSubject("Obrigatórias");
                         setPropsSubjectsMandatory(dataSubjects);
                       }
                     }}
@@ -274,7 +154,7 @@ const SubjectsCardHome = () => {
                     onClick={() => {
                       if (optionSubject !== "optativas") {
                         setOptionSubject("optativas");
-                        setTitleSubject("OPTATIVAS");
+                        setTitleSubject("Optativas");
                         setPropsSubjectsOptional(dataSubjects);
                       }
                     }}
@@ -295,7 +175,7 @@ const SubjectsCardHome = () => {
                     onClick={() => {
                       if (optionSubject !== "eletivas") {
                         setOptionSubject("eletivas");
-                        setTitleSubject("ELETIVAS");
+                        setTitleSubject("Eletivas");
                         setPropsSubjectsElective(dataSubjects);
                       }
                     }}
@@ -316,7 +196,7 @@ const SubjectsCardHome = () => {
                     onClick={() => {
                       if (optionSubject !== "complementares") {
                         setOptionSubject("complementares");
-                        setTitleSubject("COMPLEMENTARES");
+                        setTitleSubject("Complementares");
                         setPropsSubjectsComplementary(dataSubjects);
                       }
                     }}
