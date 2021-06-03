@@ -9,7 +9,7 @@ import Informer from "../../Informer";
 import { optionsSelect } from "./util";
 import { useClearCache } from "react-clear-cache";
 
-import { api_AS } from "../../../../../services/api";
+import { api_AB } from "../../../../../services/api";
 
 import "./styles.css";
 
@@ -42,7 +42,7 @@ const PendingMatchs = props => {
     }
 
     let query = "match/pending/" + page;
-    const res = await api_AS.get(query, {
+    const res = await api_AB.get(query, {
       headers: {
         "Authentication-Token": sessionStorage.getItem("eureca-token"),
       },
@@ -109,7 +109,7 @@ const PendingMatchs = props => {
     };
 
     try {
-      const res = await api_AS.post(query, myBody, myHeaders);
+      const res = await api_AB.post(query, myBody, myHeaders);
 
       if (res.status === 200) {
         Alert.success(successMsg, timeMSG);

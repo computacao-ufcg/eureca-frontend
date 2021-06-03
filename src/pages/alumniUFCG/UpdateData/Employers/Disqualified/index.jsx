@@ -5,7 +5,7 @@ import ListDisqualified from "./ListDisqualified";
 import ListOptions from "./ListOptions";
 import Informer from "../../Informer";
 
-import { api_AS } from "../../../../../services/api";
+import { api_AB } from "../../../../../services/api";
 
 import "./styles.css";
 
@@ -36,8 +36,8 @@ const Disqualified = props => {
     };
 
     try {
-      const res = await api_AS.get(query, myHeaders);
-      const resCompanyTypes = await api_AS.get(queryCompanyType, myHeaders);
+      const res = await api_AB.get(query, myHeaders);
+      const resCompanyTypes = await api_AB.get(queryCompanyType, myHeaders);
 
       if (res.status === 200 && resCompanyTypes.status === 200) {
         setData(res.data.content);
@@ -85,7 +85,7 @@ const Disqualified = props => {
     };
 
     try {
-      const res = await api_AS.put(query, myBody, myHeaders);
+      const res = await api_AB.put(query, myBody, myHeaders);
       if (res.status === 200) {
         setData(data.filter(e => e.linkedinId !== linkedinID));
         props.handleData(myBody);

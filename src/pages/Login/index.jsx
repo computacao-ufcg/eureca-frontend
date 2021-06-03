@@ -7,7 +7,7 @@ import "./style.css";
 import LogoGroup from "../../assets/login_assets/group_546.svg";
 import LogoAbout from "../../assets/login_assets/group_545.svg";
 
-import { api_EB, api_EAS } from "../../services/api";
+import { api_EB, api_EAS, api_AB } from "../../services/api";
 
 const Login = () => {
   const text =
@@ -30,30 +30,39 @@ const Login = () => {
     };
   }, [login, password]);
 
+  const getCredentialsBody = (username, password, publicKey) => {
+    return {
+      credentials: {
+        username,
+        password,
+      },
+      publicKey,
+    };
+  };
+
   const handleLogin = async e => {
     e.preventDefault();
 
     const queryKey = "/publicKey";
 
-    const { data } = await api_EB.get(queryKey);
+    const res_EB = await api_EB.get(queryKey);
+    const res_AS = await api_AB.get(queryKey);
 
-    if (!!data) {
+    if (!!res_EB && !!res_AS) {
       const queryToken = "/tokens";
-      const publicKey = data.publicKey;
+      const EBpublicKey = res_EB.data.publicKey;
+      const ALpublicKey = res_AS.data.publicKey;
 
-      const body = {
-        credentials: {
-          username: login,
-          password: password,
-        },
-        publicKey: publicKey,
-      };
+      const EBbody = getCredentialsBody(login, password, EBpublicKey);
+      const ASbody = getCredentialsBody(login, password, ALpublicKey);
 
       try {
-        const res_as = await api_EAS.post(queryToken, body);
+        const res_as_EB = await api_EAS.post(queryToken, EBbody);
+        const res_as_AL = await api_EAS.post(queryToken, ASbody);
 
-        if (!!res_as.data.token) {
-          sessionStorage.setItem("eureca-token", res_as.data.token);
+        if (!!res_as_EB.data.token && !!res_as_AL.data.token) {
+          sessionStorage.setItem("eureca-token", res_as_EB.data.token);
+          sessionStorage.setItem("alumni-token", res_as_AL.data.token);
           sessionStorage.setItem("username", login);
           history.push("/home");
         }

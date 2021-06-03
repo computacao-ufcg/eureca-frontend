@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "rsuite";
-import { api_AS } from "../../../../../services/api";
+import { api_AB } from "../../../../../services/api";
 
 import { Confirm, MyLoading, NoDataFound } from "../../../../../components";
 
@@ -24,7 +24,7 @@ const Matchs = () => {
 
   const handleClassificados = async () => {
     setLoading(true);
-    const res = await api_AS.get("/match/list/" + page, {
+    const res = await api_AB.get("/match/list/" + page, {
       headers: {
         "Authentication-Token": sessionStorage.getItem("eureca-token"),
       },
@@ -41,7 +41,7 @@ const Matchs = () => {
   const handleCancelMatch = async () => {
     const query = `/match?registration=${cancelMatch.registration}`;
 
-    const res = await api_AS.delete(query, {
+    const res = await api_AB.delete(query, {
       headers: {
         "Authentication-Token": sessionStorage.getItem("eureca-token"),
       },
