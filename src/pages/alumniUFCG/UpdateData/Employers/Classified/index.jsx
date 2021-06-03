@@ -23,7 +23,7 @@ const Classified = props => {
   const [noData, setNoData] = useState(false);
 
   const myHeaders = {
-    headers: { "Authentication-Token": sessionStorage.getItem("eureca-token") },
+    headers: { "Authentication-Token": sessionStorage.getItem("alumni-token") },
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Classified = props => {
 
     const res = await api_AB.delete(query, {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
       },
     });
 

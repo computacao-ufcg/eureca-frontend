@@ -31,7 +31,7 @@ const Disqualified = props => {
     const queryCompanyType = `employer/types`;
     const myHeaders = {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
       },
     };
 
