@@ -149,7 +149,7 @@ layout ideal para resoluçâo do card de evadidos*/
 }
 
 .number-mini-card-home-subjects {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   color: #7e84a3;
   display: grid;
@@ -157,7 +157,7 @@ layout ideal para resoluçâo do card de evadidos*/
   justify-content: center;
 }
 .number-mini-card-home-enrollments {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: #7e84a3;
   display: grid;

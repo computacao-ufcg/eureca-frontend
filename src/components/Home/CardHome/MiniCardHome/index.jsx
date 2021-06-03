@@ -131,7 +131,7 @@ const MiniCardHomeSubjects = props => {
     <div className='main-mini-card-home'>
       <div className='number-mini-card-home-subjects'>
         <div className='number-mini-card-home-content-title'>
-          MÍNIMO MÉDIA MÁXIMO
+          MÉDIA 
         </div>
         <div className='number-mini-card-home-content'>{props.number}</div>
       </div>
@@ -144,9 +144,7 @@ const MiniCardHomeSubjectsTop = props => {
   return (
     <div className='main-mini-card-home-4'>
       <div className='number-mini-card-home-subjects'>
-        <div className='number-mini-card-home-content-title'>
-          MÍNIMO MÉDIA MÁXIMO
-        </div>
+        <div className='number-mini-card-home-content-title'>MÉDIA </div>
         <div className='number-mini-card-home-content'>{props.number}</div>
       </div>
       <div className='legend-mini-card-home-subjects'>{props.legend}</div>
