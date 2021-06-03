@@ -96,9 +96,7 @@ const MiniCardHomeTeachers = props => {
   return (
     <div className='main-mini-card-home-teachers'>
       <div className='number-mini-card-home-teachers'>
-        <div className='number-mini-card-home-content-title'>
-          MÍNIMO MÉDIA MÁXIMO
-        </div>
+        <div className='number-mini-card-home-content-title'>MÉDIA</div>
         <div className='number-mini-card-home-content'>{props.number}</div>
       </div>
       <div className='legend-mini-card-home-teachers'>{props.legend}</div>
