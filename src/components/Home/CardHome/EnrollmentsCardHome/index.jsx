@@ -14,7 +14,7 @@ import EnrollmentsSummaryCardHome from "./EnrollmentsSummaryCardHome";
 const EnrollmentsCardHome = props => {
   const [data, setData] = useState();
   const [optionEnrollment, setOptionEnrollment] = useState("obrigatorias");
-  const [title, setTitle] = useState("OBRIGATÓRIAS");
+  const [title, setTitle] = useState("Obrigatórias");
   const [labels, setLabels] = useState();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "obrigatorias") {
                         setOptionEnrollment("obrigatorias");
-                        setTitle("OBRIGATÓRIAS");
+                        setTitle("Obrigatórias");
                         setLabels([]);
                         setData(data);
                       }
@@ -82,7 +82,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "optative") {
                         setOptionEnrollment("optative");
-                        setTitle("OPTATIVAS");
+                        setTitle("Optativas");
                         setLabels([]);
                         setData(data);
                       }
@@ -104,7 +104,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "electives") {
                         setOptionEnrollment("electives");
-                        setTitle("ELETIVAS");
+                        setTitle("Eletivas");
                         setLabels([]);
                         setData(data);
                       }
@@ -126,7 +126,7 @@ const EnrollmentsCardHome = props => {
                     onClick={() => {
                       if (optionEnrollment !== "complementares") {
                         setOptionEnrollment("complementares");
-                        setTitle("COMPLEMENTARES");
+                        setTitle("Complementares");
                         setLabels([]);
                         setData(data);
                       }
