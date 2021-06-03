@@ -28,7 +28,6 @@ const SeeMore = () => {
 
   const handleProfile = async (page, name, admission, graduation) => {
     setLoading(true);
-    debugger;
 
     let query = `/match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
     const res = await api_AB.get(query, {

@@ -98,6 +98,7 @@ const Delayed = () => {
                 data={select_items}
                 className='selector'
                 defaultValue={optionSelected}
+                cleanable={false}
               />
             </div>
             <Export data={dataCSV} name={"alumni"} />

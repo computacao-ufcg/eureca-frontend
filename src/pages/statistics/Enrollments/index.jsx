@@ -24,13 +24,12 @@ const Enrollments = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/enrollments/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const querySummary = `/statistics/enrollments/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
       try {
-        const res = await api_EB.get(query, {
-          headers: {
-            "Authentication-Token": sessionStorage.getItem("eureca-token"),
-          },
-        });
+        const headers = {
+          "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        };
+        const res = await api_EB.get(querySummary, { headers });
 
         if (res) {
           setData(res.data);
@@ -126,7 +125,7 @@ const Enrollments = () => {
                 />
               </div>
             </div>
-            <Export data={[]} name={"enrollments"} />
+            <Export data={data} name={"enrollments"} />
           </div>
         </div>
       </div>

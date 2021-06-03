@@ -26,9 +26,9 @@ const TeachersGraph = props => {
     >
       <CartesianGrid strokeDasharray='3 3' />
       <XAxis
-        dataKey='discipline'
+        dataKey='teacherName'
         label={{
-          value: "Disciplinas",
+          value: "Nome do docente",
           position: "insideBottomRight",
           dy: 10,
         }}

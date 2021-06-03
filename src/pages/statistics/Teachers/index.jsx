@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import { SelectPicker } from "rsuite";
+import { FiArrowLeft } from "react-icons/fi";
+
 import TeachersSlider from "./Slider";
 import TeachersGraph from "./Graph";
+
 import Export from "../../../components/Export";
-import { SelectPicker } from "rsuite";
-import { useHistory } from "react-router";
 import Header from "../../../components/Header";
-import { FiArrowLeft } from "react-icons/fi";
+
 import { api_EB } from "../../../services/api";
 
 const Teachers = () => {
   const [departmentOption, setDepartmentOption] = useState("uasc");
-  const [variable, setVariable] = useState("success");
-  const [label, setLabel] = useState("taxa de sucesso");
+  const [variable, setVariable] = useState("successRate");
+  const [label, setLabel] = useState("Taxa de sucesso");
   const [data, setData] = useState([]);
 
   const handleVariableChange = variable => {
@@ -22,7 +25,7 @@ const Teachers = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/api/statistics/teachers/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const query = `/statistics/teachers/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
       try {
         const res = await api_EB.get(query, {
           headers: {
@@ -31,6 +34,7 @@ const Teachers = () => {
         });
 
         if (res) {
+          console.log(res.data);
           setData(res.data);
         }
       } catch (err) {
@@ -42,27 +46,27 @@ const Teachers = () => {
   const variables = [
     {
       label: "Taxa de sucesso",
-      value: "success",
+      value: "successRate",
       role: "Master",
     },
     {
       label: "Taxa de reprovação por nota",
-      value: "failedDueToGrade",
+      value: "averageFailDueToGrade",
       role: "Master",
     },
     {
       label: "Taxa de reprovação por falta",
-      value: "failedDueToAbsences",
+      value: "averageFailDueToAbsences",
       role: "Master",
     },
     {
       label: "Taxa de trancamento",
-      value: "failedDueToCanceling",
+      value: "suspendedRate",
       role: "Master",
     },
     {
       label: "Número de matrículas",
-      value: "enrollments",
+      value: "totalEnrollments",
       role: "Master",
     },
   ];
@@ -127,7 +131,7 @@ const Teachers = () => {
                 />
               </div>
             </div>
-            <Export data={[]} name={"teachers"} />
+            <Export data={data} name={"teachers"} />
           </div>
         </div>
       </div>
