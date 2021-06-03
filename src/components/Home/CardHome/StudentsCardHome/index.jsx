@@ -45,7 +45,6 @@ const StudentsCardHome = () => {
     });
 
     if (res) {
-      console.log(res.data);
       setDataStudents(res.data);
       setPropsActives(res.data);
     } else {
@@ -161,9 +160,7 @@ const StudentsCardHome = () => {
 
   const setPropsDelayed = data => {
     if (data) {
-      const successRate = data
-        ? data.delayedSummary.average.metrics.successRate * 100
-        : 0;
+      const successRate = data.delayedSummary.average.metrics.successRate * 100;
       const { cost, risk } = translateData(data.delayedSummary, true);
 
       setPropsStudents([
