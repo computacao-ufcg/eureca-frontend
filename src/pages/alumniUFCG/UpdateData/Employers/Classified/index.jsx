@@ -100,7 +100,11 @@ const Classified = props => {
               {rowData => {
                 return (
                   <span className='pointer'>
-                    <a target={"_blank"} href={rowData.linkedinId}>
+                    <a
+                      target={"_blank"}
+                      href={rowData.linkedinId}
+                      rel='noopener noreferrer'
+                    >
                       Link
                     </a>
                   </span>

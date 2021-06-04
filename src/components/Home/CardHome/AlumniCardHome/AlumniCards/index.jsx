@@ -12,13 +12,12 @@ const AlumniCards = props => {
           <div className='alumni-summary-card-title'>
             <div className='alumni-summary-card-info'>
               <div className='alumni-summary-card-type'>EGRESSOS</div>
-              <div className='alumni-summary-card-size'>{data.numberAlumniCourse || 0}</div>
+              <div className='alumni-summary-card-size'>
+                {data.numberAlumniCourse || 0}
+              </div>
             </div>
             <div className='alumni-summary-left-cards'>
-              <MiniCardHome2
-                number={0}
-                legend={"EMP. CONSOLIDADAS"}
-              />
+              <MiniCardHome2 number={0} legend={"EMP. CONSOLIDADAS"} />
               <MiniCardHome1
                 number={data.numberGovernmentEmployedCourse || 0}
                 legend={"NO GOVERNO"}
@@ -26,7 +25,6 @@ const AlumniCards = props => {
             </div>
           </div>
           <div className='alumni-summary-card-cards'>
-            
             <MiniCardHome1
               number={data.numberIndustryEmployedLevel || 0}
               legend={"NA INDÚSTRIA"}

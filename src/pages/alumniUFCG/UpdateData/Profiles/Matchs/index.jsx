@@ -84,6 +84,7 @@ const Matchs = () => {
                         <a
                           target={"_blank"}
                           href={"https://linkedin.com/in/" + rowData.linkedinId}
+                          rel='noopener noreferrer'
                         >
                           Link
                         </a>
