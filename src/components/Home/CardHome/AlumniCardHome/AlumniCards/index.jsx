@@ -12,7 +12,6 @@ const AlumniCards = props => {
           <div className='alumni-summary-card-title'>
             <div className='alumni-summary-card-info'>
               <div className='alumni-summary-card-type'>EGRESSOS</div>
-              <div className='alumni-summary-card-age'>1986.1 a 2019.2</div>
               <div className='alumni-summary-card-size'>{data.numberAlumniCourse || 0}</div>
             </div>
             <div className='alumni-summary-left-cards'>
