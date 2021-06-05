@@ -21,12 +21,12 @@
 
 .graph-main .graph-label-y {
   left: 0;
-  transform: rotate(-90deg) translate(-20vh, -3vh);
+  transform: rotate(-90deg) translate(30vh, -3vh);
 }
 
 .graph-main .graph-label-x {
   bottom: 0;
-  right: 50;
+  right: 50px;
   transform: translateY(2vh);
 }
 
