@@ -7,7 +7,7 @@ import MyLoading from "../../../components/MyLoading";
 import NoDataFound from "../../../components/NoDataFound";
 
 import { api_AB } from "../../../services/api";
-import ListAlumni from "./listAlumni";
+import ListAlumni from "../Search/listAlumni";
 import { Pagination } from "rsuite";
 
 import "./styles.css";
