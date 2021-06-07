@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 
 import UpdateData from "./pages/alumniUFCG/UpdateData";
-import SeeMore from "./pages/alumniUFCG/SeeMore";
+import Search from "./pages/alumniUFCG/Search";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -91,8 +91,8 @@ const Routes = () => {
         />
         <PrivateRoute
           exact
-          path='/alumniufcg/seemore'
-          component={() => <SeeMore />}
+          path='/alumniufcg/search'
+          component={() => <Search />}
         />
       </Switch>
     </BrowserRouter>

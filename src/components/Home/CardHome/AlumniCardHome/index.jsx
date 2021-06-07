@@ -45,7 +45,7 @@ const AlumniCardHome = () => {
           </div>
           <div className='card-home-content-footer'>
             <div className='seemore-button'>
-              <Link to={"alumniufcg/seemore"}>
+              <Link to={"alumniufcg/search"}>
                 <button type='submit'>BUSCAR</button>
               </Link>
             </div>

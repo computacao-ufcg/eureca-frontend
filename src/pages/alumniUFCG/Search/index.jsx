@@ -6,13 +6,13 @@ import Header from "../../../components/Header";
 import MyLoading from "../../../components/MyLoading";
 import NoDataFound from "../../../components/NoDataFound";
 
-import { api_AB } from "./../../../services/api";
-import ListAlumni from "../SeeMore/listAlumni";
+import { api_AB } from "../../../services/api";
+import ListAlumni from "./listAlumni";
 import { Pagination } from "rsuite";
 
 import "./styles.css";
 
-const SeeMore = () => {
+const Search = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
 
@@ -144,4 +144,4 @@ const SeeMore = () => {
   );
 };
 
-export default SeeMore;
+export default Search;
