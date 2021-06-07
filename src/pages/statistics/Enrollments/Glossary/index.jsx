@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 import { api_EB } from "../../../../services/api";
-import EnrollmentGlossary from "../../../../assets/new_glossary_images/Screenshot_Enrollments.png";
+import EnrollmentGlossary from "../../../../assets/glossary_images/Enrollments.png";
 
 const EnrollmentsGlossary = () => {
   const history = useHistory();

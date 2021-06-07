@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./style.css";
 import { api_EB } from "../../../../services/api";
-import GlossaryImg from "../../../../assets/new_glossary_images/Screenshot_Subjects.png";
+import GlossaryImg from "../../../../assets/glossary_images/Subjects.png";
 
 const SubjectsGlossary = () => {
   const history = useHistory();
