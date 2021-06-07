@@ -77,7 +77,7 @@ const SeeMore = () => {
             </span>
           </div>
           <div className={"container-title-seemore"}>
-            <h1>VER MAIS</h1>
+            <h1>BUSCAR</h1>
           </div>
           <div className='main-seemore-group'>
             <div className='seemore-input-boxes'>
