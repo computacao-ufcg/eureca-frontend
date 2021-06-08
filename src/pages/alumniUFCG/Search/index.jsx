@@ -6,13 +6,13 @@ import Header from "../../../components/Header";
 import MyLoading from "../../../components/MyLoading";
 import NoDataFound from "../../../components/NoDataFound";
 
-import { api_AB } from "./../../../services/api";
-import ListAlumni from "../SeeMore/listAlumni";
+import { api_AB } from "../../../services/api";
+import ListAlumni from "../Search/listAlumni";
 import { Pagination } from "rsuite";
 
 import "./styles.css";
 
-const SeeMore = () => {
+const Search = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
 
@@ -70,18 +70,18 @@ const SeeMore = () => {
     <React.Fragment>
       <div className='main-content'>
         <Header></Header>
-        <div className='main-seemore'>
+        <div className='main-search'>
           <div className='backdot'>
             <span onClick={() => history.goBack()}>
               <FiArrowLeft size={25} />
             </span>
           </div>
-          <div className={"container-title-seemore"}>
-            <h1>VER MAIS</h1>
+          <div className={"container-title-search"}>
+            <h1>BUSCAR</h1>
           </div>
-          <div className='main-seemore-group'>
-            <div className='seemore-input-boxes'>
-              <div className='seemore-input-box'>
+          <div className='main-search-group'>
+            <div className='search-input-boxes'>
+              <div className='search-input-box'>
                 <div>
                   <FiSearch size={25} />
                 </div>
@@ -91,7 +91,7 @@ const SeeMore = () => {
                   placeholder='Buscar por nome'
                 />
               </div>
-              <div className='seemore-input-box'>
+              <div className='search-input-box'>
                 <div>
                   <FiSearch size={25} />
                 </div>
@@ -101,7 +101,7 @@ const SeeMore = () => {
                   placeholder='Buscar por período de admissão'
                 />
               </div>
-              <div className='seemore-input-box'>
+              <div className='search-input-box'>
                 <div>
                   <FiSearch size={25} />
                 </div>
@@ -144,4 +144,4 @@ const SeeMore = () => {
   );
 };
 
-export default SeeMore;
+export default Search;

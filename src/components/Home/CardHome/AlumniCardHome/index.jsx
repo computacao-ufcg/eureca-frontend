@@ -44,9 +44,9 @@ const AlumniCardHome = () => {
             <AlumniCards data={alumniData} />
           </div>
           <div className='card-home-content-footer'>
-            <div className='seemore-button'>
-              <Link to={"alumniufcg/seemore"}>
-                <button type='submit'>VER MAIS</button>
+            <div className='card-search-button'>
+              <Link to={"alumniufcg/search"}>
+                <button type='submit'>BUSCAR</button>
               </Link>
             </div>
             <div className='updatedata-button'>
