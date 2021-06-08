@@ -10,6 +10,7 @@
   border-right: 0;
   border-bottom: 0;
   grid-template-rows: 55fr 40fr;
+  max-width: 103px;
 }
 
 .main-mini-card-home-2 {
