@@ -54,6 +54,11 @@ const AlumniCardHome = () => {
                 <button type='submit'>ATUALIZAR DADOS</button>
               </Link>
             </div>
+            <div className='updatedata-button'>
+              <Link to={"alumniufcg/glossary"}>
+                <button type='submit'>GLOSSÁRIO</button>
+              </Link>
+            </div>
             <div className='mask6'>
               <img src={Mask6} alt='mask6' />
             </div>
