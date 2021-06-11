@@ -19,9 +19,9 @@ const AlumniCards = props => {
             <div className='alumni-summary-left-cards'>
               <MiniCardHome4
                 number={data.numberMatchedAlumniCourse || 0}
-                legend={"RASTREADOS"}
+                legend={"EGRESSOS RASTREADOS"}
               />
-              <MiniCardHome1 number={0} legend={"EMP. CONSOLIDADAS"} />
+              <MiniCardHome1 number={0} legend={"EMPRESAS CONSOLIDADAS"} />
             </div>
           </div>
           <div className='alumni-summary-card-cards'>
