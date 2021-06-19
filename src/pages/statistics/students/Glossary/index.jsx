@@ -24,7 +24,7 @@ const StudentsGlossary = () => {
     });
 
     if (res) {
-      setData(res.data);
+      setData(res.data);   
     } else {
       console.error(res.statusText);
     }
