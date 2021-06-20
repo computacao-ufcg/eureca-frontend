@@ -22,7 +22,7 @@ const Subjects = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/subjects/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const query = `/statistics/subjects/summary?from=1950.0&language=PORTUGUESE&to=2049.9`;
       try {
         const res = await api_EB.get(query, {
           headers: {
@@ -31,6 +31,7 @@ const Subjects = () => {
         });
 
         if (res) {
+          console.log(data)
           setData(res.data);
         }
       } catch (err) {

@@ -14,8 +14,8 @@ const SubjectsCardHome = () => {
     "REPROVAÇÕES/FALTA",
     "TRANCAMENTOS",
     "TAXA DE SUCESSO",
-    "RETENÇÃO ABSOLUTA",
-    "RETENÇÃO RELATIVA",
+    "DISPENSAS",
+    "RETENÇÃO",
   ];
   const [optionSubject, setOptionSubject] = useState("obrigatórias");
   const [titleSubject, setTitleSubject] = useState("Obrigatórias");
@@ -62,7 +62,7 @@ const SubjectsCardHome = () => {
       subject.failedDueToCanceling.average.toFixed(1) + "% ",
       subject.succeeded.average.toFixed(1) + "% ",
       subject.retention.average.toFixed(1) + "% ",
-      subject.retention.average.toFixed(1) + "% ",
+      subject.exempted.average.toFixed(1) + "% ",
     ];
   };
 
