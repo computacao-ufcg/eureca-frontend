@@ -98,7 +98,7 @@ const DropoutGraph = props => {
               <p className='graph-label-x'>Período de Evasão</p>
             </div>
             <div className='optionsEvadidos'>
-              <MySwitch tags={tags} handleCheck={handleCheck} />
+              <MySwitch title={'MOTIVO DE EVASÃO'} tags={tags} handleCheck={handleCheck} />
             </div>
           </div>
         </div>
