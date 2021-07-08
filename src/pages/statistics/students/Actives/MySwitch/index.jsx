@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Switch } from "pretty-checkbox-react";
 import "@djthoms/pretty-checkbox";
 
-const MySwitch = ({ tags, handleCheck }) => {
+const MySwitch = ({ title, tags, handleCheck }) => {
   const [all, setAll] = useState(true);
-
+ 
   return (
     <div className='optionsActives'>
+      <div>
+        <p> {title} </p>
+      </div>
       {tags.map((data, index) => {
         return (
           <label key={"label" + index}>
