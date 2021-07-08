@@ -47,6 +47,7 @@ const StudentsCardHome = () => {
     if (res) {
       setDataStudents(res.data);
       setPropsActives(res.data);
+      console.log(res.data);
     } else {
       console.error(res.statusText);
     }
@@ -132,15 +133,15 @@ const StudentsCardHome = () => {
 
       setPropsStudents([
         data.alumniSummary.alumniCount,
-        data.alumniSummary.minDegreeCount +
+        data.alumniSummary.minAlumniCount +
           " (" +
-          data.alumniSummary.minDegreeCountTerm +
+          data.alumniSummary.minAlumniCountTerm +
           ")",
-        data.alumniSummary.maxDegreeCount +
+        data.alumniSummary.maxAlumniCount +
           " (" +
-          data.alumniSummary.maxDegreeCountTerm +
+          data.alumniSummary.maxAlumniCountTerm +
           ")",
-        data.alumniSummary.averageDegreeCount.toFixed(1),
+        data.alumniSummary.averageAlumniCount.toFixed(1),
         data.alumniSummary.averageGpa.toFixed(2),
         {
           custo: cost,
