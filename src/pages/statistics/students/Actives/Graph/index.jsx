@@ -90,7 +90,7 @@ const ActivesGraph = props => {
         <p className='graph-label-x'>Período de Admissão</p>
       </div>
 
-      <MySwitch title ={"RISCO"} tags={tags} handleCheck={handleCheck} />
+      <MySwitch title={"RISCO"} tags={tags} handleCheck={handleCheck} />
     </div>
   );
 };

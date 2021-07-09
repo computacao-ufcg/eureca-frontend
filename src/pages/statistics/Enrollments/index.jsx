@@ -24,15 +24,15 @@ const Enrollments = () => {
 
   useEffect(() => {
     (async function () {
-      const querySummary = `/statistics/enrollments/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const query = `/statistics/enrollments/summary/csv`;
       try {
         const headers = {
           "Authentication-Token": sessionStorage.getItem("eureca-token"),
         };
-        const res = await api_EB.get(querySummary, { headers });
+        const res = await api_EB.get(query, { headers });
 
         if (res) {
-          setData(res.data);
+          setData(res.data.enrollmentsSummary);
         }
       } catch (err) {
         console.error(err);
