@@ -103,7 +103,7 @@ const PendingMatchs = props => {
 
     const myHeaders = {
       headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
+        "Authentication-Token": sessionStorage.getItem("alumni-token"),
         "Content-Type": "application/json; charset=UTF-8",
       },
     };
