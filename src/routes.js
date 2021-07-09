@@ -18,7 +18,7 @@ import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
 import EnrollmentsGlossary from "./pages/statistics/Enrollments/Glossary";
 import SubjectsGlossary from "./pages/statistics/Subjects/Glossary";
-import AlumniGlossary from "./pages/alumniUFCG/Glossary"
+import AlumniGlossary from "./pages/alumniUFCG/Glossary";
 
 import Enrollments from "./pages/statistics/Enrollments";
 import Subjects from "./pages/statistics/Subjects";

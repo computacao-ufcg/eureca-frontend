@@ -31,7 +31,6 @@ const Subjects = () => {
         });
 
         if (res) {
-          console.log(data)
           setData(res.data);
         }
       } catch (err) {

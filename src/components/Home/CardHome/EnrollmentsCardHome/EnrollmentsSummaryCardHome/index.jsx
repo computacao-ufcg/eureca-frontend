@@ -24,12 +24,12 @@ const EnrollmentsSummaryCardHome = props => {
         <div className='enrollments-summary-left-cards'>
           <MiniCardHomeRightTop
             option={"teste"}
-            number={props.data.max.count +" (" + props.data.max.term +")"}
+            number={props.data.max.count + " (" + props.data.max.term + ")"}
             legend={"NUMERO MÁXIMO"}
           />
           <MiniCardHomeRightBottom
             option={"teste"}
-            number={props.data.min.count +" (" + props.data.min.term +")"}
+            number={props.data.min.count + " (" + props.data.min.term + ")"}
             legend={"NUMERO MÍNIMO"}
           />
         </div>
@@ -43,7 +43,7 @@ const EnrollmentsSummaryCardHome = props => {
         />
         <MiniCardHomeEnrollments
           option={"teste"}
-          number={props.data.averageEnrollmentsPerClass.toFixed(1) }
+          number={props.data.averageEnrollmentsPerClass.toFixed(1)}
           legend={"MÉDIA DE MATRÍCULAS/TURMA"}
         />
         <MiniCardHomeEnrollments

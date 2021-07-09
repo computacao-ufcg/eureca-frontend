@@ -4,7 +4,7 @@ import "@djthoms/pretty-checkbox";
 
 const MySwitch = ({ title, tags, handleCheck }) => {
   const [all, setAll] = useState(true);
- 
+
   return (
     <div className='optionsActives'>
       <div>
