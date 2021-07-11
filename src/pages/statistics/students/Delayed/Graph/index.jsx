@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 import {
   LineChart,
@@ -24,7 +25,7 @@ const DelayedGraph = props => {
   return (
     <React.Fragment>
       {props.data ? (
-        <div className='graph-main-delayed'>
+        <div className='graph-main-delay'>
           <LineChart
             width={800}
             height={500}
@@ -101,8 +102,10 @@ const DelayedGraph = props => {
               }
             />
           </LineChart>
-          <p className='graph-label-y'>{labelSelected || "Retidos"}</p>
-          <p className='graph-label-x'>Período de Ingresso</p>
+          <div className="eixo-y">
+            <p className='graph-label-y-delayed'>{labelSelected || "Retidos"}</p>
+          </div>
+          <p className='graph-label-x-delayed'>Período de Ingresso</p>
         </div>
       ) : null}
     </React.Fragment>

@@ -39,22 +39,22 @@ const subtitles_translations = {
   // "Período de graduação": "graduationTerm",
 
   attemptedCredits: {
-    name: "Créditos Matriculados",
+    name: "valor médio para o Período",
     value: [
       { x: "2016.1", y: 196 },
       { x: "2020.1", y: 20 },
     ],
   },
-  averageLoad: { name: "Carga Média", value: 21.6 },
-  cost: { name: "Custo Médio", value: 1 },
+  averageLoad: { name: "Carga média esperada para o Período", value: 21.6 },
+  cost: { name: "Custo médio para o Período", value: 1 },
   courseDurationPrediction: {
-    name: "Previsão Média de Conclusão",
+    name: "Previsão de Tempo Médio de Conclusão para o Período",
     value: 10.25,
   },
   feasibility: { name: "Viabilidade Média", value: 1 },
-  pace: { name: "Ritmo Médio", value: 21.6 },
-  risk: { name: "Risco Médio", value: 1 },
-  successRate: { name: "Taxa Média de Sucesso", value: 1 },
+  pace: { name: "Ritmo Médio para o Período", value: 21.6 },
+  risk: { name: "Risco médio para o Período", value: 1 },
+  successRate: { name: "Taxa Média de Sucesso para o Período", value: 1 },
 };
 
 const select_items = [
@@ -76,11 +76,6 @@ const select_items = [
   {
     label: "Previsão Média de Conclusão",
     value: "courseDurationPrediction",
-    role: "Master",
-  },
-  {
-    label: "Viabilidade Média",
-    value: "feasibility",
     role: "Master",
   },
   {
