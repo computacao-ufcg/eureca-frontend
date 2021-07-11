@@ -102,7 +102,7 @@ const DelayedGraph = props => {
               }
             />
           </LineChart>
-          <div className="eixo-y">
+          <div className="axis-y">
             <p className='graph-label-y-delayed'>{labelSelected || "Retidos"}</p>
           </div>
           <p className='graph-label-x-delayed'>Período de Ingresso</p>

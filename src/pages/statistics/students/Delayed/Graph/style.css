@@ -28,7 +28,7 @@
   transform: translateY(2vh);
 }
 
-.eixo-y {
+.axis-y {
   width: 40px;
   display: flex;
   justify-content:center;
