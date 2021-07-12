@@ -14,13 +14,12 @@
   background-color: #fff;
   display: flex;
   justify-content: center;
-
   position: relative;
 }
 
-.graph {
+.graph-delayed {
   display: flex;
-  justify-content: left;
+  justify-content: center;
 }
 
 .selector {
