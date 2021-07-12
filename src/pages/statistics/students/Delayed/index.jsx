@@ -91,7 +91,7 @@ const Delayed = () => {
           <div className='alumni-slider'>
             <div className='alumni-title'>Retidos</div>
             <DelayedSlider changeSlider={handleSlider} />
-            <div className='graph'>
+            <div className='graph-delayed'>
               <DelayedGraph data={dataEgressos || {}} option={optionSelected} />
               <SelectPicker
                 onChange={value => setOptionSelected(value)}
