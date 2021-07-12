@@ -68,7 +68,6 @@ const DelayedGraph = props => {
                   : null
               }
               stroke='blue'
-              label='Referência'
             />
             <ReferenceLine
               yAxisId='left'
