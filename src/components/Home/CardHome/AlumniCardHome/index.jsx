@@ -13,6 +13,7 @@ import { api_AB } from "../../../../services/api";
 
 const AlumniCardHome = () => {
   const [alumniData, setAlumniData] = useState([]);
+  const [employersData, setEmployersData] = useState([]);
 
   useEffect(() => {
     async function fetchAlumniData() {
@@ -31,7 +32,26 @@ const AlumniCardHome = () => {
       }
     }
     fetchAlumniData();
+
+    async function fetchEmployersData() {
+      try {
+        const res = await api_AB.get("/employer/unclassified/1", {
+          headers: {
+            "Authentication-Token": sessionStorage.getItem("alumni-token"),
+          },
+        });
+
+        if (res?.status === 200) {
+          setEmployersData(res.data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchEmployersData();
   }, []);
+
+  let totalData = Object.assign(alumniData,employersData);
 
   return (
     <React.Fragment>
@@ -41,7 +61,7 @@ const AlumniCardHome = () => {
             <TitleCardHome title={"EGRESSOS"} />
           </div>
           <div className='summary-card-content'>
-            <AlumniCards data={alumniData} />
+            <AlumniCards data={totalData} />
           </div>
           <div className='card-home-content-footer'>
             <div className='card-search-button'>
