@@ -39,6 +39,7 @@ const EnrollmentsGraph = props => {
         />
         <Bar dataKey={props.variable} fill='#886859' key='Número de turmas' />
       </BarChart>
+      
       <p className='graph-label-y-enrollments'>
         {props.label || "Total de Matrículas"}
       </p>

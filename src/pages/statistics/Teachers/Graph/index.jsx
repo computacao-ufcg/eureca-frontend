@@ -38,7 +38,7 @@ const TeachersGraph = props => {
         />
         <Bar dataKey={props.variable} fill='#886859' key='Número de turmas' />
       </BarChart>
-      
+
       <p className='graph-label-y-teachers'>
         {props.label || "Taxa de Sucesso"}
       </p>
