@@ -1,0 +1,23 @@
+.main-subjects-graph {
+  position: relative;
+  margin-right: 2vw;
+}
+
+.main-subjects-graph .graph-label-y-subjects,
+.main-subjects-graph .graph-label-x-subjects {
+  position: absolute;
+  color: #886859;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.main-subjects-graph .graph-label-y-subjects {
+  left: 0;
+  transform: rotate(-90deg) translate(20vh, -9vh);
+}
+
+.main-subjects-graph .graph-label-x-subjects {
+  bottom: 0;
+  right: 50px;
+  transform: translateY(2vh);
+}
