@@ -1,0 +1,26 @@
+
+.main-enrollments-graph{
+  position: relative;
+  margin-right: 2vw;
+}
+  
+.main-enrollments-graph .graph-label-y-enrollments,
+.main-enrollments-graph .graph-label-x-enrollments{
+    position: absolute;
+    color: #886859;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+.main-enrollments-graph .graph-label-y-enrollments{
+    left: 0;
+    transform: rotate(-90deg) translate(20vh, -9vh);
+
+}
+
+.main-enrollments-graph .graph-label-x-enrollments{
+    bottom: 0;
+    right: 50px;
+    transform: translateY(2vh);
+}
