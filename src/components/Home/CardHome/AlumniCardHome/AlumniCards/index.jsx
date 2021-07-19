@@ -16,12 +16,18 @@ const AlumniCards = props => {
                 {data.numberAlumniCourse || 0}
               </div>
             </div>
+            <div className='alumni-summary-card-info'>
+              <div className='alumni-summary-card-type'>Empresas</div>
+              <div className='alumni-summary-card-size'>
+                {0}
+              </div>
+            </div>
             <div className='alumni-summary-left-cards'>
               <MiniCardHome4
                 number={data.numberMatchedAlumniCourse || 0}
                 legend={"EGRESSOS RASTREADOS"}
               />
-              <MiniCardHome1 number={0} legend={"EMPRESAS CONSOLIDADAS"} />
+              <MiniCardHome1 number={0} legend={"EMPREGADORES CONSOLIDADOS"} />
             </div>
           </div>
           <div className='alumni-summary-card-cards'>
