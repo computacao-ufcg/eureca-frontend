@@ -59,6 +59,16 @@ const DelayedGraph = props => {
               stroke='#885d41'
               key='Número de Egressos'
             />
+            {
+              labelSelected !== "valor médio para o Período" && 
+                <Line
+                isAnimationActive={false}
+                dataKey={props.option}
+                name={subtitles_translations[props.option].referenceLine}
+                stroke='blue'
+              />
+            }
+            
             <ReferenceLine
               yAxisId='left'
               y={

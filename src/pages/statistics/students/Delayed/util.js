@@ -45,16 +45,41 @@ const subtitles_translations = {
       { x: "2020.1", y: 20 },
     ],
   },
-  averageLoad: { name: "Carga média esperada para o Período", value: 21.6 },
-  cost: { name: "Custo médio para o Período", value: 1 },
+  averageLoad: { 
+    name: "Carga média", 
+    value: 21.6 ,
+    referenceLine: "Carga média esperada para o período"
+  },
+  cost: { 
+    name: "Custo médio para o Período", 
+    value: 1 ,
+    referenceLine: "Custo ideal"
+  },
   courseDurationPrediction: {
     name: "Previsão de Tempo Médio de Conclusão para o Período",
     value: 10.25,
+    referenceLine: "Tempo de conclusão médio esperado"
   },
-  feasibility: { name: "Viabilidade Média", value: 1 },
-  pace: { name: "Ritmo Médio para o Período", value: 21.6 },
-  risk: { name: "Risco médio para o Período", value: 1 },
-  successRate: { name: "Taxa Média de Sucesso para o Período", value: 1 },
+  feasibility: { 
+    name: "Viabilidade Média", 
+    value: 1 ,
+    referenceLine: "Limite para Risco desprezível"
+  },
+  pace: { 
+    name: "Ritmo Médio para o Período", 
+    value: 21.6 ,
+    referenceLine: "Ritmo Médio de Referência para o Período"
+  },
+  risk: { 
+    name: "Risco médio para o Período", 
+    value: 1,
+    referenceLine: "Limite para Risco desprezível"
+  },
+  successRate: { 
+    name: "Taxa Média de Sucesso para o Período", 
+    value: 1 ,
+    referenceLine: "Taxa de Sucesso de Referência"
+  },
 };
 
 const select_items = [
