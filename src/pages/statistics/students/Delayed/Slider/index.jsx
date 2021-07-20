@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { RangeSlider } from "rsuite";
-
-import { labels } from "../util";
 
 import "../style.css";
 
 const GraduatedSlider = props => {
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(18);
+  const [labels, setLabels] = useState([]);
+  const [from, setFrom] = useState(0);
+  const [to, setTo] = useState(14);
+
+  useEffect(() => {
+    setFrom(0);
+    setLabels(props.from, props.to);
+    setTo(labels.length - 1);
+  }, []);
 
   const handleStyle = {
     color: "#fff",
@@ -17,26 +22,26 @@ const GraduatedSlider = props => {
     height: 22,
   };
 
-  return labels ? (
+  return props.labels ? (
     <div className={"mainSlider"}>
       <RangeSlider
         min={0}
-        max={18}
-        defaultValue={[value1, value2]}
-        value={[value1, value2]}
+        max={14}
+        defaultValue={[from, to]}
+        value={[from, to]}
         handleStyle={handleStyle}
         graduated
         className='custom-slider'
         tooltip={false}
-        handleTitle={labels[value1]}
+        handleTitle={props.labels[from]}
         onChange={v => {
-          setValue1(v[0]);
-          setValue2(v[1]);
-          props.changeSlider(labels[v[0]], labels[v[1]]);
+          setFrom(v[0]);
+          setTo(v[1]);
+          props.changeSlider(props.labels[v[0]], props.labels[v[1]]);
         }}
         renderMark={mark => {
-          if ([value1, value2].includes(mark)) {
-            return <span className={"legendSlider"}>{labels[mark]}</span>;
+          if ([from, to].includes(mark)) {
+            return <span className={"legendSlider"}>{props.labels[mark]}</span>;
           }
         }}
       />

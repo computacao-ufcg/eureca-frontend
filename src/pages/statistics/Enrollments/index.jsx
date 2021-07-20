@@ -10,7 +10,7 @@ import { FiArrowLeft } from "react-icons/fi";
 
 import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
-import EnrollmentSlider from "./Slider";
+import EnrollmentSlider from "../../../components/Slider";
 
 import { api_EB } from "../../../services/api";
 
@@ -103,7 +103,13 @@ const Enrollments = () => {
             <div className='alumni-title'>Matrículas</div>
             <EnrollmentSlider changeSlider={() => {}} />
             <div className='graph'>
-              <EnrollmentsGraph variable={variable} data={data} label={label} />
+              <EnrollmentsGraph
+                variable={variable}
+                data={data}
+                label={label}
+                from={""}
+                to={""}
+              />
               <div className='selectors'>
                 <h6>Disciplinas</h6>
                 <SelectPicker

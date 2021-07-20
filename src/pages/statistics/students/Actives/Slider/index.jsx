@@ -7,8 +7,8 @@ import "./style.css";
 
 const ActiveSlider = props => {
   const [labels, setLabel] = useState([]);
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(0);
+  const [from, setFrom] = useState(0);
+  const [to, setTo] = useState(0);
   const [labelLength, setLabelLength] = useState(0);
 
   const handleStyle = {
@@ -20,10 +20,11 @@ const ActiveSlider = props => {
 
   useEffect(() => {
     const LL = props.labels.length === 0 ? 0 : props.labels.length - 1;
+    console.log(props);
 
     setLabelLength(LL);
     setLabel(props.labels);
-    setValue2(LL);
+    setTo(LL);
   }, [props.labels]);
 
   return (
@@ -32,16 +33,17 @@ const ActiveSlider = props => {
         className='custom-slider'
         min={0}
         max={labelLength}
-        defaultValue={[value1, value2]}
-        value={[value1, value2]}
+        defaultValue={[from, to]}
+        value={[from, to]}
         handleStyle={handleStyle}
         graduated
         tooltip={false}
-        handleTitle={labels[value1]}
+        handleTitle={labels[from]}
         onChange={v => {
-          setValue1(v[0]);
-          setValue2(v[1]);
-          props.changeSlider(v[0], v[1]);
+          console.log(v);
+          setFrom(v[0]);
+          setTo(v[1]);
+          props.changeSlider(from, to);
         }}
         renderMark={mark => {
           return <span className='legendSlider'>{labels[mark]}</span>;

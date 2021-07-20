@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import Header from "../../../../components/Header";
-import DropoutSlider from "./Slider";
+import DropoutSlider from "../../../../components/Slider";
 import DropoutGraph from "./Graph";
 import Export from "../../../../components/Export";
 
@@ -14,74 +14,95 @@ import "./style.css";
 
 const Dropout = () => {
   const [dataEgressos, setDataEgressos] = useState(null);
-  const [min, setMin] = useState("");
-  const [max, setMax] = useState("");
   const [dataCSV, setDataCSV] = useState([]);
+  const [firstTerm, setFirstTerm] = useState();
+  const [lastTerm, setLastTerm] = useState();
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
   useEffect(() => {
-    updateGraph("1996.1", "2020.1");
-    handleCSV("1996.1", "2020.1");
+    const fetchData = async () => {
+      setLoading(true);
+      await updateGraph();
+      setLoading(false);
+    };
+
+    fetchData();
   }, []);
 
-  const handleSlider = (min, max) => {
-    setMin(min);
-    setMax(max);
-    updateGraph(min, max);
-    handleCSV(min, max);
+  const getSummaryQuery = (from = null, to = null) => {
+    const f = from ? `?from=${from}` : "";
+    const t = to ? `&to=${to}` : "";
+    return `/statistics/students/dropouts${f}${t}`;
   };
 
-  const updateGraph = async (min, max) => {
-    let query = `/statistics/students/dropouts?from=${min}&to=${max}`;
+  const getCSVQuery = (from, to) => {
+    const f = from ? `?from=${from}` : "";
+    const t = to ? `&to=${to}` : "";
+    return `/statistics/students/dropouts/csv${f}${t}`;
+  };
 
-    const res = await api_EB.get(query, {
+  const handleSlider = async (from, to) => {
+    await updateGraph(from, to);
+  };
+
+  const updateGraph = async (from, to) => {
+    const querySummary = getSummaryQuery(from, to);
+    const queryCSV = getCSVQuery(from, to);
+    const options = {
       headers: {
         "Authentication-Token": sessionStorage.getItem("eureca-token"),
       },
-    });
+    };
 
-    if (res) {
-      setDataEgressos(res.data);
+    const resSummary = await api_EB.get(querySummary, options);
+    const resCSV = await api_EB.get(queryCSV, options);
+
+    if (resSummary) {
+      setDataEgressos(resSummary.data.dropoutPerTermSummaries);
+
+      if (loading) {
+        setFirstTerm(resSummary.data.from);
+        setLastTerm(resSummary.data.to);
+      }
     } else {
-      console.error(res.statusText);
+      console.error(resSummary.statusText);
     }
-  };
 
-  const handleCSV = async (min, max) => {
-    let query = `/statistics/students/dropouts/csv?from=${min}&to=${max}`;
-
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
-
-    if (res) {
-      setDataCSV(res.data);
+    if (resCSV) {
+      setDataCSV(resCSV.data);
     } else {
-      console.error(res.statusText);
+      console.error(resCSV.statusText);
     }
   };
 
   return (
     <React.Fragment>
       <Header />
-      <div className='dropout-main'>
-        <div className='dropout-content'>
-          <div className='backdot'>
-            <span onClick={() => history.goBack()}>
-              <FiArrowLeft size={25} />
-            </span>
-          </div>
-          <div className='dropout-slider'>
-            <div className='dropout-title'>Evadidos</div>
-            <DropoutSlider changeSlider={handleSlider} />
-            <DropoutGraph data={dataEgressos} />
-            <Export data={dataCSV} name={"dropout"} />
+      {loading ? (
+        <h1>Carregando...</h1>
+      ) : (
+        <div className='dropout-main'>
+          <div className='dropout-content'>
+            <div className='backdot'>
+              <span onClick={() => history.goBack()}>
+                <FiArrowLeft size={25} />
+              </span>
+            </div>
+            <div className='dropout-slider'>
+              <div className='dropout-title'>Evadidos</div>
+              <DropoutSlider
+                changeSlider={handleSlider}
+                firstTerm={firstTerm}
+                lastTerm={lastTerm}
+              />
+              <DropoutGraph data={dataEgressos} />
+              <Export data={dataCSV} name={"dropout"} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </React.Fragment>
   );
 };
