@@ -19,7 +19,7 @@ import "../style.css";
 import { dataDropout } from "../dropoutUtil";
 
 const DropoutGraph = props => {
-  const data = props.data ? props.data.terms : null;
+  const data = props.data;
 
   const [tags, setTags] = useState([]);
 

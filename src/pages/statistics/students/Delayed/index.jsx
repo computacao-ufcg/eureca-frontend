@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import Header from "../../../../components/Header";
-import DelayedSlider from "./Slider";
+import DelayedSlider from "../../../../components/Slider";
 import DelayedGraph from "./Graph";
 import Export from "../../../../components/Export";
 
@@ -17,93 +17,117 @@ import "./style.css";
 import { select_items } from "./util";
 
 const Delayed = () => {
-  const [dataEgressos, setDataEgressos] = useState(null);
-  const [min, setMin] = useState("");
-  const [max, setMax] = useState("");
+  const [delayedData, setDelayedData] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
+  const [firstTerm, setFirstTerm] = useState();
+  const [lastTerm, setLastTerm] = useState();
+  const [loading, setLoading] = useState(true);
 
   const [optionSelected, setOptionSelected] = useState("risk");
 
   const history = useHistory();
 
   useEffect(() => {
-    updateGraph("1966.1", "2020.1");
-    handleCSV("1966.1", "2020.1");
+    const fetchData = async () => {
+      setLoading(true);
+      await updateGraph();
+      setLoading(false);
+    };
+
+    fetchData();
   }, []);
 
-  const handleSlider = (min, max) => {
-    setMin(min);
-    setMax(max);
-    updateGraph(min, max);
-    handleCSV(min, max);
+  const handleSlider = async (from, to) => {
+    await updateGraph(from, to);
   };
 
-  const updateGraph = async (min, max) => {
-    let query = `/statistics/students/delayed?from=${min}&to=${max}`;
-
-    const res = await api_EB.get(query, {
+  const updateGraph = async (from, to) => {
+    const queryStatistics = getSummaryQuery(from, to);
+    const queryCSV = getCSVQuery(from, to);
+    const options = {
       headers: {
         "Authentication-Token": sessionStorage.getItem("eureca-token"),
       },
-    });
+    };
 
-    if (res) {
-      let delayedAux = [];
-      res.data.terms.forEach(element => {
-        let delayedElement = {
+    const resSummary = await api_EB.get(queryStatistics, options);
+    const resCSV = await api_EB.get(queryCSV, options);
+
+    if (resSummary) {
+      console.log(resSummary.data);
+      const delayed = resSummary.data.terms.map(element => {
+        return {
           ...element.metricsSummary.metrics,
           term: element.admissionTerm,
         };
-        delayedAux.push(delayedElement);
       });
-      setDataEgressos(delayedAux);
+
+      if (loading) {
+        setFirstTerm(resSummary.data.from);
+        setLastTerm(resSummary.data.to);
+      }
+
+      setDelayedData(delayed);
     } else {
-      console.error(res.statusText);
+      console.error(resSummary.statusText);
+    }
+
+    if (resCSV) {
+      setDataCSV(resCSV.data);
+    } else {
+      console.error(resCSV.statusText);
     }
   };
 
-  const handleCSV = async (min, max) => {
-    let query = `/statistics/students/alumni/csv?from=${min}&to=${max}`;
+  const getSummaryQuery = (from, to) => {
+    const f = from ? `?from=${from}` : "";
+    const t = to ? `&to=${to}` : "";
+    return `/statistics/students/delayed${f}${t}`;
+  };
 
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
-
-    if (res) {
-      setDataCSV(res.data);
-    } else {
-      console.error(res.statusText);
-    }
+  const getCSVQuery = (from, to) => {
+    const f = from ? `?from=${from}` : "";
+    const t = to ? `&to=${to}` : "";
+    return `/statistics/students/delayed/csv${f}${t}`;
   };
 
   return (
     <React.Fragment>
       <Header />
       <div className='alumni-main'>
-        <div className='alumni-content'>
-          <div className='backdot'>
-            <span onClick={() => history.goBack()}>
-              <FiArrowLeft size={25} />
-            </span>
-          </div>
-          <div className='alumni-slider'>
-            <div className='alumni-title'>Retidos</div>
-            <DelayedSlider changeSlider={handleSlider} />
-            <div className='graph-delayed'>
-              <DelayedGraph data={dataEgressos || {}} option={optionSelected} />
-              <SelectPicker
-                onChange={value => setOptionSelected(value)}
-                data={select_items}
-                className='selector'
-                defaultValue={optionSelected}
-                cleanable={false}
-              />
+        {loading ? (
+          <h1>Carregando...</h1>
+        ) : (
+          <div className='alumni-content'>
+            <div className='backdot'>
+              <span onClick={() => history.goBack()}>
+                <FiArrowLeft size={25} />
+              </span>
             </div>
-            <Export data={dataCSV} name={"alumni"} />
+            <div className='alumni-slider'>
+              <div className='alumni-title'>Retidos</div>
+              <DelayedSlider
+                changeSlider={handleSlider}
+                firstTerm={firstTerm}
+                lastTerm={lastTerm}
+              />
+              <div className='graph-delayed'>
+                <DelayedGraph
+                  data={delayedData || {}}
+                  option={optionSelected}
+                />
+                <SelectPicker
+                  onChange={value => setOptionSelected(value)}
+                  data={select_items}
+                  className='selector'
+                  defaultValue={optionSelected}
+                  cleanable={false}
+                />
+              </div>
+              <Export data={dataCSV} name={"delayed"} />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </React.Fragment>
   );
