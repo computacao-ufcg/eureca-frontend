@@ -18,7 +18,7 @@
 }
 
 .graph-label-y-delayed {
-  left: 0;
+  left: 1;
   transform: rotate(-90deg) translate(-20vh, -3vh);
 }
 
