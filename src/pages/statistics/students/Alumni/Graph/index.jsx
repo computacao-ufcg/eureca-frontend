@@ -20,7 +20,7 @@ const AlumniGraph = props => {
 
   return (
     <React.Fragment>
-      {props.data.terms ? (
+      {props.data ? (
         <div className='main-graphs-alumni'>
           <LineChart
             width={800}
@@ -46,7 +46,7 @@ const AlumniGraph = props => {
               interval={2}
               isAnimationActive={false}
               dataKey={props.option}
-              data={props.data.terms}
+              data={props.data}
               name={labelSelected}
               yAxisId='left'
               stroke='#885d41'
