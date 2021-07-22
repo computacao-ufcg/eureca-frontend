@@ -1,22 +1,22 @@
-.main-enrollments-graph {
+.main-teachers-graph {
   position: relative;
   margin-right: 2vw;
 }
 
-.main-enrollments-graph .graph-label-y-enrollments,
-.main-enrollments-graph .graph-label-x-enrollments {
+.main-teachers-graph .graph-label-y-teachers,
+.main-teachers-graph .graph-label-x-teachers {
   position: absolute;
   color: #886859;
   font-size: 1rem;
   font-weight: 600;
 }
 
-.main-enrollments-graph .graph-label-y-enrollments {
+.main-teachers-graph .graph-label-y-teachers {
   left: 0;
   transform: rotate(-90deg) translate(20vh, -9vh);
 }
 
-.main-enrollments-graph .graph-label-x-enrollments {
+.main-teachers-graph .graph-label-x-teachers {
   bottom: 0;
   right: 50px;
   transform: translateY(2vh);
