@@ -55,7 +55,7 @@ const SubjectsCardHome = () => {
 
   const formatProps = subject => {
     return [
-      "",
+      subject.subjectsCount,
       subject.failedDueToGrade.average.toFixed(1) + "% ",
       subject.failedDueToAbsences.average.toFixed(1) + "% ",
       subject.failedDueToCanceling.average.toFixed(1) + "% ",
