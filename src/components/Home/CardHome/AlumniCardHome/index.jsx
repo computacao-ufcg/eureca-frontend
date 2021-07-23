@@ -38,7 +38,7 @@ const AlumniCardHome = () => {
       <div className='card-home-area2'>
         <div className='card-home-content'>
           <div className='title-card-content'>
-            <TitleCardHome title={"EGRESSOS"} />
+            <TitleCardHome title={"INSERÇÃO NO MERCADO DE TRABALHO"} />
           </div>
           <div className='summary-card-content'>
             <AlumniCards data={alumniData} />
