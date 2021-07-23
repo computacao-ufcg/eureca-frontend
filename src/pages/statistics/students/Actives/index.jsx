@@ -4,14 +4,14 @@ import { FiArrowLeft } from "react-icons/fi";
 
 import Header from "../../../../components/Header";
 import ActiveSlider from "../../../../components/Slider";
+import updateGraph from "../../../../components/Slider/util/updateGraph";
 import ActiveGraph from "./Graph";
 import Export from "../../../../components/Export";
-
-import { api_EB } from "../../../../services/api";
 
 import "./styles.css";
 
 const Actives = () => {
+  const query = "/statistics/students/actives";
   const [dataActives, setDataActives] = useState([]);
   const [dataExport, setDataExport] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
@@ -24,60 +24,30 @@ const Actives = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      await updateGraph();
+
+      const response = await updateGraph(query, loading);
+      if (response) {
+        setAllData(response);
+      }
+
       setLoading(false);
     };
 
     fetchData();
   }, []);
 
-  const getSummaryQuery = (from, to) => {
-    const f = from ? `?from=${from}` : "";
-    const t = to ? `&to=${to}` : "";
-    return `/statistics/students/actives${f}${t}`;
-  };
-
-  const getCSVQuery = (from, to) => {
-    const f = from ? `?from=${from}` : "";
-    const t = to ? `&to=${to}` : "";
-    return `/statistics/students/actives/csv${f}${t}`;
-  };
-
   const handleSlider = async (from, to) => {
-    await updateGraph(from, to);
+    const response = await updateGraph(query, loading, from, to);
+    if (response) {
+      setAllData(response);
+    }
   };
 
-  const updateGraph = async (from, to) => {
-    const queryActives = getSummaryQuery(from, to);
-    const queryActivesCSV = getCSVQuery(from, to);
-
-    const token = sessionStorage.getItem("eureca-token");
-
-    const options = {
-      headers: {
-        "Authentication-Token": token,
-      },
-    };
-
-    const resActives = await api_EB.get(queryActives, options);
-    const resActivesCSV = await api_EB.get(queryActivesCSV, options);
-
-    if (resActives.status === 200) {
-      setDataActives(resActives.data.activesPerTermSummaries);
-
-      if (loading) {
-        setFirstTerm(resActives.data.from);
-        setLastTerm(resActives.data.to);
-      }
-    } else {
-      console.log("Error Data Ativos");
-    }
-
-    if (resActivesCSV.status === 200) {
-      setDataExport(resActivesCSV.data);
-    } else {
-      console.log("Error Data Export");
-    }
+  const setAllData = response => {
+    setDataActives(response.data.activesPerTermSummaries);
+    setDataExport(response.dataCSV);
+    setFirstTerm(firstTerm || response.firstTerm);
+    setLastTerm(lastTerm || response.lastTerm);
   };
 
   return (
