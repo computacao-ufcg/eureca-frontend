@@ -19,7 +19,7 @@ const SubjectsSummaryCardHome = props => {
           <div className='subjects-summary-card-age'>
             (Currículo 2017, períodos 2018.1 a 2020.1)
           </div>
-          <div className='subjects-summary-card-size'>33</div>
+          <div className='subjects-summary-card-size'>{data[0] || 0}</div>
         </div>
         <div className='subjects-summary-left-cards'>
           {props.cards.card6 && (
