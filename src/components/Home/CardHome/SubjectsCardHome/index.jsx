@@ -10,12 +10,12 @@ import "../style.css";
 
 const SubjectsCardHome = () => {
   const labelActives = [
-    "REPROVAÇÕES/NOTA",
-    "REPROVAÇÕES/FALTA",
-    "TRANCAMENTOS",
-    "TAXA DE SUCESSO",
-    "DISPENSAS",
-    "RETENÇÃO",
+    "MÉDIA DE REPROVAÇÕES/NOTA",
+    "MÉDIA DE REPROVAÇÕES/FALTA",
+    "MÉDIA DE TRANCAMENTOS",
+    "MÉDIA DE APROVAÇÕES",
+    "TOTAL DE MATRÍCULAS",
+    "MÉDIA DE DISPENSAS",
   ];
   const [optionSubject, setOptionSubject] = useState("obrigatórias");
   const [titleSubject, setTitleSubject] = useState("Obrigatórias");
@@ -48,6 +48,7 @@ const SubjectsCardHome = () => {
     if (res) {
       setDataSubjects(res.data);
       setPropsSubjectsMandatory(res.data);
+      console.log(res.data)
     } else {
       console.error(res.statusText);
     }
@@ -60,6 +61,7 @@ const SubjectsCardHome = () => {
       subject.failedDueToAbsences.average.toFixed(1) + "% ",
       subject.cancelled.average.toFixed(1) + "% ",
       subject.succeeded.average.toFixed(1) + "% ",
+      subject.enrollmentsCount,
       subject.exempted.average.toFixed(1) + "% ",
     ];
   };
