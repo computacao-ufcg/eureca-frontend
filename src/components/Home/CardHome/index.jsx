@@ -7,6 +7,7 @@ import SubjectsCardHome from "./SubjectsCardHome";
 import StudentsCardHome from "./StudentsCardHome";
 import AlumniCardHome from "./AlumniCardHome";
 import TeachersCardHome from "./TeachersCardHome";
+import RetentionCardHome from "./RetentionCardHome"
 
 const CardHome = () => {
   return (
@@ -14,9 +15,9 @@ const CardHome = () => {
       <StudentsCardHome />
       <AlumniCardHome data={{}} />
       <EnrollmentsCardHome />
-
       <SubjectsCardHome />
       <TeachersCardHome />
+      <RetentionCardHome/>
     </React.Fragment>
   );
 };
