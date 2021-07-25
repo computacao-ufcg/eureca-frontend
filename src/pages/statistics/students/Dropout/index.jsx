@@ -8,11 +8,11 @@ import DropoutSlider from "../../../../components/Slider";
 import DropoutGraph from "./Graph";
 import Export from "../../../../components/Export";
 
-import { api_EB } from "../../../../services/api";
-
 import "./style.css";
+import updateGraph from "../../../../components/Slider/util/updateGraph";
 
 const Dropout = () => {
+  const query = "/statistics/students/dropouts";
   const [dataEgressos, setDataEgressos] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
@@ -24,57 +24,28 @@ const Dropout = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      await updateGraph();
+      const response = await updateGraph(query, loading);
+      if (response) {
+        setAllData(response);
+      }
       setLoading(false);
     };
 
     fetchData();
   }, []);
 
-  const getSummaryQuery = (from = null, to = null) => {
-    const f = from ? `?from=${from}` : "";
-    const t = to ? `&to=${to}` : "";
-    return `/statistics/students/dropouts${f}${t}`;
-  };
-
-  const getCSVQuery = (from, to) => {
-    const f = from ? `?from=${from}` : "";
-    const t = to ? `&to=${to}` : "";
-    return `/statistics/students/dropouts/csv${f}${t}`;
-  };
-
   const handleSlider = async (from, to) => {
-    await updateGraph(from, to);
+    const response = await updateGraph(query, loading, from, to);
+    if (response) {
+      setAllData(response);
+    }
   };
 
-  const updateGraph = async (from, to) => {
-    const querySummary = getSummaryQuery(from, to);
-    const queryCSV = getCSVQuery(from, to);
-    const options = {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    };
-
-    const resSummary = await api_EB.get(querySummary, options);
-    const resCSV = await api_EB.get(queryCSV, options);
-
-    if (resSummary) {
-      setDataEgressos(resSummary.data.dropoutPerTermSummaries);
-
-      if (loading) {
-        setFirstTerm(resSummary.data.from);
-        setLastTerm(resSummary.data.to);
-      }
-    } else {
-      console.error(resSummary.statusText);
-    }
-
-    if (resCSV) {
-      setDataCSV(resCSV.data);
-    } else {
-      console.error(resCSV.statusText);
-    }
+  const setAllData = response => {
+    setDataEgressos(response.data.dropoutPerTermSummaries);
+    setDataCSV(response.dataCSV);
+    setFirstTerm(firstTerm || response.firstTerm);
+    setLastTerm(lastTerm || response.lastTerm);
   };
 
   return (

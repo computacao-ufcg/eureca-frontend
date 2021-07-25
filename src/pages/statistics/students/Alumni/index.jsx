@@ -3,21 +3,22 @@ import { useHistory } from "react-router-dom";
 
 import Header from "../../../../components/Header";
 import AlumniSlider from "../../../../components/Slider";
-import AlumniGraph from "./Graph";
+import updateGraph from "../../../../components/Slider/util/updateGraph";
 import Export from "../../../../components/Export";
+
+import AlumniGraph from "./Graph";
 
 import { FiArrowLeft } from "react-icons/fi";
 
 import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
-import { api_EB } from "../../../../services/api";
-
 import "./style.css";
 
 import { select_items } from "./util";
 
 const Alumni = () => {
+  const query = "/statistics/students/alumni";
   const [dataEgressos, setDataEgressos] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
@@ -31,7 +32,12 @@ const Alumni = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      await updateGraph();
+
+      const response = await updateGraph(query, loading);
+      if (response) {
+        setAllData(response);
+      }
+
       setLoading(false);
     };
 
@@ -39,49 +45,17 @@ const Alumni = () => {
   }, []);
 
   const handleSlider = async (from, to) => {
-    await updateGraph(from, to);
-  };
-
-  const updateGraph = async (from, to) => {
-    const querySummary = getSummaryQuery(from, to);
-    const queryCSV = getCSVQuery(from, to);
-    const options = {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    };
-
-    const resSummary = await api_EB.get(querySummary, options);
-    const resCSV = await api_EB.get(queryCSV, options);
-
-    if (resSummary) {
-      setDataEgressos(resSummary.data.alumniPerTermSummaries);
-
-      if (loading) {
-        setFirstTerm(resSummary.data.from);
-        setLastTerm(resSummary.data.to);
-      }
-    } else {
-      console.error(resSummary.statusText);
-    }
-
-    if (resCSV) {
-      setDataCSV(resCSV.data);
-    } else {
-      console.error(resCSV.statusText);
+    const response = await updateGraph(query, loading, from, to);
+    if (response) {
+      setAllData(response);
     }
   };
 
-  const getSummaryQuery = (from, to) => {
-    const f = from ? `?from=${from}` : "";
-    const t = to ? `&to=${to}` : "";
-    return `/statistics/students/alumni${f}${t}`;
-  };
-
-  const getCSVQuery = (from, to) => {
-    const f = from ? `?from=${from}` : "";
-    const t = to ? `&to=${to}` : "";
-    return `/statistics/students/alumni/csv${f}${t}`;
+  const setAllData = response => {
+    setDataEgressos(response.data.alumniPerTermSummaries);
+    setDataCSV(response.dataCSV);
+    setFirstTerm(firstTerm || response.firstTerm);
+    setLastTerm(lastTerm || response.lastTerm);
   };
 
   return (

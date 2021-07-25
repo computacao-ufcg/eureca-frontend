@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { RangeSlider } from "rsuite";
 
-import sliderGenerator from "./sliderLabelGenerator";
+import sliderGenerator from "./util/sliderLabelGenerator";
 
 const GraduatedSlider = props => {
   const firstTerm = props.firstTerm;
