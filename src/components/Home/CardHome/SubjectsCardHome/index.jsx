@@ -58,9 +58,8 @@ const SubjectsCardHome = () => {
       subject.subjectsCount,
       subject.failedDueToGrade.average.toFixed(1) + "% ",
       subject.failedDueToAbsences.average.toFixed(1) + "% ",
-      subject.failedDueToCanceling.average.toFixed(1) + "% ",
+      subject.cancelled.average.toFixed(1) + "% ",
       subject.succeeded.average.toFixed(1) + "% ",
-      subject.retention.average.toFixed(1) + "% ",
       subject.exempted.average.toFixed(1) + "% ",
     ];
   };
