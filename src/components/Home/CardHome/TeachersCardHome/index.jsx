@@ -44,6 +44,7 @@ const TeachersCardHome = () => {
     if (res) {
       setDataTeachers(res.data);
       setPropsTeachersUASC(res.data);
+      console.log(res.data)
     }
   };
 
@@ -54,8 +55,9 @@ const TeachersCardHome = () => {
       department.failedDueToAbsences.average.toFixed(1) + "% ",
       department.failedDueToCanceling.average.toFixed(1) + "% ",
       department.success.average.toFixed(1) + "% ",
-      `${department.min.count} docentes (${department.min.term})`,
-      `${department.max.count} docentes (${department.max.term})`,
+      `${department.max.count} (${department.max.term})`,
+      `${department.min.count} (${department.min.term})`,
+
     ];
   };
 

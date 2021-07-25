@@ -1,10 +1,10 @@
 const labelTeachers = [
-  "REPROVAÇÕES/NOTA",
-  "REPROVAÇÕES/FALTA",
-  "TRANCAMENTOS",
-  "TAXA DE SUCESSO",
-  "NÚMERO MÍNIMO",
-  "NÚMERO MÁXIMO",
+  "MÉDIA DE REPROVAÇÕES/NOTA",
+  "MÉDIA DE REPROVAÇÕES/FALTA",
+  "MÉDIA DE TRANCAMENTOS",
+  "MÉDIA DE APROVAÇÕES",
+  "NÚMERO MÁXIMO DE DOCENTES",
+  "NÚMERO MÍNIMO DE DOCENTES",
 ];
 
 export { labelTeachers };
