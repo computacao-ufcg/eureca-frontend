@@ -195,7 +195,7 @@ const RetentionCardHome = () => {
             <Link to={"/statistics/subjects/"}>
               <button type='button'>VER MAIS</button>
             </Link>
-            <Link to={"/statistics/subjects/glossary"}>
+            <Link to={"/statistics/retention/glossary"}>
               <button type='button'>GLOSSÁRIO</button>
             </Link>
             <div className='mask6'>
