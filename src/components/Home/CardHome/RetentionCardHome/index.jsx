@@ -21,8 +21,8 @@ const RetentionCardHome = () => {
     "CARGA MÉDIA",
     "TAXA DE SUCESSO",
     "PREV. CONCLUSÃO",
-    "CUSTO MÉDIO",
     "TEMPO MÉDIO",
+    "CUSTO MÉDIO",
   ];
 
   const [optionRetention, setOptionRetention] = useState("subjects");
@@ -103,10 +103,11 @@ const RetentionCardHome = () => {
       successRate.toFixed(1) + "%",
       data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) +
         " períodos",
+      data.delayedSummary.average.termsCount.toFixed(1) + " períodos",
 
       cost + " (" + data.delayedSummary.average.metrics.cost.toFixed(1) + ")",
       ,
-      data.delayedSummary.average.termsCount.toFixed(1) + " períodos",
+      
     ]);
   };
 
