@@ -19,7 +19,7 @@ const RetentionCardHome = () => {
   const labelStudents = [
     "RISCO MÉDIO",
     "CARGA MÉDIA",
-    "TAXA DE SUCESS",
+    "TAXA DE SUCESSO",
     "PREV. CONCLUSÃO",
     "CUSTO MÉDIO",
     "TEMPO MÉDIO",
@@ -141,13 +141,13 @@ const RetentionCardHome = () => {
               data={labels}
               title={titleRetention}
             />
-            <div className='type-students-grid'>
-              <div className='type-students'>
+            <div className='type-retention-grid'>
+              <div className='type-retentions'>
                 <div
                   className={
                     optionRetention === "subjects"
-                      ? "type-student-selected"
-                      : "type-student"
+                      ? "type-retention-selected"
+                      : "type-retention"
                   }
                 >
                   <button
@@ -168,8 +168,8 @@ const RetentionCardHome = () => {
                 <div
                   className={
                     optionRetention === "students"
-                      ? "type-student-selected"
-                      : "type-student"
+                      ? "type-retention-selected"
+                      : "type-retention"
                   }
                 >
                   <button
