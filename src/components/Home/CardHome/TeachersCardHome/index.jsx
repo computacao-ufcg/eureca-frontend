@@ -44,7 +44,6 @@ const TeachersCardHome = () => {
     if (res) {
       setDataTeachers(res.data);
       setPropsTeachersUASC(res.data);
-      console.log(res.data)
     }
   };
 
