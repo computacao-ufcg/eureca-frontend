@@ -10,7 +10,8 @@ import {
 const SubjectsSummaryCardHome = props => {
   const labels = props.data;
   const data = props.dataSubjects;
-
+  
+  
   return (
     <div className='subjects-summary-card-main'>
       <div className='subjects-summary-card-title'>
