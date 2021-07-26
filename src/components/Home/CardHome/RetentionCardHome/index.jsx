@@ -97,23 +97,18 @@ const RetentionCardHome = () => {
     const successRate = data.delayedSummary.average.metrics.successRate * 100;
     const { cost, risk } = translateData(data.delayedSummary, true);
     setPropsRetention([
-        data.delayedSummary.delayedCount,
-        risk + " (" + data.delayedSummary.average.metrics.risk.toFixed(2) + ")",
-        data.delayedSummary.average.metrics.averageLoad.toFixed(1) +
-          " créditos",
-        successRate.toFixed(1) + "%",
-        data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(
-          1
-        ) + " períodos",
-        {
-          custo: cost,
-          valor:
-            "(" + data.delayedSummary.average.metrics.cost.toFixed(1) + ")",
-        },
-        data.delayedSummary.average.termsCount.toFixed(1) + " períodos",
+      data.delayedSummary.delayedCount,
+      risk + " (" + data.delayedSummary.average.metrics.risk.toFixed(2) + ")",
+      data.delayedSummary.average.metrics.averageLoad.toFixed(1) + " créditos",
+      successRate.toFixed(1) + "%",
+      data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) +
+        " períodos",
 
-    ])
-  }
+      cost + " (" + data.delayedSummary.average.metrics.cost.toFixed(1) + ")",
+      ,
+      data.delayedSummary.average.termsCount.toFixed(1) + " períodos",
+    ]);
+  };
 
   const setPropsSubjectRetention = data => {
     setPropsRetention([
@@ -158,7 +153,7 @@ const RetentionCardHome = () => {
                         setOptionRetention("subjects");
                         setTitleRetention("Disciplinas");
                         setPropsSubjectRetention(dataRetention);
-                        setLabels(labelSubjects)
+                        setLabels(labelSubjects);
                       }
                     }}
                   >
@@ -180,7 +175,7 @@ const RetentionCardHome = () => {
                         setOptionRetention("students");
                         setTitleRetention("Discentes");
                         setPropsStudentsRetention(dataRetention);
-                        setLabels(labelStudents)
+                        setLabels(labelStudents);
                       }
                     }}
                   >
