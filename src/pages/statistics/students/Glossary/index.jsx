@@ -44,8 +44,8 @@ const StudentsGlossary = () => {
             <div className='container-title-glossary'>
               <h1>GLOSSÁRIO</h1>
             </div>
-            <div className='main-container-glossary'>
-              <div className='left-container'>
+            <div className='main-container-glossary-students'>
+              <div className='left-container-students'>
                 <div>
                   <b>{data.glossary.abandonCount.name + ": "}</b>{" "}
                   {data.glossary.abandonCount.description}
@@ -77,10 +77,10 @@ const StudentsGlossary = () => {
                 </div>
                 <br />
               </div>
-              <div className='img-container'>
+              <div className='img-container-students'>
                 <img src={GlossaryImg} alt='' height={400} />
               </div>
-              <div className='right-container'>
+              <div className='right-container-students'>
                 <div>
                   <b>{data.glossary.alumnus.name + ": "}</b>{" "}
                   {data.glossary.alumnus.description}
@@ -113,14 +113,10 @@ const StudentsGlossary = () => {
                 <br />
               </div>
             </div>
-            <div className='bottom-container'>
+            <div className='bottom-container-students'>
               <div>
                 <b>{data.glossary.rejoinCount.name + ": "}</b>{" "}
                 {data.glossary.rejoinCount.description}
-              </div>
-              <div>
-                <b>{data.glossary.delayed.name + ": "}</b>{" "}
-                {data.glossary.delayed.description}
               </div>
               <div>
                 <b>{data.glossary.averageRisk.name + ": "}</b>{" "}
