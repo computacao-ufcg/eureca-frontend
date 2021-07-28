@@ -13,38 +13,41 @@ const AlumniCards = props => {
             <div className='alumni-summary-card-info'>
               <div className='alumni-summary-card-type'>Egressos</div>
               <div className='alumni-summary-card-size'>
-                {data.numberAlumniCourse || 0}
+                {data.numberAlumni || 0}
               </div>
             </div>
             <div className='alumni-summary-card-info'>
               <div className='alumni-summary-card-type'>Empresas</div>
               <div className='alumni-summary-card-size'>
-                {0}
+                {data.numberTotalEmployers || 0}
               </div>
             </div>
             <div className='alumni-summary-left-cards'>
               <MiniCardHome4
-                number={data.numberMatchedAlumniCourse || 0}
+                number={data.numberMatchedAlumni || 0}
                 legend={"EGRESSOS RASTREADOS"}
               />
-              <MiniCardHome1 number={0} legend={"EMPREGADORES CONSOLIDADOS"} />
+              <MiniCardHome1
+                number={data.numberConsolidatedEmployers || 0}
+                legend={"EMPREGADORES CONSOLIDADOS"}
+              />
             </div>
           </div>
           <div className='alumni-summary-card-cards'>
             <MiniCardHome1
-              number={data.numberIndustryEmployedLevel || 0}
+              number={data.numberIndustryEmployed || 0}
               legend={"NA INDÚSTRIA"}
             />
             <MiniCardHome1
-              number={data.numberGovernmentEmployedCourse || 0}
+              number={data.numberGovernmentEmployed || 0}
               legend={"NO GOVERNO"}
             />
             <MiniCardHome1
-              number={data.numberAcademyEmployedCourse || 0}
+              number={data.numberAcademyEmployed || 0}
               legend={"NA ACADEMIA"}
             />
             <MiniCardHome1
-              number={data.numberOngEmployedCourse || 0}
+              number={data.numberOngEmployed || 0}
               legend={"EM ONGS"}
             />
           </div>
