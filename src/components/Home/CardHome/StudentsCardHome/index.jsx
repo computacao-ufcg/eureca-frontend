@@ -158,36 +158,6 @@ const StudentsCardHome = () => {
     }
   };
 
-  const setPropsDelayed = data => {
-    if (data) {
-      const successRate = data.delayedSummary.average.metrics.successRate * 100;
-      const { cost, risk } = translateData(data.delayedSummary, true);
-
-      setPropsStudents([
-        data.delayedSummary.delayedCount,
-        risk + " (" + data.delayedSummary.average.metrics.risk.toFixed(2) + ")",
-        data.delayedSummary.average.metrics.averageLoad.toFixed(1) +
-          " créditos",
-        successRate.toFixed(1) + "%",
-        data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(
-          1
-        ) + " períodos",
-        {
-          custo: cost,
-          valor:
-            "(" + data.delayedSummary.average.metrics.cost.toFixed(1) + ")",
-        },
-        data.delayedSummary.average.termsCount.toFixed(1) + " períodos",
-      ]);
-      setCards({
-        ...cards,
-        card4: true,
-        card5: true,
-        card6: true,
-        card7: false,
-      });
-    }
-  };
 
   const setPropsDropout = data => {
     if (data) {
@@ -267,28 +237,6 @@ const StudentsCardHome = () => {
                     }}
                   >
                     ATIVOS
-                  </button>
-                </div>
-                <div
-                  className={
-                    optionStudent === "delayed"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
-                  <button
-                    className='type-button'
-                    type='button'
-                    onClick={() => {
-                      if (optionStudent !== "delayed") {
-                        setOptionStudent("delayed");
-                        setTitleStudent("Retidos");
-                        setLabels(labelDelayed);
-                        setPropsDelayed(dataStudents);
-                      }
-                    }}
-                  >
-                    RETIDOS
                   </button>
                 </div>
                 <div
