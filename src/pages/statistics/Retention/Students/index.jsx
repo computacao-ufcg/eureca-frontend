@@ -16,7 +16,7 @@ import "./style.css";
 
 import { select_items } from "./util";
 
-const Delayed = () => {
+const RetentionStudents = () => {
   const query = "/statistics/students/delayed";
   const [delayedData, setDelayedData] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
@@ -108,4 +108,4 @@ const Delayed = () => {
   );
 };
 
-export default Delayed;
+export default RetentionStudents;

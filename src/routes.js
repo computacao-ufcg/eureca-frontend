@@ -12,7 +12,7 @@ import Login from "./pages/Login";
 import Actives from "./pages/statistics/students/Actives";
 import Alumni from "./pages/statistics/students/Alumni";
 import Dropout from "./pages/statistics/students/Dropout";
-import Delayed from "./pages/statistics/students/Delayed";
+import RetentionStudents from "./pages/statistics/Retention/Students";
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -73,18 +73,18 @@ const Routes = () => {
         />
         <PrivateRoute
           exact
-          path='/alumniUFCG/glossary'
-          component={() => <AlumniGlossary />}
-        />
-        <PrivateRoute
-          exact
           path='/statistics/retention/students'
-          component={() => <Delayed />}
+          component={() => <RetentionStudents />}
         />
         <PrivateRoute
           exact
           path='/statistics/retention/subjects'
-          component={() => <Delayed />}
+          component={() => <RetentionStudents />}
+        />
+        <PrivateRoute
+          exact
+          path='/alumniUFCG/glossary'
+          component={() => <AlumniGlossary />}
         />
         <PrivateRoute
           exact
