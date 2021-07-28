@@ -78,7 +78,12 @@ const Routes = () => {
         />
         <PrivateRoute
           exact
-          path='/statistics/students/delayed'
+          path='/statistics/retention/students'
+          component={() => <Delayed />}
+        />
+        <PrivateRoute
+          exact
+          path='/statistics/retention/subjects'
           component={() => <Delayed />}
         />
         <PrivateRoute

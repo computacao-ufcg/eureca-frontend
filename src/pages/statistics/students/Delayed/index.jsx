@@ -70,9 +70,9 @@ const Delayed = () => {
     <React.Fragment>
       <Header />
       <div className='alumni-main'>
-        {loading ? (
+        {/* {loading ? (
           <h1>Carregando...</h1>
-        ) : (
+        ) : ( */}
           <div className='alumni-content'>
             <div className='backdot'>
               <span onClick={() => history.goBack()}>
@@ -81,11 +81,11 @@ const Delayed = () => {
             </div>
             <div className='alumni-slider'>
               <div className='alumni-title'>Retidos</div>
-              <DelayedSlider
+              {/* <DelayedSlider
                 changeSlider={handleSlider}
                 firstTerm={firstTerm}
                 lastTerm={lastTerm}
-              />
+              /> */}
               <div className='graph-delayed'>
                 <DelayedGraph
                   data={delayedData || {}}
@@ -102,7 +102,7 @@ const Delayed = () => {
               <Export data={dataCSV} name={"delayed"} />
             </div>
           </div>
-        )}
+        {/* )} */}
       </div>
     </React.Fragment>
   );
