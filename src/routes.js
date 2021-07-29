@@ -13,6 +13,7 @@ import Actives from "./pages/statistics/students/Actives";
 import Alumni from "./pages/statistics/students/Alumni";
 import Dropout from "./pages/statistics/students/Dropout";
 import RetentionStudents from "./pages/statistics/Retention/Students";
+import RetentionSubjects from "./pages/statistics/Retention/Subjects";
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -79,7 +80,7 @@ const Routes = () => {
         <PrivateRoute
           exact
           path='/statistics/retention/subjects'
-          component={() => <RetentionStudents />}
+          component={() => <RetentionSubjects />}
         />
         <PrivateRoute
           exact

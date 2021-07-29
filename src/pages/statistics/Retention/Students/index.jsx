@@ -80,7 +80,7 @@ const RetentionStudents = () => {
               </span>
             </div>
             <div className='alumni-slider'>
-              <div className='alumni-title'>Retidos</div>
+              <div className='alumni-title'>Discentes</div>
               {/* <DelayedSlider
                 changeSlider={handleSlider}
                 firstTerm={firstTerm}

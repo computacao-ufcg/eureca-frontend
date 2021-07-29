@@ -1,0 +1,37 @@
+.graph-main-delay {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 45px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    position: relative;
+    flex-direction: row-reverse;
+  }
+  
+  .graph-label-y-delayed,
+  .graph-label-x-delayed {
+    position: absolute;
+    color: #886859;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .graph-label-y-delayed {
+    left: 1;
+    transform: rotate(-90deg) translate(-20vh, -3vh);
+  }
+  
+  .graph-label-x-delayed {
+    bottom: 0;
+    right: 50;
+    transform: translateY(2vh);
+  }
+  
+  .axis-y {
+    width: 20px;
+    display: flex;
+    justify-content:center;
+    padding-top: 40px;
+    margin: 0;
+  }
