@@ -12,19 +12,17 @@ import DelayedGraph from "./Graph";
 import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
-import "./style.css";
-
 import { select_items } from "./util";
 
-const Delayed = () => {
-  const query = "/statistics/students/delayed";
+const RetentionSubjects = () => {
+  const query = "";
   const [delayedData, setDelayedData] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
   const [lastTerm, setLastTerm] = useState();
   const [loading, setLoading] = useState(true);
 
-  const [optionSelected, setOptionSelected] = useState("risk");
+  const [optionSelected, setOptionSelected] = useState("maximum");
 
   const history = useHistory();
 
@@ -70,9 +68,9 @@ const Delayed = () => {
     <React.Fragment>
       <Header />
       <div className='alumni-main'>
-        {loading ? (
+        {/* {loading ? (
           <h1>Carregando...</h1>
-        ) : (
+        ) : ( */}
           <div className='alumni-content'>
             <div className='backdot'>
               <span onClick={() => history.goBack()}>
@@ -80,12 +78,12 @@ const Delayed = () => {
               </span>
             </div>
             <div className='alumni-slider'>
-              <div className='alumni-title'>Retidos</div>
-              <DelayedSlider
+              <div className='alumni-title'>Disciplinas</div>
+              {/* <DelayedSlider
                 changeSlider={handleSlider}
                 firstTerm={firstTerm}
                 lastTerm={lastTerm}
-              />
+              /> */}
               <div className='graph-delayed'>
                 <DelayedGraph
                   data={delayedData || {}}
@@ -102,10 +100,10 @@ const Delayed = () => {
               <Export data={dataCSV} name={"delayed"} />
             </div>
           </div>
-        )}
+        {/* )} */}
       </div>
     </React.Fragment>
   );
 };
 
-export default Delayed;
+export default RetentionSubjects;

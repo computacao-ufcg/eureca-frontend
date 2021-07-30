@@ -188,7 +188,7 @@ const RetentionCardHome = () => {
           </div>
 
           <div className='card-home-content-footer'>
-            <Link to={"/statistics/subjects/"}>
+            <Link to={"/statistics/retention/" + optionRetention}>
               <button type='button'>VER MAIS</button>
             </Link>
             <Link to={"/statistics/retention/glossary"}>
