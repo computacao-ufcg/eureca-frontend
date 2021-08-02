@@ -113,13 +113,13 @@ const RetentionCardHome = () => {
 
   const setPropsSubjectRetention = data => {
     setPropsRetention([
-      data.subjectRetentionSummary.subjectCount,
-      data.subjectRetentionSummary.maximum,
-      data.subjectRetentionSummary.minimum,
-      data.subjectRetentionSummary.firstQuartile,
-      data.subjectRetentionSummary.median,
-      data.subjectRetentionSummary.thirdQuartile,
-      data.subjectRetentionSummary.average.toFixed(1),
+      data.subjectRetentionSummary.retentionStatistics.subjectCount,
+      data.subjectRetentionSummary.retentionStatistics.maximum,
+      data.subjectRetentionSummary.retentionStatistics.minimum,
+      data.subjectRetentionSummary.retentionStatistics.firstQuartile,
+      data.subjectRetentionSummary.retentionStatistics.median,
+      data.subjectRetentionSummary.retentionStatistics.thirdQuartile,
+      data.subjectRetentionSummary.retentionStatistics.average.toFixed(1),
     ]);
   };
 
