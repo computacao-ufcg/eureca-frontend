@@ -56,12 +56,12 @@ const SubjectsCardHome = () => {
   const formatProps = subject => {
     return [
       subject.subjectsCount,
-      subject.failedDueToGrade.average.toFixed(1) + "% ",
-      subject.failedDueToAbsences.average.toFixed(1) + "% ",
-      subject.cancelled.average.toFixed(1) + "% ",
-      subject.succeeded.average.toFixed(1) + "% ",
-      subject.enrollmentsCount,
-      subject.exempted.average.toFixed(1) + "% ",
+      subject.subjectMetricsStatistics.failedDueToGrade.average.toFixed(1) + "% ",
+      subject.subjectMetricsStatistics.failedDueToAbsences.average.toFixed(1) + "% ",
+      subject.subjectMetricsStatistics.cancelled.average.toFixed(1) + "% ",
+      subject.subjectMetricsStatistics.succeeded.average.toFixed(1) + "% ",
+      subject.subjectMetricsStatistics.totalEnrolled.average,
+      subject.subjectMetricsStatistics.exempted.average.toFixed(1) + "% ",
     ];
   };
 
