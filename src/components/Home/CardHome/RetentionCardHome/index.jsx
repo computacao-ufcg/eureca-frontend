@@ -113,9 +113,9 @@ const RetentionCardHome = () => {
 
   const setPropsSubjectRetention = data => {
     setPropsRetention([
-      data.subjectRetentionSummary.retentionStatistics.subjectCount,
-      data.subjectRetentionSummary.retentionStatistics.maximum,
-      data.subjectRetentionSummary.retentionStatistics.minimum,
+      data.subjectRetentionSummary.retentionStatistics.sampleSize,
+      data.subjectRetentionSummary.retentionStatistics.max,
+      data.subjectRetentionSummary.retentionStatistics.min,
       data.subjectRetentionSummary.retentionStatistics.firstQuartile,
       data.subjectRetentionSummary.retentionStatistics.median,
       data.subjectRetentionSummary.retentionStatistics.thirdQuartile,

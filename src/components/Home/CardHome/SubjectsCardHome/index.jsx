@@ -14,7 +14,7 @@ const SubjectsCardHome = () => {
     "MÉDIA DE REPROVAÇÕES/FALTA",
     "MÉDIA DE TRANCAMENTOS",
     "MÉDIA DE APROVAÇÕES",
-    "TOTAL DE MATRÍCULAS",
+    "MÉDIA DE MATRÍCULAS",
     "MÉDIA DE DISPENSAS",
   ];
   const [optionSubject, setOptionSubject] = useState("obrigatórias");
@@ -60,7 +60,7 @@ const SubjectsCardHome = () => {
       subject.subjectMetricsStatistics.failedDueToAbsences.average.toFixed(1) + "% ",
       subject.subjectMetricsStatistics.cancelled.average.toFixed(1) + "% ",
       subject.subjectMetricsStatistics.succeeded.average.toFixed(1) + "% ",
-      subject.subjectMetricsStatistics.totalEnrolled.average,
+      subject.subjectMetricsStatistics.totalEnrolled.average.toFixed(1) + "% ",
       subject.subjectMetricsStatistics.exempted.average.toFixed(1) + "% ",
     ];
   };
