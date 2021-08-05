@@ -71,35 +71,32 @@ const RetentionSubjects = () => {
         {/* {loading ? (
           <h1>Carregando...</h1>
         ) : ( */}
-          <div className='alumni-content'>
-            <div className='backdot'>
-              <span onClick={() => history.goBack()}>
-                <FiArrowLeft size={25} />
-              </span>
-            </div>
-            <div className='alumni-slider'>
-              <div className='alumni-title'>Disciplinas</div>
-              {/* <DelayedSlider
+        <div className='alumni-content'>
+          <div className='backdot'>
+            <span onClick={() => history.goBack()}>
+              <FiArrowLeft size={25} />
+            </span>
+          </div>
+          <div className='alumni-slider'>
+            <div className='alumni-title'>Disciplinas</div>
+            {/* <DelayedSlider
                 changeSlider={handleSlider}
                 firstTerm={firstTerm}
                 lastTerm={lastTerm}
               /> */}
-              <div className='graph-delayed'>
-                <DelayedGraph
-                  data={delayedData || {}}
-                  option={optionSelected}
-                />
-                <SelectPicker
-                  onChange={value => setOptionSelected(value)}
-                  data={select_items}
-                  className='selector'
-                  defaultValue={optionSelected}
-                  cleanable={false}
-                />
-              </div>
-              <Export data={dataCSV} name={"delayed"} />
+            <div className='graph-delayed'>
+              <DelayedGraph data={delayedData || {}} option={optionSelected} />
+              <SelectPicker
+                onChange={value => setOptionSelected(value)}
+                data={select_items}
+                className='selector'
+                defaultValue={optionSelected}
+                cleanable={false}
+              />
             </div>
+            <Export data={dataCSV} name={"delayed"} />
           </div>
+        </div>
         {/* )} */}
       </div>
     </React.Fragment>

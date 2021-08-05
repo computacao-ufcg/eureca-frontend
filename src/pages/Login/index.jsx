@@ -79,11 +79,7 @@ const Login = () => {
         <div className='login-part-1-upsize'>
           <div className='login-part-1-content'>
             <div className='login-about-1'>
-              <img
-                className='login-logo-about'
-                src={LogoAbout}
-                alt='Logo Eureca + Nome'
-              />
+              <img className='login-logo-about' src={LogoAbout} alt='Logo Eureca + Nome' />
               <p className='title-about'>SOBRE</p>
             </div>
             <div className='login-about-2'>
@@ -100,28 +96,16 @@ const Login = () => {
           <div className='login-form'>
             <label className='login-label'>LOGIN</label>
             <br />
-            <input
-              className='login-input'
-              type='text'
-              onChange={e => setLogin(e.target.value.trim())}
-            />
+            <input className='login-input' type='text' onChange={e => setLogin(e.target.value.trim())} />
             <br />
 
             <label className='login-label'>SENHA</label>
             <br />
-            <input
-              className='login-input'
-              type='password'
-              onChange={e => setPassword(e.target.value)}
-            />
+            <input className='login-input' type='password' onChange={e => setPassword(e.target.value)} />
             <br />
 
             <div className='login-content-button'>
-              <button
-                className='login-button'
-                type='submit'
-                onClick={handleLogin}
-              >
+              <button className='login-button' type='submit' onClick={handleLogin}>
                 ENTRAR
               </button>
             </div>

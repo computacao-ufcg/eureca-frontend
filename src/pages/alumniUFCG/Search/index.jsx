@@ -58,12 +58,7 @@ const Search = () => {
     setName($iptName.value);
     setAdmission($iptAdmission.value);
     setGraduation($iptGraduation.value);
-    handleProfile(
-      page,
-      $iptName.value,
-      $iptAdmission.value,
-      $iptGraduation.value
-    );
+    handleProfile(page, $iptName.value, $iptAdmission.value, $iptGraduation.value);
   };
 
   return (
@@ -85,31 +80,19 @@ const Search = () => {
                 <div>
                   <FiSearch size={25} />
                 </div>
-                <input
-                  id='ipt-name'
-                  type='text'
-                  placeholder='Buscar por nome'
-                />
+                <input id='ipt-name' type='text' placeholder='Buscar por nome' />
               </div>
               <div className='search-input-box'>
                 <div>
                   <FiSearch size={25} />
                 </div>
-                <input
-                  id='ipt-admission'
-                  type='text'
-                  placeholder='Buscar por período de admissão'
-                />
+                <input id='ipt-admission' type='text' placeholder='Buscar por período de admissão' />
               </div>
               <div className='search-input-box'>
                 <div>
                   <FiSearch size={25} />
                 </div>
-                <input
-                  id='ipt-graduation'
-                  type='text'
-                  placeholder='Buscar por período de graduação'
-                />
+                <input id='ipt-graduation' type='text' placeholder='Buscar por período de graduação' />
               </div>
             </div>
             <button onClick={handleSearch}>Buscar</button>

@@ -12,44 +12,22 @@ const AlumniCards = props => {
           <div className='alumni-summary-card-title'>
             <div className='alumni-summary-card-info'>
               <div className='alumni-summary-card-type'>Egressos</div>
-              <div className='alumni-summary-card-size'>
-                {data.numberAlumni || 0}
-              </div>
+              <div className='alumni-summary-card-size'>{data.numberAlumni || 0}</div>
             </div>
             <div className='alumni-summary-card-info'>
               <div className='alumni-summary-card-type'>Empresas</div>
-              <div className='alumni-summary-card-size'>
-                {data.numberTotalEmployers || 0}
-              </div>
+              <div className='alumni-summary-card-size'>{data.numberTotalEmployers || 0}</div>
             </div>
             <div className='alumni-summary-left-cards'>
-              <MiniCardHome4
-                number={data.numberMatchedAlumni || 0}
-                legend={"EGRESSOS RASTREADOS"}
-              />
-              <MiniCardHome1
-                number={data.numberConsolidatedEmployers || 0}
-                legend={"EMPREGADORES CONSOLIDADOS"}
-              />
+              <MiniCardHome4 number={data.numberMatchedAlumni || 0} legend={"EGRESSOS RASTREADOS"} />
+              <MiniCardHome1 number={data.numberConsolidatedEmployers || 0} legend={"EMPREGADORES CONSOLIDADOS"} />
             </div>
           </div>
           <div className='alumni-summary-card-cards'>
-            <MiniCardHome1
-              number={data.numberIndustryEmployed || 0}
-              legend={"NA INDÚSTRIA"}
-            />
-            <MiniCardHome1
-              number={data.numberGovernmentEmployed || 0}
-              legend={"NO GOVERNO"}
-            />
-            <MiniCardHome1
-              number={data.numberAcademyEmployed || 0}
-              legend={"NA ACADEMIA"}
-            />
-            <MiniCardHome1
-              number={data.numberOngEmployed || 0}
-              legend={"EM ONGS"}
-            />
+            <MiniCardHome1 number={data.numberIndustryEmployed || 0} legend={"NA INDÚSTRIA"} />
+            <MiniCardHome1 number={data.numberGovernmentEmployed || 0} legend={"NO GOVERNO"} />
+            <MiniCardHome1 number={data.numberAcademyEmployed || 0} legend={"NA ACADEMIA"} />
+            <MiniCardHome1 number={data.numberOngEmployed || 0} legend={"EM ONGS"} />
           </div>
         </div>
       ) : null}

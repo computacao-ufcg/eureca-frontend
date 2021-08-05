@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  MiniCardHomeRightBottom,
-  MiniCardHomeRightTop,
-  MiniCardHomeEnrollments,
-} from "../../MiniCardHome";
+import { MiniCardHomeRightBottom, MiniCardHomeRightTop, MiniCardHomeEnrollments } from "../../MiniCardHome";
 
 import "./style.css";
 
@@ -14,12 +10,9 @@ const EnrollmentsSummaryCardHome = props => {
         <div className='enrollments-summary-card-info'>
           <div className='enrollments-summary-card-type'>{props.title}</div>
           <div className='enrollments-summary-card-range'>
-            (Currículo: {props.data.curriculum}, períodos {props.data.from} a{" "}
-            {props.data.to})
+            (Currículo: {props.data.curriculum}, períodos {props.data.from} a {props.data.to})
           </div>
-          <div className='enrollments-summary-card-size'>
-            {props.data.subjects}
-          </div>
+          <div className='enrollments-summary-card-size'>{props.data.subjects}</div>
         </div>
         <div className='enrollments-summary-left-cards'>
           <MiniCardHomeRightTop

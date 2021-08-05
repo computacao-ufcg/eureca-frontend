@@ -47,33 +47,27 @@ const StudentsGlossary = () => {
             <div className='main-container-glossary-students'>
               <div className='left-container-students'>
                 <div>
-                  <b>{data.glossary.abandonCount.name + ": "}</b>{" "}
-                  {data.glossary.abandonCount.description}
+                  <b>{data.glossary.abandonCount.name + ": "}</b> {data.glossary.abandonCount.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.active.name + ": "}</b>{" "}
-                  {data.glossary.active.description}
+                  <b>{data.glossary.active.name + ": "}</b> {data.glossary.active.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.canceledCount.name + ": "}</b>{" "}
-                  {data.glossary.canceledCount.description}
+                  <b>{data.glossary.canceledCount.name + ": "}</b> {data.glossary.canceledCount.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.averageLoad.name + ": "}</b>{" "}
-                  {data.glossary.averageLoad.description}
+                  <b>{data.glossary.averageLoad.name + ": "}</b> {data.glossary.averageLoad.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.averageGpa.name + ": "}</b>{" "}
-                  {data.glossary.averageGpa.description}
+                  <b>{data.glossary.averageGpa.name + ": "}</b> {data.glossary.averageGpa.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.averageCost.name + ": "}</b>{" "}
-                  {data.glossary.averageCost.description}
+                  <b>{data.glossary.averageCost.name + ": "}</b> {data.glossary.averageCost.description}
                 </div>
                 <br />
               </div>
@@ -82,57 +76,46 @@ const StudentsGlossary = () => {
               </div>
               <div className='right-container-students'>
                 <div>
-                  <b>{data.glossary.alumnus.name + ": "}</b>{" "}
-                  {data.glossary.alumnus.description}
+                  <b>{data.glossary.alumnus.name + ": "}</b> {data.glossary.alumnus.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.dropout.name + ": "}</b>{" "}
-                  {data.glossary.dropout.description}
+                  <b>{data.glossary.dropout.name + ": "}</b> {data.glossary.dropout.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.averageAlumni.name + ": "}</b>{" "}
-                  {data.glossary.averageAlumni.description}
+                  <b>{data.glossary.averageAlumni.name + ": "}</b> {data.glossary.averageAlumni.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.maximumAlumni.name + ": "}</b>{" "}
-                  {data.glossary.maximumAlumni.description}
+                  <b>{data.glossary.maximumAlumni.name + ": "}</b> {data.glossary.maximumAlumni.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.minimumAlumni.name + ": "}</b>{" "}
-                  {data.glossary.minimumAlumni.description}
+                  <b>{data.glossary.minimumAlumni.name + ": "}</b> {data.glossary.minimumAlumni.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.predictedGraduation.name + ": "}</b>{" "}
-                  {data.glossary.predictedGraduation.description}
+                  <b>{data.glossary.predictedGraduation.name + ": "}</b> {data.glossary.predictedGraduation.description}
                 </div>
                 <br />
               </div>
             </div>
             <div className='bottom-container-students'>
               <div>
-                <b>{data.glossary.rejoinCount.name + ": "}</b>{" "}
-                {data.glossary.rejoinCount.description}
+                <b>{data.glossary.rejoinCount.name + ": "}</b> {data.glossary.rejoinCount.description}
               </div>
               <div>
-                <b>{data.glossary.averageRisk.name + ": "}</b>{" "}
-                {data.glossary.averageRisk.description}
+                <b>{data.glossary.averageRisk.name + ": "}</b> {data.glossary.averageRisk.description}
               </div>
               <div>
-                <b>{data.glossary.successRate.name + ": "}</b>{" "}
-                {data.glossary.successRate.description}
+                <b>{data.glossary.successRate.name + ": "}</b> {data.glossary.successRate.description}
               </div>
               <div>
-                <b>{data.glossary.averageTime.name + ": "}</b>{" "}
-                {data.glossary.averageTime.description}
+                <b>{data.glossary.averageTime.name + ": "}</b> {data.glossary.averageTime.description}
               </div>
               <div>
-                <b>{data.glossary.transferCount.name + ": "}</b>{" "}
-                {data.glossary.transferCount.description}
+                <b>{data.glossary.transferCount.name + ": "}</b> {data.glossary.transferCount.description}
               </div>
             </div>
           </div>

@@ -47,8 +47,7 @@ const SubjectsGlossary = () => {
             <div className='main-container-subjects-glossary'>
               <div className='left-container'>
                 <div>
-                  <b>{data.glossary.complementary.name + ":"} </b>{" "}
-                  {data.glossary.complementary.description}
+                  <b>{data.glossary.complementary.name + ":"} </b> {data.glossary.complementary.description}
                 </div>
               </div>
               <div className='img-container'>
@@ -56,19 +55,16 @@ const SubjectsGlossary = () => {
               </div>
               <div className='right-container'>
                 <div>
-                  <b>{data.glossary.mandatory.name + ":"} </b>{" "}
-                  {data.glossary.mandatory.description}
+                  <b>{data.glossary.mandatory.name + ":"} </b> {data.glossary.mandatory.description}
                 </div>
                 <div>
-                  <b>{data.glossary.optional.name + ":"} </b>{" "}
-                  {data.glossary.optional.description}
+                  <b>{data.glossary.optional.name + ":"} </b> {data.glossary.optional.description}
                 </div>
               </div>
             </div>
             <div className='bottom-container'>
               <div>
-                <b>{data.glossary.elective.name + ":"} </b>{" "}
-                {data.glossary.elective.description}
+                <b>{data.glossary.elective.name + ":"} </b> {data.glossary.elective.description}
               </div>
             </div>
           </div>

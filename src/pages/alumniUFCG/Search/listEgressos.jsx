@@ -37,10 +37,7 @@ const ListEgressos = props => {
             {rowData => {
               return (
                 <span>
-                  <a
-                    target={"_blank"}
-                    href={"https://linkedin.com/in/" + rowData.linkedinId}
-                  >
+                  <a target={"_blank"} href={"https://linkedin.com/in/" + rowData.linkedinId}>
                     Link
                   </a>
                 </span>

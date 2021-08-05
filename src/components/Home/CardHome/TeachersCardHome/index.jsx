@@ -56,7 +56,6 @@ const TeachersCardHome = () => {
       department.success.average.toFixed(1) + "% ",
       `${department.max.count} (${department.max.term})`,
       `${department.min.count} (${department.min.term})`,
-
     ];
   };
 
@@ -101,13 +100,7 @@ const TeachersCardHome = () => {
             />
             <div className='type-teachers-grid'>
               <div className='type-teachers'>
-                <div
-                  className={
-                    optionTeachers === "UASC"
-                      ? "type-teacher-selected"
-                      : "type-teacher"
-                  }
-                >
+                <div className={optionTeachers === "UASC" ? "type-teacher-selected" : "type-teacher"}>
                   <button
                     className='type-button'
                     type='button'
@@ -123,13 +116,7 @@ const TeachersCardHome = () => {
                     UASC
                   </button>
                 </div>
-                <div
-                  className={
-                    optionTeachers === "UAMat"
-                      ? "type-teacher-selected"
-                      : "type-teacher"
-                  }
-                >
+                <div className={optionTeachers === "UAMat" ? "type-teacher-selected" : "type-teacher"}>
                   <button
                     className='type-button'
                     type='button'
@@ -145,13 +132,7 @@ const TeachersCardHome = () => {
                     UAMat
                   </button>
                 </div>
-                <div
-                  className={
-                    optionTeachers === "UAEst"
-                      ? "type-teacher-selected"
-                      : "type-teacher"
-                  }
-                >
+                <div className={optionTeachers === "UAEst" ? "type-teacher-selected" : "type-teacher"}>
                   <button
                     className='type-button'
                     type='button'
@@ -167,13 +148,7 @@ const TeachersCardHome = () => {
                     UAEst
                   </button>
                 </div>
-                <div
-                  className={
-                    optionTeachers === "UAL"
-                      ? "type-teacher-selected"
-                      : "type-teacher"
-                  }
-                >
+                <div className={optionTeachers === "UAL" ? "type-teacher-selected" : "type-teacher"}>
                   <button
                     className='type-button'
                     type='button'

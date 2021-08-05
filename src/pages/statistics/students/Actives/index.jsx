@@ -64,11 +64,7 @@ const Actives = () => {
           </div>
           <div className='actives-title'>Ativos</div>
           <div className='actives-graph-box'>
-            <ActiveSlider
-              changeSlider={handleSlider}
-              firstTerm={firstTerm}
-              lastTerm={lastTerm}
-            />
+            <ActiveSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
           </div>
           <ActiveGraph data={dataActives} />
           <div className='main-actives-export'>

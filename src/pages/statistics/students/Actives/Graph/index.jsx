@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  AreaChart,
-  Area,
-} from "recharts";
+import { XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area } from "recharts";
 
 import MySwitch from "../MySwitch";
 

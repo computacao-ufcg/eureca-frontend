@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ComposedChart,
-} from "recharts";
+import { Area, XAxis, YAxis, CartesianGrid, Tooltip, ComposedChart } from "recharts";
 
 import MySwitch from "../../Actives/MySwitch";
 
@@ -98,11 +91,7 @@ const DropoutGraph = props => {
               <p className='graph-label-x'>Período de Evasão</p>
             </div>
             <div className='optionsEvadidos'>
-              <MySwitch
-                title={"MOTIVO DE EVASÃO"}
-                tags={tags}
-                handleCheck={handleCheck}
-              />
+              <MySwitch title={"MOTIVO DE EVASÃO"} tags={tags} handleCheck={handleCheck} />
             </div>
           </div>
         </div>
