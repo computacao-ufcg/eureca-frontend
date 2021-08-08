@@ -17,7 +17,7 @@ import "./style.css";
 import { select_items } from "./util";
 
 const RetentionStudents = () => {
-  const query = "/statistics/students/delayed";
+  const query = "/statistics/retention/students";
   const [delayedData, setDelayedData] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
@@ -36,10 +36,10 @@ const RetentionStudents = () => {
       if (response) {
         setAllData(response);
       }
-
+      console.log(response)
       setLoading(false);
     };
-
+    
     fetchData();
   }, []);
 
@@ -52,7 +52,7 @@ const RetentionStudents = () => {
 
   const setAllData = response => {
     setDelayedData(parseDelayedData(response.data));
-    setDataCSV(response.dataCSV);
+    setDataCSV(response.dataCSV.students);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
@@ -70,9 +70,9 @@ const RetentionStudents = () => {
     <React.Fragment>
       <Header />
       <div className='alumni-main'>
-        {/* {loading ? (
+        {loading ? (
           <h1>Carregando...</h1>
-        ) : ( */}
+        ) : (
         <div className='alumni-content'>
           <div className='backdot'>
             <span onClick={() => history.goBack()}>
@@ -81,11 +81,11 @@ const RetentionStudents = () => {
           </div>
           <div className='alumni-slider'>
             <div className='alumni-title'>Discentes</div>
-            {/* <DelayedSlider
+            <DelayedSlider
                 changeSlider={handleSlider}
                 firstTerm={firstTerm}
                 lastTerm={lastTerm}
-              /> */}
+              />
             <div className='graph-delayed'>
               <DelayedGraph data={delayedData || {}} option={optionSelected} />
               <SelectPicker
@@ -99,7 +99,7 @@ const RetentionStudents = () => {
             <Export data={dataCSV} name={"delayed"} />
           </div>
         </div>
-        {/* )} */}
+        )}
       </div>
     </React.Fragment>
   );
