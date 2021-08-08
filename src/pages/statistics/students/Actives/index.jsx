@@ -45,7 +45,7 @@ const Actives = () => {
 
   const setAllData = response => {
     setDataActives(response.data.activesPerTermSummaries);
-    setDataExport(response.dataCSV);
+    setDataExport(response.dataCSV.students);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
