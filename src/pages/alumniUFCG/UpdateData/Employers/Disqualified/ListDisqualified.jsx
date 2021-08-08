@@ -22,19 +22,12 @@ const ListDisqualified = props => {
           <Cell dataKey='name'>
             {rowData => {
               function handleAction(event) {
-                props.handleInput(
-                  event.target.value,
-                  event.target.getAttribute("name")
-                );
+                props.handleInput(event.target.value, event.target.getAttribute("name"));
                 setOptionSelected(event.target.getAttribute("name"));
               }
               return (
                 <input
-                  className={
-                    optionSelected === rowData.linkedinId
-                      ? "input-selected-disqualified"
-                      : "inputCompany"
-                  }
+                  className={optionSelected === rowData.linkedinId ? "input-selected-disqualified" : "inputCompany"}
                   name={rowData.linkedinId}
                   readOnly
                   value={rowData.name}

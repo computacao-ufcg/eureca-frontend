@@ -1,10 +1,6 @@
 import React from "react";
 
-import {
-  MiniCardHome1,
-  MiniCardHome2,
-  MiniCardHome3,
-} from "../../MiniCardHome";
+import { MiniCardHome1, MiniCardHome2, MiniCardHome3 } from "../../MiniCardHome";
 import "./style.css";
 
 const WarningCards = () => {

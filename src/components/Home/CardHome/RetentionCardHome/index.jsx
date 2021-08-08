@@ -7,14 +7,7 @@ import { Link } from "react-router-dom";
 import { api_EB } from "../../../../services/api";
 
 const RetentionCardHome = () => {
-  const labelSubjects = [
-    "MÁXIMA",
-    "MÍNIMA",
-    "PRIMEIRO QUARTIL",
-    "MEDIANA",
-    "TERCEIRO QUARTIL",
-    "MÉDIA",
-  ];
+  const labelSubjects = ["MÁXIMA", "MÍNIMA", "PRIMEIRO QUARTIL", "MEDIANA", "TERCEIRO QUARTIL", "MÉDIA"];
 
   const labelStudents = [
     "RISCO MÉDIO",
@@ -25,18 +18,19 @@ const RetentionCardHome = () => {
     "CUSTO MÉDIO",
   ];
 
-  const [optionRetention, setOptionRetention] = useState("subjects");
-  const [titleRetention, setTitleRetention] = useState("Disciplinas");
+  const [option, setOption] = useState("subjects");
+  const [title, setTitle] = useState("Disciplinas");
   const [propsRetention, setPropsRetention] = useState([]);
   const [labels, setLabels] = useState(labelSubjects);
-  const [dataRetention, setDataRetention] = useState();
+  const [subjectRetention, setSubjectRetention] = useState();
+  const [studentRetention, setStudentRetention] = useState();
 
   useEffect(() => {
     getSummary();
   }, []);
 
   const getSummary = async () => {
-    let query = `/statistics/retention/summary?from=1950.0&language=PORTUGUESE&to=2049.9`;
+    let query = `/statistics/retention/summary`;
 
     const res = await api_EB.get(query, {
       headers: {
@@ -45,9 +39,9 @@ const RetentionCardHome = () => {
     });
 
     if (res) {
-      setDataRetention(res.data);
-      console.log(res.data);
-      setPropsSubjectRetention(res.data);
+      setStudentRetention(res.data.delayedSummary);
+      setSubjectRetention(res.data.subjectRetentionSummary.retentionStatistics);
+      setPropsSubjectRetention(res.data.subjectRetentionSummary.retentionStatistics);
     } else {
       console.error(res.statusText);
     }
@@ -94,32 +88,26 @@ const RetentionCardHome = () => {
   };
 
   const setPropsStudentsRetention = data => {
-    const successRate = data.delayedSummary.average.metrics.successRate * 100;
-    const { cost, risk } = translateData(data.delayedSummary, true);
+    const successRate = data.average.metrics.successRate * 100;
+    const { cost, risk } = translateData(data, true);
     setPropsRetention([
-      data.delayedSummary.delayedCount,
-      risk + " (" + data.delayedSummary.average.metrics.risk.toFixed(2) + ")",
-      data.delayedSummary.average.metrics.averageLoad.toFixed(1) + " créditos",
-      successRate.toFixed(1) + "%",
-      data.delayedSummary.average.metrics.courseDurationPrediction.toFixed(1) +
-        " períodos",
-      data.delayedSummary.average.termsCount.toFixed(1) + " períodos",
-
-      cost + " (" + data.delayedSummary.average.metrics.cost.toFixed(1) + ")",
-      ,
-      
+      data.delayedCount,
+      `${risk} (${data.average.metrics.risk.toFixed(2)})`,
+      `${data.average.metrics.averageLoad.toFixed(2)} créditos`,
+      `${successRate.toFixed(1)}%`,
+      `${data.average.metrics.courseDurationPrediction.toFixed(1)} períodos`,
+      `${cost} (${data.average.metrics.cost.toFixed(1)})`,
     ]);
   };
 
-  const setPropsSubjectRetention = data => {
+  const setPropsSubjectRetention = subjectRetention => {
     setPropsRetention([
-      data.subjectRetentionSummary.retentionStatistics.sampleSize,
-      data.subjectRetentionSummary.retentionStatistics.max,
-      data.subjectRetentionSummary.retentionStatistics.min,
-      data.subjectRetentionSummary.retentionStatistics.firstQuartile,
-      data.subjectRetentionSummary.retentionStatistics.median,
-      data.subjectRetentionSummary.retentionStatistics.thirdQuartile,
-      data.subjectRetentionSummary.retentionStatistics.average.toFixed(1),
+      subjectRetention.max,
+      subjectRetention.min,
+      subjectRetention.firstQuartile,
+      subjectRetention.median,
+      subjectRetention.thirdQuartile,
+      subjectRetention.average.toFixed(1),
     ]);
   };
 
@@ -131,29 +119,18 @@ const RetentionCardHome = () => {
             <TitleCardHome title={"RETENÇÃO"} />
           </div>
           <div className='summary-card-content'>
-            <RetentionSummaryCardHome
-              option={optionRetention}
-              dataRetention={propsRetention}
-              data={labels}
-              title={titleRetention}
-            />
+            <RetentionSummaryCardHome option={option} dataRetention={propsRetention} data={labels} title={title} />
             <div className='type-retention-grid'>
               <div className='type-retentions'>
-                <div
-                  className={
-                    optionRetention === "subjects"
-                      ? "type-retention-selected"
-                      : "type-retention"
-                  }
-                >
+                <div className={option === "subjects" ? "type-retention-selected" : "type-retention"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionRetention !== "subjects") {
-                        setOptionRetention("subjects");
-                        setTitleRetention("Disciplinas");
-                        setPropsSubjectRetention(dataRetention);
+                      if (option !== "subjects") {
+                        setOption("subjects");
+                        setTitle("Disciplinas");
+                        setPropsSubjectRetention(subjectRetention);
                         setLabels(labelSubjects);
                       }
                     }}
@@ -161,21 +138,15 @@ const RetentionCardHome = () => {
                     DISCIPLINAS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionRetention === "students"
-                      ? "type-retention-selected"
-                      : "type-retention"
-                  }
-                >
+                <div className={option === "students" ? "type-retention-selected" : "type-retention"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionRetention !== "students") {
-                        setOptionRetention("students");
-                        setTitleRetention("Discentes");
-                        setPropsStudentsRetention(dataRetention);
+                      if (option !== "students") {
+                        setOption("students");
+                        setTitle("Discentes");
+                        setPropsStudentsRetention(studentRetention);
                         setLabels(labelStudents);
                       }
                     }}
@@ -188,7 +159,7 @@ const RetentionCardHome = () => {
           </div>
 
           <div className='card-home-content-footer'>
-            <Link to={"/statistics/retention/" + optionRetention}>
+            <Link to={"/statistics/retention/" + option}>
               <button type='button'>VER MAIS</button>
             </Link>
             <Link to={"/statistics/retention/glossary"}>

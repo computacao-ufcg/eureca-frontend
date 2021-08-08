@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 import { subtitles_translations } from "../util";
 
@@ -38,10 +30,7 @@ const AlumniGraph = props => {
             <YAxis yAxisId='left' dataKey={props.option} />
 
             <Tooltip />
-            <Legend
-              verticalAlign='top'
-              margin={{ top: 30, left: 10, right: 0, bottom: 0 }}
-            />
+            <Legend verticalAlign='top' margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
             <Line
               interval={2}
               isAnimationActive={false}
