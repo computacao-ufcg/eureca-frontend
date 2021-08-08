@@ -53,7 +53,7 @@ const Alumni = () => {
 
   const setAllData = response => {
     setDataEgressos(response.data.alumniPerTermSummaries);
-    setDataCSV(response.dataCSV);
+    setDataCSV(response.dataCSV.students);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };

@@ -43,7 +43,7 @@ const Dropout = () => {
 
   const setAllData = response => {
     setDataEgressos(response.data.dropoutPerTermSummaries);
-    setDataCSV(response.dataCSV);
+    setDataCSV(response.dataCSV.students);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
