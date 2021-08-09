@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, } from "recharts";
 
 import { subtitles_translations } from "../util";
 
@@ -13,7 +13,7 @@ const DelayedGraph = props => {
     <React.Fragment>
       {props.data ? (
         <div className='graph-main-delay'>
-          <LineChart
+          <BarChart
             width={800}
             height={500}
             margin={{
@@ -29,8 +29,12 @@ const DelayedGraph = props => {
             <YAxis yAxisId='left' dataKey={props.option} />
 
             <Tooltip />
-            <Legend verticalAlign='top' margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
-            <Line
+            <Legend 
+              iconSize={10}
+              iconType='circle'
+              verticalAlign='top' 
+              margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
+            <Bar
               isAnimationActive={false}
               dataKey={props.option}
               data={props.data}
@@ -38,12 +42,13 @@ const DelayedGraph = props => {
               yAxisId='left'
               stroke='#885d41'
               key='Número de Egressos'
+              fill='#886859'
             />
-          </LineChart>
+          </BarChart>
           <div className='axis-y'>
             <p className='graph-label-y-delayed'>{labelSelected || "Retidos"}</p>
           </div>
-          <p className='graph-label-x-delayed'>Período de Ingresso</p>
+          <p className='graph-label-x-delayed'>Disciplinas</p>
         </div>
       ) : null}
     </React.Fragment>

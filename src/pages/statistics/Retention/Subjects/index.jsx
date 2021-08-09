@@ -15,7 +15,7 @@ import "rsuite/dist/styles/rsuite-default.css";
 import { select_items } from "./util";
 
 const RetentionSubjects = () => {
-  const query = "";
+  const query = "/statistics/retention/subjects";
   const [delayedData, setDelayedData] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
@@ -31,6 +31,7 @@ const RetentionSubjects = () => {
       setLoading(true);
 
       const response = await updateGraph(query, loading);
+      console.log(response)
       if (response) {
         setAllData(response);
       }
@@ -50,16 +51,16 @@ const RetentionSubjects = () => {
 
   const setAllData = response => {
     setDelayedData(parseDelayedData(response.data));
-    setDataCSV(response.dataCSV);
+    setDataCSV(response.dataCSV.subjectRetention);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
 
   const parseDelayedData = data => {
-    return data.terms.map(element => {
+    return data.subjectRetentionSummary.map(element => {
       return {
-        ...element.metricsSummary.metrics,
-        term: element.admissionTerm,
+        ...element,
+        term: element.idealTerm,
       };
     });
   };
