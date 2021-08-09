@@ -24,7 +24,6 @@ const AlumniGlossary = () => {
     });
 
     if (res) {
-      console.log(res.data)
       setData(res.data);
     } else {
       console.error(res.statusText);
