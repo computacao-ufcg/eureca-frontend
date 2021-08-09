@@ -57,12 +57,11 @@ const SubjectsCardHome = () => {
     const subjectStatistics = subject.subjectMetricsStatistics;
 
     return [
-      subjectStatistics.subjectsCount, //
+      subject.subjectsCount,
       subjectStatistics.failedDueToGrade.average.toFixed(1) + "% ",
       subjectStatistics.failedDueToAbsences.average.toFixed(1) + "% ",
       subjectStatistics.cancelled.average.toFixed(1) + "% ",
       subjectStatistics.succeeded.average.toFixed(1) + "% ",
-      // subjectStatistics.enrollmentsCount,
       subjectStatistics.exempted.average.toFixed(1) + "% ",
     ];
   };
@@ -100,7 +99,7 @@ const SubjectsCardHome = () => {
               cards={cards}
               option={optionSubject}
               dataSubjects={propSubjects}
-              data={labelActives}
+              labels={labelActives}
               title={titleSubject}
             />
             <div className='type-students-grid'>

@@ -5,7 +5,7 @@ import "./styles.css";
 import { MiniCardHomeSubjects, MiniCardHomeSubjectsTop } from "../../MiniCardHome";
 
 const SubjectsSummaryCardHome = props => {
-  const labels = props.data;
+  const labels = props.labels;
   const data = props.dataSubjects;
 
   return (
