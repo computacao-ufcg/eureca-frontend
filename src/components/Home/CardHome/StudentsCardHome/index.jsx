@@ -10,7 +10,8 @@ import StudentsSummaryCardHome from "./StudentsSummaryCardHome";
 import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 
-import { labelActives, labelDropout, labelDelayed, labelAlumni } from "./util";
+import { labelActives, labelDropout, labelAlumni } from "./util";
+import { translateRiskAndCost } from "../util";
 
 import { api_EB } from "../../../../services/api";
 
@@ -52,51 +53,11 @@ const StudentsCardHome = () => {
     }
   };
 
-  const translateData = (data, isAverage) => {
-    const summary = isAverage ? data.average : data;
-    let risk;
-    let cost;
-
-    if (summary.riskClass === "INACCURATE") {
-      risk = "Inexato";
-    } else if (summary.riskClass === "SAFE") {
-      risk = "Seguro";
-    } else if (summary.riskClass === "LOW") {
-      risk = "Baixo";
-    } else if (summary.riskClass === "AVERAGE") {
-      risk = "Médio";
-    } else if (summary.riskClass === "HIGH") {
-      risk = "Alto";
-    } else if (summary.riskClass === "UNFEASIBLE") {
-      risk = "Inviável";
-    } else {
-      risk = "Não Aplicável";
-    }
-
-    if (summary.costClass === "INACCURATE") {
-      cost = "Inexato";
-    } else if (summary.costClass === "ADEQUATE") {
-      cost = "Adequado";
-    } else if (summary.costClass === "REGULAR") {
-      cost = "Regular";
-    } else if (summary.costClass === "HIGH") {
-      cost = "Alto";
-    } else if (summary.costClass === "VERY_HIGH") {
-      cost = "Muito Alto";
-    } else if (summary.costClass === "UNACCEPTABLE") {
-      cost = "Inaceitável";
-    } else {
-      cost = "Não Aplicável";
-    }
-
-    return { risk, cost };
-  };
-
   const setPropsActives = data => {
     const successRate = data ? data.activesSummary.average.metrics.successRate * 100 : 0;
 
     if (data) {
-      const { risk, cost } = translateData(data.activesSummary, true);
+      const { risk, cost } = translateRiskAndCost(data.activesSummary);
 
       setPropsStudents([
         data.activesSummary.activesCount,
@@ -122,7 +83,7 @@ const StudentsCardHome = () => {
 
   const setPropsAlumni = data => {
     if (data) {
-      const { cost } = translateData(data.alumniSummary, false);
+      const { cost } = translateRiskAndCost(data.alumniSummary);
 
       setPropsStudents([
         data.alumniSummary.alumniCount,
@@ -162,7 +123,7 @@ const StudentsCardHome = () => {
         data.dropoutsSummary.dropouts.cancelledCourseChange +
         data.dropoutsSummary.dropouts.transferred;
 
-      const { cost } = translateData(data.dropoutsSummary, false);
+      const { cost } = translateRiskAndCost(data.dropoutsSummary);
 
       setPropsStudents([
         data.dropoutsSummary.dropoutCount,
