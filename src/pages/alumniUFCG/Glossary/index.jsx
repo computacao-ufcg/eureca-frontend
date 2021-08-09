@@ -15,7 +15,7 @@ const AlumniGlossary = () => {
   }, []);
 
   const getGlossary = async () => {
-    let query = `/statistics/students/alumni?from=1950.0&language=PORTUGUESE&to=2049.9`;
+    let query = `/alumni`;
 
     const res = await api_EB.get(query, {
       headers: {
@@ -24,6 +24,7 @@ const AlumniGlossary = () => {
     });
 
     if (res) {
+      console.log(res.data)
       setData(res.data);
     } else {
       console.error(res.statusText);
