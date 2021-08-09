@@ -59,10 +59,14 @@ const RetentionStudents = () => {
 
   const parseDelayedData = data => {
     return data.terms.map(element => {
-      return {
+      let delayedElement=  {
         ...element.metricsSummary.metrics,
         term: element.admissionTerm,
       };
+      for(var k in element.metricsSummary.metrics) {
+        delayedElement[k] = Math.round(delayedElement[k] * 10) / 10
+      };
+      return delayedElement;
     });
   };
 
