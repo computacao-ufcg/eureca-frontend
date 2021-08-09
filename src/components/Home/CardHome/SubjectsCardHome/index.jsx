@@ -46,6 +46,7 @@ const SubjectsCardHome = () => {
     });
 
     if (res) {
+      console.log(res.data)
       setDataSubjects(res.data);
       setPropsSubjectsMandatory(res.data);
     } else {
@@ -57,13 +58,14 @@ const SubjectsCardHome = () => {
     const subjectStatistics = subject.subjectMetricsStatistics;
 
     return [
-      subjectStatistics.subjectsCount, //
+      subject.subjectsCount,
       subjectStatistics.failedDueToGrade.average.toFixed(1) + "% ",
       subjectStatistics.failedDueToAbsences.average.toFixed(1) + "% ",
       subjectStatistics.cancelled.average.toFixed(1) + "% ",
       subjectStatistics.succeeded.average.toFixed(1) + "% ",
-      // subjectStatistics.enrollmentsCount,
+      subjectStatistics.totalEnrolled.average.toFixed(1) + "%",
       subjectStatistics.exempted.average.toFixed(1) + "% ",
+      
     ];
   };
 
