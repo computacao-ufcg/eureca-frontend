@@ -36,12 +36,12 @@ const getSummaryCostClass = summary => {
   }
 };
 
-export default {
-  translateRiskAndCost: data => {
-    const summary = data.average || data;
-    const risk = getSummaryRiskClass(summary);
-    const cost = getSummaryCostClass(summary);
+const translateRiskAndCost = data => {
+  const summary = data.average || data;
+  const risk = getSummaryRiskClass(summary);
+  const cost = getSummaryCostClass(summary);
 
-    return { risk, cost };
-  },
+  return { risk, cost };
 };
+
+export { translateRiskAndCost };
