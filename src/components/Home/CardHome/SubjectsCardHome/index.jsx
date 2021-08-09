@@ -14,9 +14,10 @@ const SubjectsCardHome = () => {
     "MÉDIA DE REPROVAÇÕES/FALTA",
     "MÉDIA DE TRANCAMENTOS",
     "MÉDIA DE APROVAÇÕES",
-    "TOTAL DE MATRÍCULAS",
+    "MÉDIA DE MATRÍCULAS",
     "MÉDIA DE DISPENSAS",
   ];
+
   const [optionSubject, setOptionSubject] = useState("obrigatórias");
   const [titleSubject, setTitleSubject] = useState("Obrigatórias");
   const [cards, setCards] = useState({
@@ -29,7 +30,6 @@ const SubjectsCardHome = () => {
     card7: true,
   });
   const [propSubjects, setPropsSubjects] = useState([]);
-  const [labels, setLabels] = useState(labelActives);
   const [dataSubjects, setDataSubjects] = useState();
 
   useEffect(() => {
@@ -54,14 +54,16 @@ const SubjectsCardHome = () => {
   };
 
   const formatProps = subject => {
+    const subjectStatistics = subject.subjectMetricsStatistics;
+
     return [
-      subject.subjectsCount,
-      subject.failedDueToGrade.average.toFixed(1) + "% ",
-      subject.failedDueToAbsences.average.toFixed(1) + "% ",
-      subject.cancelled.average.toFixed(1) + "% ",
-      subject.succeeded.average.toFixed(1) + "% ",
-      subject.enrollmentsCount,
-      subject.exempted.average.toFixed(1) + "% ",
+      subjectStatistics.subjectsCount, //
+      subjectStatistics.failedDueToGrade.average.toFixed(1) + "% ",
+      subjectStatistics.failedDueToAbsences.average.toFixed(1) + "% ",
+      subjectStatistics.cancelled.average.toFixed(1) + "% ",
+      subjectStatistics.succeeded.average.toFixed(1) + "% ",
+      // subjectStatistics.enrollmentsCount,
+      subjectStatistics.exempted.average.toFixed(1) + "% ",
     ];
   };
 
@@ -98,18 +100,12 @@ const SubjectsCardHome = () => {
               cards={cards}
               option={optionSubject}
               dataSubjects={propSubjects}
-              data={labels}
+              data={labelActives}
               title={titleSubject}
             />
             <div className='type-students-grid'>
               <div className='type-students'>
-                <div
-                  className={
-                    optionSubject === "obrigatórias"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionSubject === "obrigatórias" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -124,13 +120,7 @@ const SubjectsCardHome = () => {
                     OBRIGATÓRIAS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionSubject === "optativas"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionSubject === "optativas" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -145,13 +135,7 @@ const SubjectsCardHome = () => {
                     OPTATIVAS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionSubject === "eletivas"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionSubject === "eletivas" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -166,13 +150,7 @@ const SubjectsCardHome = () => {
                     ELETIVAS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionSubject === "complementares"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionSubject === "complementares" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'

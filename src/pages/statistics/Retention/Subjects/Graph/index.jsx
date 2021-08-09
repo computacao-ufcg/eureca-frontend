@@ -1,23 +1,13 @@
 import React from "react";
 import "./style.css";
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 import { subtitles_translations } from "../util";
 
 const DelayedGraph = props => {
   // obtém a tradução correspondente do valor selecionado
-  const labelSelected = subtitles_translations[props.option]
-    ? subtitles_translations[props.option].name
-    : "";
+  const labelSelected = subtitles_translations[props.option] ? subtitles_translations[props.option].name : "";
 
   return (
     <React.Fragment>
@@ -35,18 +25,11 @@ const DelayedGraph = props => {
           >
             <CartesianGrid strokeDasharray='3 3' />
 
-            <XAxis
-              dataKey='term'
-              interval={1}
-              allowDuplicatedCategory={false}
-            />
+            <XAxis dataKey='term' interval={1} allowDuplicatedCategory={false} />
             <YAxis yAxisId='left' dataKey={props.option} />
 
             <Tooltip />
-            <Legend
-              verticalAlign='top'
-              margin={{ top: 30, left: 10, right: 0, bottom: 0 }}
-            />
+            <Legend verticalAlign='top' margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
             <Line
               isAnimationActive={false}
               dataKey={props.option}
@@ -57,7 +40,7 @@ const DelayedGraph = props => {
               key='Número de Egressos'
             />
           </LineChart>
-          <div className="axis-y">
+          <div className='axis-y'>
             <p className='graph-label-y-delayed'>{labelSelected || "Retidos"}</p>
           </div>
           <p className='graph-label-x-delayed'>Período de Ingresso</p>

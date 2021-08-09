@@ -47,13 +47,7 @@ const EnrollmentsCardHome = props => {
             {data && <EnrollmentsSummaryCardHome data={data} title={title} />}
             <div className='type-students-grid'>
               <div className='type-students'>
-                <div
-                  className={
-                    optionEnrollment === "obrigatorias"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionEnrollment === "obrigatorias" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -69,13 +63,7 @@ const EnrollmentsCardHome = props => {
                     OBRIGATÓRIAS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionEnrollment === "optative"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionEnrollment === "optative" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -91,13 +79,7 @@ const EnrollmentsCardHome = props => {
                     OPTATIVAS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionEnrollment === "eletivas"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionEnrollment === "eletivas" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -113,13 +95,7 @@ const EnrollmentsCardHome = props => {
                     ELETIVAS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionEnrollment === "complementares"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionEnrollment === "complementares" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'

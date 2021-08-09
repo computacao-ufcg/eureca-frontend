@@ -106,10 +106,7 @@ const Disqualified = props => {
         <React.Fragment>
           <div className='main-disqualified'>
             <div>
-              <ListDisqualified
-                handleInput={handleInput}
-                listData={data ? data : []}
-              />
+              <ListDisqualified handleInput={handleInput} listData={data ? data : []} />
               <hr />
             </div>
             {!selectCompany ? (
@@ -117,10 +114,7 @@ const Disqualified = props => {
             ) : (
               <div className='select-company'>
                 <h6>Selecione um tipo para a Empresa:</h6>
-                <ListOptions
-                  data={dataCompanyType}
-                  onPickerOption={handleSelect}
-                />
+                <ListOptions data={dataCompanyType} onPickerOption={handleSelect} />
                 <button onClick={handleSubmit}>Associar</button>
               </div>
             )}

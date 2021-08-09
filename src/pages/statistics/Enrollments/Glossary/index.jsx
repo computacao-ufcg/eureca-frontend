@@ -75,13 +75,11 @@ const EnrollmentsGlossary = () => {
             </div>
             <div className='bottom-container'>
               <div>
-                <b>{data.glossary.max.name + ": "}</b>{" "}
-                {data.glossary.max.description}
+                <b>{data.glossary.max.name + ": "}</b> {data.glossary.max.description}
               </div>
               <br />
               <div>
-                <b>{data.glossary.min.name + ": "}</b>{" "}
-                {data.glossary.min.description}
+                <b>{data.glossary.min.name + ": "}</b> {data.glossary.min.description}
               </div>
               <br />
             </div>

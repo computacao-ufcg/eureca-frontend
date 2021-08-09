@@ -54,9 +54,7 @@ const StudentsCardHome = () => {
   };
 
   const setPropsActives = data => {
-    const successRate = data
-      ? data.activesSummary.average.metrics.successRate * 100
-      : 0;
+    const successRate = data ? data.activesSummary.average.metrics.successRate * 100 : 0;
 
     if (data) {
       const { risk, cost } = translateRiskAndCost(data.activesSummary);
@@ -64,16 +62,12 @@ const StudentsCardHome = () => {
       setPropsStudents([
         data.activesSummary.activesCount,
         risk + " (" + data.activesSummary.average.metrics.risk.toFixed(2) + ")",
-        data.activesSummary.average.metrics.averageLoad.toFixed(1) +
-          " créditos",
+        data.activesSummary.average.metrics.averageLoad.toFixed(1) + " créditos",
         successRate.toFixed(1) + "%",
-        data.activesSummary.average.metrics.courseDurationPrediction.toFixed(
-          1
-        ) + " períodos",
+        data.activesSummary.average.metrics.courseDurationPrediction.toFixed(1) + " períodos",
         {
           custo: cost,
-          valor:
-            " (" + data.activesSummary.average.metrics.cost.toFixed(1) + ")",
+          valor: " (" + data.activesSummary.average.metrics.cost.toFixed(1) + ")",
         },
         data.activesSummary.average.termsCount.toFixed(1) + " períodos",
       ]);
@@ -93,14 +87,8 @@ const StudentsCardHome = () => {
 
       setPropsStudents([
         data.alumniSummary.alumniCount,
-        data.alumniSummary.minAlumniCount +
-          " (" +
-          data.alumniSummary.minAlumniCountTerm +
-          ")",
-        data.alumniSummary.maxAlumniCount +
-          " (" +
-          data.alumniSummary.maxAlumniCountTerm +
-          ")",
+        data.alumniSummary.minAlumniCount + " (" + data.alumniSummary.minAlumniCountTerm + ")",
+        data.alumniSummary.maxAlumniCount + " (" + data.alumniSummary.maxAlumniCountTerm + ")",
         data.alumniSummary.averageAlumniCount.toFixed(1),
         data.alumniSummary.averageGpa.toFixed(2),
         {
@@ -177,13 +165,7 @@ const StudentsCardHome = () => {
             />
             <div className='type-students-grid'>
               <div className='type-students'>
-                <div
-                  className={
-                    optionStudent === "actives"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionStudent === "actives" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -199,13 +181,7 @@ const StudentsCardHome = () => {
                     ATIVOS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionStudent === "dropout"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionStudent === "dropout" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -221,13 +197,7 @@ const StudentsCardHome = () => {
                     EVADIDOS
                   </button>
                 </div>
-                <div
-                  className={
-                    optionStudent === "alumni"
-                      ? "type-student-selected"
-                      : "type-student"
-                  }
-                >
+                <div className={optionStudent === "alumni" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'

@@ -5,12 +5,7 @@ import { Modal, Button, Icon } from "rsuite";
 const Confirm = props => {
   return (
     <div className='classified-modal-container'>
-      <Modal
-        backdrop='static'
-        show={props.showModal}
-        onHide={() => props.hideModal(!props.showModal)}
-        size='xs'
-      >
+      <Modal backdrop='static' show={props.showModal} onHide={() => props.hideModal(!props.showModal)} size='xs'>
         <Modal.Body>
           <Icon
             icon='remind'
@@ -32,10 +27,7 @@ const Confirm = props => {
           >
             Sim
           </Button>
-          <Button
-            onClick={() => props.hideModal(!props.showModal)}
-            appearance='primary'
-          >
+          <Button onClick={() => props.hideModal(!props.showModal)} appearance='primary'>
             Não
           </Button>
         </Modal.Footer>

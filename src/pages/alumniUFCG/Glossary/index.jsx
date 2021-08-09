@@ -47,8 +47,7 @@ const AlumniGlossary = () => {
             <div className='main-container-glossary'>
               <div className='left-container'>
                 <div>
-                  <b>{data.glossary.alumniTracked.name + ": "}</b>{" "}
-                  {data.glossary.alumniTracked.description}
+                  <b>{data.glossary.alumniTracked.name + ": "}</b> {data.glossary.alumniTracked.description}
                 </div>
                 <br />
                 <div>
@@ -61,8 +60,7 @@ const AlumniGlossary = () => {
               </div>
               <div className='right-container'>
                 <div>
-                  <b>{data.glossary.employersInIndustry.name + ": "}</b>{" "}
-                  {data.glossary.employersInIndustry.description}
+                  <b>{data.glossary.employersInIndustry.name + ": "}</b> {data.glossary.employersInIndustry.description}
                 </div>
                 <br />
                 <div>
@@ -73,13 +71,11 @@ const AlumniGlossary = () => {
             </div>
             <div className='bottom-container'>
               <div>
-                <b>{data.glossary.employersInOngs.name + ": "}</b>{" "}
-                {data.glossary.employersInOngs.description}
+                <b>{data.glossary.employersInOngs.name + ": "}</b> {data.glossary.employersInOngs.description}
               </div>
               <br />
               <div>
-                <b>{data.glossary.employersInAcademy.name + ": "}</b>{" "}
-                {data.glossary.employersInAcademy.description}
+                <b>{data.glossary.employersInAcademy.name + ": "}</b> {data.glossary.employersInAcademy.description}
               </div>
             </div>
           </div>

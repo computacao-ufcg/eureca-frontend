@@ -47,13 +47,11 @@ const TeachersGlossary = () => {
             <div className='main-container-teachers-glossary'>
               <div className='left-container'>
                 <div>
-                  <b>{data.glossary.max.name + ": "}</b>{" "}
-                  {data.glossary.max.description}
+                  <b>{data.glossary.max.name + ": "}</b> {data.glossary.max.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.min.name + ": "}</b>{" "}
-                  {data.glossary.min.description}
+                  <b>{data.glossary.min.name + ": "}</b> {data.glossary.min.description}
                 </div>
                 <br />
               </div>
@@ -62,26 +60,22 @@ const TeachersGlossary = () => {
               </div>
               <div className='right-container'>
                 <div>
-                  <b>{data.glossary.failedDueToAbsences.name + ": "}</b>{" "}
-                  {data.glossary.failedDueToAbsences.description}
+                  <b>{data.glossary.failedDueToAbsences.name + ": "}</b> {data.glossary.failedDueToAbsences.description}
                 </div>
                 <br />
                 <div>
-                  <b>{data.glossary.failedDueToGrade.name + ": "}</b>{" "}
-                  {data.glossary.failedDueToGrade.description}
+                  <b>{data.glossary.failedDueToGrade.name + ": "}</b> {data.glossary.failedDueToGrade.description}
                 </div>
                 <br />
               </div>
             </div>
             <div className='bottom-container'>
               <div>
-                <b>{data.glossary.failedDueToCanceling.name + ": "}</b>{" "}
-                {data.glossary.failedDueToCanceling.description}
+                <b>{data.glossary.failedDueToCanceling.name + ": "}</b> {data.glossary.failedDueToCanceling.description}
               </div>
               <br />
               <div>
-                <b>{data.glossary.success.name + ": "}</b>{" "}
-                {data.glossary.success.description}
+                <b>{data.glossary.success.name + ": "}</b> {data.glossary.success.description}
               </div>
               <br />
             </div>

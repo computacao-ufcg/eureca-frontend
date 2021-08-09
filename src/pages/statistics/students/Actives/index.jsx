@@ -27,6 +27,7 @@ const Actives = () => {
 
       const response = await updateGraph(query, loading);
       if (response) {
+        console.log(response)
         setAllData(response);
       }
 
@@ -45,7 +46,7 @@ const Actives = () => {
 
   const setAllData = response => {
     setDataActives(response.data.activesPerTermSummaries);
-    setDataExport(response.dataCSV);
+    setDataExport(response.dataCSV.students);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
@@ -64,11 +65,7 @@ const Actives = () => {
           </div>
           <div className='actives-title'>Ativos</div>
           <div className='actives-graph-box'>
-            <ActiveSlider
-              changeSlider={handleSlider}
-              firstTerm={firstTerm}
-              lastTerm={lastTerm}
-            />
+            <ActiveSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
           </div>
           <ActiveGraph data={dataActives} />
           <div className='main-actives-export'>
