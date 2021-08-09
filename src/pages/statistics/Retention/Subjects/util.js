@@ -37,20 +37,20 @@ const subtitles_translations = {
   maximum: {
     name: "Máxima",
   },
-  minimum: { 
-    name: "Mínimo"
+  minimum: {
+    name: "Mínimo",
   },
-  first_quarter: { 
-    name: "Primeiro quartil"
+  first_quarter: {
+    name: "Primeiro quartil",
   },
   median: {
-    name: "Mediana"
+    name: "Mediana",
   },
-  third_quarter: { 
-    name: "Terceiro quartil"
+  third_quarter: {
+    name: "Terceiro quartil",
   },
-  average: { 
-    name: "Média"
+  average: {
+    name: "Média",
   },
 };
 
@@ -84,7 +84,7 @@ const select_items = [
     label: "Média",
     value: "average",
     role: "Master",
-  }
+  },
 ];
 
 export { labels, prediction, subtitles_translations, select_items };

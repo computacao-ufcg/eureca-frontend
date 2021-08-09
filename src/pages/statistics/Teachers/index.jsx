@@ -16,6 +16,7 @@ const Teachers = () => {
   const [variable, setVariable] = useState("successRate");
   const [label, setLabel] = useState("Taxa de sucesso");
   const [data, setData] = useState([]);
+  const [dataExport, setDataExport] = useState([]);
 
   const handleVariableChange = variable => {
     setVariable(variable);
@@ -25,7 +26,7 @@ const Teachers = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/teachers/summary/csv?from=1950.0&language=PORTUGUESE&to=2049.9`;
+      const query = `/statistics/teachers/summary`;
       try {
         const res = await api_EB.get(query, {
           headers: {
@@ -35,6 +36,7 @@ const Teachers = () => {
 
         if (res) {
           setData(res.data);
+          setDataExport(res.dataCSV.teachers);
         }
       } catch (err) {
         console.error(err);
@@ -130,7 +132,7 @@ const Teachers = () => {
                 />
               </div>
             </div>
-            <Export data={data} name={"teachers"} />
+            <Export data={dataExport} name={"teachers"} />
           </div>
         </div>
       </div>

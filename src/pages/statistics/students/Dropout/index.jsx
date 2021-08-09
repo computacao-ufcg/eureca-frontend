@@ -43,7 +43,7 @@ const Dropout = () => {
 
   const setAllData = response => {
     setDataEgressos(response.data.dropoutPerTermSummaries);
-    setDataCSV(response.dataCSV);
+    setDataCSV(response.dataCSV.students);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
@@ -63,11 +63,7 @@ const Dropout = () => {
             </div>
             <div className='dropout-slider'>
               <div className='dropout-title'>Evadidos</div>
-              <DropoutSlider
-                changeSlider={handleSlider}
-                firstTerm={firstTerm}
-                lastTerm={lastTerm}
-              />
+              <DropoutSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
               <DropoutGraph data={dataEgressos} />
               <Export data={dataCSV} name={"dropout"} />
             </div>

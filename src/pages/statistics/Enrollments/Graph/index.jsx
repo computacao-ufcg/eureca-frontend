@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 import "./style.css";
 
@@ -39,10 +31,8 @@ const EnrollmentsGraph = props => {
         />
         <Bar dataKey={props.variable} fill='#886859' key='Número de turmas' />
       </BarChart>
-      
-      <p className='graph-label-y-enrollments'>
-        {props.label || "Total de Matrículas"}
-      </p>
+
+      <p className='graph-label-y-enrollments'>{props.label || "Total de Matrículas"}</p>
       <p className='graph-label-x-enrollments'>Disciplinas</p>
     </div>
   );

@@ -53,7 +53,7 @@ const Alumni = () => {
 
   const setAllData = response => {
     setDataEgressos(response.data.alumniPerTermSummaries);
-    setDataCSV(response.dataCSV);
+    setDataCSV(response.dataCSV.students);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
@@ -73,16 +73,9 @@ const Alumni = () => {
             </div>
             <div className='alumni-slider'>
               <div className='alumni-title'>Egressos</div>
-              <AlumniSlider
-                changeSlider={handleSlider}
-                firstTerm={firstTerm}
-                lastTerm={lastTerm}
-              />
+              <AlumniSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
               <div className='graph'>
-                <AlumniGraph
-                  data={dataEgressos || {}}
-                  option={optionSelected}
-                />
+                <AlumniGraph data={dataEgressos || {}} option={optionSelected} />
                 <SelectPicker
                   onChange={value => setOptionSelected(value)}
                   data={select_items}

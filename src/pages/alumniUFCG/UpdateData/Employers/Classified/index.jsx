@@ -72,9 +72,7 @@ const Classified = props => {
       ) : data.length === 0 ? (
         <div className='classified-no-data-found'>
           {" "}
-          <NoDataFound
-            msg={"Nenhuma classificação feita até o momento."}
-          />{" "}
+          <NoDataFound msg={"Nenhuma classificação feita até o momento."} />{" "}
         </div>
       ) : (
         <Table
@@ -100,11 +98,7 @@ const Classified = props => {
               {rowData => {
                 return (
                   <span className='pointer'>
-                    <a
-                      target={"_blank"}
-                      href={rowData.linkedinId}
-                      rel='noopener noreferrer'
-                    >
+                    <a target={"_blank"} href={rowData.linkedinId} rel='noopener noreferrer'>
                       Link
                     </a>
                   </span>
