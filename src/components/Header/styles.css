@@ -57,6 +57,7 @@
 }
 
 .header-container .header-2 p {
+  min-width: 303px;
   position: relative;
   align-self: flex-end;
   margin: 2vh 0;
@@ -66,4 +67,9 @@
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.1px;
+}
+
+.select-curriculum{
+  margin: 2vh 0;
+  margin-left: 74%;
 }

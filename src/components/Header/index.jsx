@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom";
 
 import eureca_logo from "../../assets/header/eureca.svg";
 
+import { SelectPicker } from "rsuite";
+import "rsuite/dist/styles/rsuite-default.css";
+
 import "./styles.css";
 
 const Header = () => {
@@ -29,6 +32,9 @@ const Header = () => {
       </div>
       <div className='header-2'>
         <p>ciência da computação</p>
+        <div className='select-curriculum'>
+          <SelectPicker/>
+        </div>
       </div>
     </div>
   );
