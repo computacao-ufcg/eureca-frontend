@@ -5,7 +5,7 @@ import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 import { Link } from "react-router-dom";
 import { api_EB } from "../../../../services/api";
-import { translateRiskAndCost } from "../../../util";
+import { translateRiskAndCost } from "../util";
 
 const RetentionCardHome = () => {
   const labelSubjects = ["MÁXIMA", "MÍNIMA", "PRIMEIRO QUARTIL", "MEDIANA", "TERCEIRO QUARTIL", "MÉDIA"];
