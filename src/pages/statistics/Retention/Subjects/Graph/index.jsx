@@ -3,11 +3,7 @@ import "./style.css";
 
 import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, } from "recharts";
 
-import { subtitles_translations } from "../util";
-
 const DelayedGraph = props => {
-  // obtém a tradução correspondente do valor selecionado
-  const labelSelected = subtitles_translations[props.option] ? subtitles_translations[props.option].name : "";
 
   return (
     <React.Fragment>
@@ -16,6 +12,7 @@ const DelayedGraph = props => {
           <BarChart
             width={800}
             height={500}
+            data={props.data}
             margin={{
               top: 5,
               right: 30,
@@ -25,8 +22,8 @@ const DelayedGraph = props => {
           >
             <CartesianGrid strokeDasharray='3 3' />
 
-            <XAxis dataKey='term' interval={1} allowDuplicatedCategory={false} />
-            <YAxis yAxisId='left' dataKey={props.option} />
+            <XAxis dataKey='subjectName' tick={false} />
+            <YAxis yAxisId='left' dataKey="retention" />
 
             <Tooltip />
             <Legend 
@@ -35,18 +32,16 @@ const DelayedGraph = props => {
               verticalAlign='top' 
               margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
             <Bar
-              isAnimationActive={false}
-              dataKey={props.option}
+              dataKey="retention"
               data={props.data}
-              name={labelSelected}
+              name="retenção"
               yAxisId='left'
               stroke='#885d41'
-              key='Número de Egressos'
               fill='#886859'
             />
           </BarChart>
           <div className='axis-y'>
-            <p className='graph-label-y-delayed'>{labelSelected || "Retidos"}</p>
+            <p className='graph-label-y-delayed'>{"Retenção"}</p>
           </div>
           <p className='graph-label-x-delayed'>Disciplinas</p>
         </div>
