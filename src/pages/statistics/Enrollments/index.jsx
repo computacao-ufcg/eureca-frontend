@@ -46,29 +46,6 @@ const Enrollments = () => {
     setLabel(proposedLabel.label);
   };
 
-  const disciplineTypes = [
-    {
-      label: "Obrigatórias",
-      value: "obrigatorias",
-      role: "Master",
-    },
-    {
-      label: "Eletivas",
-      value: "eletivas",
-      role: "Master",
-    },
-    {
-      label: "Optativas",
-      value: "optatives",
-      role: "Master",
-    },
-    {
-      label: "Complementares",
-      value: "complementary",
-      role: "Master",
-    },
-  ];
-
   const variables = [
     {
       label: "Total de matrículas",
@@ -105,15 +82,6 @@ const Enrollments = () => {
             <div className='graph'>
               <EnrollmentsGraph variable={variable} data={data} label={label} />
               <div className='selectors'>
-                <h6>Disciplinas</h6>
-                <SelectPicker
-                  onChange={value => setDisciplineOption(value)}
-                  data={disciplineTypes}
-                  className='selector-enrollments'
-                  defaultValue={disciplineOption}
-                  searchable={false}
-                  cleanable={false}
-                />
                 <h6>Variável</h6>
                 <SelectPicker
                   onChange={value => handleVariableChange(value)}
