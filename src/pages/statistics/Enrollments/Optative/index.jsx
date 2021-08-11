@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import Export from "../../../../components/Export";
 import Header from "../../../../components/Header";
 
-import EnrollmentsGraph from "./Graph"
+import EnrollmentsGraph from "./Graph";
 
 import { FiArrowLeft } from "react-icons/fi";
 
