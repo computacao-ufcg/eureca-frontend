@@ -76,7 +76,7 @@ const EnrollmentsElective = () => {
             </span>
           </div>
           <div className='enrollments-elective-slider'>
-            <div className='enrollments-elective-title'>Matrículas</div>
+            <div className='enrollments-elective-title'>Matrículas - Disciplinas Eletivas</div>
             <EnrollmentSlider changeSlider={() => {}} />
             <div className='graph'>
               <EnrollmentsGraph variable={variable} data={data} label={label} />

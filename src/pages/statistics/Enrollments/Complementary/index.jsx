@@ -76,7 +76,7 @@ const EnrollmentsComplementary = () => {
             </span>
           </div>
           <div className='enrollments-complementary-slider'>
-            <div className='enrollments-complementary-title'>Matrículas</div>
+            <div className='enrollments-complementary-title'>Matrículas - Disciplinas Complementares</div>
             <EnrollmentSlider changeSlider={() => {}} />
             <div className='graph'>
               <EnrollmentsGraph variable={variable} data={data} label={label} />

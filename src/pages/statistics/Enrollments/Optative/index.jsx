@@ -76,7 +76,7 @@ const EnrollmentsOptative = () => {
             </span>
           </div>
           <div className='enrollments-optative-slider'>
-            <div className='enrollments-optative-title'>Matrículas</div>
+            <div className='enrollments-optative-title'>Matrículas - Disciplinas Optativas</div>
             <EnrollmentSlider changeSlider={() => {}} />
             <div className='graph'>
               <EnrollmentsGraph variable={variable} data={data} label={label} />
