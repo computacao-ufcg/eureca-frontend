@@ -2,7 +2,7 @@ import React from "react";
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
-import "./style.css"
+import "./style.css";
 
 const TeachersGraph = props => {
   return (
