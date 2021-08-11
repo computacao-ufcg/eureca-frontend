@@ -26,6 +26,7 @@ import AlumniGlossary from "./pages/alumniUFCG/Glossary";
 
 import Subjects from "./pages/statistics/Subjects";
 import Teachers from "./pages/statistics/Teachers";
+import EnrollmentsElective from "./pages/statistics/Enrollments/Elective";
 
 const Routes = () => {
   return (
@@ -45,6 +46,7 @@ const Routes = () => {
         <PrivateRoute exact path='/statistics/retention/subjects' component={() => <RetentionSubjects />} />
         <PrivateRoute exact path='/statistics/enrollments/mandatory' component={() => <EnrollmentsMandatory />} />
         <PrivateRoute exact path='/statistics/enrollments/optative' component={() => <EnrollmentsOptative />} />
+        <PrivateRoute exact path='/statistics/enrollments/elective' component={() => <EnrollmentsElective />} />
         <PrivateRoute exact path='/alumniUFCG/glossary' component={() => <AlumniGlossary />} />
         <PrivateRoute exact path='/statistics/subjects' component={() => <Subjects />} />
         <PrivateRoute exact path='/statistics/teachers' component={() => <Teachers />} />

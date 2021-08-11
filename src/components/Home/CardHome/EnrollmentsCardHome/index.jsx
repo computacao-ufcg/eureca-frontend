@@ -79,13 +79,13 @@ const EnrollmentsCardHome = props => {
                     OPTATIVAS
                   </button>
                 </div>
-                <div className={optionEnrollment === "electives" ? "type-student-selected" : "type-student"}>
+                <div className={optionEnrollment === "elective" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionEnrollment !== "electives") {
-                        setOptionEnrollment("electives");
+                      if (optionEnrollment !== "elective") {
+                        setOptionEnrollment("elective");
                         setTitle("Eletivas");
                         setLabels([]);
                         setData(data);
