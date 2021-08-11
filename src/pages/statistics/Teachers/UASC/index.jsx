@@ -85,7 +85,7 @@ const UASCTeachers = () => {
             </span>
           </div>
           <div className='teachers-uasc-slider'>
-            <div className='teachers-uasc-title'>Docentes</div>
+            <div className='teachers-uasc-title'>Docentes - UASC</div>
             <TeachersSlider changeSlider={() => {}} />
             <div className='graph'>
               <TeachersGraph variable={variable} data={data} label={label} />
