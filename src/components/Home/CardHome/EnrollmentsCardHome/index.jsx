@@ -13,7 +13,7 @@ import EnrollmentsSummaryCardHome from "./EnrollmentsSummaryCardHome";
 
 const EnrollmentsCardHome = props => {
   const [data, setData] = useState();
-  const [optionEnrollment, setOptionEnrollment] = useState("obrigatorias");
+  const [optionEnrollment, setOptionEnrollment] = useState("mandatory");
   const [title, setTitle] = useState("Obrigatórias");
   const [labels, setLabels] = useState();
 
@@ -47,13 +47,13 @@ const EnrollmentsCardHome = props => {
             {data && <EnrollmentsSummaryCardHome data={data} title={title} />}
             <div className='type-students-grid'>
               <div className='type-students'>
-                <div className={optionEnrollment === "obrigatorias" ? "type-student-selected" : "type-student"}>
+                <div className={optionEnrollment === "mandatory" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionEnrollment !== "obrigatorias") {
-                        setOptionEnrollment("obrigatorias");
+                      if (optionEnrollment !== "mandatory") {
+                        setOptionEnrollment("mandatory");
                         setTitle("Obrigatórias");
                         setLabels([]);
                         setData(data);
@@ -79,7 +79,7 @@ const EnrollmentsCardHome = props => {
                     OPTATIVAS
                   </button>
                 </div>
-                <div className={optionEnrollment === "eletivas" ? "type-student-selected" : "type-student"}>
+                <div className={optionEnrollment === "electives" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
@@ -95,13 +95,13 @@ const EnrollmentsCardHome = props => {
                     ELETIVAS
                   </button>
                 </div>
-                <div className={optionEnrollment === "complementares" ? "type-student-selected" : "type-student"}>
+                <div className={optionEnrollment === "complementary" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionEnrollment !== "complementares") {
-                        setOptionEnrollment("complementares");
+                      if (optionEnrollment !== "complementary") {
+                        setOptionEnrollment("complementary");
                         setTitle("Complementares");
                         setLabels([]);
                         setData(data);
@@ -115,7 +115,7 @@ const EnrollmentsCardHome = props => {
             </div>
           </div>
           <div className='card-home-content-footer'>
-            <Link to={"/statistics/enrollments/"}>
+            <Link to={"/statistics/enrollments/" + optionEnrollment}>
               <button type='button'>VER MAIS</button>
             </Link>
             <Link to={"/statistics/enrollments/glossary"}>
