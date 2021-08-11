@@ -18,6 +18,7 @@ import EnrollmentsMandatory from "./pages/statistics/Enrollments/Mandatory";
 import EnrollmentsOptative from "./pages/statistics/Enrollments/Optative";
 import EnrollmentsElective from "./pages/statistics/Enrollments/Elective";
 import EnrollmentsComplementary from "./pages/statistics/Enrollments/Complementary";
+import UASCTeachers from "./pages/statistics/Teachers/UASC"
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -27,7 +28,7 @@ import RetentionGlossary from "./pages/statistics/Retention/Glossary";
 import AlumniGlossary from "./pages/alumniUFCG/Glossary";
 
 import Subjects from "./pages/statistics/Subjects";
-import Teachers from "./pages/statistics/Teachers";
+
 
 
 const Routes = () => {
@@ -50,9 +51,9 @@ const Routes = () => {
         <PrivateRoute exact path='/statistics/enrollments/optative' component={() => <EnrollmentsOptative />} />
         <PrivateRoute exact path='/statistics/enrollments/elective' component={() => <EnrollmentsElective />} />
         <PrivateRoute exact path='/statistics/enrollments/complementary' component={() => <EnrollmentsComplementary />} />
+        <PrivateRoute exact path='/statistics/teachersUASC' component={() => <UASCTeachers />} />
         <PrivateRoute exact path='/alumniUFCG/glossary' component={() => <AlumniGlossary />} />
         <PrivateRoute exact path='/statistics/subjects' component={() => <Subjects />} />
-        <PrivateRoute exact path='/statistics/teachers' component={() => <Teachers />} />
         <PrivateRoute exact path='/alumniufcg/updatedata' component={() => <UpdateData />} />
         <PrivateRoute exact path='/alumniufcg/search' component={() => <Search />} />
       </Switch>
