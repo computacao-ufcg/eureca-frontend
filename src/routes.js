@@ -14,8 +14,10 @@ import Alumni from "./pages/statistics/students/Alumni";
 import Dropout from "./pages/statistics/students/Dropout";
 import RetentionStudents from "./pages/statistics/Retention/Students";
 import RetentionSubjects from "./pages/statistics/Retention/Subjects";
-import EnrollmentsMandatory from "./pages/statistics/Enrollments/Mandatory"
-import EnrollmentsOptative from "./pages/statistics/Enrollments/Optative"
+import EnrollmentsMandatory from "./pages/statistics/Enrollments/Mandatory";
+import EnrollmentsOptative from "./pages/statistics/Enrollments/Optative";
+import EnrollmentsElective from "./pages/statistics/Enrollments/Elective";
+import EnrollmentsComplementary from "./pages/statistics/Enrollments/Complementary";
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -26,8 +28,7 @@ import AlumniGlossary from "./pages/alumniUFCG/Glossary";
 
 import Subjects from "./pages/statistics/Subjects";
 import Teachers from "./pages/statistics/Teachers";
-import EnrollmentsElective from "./pages/statistics/Enrollments/Elective";
-import EnrollmentsComplementary from "./pages/statistics/Enrollments/Complementary";
+
 
 const Routes = () => {
   return (
