@@ -20,6 +20,7 @@ import EnrollmentsElective from "./pages/statistics/Enrollments/Elective";
 import EnrollmentsComplementary from "./pages/statistics/Enrollments/Complementary";
 import UASCTeachers from "./pages/statistics/Teachers/UASC"
 import UAMatTeachers from "./pages/statistics/Teachers/UAMat";
+import UAEstTeachers from "./pages/statistics/Teachers/UAEst";
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -53,6 +54,7 @@ const Routes = () => {
         <PrivateRoute exact path='/statistics/enrollments/complementary' component={() => <EnrollmentsComplementary />} />
         <PrivateRoute exact path='/statistics/teachersUASC' component={() => <UASCTeachers />} />
         <PrivateRoute exact path='/statistics/teachersUAMat' component={() => <UAMatTeachers/>} />
+        <PrivateRoute exact path='/statistics/teachersUAEst' component={() => <UAEstTeachers />} />
         <PrivateRoute exact path='/alumniUFCG/glossary' component={() => <AlumniGlossary />} />
         <PrivateRoute exact path='/statistics/subjects' component={() => <Subjects />} />
         <PrivateRoute exact path='/alumniufcg/updatedata' component={() => <UpdateData />} />
