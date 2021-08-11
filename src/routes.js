@@ -15,6 +15,7 @@ import Dropout from "./pages/statistics/students/Dropout";
 import RetentionStudents from "./pages/statistics/Retention/Students";
 import RetentionSubjects from "./pages/statistics/Retention/Subjects";
 import EnrollmentsMandatory from "./pages/statistics/Enrollments/Mandatory"
+import EnrollmentsOptative from "./pages/statistics/Enrollments/Optative"
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -43,6 +44,7 @@ const Routes = () => {
         <PrivateRoute exact path='/statistics/retention/students' component={() => <RetentionStudents />} />
         <PrivateRoute exact path='/statistics/retention/subjects' component={() => <RetentionSubjects />} />
         <PrivateRoute exact path='/statistics/enrollments/mandatory' component={() => <EnrollmentsMandatory />} />
+        <PrivateRoute exact path='/statistics/enrollments/optative' component={() => <EnrollmentsOptative />} />
         <PrivateRoute exact path='/alumniUFCG/glossary' component={() => <AlumniGlossary />} />
         <PrivateRoute exact path='/statistics/subjects' component={() => <Subjects />} />
         <PrivateRoute exact path='/statistics/teachers' component={() => <Teachers />} />
