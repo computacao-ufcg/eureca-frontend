@@ -69,7 +69,13 @@
   letter-spacing: 0.1px;
 }
 
-.select-curriculum{
+.select-curriculum {
   margin: 2vh 0;
   margin-left: 74%;
+  align-self: flex-end;
+}
+
+.header-2 .select-curriculum p {
+  font-size: 17px;
+  margin: 0;
 }
