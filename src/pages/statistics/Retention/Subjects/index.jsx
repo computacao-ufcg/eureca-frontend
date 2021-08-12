@@ -3,26 +3,19 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import Header from "../../../../components/Header";
-import DelayedSlider from "../../../../components/Slider";
 import updateGraph from "../../../../components/Slider/util/updateGraph";
 import Export from "../../../../components/Export";
 
 import DelayedGraph from "./Graph";
 
-import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
-import { select_items } from "./util";
-
 const RetentionSubjects = () => {
-  const query = "";
+  const query = "/statistics/retention/subjects";
   const [delayedData, setDelayedData] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
-  const [firstTerm, setFirstTerm] = useState();
-  const [lastTerm, setLastTerm] = useState();
   const [loading, setLoading] = useState(true);
 
-  const [optionSelected, setOptionSelected] = useState("maximum");
 
   const history = useHistory();
 
@@ -31,6 +24,7 @@ const RetentionSubjects = () => {
       setLoading(true);
 
       const response = await updateGraph(query, loading);
+      console.log(response)
       if (response) {
         setAllData(response);
       }
@@ -41,25 +35,15 @@ const RetentionSubjects = () => {
     fetchData();
   }, []);
 
-  const handleSlider = async (from, to) => {
-    const response = await updateGraph(query, loading, from, to);
-    if (response) {
-      setAllData(response);
-    }
-  };
-
   const setAllData = response => {
     setDelayedData(parseDelayedData(response.data));
-    setDataCSV(response.dataCSV);
-    setFirstTerm(firstTerm || response.firstTerm);
-    setLastTerm(lastTerm || response.lastTerm);
+    setDataCSV(response.dataCSV.subjectRetention);
   };
 
   const parseDelayedData = data => {
-    return data.terms.map(element => {
+    return data.subjectRetentionSummary.map(element => {
       return {
-        ...element.metricsSummary.metrics,
-        term: element.admissionTerm,
+        ...element
       };
     });
   };
@@ -68,9 +52,9 @@ const RetentionSubjects = () => {
     <React.Fragment>
       <Header />
       <div className='alumni-main'>
-        {/* {loading ? (
+        {loading ? (
           <h1>Carregando...</h1>
-        ) : ( */}
+        ) : (
         <div className='alumni-content'>
           <div className='backdot'>
             <span onClick={() => history.goBack()}>
@@ -79,25 +63,13 @@ const RetentionSubjects = () => {
           </div>
           <div className='alumni-slider'>
             <div className='alumni-title'>Disciplinas</div>
-            {/* <DelayedSlider
-                changeSlider={handleSlider}
-                firstTerm={firstTerm}
-                lastTerm={lastTerm}
-              /> */}
             <div className='graph-delayed'>
-              <DelayedGraph data={delayedData || {}} option={optionSelected} />
-              <SelectPicker
-                onChange={value => setOptionSelected(value)}
-                data={select_items}
-                className='selector'
-                defaultValue={optionSelected}
-                cleanable={false}
-              />
+              <DelayedGraph data={delayedData || {}} option="retention" />
             </div>
             <Export data={dataCSV} name={"delayed"} />
           </div>
         </div>
-        {/* )} */}
+        )} 
       </div>
     </React.Fragment>
   );

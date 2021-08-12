@@ -1,21 +1,18 @@
 import React from "react";
 import "./style.css";
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
-
-import { subtitles_translations } from "../util";
+import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, } from "recharts";
 
 const DelayedGraph = props => {
-  // obtém a tradução correspondente do valor selecionado
-  const labelSelected = subtitles_translations[props.option] ? subtitles_translations[props.option].name : "";
 
   return (
     <React.Fragment>
       {props.data ? (
         <div className='graph-main-delay'>
-          <LineChart
+          <BarChart
             width={800}
             height={500}
+            data={props.data}
             margin={{
               top: 5,
               right: 30,
@@ -25,25 +22,28 @@ const DelayedGraph = props => {
           >
             <CartesianGrid strokeDasharray='3 3' />
 
-            <XAxis dataKey='term' interval={1} allowDuplicatedCategory={false} />
-            <YAxis yAxisId='left' dataKey={props.option} />
+            <XAxis dataKey='subjectName' tick={false} />
+            <YAxis yAxisId='left' dataKey="retention" />
 
             <Tooltip />
-            <Legend verticalAlign='top' margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
-            <Line
-              isAnimationActive={false}
-              dataKey={props.option}
+            <Legend 
+              iconSize={10}
+              iconType='circle'
+              verticalAlign='top' 
+              margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
+            <Bar
+              dataKey="retention"
               data={props.data}
-              name={labelSelected}
+              name="retenção"
               yAxisId='left'
               stroke='#885d41'
-              key='Número de Egressos'
+              fill='#886859'
             />
-          </LineChart>
+          </BarChart>
           <div className='axis-y'>
-            <p className='graph-label-y-delayed'>{labelSelected || "Retidos"}</p>
+            <p className='graph-label-y-delayed'>{"Retenção"}</p>
           </div>
-          <p className='graph-label-x-delayed'>Período de Ingresso</p>
+          <p className='graph-label-x-delayed'>Disciplinas</p>
         </div>
       ) : null}
     </React.Fragment>
