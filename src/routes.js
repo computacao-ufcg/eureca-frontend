@@ -52,10 +52,10 @@ const Routes = () => {
         <PrivateRoute exact path='/statistics/enrollments/optative' component={() => <EnrollmentsOptative />} />
         <PrivateRoute exact path='/statistics/enrollments/elective' component={() => <EnrollmentsElective />} />
         <PrivateRoute exact path='/statistics/enrollments/complementary' component={() => <EnrollmentsComplementary />} />
-        <PrivateRoute exact path='/statistics/teachersUASC' component={() => <UASCTeachers />} />
-        <PrivateRoute exact path='/statistics/teachersUAMat' component={() => <UAMatTeachers/>} />
-        <PrivateRoute exact path='/statistics/teachersUAEst' component={() => <UAEstTeachers />} />
-        <PrivateRoute exact path='/statistics/teachersUAL' component={() => <UALTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UASC' component={() => <UASCTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UAMat' component={() => <UAMatTeachers/>} />
+        <PrivateRoute exact path='/statistics/teachers/UAEst' component={() => <UAEstTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UAL' component={() => <UALTeachers />} />
         <PrivateRoute exact path='/alumniUFCG/glossary' component={() => <AlumniGlossary />} />
         <PrivateRoute exact path='/statistics/subjects' component={() => <Subjects />} />
         <PrivateRoute exact path='/alumniufcg/updatedata' component={() => <UpdateData />} />
