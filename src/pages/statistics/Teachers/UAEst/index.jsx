@@ -3,16 +3,17 @@ import { useHistory } from "react-router";
 import { SelectPicker } from "rsuite";
 import { FiArrowLeft } from "react-icons/fi";
 
-import TeachersSlider from "./Slider";
+import TeachersSlider from "../Slider";
 import TeachersGraph from "./Graph";
 
-import Export from "../../../components/Export";
-import Header from "../../../components/Header";
+import Export from "../../../../components/Export";
+import Header from "../../../../components/Header";
 
-import { api_EB } from "../../../services/api";
+import { api_EB } from "../../../../services/api";
 
-const Teachers = () => {
-  const [departmentOption, setDepartmentOption] = useState("uasc");
+import "./style.css";
+
+const UAEstTeachers = () => {
   const [variable, setVariable] = useState("successRate");
   const [label, setLabel] = useState("Taxa de sucesso");
   const [data, setData] = useState([]);
@@ -42,7 +43,7 @@ const Teachers = () => {
         console.error(err);
       }
     })();
-  }, [departmentOption]);
+  }, []);
 
   const variables = [
     {
@@ -71,61 +72,29 @@ const Teachers = () => {
       role: "Master",
     },
   ];
-
-  const departmentTypes = [
-    {
-      label: "UASC",
-      value: "uasc",
-      role: "Master",
-    },
-    {
-      label: "UAMaT",
-      value: "uamat",
-      role: "Master",
-    },
-    {
-      label: "UAEst",
-      value: "uest",
-      role: "Master",
-    },
-    {
-      label: "UAL",
-      value: "ual",
-      role: "Master",
-    },
-  ];
   const history = useHistory();
 
   return (
     <React.Fragment>
       <Header />
-      <div className='alumni-main'>
-        <div className='alumni-content'>
+      <div className='teachers-uaest-main'>
+        <div className='teachers-uaest-content'>
           <div className='backdot'>
             <span onClick={() => history.goBack()}>
               <FiArrowLeft size={25} />
             </span>
           </div>
-          <div className='alumni-slider'>
-            <div className='alumni-title'>Docentes</div>
+          <div className='teachers-uaest-slider'>
+            <div className='teachers-uaest-title'>Docentes - UAEst</div>
             <TeachersSlider changeSlider={() => {}} />
             <div className='graph'>
               <TeachersGraph variable={variable} data={data} label={label} />
               <div className='selectors'>
-                <h6>Unidade Acadêmica</h6>
-                <SelectPicker
-                  onChange={value => setDepartmentOption(value)}
-                  data={departmentTypes}
-                  className='selector-enrollments'
-                  defaultValue={departmentOption}
-                  searchable={false}
-                  cleanable={false}
-                />
                 <h6>Variável</h6>
                 <SelectPicker
                   onChange={value => handleVariableChange(value)}
                   data={variables}
-                  className='selector-enrollments'
+                  className='selector-teachers'
                   defaultValue={variable}
                   searchable={false}
                   cleanable={false}
@@ -140,4 +109,4 @@ const Teachers = () => {
   );
 };
 
-export default Teachers;
+export default UAEstTeachers;
