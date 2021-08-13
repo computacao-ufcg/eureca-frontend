@@ -12,6 +12,7 @@ import "./styles.css";
 
 const Header = () => {
   const [curriculumData, setCurriculumData] = useState([]);
+  const [curriculumSelected, setCurriculumSelected] = useState("2017");
   const history = useHistory();
   const handleLogOut = () => {
     sessionStorage.clear();
@@ -28,7 +29,7 @@ const Header = () => {
         });
 
         if (res?.status === 200) {
-          console.log(res.data);
+          console.log(parseData(res.data.curriculumCodes));
           setCurriculumData(parseData(res.data.curriculumCodes));
         }
       } catch (err) {
@@ -48,6 +49,11 @@ const Header = () => {
     });
   };
 
+  const handleChange = curriculum =>{
+    setCurriculumSelected(curriculum);
+    sessionStorage.setItem("curriculum", curriculum);
+  }
+  
   return (
     <div className='header-container'>
       <div className='header-1'>
@@ -66,7 +72,13 @@ const Header = () => {
         <p>ciência da computação</p>
         <div className='select-curriculum'>
           <p>Currículo:</p>
-          <SelectPicker data={curriculumData} dafaultValue={"2017"} searchable={false} cleanable={false} />
+          <SelectPicker
+            onChange={value => handleChange(value)}
+            data={curriculumData}
+            dafaultValue={curriculumSelected}
+            searchable={false}
+            cleanable={false}
+          />
         </div>
       </div>
     </div>
