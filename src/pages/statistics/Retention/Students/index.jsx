@@ -36,10 +36,9 @@ const RetentionStudents = () => {
       if (response) {
         setAllData(response);
       }
-      console.log(response)
       setLoading(false);
     };
-    
+
     fetchData();
   }, []);
 
@@ -59,13 +58,14 @@ const RetentionStudents = () => {
 
   const parseDelayedData = data => {
     return data.terms.map(element => {
-      let delayedElement=  {
+      let delayedElement = {
         ...element.metricsSummary.metrics,
         term: element.admissionTerm,
       };
-      for(var k in element.metricsSummary.metrics) {
-        delayedElement[k] = Math.round(delayedElement[k] * 10) / 10
-      };
+
+      for (var k in element.metricsSummary.metrics) {
+        delayedElement[k] = Math.round(delayedElement[k] * 10) / 10;
+      }
       return delayedElement;
     });
   };
@@ -77,32 +77,28 @@ const RetentionStudents = () => {
         {loading ? (
           <h1>Carregando...</h1>
         ) : (
-        <div className='alumni-content'>
-          <div className='backdot'>
-            <span onClick={() => history.goBack()}>
-              <FiArrowLeft size={25} />
-            </span>
-          </div>
-          <div className='alumni-slider'>
-            <div className='alumni-title'>Discentes</div>
-            <DelayedSlider
-                changeSlider={handleSlider}
-                firstTerm={firstTerm}
-                lastTerm={lastTerm}
-              />
-            <div className='graph-delayed'>
-              <DelayedGraph data={delayedData || {}} option={optionSelected} />
-              <SelectPicker
-                onChange={value => setOptionSelected(value)}
-                data={select_items}
-                className='selector'
-                defaultValue={optionSelected}
-                cleanable={false}
-              />
+          <div className='alumni-content'>
+            <div className='backdot'>
+              <span onClick={() => history.goBack()}>
+                <FiArrowLeft size={25} />
+              </span>
             </div>
-            <Export data={dataCSV} name={"delayed"} />
+            <div className='alumni-slider'>
+              <div className='alumni-title'>Discentes</div>
+              <DelayedSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
+              <div className='graph-delayed'>
+                <DelayedGraph data={delayedData || {}} option={optionSelected} />
+                <SelectPicker
+                  onChange={value => setOptionSelected(value)}
+                  data={select_items}
+                  className='selector'
+                  defaultValue={optionSelected}
+                  cleanable={false}
+                />
+              </div>
+              <Export data={dataCSV} name={"delayed"} />
+            </div>
           </div>
-        </div>
         )}
       </div>
     </React.Fragment>

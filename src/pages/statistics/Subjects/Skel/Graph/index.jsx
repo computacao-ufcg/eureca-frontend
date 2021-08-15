@@ -1,10 +1,13 @@
 import React from "react";
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { translatedVariables } from "../util";
 
 import "./style.css";
 
-const SubjectsGraph = props => {
+const MandatoryGraph = props => {
+  console.log(props.data);
+
   return (
     <div className='main-subjects-graph'>
       <BarChart
@@ -19,8 +22,9 @@ const SubjectsGraph = props => {
         }}
       >
         <CartesianGrid strokeDasharray='3 3' />
-        <XAxis dataKey='name' />
-        <YAxis dataKey={props.variable || "totalEnrollments"} />
+        <XAxis dataKey='term' />
+        <YAxis dataKey={props.variable} />
+
         <Tooltip />
         <Legend
           verticalAlign='top'
@@ -28,13 +32,15 @@ const SubjectsGraph = props => {
           iconType='circle'
           payload={[{ value: props.label, type: "circle", color: "#886859" }]}
         />
-        <Bar dataKey={props.variable} fill='#886859' key='Número de turmas' />
+        <Bar dataKey={props.variable} fill='#886859' name={translatedVariables[props.variable]} />
       </BarChart>
 
-      <p className='graph-label-y-subjects'>{props.label || "Taxa de Sucesso"}</p>
-      <p className='graph-label-x-subjects'>Disciplinas</p>
+      <div className='axis-y'>
+        <p className='graph-label-y-subjects'>{props.label}</p>
+      </div>
+      <p className='graph-label-x-subjects'>Períodos</p>
     </div>
   );
 };
 
-export default SubjectsGraph;
+export default MandatoryGraph;
