@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./style.css";
-
+import {curriculum} from "../../../../../config/storage"
 import { MiniCardHome3, MiniCardHomeRightBottom, MiniCardHomeRightTop, MiniCardHomeTeachers } from "../../MiniCardHome";
 
 const TeachersSummaryCardHome = props => {
@@ -14,7 +14,7 @@ const TeachersSummaryCardHome = props => {
         <div className='teachers-summary-card-info'>
           <div className='teachers-summary-card-type'>{props.title}</div>
           <div className='teachers-summary-card-age'>
-            (Curriculo: {props.curriculum || "2017"}, períodos {props.from || "1981.1"} a {props.to || "2020.1"})
+            (Curriculo: {curriculum || "2017"}, períodos {props.from || "1981.1"} a {props.to || "2020.1"})
           </div>
           <div className='teachers-summary-card-size'>{data[0] || 0}</div>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./style.css";
-
+import {curriculum} from "../../../../../config/storage"
 import { MiniCardHome1, MiniCardHome2, MiniCardHome3 } from "../../MiniCardHome";
 
 const StudentsSummaryCardHome = props => {
@@ -13,7 +13,7 @@ const StudentsSummaryCardHome = props => {
       <div className='students-summary-card-title'>
         <div className='students-summary-card-info'>
           <div className='students-summary-card-type'>{props.title}</div>
-          <div className='students-summary-card-age'>1986.1 a 2019.2</div>
+          <div className='students-summary-card-age'>(Currículo: {curriculum}, períodos 1986.1 a 2019.2)</div>
           <div className='students-summary-card-size'>{data[0] || 0}</div>
           {/**<div className='students-summary-card-legend'>DISCENTES</div>*/}
         </div>

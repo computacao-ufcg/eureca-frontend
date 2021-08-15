@@ -18,7 +18,7 @@ const SubjectsCardHome = () => {
     "MÉDIA DE DISPENSAS",
   ];
 
-  const [optionSubject, setOptionSubject] = useState("obrigatórias");
+  const [optionSubject, setOptionSubject] = useState("mandatory");
   const [titleSubject, setTitleSubject] = useState("Obrigatórias");
   const [cards, setCards] = useState({
     card1: true,
@@ -57,12 +57,11 @@ const SubjectsCardHome = () => {
     const subjectStatistics = subject.subjectMetricsStatistics;
 
     return [
-      subjectStatistics.subjectsCount, //
+      subject.subjectsCount,
       subjectStatistics.failedDueToGrade.average.toFixed(1) + "% ",
       subjectStatistics.failedDueToAbsences.average.toFixed(1) + "% ",
       subjectStatistics.cancelled.average.toFixed(1) + "% ",
       subjectStatistics.succeeded.average.toFixed(1) + "% ",
-      // subjectStatistics.enrollmentsCount,
       subjectStatistics.exempted.average.toFixed(1) + "% ",
     ];
   };
@@ -100,18 +99,18 @@ const SubjectsCardHome = () => {
               cards={cards}
               option={optionSubject}
               dataSubjects={propSubjects}
-              data={labelActives}
+              labels={labelActives}
               title={titleSubject}
             />
             <div className='type-students-grid'>
               <div className='type-students'>
-                <div className={optionSubject === "obrigatórias" ? "type-student-selected" : "type-student"}>
+                <div className={optionSubject === "mandatory" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionSubject !== "obrigatórias") {
-                        setOptionSubject("obrigatórias");
+                      if (optionSubject !== "mandatory") {
+                        setOptionSubject("mandatory");
                         setTitleSubject("Obrigatórias");
                         setPropsSubjectsMandatory(dataSubjects);
                       }
@@ -120,13 +119,13 @@ const SubjectsCardHome = () => {
                     OBRIGATÓRIAS
                   </button>
                 </div>
-                <div className={optionSubject === "optativas" ? "type-student-selected" : "type-student"}>
+                <div className={optionSubject === "optional" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionSubject !== "optativas") {
-                        setOptionSubject("optativas");
+                      if (optionSubject !== "optional") {
+                        setOptionSubject("optional");
                         setTitleSubject("Optativas");
                         setPropsSubjectsOptional(dataSubjects);
                       }
@@ -135,13 +134,13 @@ const SubjectsCardHome = () => {
                     OPTATIVAS
                   </button>
                 </div>
-                <div className={optionSubject === "eletivas" ? "type-student-selected" : "type-student"}>
+                <div className={optionSubject === "elective" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionSubject !== "eletivas") {
-                        setOptionSubject("eletivas");
+                      if (optionSubject !== "elective") {
+                        setOptionSubject("elective");
                         setTitleSubject("Eletivas");
                         setPropsSubjectsElective(dataSubjects);
                       }
@@ -150,13 +149,13 @@ const SubjectsCardHome = () => {
                     ELETIVAS
                   </button>
                 </div>
-                <div className={optionSubject === "complementares" ? "type-student-selected" : "type-student"}>
+                <div className={optionSubject === "complementary" ? "type-student-selected" : "type-student"}>
                   <button
                     className='type-button'
                     type='button'
                     onClick={() => {
-                      if (optionSubject !== "complementares") {
-                        setOptionSubject("complementares");
+                      if (optionSubject !== "complementary") {
+                        setOptionSubject("complementary");
                         setTitleSubject("Complementares");
                         setPropsSubjectsComplementary(dataSubjects);
                       }
@@ -170,7 +169,7 @@ const SubjectsCardHome = () => {
           </div>
 
           <div className='card-home-content-footer'>
-            <Link to={"/statistics/subjects/"}>
+            <Link to={`/statistics/subjects/${optionSubject}`}>
               <button type='button'>VER MAIS</button>
             </Link>
             <Link to={"/statistics/subjects/glossary"}>

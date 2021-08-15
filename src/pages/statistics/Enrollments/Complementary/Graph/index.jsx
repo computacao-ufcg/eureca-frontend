@@ -2,15 +2,14 @@ import React from "react";
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
-import "./style.css";
-
-const SubjectsGraph = props => {
+const EnrollmentsGraph = props => {
+  console.log(props);
   return (
-    <div className='main-subjects-graph'>
+    <div className='main-enrollments-graph'>
       <BarChart
         width={680}
         height={350}
-        data={props.data}
+        data={0} //aguardar rota backend
         margin={{
           top: 30,
           right: 30,
@@ -19,7 +18,7 @@ const SubjectsGraph = props => {
         }}
       >
         <CartesianGrid strokeDasharray='3 3' />
-        <XAxis dataKey='name' />
+        <XAxis dataKey='discipline' />
         <YAxis dataKey={props.variable || "totalEnrollments"} />
         <Tooltip />
         <Legend
@@ -31,10 +30,10 @@ const SubjectsGraph = props => {
         <Bar dataKey={props.variable} fill='#886859' key='Número de turmas' />
       </BarChart>
 
-      <p className='graph-label-y-subjects'>{props.label || "Taxa de Sucesso"}</p>
-      <p className='graph-label-x-subjects'>Disciplinas</p>
+      <p className='graph-label-y-enrollments'>{props.label || "Total de Matrículas"}</p>
+      <p className='graph-label-x-enrollments'>Disciplinas</p>
     </div>
   );
 };
 
-export default SubjectsGraph;
+export default EnrollmentsGraph;

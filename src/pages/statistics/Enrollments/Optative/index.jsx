@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 
-import Export from "../../../components/Export";
-import Header from "../../../components/Header";
+import Export from "../../../../components/Export";
+import Header from "../../../../components/Header";
 
 import EnrollmentsGraph from "./Graph";
 
@@ -10,15 +10,14 @@ import { FiArrowLeft } from "react-icons/fi";
 
 import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
-import EnrollmentSlider from "./Slider";
+import EnrollmentSlider from "../Slider";
 
-import { api_EB } from "../../../services/api";
+import { api_EB } from "../../../../services/api";
 
 import "./style.css";
 
-const Enrollments = () => {
+const EnrollmentsOptative = () => {
   const [data, setData] = useState([]);
-  const [disciplineOption, setDisciplineOption] = useState("obrigatorias");
   const [variable, setVariable] = useState("totalEnrollments");
   const [label, setLabel] = useState("Total de matrículas");
 
@@ -38,36 +37,13 @@ const Enrollments = () => {
         console.error(err);
       }
     })();
-  }, [disciplineOption]);
+  }, []);
 
   const handleVariableChange = variable => {
     setVariable(variable);
     const proposedLabel = variables.find(item => item.value === variable);
     setLabel(proposedLabel.label);
   };
-
-  const disciplineTypes = [
-    {
-      label: "Obrigatórias",
-      value: "obrigatorias",
-      role: "Master",
-    },
-    {
-      label: "Eletivas",
-      value: "eletivas",
-      role: "Master",
-    },
-    {
-      label: "Optativas",
-      value: "optatives",
-      role: "Master",
-    },
-    {
-      label: "Complementares",
-      value: "complementary",
-      role: "Master",
-    },
-  ];
 
   const variables = [
     {
@@ -92,28 +68,19 @@ const Enrollments = () => {
   return (
     <React.Fragment>
       <Header />
-      <div className='alumni-main'>
-        <div className='alumni-content'>
+      <div className='enrollments-optative-main'>
+        <div className='enrollments-optative-content'>
           <div className='backdot'>
             <span onClick={() => history.goBack()}>
               <FiArrowLeft size={25} />
             </span>
           </div>
-          <div className='alumni-slider'>
-            <div className='alumni-title'>Matrículas</div>
+          <div className='enrollments-optative-slider'>
+            <div className='enrollments-optative-title'>Matrículas - Disciplinas Optativas</div>
             <EnrollmentSlider changeSlider={() => {}} />
             <div className='graph'>
               <EnrollmentsGraph variable={variable} data={data} label={label} />
               <div className='selectors'>
-                <h6>Disciplinas</h6>
-                <SelectPicker
-                  onChange={value => setDisciplineOption(value)}
-                  data={disciplineTypes}
-                  className='selector-enrollments'
-                  defaultValue={disciplineOption}
-                  searchable={false}
-                  cleanable={false}
-                />
                 <h6>Variável</h6>
                 <SelectPicker
                   onChange={value => handleVariableChange(value)}
@@ -133,4 +100,4 @@ const Enrollments = () => {
   );
 };
 
-export default Enrollments;
+export default EnrollmentsOptative;

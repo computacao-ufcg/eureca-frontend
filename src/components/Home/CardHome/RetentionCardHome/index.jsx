@@ -5,6 +5,7 @@ import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 import { Link } from "react-router-dom";
 import { api_EB } from "../../../../services/api";
+import { translateRiskAndCost } from "../util";
 
 const RetentionCardHome = () => {
   const labelSubjects = ["MÁXIMA", "MÍNIMA", "PRIMEIRO QUARTIL", "MEDIANA", "TERCEIRO QUARTIL", "MÉDIA"];
@@ -47,49 +48,9 @@ const RetentionCardHome = () => {
     }
   };
 
-  const translateData = (data, isAverage) => {
-    const summary = isAverage ? data.average : data;
-    let risk;
-    let cost;
-
-    if (summary.riskClass === "INACCURATE") {
-      risk = "Inexato";
-    } else if (summary.riskClass === "SAFE") {
-      risk = "Seguro";
-    } else if (summary.riskClass === "LOW") {
-      risk = "Baixo";
-    } else if (summary.riskClass === "AVERAGE") {
-      risk = "Médio";
-    } else if (summary.riskClass === "HIGH") {
-      risk = "Alto";
-    } else if (summary.riskClass === "UNFEASIBLE") {
-      risk = "Inviável";
-    } else {
-      risk = "Não Aplicável";
-    }
-
-    if (summary.costClass === "INACCURATE") {
-      cost = "Inexato";
-    } else if (summary.costClass === "ADEQUATE") {
-      cost = "Adequado";
-    } else if (summary.costClass === "REGULAR") {
-      cost = "Regular";
-    } else if (summary.costClass === "HIGH") {
-      cost = "Alto";
-    } else if (summary.costClass === "VERY_HIGH") {
-      cost = "Muito Alto";
-    } else if (summary.costClass === "UNACCEPTABLE") {
-      cost = "Inaceitável";
-    } else {
-      cost = "Não Aplicável";
-    }
-
-    return { risk, cost };
-  };
-
   const setPropsStudentsRetention = data => {
     const successRate = data.average.metrics.successRate * 100;
-    const { cost, risk } = translateData(data, true);
+    const { cost, risk } = translateRiskAndCost(data, true);
     setPropsRetention([
       data.delayedCount,
       `${risk} (${data.average.metrics.risk.toFixed(2)})`,
