@@ -35,3 +35,8 @@
   padding-top: 40px;
   margin: 0;
 }
+
+.custom-tooltip {
+  background-color: white;
+  padding: 20px;
+}

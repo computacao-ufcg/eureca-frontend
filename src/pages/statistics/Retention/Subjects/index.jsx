@@ -5,8 +5,8 @@ import { FiArrowLeft } from "react-icons/fi";
 import Header from "../../../../components/Header";
 import updateGraph from "../../../../components/Slider/util/updateGraph";
 import Export from "../../../../components/Export";
-
 import DelayedGraph from "./Graph";
+import _ from 'underscore';
 
 import "rsuite/dist/styles/rsuite-default.css";
 
@@ -24,7 +24,6 @@ const RetentionSubjects = () => {
       setLoading(true);
 
       const response = await updateGraph(query, loading);
-      console.log(response)
       if (response) {
         setAllData(response);
       }
@@ -41,11 +40,15 @@ const RetentionSubjects = () => {
   };
 
   const parseDelayedData = data => {
-    return data.subjectRetentionSummary.map(element => {
-      return {
-        ...element
-      };
-    });
+
+    const groupedByIdealTerm = _.groupBy(data.subjectRetentionSummary, 'idealTerm');
+   
+    return Object.values(groupedByIdealTerm)
+                                    .map(idealTerm => {
+                                      return idealTerm.sort((a, b) =>  {
+                                        return b.retention - a.retention;
+                                      })
+                                    }).flat();
   };
 
   return (

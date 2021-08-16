@@ -3,6 +3,21 @@ import "./style.css";
 
 import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, } from "recharts";
 
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{`${label}`}</p>
+        <p className="intro">{`Período ideal : ${payload[0].payload.idealTerm}`}</p>
+        <p className="intro">{`Retenção : ${payload[0].value}`}</p>
+        <p className="intro">{`Código : ${payload[0].payload.subjectCode}`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
+
 const DelayedGraph = props => {
 
   return (
@@ -24,8 +39,7 @@ const DelayedGraph = props => {
 
             <XAxis dataKey='subjectName' tick={false} />
             <YAxis yAxisId='left' dataKey="retention" />
-
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />}/>
             <Legend 
               iconSize={10}
               iconType='circle'
