@@ -10,6 +10,7 @@ import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 
 import { api_AB } from "../../../../services/api";
+import { alumniAuthenticationHeader } from "../../../../config/defaultValues";
 
 const AlumniCardHome = () => {
   const [alumniData, setAlumniData] = useState([]);
@@ -17,11 +18,7 @@ const AlumniCardHome = () => {
   useEffect(() => {
     async function fetchAlumniData() {
       try {
-        const res = await api_AB.get("/statistics", {
-          headers: {
-            "Authentication-Token": sessionStorage.getItem("alumni-token"),
-          },
-        });
+        const res = await api_AB.get("/statistics", alumniAuthenticationHeader);
 
         if (res?.status === 200) {
           setAlumniData(res.data);

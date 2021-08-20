@@ -10,6 +10,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { api_AB } from "../../../../../services/api";
 
 import "./style.css";
+import { alumniAuthenticationHeader } from "../../../../../config/defaultValues";
 
 const { Column, HeaderCell, Cell } = Table;
 
@@ -22,10 +23,6 @@ const Classified = props => {
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
 
-  const myHeaders = {
-    headers: { "Authentication-Token": sessionStorage.getItem("alumni-token") },
-  };
-
   useEffect(() => {
     handleClassified();
   }, []);
@@ -35,7 +32,7 @@ const Classified = props => {
     const query = `/employer/classified/${page}`;
 
     try {
-      const res = await api_AB.get(query, myHeaders);
+      const res = await api_AB.get(query, alumniAuthenticationHeader);
 
       if (res.status === 200) {
         setData(res.data.content);
@@ -52,11 +49,7 @@ const Classified = props => {
   const handleCancelClassified = async () => {
     const query = `/employer?linkedinId=${cancelClassified.linkedinId}`;
 
-    const res = await api_AB.delete(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-      },
-    });
+    const res = await api_AB.delete(query, alumniAuthenticationHeader);
 
     if (res.status === 200) {
       setData(data.filter(e => e.linkedinId !== cancelClassified.linkedinId));

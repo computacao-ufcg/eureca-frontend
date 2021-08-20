@@ -7,6 +7,7 @@ import { Confirm, MyLoading, NoDataFound } from "../../../../../components";
 import { FiTrash2 } from "react-icons/fi";
 
 import "./styles.css";
+import { alumniAuthenticationHeader } from "../../../../../config/defaultValues";
 
 const { Column, HeaderCell, Cell } = Table;
 
@@ -24,11 +25,7 @@ const Matchs = () => {
 
   const handleClassificados = async () => {
     setLoading(true);
-    const res = await api_AB.get("/match/list/" + page, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-      },
-    });
+    const res = await api_AB.get("/match/list/" + page, alumniAuthenticationHeader);
 
     if (res.status === 200) {
       setData(res.data.content);
@@ -41,11 +38,7 @@ const Matchs = () => {
   const handleCancelMatch = async () => {
     const query = `/match?registration=${cancelMatch.registration}`;
 
-    const res = await api_AB.delete(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-      },
-    });
+    const res = await api_AB.delete(query, alumniAuthenticationHeader);
     if (res.status === 200) {
       setData(data.filter(e => e.registration !== cancelMatch.registration));
     }
