@@ -15,7 +15,11 @@ import EnrollmentSlider from "../Slider";
 import { api_EB } from "../../../../services/api";
 
 import "./style.css";
-import { eurecaAuthenticationHeader } from "../../../../config/defaultValues";
+import {
+  baseEnrollmentsEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const EnrollmentsElective = () => {
   const [data, setData] = useState([]);
@@ -24,7 +28,9 @@ const EnrollmentsElective = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/enrollments/summary/csv`;
+      const endpoint = `${baseEnrollmentsEndpoint}/summary/csv`;
+      const query = endpointWithCourseAndCurriculum(endpoint);
+
       try {
         const res = await api_EB.get(query, eurecaAuthenticationHeader);
 

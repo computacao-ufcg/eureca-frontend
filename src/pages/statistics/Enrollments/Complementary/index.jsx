@@ -15,7 +15,11 @@ import EnrollmentSlider from "../Slider";
 import { api_EB } from "../../../../services/api";
 
 import "./style.css";
-import { endpointWithCourseAndCurriculum, eurecaAuthenticationHeader } from "../../../../config/defaultValues";
+import {
+  baseEnrollmentsEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const EnrollmentsComplementary = () => {
   const [data, setData] = useState([]);
@@ -24,7 +28,7 @@ const EnrollmentsComplementary = () => {
 
   useEffect(() => {
     (async function () {
-      const endpoint = `/statistics/enrollments/summary/csv`;
+      const endpoint = `${baseEnrollmentsEndpoint}/summary/csv`;
       const query = endpointWithCourseAndCurriculum(endpoint);
 
       try {

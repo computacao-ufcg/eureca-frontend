@@ -1,6 +1,6 @@
 import React from "react";
 import { MiniCardHomeRightBottom, MiniCardHomeRightTop, MiniCardHomeEnrollments } from "../../MiniCardHome";
-import {curriculum} from "../../../../../config/storage"
+import { curriculum } from "../../../../../config/storage";
 import "./style.css";
 
 const EnrollmentsSummaryCardHome = props => {

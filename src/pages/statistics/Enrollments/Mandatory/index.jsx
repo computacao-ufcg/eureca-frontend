@@ -16,6 +16,12 @@ import { api_EB } from "../../../../services/api";
 
 import "./style.css";
 
+import {
+  baseEnrollmentsEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
+
 const EnrollmentsMandatory = () => {
   const [data, setData] = useState([]);
   const [variable, setVariable] = useState("totalEnrollments");
@@ -23,12 +29,11 @@ const EnrollmentsMandatory = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/enrollments/summary/csv`;
+      const endpoint = `${baseEnrollmentsEndpoint}/summary/csv`;
+      const query = endpointWithCourseAndCurriculum(endpoint);
+
       try {
-        const headers = {
-          "Authentication-Token": sessionStorage.getItem("eureca-token"),
-        };
-        const res = await api_EB.get(query, { headers });
+        const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
         if (res) {
           setData(res.data.enrollmentsSummary);
