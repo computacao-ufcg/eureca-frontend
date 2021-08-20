@@ -15,6 +15,7 @@ import EnrollmentSlider from "../Slider";
 import { api_EB } from "../../../../services/api";
 
 import "./style.css";
+import { endpointWithCourseAndCurriculum, eurecaAuthenticationHeader } from "../../../../config/defaultValues";
 
 const EnrollmentsComplementary = () => {
   const [data, setData] = useState([]);
@@ -23,12 +24,11 @@ const EnrollmentsComplementary = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/enrollments/summary/csv`;
+      const endpoint = `/statistics/enrollments/summary/csv`;
+      const query = endpointWithCourseAndCurriculum(endpoint);
+
       try {
-        const headers = {
-          "Authentication-Token": sessionStorage.getItem("eureca-token"),
-        };
-        const res = await api_EB.get(query, { headers });
+        const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
         if (res) {
           setData(res.data.enrollmentsSummary);

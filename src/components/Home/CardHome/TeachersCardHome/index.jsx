@@ -10,6 +10,11 @@ import { Link } from "react-router-dom";
 
 import { api_EB } from "../../../../services/api";
 import { labelTeachers } from "./util";
+import {
+  baseTeachersEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const TeachersCardHome = () => {
   const [dataTeachers, setDataTeachers] = useState();
@@ -33,13 +38,10 @@ const TeachersCardHome = () => {
   }, []);
 
   const getSummary = async () => {
-    let query = `/statistics/teachers/summary`;
+    const endpoint = `${baseTeachersEndpoint}/summary`;
+    const query = endpointWithCourseAndCurriculum(endpoint);
 
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
       setDataTeachers(res.data);

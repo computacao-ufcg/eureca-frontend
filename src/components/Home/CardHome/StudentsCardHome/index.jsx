@@ -14,6 +14,11 @@ import { labelActives, labelDropout, labelAlumni } from "./util";
 import { translateRiskAndCost } from "../util";
 
 import { api_EB } from "../../../../services/api";
+import {
+  baseStudentsEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const StudentsCardHome = () => {
   const [dataStudents, setDataStudents] = useState();
@@ -37,15 +42,15 @@ const StudentsCardHome = () => {
   }, []);
 
   const getSummary = async () => {
-    let query = `/statistics/students/summary`;
+    const endpoint = `${baseStudentsEndpoint}/summary`;
+    const query = endpointWithCourseAndCurriculum(endpoint);
 
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
+    console.log(query);
+
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
+      console.log(res.data);
       setDataStudents(res.data);
       setPropsActives(res.data);
     } else {

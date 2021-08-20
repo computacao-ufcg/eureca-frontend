@@ -7,6 +7,11 @@ import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 import { api_EB } from "../../../../services/api";
 import "../style.css";
+import {
+  baseSubjectsEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const SubjectsCardHome = () => {
   const labelActives = [
@@ -37,13 +42,10 @@ const SubjectsCardHome = () => {
   }, []);
 
   const getSummary = async () => {
-    let query = `/statistics/subjects/summary`;
+    const endpoint = `${baseSubjectsEndpoint}/summary`;
+    const query = endpointWithCourseAndCurriculum(endpoint);
 
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
       setDataSubjects(res.data);

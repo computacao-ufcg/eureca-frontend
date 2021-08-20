@@ -8,9 +8,10 @@ import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
 import { api_EB } from "../../services/api";
-import { courseName, curriculum } from "../../config/storage";
+import { courseName, courseCode, curriculum } from "../../config/storage";
 
 import "./styles.css";
+import { eurecaAuthenticationHeader } from "../../config/defaultValues";
 
 const Header = () => {
   const [curriculumData, setCurriculumData] = useState([]);
@@ -23,14 +24,10 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(courseName);
     async function fetchCurriculumData() {
       try {
-        const res = await api_EB.get("/curricula", {
-          headers: {
-            "Authentication-Token": sessionStorage.getItem("eureca-token"),
-          },
-        });
+        const query = `/curricula?courseCode=${courseCode}`;
+        const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
         if (res?.status === 200) {
           console.log(parseData(res.data.curriculumCodes));

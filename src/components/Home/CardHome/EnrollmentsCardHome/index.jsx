@@ -10,6 +10,11 @@ import Mask5 from "../../../../assets/new_home_assets/mask_5.svg";
 import Mask6 from "../../../../assets/new_home_assets/mask_6.svg";
 
 import EnrollmentsSummaryCardHome from "./EnrollmentsSummaryCardHome";
+import {
+  baseEnrollmentsEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const EnrollmentsCardHome = props => {
   const [data, setData] = useState();
@@ -23,11 +28,10 @@ const EnrollmentsCardHome = props => {
 
   const fetchData = async () => {
     try {
-      const res = await api_EB.get("/statistics/enrollments/summary", {
-        headers: {
-          "Authentication-Token": sessionStorage.getItem("eureca-token"),
-        },
-      });
+      const endpoint = `${baseEnrollmentsEndpoint}/summary`;
+      const query = endpointWithCourseAndCurriculum(endpoint);
+
+      const res = await api_EB.get(query, eurecaAuthenticationHeader);
       if (res) {
         setData(res.data);
       }
