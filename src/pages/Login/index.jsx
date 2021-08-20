@@ -65,11 +65,22 @@ const Login = () => {
           sessionStorage.setItem("eureca-token", res_as_EB.data.token);
           sessionStorage.setItem("alumni-token", res_as_AL.data.token);
           sessionStorage.setItem("username", login);
+          await setProfileData(res_as_EB.data.token);
+
           history.push("/home");
         }
       } catch (error) {
         Alert.error("Erro: Nome de usuário ou senha incorretos.");
       }
+    }
+  };
+
+  const setProfileData = async token => {
+    const res = await api_EB.get("/profile", { headers: { "Authentication-Token": token } });
+    if (res) {
+      const { courseCode, courseName } = res.data;
+      sessionStorage.setItem("courseCode", courseCode);
+      sessionStorage.setItem("courseName", courseName);
     }
   };
 
