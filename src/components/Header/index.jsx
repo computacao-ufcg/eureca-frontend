@@ -8,18 +8,22 @@ import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
 import { api_EB } from "../../services/api";
+import { courseName, curriculum } from "../../config/storage";
+
 import "./styles.css";
 
 const Header = () => {
   const [curriculumData, setCurriculumData] = useState([]);
-  const [curriculumSelected, setCurriculumSelected] = useState("2017");
+  const [curriculumSelected, setCurriculumSelected] = useState(curriculum);
   const history = useHistory();
+
   const handleLogOut = () => {
     sessionStorage.clear();
     history.push("/");
   };
 
   useEffect(() => {
+    console.log(courseName);
     async function fetchCurriculumData() {
       try {
         const res = await api_EB.get("/curricula", {
@@ -49,11 +53,11 @@ const Header = () => {
     });
   };
 
-  const handleChange = curriculum =>{
+  const handleChange = curriculum => {
     setCurriculumSelected(curriculum);
     sessionStorage.setItem("curriculum", curriculum);
-  }
-  
+  };
+
   return (
     <div className='header-container'>
       <div className='header-1'>
@@ -69,7 +73,7 @@ const Header = () => {
         </div>
       </div>
       <div className='header-2'>
-        <p>ciência da computação</p>
+        <p>{courseName}</p>
         <div className='select-curriculum'>
           <p>Currículo:</p>
           <SelectPicker
