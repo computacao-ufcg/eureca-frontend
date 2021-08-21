@@ -7,6 +7,12 @@ import { Link } from "react-router-dom";
 import { api_EB } from "../../../../services/api";
 import { translateRiskAndCost } from "../util";
 
+import {
+  baseRetentionEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
+
 const RetentionCardHome = () => {
   const labelSubjects = ["MÁXIMA", "MÍNIMA", "PRIMEIRO QUARTIL", "MEDIANA", "TERCEIRO QUARTIL", "MÉDIA"];
 
@@ -31,16 +37,14 @@ const RetentionCardHome = () => {
   }, []);
 
   const getSummary = async () => {
-    let query = `/statistics/retention/summary`;
+    const endpoint = `${baseRetentionEndpoint}/summary`;
+    const query = endpointWithCourseAndCurriculum(endpoint);
 
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
-      setStudentRetention(res.data.delayedSummary);
+      console.log(res.data);
+      setStudentRetention(res.data.studentsRetentionSummary);
       setSubjectRetention(res.data.subjectRetentionSummary.retentionStatistics);
       setPropsSubjectRetention(res.data.subjectRetentionSummary.retentionStatistics);
     } else {

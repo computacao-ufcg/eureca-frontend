@@ -6,8 +6,6 @@ import { translatedVariables } from "../util";
 import "./style.css";
 
 const MandatoryGraph = props => {
-  console.log(props.data);
-
   return (
     <div className='main-subjects-graph'>
       <BarChart

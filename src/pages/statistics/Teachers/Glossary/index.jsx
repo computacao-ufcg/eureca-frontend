@@ -5,6 +5,11 @@ import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 import { api_EB } from "../../../../services/api";
 import GlossaryTeachers from "../../../../assets/glossary_images/Teachers.png";
+import {
+  baseTeachersEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const TeachersGlossary = () => {
   const history = useHistory();
@@ -15,13 +20,10 @@ const TeachersGlossary = () => {
   }, []);
 
   const getGlossary = async () => {
-    let query = `/statistics/teachers/summary`;
+    const endpoint = `${baseTeachersEndpoint}/summary`;
+    const query = endpointWithCourseAndCurriculum(endpoint);
 
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
       setData(res.data);

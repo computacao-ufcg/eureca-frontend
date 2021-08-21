@@ -12,6 +12,7 @@ import { useClearCache } from "react-clear-cache";
 import { api_AB } from "../../../../../services/api";
 
 import "./styles.css";
+import { alumniAuthenticationHeader } from "../../../../../config/defaultValues";
 
 const PendingMatchs = props => {
   const { isLatestVersion, emptyCacheStorage } = useClearCache();
@@ -42,11 +43,7 @@ const PendingMatchs = props => {
     }
 
     let query = "/match/pending/" + page;
-    const res = await api_AB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-      },
-    });
+    const res = await api_AB.get(query, alumniAuthenticationHeader);
 
     if (res.status === 200) {
       setDataMaster(res.data);
@@ -101,15 +98,8 @@ const PendingMatchs = props => {
       registration: selectedProfile.registration,
     };
 
-    const myHeaders = {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    };
-
     try {
-      const res = await api_AB.post(query, myBody, myHeaders);
+      const res = await api_AB.post(query, myBody, alumniAuthenticationHeader);
 
       if (res.status === 200) {
         Alert.success(successMsg, timeMSG);

@@ -12,6 +12,11 @@ import Header from "../../../../components/Header";
 import { api_EB } from "../../../../services/api";
 
 import "./style.css";
+import {
+  baseTeachersEndpoint,
+  endpointWithCourseAndCurriculum,
+  eurecaAuthenticationHeader,
+} from "../../../../config/defaultValues";
 
 const UASCTeachers = () => {
   const [variable, setVariable] = useState("successRate");
@@ -27,13 +32,11 @@ const UASCTeachers = () => {
 
   useEffect(() => {
     (async function () {
-      const query = `/statistics/teachers/summary`;
+      const endpoint = `${baseTeachersEndpoint}/summary`;
+      const query = endpointWithCourseAndCurriculum(endpoint);
+
       try {
-        const res = await api_EB.get(query, {
-          headers: {
-            "Authentication-Token": sessionStorage.getItem("eureca-token"),
-          },
-        });
+        const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
         if (res) {
           setData(res.data);

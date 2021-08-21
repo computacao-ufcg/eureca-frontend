@@ -1,3 +1,4 @@
+import { eurecaAuthenticationHeader } from "../../../config/defaultValues";
 import { api_EB } from "../../../services/api";
 
 const getSummaryQuery = (query, from, to) => {
@@ -14,19 +15,11 @@ const getCSVQuery = (query, from, to) => {
 
 export default async (query, loading, from, to) => {
   let response = {};
-  const queryActives = getSummaryQuery(query, from, to);
-  const queryActivesCSV = getCSVQuery(query, from, to);
+  const querySummary = getSummaryQuery(query, from, to);
+  const queryCSV = getCSVQuery(query, from, to);
 
-  const token = sessionStorage.getItem("eureca-token");
-
-  const options = {
-    headers: {
-      "Authentication-Token": token,
-    },
-  };
-
-  const resSummary = await api_EB.get(queryActives, options);
-  const resCSV = await api_EB.get(queryActivesCSV, options);
+  const resSummary = await api_EB.get(querySummary, eurecaAuthenticationHeader);
+  const resCSV = await api_EB.get(queryCSV, eurecaAuthenticationHeader);
 
   if (resSummary.status === 200) {
     response.data = resSummary.data;

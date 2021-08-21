@@ -8,6 +8,7 @@ import Informer from "../../Informer";
 import { api_AB } from "../../../../../services/api";
 
 import "./styles.css";
+import { alumniAuthenticationHeader } from "../../../../../config/defaultValues";
 
 const Disqualified = props => {
   const msgAlertError = "Dados faltando";
@@ -29,15 +30,10 @@ const Disqualified = props => {
     setLoading(true);
     const query = `employer/unclassified/${page}`;
     const queryCompanyType = `employer/types`;
-    const myHeaders = {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-      },
-    };
 
     try {
-      const res = await api_AB.get(query, myHeaders);
-      const resCompanyTypes = await api_AB.get(queryCompanyType, myHeaders);
+      const res = await api_AB.get(query, alumniAuthenticationHeader);
+      const resCompanyTypes = await api_AB.get(queryCompanyType, alumniAuthenticationHeader);
 
       if (res.status === 200 && resCompanyTypes.status === 200) {
         setData(res.data.content);
@@ -73,19 +69,14 @@ const Disqualified = props => {
     }
 
     const query = `employer`;
-    const myHeaders = {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    };
+
     const myBody = {
       linkedinId: linkedinID,
       type: type,
     };
 
     try {
-      const res = await api_AB.put(query, myBody, myHeaders);
+      const res = await api_AB.put(query, myBody, alumniAuthenticationHeader);
       if (res.status === 200) {
         setData(data.filter(e => e.linkedinId !== linkedinID));
         props.handleData(myBody);

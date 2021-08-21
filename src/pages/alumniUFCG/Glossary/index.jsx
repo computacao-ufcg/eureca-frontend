@@ -5,6 +5,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import "./styles.css";
 import { api_EB } from "../../../services/api";
 import Enrollments from "../../../assets/glossary_images/Alumni.png";
+import { endpointWithCourseAndCurriculum, eurecaAuthenticationHeader } from "../../../config/defaultValues";
 
 const AlumniGlossary = () => {
   const history = useHistory();
@@ -15,13 +16,10 @@ const AlumniGlossary = () => {
   }, []);
 
   const getGlossary = async () => {
-    let query = `/alumni`;
+    const endpoint = `/alumni`;
+    const query = endpointWithCourseAndCurriculum(endpoint);
 
-    const res = await api_EB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("eureca-token"),
-      },
-    });
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
       setData(res.data);

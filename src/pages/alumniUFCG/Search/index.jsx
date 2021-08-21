@@ -11,6 +11,7 @@ import ListAlumni from "../Search/listAlumni";
 import { Pagination } from "rsuite";
 
 import "./styles.css";
+import { alumniAuthenticationHeader } from "../../../config/defaultValues";
 
 const Search = () => {
   const [data, setData] = useState([]);
@@ -30,11 +31,7 @@ const Search = () => {
     setLoading(true);
 
     let query = `/match/search/${page}?admission=${admission}&graduation=${graduation}&name=${name}`;
-    const res = await api_AB.get(query, {
-      headers: {
-        "Authentication-Token": sessionStorage.getItem("alumni-token"),
-      },
-    });
+    const res = await api_AB.get(query, alumniAuthenticationHeader);
 
     if (res.status === 200) {
       setData(res.data.content);
