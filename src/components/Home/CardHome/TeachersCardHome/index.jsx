@@ -129,7 +129,7 @@ const TeachersCardHome = () => {
   };
 
   const setPropsTeachersUAL = data => {
-    const props = formatProps(data).summaryMap[1307];
+    const props = formatProps(data.summaryMap[1307]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
