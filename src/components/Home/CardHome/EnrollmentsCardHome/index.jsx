@@ -16,11 +16,19 @@ import {
   eurecaAuthenticationHeader,
 } from "../../../../config/defaultValues";
 
-const EnrollmentsCardHome = props => {
+const EnrollmentsCardHome = () => {
+  const labelEnrollments = [
+    "MÉDIA DE TURMAS/DISCIPLINA",
+    "MÉDIA DE TURMAS/PERÍODO",
+    "MÉDIA DE MATRÍCULAS/DISCIPLINA",
+    "MÉDIA DE MATRÍCULAS/PERÍODO",
+    "NUMERO MÁXIMO",
+    "NUMERO MÍNIMO",
+  ];
   const [data, setData] = useState();
+  const [propsEnrollment, setPropsEnrollments] = useState([]);
   const [optionEnrollment, setOptionEnrollment] = useState("mandatory");
   const [title, setTitle] = useState("Obrigatórias");
-  const [labels, setLabels] = useState();
 
   useEffect(() => {
     fetchData();
@@ -34,10 +42,45 @@ const EnrollmentsCardHome = props => {
       const res = await api_EB.get(query, eurecaAuthenticationHeader);
       if (res) {
         setData(res.data);
+        setPropsEnrollmentsMandatory(res.data);
       }
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const formatProps = subject => {
+    const enrollmentsSummary = subject.summary;
+
+    return [
+      enrollmentsSummary.averageSubjectsCount.toFixed(1),
+      enrollmentsSummary.averageClassesPerSubject.toFixed(1),
+      enrollmentsSummary.averageClassesPerTerm.toFixed(1),
+      enrollmentsSummary.averageEnrollmentsPerSubject.toFixed(1),
+      enrollmentsSummary.averageEnrollmentsPerTerm.toFixed(1),
+      subject.max.count +" (" + subject.max.term +")",
+      subject.min.count +" (" + subject.min.term +")",
+    ];
+  };
+  
+  const setPropsEnrollmentsMandatory = data => {
+    const props = formatProps(data.mandatory);
+    setPropsEnrollments(props);
+  };
+
+  const setPropsEnrollmentsOptional = data => {
+    const props = formatProps(data.optional);
+    setPropsEnrollments(props);
+  };
+
+  const setPropsEnrollmentsElective = data => {
+    const props = formatProps(data.elective);
+    setPropsEnrollments(props);
+  };
+
+  const setPropsEnrollmentsComplementary = data => {
+    const props = formatProps(data.complementary);
+    setPropsEnrollments(props);
   };
 
   return (
@@ -48,7 +91,7 @@ const EnrollmentsCardHome = props => {
             <TitleCardHome title={"MATRÍCULAS"} />
           </div>
           <div className='summary-card-content'>
-            {data && <EnrollmentsSummaryCardHome data={data} title={title} />}
+           <EnrollmentsSummaryCardHome data={propsEnrollment} option={optionEnrollment} title={title} labels ={labelEnrollments}/>
             <div className='type-students-grid'>
               <div className='type-students'>
                 <div className={optionEnrollment === "mandatory" ? "type-student-selected" : "type-student"}>
@@ -59,8 +102,7 @@ const EnrollmentsCardHome = props => {
                       if (optionEnrollment !== "mandatory") {
                         setOptionEnrollment("mandatory");
                         setTitle("Obrigatórias");
-                        setLabels([]);
-                        setData(data);
+                        setPropsEnrollmentsMandatory(data);
                       }
                     }}
                   >
@@ -75,8 +117,7 @@ const EnrollmentsCardHome = props => {
                       if (optionEnrollment !== "optative") {
                         setOptionEnrollment("optative");
                         setTitle("Optativas");
-                        setLabels([]);
-                        setData(data);
+                        setPropsEnrollmentsOptional(data);
                       }
                     }}
                   >
@@ -91,8 +132,7 @@ const EnrollmentsCardHome = props => {
                       if (optionEnrollment !== "elective") {
                         setOptionEnrollment("elective");
                         setTitle("Eletivas");
-                        setLabels([]);
-                        setData(data);
+                        setPropsEnrollmentsElective(data);
                       }
                     }}
                   >
@@ -107,8 +147,7 @@ const EnrollmentsCardHome = props => {
                       if (optionEnrollment !== "complementary") {
                         setOptionEnrollment("complementary");
                         setTitle("Complementares");
-                        setLabels([]);
-                        setData(data);
+                        setPropsEnrollmentsComplementary(data);
                       }
                     }}
                   >
