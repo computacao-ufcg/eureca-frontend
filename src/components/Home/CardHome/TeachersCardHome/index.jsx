@@ -51,11 +51,11 @@ const TeachersCardHome = () => {
 
   const formatProps = academicUnit => {
     return [
-      academicUnit.teachersCount,
-      academicUnit.averageFailureDueToGradeRate.toFixed(1) + "% ",
-      academicUnit.averageFailureDueToAbsenceRate.toFixed(1) + "% ",
-      academicUnit.averageSuspendedRate.toFixed(1) + "% ",
-      academicUnit.averageSuccessRate.toFixed(1) + "% ",
+      academicUnit.teachersCount.toFixed(1),
+      academicUnit.averageFailureDueToGradeRate.toFixed(1),
+      academicUnit.averageFailureDueToAbsenceRate.toFixed(1),
+      academicUnit.averageSuspendedRate.toFixed(1),
+      academicUnit.averageSuccessRate.toFixed(1),
       `${academicUnit.max.count} (${academicUnit.max.term})`,
       `${academicUnit.min.count} (${academicUnit.min.term})`,
     ];
@@ -129,7 +129,7 @@ const TeachersCardHome = () => {
   };
 
   const setPropsTeachersUAL = data => {
-    const props = formatProps(data).summaryMap[1307];
+    const props = formatProps(data.summaryMap[1307]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
