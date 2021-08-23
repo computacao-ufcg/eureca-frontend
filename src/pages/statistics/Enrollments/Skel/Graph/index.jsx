@@ -2,6 +2,8 @@ import React from "react";
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
+import { translatedVariables } from "../util";
+
 import "./style.css";
 
 const MandatoryGraph = props => {
@@ -29,7 +31,7 @@ const MandatoryGraph = props => {
           iconType='circle'
           payload={[{ value: props.label, type: "circle", color: "#886859" }]}
         />
-        <Bar dataKey={props.variable} fill='#886859' />
+        <Bar dataKey={props.variable} fill='#886859' name={translatedVariables[props.variable]} />
       </BarChart>
 
       <div className='axis-y'>

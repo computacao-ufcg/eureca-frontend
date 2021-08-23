@@ -16,4 +16,10 @@ const variables = [
   },
 ];
 
-export { variables };
+const translatedVariables = {
+  classesCount: "Número de turmas",
+  enrollmentsCount: "Número de matrículas",
+  averageEnrollmentsPerClass: "Média de matrículas por turma",
+};
+
+export { variables, translatedVariables };
