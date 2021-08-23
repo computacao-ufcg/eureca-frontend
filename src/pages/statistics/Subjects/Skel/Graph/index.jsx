@@ -6,12 +6,20 @@ import { translatedVariables } from "../util";
 import "./style.css";
 
 const MandatoryGraph = props => {
+  console.log(props);
+  const parsedMetrics = props.data.map(term => {
+    return {
+      term: term.term,
+      ...term.metrics,
+    };
+  });
+
   return (
     <div className='main-subjects-graph'>
       <BarChart
         width={680}
         height={350}
-        data={props.data}
+        data={parsedMetrics}
         margin={{
           top: 30,
           right: 30,

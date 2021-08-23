@@ -31,8 +31,7 @@ const Mandatory = ({ query, title }) => {
 
       const response = await updateGraph(query, loading);
       if (response) {
-        let firstSubjectWithValues = findFirstSubjectWithValues(response.data.subjects);
-        firstSubjectWithValues["terms"] = formatTerms(firstSubjectWithValues);
+        const firstSubjectWithValues = findFirstSubjectWithValues(response.data.subjects);
         setSelectedSubject(firstSubjectWithValues);
         setAllData(response);
       }
@@ -68,8 +67,7 @@ const Mandatory = ({ query, title }) => {
   };
 
   const handleSubjectChange = code => {
-    let subject = findSubject(code);
-    subject["terms"] = formatTerms(subject);
+    const subject = findSubject(code);
     if (subject.terms.length === 0) {
       Alert.error("Disciplina sem dados!");
     } else {
@@ -78,23 +76,14 @@ const Mandatory = ({ query, title }) => {
   };
 
   const findSubject = code => {
-    return { ...subjectsData.find(subj => subj.code === code) };
-  };
-
-  const formatTerms = subject => {
-    return subject.terms.map(term => {
-      return {
-        term: term.term,
-        ...term.metrics,
-      };
-    });
+    return { ...subjectsData.find(subj => subj.subjectCode === code) };
   };
 
   const selectableValues = () => {
     return subjectsData.map(subj => {
       return {
-        label: subj.name,
-        value: subj.code,
+        label: subj.subjectName,
+        value: subj.subjectCode,
         role: "Master",
       };
     });
@@ -130,7 +119,7 @@ const Mandatory = ({ query, title }) => {
                     onChange={value => handleSubjectChange(value)}
                     data={selectableValues(subjectsData)}
                     className='selector'
-                    defaultValue={selectedSubject.code}
+                    defaultValue={selectedSubject.subjectCode}
                     cleanable={false}
                   />
                 </div>
