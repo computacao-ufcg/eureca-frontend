@@ -10,14 +10,15 @@ import Export from "../../../../components/Export";
 import Graph from "./Graph";
 
 import { variables } from "./util";
+
 import { Alert, SelectPicker } from "rsuite";
 
 const Mandatory = ({ query, title }) => {
-  const [subjectsData, setSubjectsData] = useState([]);
-  const [subjectsCSV, setSubjectsCSV] = useState([]);
+  const [subjectsData, setEnrollmentsData] = useState([]);
+  const [subjectsCSV, setEnrollmentsCSV] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
   const [lastTerm, setLastTerm] = useState();
-  const [variable, setVariable] = useState("totalEnrolled");
+  const [variable, setVariable] = useState("enrollmentsCount");
   const [label, setLabel] = useState("Total de matrículas");
   const [selectedSubject, setSelectedSubject] = useState();
 
@@ -31,7 +32,7 @@ const Mandatory = ({ query, title }) => {
 
       const response = await updateGraph(query, loading);
       if (response) {
-        const firstSubjectWithValues = findFirstSubjectWithValues(response.data.subjects);
+        const firstSubjectWithValues = findFirstSubjectWithValues(response.data.enrollmentsSummary);
         setSelectedSubject(firstSubjectWithValues);
         setAllData(response);
       }
@@ -50,12 +51,13 @@ const Mandatory = ({ query, title }) => {
     const response = await updateGraph(query, loading, from, to);
     if (response) {
       setAllData(response);
+      setSelectedSubject(findSubject(selectedSubject.subjectCode, response.data.enrollmentsSummary));
     }
   };
 
   const setAllData = response => {
-    setSubjectsData(response.data.subjects);
-    setSubjectsCSV(response.dataCSV.subjects);
+    setEnrollmentsData(response.data.enrollmentsSummary);
+    setEnrollmentsCSV(response.dataCSV.enrollments);
     setFirstTerm(firstTerm || response.firstTerm);
     setLastTerm(lastTerm || response.lastTerm);
   };
@@ -75,8 +77,8 @@ const Mandatory = ({ query, title }) => {
     }
   };
 
-  const findSubject = code => {
-    return { ...subjectsData.find(subj => subj.subjectCode === code) };
+  const findSubject = (code, subjects = subjectsData) => {
+    return { ...subjects.find(subj => subj.subjectCode === code) };
   };
 
   const selectableValues = () => {
@@ -103,7 +105,7 @@ const Mandatory = ({ query, title }) => {
               </span>
             </div>
             <div className='alumni-slider'>
-              <div className='alumni-title'>Disciplinas {`${title || ""}`}</div>
+              <div className='alumni-title'>Matrículas - Disciplinas {`${title || ""}`}</div>
               <SubjectSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
               <div className='graph-delayed'>
                 <Graph data={selectedSubject?.terms || []} variable={variable} label={label} />

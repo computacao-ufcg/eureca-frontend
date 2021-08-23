@@ -2,14 +2,15 @@ import React from "react";
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
-const EnrollmentsGraph = props => {
-  console.log(props);
+import "./style.css";
+
+const MandatoryGraph = props => {
   return (
-    <div className='main-enrollments-graph'>
+    <div className='main-subjects-graph'>
       <BarChart
         width={680}
         height={350}
-        data={0} //aguardar rota backend
+        data={props.data}
         margin={{
           top: 30,
           right: 30,
@@ -18,8 +19,9 @@ const EnrollmentsGraph = props => {
         }}
       >
         <CartesianGrid strokeDasharray='3 3' />
-        <XAxis dataKey='discipline' />
-        <YAxis dataKey={props.variable || "totalEnrollments"} />
+        <XAxis dataKey='term' />
+        <YAxis dataKey={props.variable} />
+
         <Tooltip />
         <Legend
           verticalAlign='top'
@@ -27,13 +29,15 @@ const EnrollmentsGraph = props => {
           iconType='circle'
           payload={[{ value: props.label, type: "circle", color: "#886859" }]}
         />
-        <Bar dataKey={props.variable} fill='#886859' key='Número de turmas' />
+        <Bar dataKey={props.variable} fill='#886859' />
       </BarChart>
 
-      <p className='graph-label-y-enrollments'>{props.label || "Total de Matrículas"}</p>
-      <p className='graph-label-x-enrollments'>Disciplinas</p>
+      <div className='axis-y'>
+        <p className='graph-label-y-subjects'>{props.label}</p>
+      </div>
+      <p className='graph-label-x-subjects'>Períodos</p>
     </div>
   );
 };
 
-export default EnrollmentsGraph;
+export default MandatoryGraph;
