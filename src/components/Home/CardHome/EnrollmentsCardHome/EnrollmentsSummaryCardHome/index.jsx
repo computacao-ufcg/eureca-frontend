@@ -4,50 +4,40 @@ import { curriculum } from "../../../../../config/storage";
 import "./style.css";
 
 const EnrollmentsSummaryCardHome = props => {
+  const labels = props.labels;
+  const data = props.data;
+
   return (
     <div className='enrollments-summary-card-main'>
       <div className='enrollments-summary-card-title'>
         <div className='enrollments-summary-card-info'>
           <div className='enrollments-summary-card-type'>{props.title}</div>
           <div className='enrollments-summary-card-range'>
-            (Currículo: {curriculum}, períodos {props.data.from} a {props.data.to})
+            (Currículo: {curriculum}, períodos {data.from} a {data.to})
           </div>
-          <div className='enrollments-summary-card-size'>{props.data.subjects}</div>
+          <div className='enrollments-summary-card-size'> {data[0] || 0}</div>
         </div>
         <div className='enrollments-summary-left-cards'>
           <MiniCardHomeRightTop
-            option={"teste"}
-            number={props.data.max.count + " (" + props.data.max.term + ")"}
-            legend={"NUMERO MÁXIMO"}
+            option={props.option} number={data[5] || 0} legend={labels[4]}
           />
           <MiniCardHomeRightBottom
-            option={"teste"}
-            number={props.data.min.count + " (" + props.data.min.term + ")"}
-            legend={"NUMERO MÍNIMO"}
+           option={props.option} number={data[6] || 0} legend={labels[5]}
           />
         </div>
       </div>
       <div className='enrollments-summary-card-cards'>
         <MiniCardHomeEnrollments
-          option={"teste"}
-          number={props.data.averageEnrollmentsPerPeriod.toFixed(1)}
-          legend={"MÉDIA DE MATRÍCULAS/PERÍODO"}
-          id={"teste"}
+         option={props.option} number={data[1] || 0} legend={labels[0]} 
         />
         <MiniCardHomeEnrollments
-          option={"teste"}
-          number={props.data.averageEnrollmentsPerClass.toFixed(1)}
-          legend={"MÉDIA DE MATRÍCULAS/TURMA"}
+          option={props.option} number={data[2] || 0} legend={labels[1]}
         />
         <MiniCardHomeEnrollments
-          option={"teste"}
-          number={props.data.averageClassesPerPeriod.toFixed(1)}
-          legend={"MÉDIA DE TURMAS/PERÍODO"}
+          option={props.option} number={data[3] || 0} legend={labels[2]}
         />
         <MiniCardHomeEnrollments
-          option={"teste"}
-          number={props.data.averageClassesPerDiscipline.toFixed(1)}
-          legend={"MÉDIA DE TURMAS/DISCIPLINA"}
+         ption={props.option} number={data[4] || 0} legend={labels[3]}
         />
       </div>
     </div>
