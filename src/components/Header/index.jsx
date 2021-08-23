@@ -15,7 +15,7 @@ import { eurecaAuthenticationHeader } from "../../config/defaultValues";
 
 const Header = () => {
   const [curriculumData, setCurriculumData] = useState([]);
-  const [curriculumSelected, setCurriculumSelected] = useState(curriculum);
+  const [curriculumSelected, setCurriculumSelected] = useState();
   const history = useHistory();
 
   const handleLogOut = () => {
@@ -30,8 +30,9 @@ const Header = () => {
         const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
         if (res?.status === 200) {
-          console.log(parseData(res.data.curriculumCodes));
-          setCurriculumData(parseData(res.data.curriculumCodes));
+          const parsedCurriculumCodes = parseCurriculumCodes(res.data.curriculumCodes);
+          setCurriculumData(parsedCurriculumCodes);
+          setCurriculumSelected(curriculum);
         }
       } catch (err) {
         console.error(err);
@@ -40,11 +41,11 @@ const Header = () => {
     fetchCurriculumData();
   }, []);
 
-  const parseData = data => {
-    return data.map(c => {
+  const parseCurriculumCodes = data => {
+    return data.map(curriculum => {
       return {
-        label: c,
-        value: c,
+        label: curriculum,
+        value: curriculum,
         role: "Master",
       };
     });
@@ -53,6 +54,7 @@ const Header = () => {
   const handleChange = curriculum => {
     setCurriculumSelected(curriculum);
     sessionStorage.setItem("curriculum", curriculum);
+    window.location.reload();
   };
 
   return (
@@ -76,9 +78,9 @@ const Header = () => {
           <SelectPicker
             onChange={value => handleChange(value)}
             data={curriculumData}
-            dafaultValue={curriculumSelected}
             searchable={false}
             cleanable={false}
+            placeholder={curriculumSelected}
           />
         </div>
       </div>

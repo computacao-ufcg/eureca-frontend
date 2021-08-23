@@ -58,11 +58,11 @@ const EnrollmentsCardHome = () => {
       enrollmentsSummary.averageClassesPerTerm.toFixed(1),
       enrollmentsSummary.averageEnrollmentsPerSubject.toFixed(1),
       enrollmentsSummary.averageEnrollmentsPerTerm.toFixed(1),
-      subject.max.count +" (" + subject.max.term +")",
-      subject.min.count +" (" + subject.min.term +")",
+      subject.max.count + " (" + subject.max.term + ")",
+      subject.min.count + " (" + subject.min.term + ")",
     ];
   };
-  
+
   const setPropsEnrollmentsMandatory = data => {
     const props = formatProps(data.mandatory);
     setPropsEnrollments(props);
@@ -91,7 +91,12 @@ const EnrollmentsCardHome = () => {
             <TitleCardHome title={"MATRÍCULAS"} />
           </div>
           <div className='summary-card-content'>
-           <EnrollmentsSummaryCardHome data={propsEnrollment} option={optionEnrollment} title={title} labels ={labelEnrollments}/>
+            <EnrollmentsSummaryCardHome
+              data={propsEnrollment}
+              option={optionEnrollment}
+              title={title}
+              labels={labelEnrollments}
+            />
             <div className='type-students-grid'>
               <div className='type-students'>
                 <div className={optionEnrollment === "mandatory" ? "type-student-selected" : "type-student"}>
