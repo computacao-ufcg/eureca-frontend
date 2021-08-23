@@ -43,10 +43,9 @@ const RetentionCardHome = () => {
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
-      console.log(res.data);
       setStudentRetention(res.data.studentsRetentionSummary);
-      setSubjectRetention(res.data.subjectRetentionSummary.retentionStatistics);
-      setPropsSubjectRetention(res.data.subjectRetentionSummary.retentionStatistics);
+      setSubjectRetention(res.data.subjectsRetentionSummary);
+      setPropsSubjectRetention(res.data.subjectsRetentionSummary);
     } else {
       console.error(res.statusText);
     }
@@ -64,15 +63,15 @@ const RetentionCardHome = () => {
       `${cost} (${data.average.metrics.cost.toFixed(1)})`,
     ]);
   };
-
+//TODO: verificar finalidade das metricas adequate e possible
   const setPropsSubjectRetention = subjectRetention => {
     setPropsRetention([
-      subjectRetention.max,
-      subjectRetention.min,
-      subjectRetention.firstQuartile,
-      subjectRetention.median,
-      subjectRetention.thirdQuartile,
-      subjectRetention.average.toFixed(1),
+      subjectRetention.adequate.max,
+      subjectRetention.adequate.min,
+      subjectRetention.adequate.firstQuartile,
+      subjectRetention.adequate.median,
+      subjectRetention.adequate.thirdQuartile,
+      subjectRetention.adequate.average.toFixed(1),
     ]);
   };
 

@@ -49,38 +49,87 @@ const TeachersCardHome = () => {
     }
   };
 
-  const formatProps = department => {
+  const formatProps = academicUnit => {
     return [
-      department.total,
-      department.failedDueToGrade.average.toFixed(1) + "% ",
-      department.failedDueToAbsences.average.toFixed(1) + "% ",
-      department.failedDueToCanceling.average.toFixed(1) + "% ",
-      department.success.average.toFixed(1) + "% ",
-      `${department.max.count} (${department.max.term})`,
-      `${department.min.count} (${department.min.term})`,
+      academicUnit.teachersCount,
+      academicUnit.averageFailureDueToGradeRate.toFixed(1) + "% ",
+      academicUnit.averageFailureDueToAbsenceRate.toFixed(1) + "% ",
+      academicUnit.averageSuspendedRate.toFixed(1) + "% ",
+      academicUnit.averageSuccessRate.toFixed(1) + "% ",
+      `${academicUnit.max.count} (${academicUnit.max.term})`,
+      `${academicUnit.min.count} (${academicUnit.min.term})`,
     ];
   };
 
   const setPropsTeachersUASC = data => {
-    const props = formatProps(data);
+    const props = formatProps(data.summaryMap[1411]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
+  const setPropsTeachersUAEM = data => { 
+    const props = formatProps(data.summaryMap[1105]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+  const setPropsTeachersUAF = data => { 
+    const props = formatProps(data.summaryMap[1108]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+
   const setPropsTeachersUAMat = data => {
-    const props = formatProps(data);
+    const props = formatProps(data.summaryMap[1109]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+  const setPropsTeachersUADes = data => { 
+    const props = formatProps(data.summaryMap[1112]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
   const setPropsTeachersUAEst = data => {
-    const props = formatProps(data);
+    const props = formatProps(data.summaryMap[1114]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+  const setPropsTeachersUAAC = data => { 
+    const props = formatProps(data.summaryMap[1301]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+  const setPropsTeachersUAAMi = data => { 
+    const props = formatProps(data.summaryMap[1302]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+  const setPropsTeachersUAEF = data => { 
+    const props = formatProps(data.summaryMap[1303]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+  const setPropsTeachersUAEdF = data => { 
+    const props = formatProps(data.summaryMap[1304]);
+    setPropsTeachers(props);
+    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
+  };
+
+  const setPropsTeachersUACS = data => { 
+    const props = formatProps(data.summaryMap[1305]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
   const setPropsTeachersUAL = data => {
-    const props = formatProps(data);
+    const props = formatProps(data).summaryMap[1307];
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
