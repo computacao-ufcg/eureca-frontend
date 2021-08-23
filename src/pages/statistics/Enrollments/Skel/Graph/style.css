@@ -21,3 +21,11 @@
   right: 50px;
   transform: translateY(2vh);
 }
+
+.axis-y {
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  margin: 0;
+}

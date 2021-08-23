@@ -27,7 +27,6 @@ const Actives = () => {
 
       const response = await updateGraph(query, loading);
       if (response) {
-        console.log(response)
         setAllData(response);
       }
 

@@ -2,17 +2,19 @@ import { endpointWithCourseAndCurriculum, eurecaAuthenticationHeader } from "../
 import { api_EB } from "../../../services/api";
 
 const getSummaryQuery = (query, from, to) => {
-  const f = from ? `?from=${from}` : "";
+  const f = from ? `&from=${from}` : "";
   const t = to ? `&to=${to}` : "";
-  const endpoint = `${query}${f}${t}`;
-  return endpointWithCourseAndCurriculum(endpoint);
+  const endpoint = endpointWithCourseAndCurriculum(query);
+  const fullEndpoint = `${endpoint}${f}${t}`;
+  return fullEndpoint;
 };
 
 const getCSVQuery = (query, from, to) => {
-  const f = from ? `?from=${from}` : "";
+  const f = from ? `&from=${from}` : "";
   const t = to ? `&to=${to}` : "";
-  const endpoint = `${query}/csv${f}${t}`;
-  return endpointWithCourseAndCurriculum(endpoint);
+  const endpoint = endpointWithCourseAndCurriculum(`${query}/csv`);
+  const fullQuery = `${endpoint}${f}${t}`;
+  return fullQuery;
 };
 
 export default async (query, loading, from, to) => {
