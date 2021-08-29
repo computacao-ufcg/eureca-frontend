@@ -67,12 +67,6 @@ const TeachersCardHome = () => {
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
-  const setPropsTeachersUAEM = data => { 
-    const props = formatProps(data.summaryMap[1105]);
-    setPropsTeachers(props);
-    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
-  };
-
   const setPropsTeachersUAF = data => { 
     const props = formatProps(data.summaryMap[1108]);
     setPropsTeachers(props);
@@ -82,12 +76,6 @@ const TeachersCardHome = () => {
 
   const setPropsTeachersUAMat = data => {
     const props = formatProps(data.summaryMap[1109]);
-    setPropsTeachers(props);
-    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
-  };
-
-  const setPropsTeachersUADes = data => { 
-    const props = formatProps(data.summaryMap[1112]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
@@ -116,11 +104,6 @@ const TeachersCardHome = () => {
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
-  const setPropsTeachersUAEdF = data => { 
-    const props = formatProps(data.summaryMap[1304]);
-    setPropsTeachers(props);
-    setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
-  };
 
   const setPropsTeachersUACS = data => { 
     const props = formatProps(data.summaryMap[1305]);
@@ -215,7 +198,90 @@ const TeachersCardHome = () => {
                     UAL
                   </button>
                 </div>
+                <div className={optionTeachers === "UACS" ? "type-teacher-selected" : "type-teacher"}>
+                  <button
+                    className='type-button'
+                    type='button'
+                    onClick={() => {
+                      if (optionTeachers !== "UACS") {
+                        setOptionTeachers("UACS");
+                        setTitleTeachers("UACS");
+                        setLabels(labelTeachers);
+                        setPropsTeachersUACS(dataTeachers);
+                      }
+                    }}
+                  >
+                    UACS
+                  </button>
+                </div>
               </div>
+              <div className='type-teachers'>
+                <div className={optionTeachers === "UAAMi" ? "type-teacher-selected" : "type-teacher"}>
+                  <button
+                    className='type-button'
+                    type='button'
+                    onClick={() => {
+                      if (optionTeachers !== "UAAMi") {
+                        setOptionTeachers("UAAMi");
+                        setTitleTeachers("UAAMi");
+                        setLabels(labelTeachers);
+                        setPropsTeachersUAAMi(dataTeachers);
+                      }
+                    }}
+                  >
+                    UAAMi
+                  </button>
+                </div>
+                <div className={optionTeachers === "UAF" ? "type-teacher-selected" : "type-teacher"}>
+                  <button
+                    className='type-button'
+                    type='button'
+                    onClick={() => {
+                      if (optionTeachers !== "UAF") {
+                        setOptionTeachers("UAF");
+                        setTitleTeachers("UAF");
+                        setLabels(labelTeachers);
+                        setPropsTeachersUAF(dataTeachers);
+                      }
+                    }}
+                  >
+                    UAF
+                  </button>
+                </div>
+                <div className={optionTeachers === "UAAC" ? "type-teacher-selected" : "type-teacher"}>
+                  <button
+                    className='type-button'
+                    type='button'
+                    onClick={() => {
+                      if (optionTeachers !== "UAAC") {
+                        setOptionTeachers("UAAC");
+                        setTitleTeachers("UAAC");
+                        setLabels(labelTeachers);
+                        setPropsTeachersUAAC(dataTeachers);
+                      }
+                    }}
+                  >
+                    UAAC
+                  </button>
+                </div>
+                <div className={optionTeachers === "UAEF" ? "type-teacher-selected" : "type-teacher"}>
+                  <button
+                    className='type-button'
+                    type='button'
+                    onClick={() => {
+                      if (optionTeachers !== "UAEF") {
+                        setOptionTeachers("UAEF");
+                        setTitleTeachers("UAEF");
+                        setLabels(labelTeachers);
+                        setPropsTeachersUAEF(dataTeachers);
+                      }
+                    }}
+                  >
+                    UAEF
+                  </button>
+                </div>
+              </div>
+              
             </div>
           </div>
 

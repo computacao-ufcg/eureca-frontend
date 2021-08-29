@@ -194,7 +194,7 @@
 }
 
 .type-teachers-grid {
-  display: grid;
+  display: flex;
 }
 
 .type-retention-grid {
