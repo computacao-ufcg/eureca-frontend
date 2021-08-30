@@ -34,6 +34,7 @@ const Mandatory = ({ query, title }) => {
         const firstSubjectWithValues = findFirstSubjectWithValues(response.data.subjects);
         setSelectedSubject(firstSubjectWithValues);
         setAllData(response);
+        console.log(response.data.subjects)
       }
 
       setLoading(false);
@@ -57,8 +58,8 @@ const Mandatory = ({ query, title }) => {
   const setAllData = response => {
     setSubjectsData(response.data.subjects);
     setSubjectsCSV(response.dataCSV.subjects);
-    setFirstTerm(firstTerm || response.firstTerm);
-    setLastTerm(lastTerm || response.lastTerm);
+    // setFirstTerm(firstTerm || subject.from);
+    // setLastTerm(lastTerm || subject.to);
   };
 
   const handleVariableChange = variable => {
@@ -105,7 +106,7 @@ const Mandatory = ({ query, title }) => {
             </div>
             <div className='alumni-slider'>
               <div className='alumni-title'>Disciplinas {`${title || ""}`}</div>
-              <SubjectSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
+              {/* <SubjectSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} /> */}
               <div className='graph-delayed'>
                 <Graph data={selectedSubject?.terms || []} variable={variable} label={label} />
                 <div className='selectors'>
