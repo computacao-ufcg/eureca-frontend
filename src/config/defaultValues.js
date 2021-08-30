@@ -13,6 +13,10 @@ const endpointWithCourseAndCurriculum = endpoint => {
   return `${endpoint}?courseCode=${courseCode}&curriculumCode=${curriculum}`;
 };
 
+const endpointWithCourseAndCurriculumAlternative = endpoint => {
+  return `${endpoint}&courseCode=${courseCode}&curriculumCode=${curriculum}`;
+};
+
 export {
   eurecaAuthenticationHeader,
   alumniAuthenticationHeader,
@@ -22,4 +26,5 @@ export {
   baseSubjectsEndpoint,
   baseStudentsEndpoint,
   endpointWithCourseAndCurriculum,
+  endpointWithCourseAndCurriculumAlternative,
 };

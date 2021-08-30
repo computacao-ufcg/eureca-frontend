@@ -14,7 +14,7 @@ import { api_EB } from "../../../../services/api";
 import "./style.css";
 import {
   baseTeachersEndpoint,
-  endpointWithCourseAndCurriculum,
+  endpointWithCourseAndCurriculumAlternative,
   eurecaAuthenticationHeader,
 } from "../../../../config/defaultValues";
 
@@ -32,8 +32,8 @@ const UAMatTeachers = () => {
 
   useEffect(() => {
     (async function () {
-      const endpoint = `${baseTeachersEndpoint}/summary`;
-      const query = endpointWithCourseAndCurriculum(endpoint);
+      const endpoint = `${baseTeachersEndpoint}?academicUnitId=${1109}`;
+      const query = endpointWithCourseAndCurriculumAlternative(endpoint);
 
       try {
         const res = await api_EB.get(query, eurecaAuthenticationHeader);
