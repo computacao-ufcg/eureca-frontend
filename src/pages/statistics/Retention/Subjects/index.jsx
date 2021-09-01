@@ -6,7 +6,10 @@ import Header from "../../../../components/Header";
 import updateGraph from "../../../../components/Slider/util/updateGraph";
 import Export from "../../../../components/Export";
 import DelayedGraph from "./Graph";
+import "./style.css";
+import RetentionSlider from "../../../../components/Slider";
 import _ from 'underscore';
+import { SelectPicker } from "rsuite";
 
 import "rsuite/dist/styles/rsuite-default.css";
 
@@ -15,18 +18,23 @@ const RetentionSubjects = () => {
   const [delayedData, setDelayedData] = useState(null);
   const [dataCSV, setDataCSV] = useState([]);
   const [loading, setLoading] = useState(true);
-
-
+  const [firstTerm, setFirstTerm] = useState();
+  const [lastTerm, setLastTerm] = useState();
+  const [variable, setVariable] = useState("1411167");
+  const [selectedData, setSelectedData] = useState({});
   const history = useHistory();
-
+  
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-
+      
       const response = await updateGraph(query, loading);
       if (response) {
         setAllData(response);
       }
+      console.log(response.data)
+      var result = response.data.subjectRetentionSummary.find(obj => {return obj.subjectCode === variable})
+      setSelectedData(result)
 
       setLoading(false);
     };
@@ -37,7 +45,34 @@ const RetentionSubjects = () => {
   const setAllData = response => {
     setDelayedData(parseDelayedData(response.data));
     setDataCSV(response.dataCSV.subjectRetention);
+    setFirstTerm(firstTerm || "2013.1");
+    setLastTerm(lastTerm || "2020.1");
   };
+    
+  const handleSlider = async (from, to) => {
+    const response = await updateGraph(query, loading, from, to);
+    if (response) {
+      setAllData(response);
+    }
+  };
+
+  const selectableValues = () => {
+    return delayedData.map(subj => {
+      return {
+        label: subj.subjectName,
+        value: subj.subjectCode,
+        role: "Master",
+      };
+    });
+  };
+
+  const handleVariableChange = variable => {
+    setVariable(variable);
+    var result = delayedData.find(obj => {return obj.subjectCode === variable})
+    setSelectedData(result)
+  };
+
+
 
   const parseDelayedData = data => {
 
@@ -66,9 +101,22 @@ const RetentionSubjects = () => {
           </div>
           <div className='alumni-slider'>
             <div className='alumni-title'>Disciplinas</div>
+            {/* <RetentionSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} /> */}
             <div className='graph-delayed'>
-              <DelayedGraph data={delayedData || {}} option="retention" />
+              <DelayedGraph data={selectedData || {}} option={variable} />
+              <div className='select'>
+                <h6>Disciplina</h6>
+                <SelectPicker 
+                  data={selectableValues(delayedData)}
+                  onChange={value => handleVariableChange(value)}
+                  defaultValue={variable}
+                  className='selector-teachers'
+                  searchable={false}
+                  cleanable={false}
+                />
+              </div>
             </div>
+            
             <Export data={dataCSV} name={"delayed"} />
           </div>
         </div>

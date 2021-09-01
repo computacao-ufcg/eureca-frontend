@@ -1,16 +1,15 @@
 import React from "react";
 import "./style.css";
 
-import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, } from "recharts";
+import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart , Line } from "recharts";
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
       <div className="custom-tooltip">
         <p className="label">{`${label}`}</p>
-        <p className="intro">{`Período ideal : ${payload[0].payload.idealTerm}`}</p>
-        <p className="intro">{`Retenção : ${payload[0].value}`}</p>
-        <p className="intro">{`Código : ${payload[0].payload.subjectCode}`}</p>
+        <p className="intro">{`Aptos : ${payload[0].payload.possible}`}</p>
+        <p className="intro">{`Recomendados : ${payload[0].payload.adequate}`}</p>
       </div>
     );
   }
@@ -24,10 +23,10 @@ const DelayedGraph = props => {
     <React.Fragment>
       {props.data ? (
         <div className='graph-main-delay'>
-          <BarChart
+          <LineChart
             width={800}
             height={500}
-            data={props.data}
+            data={props.data.retention}
             margin={{
               top: 5,
               right: 30,
@@ -37,27 +36,33 @@ const DelayedGraph = props => {
           >
             <CartesianGrid strokeDasharray='3 3' />
 
-            <XAxis dataKey='subjectName' tick={false} />
-            <YAxis yAxisId='left' dataKey="retention" />
+            <XAxis dataKey='admissionTerm' />
+            <YAxis yAxisId='left' dataKey='adequate' />
             <Tooltip content={<CustomTooltip />}/>
             <Legend 
               iconSize={10}
               iconType='circle'
               verticalAlign='top' 
               margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
-            <Bar
-              dataKey="retention"
+            <Line
+              dataKey="adequate"
               data={props.data}
-              name="retenção"
+              name="Recomendados"
+              yAxisId='left'
+              stroke='#3CB371'
+            />
+            <Line
+              dataKey="possible"
+              data={props.data}
+              name="Aptos"
               yAxisId='left'
               stroke='#885d41'
-              fill='#886859'
             />
-          </BarChart>
+          </LineChart>
           <div className='axis-y'>
-            <p className='graph-label-y-delayed'>{"Retenção"}</p>
+            <p className='graph-label-y-delayed'>Demanda acumulada</p>
           </div>
-          <p className='graph-label-x-delayed'>Disciplinas</p>
+          <p className='graph-label-x-delayed'>Período de Admissão</p>
         </div>
       ) : null}
     </React.Fragment>
