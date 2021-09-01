@@ -32,7 +32,7 @@ const RetentionSubjects = () => {
       if (response) {
         setAllData(response);
       }
-
+      console.log(response.data)
       var result = response.data.subjectRetentionSummary.find(obj => {return obj.subjectCode === variable})
       setSelectedData(result)
 

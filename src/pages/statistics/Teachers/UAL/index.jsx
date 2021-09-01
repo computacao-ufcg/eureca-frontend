@@ -33,7 +33,7 @@ const UALTeachers = () => {
   useEffect(() => {
     (async function () {
       const endpoint = `${baseTeachersEndpoint}?academicUnitId=${1307}`;
-      const query = endpointWithCourseAndCurriculumAlternative(endpoint);
+      const query = endpointWithCourseAndCurriculum(endpoint);
 
       try {
         const res = await api_EB.get(query, eurecaAuthenticationHeader);
