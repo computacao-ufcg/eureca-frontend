@@ -35,6 +35,8 @@ const Mandatory = ({ query, title }) => {
         const firstSubjectWithValues = findFirstSubjectWithValues(response.data.enrollmentsSummary);
         setSelectedSubject(firstSubjectWithValues);
         setAllData(response);
+        setFirstTerm(firstSubjectWithValues.terms[0].term)
+        setLastTerm(firstSubjectWithValues.terms[firstSubjectWithValues.terms.length -1].term);
       }
 
       setLoading(false);
@@ -58,8 +60,8 @@ const Mandatory = ({ query, title }) => {
   const setAllData = response => {
     setEnrollmentsData(response.data.enrollmentsSummary);
     setEnrollmentsCSV(response.dataCSV.enrollments);
-    setFirstTerm(firstTerm || response.firstTerm);
-    setLastTerm(lastTerm || response.lastTerm);
+    //setFirstTerm(firstTerm || response.firstTerm);
+    //setLastTerm(lastTerm || response.lastTerm);
   };
 
   const handleVariableChange = variable => {
@@ -75,6 +77,8 @@ const Mandatory = ({ query, title }) => {
     } else {
       setSelectedSubject(subject);
     }
+    setFirstTerm(subject.terms[0].term)
+    setLastTerm(subject.terms[subject.terms.length -1].term)
   };
 
   const findSubject = (code, subjects = subjectsData) => {
