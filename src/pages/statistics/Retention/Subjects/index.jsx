@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
-
 import Header from "../../../../components/Header";
 import updateGraph from "../../../../components/Slider/util/updateGraph";
 import Export from "../../../../components/Export";
@@ -9,7 +8,7 @@ import DelayedGraph from "./Graph";
 import "./style.css";
 import RetentionSlider from "../../../../components/Slider";
 import _ from 'underscore';
-import { SelectPicker } from "rsuite";
+import { Alert, SelectPicker } from "rsuite";
 
 import "rsuite/dist/styles/rsuite-default.css";
 
@@ -32,9 +31,8 @@ const RetentionSubjects = () => {
       if (response) {
         setAllData(response);
       }
-      console.log(response.data)
-      var result = response.data.subjectRetentionSummary.find(obj => {return obj.subjectCode === variable})
-      setSelectedData(result)
+      const subject = findSubject(variable, response.data.subjectRetentionSummary);
+      setSelectedData(subject)
 
       setLoading(false);
     };
@@ -45,14 +43,16 @@ const RetentionSubjects = () => {
   const setAllData = response => {
     setDelayedData(parseDelayedData(response.data));
     setDataCSV(response.dataCSV.subjectRetention);
-    setFirstTerm(firstTerm || "2013.1");
-    setLastTerm(lastTerm || "2020.1");
+    const subject = findSubject(variable, response.data.subjectRetentionSummary);
+    setFirstTerm(subject.from)
+    setLastTerm(subject.to);
   };
     
   const handleSlider = async (from, to) => {
     const response = await updateGraph(query, loading, from, to);
     if (response) {
       setAllData(response);
+      setSelectedData(findSubject(selectedData.subjectCode, response.data.subjectRetentionSummary));
     }
   };
 
@@ -68,11 +68,20 @@ const RetentionSubjects = () => {
 
   const handleVariableChange = variable => {
     setVariable(variable);
-    var result = delayedData.find(obj => {return obj.subjectCode === variable})
-    setSelectedData(result)
+    const subject = findSubject(variable, delayedData);
+    if (subject.retention.length === 0) {
+      Alert.error("Disciplina sem dados!");
+    } else {
+      setSelectedData(subject)
+    }
+    console.log(subject)
+    setFirstTerm(subject.from)
+    setLastTerm(subject.to);
   };
 
-
+  const findSubject = (code, subjects) => {
+    return { ...subjects.find(subj => subj.subjectCode === code) };
+  };
 
   const parseDelayedData = data => {
 
@@ -101,7 +110,7 @@ const RetentionSubjects = () => {
           </div>
           <div className='alumni-slider'>
             <div className='alumni-title'>Disciplinas</div>
-            {/* <RetentionSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} /> */}
+            <RetentionSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
             <div className='graph-delayed'>
               <DelayedGraph data={selectedData || {}} option={variable} />
               <div className='select'>
