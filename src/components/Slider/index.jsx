@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { RangeSlider } from "rsuite";
 
@@ -10,7 +10,12 @@ const GraduatedSlider = props => {
   const labels = sliderGenerator.generate(firstTerm, lastTerm);
 
   const [from, setFrom] = useState(0);
+
   const [to, setTo] = useState(labels.length - 1);
+  useEffect(() => {
+    setFrom(0)
+    setTo(labels.length - 1)
+  }, [labels])
 
   const handleStyle = {
     color: "#fff",
@@ -30,7 +35,7 @@ const GraduatedSlider = props => {
     <div className={"mainSlider"}>
       <RangeSlider
         min={0}
-        max={labels.length - 1}
+        max={to}
         defaultValue={[from, to]}
         value={[from, to]}
         handleStyle={handleStyle}
