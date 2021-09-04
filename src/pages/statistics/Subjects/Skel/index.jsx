@@ -34,8 +34,6 @@ const Mandatory = ({ query, title }) => {
         const firstSubjectWithValues = findFirstSubjectWithValues(response.data.subjects);
         setSelectedSubject(firstSubjectWithValues);
         setAllData(response);
-        setFirstTerm(firstSubjectWithValues.terms[0].term)
-        setLastTerm(firstSubjectWithValues.terms[firstSubjectWithValues.terms.length -1].term);
       }
       setLoading(false);
     };
@@ -57,6 +55,9 @@ const Mandatory = ({ query, title }) => {
   const setAllData = response => {
     setSubjectsData(response.data.subjects);
     setSubjectsCSV(response.dataCSV.subjects);
+    const subject = findFirstSubjectWithValues(response.data.subjects);
+    setFirstTerm(subject.terms[0].term)
+    setLastTerm(subject.terms[subject.terms.length -1].term);
   };
 
   const handleVariableChange = variable => {
