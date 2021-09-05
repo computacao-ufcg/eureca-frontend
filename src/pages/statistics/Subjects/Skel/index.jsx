@@ -56,6 +56,7 @@ const Mandatory = ({ query, title }) => {
     setSubjectsData(response.data.subjects);
     setSubjectsCSV(response.dataCSV.subjects);
     const subject = findFirstSubjectWithValues(response.data.subjects);
+    console.log(subject)
     setFirstTerm(subject.terms[0].term)
     setLastTerm(subject.terms[subject.terms.length -1].term);
   };
