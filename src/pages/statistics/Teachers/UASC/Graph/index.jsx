@@ -20,7 +20,7 @@ const TeachersGraph = props => {
       >
         <CartesianGrid strokeDasharray='3 3' />
         <XAxis dataKey='teacherName' />
-        <YAxis dataKey={props.variable || "totalEnrollments"} />
+        <YAxis dataKey="totalEnrolled" />
         <Tooltip />
         <Legend
           verticalAlign='top'
