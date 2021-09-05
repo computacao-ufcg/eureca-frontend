@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { LineChart , Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import { translatedVariables } from "../util";
 
 import "./style.css";
@@ -16,9 +16,9 @@ const MandatoryGraph = props => {
 
   return (
     <div className='main-subjects-graph'>
-      <BarChart
-        width={680}
-        height={350}
+      <LineChart
+        width={800}
+        height={500}
         data={parsedMetrics}
         margin={{
           top: 30,
@@ -38,8 +38,8 @@ const MandatoryGraph = props => {
           iconType='circle'
           payload={[{ value: props.label, type: "circle", color: "#886859" }]}
         />
-        <Bar dataKey={props.variable} fill='#886859' name={translatedVariables[props.variable]} />
-      </BarChart>
+        <Line dataKey={props.variable} fill='#886859' name={translatedVariables[props.variable]} />
+      </LineChart>
 
       <div className='axis-y'>
         <p className='graph-label-y-subjects'>{props.label}</p>
