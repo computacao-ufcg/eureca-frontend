@@ -6,6 +6,7 @@ const alumniAuthenticationHeader = { headers: { "Authentication-Token": alumniTo
 const baseEnrollmentsEndpoint = "/statistics/enrollments";
 const baseRetentionEndpoint = "/statistics/retention";
 const baseTeachersEndpoint = "/statistics/teachers";
+const baseTeachersEndpointCsv = "/statistics/teachers/csv";
 const baseSubjectsEndpoint = "/statistics/subjects";
 const baseStudentsEndpoint = "/statistics/students";
 
@@ -27,4 +28,5 @@ export {
   baseStudentsEndpoint,
   endpointWithCourseAndCurriculum,
   endpointWithCourseAndCurriculumAlternative,
+  baseTeachersEndpointCsv
 };
