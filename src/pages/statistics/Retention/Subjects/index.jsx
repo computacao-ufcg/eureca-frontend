@@ -74,13 +74,18 @@ const RetentionSubjects = () => {
     } else {
       setSelectedData(subject)
     }
-    console.log(subject)
     setFirstTerm(subject.from)
     setLastTerm(subject.to);
   };
 
   const findSubject = (code, subjects) => {
-    return { ...subjects.find(subj => subj.subjectCode === code) };
+    const subject = { ...subjects.find(subj => subj.subjectCode === code) };
+    console.log(subject)
+    for (let k = 1; k < subject.retention.length; k = k + 1) {
+      subject.retention[k].adequate = subject.retention[k].adequate + subject.retention[k - 1].adequate;
+      subject.retention[k].possible = subject.retention[k].possible + subject.retention[k - 1].possible;
+    }
+    return subject
   };
 
   const parseDelayedData = data => {
