@@ -22,6 +22,11 @@ import UASCTeachers from "./pages/statistics/Teachers/UASC";
 import UAMatTeachers from "./pages/statistics/Teachers/UAMat";
 import UAEstTeachers from "./pages/statistics/Teachers/UAEst";
 import UALTeachers from "./pages/statistics/Teachers/UAL";
+import UAACTeachers from "./pages/statistics/Teachers/UAAC";
+import UAAMiTeachers from "./pages/statistics/Teachers/UAAMi";
+import UACSTeachers from "./pages/statistics/Teachers/UACS";
+import UAEFTeachers from "./pages/statistics/Teachers/UAEF";
+import UAFTeachers from "./pages/statistics/Teachers/UAF";
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -67,6 +72,11 @@ const Routes = () => {
         <PrivateRoute exact path='/statistics/teachers/UAMat' component={() => <UAMatTeachers />} />
         <PrivateRoute exact path='/statistics/teachers/UAEst' component={() => <UAEstTeachers />} />
         <PrivateRoute exact path='/statistics/teachers/UAL' component={() => <UALTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UACS' component={() => <UACSTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UAAMi' component={() => <UAAMiTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UAF' component={() => <UAFTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UAEF' component={() => <UAEFTeachers />} />
+        <PrivateRoute exact path='/statistics/teachers/UAAC' component={() => <UAACTeachers />} />
         <PrivateRoute exact path='/alumniUFCG/glossary' component={() => <AlumniGlossary />} />
         <PrivateRoute exact path='/alumniufcg/updatedata' component={() => <UpdateData />} />
         <PrivateRoute exact path='/alumniufcg/search' component={() => <Search />} />
