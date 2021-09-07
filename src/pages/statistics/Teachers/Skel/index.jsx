@@ -130,7 +130,7 @@ const UASC = ({ query, title, csvQuery }) => {
               </span>
             </div>
             <div className='teachers-uasc-slider'>
-              <div className='teachers-uasc-title'>Docentes {`${title || ""}`} </div>
+              <div className='teachers-uasc-title'>Docentes da {`${title || ""}`} </div>
               {console.log(selectedData)}
               <TeachersSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
               <div className='graph'>
