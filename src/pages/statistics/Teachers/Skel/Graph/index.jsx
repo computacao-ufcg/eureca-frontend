@@ -1,15 +1,15 @@
 import React from "react";
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { LineChart , Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 import "./style.css";
 
 const TeachersGraph = props => {
   return (
     <div className='main-teachers-graph'>
-      <BarChart
-        width={680}
-        height={350}
+      <LineChart
+        width={800}
+        height={500}
         data={props.data}
         margin={{
           top: 30,
@@ -19,8 +19,8 @@ const TeachersGraph = props => {
         }}
       >
         <CartesianGrid strokeDasharray='3 3' />
-        <XAxis dataKey='teacherName' />
-        <YAxis dataKey={props.variable || "totalEnrollments"} />
+        <XAxis dataKey='term' />
+        <YAxis dataKey="totalEnrolled" />
         <Tooltip />
         <Legend
           verticalAlign='top'
@@ -28,11 +28,11 @@ const TeachersGraph = props => {
           iconType='circle'
           payload={[{ value: props.label, type: "circle", color: "#886859" }]}
         />
-        <Bar dataKey={props.variable} fill='#886859' key='Número de turmas' />
-      </BarChart>
+        <Line dataKey={props.variable} fill='#886859' key='Número de turmas' />
+      </LineChart>
 
       <p className='graph-label-y-teachers'>{props.label || "Taxa de Sucesso"}</p>
-      <p className='graph-label-x-teachers'>Nome do Docente</p>
+      <p className='graph-label-x-teachers'>Períodos</p>
     </div>
   );
 };
