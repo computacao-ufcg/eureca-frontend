@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Header } from "../../../../components";
 import Export from "../../../../components/Export";
 
-import TeachersSlider from "../Slider";
+import TeachersSlider from "../../../../components/Slider"
 import TeachersGraph from "./Graph";
 import { Alert, SelectPicker } from "rsuite";
 
@@ -13,13 +13,28 @@ import "./style.css";
 import updateTeachersGraph from "../../../../components/Slider/util/updateTeachersGraph";
 
 const UASC = ({ query, title, csvQuery }) => {
+  const academicUnit = query.substring(query.length - 4, query.length)
+
+  const teachersId = {
+    1411: "1010160",
+    1307: "2336015",
+    1305: "2340125",
+    1303: "2336606",
+    1302: "6337241",
+    1301: "3245582",
+    1114: "2327828",
+    1109: "2051179",
+    1108: "1997862"
+  }
+  
+  console.log(teachersId[1411])
   const [data, setData] = useState([]);
   const [dataExport, setDataExport] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
   const [lastTerm, setLastTerm] = useState();
-  const [variable, setVariable] = useState("successRate");
+  const [variable, setVariable] = useState("succeededRate");
   const [label, setLabel] = useState("Taxa de sucesso");
-  const [teacher, setTeacher] = useState("1010160");
+  const [teacher, setTeacher] = useState(teachersId[academicUnit]);
   const [loading, setLoading] = useState(true);
   const [selectedData, setSelectedData] = useState();
   const history = useHistory();
@@ -42,7 +57,6 @@ const UASC = ({ query, title, csvQuery }) => {
   }, []);
 
   const findTeacher = (id, teachers) => {
-    console.log(teachers)
     return { ...teachers.find(teacher => teacher.teacherId === id) };
   };
 
@@ -84,24 +98,24 @@ const UASC = ({ query, title, csvQuery }) => {
     } else {
       setSelectedData(teacher);
     }
-    setFirstTerm(teacher.terms[0].term);
-    setLastTerm(teacher.terms[teacher.terms.length - 1].term);
+    setFirstTerm(teacher.from);
+    setLastTerm(teacher.to);
   };
 
   const variables = [
     {
       label: "Taxa de sucesso",
-      value: "successRate",
+      value: "succeededRate",
       role: "Master",
     },
     {
       label: "Taxa de reprovação por nota",
-      value: "averageFailDueToGrade",
+      value: "failedDueToGradeRate",
       role: "Master",
     },
     {
       label: "Taxa de reprovação por falta",
-      value: "averageFailDueToAbsences",
+      value: "failedDueToAbsencesRate",
       role: "Master",
     },
     {
@@ -111,9 +125,39 @@ const UASC = ({ query, title, csvQuery }) => {
     },
     {
       label: "Número de matrículas",
-      value: "totalEnrollments",
+      value: "totalEnrolled",
       role: "Master",
     },
+    {
+      label: "Média de matrículas por turma",
+      value: "averageEnrollmentsPerClass",
+      role: "Master",
+    },
+    {
+      label: "Cancelados",
+      value: "cancelledRate",
+      role: "Master",
+    },
+    {
+      label: "Número de turmas",
+      value: "classesCount",
+      role: "Master",
+    },
+    {
+      label: "Número de dispensas",
+      value: "exemptedRate",
+      role: "Master",
+    },
+    {
+      label: "undefined",
+      value: "ongoingRate",
+      role: "Master",
+    },
+    {
+      label: "Número de disciplinas",
+      value: "subjectsCount",
+      role: "Master",
+    }
   ];
 
   return (
@@ -131,10 +175,9 @@ const UASC = ({ query, title, csvQuery }) => {
             </div>
             <div className='teachers-uasc-slider'>
               <div className='teachers-uasc-title'>Docentes da {`${title || ""}`} </div>
-              {console.log(selectedData)}
               <TeachersSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
               <div className='graph'>
-                <TeachersGraph variable={variable} data={selectedData || {}} label={label} />
+                <TeachersGraph variable={variable} data={selectedData.terms || {}} label={label} />
                 <div className='selector'>
                   <div className ='selector-teachers'>
                   <h6>Variável</h6>

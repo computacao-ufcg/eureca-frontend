@@ -5,12 +5,20 @@ import { LineChart , Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "
 import "./style.css";
 
 const TeachersGraph = props => {
+  const parsedMetrics = props.data.map(term => {
+    return {
+      term: term.term,
+      ...term.termSummary,
+    };
+  });
+
+  console.log(parsedMetrics)
   return (
     <div className='main-teachers-graph'>
       <LineChart
         width={800}
         height={500}
-        data={props.data}
+        data={parsedMetrics}
         margin={{
           top: 30,
           right: 30,
@@ -20,7 +28,7 @@ const TeachersGraph = props => {
       >
         <CartesianGrid strokeDasharray='3 3' />
         <XAxis dataKey='term' />
-        <YAxis dataKey="totalEnrolled" />
+        <YAxis dataKey={props.variable} />
         <Tooltip />
         <Legend
           verticalAlign='top'
