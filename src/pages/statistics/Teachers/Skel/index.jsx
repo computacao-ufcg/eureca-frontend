@@ -16,18 +16,17 @@ const UASC = ({ query, title, csvQuery }) => {
   const academicUnit = query.substring(query.length - 4, query.length)
 
   const teachersId = {
-    1411: "1010160",
-    1307: "2336015",
-    1305: "2340125",
-    1303: "2336606",
+    1411: "1610274",
+    1307: "1030412",
+    1305: "335092",
+    1303: "1633361",
     1302: "6337241",
-    1301: "3245582",
-    1114: "2327828",
+    1301: "338280",
+    1114: "1740746",
     1109: "2051179",
-    1108: "1997862"
+    1108: "1154515"
   }
   
-  console.log(teachersId[1411])
   const [data, setData] = useState([]);
   const [dataExport, setDataExport] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
@@ -50,6 +49,7 @@ const UASC = ({ query, title, csvQuery }) => {
         setAllData(res);
         setFirstTerm(teacherData.from);
         setLastTerm(teacherData.to);
+        console.log(res)
       }
       setLoading(false);
     };
