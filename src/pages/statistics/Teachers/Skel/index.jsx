@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Header } from "../../../../components";
 import Export from "../../../../components/Export";
 
-import TeachersSlider from "../../../../components/Slider"
+import TeachersSlider from "../../../../components/Slider";
 import TeachersGraph from "./Graph";
 import { Alert, SelectPicker } from "rsuite";
 
@@ -13,7 +13,7 @@ import "./style.css";
 import updateTeachersGraph from "../../../../components/Slider/util/updateTeachersGraph";
 
 const UASC = ({ query, title, csvQuery }) => {
-  const academicUnit = query.substring(query.length - 4, query.length)
+  const academicUnit = query.substring(query.length - 4, query.length);
 
   const teachersId = {
     1411: "1610274",
@@ -24,9 +24,9 @@ const UASC = ({ query, title, csvQuery }) => {
     1301: "338280",
     1114: "1740746",
     1109: "2051179",
-    1108: "1154515"
-  }
-  
+    1108: "1154515",
+  };
+
   const [data, setData] = useState([]);
   const [dataExport, setDataExport] = useState([]);
   const [firstTerm, setFirstTerm] = useState();
@@ -42,14 +42,14 @@ const UASC = ({ query, title, csvQuery }) => {
     const fetchData = async () => {
       setLoading(true);
 
-      const res = await updateTeachersGraph(query,csvQuery,loading);
+      const res = await updateTeachersGraph(query, csvQuery, loading);
       if (res) {
         const teacherData = findTeacher(teacher, res.data.teachers);
         setSelectedData(teacherData);
         setAllData(res);
         setFirstTerm(teacherData.from);
         setLastTerm(teacherData.to);
-        console.log(res)
+        console.log(res);
       }
       setLoading(false);
     };
@@ -63,7 +63,6 @@ const UASC = ({ query, title, csvQuery }) => {
   const setAllData = res => {
     setData(res.data.teachers);
     setDataExport(res.dataCSV);
-
   };
 
   const selectableValues = () => {
@@ -77,7 +76,7 @@ const UASC = ({ query, title, csvQuery }) => {
   };
 
   const handleSlider = async (from, to) => {
-    const response = await updateTeachersGraph(query,csvQuery, loading, from, to);
+    const response = await updateTeachersGraph(query, csvQuery, loading, from, to);
     if (response) {
       setAllData(response);
       setTeacher(findTeacher(teacher.teacherName, response.data.teachers));
@@ -157,7 +156,7 @@ const UASC = ({ query, title, csvQuery }) => {
       label: "Número de disciplinas",
       value: "subjectsCount",
       role: "Master",
-    }
+    },
   ];
 
   return (
@@ -179,24 +178,24 @@ const UASC = ({ query, title, csvQuery }) => {
               <div className='graph'>
                 <TeachersGraph variable={variable} data={selectedData.terms || {}} label={label} />
                 <div className='selector'>
-                  <div className ='selector-teachers'>
-                  <h6>Variável</h6>
-                  <SelectPicker
-                    onChange={value => handleVariableChange(value)}
-                    data={variables}
-                    defaultValue={variable}
-                    searchable={false}
-                    cleanable={false}
-                  />
+                  <div className='selector-teachers'>
+                    <h6>Variável</h6>
+                    <SelectPicker
+                      onChange={value => handleVariableChange(value)}
+                      data={variables}
+                      defaultValue={variable}
+                      searchable={false}
+                      cleanable={false}
+                    />
                   </div>
-                  <div className ='selector-teachers'>
-                  <h6>Nome do docente</h6>
-                  <SelectPicker
-                    onChange={value => handleTeacherVariableChange(value)}
-                    data={selectableValues(data)}
-                    defaultValue={teacher}
-                    cleanable={false}
-                  />
+                  <div className='selector-teachers'>
+                    <h6>Nome do docente</h6>
+                    <SelectPicker
+                      onChange={value => handleTeacherVariableChange(value)}
+                      data={selectableValues(data)}
+                      defaultValue={teacher}
+                      cleanable={false}
+                    />
                   </div>
                 </div>
               </div>

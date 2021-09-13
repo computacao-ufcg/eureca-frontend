@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LineChart , Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 import "./style.css";
 
@@ -12,7 +12,7 @@ const TeachersGraph = props => {
     };
   });
 
-  console.log(parsedMetrics)
+  console.log(parsedMetrics);
   return (
     <div className='main-teachers-graph'>
       <LineChart
