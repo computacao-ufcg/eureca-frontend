@@ -163,18 +163,18 @@ const UASC = ({ query, title, csvQuery }) => {
   return (
     <React.Fragment>
       <Header />
-      <div className='teachers-uasc-main'>
+      <div className='teachers-main'>
         {loading ? (
           <h1>Carregando...</h1>
         ) : (
-          <div className='teachers-uasc-content'>
+          <div className='teachers-content'>
             <div className='backdot'>
               <span onClick={() => history.goBack()}>
                 <FiArrowLeft size={25} />
               </span>
             </div>
-            <div className='teachers-uasc-slider'>
-              <div className='teachers-uasc-title'>Docentes da {`${title || ""}`} </div>
+            <div className='teachers-slider'>
+              <div className='teachers-title'>Docentes da {`${title || ""}`} </div>
               <TeachersSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
               <div className='graph'>
                 <TeachersGraph variable={variable} data={selectedData.terms || {}} label={label} />
