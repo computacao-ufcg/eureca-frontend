@@ -49,7 +49,6 @@ const UASC = ({ query, title, csvQuery }) => {
         setAllData(res);
         setFirstTerm(teacherData.from);
         setLastTerm(teacherData.to);
-        console.log(res);
       }
       setLoading(false);
     };

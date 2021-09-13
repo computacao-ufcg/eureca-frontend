@@ -12,7 +12,6 @@ const TeachersGraph = props => {
     };
   });
 
-  console.log(parsedMetrics);
   return (
     <div className='main-teachers-graph'>
       <LineChart
