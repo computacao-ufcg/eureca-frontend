@@ -80,12 +80,13 @@ const RetentionSubjects = () => {
 
   const findSubject = (code, subjects) => {
     const subject = { ...subjects.find(subj => subj.subjectCode === code) };
-    console.log(subject)
-    for (let k = 1; k < subject.retention.length; k = k + 1) {
-      subject.retention[k].adequate = subject.retention[k].adequate + subject.retention[k - 1].adequate;
-      subject.retention[k].possible = subject.retention[k].possible + subject.retention[k - 1].possible;
+    var newObject = JSON.parse(JSON.stringify(subject));
+    for (let k = 1; k < newObject.retention.length; k = k + 1) {
+      newObject.retention[k].adequate = newObject.retention[k].adequate + newObject.retention[k - 1].adequate;
+      newObject.retention[k].possible = newObject.retention[k].possible + newObject.retention[k - 1].possible;
     }
-    return subject
+
+    return newObject
   };
 
   const parseDelayedData = data => {
