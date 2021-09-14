@@ -50,7 +50,6 @@ const SubjectsCardHome = () => {
     if (res) {
       setDataSubjects(res.data);
       setPropsSubjectsMandatory(res.data);
-      console.log(res)
     } else {
       console.error(res.statusText);
     }
