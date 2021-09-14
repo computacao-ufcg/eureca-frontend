@@ -46,6 +46,7 @@ const RetentionCardHome = () => {
       setStudentRetention(res.data.studentsRetentionSummary);
       setSubjectRetention(res.data.subjectsRetentionSummary);
       setPropsSubjectRetention(res.data.subjectsRetentionSummary);
+      console.log(res)
     } else {
       console.error(res.statusText);
     }
@@ -63,9 +64,10 @@ const RetentionCardHome = () => {
       `${cost} (${data.average.metrics.cost.toFixed(1)})`,
     ]);
   };
-//TODO: verificar finalidade das metricas adequate e possible
+
   const setPropsSubjectRetention = subjectRetention => {
     setPropsRetention([
+      subjectRetention.adequate.sampleSize,
       subjectRetention.adequate.max,
       subjectRetention.adequate.min,
       subjectRetention.adequate.firstQuartile,
