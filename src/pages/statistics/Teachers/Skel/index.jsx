@@ -60,8 +60,9 @@ const UASC = ({ query, title, csvQuery }) => {
   };
 
   const setAllData = res => {
+    console.log(res)
     setData(res.data.teachers);
-    setDataExport(res.dataCSV);
+    setDataExport(res.dataCSV.teachers);
   };
 
   const selectableValues = () => {
@@ -198,7 +199,7 @@ const UASC = ({ query, title, csvQuery }) => {
                   </div>
                 </div>
               </div>
-              {/*<Export data={dataExport} name={"teachers"} />*/}
+              <Export data={dataExport} name={"teachers"} />
             </div>
           </div>
         )}
