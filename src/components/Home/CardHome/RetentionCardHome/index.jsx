@@ -46,7 +46,6 @@ const RetentionCardHome = () => {
       setStudentRetention(res.data.studentsRetentionSummary);
       setSubjectRetention(res.data.subjectsRetentionSummary);
       setPropsSubjectRetention(res.data.subjectsRetentionSummary);
-      console.log(res)
     } else {
       console.error(res.statusText);
     }

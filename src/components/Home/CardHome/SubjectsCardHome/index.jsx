@@ -19,7 +19,7 @@ const SubjectsCardHome = () => {
     "MÉDIA DE REPROVAÇÕES/FALTA",
     "MÉDIA DE TRANCAMENTOS",
     "MÉDIA DE APROVAÇÕES",
-    "MÉDIA DE MATRÍCULAS",
+    "MÉDIA DE MATRÍCULADOS",
     "MÉDIA DE DISPENSAS",
   ];
 
@@ -50,6 +50,7 @@ const SubjectsCardHome = () => {
     if (res) {
       setDataSubjects(res.data);
       setPropsSubjectsMandatory(res.data);
+      console.log(res)
     } else {
       console.error(res.statusText);
     }
@@ -64,6 +65,7 @@ const SubjectsCardHome = () => {
       subjectStatistics.failedDueToAbsences.average.toFixed(1) + "% ",
       subjectStatistics.cancelled.average.toFixed(1) + "% ",
       subjectStatistics.succeeded.average.toFixed(1) + "% ",
+      subjectStatistics.totalEnrolled.average.toFixed(1) + "% ",
       subjectStatistics.exempted.average.toFixed(1) + "% ",
     ];
   };
