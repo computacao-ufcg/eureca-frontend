@@ -1,5 +1,5 @@
 import React from "react";
-import {curriculum} from "../../../../../config/storage"
+import { curriculum } from "../../../../../config/storage";
 import "./styles.css";
 
 import { MiniCardHomeSubjects, MiniCardHomeSubjectsTop } from "../../MiniCardHome";

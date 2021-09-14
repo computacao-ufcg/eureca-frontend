@@ -35,8 +35,8 @@ const Mandatory = ({ query, title }) => {
         const firstSubjectWithValues = findFirstSubjectWithValues(response.data.enrollmentsSummary);
         setSelectedSubject(firstSubjectWithValues);
         setAllData(response);
-        setFirstTerm(firstSubjectWithValues.terms[0].term)
-        setLastTerm(firstSubjectWithValues.terms[firstSubjectWithValues.terms.length -1].term);
+        setFirstTerm(firstSubjectWithValues.terms[0].term);
+        setLastTerm(firstSubjectWithValues.terms[firstSubjectWithValues.terms.length - 1].term);
       }
 
       setLoading(false);
@@ -77,8 +77,8 @@ const Mandatory = ({ query, title }) => {
     } else {
       setSelectedSubject(subject);
     }
-    setFirstTerm(subject.terms[0].term)
-    setLastTerm(subject.terms[subject.terms.length -1].term)
+    setFirstTerm(subject.terms[0].term);
+    setLastTerm(subject.terms[subject.terms.length - 1].term);
   };
 
   const findSubject = (code, subjects = subjectsData) => {

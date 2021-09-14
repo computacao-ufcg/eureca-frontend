@@ -7,7 +7,7 @@ import Export from "../../../../components/Export";
 import DelayedGraph from "./Graph";
 import "./style.css";
 import RetentionSlider from "../../../../components/Slider";
-import _ from 'underscore';
+import _ from "underscore";
 import { Alert, SelectPicker } from "rsuite";
 
 import "rsuite/dist/styles/rsuite-default.css";
@@ -22,17 +22,17 @@ const RetentionSubjects = () => {
   const [variable, setVariable] = useState("1411167");
   const [selectedData, setSelectedData] = useState({});
   const history = useHistory();
-  
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      
+
       const response = await updateGraph(query, loading);
       if (response) {
         setAllData(response);
       }
       const subject = findSubject(variable, response.data.subjectRetentionSummary);
-      setSelectedData(subject)
+      setSelectedData(subject);
 
       setLoading(false);
     };
@@ -44,10 +44,10 @@ const RetentionSubjects = () => {
     setDelayedData(parseDelayedData(response.data));
     setDataCSV(response.dataCSV.subjectRetention);
     const subject = findSubject(variable, response.data.subjectRetentionSummary);
-    setFirstTerm(subject.from)
+    setFirstTerm(subject.from);
     setLastTerm(subject.to);
   };
-    
+
   const handleSlider = async (from, to) => {
     const response = await updateGraph(query, loading, from, to);
     if (response) {
@@ -72,9 +72,9 @@ const RetentionSubjects = () => {
     if (subject.retention.length === 0) {
       Alert.error("Disciplina sem dados!");
     } else {
-      setSelectedData(subject)
+      setSelectedData(subject);
     }
-    setFirstTerm(subject.from)
+    setFirstTerm(subject.from);
     setLastTerm(subject.to);
   };
 
@@ -86,19 +86,19 @@ const RetentionSubjects = () => {
       newObject.retention[k].possible = newObject.retention[k].possible + newObject.retention[k - 1].possible;
     }
 
-    return newObject
+    return newObject;
   };
 
   const parseDelayedData = data => {
+    const groupedByIdealTerm = _.groupBy(data.subjectRetentionSummary, "idealTerm");
 
-    const groupedByIdealTerm = _.groupBy(data.subjectRetentionSummary, 'idealTerm');
-   
     return Object.values(groupedByIdealTerm)
-                                    .map(idealTerm => {
-                                      return idealTerm.sort((a, b) =>  {
-                                        return b.retention - a.retention;
-                                      })
-                                    }).flat();
+      .map(idealTerm => {
+        return idealTerm.sort((a, b) => {
+          return b.retention - a.retention;
+        });
+      })
+      .flat();
   };
 
   return (
@@ -108,34 +108,34 @@ const RetentionSubjects = () => {
         {loading ? (
           <h1>Carregando...</h1>
         ) : (
-        <div className='alumni-content'>
-          <div className='backdot'>
-            <span onClick={() => history.goBack()}>
-              <FiArrowLeft size={25} />
-            </span>
-          </div>
-          <div className='alumni-slider'>
-            <div className='alumni-title'>Disciplinas</div>
-            <RetentionSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
-            <div className='graph-delayed'>
-              <DelayedGraph data={selectedData || {}} option={variable} />
-              <div className='select'>
-                <h6>Disciplina</h6>
-                <SelectPicker 
-                  data={selectableValues(delayedData)}
-                  onChange={value => handleVariableChange(value)}
-                  defaultValue={variable}
-                  className='selector-teachers'
-                  searchable={false}
-                  cleanable={false}
-                />
-              </div>
+          <div className='alumni-content'>
+            <div className='backdot'>
+              <span onClick={() => history.goBack()}>
+                <FiArrowLeft size={25} />
+              </span>
             </div>
-            
-            <Export data={dataCSV} name={"delayed"} />
+            <div className='alumni-slider'>
+              <div className='alumni-title'>Disciplinas</div>
+              <RetentionSlider changeSlider={handleSlider} firstTerm={firstTerm} lastTerm={lastTerm} />
+              <div className='graph-delayed'>
+                <DelayedGraph data={selectedData || {}} option={variable} />
+                <div className='select'>
+                  <h6>Disciplina</h6>
+                  <SelectPicker
+                    data={selectableValues(delayedData)}
+                    onChange={value => handleVariableChange(value)}
+                    defaultValue={variable}
+                    className='selector-teachers'
+                    searchable={false}
+                    cleanable={false}
+                  />
+                </div>
+              </div>
+
+              <Export data={dataCSV} name={"delayed"} />
+            </div>
           </div>
-        </div>
-        )} 
+        )}
       </div>
     </React.Fragment>
   );

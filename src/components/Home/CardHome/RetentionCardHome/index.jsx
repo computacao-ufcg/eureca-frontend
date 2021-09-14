@@ -50,7 +50,7 @@ const RetentionCardHome = () => {
       console.error(res.statusText);
     }
   };
-//TODO: falta uma metrica p/substituir tempo médio
+  //TODO: falta uma metrica p/substituir tempo médio
   const setPropsStudentsRetention = data => {
     const successRate = data.average.metrics.successRate * 100;
     const { cost, risk } = translateRiskAndCost(data, true);

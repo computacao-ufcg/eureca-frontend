@@ -1,15 +1,15 @@
 import React from "react";
 import "./style.css";
 
-import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart , Line } from "recharts";
+import { XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line } from "recharts";
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="custom-tooltip">
-        <p className="label">{`${label}`}</p>
-        <p className="intro">{`Aptos : ${payload[0].payload.possible}`}</p>
-        <p className="intro">{`Recomendados : ${payload[0].payload.adequate}`}</p>
+      <div className='custom-tooltip'>
+        <p className='label'>{`${label}`}</p>
+        <p className='intro'>{`Aptos : ${payload[0].payload.possible}`}</p>
+        <p className='intro'>{`Recomendados : ${payload[0].payload.adequate}`}</p>
       </div>
     );
   }
@@ -18,7 +18,6 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const DelayedGraph = props => {
-
   return (
     <React.Fragment>
       {props.data ? (
@@ -38,26 +37,15 @@ const DelayedGraph = props => {
 
             <XAxis dataKey='admissionTerm' />
             <YAxis yAxisId='left' dataKey='adequate' />
-            <Tooltip content={<CustomTooltip />}/>
-            <Legend 
+            <Tooltip content={<CustomTooltip />} />
+            <Legend
               iconSize={10}
               iconType='circle'
-              verticalAlign='top' 
-              margin={{ top: 30, left: 10, right: 0, bottom: 0 }} />
-            <Line
-              dataKey="adequate"
-              data={props.data}
-              name="Recomendados"
-              yAxisId='left'
-              stroke='#3CB371'
+              verticalAlign='top'
+              margin={{ top: 30, left: 10, right: 0, bottom: 0 }}
             />
-            <Line
-              dataKey="possible"
-              data={props.data}
-              name="Aptos"
-              yAxisId='left'
-              stroke='#885d41'
-            />
+            <Line dataKey='adequate' data={props.data} name='Recomendados' yAxisId='left' stroke='#3CB371' />
+            <Line dataKey='possible' data={props.data} name='Aptos' yAxisId='left' stroke='#885d41' />
           </LineChart>
           <div className='axis-y'>
             <p className='graph-label-y-delayed'>Demanda acumulada</p>

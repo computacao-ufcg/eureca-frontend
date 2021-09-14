@@ -17,7 +17,7 @@ const getCSVQuery = (csvQuery, from, to) => {
   return fullQuery;
 };
 
-export default async (query,csvQuery, loading, from, to) => {
+export default async (query, csvQuery, loading, from, to) => {
   let response = {};
   const querySummary = getSummaryQuery(query, from, to);
   const queryCSV = getCSVQuery(csvQuery, from, to);

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./style.css";
-import {curriculum} from "../../../../../config/storage"
+import { curriculum } from "../../../../../config/storage";
 import { MiniCardHome1, MiniCardHome2, MiniCardHome3 } from "../../MiniCardHome";
 
 const StudentsSummaryCardHome = props => {

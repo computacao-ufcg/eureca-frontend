@@ -67,12 +67,11 @@ const TeachersCardHome = () => {
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
-  const setPropsTeachersUAF = data => { 
+  const setPropsTeachersUAF = data => {
     const props = formatProps(data.summaryMap[1108]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
-
 
   const setPropsTeachersUAMat = data => {
     const props = formatProps(data.summaryMap[1109]);
@@ -86,26 +85,25 @@ const TeachersCardHome = () => {
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
-  const setPropsTeachersUAAC = data => { 
+  const setPropsTeachersUAAC = data => {
     const props = formatProps(data.summaryMap[1301]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
-  const setPropsTeachersUAAMi = data => { 
+  const setPropsTeachersUAAMi = data => {
     const props = formatProps(data.summaryMap[1302]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
-  const setPropsTeachersUAEF = data => { 
+  const setPropsTeachersUAEF = data => {
     const props = formatProps(data.summaryMap[1303]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
   };
 
-
-  const setPropsTeachersUACS = data => { 
+  const setPropsTeachersUACS = data => {
     const props = formatProps(data.summaryMap[1305]);
     setPropsTeachers(props);
     setCards({ ...cards, card4: true, card5: true, card6: true, card7: true });
@@ -281,7 +279,6 @@ const TeachersCardHome = () => {
                   </button>
                 </div>
               </div>
-              
             </div>
           </div>
 
