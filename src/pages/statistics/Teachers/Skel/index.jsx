@@ -60,7 +60,6 @@ const UASC = ({ query, title, csvQuery }) => {
   };
 
   const setAllData = res => {
-    console.log(res)
     setData(res.data.teachers);
     setDataExport(res.dataCSV.teachers);
   };
