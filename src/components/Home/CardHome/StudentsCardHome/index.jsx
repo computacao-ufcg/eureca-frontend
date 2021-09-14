@@ -50,7 +50,6 @@ const StudentsCardHome = () => {
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res) {
-      console.log(res.data);
       setDataStudents(res.data);
       setPropsActives(res.data);
     } else {

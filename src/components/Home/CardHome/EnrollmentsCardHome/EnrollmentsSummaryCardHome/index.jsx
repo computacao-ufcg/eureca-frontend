@@ -18,27 +18,15 @@ const EnrollmentsSummaryCardHome = props => {
           <div className='enrollments-summary-card-size'> {data[0] || 0}</div>
         </div>
         <div className='enrollments-summary-left-cards'>
-          <MiniCardHomeRightTop
-            option={props.option} number={data[5] || 0} legend={labels[4]}
-          />
-          <MiniCardHomeRightBottom
-           option={props.option} number={data[6] || 0} legend={labels[5]}
-          />
+          <MiniCardHomeRightTop option={props.option} number={data[5] || 0} legend={labels[4]} />
+          <MiniCardHomeRightBottom option={props.option} number={data[6] || 0} legend={labels[5]} />
         </div>
       </div>
       <div className='enrollments-summary-card-cards'>
-        <MiniCardHomeEnrollments
-         option={props.option} number={data[1] || 0} legend={labels[0]} 
-        />
-        <MiniCardHomeEnrollments
-          option={props.option} number={data[2] || 0} legend={labels[1]}
-        />
-        <MiniCardHomeEnrollments
-          option={props.option} number={data[3] || 0} legend={labels[2]}
-        />
-        <MiniCardHomeEnrollments
-         ption={props.option} number={data[4] || 0} legend={labels[3]}
-        />
+        <MiniCardHomeEnrollments option={props.option} number={data[1] || 0} legend={labels[0]} />
+        <MiniCardHomeEnrollments option={props.option} number={data[2] || 0} legend={labels[1]} />
+        <MiniCardHomeEnrollments option={props.option} number={data[3] || 0} legend={labels[2]} />
+        <MiniCardHomeEnrollments ption={props.option} number={data[4] || 0} legend={labels[3]} />
       </div>
     </div>
   );

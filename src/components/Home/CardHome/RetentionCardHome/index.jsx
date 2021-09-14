@@ -21,8 +21,8 @@ const RetentionCardHome = () => {
     "CARGA MÉDIA",
     "TAXA DE SUCESSO",
     "PREV. CONCLUSÃO",
-    "TEMPO MÉDIO",
     "CUSTO MÉDIO",
+    "RITMO MÉDIO",
   ];
 
   const [option, setOption] = useState("subjects");
@@ -46,26 +46,29 @@ const RetentionCardHome = () => {
       setStudentRetention(res.data.studentsRetentionSummary);
       setSubjectRetention(res.data.subjectsRetentionSummary);
       setPropsSubjectRetention(res.data.subjectsRetentionSummary);
+      console.log(res)
     } else {
       console.error(res.statusText);
     }
   };
-
+  //TODO: falta uma metrica p/substituir tempo médio
   const setPropsStudentsRetention = data => {
     const successRate = data.average.metrics.successRate * 100;
     const { cost, risk } = translateRiskAndCost(data, true);
     setPropsRetention([
-      data.delayedCount,
+      data.studentsRetentionCount,
       `${risk} (${data.average.metrics.risk.toFixed(2)})`,
       `${data.average.metrics.averageLoad.toFixed(2)} créditos`,
       `${successRate.toFixed(1)}%`,
       `${data.average.metrics.courseDurationPrediction.toFixed(1)} períodos`,
       `${cost} (${data.average.metrics.cost.toFixed(1)})`,
+      `${data.average.metrics.pace.toFixed(1)}`
     ]);
   };
-//TODO: verificar finalidade das metricas adequate e possible
+
   const setPropsSubjectRetention = subjectRetention => {
     setPropsRetention([
+      subjectRetention.adequate.sampleSize,
       subjectRetention.adequate.max,
       subjectRetention.adequate.min,
       subjectRetention.adequate.firstQuartile,

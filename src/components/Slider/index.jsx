@@ -13,9 +13,9 @@ const GraduatedSlider = props => {
 
   const [to, setTo] = useState(labels.length - 1);
   useEffect(() => {
-    setFrom(0)
-    setTo(labels.length - 1)
-  }, [labels])
+    setFrom(0);
+    setTo(labels.length - 1);
+  }, [labels]);
 
   const handleStyle = {
     color: "#fff",

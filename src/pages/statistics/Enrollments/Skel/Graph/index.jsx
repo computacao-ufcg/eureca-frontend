@@ -1,6 +1,6 @@
 import React from "react";
 
-import {LineChart , Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 import { translatedVariables } from "../util";
 
@@ -10,7 +10,7 @@ const MandatoryGraph = props => {
   return (
     <div className='main-subjects-graph'>
       <LineChart
-        width={800}
+        width={840}
         height={500}
         data={props.data}
         margin={{

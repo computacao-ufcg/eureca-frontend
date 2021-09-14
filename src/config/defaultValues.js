@@ -28,5 +28,5 @@ export {
   baseStudentsEndpoint,
   endpointWithCourseAndCurriculum,
   endpointWithCourseAndCurriculumAlternative,
-  baseTeachersEndpointCsv
+  baseTeachersEndpointCsv,
 };
