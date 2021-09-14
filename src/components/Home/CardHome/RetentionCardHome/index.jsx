@@ -22,7 +22,7 @@ const RetentionCardHome = () => {
     "TAXA DE SUCESSO",
     "PREV. CONCLUSÃO",
     "CUSTO MÉDIO",
-    "TEMPO MÉDIO",
+    "RITMO MÉDIO",
   ];
 
   const [option, setOption] = useState("subjects");
@@ -46,6 +46,7 @@ const RetentionCardHome = () => {
       setStudentRetention(res.data.studentsRetentionSummary);
       setSubjectRetention(res.data.subjectsRetentionSummary);
       setPropsSubjectRetention(res.data.subjectsRetentionSummary);
+      console.log(res)
     } else {
       console.error(res.statusText);
     }
@@ -61,6 +62,7 @@ const RetentionCardHome = () => {
       `${successRate.toFixed(1)}%`,
       `${data.average.metrics.courseDurationPrediction.toFixed(1)} períodos`,
       `${cost} (${data.average.metrics.cost.toFixed(1)})`,
+      `${data.average.metrics.pace.toFixed(1)}`
     ]);
   };
 
