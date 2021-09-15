@@ -78,6 +78,7 @@ const Login = () => {
           }
 
           history.push("/home");
+          window.location.reload();
         }
       } catch (error) {
         Alert.error("Erro: Nome de usuário ou senha incorretos.");
