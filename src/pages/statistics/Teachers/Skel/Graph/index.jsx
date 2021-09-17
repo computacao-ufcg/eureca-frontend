@@ -3,6 +3,7 @@ import React from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 import "./style.css";
+import { translatedVariables } from "../util";
 
 const TeachersGraph = props => {
   const parsedMetrics = props.data.map(term => {
@@ -35,7 +36,7 @@ const TeachersGraph = props => {
           iconType='circle'
           payload={[{ value: props.label, type: "circle", color: "#886859" }]}
         />
-        <Line dataKey={props.variable} fill='#886859' key='Número de turmas' />
+        <Line dataKey={props.variable} fill='#886859' name={translatedVariables[props.variable]}/>
       </LineChart>
 
       <p className='graph-label-y-teachers'>{props.label || "Taxa de Sucesso"}</p>
