@@ -10,6 +10,7 @@ import TeachersGraph from "./Graph";
 import { Alert, SelectPicker } from "rsuite";
 
 import "./style.css";
+import { variables } from "./util";
 import updateTeachersGraph from "../../../../components/Slider/util/updateTeachersGraph";
 
 const UASC = ({ query, title, csvQuery }) => {
@@ -99,64 +100,6 @@ const UASC = ({ query, title, csvQuery }) => {
     setFirstTerm(teacher.from);
     setLastTerm(teacher.to);
   };
-
-  const variables = [
-    {
-      label: "Taxa de sucesso",
-      value: "succeededRate",
-      role: "Master",
-    },
-    {
-      label: "Taxa de reprovação por nota",
-      value: "failedDueToGradeRate",
-      role: "Master",
-    },
-    {
-      label: "Taxa de reprovação por falta",
-      value: "failedDueToAbsencesRate",
-      role: "Master",
-    },
-    {
-      label: "Taxa de trancamento",
-      value: "suspendedRate",
-      role: "Master",
-    },
-    {
-      label: "Número de matrículas",
-      value: "totalEnrolled",
-      role: "Master",
-    },
-    {
-      label: "Média de matrículas por turma",
-      value: "averageEnrollmentsPerClass",
-      role: "Master",
-    },
-    {
-      label: "Cancelados",
-      value: "cancelledRate",
-      role: "Master",
-    },
-    {
-      label: "Número de turmas",
-      value: "classesCount",
-      role: "Master",
-    },
-    {
-      label: "Número de dispensas",
-      value: "exemptedRate",
-      role: "Master",
-    },
-    {
-      label: "undefined",
-      value: "ongoingRate",
-      role: "Master",
-    },
-    {
-      label: "Número de disciplinas",
-      value: "subjectsCount",
-      role: "Master",
-    },
-  ];
 
   return (
     <React.Fragment>
