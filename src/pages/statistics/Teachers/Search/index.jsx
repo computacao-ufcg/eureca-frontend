@@ -22,9 +22,8 @@ const TeacherSearch = () => {
             <h1>BUSCAR</h1>
           </div>
           <div className='selects'>
-              
+            <input id='ipt-name' type='text' placeholder='Buscar por nome' />
             <SelectPicker searchable={true} cleanable={false} style={{width:224}} />
-            <SelectPicker searchable={false} cleanable={false} />
             <SelectPicker searchable={false} cleanable={false} />
             <SelectPicker searchable={false} cleanable={false} />
             
