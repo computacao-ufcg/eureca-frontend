@@ -56,12 +56,28 @@
   position: relative;
 }
 
-.main-button {
+.search-button {
+  width: 50vw;
+  text-align: right;
+}
+.search-button button {
+  border-radius: 5px;
+  height: 40px;
+  width: 120px;
+  justify-content: center;
+  align-items: center;
+  background-color: #886859;
+  color: white;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.copy-button {
   position: absolute;
   right: 10px;
   bottom: 10px;
 }
-.button {
+.copy-button button {
   border-radius: 5px;
   height: 40px;
   width: 120px;
@@ -76,7 +92,7 @@
 
 .selects{
     width: 50vw;
-    height: 150px;
+    height: 90px;
     display: flex;
     justify-content: space-between;
 }

@@ -26,11 +26,15 @@ const TeacherSearch = () => {
             <SelectPicker searchable={true} cleanable={false} style={{width:224}} />
             <SelectPicker searchable={false} cleanable={false} />
             <SelectPicker searchable={false} cleanable={false} />
-            
           </div>
+          <div className='search-button'>
+              <button type='submit'>
+                BUSCAR
+              </button>
+            </div>
           <div className='response'>
-            <div className='main-button'>
-              <button className='button' type='submit'>
+            <div className='copy-button'>
+              <button type='submit'>
                 COPIAR
               </button>
             </div>
