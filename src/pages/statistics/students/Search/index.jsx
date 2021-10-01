@@ -20,7 +20,7 @@ const StudentSearch = () => {
           </div>
           <div className='container-title-search'>
             <h1>BUSCAR</h1>
-          </div>        
+          </div>
         </div>
       </div>
     </React.Fragment>

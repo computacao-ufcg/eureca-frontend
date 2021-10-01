@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft, FiSearch } from "react-icons/fi";
-import { Alert, SelectPicker } from "rsuite";
 
 import Header from "../../../../components/Header";
 import "./style.css";
@@ -20,7 +19,7 @@ const SubjectSearch = () => {
           </div>
           <div className='container-title-search'>
             <h1>BUSCAR</h1>
-          </div>        
+          </div>
         </div>
       </div>
     </React.Fragment>
