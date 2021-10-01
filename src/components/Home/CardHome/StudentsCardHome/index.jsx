@@ -221,6 +221,9 @@ const StudentsCardHome = () => {
             </div>
           </div>
           <div className='card-home-content-footer'>
+            <Link to={"/statistics/students/search"}>
+              <button type='button'>BUSCAR</button>
+            </Link>
             <Link to={"/statistics/students/" + optionStudent}>
               <button type='button'>VER MAIS</button>
             </Link>
