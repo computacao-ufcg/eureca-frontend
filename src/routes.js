@@ -29,6 +29,7 @@ import UAEFTeachers from "./pages/statistics/Teachers/UAEF";
 import UAFTeachers from "./pages/statistics/Teachers/UAF";
 import TeacherSearch from "./pages/statistics/Teachers/Search";
 import StudentSearch from "./pages/statistics/students/Search";
+import SubjectSearch from "./pages/statistics/Subjects/Search";
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -84,6 +85,7 @@ const Routes = () => {
         <PrivateRoute exact path='/alumniufcg/search' component={() => <Search />} />
         <PrivateRoute exact path='/statistics/teachers/search' component={() => <TeacherSearch />} />
         <PrivateRoute exact path='/statistics/students/search' component={() => <StudentSearch />} />
+        <PrivateRoute exact path='/statistics/subjects/search' component={() => <SubjectSearch />} />
       </Switch>
     </BrowserRouter>
   );
