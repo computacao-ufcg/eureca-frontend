@@ -4,26 +4,21 @@
     height: 100%;
     width: 100%;
     background-color: #e6dbd3;
-  
     overflow: auto;
   }
   
   .main-search-teachers {
     width: 80vw;
     min-height: 75%;
-  
     margin-left: 10vw;
     margin-top: 2vh;
     padding-bottom: 10vh;
-  
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 1px 4px #15223214;
     border-radius: 6px;
     opacity: 1;
-  
     display: flex;
     flex-direction: column;
-  
     align-items: center;
     position: relative;
   }
@@ -43,15 +38,12 @@
     height: 300px;
     margin-top: 5vh;
     padding-bottom: 10vh;
-  
     background: #f2f2f2 0% 0% no-repeat padding-box;
     box-shadow: 0px 1px 4px #15223214;
     border-radius: 6px;
     opacity: 1;
-  
     display: flex;
     flex-direction: column;
-  
     align-items: center;
     position: relative;
   }
@@ -70,6 +62,7 @@
     color: white;
     font-weight: 600;
     text-decoration: none !important;
+    margin-top: 50px;
   }
   
   .copy-button {
@@ -94,8 +87,9 @@
       width: 50vw;
       height: 90px;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
       column-gap: 20px;
+      row-gap: 10px;
   }
   
   .selects input {
@@ -105,4 +99,10 @@
     border-radius: 6px;
     width: 15vw;
     height: 4vh;
+  }
+
+  .second-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
