@@ -5,10 +5,22 @@ import SearchScreen from "../../../../components/SearchScreen";
 const TeacherSearch = () => {
   return (
     <SearchScreen>
-      <input id='ipt-name' type='text' placeholder='Buscar por nome' />
-      <SelectPicker searchable={true} cleanable={false} style={{width:224}} />
-      <SelectPicker searchable={false} cleanable={false} />
-      <SelectPicker searchable={false} cleanable={false} />
+      <div>
+        <p>Nome</p>
+        <input id='ipt-name' type='text' placeholder='Buscar por nome' />
+      </div>
+      <div>
+        <p>Id</p>
+        <SelectPicker searchable={true} cleanable={false} style={{width:180}} />
+      </div>
+      <div>
+        <p>Uni. acadêmica</p>
+        <SelectPicker searchable={false} cleanable={false} />
+      </div>
+      <div>
+        <p>Período</p>
+        <SelectPicker searchable={false} cleanable={false} />
+      </div>
     </SearchScreen>
   );
 };
