@@ -5,14 +5,14 @@ import { periodos, academic_units} from "../../util";
 
 const TeacherSearch = () => {
   return (
-    <SearchScreen>
+    <SearchScreen title={"Docentes"}>
       <div>
         <p>Nome</p>
         <input id='ipt-name' type='text' placeholder='Buscar por nome' />
       </div>
       <div>
-        <p>Id</p>
-        <SelectPicker searchable={true} cleanable={false} style={{width:180}} />
+        <p>SIAPE</p>
+        <input id='ipt-siape' type='text' placeholder='Buscar por SIAPE' />
       </div>
       <div>
         <p>Uni. acadêmica</p>

@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import "./style.css";
 
 const SearchScreen = (props) => {
+  console.log(props)
     const history = useHistory();
     return (
         <React.Fragment>
@@ -17,7 +18,7 @@ const SearchScreen = (props) => {
                 </span>
               </div>
               <div className='container-title-search'>
-                <h1>BUSCAR</h1>
+                <h1>Buscar e-mails por {props.title}</h1>
               </div>
               <div className='selects'>
                 {props.children}

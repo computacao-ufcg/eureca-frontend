@@ -6,7 +6,7 @@ import {periodos, academic_units, subject_type } from "../../util";
 
 const SubjectSearch = () => {
   return (
-    <SearchScreen>
+    <SearchScreen title={"Disciplinas"}>
       <div>
         <p>Nome</p>
         <input id='ipt-name' type='text' placeholder='Buscar por nome' />

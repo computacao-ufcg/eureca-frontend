@@ -79,25 +79,35 @@ const subject_type = [
   },
 ];
 
-const cra = [
+const cra_operators = [
   {
     label: "todos",
     value: "todos",
     role: "Master",
   },
   {
-    label: ">7",
-    value: ">7",
+    label: ">",
+    value: ">",
     role: "Master",
   },
   {
-    label: "< 7 e > 5",
-    value: "< 7 e > 5",
+    label: "≥",
+    value: "≥",
     role: "Master",
   },
   {
-    label: "< 5",
-    value: "< 5 ",
+    label: "<",
+    value: "<",
+    role: "Master",
+  },
+  {
+    label: "≤",
+    value: "≤",
+    role: "Master",
+  },
+  {
+    label: "=",
+    value: "=",
     role: "Master",
   },
 ];
@@ -332,4 +342,4 @@ const periodos = [
   },
 ];
 
-export { periodos, academic_units, subject_type, cra, iea, sexo, status, cotas };
+export { periodos, academic_units, subject_type, cra_operators, iea, sexo, status, cotas };
