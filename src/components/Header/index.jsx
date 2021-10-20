@@ -63,12 +63,24 @@ const Header = () => {
         <div onClick={() => history.push("/home")} className='header-1-eureca-logo'>
           <img src={eureca_logo} alt='eureca logo' />
         </div>
+        <div className='buttons'>
+          <div className='statistics-button'>
+            <button>ESTATÍSTICAS</button>
+          </div>
+          <div className='communications-button'>
+            <button>COMUNICAÇÕES</button>
+          </div>
+          <div className='services-button'>
+            <button>SERVIÇOS</button>
+          </div>
+        </div>
+
         <div className='header-1-user'>
           <div></div>
           <p>{sessionStorage.getItem("username")}</p>
         </div>
         <div className='logout-button'>
-          <button onClick={handleLogOut}>Sair</button>
+          <button onClick={handleLogOut}>SAIR</button>
         </div>
       </div>
       <div className='header-2'>

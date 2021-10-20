@@ -20,13 +20,26 @@
 
 .header-1-user {
   display: flex;
-  margin-left: 80%;
+
 }
 
-.logout-button {
+.buttons{
+  display: flex;
+  width: 70%;
+  justify-content: center
+}
+
+.statistics-button,
+.communications-button,
+.services-button {
   margin-left: 50px;
 }
+.statistics-button button,
+.communications-button button,
+.services-button button,
 .logout-button button {
+  color: #765547;
+  font-size: 1.1rem;
   background-color: transparent;
 }
 

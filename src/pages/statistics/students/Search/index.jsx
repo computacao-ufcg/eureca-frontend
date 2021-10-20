@@ -1,7 +1,7 @@
 import React from "react";
 import { SelectPicker } from "rsuite";
 import SearchScreen from "../../../../components/SearchScreen";
-import { periodos, cra_operators, iea, status, sexo, cotas} from "../../util";
+import { periodos, cra_operators, status, sexo, cotas} from "../../util";
 
 const StudentSearch = () => {
   return (
@@ -39,6 +39,15 @@ const StudentSearch = () => {
         <p>Cota</p>
         <SelectPicker defaultValue={"todas"} data={cotas} searchable={false} cleanable={false} style={{width:120}}/>
       </div>
+      <div>
+        <p>Risco</p>
+        <SelectPicker defaultValue={"todas"} data={cotas} searchable={false} cleanable={false} style={{width:120}}/>
+      </div>
+      <div>
+        <p>Custo</p>
+        <SelectPicker defaultValue={"todas"} data={cotas} searchable={false} cleanable={false} style={{width:120}}/>
+      </div>
+      
     </SearchScreen>
   );
 };
