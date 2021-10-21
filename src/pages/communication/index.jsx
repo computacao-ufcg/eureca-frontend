@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TeacherSearch from "./teachers";
 import StudentSearch from "./students";
 import SubjectSearch from "./subjects";
@@ -33,7 +33,7 @@ const communicationPage = () =>{
               <div className='response'>
                 <div className='copy-button'>
                   <button type='submit'>
-                    COPIAR
+                    COPIAR ENDEREÇOS
                   </button>
                 </div>
               </div>
