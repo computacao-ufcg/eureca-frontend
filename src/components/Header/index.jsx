@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import eureca_logo from "../../assets/header/eureca.svg";
-
+import { Link } from "react-router-dom";
 import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
@@ -68,7 +68,9 @@ const Header = () => {
             <button>ESTATÍSTICAS</button>
           </div>
           <div className='communications-button'>
+          <Link to={"/communication"}>
             <button>COMUNICAÇÕES</button>
+          </Link>
           </div>
           <div className='services-button'>
             <button>SERVIÇOS</button>
