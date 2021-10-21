@@ -1,7 +1,7 @@
 import React from "react";
 import { SelectPicker } from "rsuite";
 import SearchScreen from "../../../components/SearchScreen";
-import { periodos, academic_units} from "../util";
+import { periodos, academic_units } from "../util";
 
 const TeacherSearch = () => {
   return (

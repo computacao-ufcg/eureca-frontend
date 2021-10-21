@@ -2,7 +2,7 @@ import React from "react";
 import { SelectPicker } from "rsuite";
 import SearchScreen from "../../../components/SearchScreen";
 
-import {periodos, academic_units, subject_type } from "../util";
+import { periodos, academic_units, subject_type } from "../util";
 
 const SubjectSearch = () => {
   return (
@@ -13,7 +13,13 @@ const SubjectSearch = () => {
       </div>
       <div>
         <p>Tipo</p>
-        <SelectPicker defaultValue={"todos"} data={subject_type} searchable={true} cleanable={false} style={{width:180}} />
+        <SelectPicker
+          defaultValue={"todos"}
+          data={subject_type}
+          searchable={true}
+          cleanable={false}
+          style={{ width: 180 }}
+        />
       </div>
       <div>
         <p>Uni. acadêmica</p>
