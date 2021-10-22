@@ -342,4 +342,75 @@ const periodos = [
   },
 ];
 
-export { periodos, academic_units, subject_type, cra_operators, iea, sexo, status, cotas };
+const risco = [
+  {
+    label: "todos",
+    value: "todos",
+    role: "Master",
+  },
+  {
+    label: "Muito baixo",
+    value: "Muito baixo",
+    role: "Master",
+  },
+  {
+    label: "Baixo",
+    value: "Baixo",
+    role: "Master",
+  },
+  {
+    label: "Médio",
+    value: "Médio",
+    role: "Master",
+  },
+  {
+    label: "Alto",
+    value: "Alto",
+    role: "Master",
+  },
+  {
+    label: "Muito alto ",
+    value: "Muito alto ",
+    role: "Master",
+  },
+];
+
+const custo = [
+  {
+    label: "todos",
+    value: "todos",
+    role: "Master",
+  },
+  {
+    label: "Inexato",
+    value: "Inexato",
+    role: "Master",
+  },
+  {
+    label: "Adequado",
+    value: "Adequado",
+    role: "Master",
+  },
+  {
+    label: "Regular",
+    value: "Regular",
+    role: "Master",
+  },
+  {
+    label: "Alto",
+    value: "Alto",
+    role: "Master",
+  },
+  {
+    label: "Muito alto",
+    value: "Muito alto",
+    role: "Master",
+  },
+  {
+    label: "Inaceitável",
+    value: "Inaceitável",
+    role: "Master",
+  },
+];
+
+export { periodos, academic_units, subject_type, cra_operators, iea, sexo, status, cotas, risco, custo };
