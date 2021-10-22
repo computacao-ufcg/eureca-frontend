@@ -2,16 +2,24 @@ import React from "react";
 import TeacherSearch from "./teachers";
 import StudentSearch from "./students";
 import SubjectSearch from "./subjects";
+import { useHistory } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
 
 import Header from "../../components/Header";
 import "./style.css";
 
-const communicationPage = () => {
+const CommunicationPage = () => {
+  const history = useHistory();
   return (
     <React.Fragment>
       <div className='main-content'>
-        <Header></Header>
+        <Header />
         <div className='main-search-teachers'>
+          <div className='backdot'>
+            <span onClick={() => history.goBack()}>
+              <FiArrowLeft size={25} />
+            </span>
+          </div>
           <div className='all-selects'>
             <div className='selects-students'>
               <StudentSearch />
@@ -37,4 +45,4 @@ const communicationPage = () => {
   );
 };
 
-export default communicationPage;
+export default CommunicationPage;
