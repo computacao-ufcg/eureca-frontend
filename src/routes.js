@@ -42,6 +42,7 @@ import SubjectsComplementary from "./pages/statistics/Subjects/Complementary";
 import SubjectsElectives from "./pages/statistics/Subjects/Elective";
 
 import CommunicationPage from "./pages/communication"
+import ServicesPage from "./pages/services";
 
 const Routes = () => {
   return (
@@ -84,6 +85,7 @@ const Routes = () => {
         <PrivateRoute exact path='/alumniufcg/updatedata' component={() => <UpdateData />} />
         <PrivateRoute exact path='/alumniufcg/search' component={() => <Search />} />
         <PrivateRoute exact path='/communication' component={() => <CommunicationPage />} />
+        <PrivateRoute exact path='/services' component={() => <ServicesPage />} />
       </Switch>
     </BrowserRouter>
   );

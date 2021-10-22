@@ -73,7 +73,9 @@ const Header = () => {
           </Link>
           </div>
           <div className='services-button'>
+          <Link to={"/services"}>
             <button>SERVIÇOS</button>
+          </Link>
           </div>
         </div>
 
