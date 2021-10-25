@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import eureca_logo from "../../assets/header/eureca.svg";
-
+import { Link } from "react-router-dom";
 import { SelectPicker } from "rsuite";
 import "rsuite/dist/styles/rsuite-default.css";
 
@@ -63,12 +63,30 @@ const Header = () => {
         <div onClick={() => history.push("/home")} className='header-1-eureca-logo'>
           <img src={eureca_logo} alt='eureca logo' />
         </div>
+        <div className='buttons'>
+          <div className='statistics-button'>
+          <Link to={"/home"}>
+            <button>ESTATÍSTICAS</button>
+            </Link>
+          </div>
+          <div className='communications-button'>
+          <Link to={"/communication"}>
+            <button>COMUNICAÇÕES</button>
+          </Link>
+          </div>
+          <div className='services-button'>
+          <Link to={"/services"}>
+            <button>SERVIÇOS</button>
+          </Link>
+          </div>
+        </div>
+
         <div className='header-1-user'>
           <div></div>
           <p>{sessionStorage.getItem("username")}</p>
         </div>
         <div className='logout-button'>
-          <button onClick={handleLogOut}>Sair</button>
+          <button onClick={handleLogOut}>SAIR</button>
         </div>
       </div>
       <div className='header-2'>

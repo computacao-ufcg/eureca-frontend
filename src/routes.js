@@ -27,9 +27,7 @@ import UAAMiTeachers from "./pages/statistics/Teachers/UAAMi";
 import UACSTeachers from "./pages/statistics/Teachers/UACS";
 import UAEFTeachers from "./pages/statistics/Teachers/UAEF";
 import UAFTeachers from "./pages/statistics/Teachers/UAF";
-import TeacherSearch from "./pages/statistics/Teachers/Search";
-import StudentSearch from "./pages/statistics/students/Search";
-import SubjectSearch from "./pages/statistics/Subjects/Search";
+
 
 import StudentsGlossary from "./pages/statistics/students/Glossary";
 import TeachersGlossary from "./pages/statistics/Teachers/Glossary";
@@ -42,6 +40,9 @@ import SubjectsMandatory from "./pages/statistics/Subjects/Mandatory";
 import SubjectsOptional from "./pages/statistics/Subjects/Optional";
 import SubjectsComplementary from "./pages/statistics/Subjects/Complementary";
 import SubjectsElectives from "./pages/statistics/Subjects/Elective";
+
+import CommunicationPage from "./pages/communication"
+import ServicesPage from "./pages/services";
 
 const Routes = () => {
   return (
@@ -83,9 +84,8 @@ const Routes = () => {
         <PrivateRoute exact path='/alumniUFCG/glossary' component={() => <AlumniGlossary />} />
         <PrivateRoute exact path='/alumniufcg/updatedata' component={() => <UpdateData />} />
         <PrivateRoute exact path='/alumniufcg/search' component={() => <Search />} />
-        <PrivateRoute exact path='/statistics/teachers/search' component={() => <TeacherSearch />} />
-        <PrivateRoute exact path='/statistics/students/search' component={() => <StudentSearch />} />
-        <PrivateRoute exact path='/statistics/subjects/search' component={() => <SubjectSearch />} />
+        <PrivateRoute exact path='/communication' component={() => <CommunicationPage />} />
+        <PrivateRoute exact path='/services' component={() => <ServicesPage />} />
       </Switch>
     </BrowserRouter>
   );

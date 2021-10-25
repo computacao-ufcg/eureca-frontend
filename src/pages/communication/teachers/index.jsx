@@ -1,19 +1,18 @@
 import React from "react";
 import { SelectPicker } from "rsuite";
-import SearchScreen from "../../../../components/SearchScreen";
+import SearchScreen from "../../../components/SearchScreen";
+import { periodos, academic_units } from "../util";
 
-import {periodos, academic_units, subject_type } from "../../util";
-
-const SubjectSearch = () => {
+const TeacherSearch = () => {
   return (
-    <SearchScreen>
+    <SearchScreen title={"Docentes"}>
       <div>
         <p>Nome</p>
         <input id='ipt-name' type='text' placeholder='Buscar por nome' />
       </div>
       <div>
-        <p>Tipo</p>
-        <SelectPicker defaultValue={"todos"} data={subject_type} searchable={true} cleanable={false} style={{width:180}} />
+        <p>SIAPE</p>
+        <input id='ipt-siape' type='text' placeholder='Buscar por SIAPE' />
       </div>
       <div>
         <p>Uni. acadêmica</p>
@@ -27,4 +26,4 @@ const SubjectSearch = () => {
   );
 };
 
-export default SubjectSearch;
+export default TeacherSearch;
