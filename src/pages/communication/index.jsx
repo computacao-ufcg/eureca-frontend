@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import Header from "../../components/Header";
+import ResultsTable from "./table/resultsTable"
 import "./style.css";
 
 const CommunicationPage = () => {
@@ -35,6 +36,8 @@ const CommunicationPage = () => {
             <button type='submit'>BUSCAR</button>
           </div>
           <div className='response'>
+            <h1>Endereços de E-mail</h1>
+            <ResultsTable></ResultsTable>
             <div className='copy-button'>
               <button type='submit'>COPIAR ENDEREÇOS</button>
             </div>
