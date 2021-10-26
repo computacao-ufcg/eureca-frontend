@@ -79,7 +79,7 @@ const subject_type = [
   },
 ];
 
-const cra_operators = [
+const craOperation = [
   {
     label: "todos",
     value: "todos",
@@ -135,7 +135,7 @@ const iea = [
   },
 ];
 
-const sexo = [
+const gender = [
   {
     label: "todos",
     value: "todos",
@@ -160,18 +160,18 @@ const status = [
     role: "Master",
   },
   {
-    label: "ativos",
-    value: "ativos",
+    label: "Ativos",
+    value: "Ativos",
     role: "Master",
   },
   {
-    label: "evadidos",
-    value: "evadidos",
+    label: "Evadidos",
+    value: "Evadidos",
     role: "Master",
   },
   {
-    label: "egressos",
-    value: "egressos",
+    label: "Egressos",
+    value: "Egressos",
     role: "Master",
   },
 ];
@@ -229,7 +229,7 @@ const cotas = [
   },
 ];
 
-const periodos = [
+const admissionTerm = [
   {
     label: "todos",
     value: "todos",
@@ -413,4 +413,4 @@ const custo = [
   },
 ];
 
-export { periodos, academic_units, subject_type, cra_operators, iea, sexo, status, cotas, risco, custo };
+export { admissionTerm, academic_units, subject_type, craOperation, iea, gender, status, cotas, risco, custo };
