@@ -81,8 +81,8 @@ const subject_type = [
 
 const craOperation = [
   {
-    label: "todos",
-    value: "todos",
+    label: "Todos",
+    value: ".*?",
     role: "Master",
   },
   {
@@ -114,8 +114,8 @@ const craOperation = [
 
 const credits = [
   {
-    label: "todos",
-    value: "todos",
+    label: "Todos",
+    value: ".*?",
     role: "Master",
   },
   {
@@ -148,7 +148,7 @@ const credits = [
 const genders = [
   {
     label: "Todos",
-    value: "Todos",
+    value: ".*?",
     role: "Master",
   },
   {
@@ -241,8 +241,8 @@ const cotas = [
 
 const admissionTerm = [
   {
-    label: "todos",
-    value: "todos",
+    label: "Todos",
+    value: ".*?",
     role: "Master",
   },
   {

@@ -16,13 +16,13 @@ import "./style.css";
 const CommunicationPage = () => {
   const [data, setData] = useState([]);
 
-  const [admission, setAdmission] = useState("");
+  const [admission, setAdmission] = useState(".*?");
   const [gpa, setGpa] = useState(2);
   const [gpaOperation, setGpaOperation] = useState(2);
-  const [enrolledCredits, setEnrolledCredits] = useState("");
-  const [gender, setGender] = useState("");
+  const [enrolledCredits, setEnrolledCredits] = useState(".*?");
+  const [gender, setGender] = useState(".*?");
 
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Todos");
   const [studentName, setStudentName] = useState("");
 
   const [loading, setLoading] = useState(true);
@@ -101,7 +101,7 @@ const CommunicationPage = () => {
                 <p>Período de ingresso</p>
                 <SelectPicker
                   onChange={value => handleAdmissionChange(value)}
-                  defaultValue={"Todos"}
+                  defaultValue={".*?"}
                   data={admissionTerm}
                   searchable={true}
                   cleanable={false}
@@ -123,7 +123,7 @@ const CommunicationPage = () => {
                 <p>Sexo</p>
                 <SelectPicker
                   onChange={value => handleGenderChange(value)}
-                  defaultValue={"Todos"}
+                  defaultValue={".*?"}
                   data={genders}
                   searchable={false}
                   cleanable={false}
@@ -133,7 +133,7 @@ const CommunicationPage = () => {
               <div className='second-row-students'>
                 <div>
                   <p>CRA</p>
-                  <SelectPicker defaultValue={"todos"} data={craOperation} searchable={false} cleanable={false} />
+                  <SelectPicker defaultValue={".*?"} data={craOperation} searchable={false} cleanable={false} />
                 </div>
                 <div>
                   <input className='ipt-cra-value' type='text' placeholder='CRA' />
@@ -143,7 +143,7 @@ const CommunicationPage = () => {
                 <p>Créditos Matriculados</p>
                 <SelectPicker
                   onChange={value => handleCreditsChange(value)}
-                  defaultValue={"todos"}
+                  defaultValue={".*?"}
                   data={credits}
                   searchable={false}
                   cleanable={false}
