@@ -1,16 +1,16 @@
-import React ,  { useState }from "react";
+import React, { useState } from "react";
 import TeacherSearch from "./teachers";
-import StudentSearch from "./students";
 import SubjectSearch from "./subjects";
+import { SelectPicker } from "rsuite";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import Header from "../../components/Header";
-import ResultsTable from "./table/resultsTable"
+import ResultsTable from "./table/resultsTable";
 import { courseCode, curriculum } from "../../config/storage";
 import { api_EB } from "../../services/api";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
-import { admissionTerm, craOperation, gender, status} from "./util"
+import { admissionTerm, craOperation, genders, statuses } from "./util";
 import "./style.css";
 
 const CommunicationPage = () => {
@@ -30,15 +30,13 @@ const CommunicationPage = () => {
   const [search, setSearch] = useState(true);
   const [label, setLabel] = useState("");
 
-
-  const handleProfile = async (admission, gpa, enrolledCredits, gender, registration,status, studentName) => {
+  const handleProfile = async (admission, gpa, enrolledCredits, gender, registration, status, studentName) => {
     setLoading(true);
 
-    let query = `communication/studentsEmailSearch?admissionTerm=2019.1&courseCode=${courseCode}&cra=9&craOperation=%3D&curriculumCode=${curriculum}&enrolledCredits=%5E%24&gender=%5E%24&registration=%5E%24&status=Ativos&studentName=%5E%24`;
+    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=9&craOperation=%3D&curriculumCode=${curriculum}&enrolledCredits=%5E%24&gender=${gender}&registration=%5E%24&status=${status}&studentName=${studentName}`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
-      console.log(res);
       setData(res.data);
       res.datalength === 0 ? setNoData(true) : setNoData(false);
       setLoading(false);
@@ -50,22 +48,34 @@ const CommunicationPage = () => {
 
   const handleAdmissionChange = admission => {
     setAdmission(admission);
-    // const proposedLabel = admissionTerm.find(item => item.value === admission);
-    // setLabel(proposedLabel.label);
+     const proposedLabel = admissionTerm.find(item => item.value === admission);
+     setLabel(proposedLabel.label);
+  };
+
+  const handleGenderChange = gender => {
+    setGender(gender);
+     const proposedLabel = genders.find(item => item.value === gender);
+     setLabel(proposedLabel.label);
+  };
+
+  const handleStatusChange = status => {
+    setStatus(status);
+     const proposedLabel = statuses.find(item => item.value === status);
+     setLabel(proposedLabel.label);
   };
 
   const handleName = e => {
-    console.log(e)
-    setStudentName({value: e.target.value});
-    console.log(e.target.value)
-  }
+    setStudentName({ value: e.target.value });
+    console.log(e.target);
+  };
 
   const handleSearch = () => {
     const $iptStudentName = document.getElementById("ipt-name");
-    const $iptGpa = document.getElementById("ipt-cra-value");
+    //const $iptGpa = document.getElementById("ipt-cra-value");
     setStudentName($iptStudentName.value);
-    setGpa($iptGpa.value)
-    handleProfile($iptGpa.value,$iptStudentName.value);
+    console.log(gender)
+    //setGpa($iptGpa.value);
+    handleProfile( admission,"","", gender,"", status, $iptStudentName.value );
   };
 
   const history = useHistory();
@@ -80,8 +90,98 @@ const CommunicationPage = () => {
             </span>
           </div>
           <div className='all-selects'>
+          
             <div className='selects-students'>
-              <StudentSearch admission={admission} name={studentName} handleName={handleName}/>
+              <div>
+                <p>Nome</p>
+                <input
+                  id='ipt-name'
+                  type='text'
+                  placeholder='Buscar por nome'
+                />
+              </div>
+              <div>
+                <p>Período de ingresso</p>
+                <SelectPicker
+                  onChange={value => handleAdmissionChange(value)}
+                  defaultValue={"Todos"}
+                  data={admissionTerm}
+                  searchable={true}
+                  cleanable={false}
+                  style={{ width: 224 }}
+                />
+              </div>
+              <div>
+                <p>CRA</p>
+                <SelectPicker defaultValue={"todos"} data={craOperation} searchable={false} cleanable={false} />
+              </div>
+              <div>
+                <p>Status</p>
+                <SelectPicker
+                  onChange={value => handleStatusChange(value)}
+                  defaultValue={"Todos"}
+                  data={statuses}
+                  searchable={false}
+                  cleanable={false}
+                  style={{ width: 120 }}
+                />
+              </div>
+              <div className='second-row'>
+                <div>
+                  <p>Sexo</p>
+                  <SelectPicker
+                    onChange = {value => handleGenderChange(value)}
+                    defaultValue={"Todos"}
+                    data={genders}
+                    searchable={false}
+                    cleanable={false}
+                    style={{ width: 100 }}
+                  />
+                </div>
+              </div>
+              <div>
+                <p>Período de conclusão</p>
+                <SelectPicker
+                  defaultValue={"todos"}
+                  data={0}
+                  searchable={false}
+                  cleanable={false}
+                  style={{ width: 224 }}
+                />
+              </div>
+              <div>
+                <input className='ipt-cra-value' type='text' placeholder='CRA' />
+              </div>
+              <div>
+                <p>Cota</p>
+                <SelectPicker
+                  defaultValue={"todas"}
+                  data={0}
+                  searchable={false}
+                  cleanable={false}
+                  style={{ width: 120 }}
+                />
+              </div>
+              <div>
+                <p>Risco</p>
+                <SelectPicker
+                  defaultValue={"todos"}
+                  data={0}
+                  searchable={false}
+                  cleanable={false}
+                  style={{ width: 120 }}
+                />
+              </div>
+              <div>
+                <p>Custo</p>
+                <SelectPicker
+                  defaultValue={"todos"}
+                  data={0}
+                  searchable={false}
+                  cleanable={false}
+                  style={{ width: 120 }}
+                />
+              </div>
             </div>
             <div className='selects-teachers'>
               <TeacherSearch />

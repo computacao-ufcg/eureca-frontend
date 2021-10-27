@@ -135,28 +135,28 @@ const iea = [
   },
 ];
 
-const gender = [
+const genders = [
   {
-    label: "todos",
-    value: "todos",
+    label: "Todos",
+    value: "Todos",
     role: "Master",
   },
   {
     label: "F",
-    value: "F",
+    value: "Feminino",
     role: "Master",
   },
   {
     label: "M",
-    value: "M",
+    value: "Masculino",
     role: "Master",
   },
 ];
 
-const status = [
+const statuses = [
   {
-    label: "todos",
-    value: "todos",
+    label: "Todos",
+    value: "Todos",
     role: "Master",
   },
   {
@@ -413,4 +413,4 @@ const custo = [
   },
 ];
 
-export { admissionTerm, academic_units, subject_type, craOperation, iea, gender, status, cotas, risco, custo };
+export { admissionTerm, academic_units, subject_type, craOperation, iea, genders, statuses, cotas, risco, custo };
