@@ -4,14 +4,14 @@ import { Table } from "rsuite";
 const { Column, HeaderCell,Cell} = Table;
 
 const ResultsTable = (props) => {
-  const [optionSelected, setOptionSelected] = useState("");
+  console.log(props)
 
   return (
     <div className='table-email'>
       <Table
         height={480}
         width={750}
-        data={""}
+        data={props.listData}
         onRowClick={data => {
           console.log(data);
         }}
@@ -22,11 +22,11 @@ const ResultsTable = (props) => {
         </Column>
         <Column width={250} align='center' fixed>
           <HeaderCell>Nome</HeaderCell>
-          <Cell dataKey="id" />
+          <Cell dataKey="value" />
         </Column>
         <Column width={250} align='center' fixed>
           <HeaderCell>E-mail</HeaderCell>
-          <Cell dataKey="id" />
+          <Cell dataKey="label" />
         </Column>
       </Table>
     </div>

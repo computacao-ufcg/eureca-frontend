@@ -195,7 +195,7 @@ const CommunicationPage = () => {
           </div>
           <div className='response'>
             <h1>Endereços de E-mail</h1>
-            <ResultsTable></ResultsTable>
+            <ResultsTable listData={data}/>
             <div className='copy-button'>
               <button type='submit'>COPIAR ENDEREÇOS</button>
             </div>
