@@ -10,7 +10,7 @@ import ResultsTable from "./table/resultsTable";
 import { courseCode, curriculum } from "../../config/storage";
 import { api_EB } from "../../services/api";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
-import { admissionTerm, craOperation, genders, statuses } from "./util";
+import { admissionTerm, craOperation, genders, statuses, credits } from "./util";
 import "./style.css";
 
 const CommunicationPage = () => {
@@ -21,7 +21,7 @@ const CommunicationPage = () => {
   const [gpaOperation, setGpaOperation] = useState(2);
   const [enrolledCredits, setEnrolledCredits] = useState("");
   const [gender, setGender] = useState("");
- 
+
   const [status, setStatus] = useState("");
   const [studentName, setStudentName] = useState("");
 
@@ -30,14 +30,14 @@ const CommunicationPage = () => {
   const [search, setSearch] = useState(true);
   const [label, setLabel] = useState("");
 
-  const handleProfile = async (admission, gpa, gpaOperation,enrolledCredits, gender, status, studentName) => {
+  const handleProfile = async (admission, gpa, gpaOperation, enrolledCredits, gender, status, studentName) => {
     setLoading(true);
 
-    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=9&craOperation=%3D&curriculumCode=${curriculum}&enrolledCredits=%5E%24&gender=${gender}&registration=%5E%24&status=${status}&studentName=${studentName}`;
+    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=9&craOperation=%3D&curriculumCode=${curriculum}&enrolledCredits=${enrolledCredits}&gender=${gender}&registration=%5E%24&status=${status}&studentName=${studentName}`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
-      console.log(res)
+      console.log(res);
       setData(res.data);
       res.datalength === 0 ? setNoData(true) : setNoData(false);
       setLoading(false);
@@ -49,20 +49,26 @@ const CommunicationPage = () => {
 
   const handleAdmissionChange = admission => {
     setAdmission(admission);
-     const proposedLabel = admissionTerm.find(item => item.value === admission);
-     setLabel(proposedLabel.label);
+    const proposedLabel = admissionTerm.find(item => item.value === admission);
+    setLabel(proposedLabel.label);
   };
 
   const handleGenderChange = gender => {
     setGender(gender);
-     const proposedLabel = genders.find(item => item.value === gender);
-     setLabel(proposedLabel.label);
+    const proposedLabel = genders.find(item => item.value === gender);
+    setLabel(proposedLabel.label);
   };
 
   const handleStatusChange = status => {
     setStatus(status);
-     const proposedLabel = statuses.find(item => item.value === status);
-     setLabel(proposedLabel.label);
+    const proposedLabel = statuses.find(item => item.value === status);
+    setLabel(proposedLabel.label);
+  };
+
+  const handleCreditsChange = enrolledCredits => {
+    setEnrolledCredits(enrolledCredits);
+    const proposedLabel = credits.find(item => item.value === enrolledCredits);
+    setLabel(proposedLabel.label);
   };
 
   const handleSearch = () => {
@@ -70,7 +76,7 @@ const CommunicationPage = () => {
     //const $iptGpa = document.getElementById("ipt-cra-value");
     setStudentName($iptStudentName.value);
     //setGpa($iptGpa.value);
-    handleProfile( admission,"","","", gender, status, $iptStudentName.value );
+    handleProfile(admission, "", "", enrolledCredits, gender, status, $iptStudentName.value);
   };
 
   const history = useHistory();
@@ -89,11 +95,7 @@ const CommunicationPage = () => {
             <div className='selects-students'>
               <div>
                 <p>Nome</p>
-                <input
-                  id='ipt-name'
-                  type='text'
-                  placeholder='Buscar por nome'
-                />
+                <input id='ipt-name' type='text' placeholder='Buscar por nome' />
               </div>
               <div>
                 <p>Período de ingresso</p>
@@ -107,10 +109,6 @@ const CommunicationPage = () => {
                 />
               </div>
               <div>
-                <p>CRA</p>
-                <SelectPicker defaultValue={"todos"} data={craOperation} searchable={false} cleanable={false} />
-              </div>
-              <div>
                 <p>Status</p>
                 <SelectPicker
                   onChange={value => handleStatusChange(value)}
@@ -121,31 +119,36 @@ const CommunicationPage = () => {
                   style={{ width: 120 }}
                 />
               </div>
-              <div className='second-row'>
+              <div>
+                <p>Sexo</p>
+                <SelectPicker
+                  onChange={value => handleGenderChange(value)}
+                  defaultValue={"Todos"}
+                  data={genders}
+                  searchable={false}
+                  cleanable={false}
+                  style={{ width: 120 }}
+                />
+              </div>
+              <div className='second-row-students'>
                 <div>
-                  <p>Sexo</p>
-                  <SelectPicker
-                    onChange = {value => handleGenderChange(value)}
-                    defaultValue={"Todos"}
-                    data={genders}
-                    searchable={false}
-                    cleanable={false}
-                    style={{ width: 100 }}
-                  />
+                  <p>CRA</p>
+                  <SelectPicker defaultValue={"todos"} data={craOperation} searchable={false} cleanable={false} />
+                </div>
+                <div>
+                  <input className='ipt-cra-value' type='text' placeholder='CRA' />
                 </div>
               </div>
               <div>
-                <p>Período de conclusão</p>
+                <p>Créditos Matriculados</p>
                 <SelectPicker
+                  onChange={value => handleCreditsChange(value)}
                   defaultValue={"todos"}
-                  data={0}
+                  data={credits}
                   searchable={false}
                   cleanable={false}
                   style={{ width: 224 }}
                 />
-              </div>
-              <div>
-                <input className='ipt-cra-value' type='text' placeholder='CRA' />
               </div>
               <div>
                 <p>Cota</p>
@@ -190,7 +193,7 @@ const CommunicationPage = () => {
           </div>
           <div className='response'>
             <h1>Endereços de E-mail</h1>
-            <ResultsTable listData={data}/>
+            <ResultsTable listData={data} />
             <div className='copy-button'>
               <button type='submit'>COPIAR ENDEREÇOS</button>
             </div>

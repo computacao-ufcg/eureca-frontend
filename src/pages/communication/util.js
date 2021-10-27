@@ -112,25 +112,35 @@ const craOperation = [
   },
 ];
 
-const iea = [
+const credits = [
   {
     label: "todos",
     value: "todos",
     role: "Master",
   },
   {
-    label: ">7",
-    value: ">7",
+    label: "12",
+    value: "12",
     role: "Master",
   },
   {
-    label: "< 7 e > 5",
-    value: "< 7 e > 5",
+    label: "16",
+    value: "16",
     role: "Master",
   },
   {
-    label: "< 5",
-    value: "< 5 ",
+    label: "18",
+    value: "18",
+    role: "Master",
+  },
+  {
+    label: "20",
+    value: "20",
+    role: "Master",
+  },
+  {
+    label: "24",
+    value: "24",
     role: "Master",
   },
 ];
@@ -142,12 +152,12 @@ const genders = [
     role: "Master",
   },
   {
-    label: "F",
+    label: "Feminino",
     value: "Feminino",
     role: "Master",
   },
   {
-    label: "M",
+    label: "Masculino",
     value: "Masculino",
     role: "Master",
   },
@@ -413,4 +423,4 @@ const custo = [
   },
 ];
 
-export { admissionTerm, academic_units, subject_type, craOperation, iea, genders, statuses, cotas, risco, custo };
+export { admissionTerm, academic_units, subject_type, craOperation, credits, genders, statuses, cotas, risco, custo };

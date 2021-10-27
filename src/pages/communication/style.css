@@ -117,10 +117,9 @@
   margin-top: 19px;
 }
 
-.second-row {
+.second-row-students {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .selects-students {
