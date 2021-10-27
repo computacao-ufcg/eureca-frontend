@@ -4,7 +4,6 @@ import { Table } from "rsuite";
 const { Column, HeaderCell,Cell} = Table;
 
 const ResultsTable = (props) => {
-  console.log(props)
 
   return (
     <div className='table-email'>
@@ -22,11 +21,11 @@ const ResultsTable = (props) => {
         </Column>
         <Column width={250} align='center' fixed>
           <HeaderCell>Nome</HeaderCell>
-          <Cell dataKey="value" />
+          <Cell dataKey='name' />
         </Column>
         <Column width={250} align='center' fixed>
           <HeaderCell>E-mail</HeaderCell>
-          <Cell dataKey="label" />
+          <Cell dataKey='email' />
         </Column>
       </Table>
     </div>

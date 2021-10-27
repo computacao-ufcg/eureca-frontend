@@ -21,7 +21,7 @@ const CommunicationPage = () => {
   const [gpaOperation, setGpaOperation] = useState(2);
   const [enrolledCredits, setEnrolledCredits] = useState("");
   const [gender, setGender] = useState("");
-  const [registration, setRegistration] = useState("");
+ 
   const [status, setStatus] = useState("");
   const [studentName, setStudentName] = useState("");
 
@@ -30,13 +30,14 @@ const CommunicationPage = () => {
   const [search, setSearch] = useState(true);
   const [label, setLabel] = useState("");
 
-  const handleProfile = async (admission, gpa, enrolledCredits, gender, registration, status, studentName) => {
+  const handleProfile = async (admission, gpa, gpaOperation,enrolledCredits, gender, status, studentName) => {
     setLoading(true);
 
     let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=9&craOperation=%3D&curriculumCode=${curriculum}&enrolledCredits=%5E%24&gender=${gender}&registration=%5E%24&status=${status}&studentName=${studentName}`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
+      console.log(res)
       setData(res.data);
       res.datalength === 0 ? setNoData(true) : setNoData(false);
       setLoading(false);
@@ -64,18 +65,12 @@ const CommunicationPage = () => {
      setLabel(proposedLabel.label);
   };
 
-  const handleName = e => {
-    setStudentName({ value: e.target.value });
-    console.log(e.target);
-  };
-
   const handleSearch = () => {
     const $iptStudentName = document.getElementById("ipt-name");
     //const $iptGpa = document.getElementById("ipt-cra-value");
     setStudentName($iptStudentName.value);
-    console.log(gender)
     //setGpa($iptGpa.value);
-    handleProfile( admission,"","", gender,"", status, $iptStudentName.value );
+    handleProfile( admission,"","","", gender, status, $iptStudentName.value );
   };
 
   const history = useHistory();
@@ -90,7 +85,7 @@ const CommunicationPage = () => {
             </span>
           </div>
           <div className='all-selects'>
-          
+            <h1>Buscar e-mails por Discentes</h1>
             <div className='selects-students'>
               <div>
                 <p>Nome</p>

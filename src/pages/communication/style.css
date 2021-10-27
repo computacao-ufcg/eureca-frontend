@@ -1,4 +1,132 @@
+.main-content {
+  padding-bottom: 10vh;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-color: #e6dbd3;
+  overflow: auto;
+}
+
+.main-search-teachers {
+  width: 80vw;
+  min-height: 75%;
+  margin-left: 10vw;
+  margin-top: 2vh;
+  padding-bottom: 10vh;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 4px #15223214;
+  border-radius: 6px;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.container-title-search {
+  height: 8vh;
+  padding: 1vh 0;
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.container-title-search h1 {
+  font-size: 18px;
+}
+
+.main-search-teachers .response {
+  width: 50vw;
+  height: 600px;
+  margin-top: 5vh;
+  padding-bottom: 10vh;
+  background: #f2f2f2 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 4px #15223214;
+  border-radius: 6px;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.response h1 {
+  font-size: 18px;
+}
+
+.search-button {
+  width: 50vw;
+  text-align: right;
+}
+.search-button button {
+  border-radius: 5px;
+  height: 40px;
+  width: 120px;
+  justify-content: center;
+  align-items: center;
+  background-color: #886859;
+  color: white;
+  font-weight: 600;
+  text-decoration: none !important;
+  margin-top: 50px;
+}
+
+.copy-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.copy-button button {
+  border-radius: 5px;
+  height: 40px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(53, 197, 53, 0.701);
+  color: white;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.selects-students {
+  width: 50vw;
+  height: 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+.selects-students input {
+  background-color: #ffffff;
+  border: 1px solid #e5e5ea;
+  border-left: 5;
+  border-radius: 6px;
+  width: 15vw;
+  height: 4vh;
+}
+
+.selects-students input.ipt-cra-value {
+  background-color: #ffffff;
+  border: 1px solid #e5e5ea;
+  border-left: 5;
+  border-radius: 6px;
+  width: 4.6vw;
+  height: 4vh;
+  margin-top: 19px;
+}
+
+.second-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .selects-students {
   min-height: 300px;
   min-width: 650px;
+}
+.all-selects h1 {
+  font-size: 18px;
 }
