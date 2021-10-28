@@ -79,6 +79,20 @@ const CommunicationPage = () => {
     handleProfile(admission, "", "", enrolledCredits, gender, status, $iptStudentName.value);
   };
 
+  function listEmails(data){
+    const keys = Object.keys(data);
+    const result = [];
+
+    keys.forEach(element => {
+      const emails = {email:data[element].email}
+      result.push(emails)
+    });
+    const textEmails = result.map(res =>
+      `${res.email}`)
+    return textEmails.toString();
+  }
+  
+  const studentsEmail = listEmails(data);
   const history = useHistory();
   return (
     <React.Fragment>
@@ -195,7 +209,7 @@ const CommunicationPage = () => {
             <h1>Endereços de E-mail</h1>
             <ResultsTable listData={data} />
             <div className='copy-button'>
-              <button type='submit'>COPIAR ENDEREÇOS</button>
+              <button onClick={() => navigator.clipboard.writeText(studentsEmail)}>COPIAR ENDEREÇOS</button>
             </div>
           </div>
         </div>
