@@ -79,7 +79,7 @@ const subject_type = [
   },
 ];
 
-const craOperation = [
+const craOperations = [
   {
     label: "Todos",
     value: ".*?",
@@ -423,4 +423,4 @@ const custo = [
   },
 ];
 
-export { admissionTerm, academic_units, subject_type, craOperation, credits, genders, statuses, cotas, risco, custo };
+export { admissionTerm, academic_units, subject_type, craOperations, credits, genders, statuses, cotas, risco, custo };

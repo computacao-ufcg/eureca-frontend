@@ -10,20 +10,20 @@ import ResultsTable from "./table/resultsTable";
 import { courseCode, curriculum } from "../../config/storage";
 import { api_EB } from "../../services/api";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
-import { admissionTerm, craOperation, genders, statuses, credits } from "./util";
+import { admissionTerm, craOperations, genders, statuses, credits } from "./util";
 import "./style.css";
 
 const CommunicationPage = () => {
   const [data, setData] = useState([]);
 
   const [admission, setAdmission] = useState(".*?");
-  const [gpa, setGpa] = useState(2);
-  const [gpaOperation, setGpaOperation] = useState(2);
+  const [gpa, setGpa] = useState(0.0);
+  const [gpaOperation, setGpaOperation] = useState(".*?");
   const [enrolledCredits, setEnrolledCredits] = useState(".*?");
   const [gender, setGender] = useState(".*?");
 
   const [status, setStatus] = useState("Todos");
-  const [studentName, setStudentName] = useState("");
+  const [studentName, setStudentName] = useState(".*?");
 
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
@@ -33,7 +33,7 @@ const CommunicationPage = () => {
   const handleProfile = async (admission, gpa, gpaOperation, enrolledCredits, gender, status, studentName) => {
     setLoading(true);
 
-    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=9&craOperation=%3D&curriculumCode=${curriculum}&enrolledCredits=${enrolledCredits}&gender=${gender}&registration=%5E%24&status=${status}&studentName=${studentName}`;
+    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${gpa}&craOperation=${gpaOperation}&curriculumCode=${curriculum}&enrolledCredits=${enrolledCredits}&gender=${gender}&status=${status}&studentName=${studentName}`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
@@ -50,6 +50,12 @@ const CommunicationPage = () => {
   const handleAdmissionChange = admission => {
     setAdmission(admission);
     const proposedLabel = admissionTerm.find(item => item.value === admission);
+    setLabel(proposedLabel.label);
+  };
+
+  const handleGpaOperationChange = gpaOperation => {
+    setGpaOperation(gpaOperation);
+    const proposedLabel = craOperations.find(item => item.value === gpaOperation);
     setLabel(proposedLabel.label);
   };
 
@@ -73,10 +79,11 @@ const CommunicationPage = () => {
 
   const handleSearch = () => {
     const $iptStudentName = document.getElementById("ipt-name");
-    //const $iptGpa = document.getElementById("ipt-cra-value");
+    const $iptGpa = document.getElementById("ipt-cra-value");
     setStudentName($iptStudentName.value);
-    //setGpa($iptGpa.value);
-    handleProfile(admission, "", "", enrolledCredits, gender, status, $iptStudentName.value);
+    setGpa($iptGpa.value);
+    console.log(gpa)
+    handleProfile(admission, $iptGpa.value, gpaOperation, enrolledCredits, gender, status, $iptStudentName.value);
   };
 
   function listEmails(data){
@@ -147,10 +154,10 @@ const CommunicationPage = () => {
               <div className='second-row-students'>
                 <div>
                   <p>CRA</p>
-                  <SelectPicker defaultValue={".*?"} data={craOperation} searchable={false} cleanable={false} />
+                  <SelectPicker defaultValue={".*?"} onChange={value => handleGpaOperationChange(value)} data={craOperations} searchable={false} cleanable={false} />
                 </div>
                 <div>
-                  <input className='ipt-cra-value' type='text' placeholder='CRA' />
+                  <input className='ipt-cra-value' id='ipt-cra-value' type='text' placeholder='CRA' />
                 </div>
               </div>
               <div>
