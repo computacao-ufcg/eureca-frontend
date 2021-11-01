@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 
 const SearchScreen = props => {
-  console.log(props);
   return (
     <React.Fragment>
       <div className='container-title-search'>

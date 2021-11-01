@@ -1,20 +1,20 @@
 import React from "react";
 import { SelectPicker } from "rsuite";
 import SearchScreen from "../../../components/SearchScreen";
-import { periodos, cra_operators, status, sexo, cotas, risco, custo } from "../util";
+import { admissionTerm, craOperation, status, gender, cotas, risco, custo } from "../util";
 
-const StudentSearch = () => {
+const StudentSearch = (props) => {
   return (
-    <SearchScreen title={"Docentes"}>
+    <SearchScreen title={"Discentes"}>
       <div>
         <p>Nome</p>
-        <input id='ipt-name' type='text' placeholder='Buscar por nome' />
+        <input id='ipt-name' type='text' placeholder='Buscar por nome' value={props.name} onChange={props.handleName}/>
       </div>
       <div>
         <p>Período de ingresso</p>
         <SelectPicker
           defaultValue={"todos"}
-          data={periodos}
+          data={admissionTerm}
           searchable={true}
           cleanable={false}
           style={{ width: 224 }}
@@ -22,7 +22,7 @@ const StudentSearch = () => {
       </div>
       <div>
         <p>CRA</p>
-        <SelectPicker defaultValue={"todos"} data={cra_operators} searchable={false} cleanable={false} />
+        <SelectPicker defaultValue={"todos"} data={craOperation} searchable={false} cleanable={false} />
       </div>
       <div>
         <p>Status</p>
@@ -39,7 +39,7 @@ const StudentSearch = () => {
           <p>Sexo</p>
           <SelectPicker
             defaultValue={"todos"}
-            data={sexo}
+            data={gender}
             searchable={false}
             cleanable={false}
             style={{ width: 100 }}
@@ -50,7 +50,7 @@ const StudentSearch = () => {
         <p>Período de conclusão</p>
         <SelectPicker
           defaultValue={"todos"}
-          data={periodos}
+          data={admissionTerm}
           searchable={false}
           cleanable={false}
           style={{ width: 224 }}
