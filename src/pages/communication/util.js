@@ -81,11 +81,6 @@ const subject_type = [
 
 const craOperations = [
   {
-    label: "Todos",
-    value: ".*?",
-    role: "Master",
-  },
-  {
     label: ">",
     value: ">",
     role: "Master",

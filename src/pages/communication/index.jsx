@@ -4,13 +4,13 @@ import SubjectSearch from "./subjects";
 import { SelectPicker } from "rsuite";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
-
 import Header from "../../components/Header";
-import ResultsTable from "./table/resultsTable";
-import { courseCode, curriculum } from "../../config/storage";
 import { api_EB } from "../../services/api";
+import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
+import NoDataFound from "../../components/NoDataFound";
 import { admissionTerm, craOperations, genders, statuses, credits } from "./util";
+import ResultsTable from "./table/resultsTable";
 import "./style.css";
 
 const CommunicationPage = () => {
@@ -18,7 +18,7 @@ const CommunicationPage = () => {
 
   const [admission, setAdmission] = useState(".*?");
   const [gpa, setGpa] = useState(0.0);
-  const [gpaOperation, setGpaOperation] = useState(".*?");
+  const [gpaOperation, setGpaOperation] = useState("≥");
   const [enrolledCredits, setEnrolledCredits] = useState(".*?");
   const [gender, setGender] = useState(".*?");
 
@@ -82,23 +82,22 @@ const CommunicationPage = () => {
     const $iptGpa = document.getElementById("ipt-cra-value");
     setStudentName($iptStudentName.value);
     setGpa($iptGpa.value);
-    console.log(gpa)
+    console.log(gpa);
     handleProfile(admission, $iptGpa.value, gpaOperation, enrolledCredits, gender, status, $iptStudentName.value);
   };
 
-  function listEmails(data){
+  function listEmails(data) {
     const keys = Object.keys(data);
     const result = [];
 
     keys.forEach(element => {
-      const emails = {email:data[element].email}
-      result.push(emails)
+      const emails = { email: data[element].email };
+      result.push(emails);
     });
-    const textEmails = result.map(res =>
-      `${res.email}`)
+    const textEmails = result.map(res => `${res.email}`);
     return textEmails.toString();
   }
-  
+
   const studentsEmail = listEmails(data);
   const history = useHistory();
   return (
@@ -154,7 +153,13 @@ const CommunicationPage = () => {
               <div className='second-row-students'>
                 <div>
                   <p>CRA</p>
-                  <SelectPicker defaultValue={".*?"} onChange={value => handleGpaOperationChange(value)} data={craOperations} searchable={false} cleanable={false} />
+                  <SelectPicker
+                    defaultValue={"≥"}
+                    onChange={value => handleGpaOperationChange(value)}
+                    data={craOperations}
+                    searchable={false}
+                    cleanable={false}
+                  />
                 </div>
                 <div>
                   <input className='ipt-cra-value' id='ipt-cra-value' type='text' placeholder='CRA' />
@@ -214,7 +219,16 @@ const CommunicationPage = () => {
           </div>
           <div className='response'>
             <h1>Endereços de E-mail</h1>
-            <ResultsTable listData={data} />
+            {loading ? (
+              <h1>Carregando...</h1>
+            ) : data.length === 0 ? (
+              <div className='classified-no-data-found'>
+                {" "}
+                <NoDataFound msg={"Nenhuma classificação feita até o momento."} />{" "}
+              </div>
+            ) : (
+              <ResultsTable listData={data} />
+            )}
             <div className='copy-button'>
               <button onClick={() => navigator.clipboard.writeText(studentsEmail)}>COPIAR ENDEREÇOS</button>
             </div>
