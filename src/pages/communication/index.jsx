@@ -83,6 +83,7 @@ const CommunicationPage = () => {
     const $iptGpa = document.getElementById("ipt-cra-value");
     setStudentName($iptStudentName.value);
     setGpa($iptGpa.value);
+    //antes estava (admission,$iptGpa.value, gpaOperation, enrolledCredits, gender, status, $iptStudentName.value)
     handleProfile(admission, gpa, gpaOperation, enrolledCredits, gender, status, studentName);
   };
 
@@ -97,6 +98,7 @@ const CommunicationPage = () => {
     const textEmails = result.map(res => `${res.email}`);
     return textEmails.toString();
   }
+  
   const handleCopy = () =>{
     navigator.clipboard.writeText(studentsEmail)
     alert("Endereços copiados com sucesso!");
