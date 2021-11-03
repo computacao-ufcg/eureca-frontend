@@ -17,7 +17,7 @@ const CommunicationPage = () => {
   const [data, setData] = useState([]);
 
   const [admission, setAdmission] = useState(".*?");
-  const [gpa, setGpa] = useState(0.0);
+  const [gpa, setGpa] = useState(0);
   const [gpaOperation, setGpaOperation] = useState("≥");
   const [enrolledCredits, setEnrolledCredits] = useState(".*?");
   const [gender, setGender] = useState(".*?");
@@ -38,6 +38,7 @@ const CommunicationPage = () => {
 
     if (res.status === 200) {
       console.log(res);
+      console.log(gpa)
       setData(res.data);
       res.datalength === 0 ? setNoData(true) : setNoData(false);
       setLoading(false);
@@ -82,8 +83,7 @@ const CommunicationPage = () => {
     const $iptGpa = document.getElementById("ipt-cra-value");
     setStudentName($iptStudentName.value);
     setGpa($iptGpa.value);
-    console.log(gpa);
-    handleProfile(admission, $iptGpa.value, gpaOperation, enrolledCredits, gender, status, $iptStudentName.value);
+    handleProfile(admission, gpa, gpaOperation, enrolledCredits, gender, status, studentName);
   };
 
   function listEmails(data) {
@@ -97,7 +97,10 @@ const CommunicationPage = () => {
     const textEmails = result.map(res => `${res.email}`);
     return textEmails.toString();
   }
-
+  const handleCopy = () =>{
+    navigator.clipboard.writeText(studentsEmail)
+    alert("Endereços copiados com sucesso!");
+  }
   const studentsEmail = listEmails(data);
   const history = useHistory();
   return (
@@ -224,13 +227,13 @@ const CommunicationPage = () => {
             ) : data.length === 0 ? (
               <div className='classified-no-data-found'>
                 {" "}
-                <NoDataFound msg={"Nenhuma classificação feita até o momento."} />{" "}
+                <NoDataFound msg={"Nenhuma endereço de email correspondente."} />{" "}
               </div>
             ) : (
               <ResultsTable listData={data} />
             )}
             <div className='copy-button'>
-              <button onClick={() => navigator.clipboard.writeText(studentsEmail)}>COPIAR ENDEREÇOS</button>
+              <button onClick={handleCopy}>COPIAR ENDEREÇOS</button>
             </div>
           </div>
         </div>
