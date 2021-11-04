@@ -9,7 +9,7 @@ import { api_EB } from "../../services/api";
 import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
 import NoDataFound from "../../components/NoDataFound";
-import { admissionTerm, operations, genders, statuses, credits } from "./util";
+import { admissionTerm, operations, genders, statuses } from "./util";
 import ResultsTable from "./table/resultsTable";
 import "./style.css";
 
@@ -31,12 +31,25 @@ const CommunicationPage = () => {
   const [search, setSearch] = useState(true);
   const [label, setLabel] = useState("");
 
-  const handleProfile = async (admission, gpa, gpaOperation, enrolledCredits,creditsOperation, gender, status, studentName) => {
+  const handleProfile = async (
+    admission,
+    gpa,
+    gpaOperation,
+    enrolledCredits,
+    creditsOperation,
+    gender,
+    status,
+    studentName
+  ) => {
     setLoading(true);
 
     let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${
-      gpa || 0}&craOperation=${gpaOperation}&curriculumCode=${curriculum}&enrolledCredits=${enrolledCredits || 0}&enrolledCreditsOperation=${creditsOperation}&gender=${gender}&status=${status}&studentName=${
-      studentName || ".*?"}`;
+      gpa || 0
+    }&craOperation=${gpaOperation}&curriculumCode=${curriculum}&enrolledCredits=${
+      enrolledCredits || 0
+    }&enrolledCreditsOperation=${creditsOperation}&gender=${gender}&status=${status}&studentName=${
+      studentName || ".*?"
+    }`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
@@ -115,7 +128,10 @@ const CommunicationPage = () => {
             </span>
           </div>
           <div className='all-selects'>
-            <h1>Buscar e-mails por Discentes</h1>
+            <div className='title-search'>
+              <input type='checkbox' />
+              <h1>Buscar e-mails por Discentes</h1>
+            </div>
             <div className='selects-students'>
               <div>
                 <p>Nome</p>
@@ -181,26 +197,26 @@ const CommunicationPage = () => {
                 </div>
               </div>
               <div>
-              <p>Créditos Matriculados</p>
-                <div className="second-row-students">
-                <div>
-                  <SelectPicker
-                    onChange={value => handleCreditsOperationChange(value)}
-                    defaultValue={">="}
-                    data={operations}
-                    searchable={false}
-                    cleanable={false}
-                  />
-                </div>
-                <div>
-                  <input
-                    className='ipt-credits'
-                    id='ipt-credits'
-                    type='text'
-                    placeholder='0'
-                    onChange={e => setEnrolledCredits(e.target.value)}
-                  />
-                </div>
+                <p>Créditos Matriculados</p>
+                <div className='second-row-students'>
+                  <div>
+                    <SelectPicker
+                      onChange={value => handleCreditsOperationChange(value)}
+                      defaultValue={">="}
+                      data={operations}
+                      searchable={false}
+                      cleanable={false}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className='ipt-credits'
+                      id='ipt-credits'
+                      type='text'
+                      placeholder='0'
+                      onChange={e => setEnrolledCredits(e.target.value)}
+                    />
+                  </div>
                 </div>
               </div>
               <div>

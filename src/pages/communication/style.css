@@ -133,4 +133,13 @@
 }
 .all-selects h1 {
   font-size: 18px;
+  margin-left:5px
+}
+
+.title-search{
+  height: 8vh;
+  padding: 1vh 0;
+  align-self: center;
+  display: flex;
+  align-items: center;
 }
