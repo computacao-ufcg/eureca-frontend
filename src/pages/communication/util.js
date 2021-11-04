@@ -79,7 +79,7 @@ const subject_type = [
   },
 ];
 
-const craOperations = [
+const operations = [
   {
     label: ">",
     value: ">",
@@ -87,7 +87,7 @@ const craOperations = [
   },
   {
     label: "≥",
-    value: "≥",
+    value: ">=",
     role: "Master",
   },
   {
@@ -97,7 +97,7 @@ const craOperations = [
   },
   {
     label: "≤",
-    value: "≤",
+    value: "<=",
     role: "Master",
   },
   {
@@ -418,4 +418,4 @@ const custo = [
   },
 ];
 
-export { admissionTerm, academic_units, subject_type, craOperations, credits, genders, statuses, cotas, risco, custo };
+export { admissionTerm, academic_units, subject_type, operations, credits, genders, statuses, cotas, risco, custo };
