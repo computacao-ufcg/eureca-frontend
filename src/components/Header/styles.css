@@ -43,6 +43,18 @@
   background-color: transparent;
 }
 
+.buttons button:after{
+  display: block;
+  content: "";
+  border-bottom: solid 3px #886859;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+.buttons button:hover:after{
+  transform: scaleX(1);
+  transform-origin: 0% 50%;
+}
+
 .header-1-user div {
   width: 25px;
   height: 25px;

@@ -79,12 +79,7 @@ const subject_type = [
   },
 ];
 
-const craOperations = [
-  {
-    label: "Todos",
-    value: ".*?",
-    role: "Master",
-  },
+const operations = [
   {
     label: ">",
     value: ">",
@@ -92,7 +87,7 @@ const craOperations = [
   },
   {
     label: "≥",
-    value: "≥",
+    value: ">=",
     role: "Master",
   },
   {
@@ -102,45 +97,12 @@ const craOperations = [
   },
   {
     label: "≤",
-    value: "≤",
+    value: "<=",
     role: "Master",
   },
   {
     label: "=",
     value: "=",
-    role: "Master",
-  },
-];
-
-const credits = [
-  {
-    label: "Todos",
-    value: ".*?",
-    role: "Master",
-  },
-  {
-    label: "12",
-    value: "12",
-    role: "Master",
-  },
-  {
-    label: "16",
-    value: "16",
-    role: "Master",
-  },
-  {
-    label: "18",
-    value: "18",
-    role: "Master",
-  },
-  {
-    label: "20",
-    value: "20",
-    role: "Master",
-  },
-  {
-    label: "24",
-    value: "24",
     role: "Master",
   },
 ];
@@ -423,4 +385,4 @@ const custo = [
   },
 ];
 
-export { admissionTerm, academic_units, subject_type, craOperations, credits, genders, statuses, cotas, risco, custo };
+export { admissionTerm, academic_units, subject_type, operations,genders, statuses, cotas, risco, custo };

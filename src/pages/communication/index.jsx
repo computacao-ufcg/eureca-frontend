@@ -4,22 +4,23 @@ import SubjectSearch from "./subjects";
 import { SelectPicker } from "rsuite";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
-
 import Header from "../../components/Header";
-import ResultsTable from "./table/resultsTable";
-import { courseCode, curriculum } from "../../config/storage";
 import { api_EB } from "../../services/api";
+import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
-import { admissionTerm, craOperations, genders, statuses, credits } from "./util";
+import NoDataFound from "../../components/NoDataFound";
+import { admissionTerm, operations, genders, statuses } from "./util";
+import ResultsTable from "./table/resultsTable";
 import "./style.css";
 
 const CommunicationPage = () => {
   const [data, setData] = useState([]);
 
   const [admission, setAdmission] = useState(".*?");
-  const [gpa, setGpa] = useState(0.0);
-  const [gpaOperation, setGpaOperation] = useState(".*?");
-  const [enrolledCredits, setEnrolledCredits] = useState(".*?");
+  const [gpa, setGpa] = useState(0);
+  const [gpaOperation, setGpaOperation] = useState(">=");
+  const [creditsOperation, setCreditsOperation] = useState(">=");
+  const [enrolledCredits, setEnrolledCredits] = useState(0);
   const [gender, setGender] = useState(".*?");
 
   const [status, setStatus] = useState("Todos");
@@ -30,14 +31,28 @@ const CommunicationPage = () => {
   const [search, setSearch] = useState(true);
   const [label, setLabel] = useState("");
 
-  const handleProfile = async (admission, gpa, gpaOperation, enrolledCredits, gender, status, studentName) => {
+  const handleProfile = async (
+    admission,
+    gpa,
+    gpaOperation,
+    enrolledCredits,
+    creditsOperation,
+    gender,
+    status,
+    studentName
+  ) => {
     setLoading(true);
 
-    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${gpa}&craOperation=${gpaOperation}&curriculumCode=${curriculum}&enrolledCredits=${enrolledCredits}&gender=${gender}&status=${status}&studentName=${studentName}`;
+    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${
+      gpa || 0
+    }&craOperation=${gpaOperation}&curriculumCode=${curriculum}&enrolledCredits=${
+      enrolledCredits || 0
+    }&enrolledCreditsOperation=${creditsOperation}&gender=${gender}&status=${status}&studentName=${
+      studentName || ".*?"
+    }`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
-      console.log(res);
       setData(res.data);
       res.datalength === 0 ? setNoData(true) : setNoData(false);
       setLoading(false);
@@ -55,7 +70,13 @@ const CommunicationPage = () => {
 
   const handleGpaOperationChange = gpaOperation => {
     setGpaOperation(gpaOperation);
-    const proposedLabel = craOperations.find(item => item.value === gpaOperation);
+    const proposedLabel = operations.find(item => item.value === gpaOperation);
+    setLabel(proposedLabel.label);
+  };
+
+  const handleCreditsOperationChange = creditsOperation => {
+    setCreditsOperation(creditsOperation);
+    const proposedLabel = operations.find(item => item.value === creditsOperation);
     setLabel(proposedLabel.label);
   };
 
@@ -71,35 +92,28 @@ const CommunicationPage = () => {
     setLabel(proposedLabel.label);
   };
 
-  const handleCreditsChange = enrolledCredits => {
-    setEnrolledCredits(enrolledCredits);
-    const proposedLabel = credits.find(item => item.value === enrolledCredits);
-    setLabel(proposedLabel.label);
-  };
-
   const handleSearch = () => {
-    const $iptStudentName = document.getElementById("ipt-name");
-    const $iptGpa = document.getElementById("ipt-cra-value");
-    setStudentName($iptStudentName.value);
-    setGpa($iptGpa.value);
-    console.log(gpa)
-    handleProfile(admission, $iptGpa.value, gpaOperation, enrolledCredits, gender, status, $iptStudentName.value);
+    handleProfile(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
   };
 
-  function listEmails(data){
+  function listEmails(data) {
     const keys = Object.keys(data);
     const result = [];
 
     keys.forEach(element => {
-      const emails = {email:data[element].email}
-      result.push(emails)
+      const emails = { email: data[element].email };
+      result.push(emails);
     });
-    const textEmails = result.map(res =>
-      `${res.email}`)
+    const textEmails = result.map(res => `${res.email}`);
     return textEmails.toString();
   }
-  
+
   const studentsEmail = listEmails(data);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(studentsEmail);
+    alert("Endereços copiados com sucesso!");
+  };
+
   const history = useHistory();
   return (
     <React.Fragment>
@@ -112,11 +126,19 @@ const CommunicationPage = () => {
             </span>
           </div>
           <div className='all-selects'>
-            <h1>Buscar e-mails por Discentes</h1>
+            <div className='title-search'>
+              <input type='checkbox' />
+              <h1>Buscar e-mails por Discentes</h1>
+            </div>
             <div className='selects-students'>
               <div>
                 <p>Nome</p>
-                <input id='ipt-name' type='text' placeholder='Buscar por nome' />
+                <input
+                  id='ipt-name'
+                  type='text'
+                  placeholder='Buscar por nome'
+                  onChange={e => setStudentName(e.target.value)}
+                />
               </div>
               <div>
                 <p>Período de ingresso</p>
@@ -154,22 +176,46 @@ const CommunicationPage = () => {
               <div className='second-row-students'>
                 <div>
                   <p>CRA</p>
-                  <SelectPicker defaultValue={".*?"} onChange={value => handleGpaOperationChange(value)} data={craOperations} searchable={false} cleanable={false} />
+                  <SelectPicker
+                    defaultValue={">="}
+                    onChange={value => handleGpaOperationChange(value)}
+                    data={operations}
+                    searchable={false}
+                    cleanable={false}
+                  />
                 </div>
                 <div>
-                  <input className='ipt-cra-value' id='ipt-cra-value' type='text' placeholder='CRA' />
+                  <input
+                    className='ipt-cra-value'
+                    id='ipt-cra-value'
+                    type='text'
+                    placeholder='0'
+                    onChange={e => setGpa(e.target.value)}
+                  />
                 </div>
               </div>
               <div>
                 <p>Créditos Matriculados</p>
-                <SelectPicker
-                  onChange={value => handleCreditsChange(value)}
-                  defaultValue={".*?"}
-                  data={credits}
-                  searchable={false}
-                  cleanable={false}
-                  style={{ width: 224 }}
-                />
+                <div className='second-row-students'>
+                  <div>
+                    <SelectPicker
+                      onChange={value => handleCreditsOperationChange(value)}
+                      defaultValue={">="}
+                      data={operations}
+                      searchable={false}
+                      cleanable={false}
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className='ipt-credits'
+                      id='ipt-credits'
+                      type='text'
+                      placeholder='0'
+                      onChange={e => setEnrolledCredits(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
               <div>
                 <p>Cota</p>
@@ -214,9 +260,18 @@ const CommunicationPage = () => {
           </div>
           <div className='response'>
             <h1>Endereços de E-mail</h1>
-            <ResultsTable listData={data} />
+            {loading ? (
+              <h1>Carregando...</h1>
+            ) : data.length === 0 ? (
+              <div className='classified-no-data-found'>
+                {" "}
+                <NoDataFound msg={"Nenhuma endereço de email correspondente."} />{" "}
+              </div>
+            ) : (
+              <ResultsTable listData={data} />
+            )}
             <div className='copy-button'>
-              <button onClick={() => navigator.clipboard.writeText(studentsEmail)}>COPIAR ENDEREÇOS</button>
+              <button onClick={handleCopy}>COPIAR ENDEREÇOS</button>
             </div>
           </div>
         </div>
