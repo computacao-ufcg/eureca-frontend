@@ -24,15 +24,15 @@ const ServicesPage = () => {
             <div className='selects-individual-enrollment'>
               <div>
                 <p>Período</p>
-                <input id='ipt-name' type='text' placeholder='' />
+                <input id='ipt-term' type='text' placeholder='' />
               </div>
               <div>
                 <p>Matrícula</p>
-                <SelectPicker data={0} searchable={true} cleanable={false} style={{ width: 224 }} />
+                <input id='ipt-registration' type='text' placeholder='' />
               </div>
               <div>
                 <p>Número de Créditos</p>
-                <SelectPicker data={0} searchable={false} cleanable={false} style={{ width: 120 }} />
+                <input id='ipt-credits' type='text' placeholder='' />
               </div>
               <div>
                 <p>Prioridade em Disciplinas Obrigatórias</p>
