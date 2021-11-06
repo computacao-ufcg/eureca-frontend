@@ -9,7 +9,7 @@ import { api_EB } from "../../services/api";
 import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
 import NoDataFound from "../../components/NoDataFound";
-import { admissionTerm, operations, genders, statuses } from "./util";
+import { admissionTerm, operations, genders, statuses, subject_type, academic_units } from "./util";
 import ResultsTable from "./table/resultsTable";
 import "./style.css";
 
@@ -126,6 +126,7 @@ const CommunicationPage = () => {
             </span>
           </div>
           <div className='all-selects'>
+
             <div className='title-search'>
               <input type='checkbox' />
               <h1>Buscar e-mails por Discentes</h1>
@@ -251,8 +252,34 @@ const CommunicationPage = () => {
             <div className='selects-teachers'>
               <TeacherSearch />
             </div>
+
+            <div className='title-search'>
+              <input type='checkbox' />
+              <h1>Buscar e-mails por Discentes</h1>
+            </div>
             <div className='selects-subjects'>
-              <SubjectSearch />
+              <div>
+                <p>Nome</p>
+                <input id='ipt-subject-name' type='text' placeholder='Buscar por nome da disciplina' />
+              </div>
+              <div>
+                <p>Tipo</p>
+                <SelectPicker
+                  defaultValue={"todos"}
+                  data={subject_type}
+                  searchable={true}
+                  cleanable={false}
+                  style={{ width: 180 }}
+                />
+              </div>
+              <div>
+                <p>Uni. acadêmica</p>
+                <SelectPicker defaultValue={"todas"} data={academic_units} searchable={false} cleanable={false} />
+              </div>
+              <div>
+                <p>Período</p>
+                <SelectPicker defaultValue={"todos"} data={admissionTerm} searchable={false} cleanable={false} />
+              </div>
             </div>
           </div>
           <div className='search-button'>
