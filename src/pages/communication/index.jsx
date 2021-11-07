@@ -23,15 +23,17 @@ const CommunicationPage = () => {
   const [gender, setGender] = useState(".*?");
   const [status, setStatus] = useState("Todos");
   const [studentName, setStudentName] = useState(".*?");
+  const [studentCheck, setStudentCheck] = useState(false);
+
+  const [subjectsCheck, setSubjectsCheck] = useState(false)
 
   const [subjectType, setSubjectType] = useState("MANDATORY");
   const [subjectAcademicUnit, setSubjectAcademicUnit] = useState("UASC");
   const [subjectName, setSubjectName] = useState(".*?");
   const [subjectTerm, setSubjectTerm] = useState(".*?");
 
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
-  const [search, setSearch] = useState(true);
   const [label, setLabel] = useState("");
 
   const handleStudentSearch = async (
@@ -44,7 +46,7 @@ const CommunicationPage = () => {
     status,
     studentName
   ) => {
-    setLoading(true);
+   // setLoading(true);
 
     let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${
       gpa || 0
@@ -55,28 +57,25 @@ const CommunicationPage = () => {
     }`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
-    if (res.status === 200) {
-      setData(res.data);
-      res.datalength === 0 ? setNoData(true) : setNoData(false);
-      setLoading(false);
-      setSearch(false);
+    if (res.status === 200) { 
+      //res.datalength === 0 ? setNoData(true) : setNoData(false);
+      //setLoading(false);
+      return res.data;
     } else {
       console.error("Response error");
     }
   };
 
   const handleSubjectsSearch = async (subjectAcademicUnit, subjectName, subjectType, subjectTerm) => {
-    setLoading(true);
+    //setLoading(true);
 
     let query = `communication/subjectEmailSearch?academicUnit=${subjectAcademicUnit}&courseCode=${courseCode}&curriculumCode=${curriculum}&subjectName=${subjectName || ".*?"}&subjectType=${subjectType}&term=${subjectTerm}`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
-      console.log(res)
-      setData(res.data);
-      res.datalength === 0 ? setNoData(true) : setNoData(false);
-      setLoading(false);
-      setSearch(false);
+      return res.data;
+      //res.datalength === 0 ? setNoData(true) : setNoData(false);
+     // setLoading(false);
     } else {
       console.error("Response error");
     }
@@ -130,9 +129,20 @@ const CommunicationPage = () => {
     setLabel(proposedLabel.label);
   };
 
-  const handleSearch = () => {
-    //handleStudentSearch(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
-    handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
+  const handleSearch = async() => {
+    var response = null
+    if(studentCheck && subjectsCheck == false){
+      response = await handleStudentSearch(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
+      setData(response);
+    } else if( studentCheck == false && subjectsCheck){
+      response = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
+      setData(response);
+    } else if( studentCheck && subjectsCheck){
+      var resultStudents =  await handleStudentSearch(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
+      var resultSubject = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
+      response = Object.assign({}, resultStudents, resultSubject);
+      setData(response)
+    }
   };
 
   function listEmails(data) {
@@ -166,7 +176,7 @@ const CommunicationPage = () => {
           </div>
           <div className='all-selects'>
             <div className='title-search'>
-              <input type='checkbox' />
+              <input type='checkbox' value={studentCheck} onClick={e => setStudentCheck(e.target.checked)}/>
               <h1>Buscar e-mails por Discentes</h1>
             </div>
             <div className='selects-students'>
@@ -292,8 +302,8 @@ const CommunicationPage = () => {
             </div>
 
             <div className='title-search'>
-              <input type='checkbox' />
-              <h1>Buscar e-mails por Discentes</h1>
+              <input type='checkbox' value={subjectsCheck} onClick={e => setSubjectsCheck(e.target.checked)} />
+              <h1>Buscar e-mails por Disciplinas</h1>
             </div>
             <div className='selects-subjects'>
               <div>
@@ -343,16 +353,16 @@ const CommunicationPage = () => {
           </div>
           <div className='response'>
             <h1>Endereços de E-mail</h1>
-            {loading ? (
+            {/* {loading ? (
               <h1>Carregando...</h1>
             ) : data.length === 0 ? (
               <div className='classified-no-data-found'>
                 {" "}
                 <NoDataFound msg={"Nenhuma endereço de email correspondente."} />{" "}
               </div>
-            ) : (
+            ) : ( */}
               <ResultsTable listData={data} />
-            )}
+            {/* )} */}
             <div className='copy-button'>
               <button onClick={handleCopy}>COPIAR ENDEREÇOS</button>
             </div>
