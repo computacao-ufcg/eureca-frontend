@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TeacherSearch from "./teachers";
-import SubjectSearch from "./subjects";
 import { SelectPicker } from "rsuite";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
@@ -22,16 +21,20 @@ const CommunicationPage = () => {
   const [creditsOperation, setCreditsOperation] = useState(">=");
   const [enrolledCredits, setEnrolledCredits] = useState(0);
   const [gender, setGender] = useState(".*?");
-
   const [status, setStatus] = useState("Todos");
   const [studentName, setStudentName] = useState(".*?");
+
+  const [subjectType, setSubjectType] = useState("MANDATORY");
+  const [subjectAcademicUnit, setSubjectAcademicUnit] = useState("UASC");
+  const [subjectName, setSubjectName] = useState(".*?");
+  const [subjectTerm, setSubjectTerm] = useState(".*?");
 
   const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
   const [search, setSearch] = useState(true);
   const [label, setLabel] = useState("");
 
-  const handleProfile = async (
+  const handleStudentSearch = async (
     admission,
     gpa,
     gpaOperation,
@@ -53,6 +56,23 @@ const CommunicationPage = () => {
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
+      setData(res.data);
+      res.datalength === 0 ? setNoData(true) : setNoData(false);
+      setLoading(false);
+      setSearch(false);
+    } else {
+      console.error("Response error");
+    }
+  };
+
+  const handleSubjectsSearch = async (subjectAcademicUnit, subjectName, subjectType, subjectTerm) => {
+    setLoading(true);
+
+    let query = `communication/subjectEmailSearch?academicUnit=${subjectAcademicUnit}&courseCode=${courseCode}&curriculumCode=${curriculum}&subjectName=${subjectName || ".*?"}&subjectType=${subjectType}&term=${subjectTerm}`;
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
+
+    if (res.status === 200) {
+      console.log(res)
       setData(res.data);
       res.datalength === 0 ? setNoData(true) : setNoData(false);
       setLoading(false);
@@ -92,8 +112,27 @@ const CommunicationPage = () => {
     setLabel(proposedLabel.label);
   };
 
+  const handleSubjectsAUChange = subjectAcademicUnit => {
+    setSubjectAcademicUnit(subjectAcademicUnit);
+    const proposedLabel = academic_units.find(item => item.value === subjectAcademicUnit);
+    setLabel(proposedLabel.label);
+  };
+
+  const handleSubjectsTypeChange = subjectType => {
+    setSubjectType(subjectType);
+    const proposedLabel = subject_type.find(item => item.value === subjectType);
+    setLabel(proposedLabel.label);
+  };
+
+  const handleSubjectTermChange = subjectTerm => {
+    setSubjectTerm(subjectTerm);
+    const proposedLabel = admissionTerm.find(item => item.value === subjectTerm);
+    setLabel(proposedLabel.label);
+  };
+
   const handleSearch = () => {
-    handleProfile(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
+    //handleStudentSearch(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
+    handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
   };
 
   function listEmails(data) {
@@ -126,7 +165,6 @@ const CommunicationPage = () => {
             </span>
           </div>
           <div className='all-selects'>
-
             <div className='title-search'>
               <input type='checkbox' />
               <h1>Buscar e-mails por Discentes</h1>
@@ -260,12 +298,18 @@ const CommunicationPage = () => {
             <div className='selects-subjects'>
               <div>
                 <p>Nome</p>
-                <input id='ipt-subject-name' type='text' placeholder='Buscar por nome da disciplina' />
+                <input
+                  id='ipt-subject-name'
+                  type='text'
+                  placeholder='Buscar por nome da disciplina'
+                  onChange={e => setSubjectName(e.target.value)}
+                />
               </div>
               <div>
                 <p>Tipo</p>
                 <SelectPicker
-                  defaultValue={"todos"}
+                  onChange={value => handleSubjectsTypeChange(value)}
+                  defaultValue={"MANDATORY"}
                   data={subject_type}
                   searchable={true}
                   cleanable={false}
@@ -274,11 +318,23 @@ const CommunicationPage = () => {
               </div>
               <div>
                 <p>Uni. acadêmica</p>
-                <SelectPicker defaultValue={"todas"} data={academic_units} searchable={false} cleanable={false} />
+                <SelectPicker
+                  onChange={value => handleSubjectsAUChange(value)}
+                  defaultValue={"UASC"}
+                  data={academic_units}
+                  searchable={false}
+                  cleanable={false}
+                />
               </div>
               <div>
                 <p>Período</p>
-                <SelectPicker defaultValue={"todos"} data={admissionTerm} searchable={false} cleanable={false} />
+                <SelectPicker
+                  onChange={value => handleSubjectTermChange(value)}
+                  defaultValue={".*?"}
+                  data={admissionTerm}
+                  searchable={false}
+                  cleanable={false}
+                />
               </div>
             </div>
           </div>
