@@ -89,7 +89,7 @@
   text-decoration: none !important;
 }
 
-.selects-students {
+.selects-students, .selects-subjects {
   width: 50vw;
   height: 90px;
   display: grid;
@@ -98,7 +98,7 @@
   row-gap: 10px;
 }
 
-.selects-students input {
+.selects-students input, .selects-subjects input {
   background-color: #ffffff;
   border: 1px solid #e5e5ea;
   border-left: 5;
