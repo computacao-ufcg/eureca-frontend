@@ -1,7 +1,7 @@
 const academic_units = [
   {
     label: "todas",
-    value: "todas",
+    value: ".*?",
     role: "Master",
   },
   {
@@ -53,28 +53,28 @@ const academic_units = [
 
 const subject_type = [
   {
-    label: "todos",
-    value: "todos",
+    label: "Todos",
+    value: ".*?",
     role: "Master",
   },
   {
-    label: "obrigatórias",
-    value: "obrigatórias",
+    label: "Obrigatórias",
+    value: "MANDATORY",
     role: "Master",
   },
   {
-    label: "optativas",
-    value: "optativas",
+    label: "Optativas",
+    value: "OPTIONAL",
     role: "Master",
   },
   {
-    label: "eletivas",
-    value: "eletivas",
+    label: "Eletivas",
+    value: "ELECTIVE",
     role: "Master",
   },
   {
-    label: "complementares",
-    value: "complementares",
+    label: "Complementares",
+    value: "COMPLEMENTARY",
     role: "Master",
   },
 ];
@@ -385,4 +385,4 @@ const custo = [
   },
 ];
 
-export { admissionTerm, academic_units, subject_type, operations,genders, statuses, cotas, risco, custo };
+export { admissionTerm, academic_units, subject_type, operations, genders, statuses, cotas, risco, custo };
