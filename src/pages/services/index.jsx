@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import Header from "../../components/Header";
-import { SelectPicker } from "rsuite";
 import "./style.css";
 
 const ServicesPage = () => {
