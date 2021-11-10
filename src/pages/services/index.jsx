@@ -21,7 +21,7 @@ const ServicesPage = () => {
             <div className='service-title'>
               <h1>Pré-matrícula Individual</h1>
             </div>
-            <div className='selects-individual-enrollment'>
+            <div className='individual-enrollment'>
               <div>
                 <p>Período</p>
                 <input id='ipt-term' type='text' placeholder='' />
@@ -36,24 +36,24 @@ const ServicesPage = () => {
               </div>
               <div>
                 <p>Prioridade em Disciplinas Obrigatórias</p>
-                <SelectPicker data={0} searchable={false} cleanable={false} style={{ width: 150 }} />
+                <input id='ipt-mandatory-priority' type='text' />
               </div>
               <div>
                 <p>Prioridade em Disciplinas Optativas</p>
-                <SelectPicker data={0} searchable={false} cleanable={false} style={{ width: 150 }} />
+                <input id='ipt-optional-priority' type='text' />
               </div>
               <div>
                 <p>Prioridade em Disciplinas Eletivas</p>
-                <SelectPicker data={0} searchable={false} cleanable={false} style={{ width: 150 }} />
+                <input id='ipt-elective-priority' type='text' />
               </div>
             </div>
             <div className='service-title'>
               <h1>Pré-matrícula em Lotes</h1>
             </div>
-            <div className='selects-lot-enrollment'>
+            <div className='lot-enrollment'>
               <div>
-                <p>Períodos</p>
-                <SelectPicker data={0} searchable={false} cleanable={false} style={{ width: 150 }} />
+                <p>Período</p>
+               <input id='ipt-term' type='text' />
               </div>
               <div>
               <p>Configuração</p>

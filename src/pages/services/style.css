@@ -17,27 +17,30 @@
   position: relative;
 }
 
-.selects-individual-enrollment , .selects-lot-enrollment{
-    width: 50vw;
-    height: 90px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 20px;
-    column-gap: 20px;
-    grid-row-gap: 10px;
-    row-gap: 10px;
-    min-height: 200px;
-    min-width: 650px;
+.individual-enrollment,
+.lot-enrollment {
+  width: 50vw;
+  height: 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  column-gap: 20px;
+  grid-row-gap: 10px;
+  row-gap: 10px;
+  min-height: 200px;
+  min-width: 650px;
 }
 
-.selects-individual-enrollment input {
-    background-color: #ffffff;
-    border: 1px solid #e5e5ea;
-    border-left: 5;
-    border-radius: 6px;
-    width: 8vw;
-    height: 4vh;
+.individual-enrollment input,
+.lot-enrollment input#ipt-term {
+  background-color: #ffffff;
+  border: 1px solid #e5e5ea;
+  border-left: 5;
+  border-radius: 6px;
+  width: 8vw;
+  height: 4vh;
 }
-.selects-lot-enrollment input{
-    margin-top: 15px;
+
+.selects-lot-enrollment input {
+  margin-top: 15px;
 }
