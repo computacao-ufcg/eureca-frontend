@@ -89,7 +89,9 @@
   text-decoration: none !important;
 }
 
-.selects-students, .selects-subjects, .selects-teachers {
+.selects-students,
+.selects-subjects,
+.selects-teachers {
   width: 50vw;
   height: 90px;
   display: grid;
@@ -98,7 +100,9 @@
   row-gap: 10px;
 }
 
-.selects-students input, .selects-subjects input, .selects-teachers input {
+.selects-students input,
+.selects-subjects input,
+.selects-teachers input {
   background-color: #ffffff;
   border: 1px solid #e5e5ea;
   border-left: 5;
@@ -133,10 +137,10 @@
 }
 .all-selects h1 {
   font-size: 18px;
-  margin-left:5px
+  margin-left: 5px;
 }
 
-.title-search{
+.title-search {
   height: 8vh;
   padding: 1vh 0;
   align-self: center;

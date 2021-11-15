@@ -340,19 +340,41 @@ const CommunicationPage = () => {
             <div className='selects-teachers'>
               <div>
                 <p>Nome</p>
-                <input id='ipt-name' type='text' placeholder='Buscar por nome' onChange={e => setTeacherName(e.target.value)}/>
+                <input
+                  id='ipt-name'
+                  type='text'
+                  placeholder='Buscar por nome'
+                  onChange={e => setTeacherName(e.target.value)}
+                />
               </div>
               <div>
                 <p>SIAPE</p>
-                <input id='ipt-siape' type='text' placeholder='Buscar por SIAPE' onChange={e => setTeacherId(e.target.value)}/>
+                <input
+                  id='ipt-siape'
+                  type='text'
+                  placeholder='Buscar por SIAPE'
+                  onChange={e => setTeacherId(e.target.value)}
+                />
               </div>
               <div>
                 <p>Uni. acadêmica</p>
-                <SelectPicker defaultValue={"1411"} data={academic_units} searchable={false} cleanable={false} onChange={value => handleTeacherAUChange(value)}/>
+                <SelectPicker
+                  defaultValue={"1411"}
+                  data={academic_units}
+                  searchable={false}
+                  cleanable={false}
+                  onChange={value => handleTeacherAUChange(value)}
+                />
               </div>
               <div>
                 <p>Período</p>
-                <SelectPicker defaultValue={"2020.2"} data={admissionTerm} searchable={false} cleanable={false} onChange={value => handleTeacherTermChange(value)}/>
+                <SelectPicker
+                  defaultValue={"2020.2"}
+                  data={admissionTerm}
+                  searchable={false}
+                  cleanable={false}
+                  onChange={value => handleTeacherTermChange(value)}
+                />
               </div>
             </div>
 
