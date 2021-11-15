@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TeacherSearch from "./teachers";
 import { SelectPicker } from "rsuite";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
@@ -8,7 +7,7 @@ import { api_EB } from "../../services/api";
 import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
 import NoDataFound from "../../components/NoDataFound";
-import { admissionTerm, operations, genders, statuses, subject_type, academic_units,cotas } from "./util";
+import { admissionTerm, operations, genders, statuses, subject_type, academic_units, cotas } from "./util";
 import ResultsTable from "./table/resultsTable";
 import "./style.css";
 
@@ -25,12 +24,17 @@ const CommunicationPage = () => {
   const [studentName, setStudentName] = useState(".*?");
   const [studentCheck, setStudentCheck] = useState(false);
 
-  const [subjectsCheck, setSubjectsCheck] = useState(false)
-
+  const [subjectsCheck, setSubjectsCheck] = useState(false);
   const [subjectType, setSubjectType] = useState("MANDATORY");
   const [subjectAcademicUnit, setSubjectAcademicUnit] = useState("1411");
   const [subjectName, setSubjectName] = useState(".*?");
   const [subjectTerm, setSubjectTerm] = useState("2020.2");
+
+  const [teacherCheck, setTeacherCheck] = useState(false);
+  const [teacherAcademicUnit, setTeacherAcademicUnit] = useState("1411");
+  const [teacherName, setTeacherName] = useState(".*?");
+  const [teacherId, setTeacherId] = useState(".*?");
+  const [teacherTerm, setTeacherTerm] = useState("2020.2");
 
   //const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
@@ -46,7 +50,7 @@ const CommunicationPage = () => {
     status,
     studentName
   ) => {
-   // setLoading(true);
+    // setLoading(true);
 
     let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${
       gpa || 0
@@ -57,7 +61,7 @@ const CommunicationPage = () => {
     }`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
-    if (res.status === 200) { 
+    if (res.status === 200) {
       //res.datalength === 0 ? setNoData(true) : setNoData(false);
       //setLoading(false);
       return res.data;
@@ -69,14 +73,16 @@ const CommunicationPage = () => {
   const handleSubjectsSearch = async (subjectAcademicUnit, subjectName, subjectType, subjectTerm) => {
     //setLoading(true);
 
-    let query = `communication/subjectEmailSearch?academicUnit=${subjectAcademicUnit}&courseCode=${courseCode}&curriculumCode=${curriculum}&subjectName=${subjectName || ".*?"}&subjectType=${subjectType}&term=${subjectTerm}`;
+    let query = `communication/subjectEmailSearch?academicUnit=${subjectAcademicUnit}&courseCode=${courseCode}&curriculumCode=${curriculum}&subjectName=${
+      subjectName || ".*?"
+    }&subjectType=${subjectType}&term=${subjectTerm}`;
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
-      console.log(res)
+      console.log(res);
       return res.data;
       //res.datalength === 0 ? setNoData(true) : setNoData(false);
-     // setLoading(false);
+      // setLoading(false);
     } else {
       console.error("Response error");
     }
@@ -130,19 +136,49 @@ const CommunicationPage = () => {
     setLabel(proposedLabel.label);
   };
 
-  const handleSearch = async() => {
-    var response = null
-    if(studentCheck && subjectsCheck == false){
-      response = await handleStudentSearch(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
+  const handleTeacherAUChange = teacherAcademicUnit => {
+    setTeacherAcademicUnit(teacherAcademicUnit);
+    const proposedLabel = academic_units.find(item => item.value === teacherAcademicUnit);
+    setLabel(proposedLabel.label);
+  };
+
+  const handleTeacherTermChange = teacherTerm => {
+    setTeacherTerm(subjectTerm);
+    const proposedLabel = admissionTerm.find(item => item.value === teacherTerm);
+    setLabel(proposedLabel.label);
+  };
+
+  const handleSearch = async () => {
+    var response = null;
+    if (studentCheck && subjectsCheck == false) {
+      response = await handleStudentSearch(
+        admission,
+        gpa,
+        gpaOperation,
+        enrolledCredits,
+        creditsOperation,
+        gender,
+        status,
+        studentName
+      );
       setData(response);
-    } else if( studentCheck == false && subjectsCheck){
+    } else if (studentCheck == false && subjectsCheck) {
       response = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
       setData(response);
-    } else if( studentCheck && subjectsCheck){
-      var resultStudents =  await handleStudentSearch(admission, gpa, gpaOperation, enrolledCredits, creditsOperation, gender, status, studentName);
+    } else if (studentCheck && subjectsCheck) {
+      var resultStudents = await handleStudentSearch(
+        admission,
+        gpa,
+        gpaOperation,
+        enrolledCredits,
+        creditsOperation,
+        gender,
+        status,
+        studentName
+      );
       var resultSubject = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
       response = Object.assign({}, resultStudents, resultSubject);
-      setData(response)
+      setData(response);
     }
   };
 
@@ -177,7 +213,7 @@ const CommunicationPage = () => {
           </div>
           <div className='all-selects'>
             <div className='title-search'>
-              <input type='checkbox' value={studentCheck} onClick={e => setStudentCheck(e.target.checked)}/>
+              <input type='checkbox' value={studentCheck} onClick={e => setStudentCheck(e.target.checked)} />
               <h1>Buscar e-mails por Discentes</h1>
             </div>
             <div className='selects-students'>
@@ -298,8 +334,27 @@ const CommunicationPage = () => {
                 />
               </div>
             </div>
+            <div className='title-search'>
+              <input type='checkbox' value={teacherCheck} onClick={e => setTeacherCheck(e.target.checked)} />
+              <h1>Buscar e-mails por Docentes</h1>
+            </div>
             <div className='selects-teachers'>
-              <TeacherSearch />
+              <div>
+                <p>Nome</p>
+                <input id='ipt-name' type='text' placeholder='Buscar por nome' onChange={e => setTeacherName(e.target.value)}/>
+              </div>
+              <div>
+                <p>SIAPE</p>
+                <input id='ipt-siape' type='text' placeholder='Buscar por SIAPE' onChange={e => setTeacherId(e.target.value)}/>
+              </div>
+              <div>
+                <p>Uni. acadêmica</p>
+                <SelectPicker defaultValue={"1411"} data={academic_units} searchable={false} cleanable={false} onChange={value => handleTeacherAUChange(value)}/>
+              </div>
+              <div>
+                <p>Período</p>
+                <SelectPicker defaultValue={"2020.2"} data={admissionTerm} searchable={false} cleanable={false} onChange={value => handleTeacherTermChange(value)}/>
+              </div>
             </div>
 
             <div className='title-search'>
@@ -362,7 +417,7 @@ const CommunicationPage = () => {
                 <NoDataFound msg={"Nenhuma endereço de email correspondente."} />{" "}
               </div>
             ) : ( */}
-              <ResultsTable listData={data} />
+            <ResultsTable listData={data} />
             {/* )} */}
             <div className='copy-button'>
               <button onClick={handleCopy}>COPIAR ENDEREÇOS</button>
