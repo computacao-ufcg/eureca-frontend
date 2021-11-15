@@ -79,7 +79,6 @@ const CommunicationPage = () => {
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
-      console.log(res);
       return res.data;
       //res.datalength === 0 ? setNoData(true) : setNoData(false);
       // setLoading(false);
