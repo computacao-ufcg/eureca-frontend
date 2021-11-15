@@ -6,42 +6,42 @@ const academic_units = [
   },
   {
     label: "UAAC",
-    value: "UAAC",
+    value: "1301",
     role: "Master",
   },
   {
-    label: "AAMi",
-    value: "AAMi",
+    label: "UAAMi",
+    value: "1302",
     role: "Master",
   },
   {
     label: "UACS",
-    value: "UACS",
+    value: "1305",
     role: "Master",
   },
   {
     label: "UAEF",
-    value: "UAEF",
+    value: "1303",
     role: "Master",
   },
   {
     label: "UAEst",
-    value: "UAEst",
+    value: "1114",
     role: "Master",
   },
   {
     label: "UAF",
-    value: "UAF",
+    value: "1108",
     role: "Master",
   },
   {
     label: "UAL",
-    value: "UAL",
+    value: "1307",
     role: "Master",
   },
   {
     label: "UAMat",
-    value: "UAMat",
+    value: "1109",
     role: "Master",
   },
   {
