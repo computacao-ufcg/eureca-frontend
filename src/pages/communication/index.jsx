@@ -8,7 +8,7 @@ import { api_EB } from "../../services/api";
 import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
 import NoDataFound from "../../components/NoDataFound";
-import { admissionTerm, operations, genders, statuses, subject_type, academic_units } from "./util";
+import { admissionTerm, operations, genders, statuses, subject_type, academic_units,cotas } from "./util";
 import ResultsTable from "./table/resultsTable";
 import "./style.css";
 
@@ -28,9 +28,9 @@ const CommunicationPage = () => {
   const [subjectsCheck, setSubjectsCheck] = useState(false)
 
   const [subjectType, setSubjectType] = useState("MANDATORY");
-  const [subjectAcademicUnit, setSubjectAcademicUnit] = useState("UASC");
+  const [subjectAcademicUnit, setSubjectAcademicUnit] = useState("1411");
   const [subjectName, setSubjectName] = useState(".*?");
-  const [subjectTerm, setSubjectTerm] = useState(".*?");
+  const [subjectTerm, setSubjectTerm] = useState("2020.2");
 
   //const [loading, setLoading] = useState(true);
   const [noData, setNoData] = useState(false);
@@ -73,6 +73,7 @@ const CommunicationPage = () => {
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
+      console.log(res)
       return res.data;
       //res.datalength === 0 ? setNoData(true) : setNoData(false);
      // setLoading(false);
@@ -270,7 +271,7 @@ const CommunicationPage = () => {
                 <p>Cota</p>
                 <SelectPicker
                   defaultValue={"todas"}
-                  data={0}
+                  data={cotas}
                   searchable={false}
                   cleanable={false}
                   style={{ width: 120 }}
@@ -330,7 +331,7 @@ const CommunicationPage = () => {
                 <p>Uni. acadêmica</p>
                 <SelectPicker
                   onChange={value => handleSubjectsAUChange(value)}
-                  defaultValue={"UASC"}
+                  defaultValue={"1411"}
                   data={academic_units}
                   searchable={false}
                   cleanable={false}
@@ -340,7 +341,7 @@ const CommunicationPage = () => {
                 <p>Período</p>
                 <SelectPicker
                   onChange={value => handleSubjectTermChange(value)}
-                  defaultValue={".*?"}
+                  defaultValue={"2020.2"}
                   data={admissionTerm}
                   searchable={false}
                   cleanable={false}

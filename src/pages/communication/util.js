@@ -46,7 +46,7 @@ const academic_units = [
   },
   {
     label: "UASC",
-    value: "UASC",
+    value: "1411",
     role: "Master",
   },
 ];
@@ -150,7 +150,7 @@ const statuses = [
 
 const cotas = [
   {
-    label: "todas",
+    label: "Todas",
     value: "todas",
     role: "Master",
   },
@@ -205,6 +205,26 @@ const admissionTerm = [
   {
     label: "Todos",
     value: ".*?",
+    role: "Master",
+  },
+  {
+    label: "2009.1",
+    value: "2009.1",
+    role: "Master",
+  },
+  {
+    label: "2009.2",
+    value: "2009.2",
+    role: "Master",
+  },
+  {
+    label: "2010.1",
+    value: "2010.1",
+    role: "Master",
+  },
+  {
+    label: "2010.2",
+    value: "2010.2",
     role: "Master",
   },
   {
