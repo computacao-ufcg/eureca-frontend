@@ -4,7 +4,6 @@ import { Table } from "rsuite";
 const { Column, HeaderCell,Cell} = Table;
 
 const ResultsTable = (props) => {
-  console.log(props)
   const data = props.listData;
 
   function handleData(data){
@@ -32,7 +31,7 @@ const ResultsTable = (props) => {
         }}
       >
         <Column width={250} align='center' fixed>
-          <HeaderCell>Matrícula</HeaderCell>
+          <HeaderCell>Identificação</HeaderCell>
           <Cell dataKey="registration" />
         </Column>
         <Column width={250} align='center' fixed>
