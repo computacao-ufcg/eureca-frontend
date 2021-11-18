@@ -16,7 +16,6 @@ import { eurecaAuthenticationHeader } from "../../config/defaultValues";
 const Header = () => {
   const [curriculumData, setCurriculumData] = useState([]);
   const [curriculumSelected, setCurriculumSelected] = useState();
-  const [optionService, setOptionService] = useState("statistics");
   const history = useHistory();
 
   const handleLogOut = () => {
@@ -65,46 +64,20 @@ const Header = () => {
           <img src={eureca_logo} alt='eureca logo' />
         </div>
         <div className='buttons'>
-          <div className={optionService === "statistics" ? "type-service-selected" : "type-service"}>
-            <Link to={"/home"}>
-              <button
-                className='type-button-services'
-                type='button'
-                onClick={() => {
-                  setOptionService("statistics");
-                }}
-              >
-                ESTATÍSTICAS
-              </button>
+          <div className='statistics-button'>
+          <Link to={"/home"}>
+            <button>ESTATÍSTICAS</button>
             </Link>
           </div>
-          <div className={optionService === "communication" ? "type-service-selected" : "type-service"}>
-            <Link to={"/communication"}>
-              <button
-                className='type-button-services'
-                type='button'
-                onClick={() => {
-                  setOptionService("communication");
-                }}
-              >
-                COMUNICAÇÕES
-              </button>
-            </Link>
+          <div className='communications-button'>
+          <Link to={"/communication"}>
+            <button>COMUNICAÇÕES</button>
+          </Link>
           </div>
-          <div className={optionService === "services" ? "type-service-selected" : "type-service"}>
-            <Link to={"/services"}>
-              <button
-                className='type-button-services'
-                type='button'
-                onClick={() => {
-                  {
-                    setOptionService("services");
-                  }
-                }}
-              >
-                SERVIÇOS
-              </button>
-            </Link>
+          <div className='services-button'>
+          <Link to={"/services"}>
+            <button>SERVIÇOS</button>
+          </Link>
           </div>
         </div>
 
