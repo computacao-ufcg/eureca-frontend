@@ -6,7 +6,6 @@ import Header from "../../components/Header";
 import { api_EB } from "../../services/api";
 import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
-import NoDataFound from "../../components/NoDataFound";
 import { admissionTerm, operations, genders, statuses, subject_type, academic_units, cotas } from "./util";
 import ResultsTable from "./table/resultsTable";
 import "./style.css";
@@ -35,9 +34,6 @@ const CommunicationPage = () => {
   const [teacherName, setTeacherName] = useState(".*?");
   const [teacherId, setTeacherId] = useState(".*?");
   const [teacherTerm, setTeacherTerm] = useState("2020.2");
-
-  //const [loading, setLoading] = useState(true);
-  const [noData, setNoData] = useState(false);
   const [label, setLabel] = useState("");
 
   const handleStudentSearch = async (
@@ -50,8 +46,6 @@ const CommunicationPage = () => {
     status,
     studentName
   ) => {
-    // setLoading(true);
-
     let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${
       gpa || 0
     }&craOperation=${gpaOperation}&curriculumCode=${curriculum}&enrolledCredits=${
@@ -62,8 +56,6 @@ const CommunicationPage = () => {
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
 
     if (res.status === 200) {
-      //res.datalength === 0 ? setNoData(true) : setNoData(false);
-      //setLoading(false);
       return res.data;
     } else {
       console.error("Response error");
@@ -71,8 +63,6 @@ const CommunicationPage = () => {
   };
 
   const handleSubjectsSearch = async (subjectAcademicUnit, subjectName, subjectType, subjectTerm) => {
-    //setLoading(true);
-
     let query = `communication/subjectEmailSearch?academicUnit=${subjectAcademicUnit}&courseCode=${courseCode}&curriculumCode=${curriculum}&subjectName=${
       subjectName || ".*?"
     }&subjectType=${subjectType}&term=${subjectTerm}`;
@@ -80,8 +70,20 @@ const CommunicationPage = () => {
 
     if (res.status === 200) {
       return res.data;
-      //res.datalength === 0 ? setNoData(true) : setNoData(false);
-      // setLoading(false);
+    } else {
+      console.error("Response error");
+    }
+  };
+
+  const handleTeacherSearch = async (teacherAcademicUnit, teacherId, teacherName, teacherTerm) => {
+    let query = `/communication/teacherEmailSearch?academicUnit=${teacherAcademicUnit}&courseCode=${courseCode}&curriculumCode=${curriculum}&teacherId=${teacherId}&teacherName=${
+      teacherName || ".*?"
+    }&term=${teacherTerm}`;
+    const res = await api_EB.get(query, eurecaAuthenticationHeader);
+
+    if (res.status === 200) {
+      console.log(res);
+      return res.data;
     } else {
       console.error("Response error");
     }
@@ -149,7 +151,7 @@ const CommunicationPage = () => {
 
   const handleSearch = async () => {
     var response = null;
-    if (studentCheck && subjectsCheck == false) {
+    if (studentCheck && subjectsCheck == false && teacherCheck == false) {
       response = await handleStudentSearch(
         admission,
         gpa,
@@ -161,10 +163,10 @@ const CommunicationPage = () => {
         studentName
       );
       setData(response);
-    } else if (studentCheck == false && subjectsCheck) {
+    } else if (studentCheck == false && teacherCheck == false && subjectsCheck) {
       response = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
       setData(response);
-    } else if (studentCheck && subjectsCheck) {
+    } else if (studentCheck && subjectsCheck && teacherCheck == false) {
       var resultStudents = await handleStudentSearch(
         admission,
         gpa,
@@ -177,6 +179,44 @@ const CommunicationPage = () => {
       );
       var resultSubject = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
       response = Object.assign({}, resultStudents, resultSubject);
+      setData(response);
+    } else if (studentCheck == false && subjectsCheck == false && teacherCheck) {
+      response = await handleTeacherSearch(teacherAcademicUnit, teacherId, teacherName, teacherTerm);
+      setData(response);
+    } else if (studentCheck && subjectsCheck == false && teacherCheck) {
+      var resultStudents = await handleStudentSearch(
+        admission,
+        gpa,
+        gpaOperation,
+        enrolledCredits,
+        creditsOperation,
+        gender,
+        status,
+        studentName
+      );
+      var resultTeachers = await handleTeacherSearch(teacherAcademicUnit, teacherId, teacherName, teacherTerm);
+      response = Object.assign({}, resultStudents, resultTeachers);
+      setData(response);
+    } else if (studentCheck == false && subjectsCheck && teacherCheck) {
+      var resultSubject = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
+      var resultTeachers = await handleTeacherSearch(teacherAcademicUnit, teacherId, teacherName, teacherTerm);
+      response = Object.assign({}, resultSubject, resultTeachers);
+      setData(response);
+    } else if (studentCheck && subjectsCheck && teacherCheck) {
+      console.log("pesquisa dos 3");
+      var resultStudents = await handleStudentSearch(
+        admission,
+        gpa,
+        gpaOperation,
+        enrolledCredits,
+        creditsOperation,
+        gender,
+        status,
+        studentName
+      );
+      var resultSubject = await handleSubjectsSearch(subjectAcademicUnit, subjectName, subjectType, subjectTerm);
+      var resultTeachers = await handleTeacherSearch(teacherAcademicUnit, teacherId, teacherName, teacherTerm);
+      response = Object.assign(resultStudents, resultSubject, resultTeachers);
       setData(response);
     }
   };
@@ -430,16 +470,7 @@ const CommunicationPage = () => {
           </div>
           <div className='response'>
             <h1>Endereços de E-mail</h1>
-            {/* {loading ? (
-              <h1>Carregando...</h1>
-            ) : data.length === 0 ? (
-              <div className='classified-no-data-found'>
-                {" "}
-                <NoDataFound msg={"Nenhuma endereço de email correspondente."} />{" "}
-              </div>
-            ) : ( */}
             <ResultsTable listData={data} />
-            {/* )} */}
             <div className='copy-button'>
               <button onClick={handleCopy}>COPIAR ENDEREÇOS</button>
             </div>

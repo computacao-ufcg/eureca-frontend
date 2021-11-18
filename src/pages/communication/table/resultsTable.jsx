@@ -4,7 +4,6 @@ import { Table } from "rsuite";
 const { Column, HeaderCell,Cell} = Table;
 
 const ResultsTable = (props) => {
-  console.log(props)
   const data = props.listData;
 
   function handleData(data){
