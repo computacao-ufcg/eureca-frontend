@@ -31,7 +31,7 @@ const ResultsTable = (props) => {
         }}
       >
         <Column width={250} align='center' fixed>
-          <HeaderCell>Matrícula</HeaderCell>
+          <HeaderCell>Identificação</HeaderCell>
           <Cell dataKey="registration" />
         </Column>
         <Column width={250} align='center' fixed>

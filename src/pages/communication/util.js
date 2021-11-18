@@ -1,10 +1,5 @@
 const academic_units = [
   {
-    label: "todas",
-    value: ".*?",
-    role: "Master",
-  },
-  {
     label: "UAAC",
     value: "1301",
     role: "Master",
