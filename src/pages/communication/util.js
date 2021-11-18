@@ -1,52 +1,47 @@
 const academic_units = [
   {
-    label: "todas",
-    value: ".*?",
-    role: "Master",
-  },
-  {
     label: "UAAC",
-    value: "UAAC",
+    value: "1301",
     role: "Master",
   },
   {
-    label: "AAMi",
-    value: "AAMi",
+    label: "UAAMi",
+    value: "1302",
     role: "Master",
   },
   {
     label: "UACS",
-    value: "UACS",
+    value: "1305",
     role: "Master",
   },
   {
     label: "UAEF",
-    value: "UAEF",
+    value: "1303",
     role: "Master",
   },
   {
     label: "UAEst",
-    value: "UAEst",
+    value: "1114",
     role: "Master",
   },
   {
     label: "UAF",
-    value: "UAF",
+    value: "1108",
     role: "Master",
   },
   {
     label: "UAL",
-    value: "UAL",
+    value: "1307",
     role: "Master",
   },
   {
     label: "UAMat",
-    value: "UAMat",
+    value: "1109",
     role: "Master",
   },
   {
     label: "UASC",
-    value: "UASC",
+    value: "1411",
     role: "Master",
   },
 ];
@@ -150,7 +145,7 @@ const statuses = [
 
 const cotas = [
   {
-    label: "todas",
+    label: "Todas",
     value: "todas",
     role: "Master",
   },
@@ -205,6 +200,26 @@ const admissionTerm = [
   {
     label: "Todos",
     value: ".*?",
+    role: "Master",
+  },
+  {
+    label: "2009.1",
+    value: "2009.1",
+    role: "Master",
+  },
+  {
+    label: "2009.2",
+    value: "2009.2",
+    role: "Master",
+  },
+  {
+    label: "2010.1",
+    value: "2010.1",
+    role: "Master",
+  },
+  {
+    label: "2010.2",
+    value: "2010.2",
     role: "Master",
   },
   {
