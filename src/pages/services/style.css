@@ -41,6 +41,13 @@
   height: 4vh;
 }
 
+.enrollment-sugestion {
+  text-align: center;
+}
+
+.enrollment-sugestion h1 {
+  font-size: 16px;
+}
 .selects-lot-enrollment input {
   margin-top: 15px;
 }

@@ -5,10 +5,12 @@ import Header from "../../components/Header";
 import { api_EB } from "../../services/api";
 import { courseCode, curriculum } from "../../config/storage";
 import { eurecaAuthenticationHeader } from "../../config/defaultValues";
+import EnrollmentTable from "./enrollmentTable";
 import "./style.css";
 
 const ServicesPage = () => {
   const [data, setData] = useState([]);
+  const [dataSubjects, setDataSubjects] = useState([]);
   const [electivePriorityList, setElectivePriorityList] = useState("^$");
   const [mandatoryPriorityList, setMandatoryPriorityList] = useState("^$");
   const [optionalPriorityList, setOptionalPriorityList] = useState("^$");
@@ -40,8 +42,8 @@ const ServicesPage = () => {
     }
     const res = await api_EB.get(query, eurecaAuthenticationHeader);
     if (res.status === 200) {
-      console.log(res);
       setData(res.data);
+      setDataSubjects(res.data.subjects);
     } else {
       console.error("Response error");
     }
@@ -76,14 +78,19 @@ const ServicesPage = () => {
             <div className='individual-enrollment'>
               <div>
                 <p>Período</p>
-                <input id='ipt-term' type='text' placeholder=' campo obrigatório' onChange={e => setTerm(e.target.value)} />
+                <input
+                  id='ipt-term'
+                  type='text'
+                  placeholder=' campo obrigatório'
+                  onChange={e => setTerm(e.target.value)}
+                />
               </div>
               <div>
                 <p>Matrícula</p>
                 <input
                   id='ipt-registration'
                   type='text'
-                  placeholder=' campo obrigatório' 
+                  placeholder=' campo obrigatório'
                   onChange={e => setStudentRegistration(e.target.value)}
                 />
               </div>
@@ -110,6 +117,10 @@ const ServicesPage = () => {
               <div className='send-button'>
                 <button onClick={handleEnrrolmentData}>ENVIAR</button>
               </div>
+            </div>
+            <div className='enrollment-sugestion'>
+              <h1>Matrícula Sugerida</h1>
+              <EnrollmentTable listData={dataSubjects} />
             </div>
             <div className='service-title'>
               <h1>Pré-matrícula em Lotes</h1>
