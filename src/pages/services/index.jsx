@@ -58,6 +58,7 @@ const ServicesPage = () => {
       studentRegistration,
       term
     );
+    document.getElementById('tableDiv').style.display = "block";
   };
 
   const history = useHistory();
@@ -118,7 +119,7 @@ const ServicesPage = () => {
                 <button onClick={handleEnrrolmentData}>ENVIAR</button>
               </div>
             </div>
-            <div className='enrollment-sugestion'>
+            <div className='enrollment-sugestion' id="tableDiv" style={{display:"none"}}>
               <h1>Matrícula Sugerida</h1>
               <EnrollmentTable listData={dataSubjects} />
             </div>
