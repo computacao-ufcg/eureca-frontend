@@ -145,11 +145,6 @@ const statuses = [
 
 const cotas = [
   {
-    label: "Todas",
-    value: "todas",
-    role: "Master",
-  },
-  {
     label: "AC",
     value: "AC",
     role: "Master",
