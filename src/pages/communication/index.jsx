@@ -21,6 +21,7 @@ const CommunicationPage = () => {
   const [gender, setGender] = useState(".*?");
   const [status, setStatus] = useState("Todos");
   const [studentName, setStudentName] = useState(".*?");
+  const [affirmativePolicy, setAffirmativePolicy] = useState("L1");
   const [studentCheck, setStudentCheck] = useState(false);
 
   const [subjectsCheck, setSubjectsCheck] = useState(false);
@@ -38,6 +39,7 @@ const CommunicationPage = () => {
 
   const handleStudentSearch = async (
     admission,
+    affirmativePolicy,
     gpa,
     gpaOperation,
     enrolledCredits,
@@ -46,7 +48,7 @@ const CommunicationPage = () => {
     status,
     studentName
   ) => {
-    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&courseCode=${courseCode}&cra=${
+    let query = `communication/studentsEmailSearch?admissionTerm=${admission}&affirmativePolicy=${affirmativePolicy}&courseCode=${courseCode}&cra=${
       gpa || 0
     }&craOperation=${gpaOperation}&curriculumCode=${curriculum}&enrolledCredits=${
       enrolledCredits || 0
@@ -119,6 +121,12 @@ const CommunicationPage = () => {
     setLabel(proposedLabel.label);
   };
 
+  const handleAffirmativePolicyChange = affirmativePolicy => {
+    setAffirmativePolicy(affirmativePolicy);
+    const proposedLabel = cotas.find(item => item.value === affirmativePolicy);
+    setLabel(proposedLabel.label);
+  };
+
   const handleSubjectsAUChange = subjectAcademicUnit => {
     setSubjectAcademicUnit(subjectAcademicUnit);
     const proposedLabel = academic_units.find(item => item.value === subjectAcademicUnit);
@@ -154,6 +162,7 @@ const CommunicationPage = () => {
     if (studentCheck && subjectsCheck == false && teacherCheck == false) {
       response = await handleStudentSearch(
         admission,
+        affirmativePolicy,
         gpa,
         gpaOperation,
         enrolledCredits,
@@ -169,6 +178,7 @@ const CommunicationPage = () => {
     } else if (studentCheck && subjectsCheck && teacherCheck == false) {
       var resultStudents = await handleStudentSearch(
         admission,
+        affirmativePolicy,
         gpa,
         gpaOperation,
         enrolledCredits,
@@ -186,6 +196,7 @@ const CommunicationPage = () => {
     } else if (studentCheck && subjectsCheck == false && teacherCheck) {
       var resultStudents = await handleStudentSearch(
         admission,
+        affirmativePolicy,
         gpa,
         gpaOperation,
         enrolledCredits,
@@ -203,9 +214,9 @@ const CommunicationPage = () => {
       response = Object.assign({}, resultSubject, resultTeachers);
       setData(response);
     } else if (studentCheck && subjectsCheck && teacherCheck) {
-      console.log("pesquisa dos 3");
       var resultStudents = await handleStudentSearch(
         admission,
+        affirmativePolicy,
         gpa,
         gpaOperation,
         enrolledCredits,
@@ -345,8 +356,9 @@ const CommunicationPage = () => {
               <div>
                 <p>Cota</p>
                 <SelectPicker
-                  defaultValue={"todas"}
+                  defaultValue={"L1"}
                   data={cotas}
+                  onChange={value => handleAffirmativePolicyChange(value)}
                   searchable={false}
                   cleanable={false}
                   style={{ width: 120 }}
