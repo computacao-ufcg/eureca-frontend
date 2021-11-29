@@ -146,7 +146,7 @@ const statuses = [
 const cotas = [
   {
     label: "Todas",
-    value: "todas",
+    value: "all",
     role: "Master",
   },
   {
