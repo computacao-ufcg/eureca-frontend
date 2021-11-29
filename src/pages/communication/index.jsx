@@ -21,7 +21,7 @@ const CommunicationPage = () => {
   const [gender, setGender] = useState(".*?");
   const [status, setStatus] = useState("Todos");
   const [studentName, setStudentName] = useState(".*?");
-  const [affirmativePolicy, setAffirmativePolicy] = useState("L1");
+  const [affirmativePolicy, setAffirmativePolicy] = useState("all");
   const [studentCheck, setStudentCheck] = useState(false);
 
   const [subjectsCheck, setSubjectsCheck] = useState(false);
@@ -356,7 +356,7 @@ const CommunicationPage = () => {
               <div>
                 <p>Cota</p>
                 <SelectPicker
-                  defaultValue={"L1"}
+                  defaultValue={"all"}
                   data={cotas}
                   onChange={value => handleAffirmativePolicyChange(value)}
                   searchable={false}
